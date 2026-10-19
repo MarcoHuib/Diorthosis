@@ -1,6 +1,21 @@
-# Architecture: initial proposal
+# Architecture: Phase 1 foundation
 
-**Status:** proposed; no implementation or dependency has been approved by benchmark results yet.
+**Status:** Phase 1 foundation implemented; inference and document processing remain unimplemented.
+
+## Phase 1 boundaries
+
+The solution targets .NET 10 and a CLI. The Core project owns correction request/result types and the correction and inference adapter contracts. The benchmark project evaluates offline JSONL cases against structured edits. No model runner, model weight, document parser, grammar engine, or GPU dependency is included.
+
+The baseline target is CPU inference with an in-process native adapter in a later phase. Model weights are a separate local file and are never downloaded by the application. No service or listening port is part of the design.
+
+## Preferred small model candidates
+
+1. **Primary:** [`mistralai/Ministral-3-3B-Instruct-2512-GGUF`](https://huggingface.co/mistralai/Ministral-3-3B-Instruct-2512-GGUF). The official model page lists Apache 2.0, English and Dutch, an official llama.cpp path, and Q4_K_M at 2.15 GB. It includes a vision encoder, but Phase 1 evaluates text correction only. Model quality, CPU memory/latency and required runtime treatment of the vision components remain to be tested.
+2. **Secondary:** [`utter-project/EuroLLM-1.7B-Instruct`](https://huggingface.co/utter-project/EuroLLM-1.7B-Instruct). Its model card lists 1.7B parameters, Dutch and English, Apache 2.0, and European Union funding with a European research consortium. GGUF conversion and llama.cpp compatibility require validation before use.
+
+EuroLLM-9B and Mistral Small 3.1 24B are optional quality-reference candidates, not the lightweight baseline. The older Ministral 8B 2410 research-licensed checkpoint is distinct from the Apache-licensed Ministral 3 family and is not a preferred candidate.
+
+These license/origin statements record upstream model card disclosures, not an independent supply-chain or training-data audit. Do not download, bundle, or claim a model is approved until exact revisions, weights, tokenizer, notices, and redistribution obligations have been reviewed. No weights are stored in this repository.
 
 ## Intended processing flow
 
@@ -18,9 +33,9 @@ Local document (.txt, .docx, .doc)
 
 ## Candidate technology
 
-- **Main application:** C# with self-contained .NET publishing; investigate Native AOT, compatibility, and package size on each target architecture. No external runtime installation for the end user.
-- **Inference:** a pluggable adapter. `llama.cpp` is a candidate, not a precondition. Model loading must not start a public/local listening service. Cross-platform native libraries should be bundled where needed.
-- **Models:** benchmark legally redistributable, European-origin candidates for Dutch and English. Verify exact checkpoint and license for the weights, tokenizer and related artifacts. Do not pick a default from parameter count or model marketing alone.
+- **Main application:** C# / .NET 10, CLI and Native AOT publishing, with platform-specific self-contained artifacts. End users should not need the .NET runtime.
+- **Inference:** `IModelInferenceAdapter` contract only in Phase 1. Evaluate direct in-process llama.cpp integration for CPU first; do not introduce an external process, local server, GPU package, or runtime model download in the baseline.
+- **Models:** prioritize the small Ministral 3 3B GGUF and EuroLLM 1.7B candidates above; benchmark evidence still determines suitability.
 - **Office documents:** prefer cross-platform, no-Java, commercially permissive components. `.docx` is a ZIP/OpenXML format; `.doc` is a separate legacy binary format and requires dedicated parsing or conversion. Investigate extraction, tracked changes, embedded objects, section layout and round-trip fidelity independently.
 - **Spelling libraries:** optional. Start AI-only, then use benchmark evidence to decide whether supplementary detection improves quality enough to justify its footprint and license obligations.
 
@@ -36,6 +51,8 @@ All choices must undergo an explicit license and supply-chain audit before relea
 - `IDocumentWriter`: write to a new destination, preserving validated formatting where supported.
 
 These are conceptual contracts, not required method or project names.
+
+Implemented contracts are deliberately narrower: `ICorrectionEngine` and `IModelInferenceAdapter` in Core. Document contracts and the remaining presentation/validation abstractions are deferred until document work is in scope.
 
 ## Security and privacy design
 
@@ -55,6 +72,8 @@ These are conceptual contracts, not required method or project names.
 5. A text-only source must not be presented as a fully format-preserving Word export.
 
 ## Cross-platform packaging
+
+Phase 1 CI publishes and launches the CLI on matching OS/architecture runners for all six target RIDs: Windows x64/ARM64, macOS x64/ARM64, and Linux x64/ARM64. The launch overrides `DOTNET_ROOT` to a nonexistent path. Linux x64 also traces network syscalls during `--version` startup. The Phase 1 CI run passed all six publish and launch checks. This verifies only the current CLI startup path; it does not prove model inference is offline or validate model compatibility, document behavior, or release packaging on every supported OS.
 
 Prepare independent artifacts for Windows, macOS, and Linux; target x64/ARM64 wherever validated. A Windows `.exe` is not executable natively on macOS/Linux. macOS signing/notarization and Linux libc compatibility are release considerations, not reasons to add an installer prerequisite.
 

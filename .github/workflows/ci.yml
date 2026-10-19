@@ -1,0 +1,64 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  tests:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+      - run: dotnet test Diorthosis.sln --configuration Release
+      - run: dotnet run --project src/Diorthosis.Benchmarks --configuration Release --no-build -- evaluate benchmarks/smoke/cases.jsonl benchmarks/smoke/predictions.jsonl
+
+  publish-and-smoke:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - rid: win-x64
+            runner: windows-2022
+            executable: Diorthosis.Cli.exe
+          - rid: win-arm64
+            runner: windows-11-arm
+            executable: Diorthosis.Cli.exe
+          - rid: osx-x64
+            runner: macos-15-intel
+            executable: Diorthosis.Cli
+          - rid: osx-arm64
+            runner: macos-15
+            executable: Diorthosis.Cli
+          - rid: linux-x64
+            runner: ubuntu-24.04
+            executable: Diorthosis.Cli
+          - rid: linux-arm64
+            runner: ubuntu-24.04-arm
+            executable: Diorthosis.Cli
+    runs-on: ${{ matrix.runner }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+      - run: dotnet publish src/Diorthosis.Cli/Diorthosis.Cli.csproj -c Release -r ${{ matrix.rid }} -o artifacts/${{ matrix.rid }}
+      - if: runner.os != 'Windows'
+        run: chmod +x artifacts/${{ matrix.rid }}/${{ matrix.executable }}
+      - run: artifacts/${{ matrix.rid }}/${{ matrix.executable }} --version
+        shell: bash
+        env:
+          DOTNET_ROOT: ${{ runner.temp }}/no-dotnet-runtime
+          DOTNET_MULTILEVEL_LOOKUP: 0
+      - if: matrix.rid == 'linux-x64'
+        run: |
+          strace -f -e trace=network -o network.trace artifacts/${{ matrix.rid }}/${{ matrix.executable }} --version
+          if grep -Eq 'socket\(|connect\(|bind\(|listen\(|sendto\(|recvfrom\(' network.trace; then
+            echo "Unexpected network syscall during offline CLI startup"
+            exit 1
+          fi
