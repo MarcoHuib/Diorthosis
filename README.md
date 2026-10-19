@@ -30,7 +30,7 @@ dotnet publish src/Diorthosis.Cli -c Release -r osx-arm64
 ./src/Diorthosis.Cli/bin/Release/net10.0/osx-arm64/publish/Diorthosis.Cli correct-text --language nl --model /path/to/model.gguf --text "Ik heb het document verstuurt." --json
 ```
 
-The application never downloads models. Both candidates were executed locally as Q4_K_M on macOS ARM64; neither is quality-approved. The exact revisions, conversion recipe, smoke results and limitations are in [model validation](docs/model-validation.md). Benchmark datasets and commands are in [benchmarks](docs/benchmarks.md).
+The application never downloads models. Both candidates were executed locally as Q4_K_M on macOS ARM64; neither is quality-approved. The exact revisions, conversion recipe, original and pipeline-corrected smoke results, and limitations are in [model validation](docs/model-validation.md) and the [benchmark pipeline investigation](docs/benchmark-pipeline-investigation.md). Benchmark datasets and commands are in [benchmarks](docs/benchmarks.md).
 
 ## Document workflows (not implemented yet)
 

@@ -1,7 +1,7 @@
 # Local model validation record
 
 **Validation date:** 2026-10-19 (macOS local run)  
-**Status:** Both real-weight candidates completed identical 44-case local smoke runs. Their provisional results are not acceptance evidence. The 600-case candidate is not independently reviewed.
+**Status:** Both real-weight candidates completed the original and a pipeline-corrected 44-case smoke run. The v1 results are retained unchanged; see the pipeline investigation for v2 outputs and causes. All smoke references remain provisional, and the 600-case candidate is not independently reviewed.
 
 ## Candidates and rights disclosures
 
@@ -50,6 +50,21 @@ Observed examples from the model output:
 - EuroLLM Dutch (also confirmed through Native AOT): `Ik heb het verslag gespreekt.` → `Ik heb het verslag gesproken.` The annotation is provisional and this output needs semantic review in context.
 
 The machine-readable smoke predictions, per-model reports, and comparison report are committed under `benchmarks/model-validation/results/`. They contain only the synthetic smoke cases, not private documents. The comparison command accepted both reports as matching the same dataset hash and decoding/inference settings.
+
+## Pipeline-corrected v2 smoke run
+
+The original v1 reports above have been preserved. The benchmark pipeline investigation manually inspected all 44 annotations, corrected two provisional references in a new dataset revision, and captured/reprocessed raw model generations with the corrected parser and evaluator. Details, per-case adjudication notes, exact commands, and metric interpretation are in [`benchmark-pipeline-investigation.md`](benchmark-pipeline-investigation.md). Raw traces are under [`results/v2/`](../benchmarks/model-validation/results/v2/).
+
+| Model | Language | Raw candidate recall / edit precision | Accepted recall / edit precision | False-positive edits | Clean-text preservation / cases changed | Rejected outputs |
+| --- | --- | --- | --- | ---: | --- | ---: |
+| Ministral Q4_K_M | Dutch | 11/16 (68.8%) / 11/13 (84.6%) | 11/16 (68.8%) / 11/13 (84.6%) | 2 | 5/7 (71.4%) / 2/7 | 1/44 overall |
+| Ministral Q4_K_M | English | 11/16 (68.8%) / 12/20 (60.0%) | 11/16 (68.8%) / 12/20 (60.0%) | 8 | 7/7 (100%) / 0/7 | 1/44 overall |
+| EuroLLM Q4_K_M | Dutch | 1/16 (6.3%) / 1/54 (1.9%) | 1/16 (6.3%) / 1/1 (100%; one suggestion) | 0 | 7/7 (100%) / 0/7 | 16/44 overall |
+| EuroLLM Q4_K_M | English | 7/16 (43.8%) / 8/11 (72.7%) | 7/16 (43.8%) / 8/11 (72.7%) | 3 | 7/7 (100%) / 0/7 | 16/44 overall |
+
+The 54 EuroLLM Dutch raw edit hunks largely come from English translations and malformed output; the per-case trace shows the full raw generations. They are not 54 independent language corrections. The final validator rejected 1 Ministral output and 16 EuroLLM outputs; none of those rejected raw candidates fully matched an annotated accepted correction after whole-passage and unannotated-rewrite checks. The v2 rates remain small-sample comparisons against provisional labels, not validated quality. The recall target remains unmet.
+
+V2 performance on the same M4 ARM64 CPU host: Ministral process model-load 1,789 ms, mean per-case latency 4,693 ms Dutch / 4,509 ms English, sampled peak working set 4.929 / 4.942 GB. EuroLLM: 1,118 ms load, 2,091 / 2,092 ms mean latency, 2.294 / 2.307 GB sampled peak working set. OS file cache was uncontrolled; load figures are not cold-boot measurements. Reparse retained these measurements from the corresponding actual offline inference runs.
 
 Semantic preservation requires human review and remains pending. The provisional cases include names, identifiers, dates, URLs and technical terms, but automated protected-token behavior is not equivalent to human semantic review. Record exact datasets, predictions and run reports by SHA-256 when available. Do not run the 600-case candidate for quality scoring before independent review.
 
