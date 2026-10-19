@@ -2,8 +2,9 @@
 
 The macOS ARM64 native-runtime failure diagnosis and CPU-only generation reproduction are in [ADR 0006](decisions/0006-cpu-only-macos-inference-and-next-model-manifest.md). The replacement uses the same pinned llama.cpp commit as LLamaSharp 0.27.0 with Metal disabled. It generated an English spelling correction from the existing local Ministral 3B GGUF using the published Native AOT CLI; model-quality claims are out of scope for this one runtime check.
 
-**Validation date:** 2026-10-19 (macOS local run)  
-**Status:** Ministral 3B, 8B and 14B, plus EuroLLM 1.7B, have completed local real-weight runs. Ministral family screening results are recorded below and in [`results/v3/`](../benchmarks/model-validation/results/v3/). All 44-case smoke references remain provisional, and the 600-case candidate is not independently reviewed.
+**Validation date:** 2026-10-20 (macOS local run)
+
+**Status:** Ministral 3B, 8B and 14B, plus EuroLLM 1.7B, have completed local real-weight runs. The corrected Ministral family comparison is in [`results/v4/`](../benchmarks/model-validation/results/v4/); earlier v2/v3 family metrics remain available as historical records and are superseded because of the EOG termination defect and backend comparability. All 44-case smoke references remain provisional, and the 600-case candidate is not independently reviewed.
 
 ## Candidates and rights disclosures
 
@@ -70,7 +71,7 @@ V2 performance on the same M4 ARM64 CPU host: Ministral process model-load 1,789
 
 Semantic preservation requires human review and remains pending. The provisional cases include names, identifiers, dates, URLs and technical terms, but automated protected-token behavior is not equivalent to human semantic review. Record exact datasets, predictions and run reports by SHA-256 when available. Do not run the 600-case candidate for quality scoring before independent review.
 
-## Ministral family v3 diagnostic screen
+## Ministral family v3 diagnostic screen (superseded)
 
 **Run date:** 2026-10-19. This was a single bounded screen, not a held-out evaluation. It used the same 44-case file as v2 (`smoke-44-reviewed-v2.jsonl`, SHA-256 `2190c109f5f8e8ce1979637a1beea9fcce615959033aa76576b32ba537465fa2`): 22 cases per language, 16 provisional annotated errors and 7 provisional clean cases per language. The annotations remain provisional; no quality target can be claimed from these results.
 
@@ -121,11 +122,25 @@ A temporary C++ harness called the pinned llama.cpp C API from the CPU-only libr
 
 In all eight model/case runs, `llama_vocab_is_eog` ended generation naturally. These are four diagnostic examples per model, not quality evidence. They establish that the same weights, prompts, template, CPU backend and greedy decoding can stop after the intended correction in native llama.cpp; the LLamaSharp interactive executor's EOS-to-newline behavior explains why the application traces continued to the cap. Other model limitations and failures outside these four traces remain unassessed by this bounded audit.
 
-### Baseline comparability and next step
+### Baseline comparability caveat (resolved in v4)
 
-The historical 3B v2 run predates commit `ca7a3c2`, which added the Metal-disabled CPU-only native backend. The v3 comparison reuses that v2 3B aggregate and contains no `ministral-3b-trace.jsonl`; its matching settings/runtime label do not prove it was rerun on the rebuilt native libraries. Therefore the original 3B quality result is **not validated as directly comparable** with 8B/14B under the rebuilt CPU-only backend. The 8B/14B comparison is on the same rebuilt backend; the 3B row must be treated as historical until rerun under that backend.
+The historical 3B v2 run predates commit `ca7a3c2`, which added the Metal-disabled CPU-only native backend. The v3 comparison reused that aggregate, so those old rows were not comparable. This caveat is resolved for the new v4 run, which freshly ran all three models against the same rebuilt backend, cases, pipeline and settings.
 
-The minimal general runtime correction is to make a sampled EOG token terminate the current completion before the executor converts it to a newline or schedules another decode. The existing maximum-token cap should remain as a separate safety limit. This avoids prompt changes, model-specific stop strings and output truncation heuristics. No runtime change has been made pending approval. See [ADR 0007](decisions/0007-llamasharp-eog-termination-audit.md) for the evidence and proposed behavior.
+The approved general correction uses `StatelessExecutor`, which stops on any token LLamaSharp identifies as EOG before decoding that token as text. It preserves `MaxTokens` as an independent upper bound, and retains strict isolation using a new context per request. See [ADR 0007](decisions/0007-llamasharp-eog-termination-audit.md) for the implementation and test evidence.
+
+## Ministral family v4 diagnostic comparison
+
+**Run date:** 2026-10-20. Models were run sequentially on the same Apple M4 Mac mini, 32 GB unified memory, macOS 26.6.2 ARM64, .NET 10.0.12. All used the Metal-disabled pinned llama.cpp backend `3f7c29d318e317b63f54c558bc69803963d7d88c`, LLamaSharp 0.27.0, CPU-only, nine threads, context 4096, greedy decoding, maximum 128 generated tokens and the frozen `diorthosis-correction-v3` pipeline. Dataset `smoke-44-reviewed-v2.jsonl` hash: `2190c109f5f8e8ce1979637a1beea9fcce615959033aa76576b32ba537465fa2`. Exact model revisions and checksums are listed above. No weights were downloaded during this run.
+
+| Model | NL accepted recall / precision / false-positive edits | EN accepted recall / precision / false-positive edits | False-positive rate NL / EN | Correct-text preservation NL / EN | Rejected generations | Mean / max case latency | Init time | Peak process working set | Termination |
+| --- | --- | --- | --- | --- | ---: | ---: | ---: | ---: | --- |
+| Ministral 3B Q4_K_M | 11/16 (68.8%) / 11/13 (84.6%) / 2 | 11/16 (68.8%) / 12/20 (60.0%) / 8 | 2/7 (28.6%) / 0/7 (0%) | 5/7 (71.4%) / 7/7 (100%) | 2/44 | 1.373 / 2.043 s | 1.180 s | 2.933 GB | EOG 44/44 |
+| Ministral 3 8B Q4_K_M | 12/16 (75.0%) / 13/21 (61.9%) / 8 | 11/16 (68.8%) / 12/22 (54.5%) / 10 | 2/7 (28.6%) / 1/7 (14.3%) | 5/7 (71.4%) / 6/7 (85.7%) | 4/44 | 3.148 / 4.720 s | 1.466 s | 6.269 GB | EOG 44/44 |
+| Ministral 3 14B Q4_K_M | 14/16 (87.5%) / 15/20 (75.0%) / 5 | 12/16 (75.0%) / 13/22 (59.1%) / 9 | 1/7 (14.3%) / 0/7 (0%) | 6/7 (85.7%) / 7/7 (100%) | 1/44 | 4.975 / 6.936 s | 2.021 s | 9.525 GB | EOG 44/44 |
+
+All 132 outputs naturally ended after a sampled model EOG token; none used all 128 tokens. Traces under [`results/v4/`](../benchmarks/model-validation/results/v4/) include raw generations, sampled token counts, termination reasons, extracted corrections, accepted edits, latency and per-case evaluation. The four separately inspected termination cases were `en-03`, `en-06`, `en-07`, and `nl-09`; all three models passed the real-model termination test, the output cap test, repeated-request isolation, correct-input preservation, cancellation and recovery.
+
+The 14B model has the strongest smoke recall, but precision is 75.0% Dutch and 59.1% English, and Dutch clean-text preservation is 85.7%. None of the models meets strict precision or preservation expectations. This 44-case set has only 16 provisional errors and 7 provisional clean cases per language, so it remains diagnostic and cannot establish final quality. Recommendation: evaluate EuroLLM 9B next on an independently reviewed dataset; retain 14B as a corrected Ministral baseline for comparison if useful. Do not claim that any accuracy target has been met.
 
 ## Reproduction and asset handling
 
