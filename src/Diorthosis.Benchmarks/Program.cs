@@ -127,6 +127,7 @@ try
         var rawPredictions = new List<BenchmarkPrediction>(cases.Length);
         var traces = new List<object>(cases.Length);
         var rejectionCounts = new Dictionary<string, int>(StringComparer.Ordinal);
+        var terminationCounts = new Dictionary<string, int>(StringComparer.Ordinal);
         var rejectedButRawCorrectErrors = 0;
         var latencies = new List<double>(cases.Length);
         foreach (var item in cases)
@@ -137,6 +138,7 @@ try
             var result = await engine.CorrectAsync(new CorrectionRequest(item.Language, item.InputText));
             timer.Stop();
             SampleWorkingSet();
+            terminationCounts[adapter.LastTerminationReason] = terminationCounts.GetValueOrDefault(adapter.LastTerminationReason) + 1;
             predictions.Add(new BenchmarkPrediction(item.Id, result.Edits));
             latencies.Add(timer.Elapsed.TotalMilliseconds);
             var analysis = ModelCorrectionEngine.AnalyzeModelResponse(adapter.LastOutput ?? string.Empty, item.InputText);
@@ -157,6 +159,8 @@ try
                 caseId = item.Id,
                 input = item.InputText,
                 rawModelOutput = analysis.RawOutput,
+                terminationReason = adapter.LastTerminationReason,
+                sampledTokenCount = adapter.LastSampledTokenCount,
                 latencyMilliseconds = latencies[^1],
                 extractedCorrection = analysis.ExtractedCorrection,
                 rawCandidateTextEdits = analysis.RawCandidateEdits,
@@ -203,10 +207,11 @@ try
             peakMemoryMeasurement = "Maximum sampled process working set, sampled every 100 ms across model load and inference",
             managedHeapBytesAfterRun = GC.GetTotalMemory(forceFullCollection: false),
             rejectedModelOutputs = engine.RejectedOutputCount,
+            generationTerminations = terminationCounts,
             rejectedModelOutputsByReason = rejectionCounts,
             rejectedButRawCorrectErrors,
             semanticAlterations = "Require human review; not inferred by this runner",
-            decoding = new { temperature = 0.0, maximumOutputTokens = engine.MaximumOutputTokens },
+            decoding = new { sampler = "GreedySamplingPipeline", temperature = 0.0, maximumOutputTokens = engine.MaximumOutputTokens },
             caseCount = cases.Length,
             metrics,
             rawCandidateMetrics = rawMetrics
@@ -268,7 +273,9 @@ try
                     coldStartMilliseconds = report.RootElement.GetProperty("coldStartMilliseconds").GetDouble(),
                     latencyMilliseconds = report.RootElement.GetProperty("latencyMilliseconds"),
                     latencyMillisecondsByLanguage = report.RootElement.GetProperty("latencyMillisecondsByLanguage"),
+                    peakWorkingSetBytes = report.RootElement.GetProperty("peakWorkingSetBytes").GetInt64(),
                     peakWorkingSetBytesByLanguage = report.RootElement.GetProperty("peakWorkingSetBytesByLanguage"),
+                    generationTerminations = report.RootElement.GetProperty("generationTerminations"),
                     rejectedModelOutputs = report.RootElement.GetProperty("rejectedModelOutputs"),
                     rejectedButRawCorrectErrors = report.RootElement.GetProperty("rejectedButRawCorrectErrors"),
                     rejectedModelOutputsByReason = report.RootElement.GetProperty("rejectedModelOutputsByReason"),
@@ -329,9 +336,16 @@ static Dictionary<string, string> ParseOptions(string[] arguments)
 sealed class CapturingAdapter(IModelInferenceAdapter inner) : IModelInferenceAdapter
 {
     public string? LastOutput { get; private set; }
+    public string LastTerminationReason { get; private set; } = "NotReportedByAdapter";
+    public int? LastSampledTokenCount { get; private set; }
     public async ValueTask<string> GenerateAsync(InferenceRequest request, CancellationToken cancellationToken = default)
     {
         LastOutput = await inner.GenerateAsync(request, cancellationToken).ConfigureAwait(false);
+        if (inner is LlamaSharpInferenceAdapter native)
+        {
+            LastTerminationReason = native.LastTermination.ToString();
+            LastSampledTokenCount = native.LastSampledTokenCount;
+        }
         return LastOutput;
     }
 }

@@ -2,7 +2,6 @@ using LLama;
 using LLama.Common;
 using LLama.Native;
 using LLama.Sampling;
-using LLama.Transformers;
 
 namespace Diorthosis.Core.Inference;
 
@@ -12,8 +11,16 @@ public sealed class LlamaSharpInferenceAdapter : IModelInferenceAdapter, IDispos
     public const string RuntimeVersion = "LLamaSharp 0.27.0 / llama.cpp backend 0.27.0";
     private readonly SemaphoreSlim _gate = new(1, 1);
     private readonly LLamaWeights _weights;
-    private readonly LLamaContext _context;
+    private readonly StatelessExecutor _executor;
     private bool _disposed;
+
+    /// <summary>Termination details for the most recently completed request.</summary>
+    public GenerationTermination LastTermination { get; private set; }
+
+    /// <summary>Number of tokens sampled, including a sampled end-of-generation token.</summary>
+    public int LastSampledTokenCount { get; private set; }
+
+    public enum GenerationTermination { Unknown, EndOfGeneration, MaximumTokens, Cancelled }
 
     /// <summary>Initializes llama.cpp's native backend without loading a model.</summary>
     public static void ValidateNativeBackend()
@@ -35,7 +42,6 @@ public sealed class LlamaSharpInferenceAdapter : IModelInferenceAdapter, IDispos
         if (contextSize < 512) throw new ArgumentOutOfRangeException(nameof(contextSize), "Context size must be at least 512 tokens.");
         if (threads is <= 0) throw new ArgumentOutOfRangeException(nameof(threads), "Thread count must be positive.");
         LLamaWeights? weights = null;
-        LLamaContext? context = null;
         try
         {
             ConfigureNativeLibraries();
@@ -46,14 +52,13 @@ public sealed class LlamaSharpInferenceAdapter : IModelInferenceAdapter, IDispos
                 Threads = threads ?? Math.Max(1, Environment.ProcessorCount - 1)
             };
             weights = LLamaWeights.LoadFromFile(parameters);
-            context = weights.CreateContext(parameters);
             _weights = weights;
-            _context = context;
+            _executor = new StatelessExecutor(weights, parameters) { ApplyTemplate = true };
         }
-        catch (Exception exception) when (exception is not OutOfMemoryException)
+        catch (Exception exception)
         {
-            context?.Dispose();
             weights?.Dispose();
+            if (exception is OutOfMemoryException) throw;
             throw new InvalidDataException("The model could not be loaded. Check that it is a supported text GGUF file and that the native CPU backend matches this platform.", exception);
         }
     }
@@ -73,22 +78,35 @@ public sealed class LlamaSharpInferenceAdapter : IModelInferenceAdapter, IDispos
         try
         {
             ObjectDisposedException.ThrowIf(_disposed, this);
-            // StatefulExecutorBase starts at sequence position zero. Clear the native KV
-            // sequence as well as managed executor state before beginning that new request.
-            _context.NativeHandle.MemoryClear(data: false);
-            // Executor state includes consumed tokens and conversation history. Reusing it for
-            // independent correction requests leaks prior input and eventually fills the context.
-            // A fresh executor reuses the loaded weights/context while isolating every request.
-            var session = new ChatSession(new InteractiveExecutor(_context));
-            session.WithHistoryTransform(new PromptTemplateTransformer(_weights, withAssistant: true));
+            LastTermination = GenerationTermination.Unknown;
+            LastSampledTokenCount = 0;
+            using var samplingPipeline = new TerminationTrackingGreedySamplingPipeline(_weights);
             var settings = new InferenceParams
             {
                 MaxTokens = request.MaximumOutputTokens,
-                SamplingPipeline = new DefaultSamplingPipeline { Temperature = 0.0f }
+                SamplingPipeline = samplingPipeline
             };
             var output = new System.Text.StringBuilder();
-            await foreach (var token in session.ChatAsync(new ChatHistory.Message(AuthorRole.User, request.Prompt), settings, cancellationToken).ConfigureAwait(false))
-                output.Append(token);
+            try
+            {
+                await foreach (var token in _executor.InferAsync(request.Prompt, settings, cancellationToken).ConfigureAwait(false))
+                    output.Append(token);
+            }
+            catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+            {
+                LastSampledTokenCount = samplingPipeline.SampledTokenCount;
+                LastTermination = GenerationTermination.Cancelled;
+                throw;
+            }
+            LastSampledTokenCount = samplingPipeline.SampledTokenCount;
+            if (cancellationToken.IsCancellationRequested)
+            {
+                LastTermination = GenerationTermination.Cancelled;
+                cancellationToken.ThrowIfCancellationRequested();
+            }
+            LastTermination = samplingPipeline.EndOfGenerationSampled
+                ? GenerationTermination.EndOfGeneration
+                : GenerationTermination.MaximumTokens;
             return output.ToString().Trim();
         }
         finally
@@ -103,13 +121,26 @@ public sealed class LlamaSharpInferenceAdapter : IModelInferenceAdapter, IDispos
         try
         {
             if (_disposed) return;
-            _context.Dispose();
             _weights.Dispose();
             _disposed = true;
         }
         finally
         {
             _gate.Release();
+        }
+    }
+
+    private sealed class TerminationTrackingGreedySamplingPipeline(LLamaWeights weights) : GreedySamplingPipeline
+    {
+        public int SampledTokenCount { get; private set; }
+        public bool EndOfGenerationSampled { get; private set; }
+
+        public override LLamaToken Sample(LLama.Native.SafeLLamaContextHandle context, int index)
+        {
+            var token = base.Sample(context, index);
+            SampledTokenCount++;
+            EndOfGenerationSampled = token.IsEndOfGeneration(weights.Vocab);
+            return token;
         }
     }
 }
