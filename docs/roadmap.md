@@ -4,7 +4,7 @@
 
 ## Phase 0: repository and legal foundation
 
-- [ ] Establish conventions, contribution checks, automated tests and CI.
+- [x] Establish conventions, contribution checks, automated tests and CI foundation.
 - [ ] Define permissive dependency/license/provenance requirements and reporting.
 - [ ] Investigate European-origin candidates and exact license terms for models, weights, tokenizers and data.
 - [ ] Establish reproducible builds for target operating systems.
@@ -13,12 +13,12 @@
 
 ## Phase 1: AI quality benchmark (before major document work)
 
-- [ ] Define and review the Dutch/English test schema, fixtures and metrics.
-- [ ] Build repeatable test harness and local inference abstraction.
+- [x] Define the Dutch/English test schema, smoke fixtures and metric evaluator.
+- [x] Build the repeatable evaluation harness and local inference abstraction contract.
 - [ ] Evaluate multiple legally suitable European models in consistent conditions.
 - [ ] Compare accuracy, semantic fidelity, false positives, memory and performance.
 
-**Exit:** a model/engine choice backed by a reproducible benchmark; if none meets the target, document a different approach rather than claiming success.
+**Foundation complete; quality exit remains open:** no model has been evaluated. Model/engine selection requires a reproducible benchmark; if none meets the target, document a different approach rather than claiming success.
 
 ## Phase 2: document ingestion
 

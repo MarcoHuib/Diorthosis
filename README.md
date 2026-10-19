@@ -4,7 +4,7 @@
 
 Diorthosis aims to help people confidently review spelling, grammar, and sentence structure in documents without uploading confidential content to a cloud service.
 
-> **Project status:** planning / repository bootstrap. No working correction engine or document converter is included in this initial commit. Model accuracy, format preservation, and platform compatibility are targets that still require testing.
+> **Project status:** Phase 1 foundation. The .NET solution, CLI shell, contracts, and deterministic benchmark evaluator are implemented. No model inference or document converter is included. Model accuracy, format preservation, and target-platform compatibility still require testing.
 
 ## Project goals
 
@@ -22,6 +22,8 @@ Diorthosis aims to help people confidently review spelling, grammar, and sentenc
 A shared C# command-line application is the starting point to evaluate. A pluggable local inference engine and an independently tested document-processing layer keep model selection and file-format support replaceable.
 
 See [architecture](docs/architecture.md), [benchmarks](docs/benchmarks.md), and [roadmap](docs/roadmap.md).
+
+The preferred small model candidates are official Ministral 3 3B GGUF and EuroLLM 1.7B Instruct. Their weights are not included or downloaded by the application. EuroLLM GGUF conversion remains unverified.
 
 ## Planned usage (not implemented yet)
 
