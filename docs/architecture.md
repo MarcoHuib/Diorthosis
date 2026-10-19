@@ -73,7 +73,7 @@ Implemented contracts are deliberately narrower: `ICorrectionEngine` and `IModel
 
 ## Cross-platform packaging
 
-Phase 1 CI publishes and launches the CLI on a matching OS/architecture runner for all six target RIDs. The launch overrides `DOTNET_ROOT` to a nonexistent path; Linux x64 also traces network syscalls during `--version` startup. This verifies only the current CLI startup path. It does not prove model inference is offline or verify behavior of an installed release on every supported OS. The local Native AOT publish and launch has been checked on macOS ARM64; the other five targets remain pending CI results.
+Phase 1 CI publishes and launches the CLI on matching OS/architecture runners for all six target RIDs: Windows x64/ARM64, macOS x64/ARM64, and Linux x64/ARM64. The launch overrides `DOTNET_ROOT` to a nonexistent path. Linux x64 also traces network syscalls during `--version` startup. The Phase 1 CI run passed all six publish and launch checks. This verifies only the current CLI startup path; it does not prove model inference is offline or validate model compatibility, document behavior, or release packaging on every supported OS.
 
 Prepare independent artifacts for Windows, macOS, and Linux; target x64/ARM64 wherever validated. A Windows `.exe` is not executable natively on macOS/Linux. macOS signing/notarization and Linux libc compatibility are release considerations, not reasons to add an installer prerequisite.
 
