@@ -8,14 +8,81 @@ using Diorthosis.Core.Inference;
 
 var options = new JsonSerializerOptions(JsonSerializerDefaults.Web);
 options.Converters.Add(new JsonStringEnumConverter(JsonNamingPolicy.CamelCase));
-if (args.Length < 1 || (args[0] != "evaluate" && args[0] != "run" && args[0] != "compare"))
+if (args.Length < 1 || (args[0] != "evaluate" && args[0] != "run" && args[0] != "compare" && args[0] != "reparse"))
 {
-    Console.Error.WriteLine("Usage: diorthosis-benchmarks evaluate <cases.jsonl> <predictions.jsonl> | run <cases.jsonl> <model.gguf> <predictions.jsonl> <report.json> | compare <comparison.json> <report1.json> <report2.json> [reportN.json ...]");
+    Console.Error.WriteLine("Usage: diorthosis-benchmarks evaluate <cases.jsonl> <predictions.jsonl> | run <cases.jsonl> <model.gguf> <predictions.jsonl> <report.json> [--trace <trace.jsonl>] | reparse <cases.jsonl> <raw-trace.jsonl> <run-report.json> <predictions.jsonl> <trace.jsonl> <report.json> | compare <comparison.json> <report1.json> <report2.json> [reportN.json ...]");
     return 2;
 }
 
 try
 {
+    if (args[0] == "reparse")
+    {
+        if (args.Length != 7) throw new ArgumentException("Reparse requires cases, captured raw trace, original run report, and three output paths.");
+        var cases = ReadCases(args[1], options);
+        var caseMap = cases.ToDictionary(item => item.Id, StringComparer.Ordinal);
+        var predictions = new List<BenchmarkPrediction>(cases.Length);
+        var rawPredictions = new List<BenchmarkPrediction>(cases.Length);
+        var traces = new List<object>(cases.Length);
+        var rejections = new Dictionary<string, int>(StringComparer.Ordinal);
+        var rejectedButRawCorrectErrors = 0;
+        foreach (var line in File.ReadLines(args[2]).Where(line => !string.IsNullOrWhiteSpace(line)))
+        {
+            using var traceDocument = JsonDocument.Parse(line);
+            var trace = traceDocument.RootElement;
+            var caseId = trace.GetProperty("caseId").GetString()!;
+            if (!caseMap.TryGetValue(caseId, out var item)) throw new InvalidDataException("Captured trace contains an unknown benchmark case ID.");
+            if (trace.GetProperty("input").GetString() != item.InputText) throw new InvalidDataException("Captured trace input does not match the benchmark dataset.");
+            var raw = trace.GetProperty("rawModelOutput").GetString() ?? string.Empty;
+            var analysis = ModelCorrectionEngine.AnalyzeModelResponse(raw, item.InputText);
+            predictions.Add(new BenchmarkPrediction(caseId, analysis.Edits));
+            var rawPrediction = new BenchmarkPrediction(caseId, analysis.RawCandidateEdits);
+            rawPredictions.Add(rawPrediction);
+            var rawCaseMetrics = BenchmarkEvaluator.Evaluate([item], [rawPrediction]).Where(metric => metric.Category == "all").ToArray();
+            var acceptedCaseMetrics = BenchmarkEvaluator.Evaluate([item], [new BenchmarkPrediction(caseId, analysis.Edits)])
+                .Where(metric => metric.Category == "all").ToArray();
+            var rawCorrectErrors = rawCaseMetrics[0].CorrectlyResolvedErrors;
+            if (analysis.RejectionStage is not null && rawCorrectErrors > 0) rejectedButRawCorrectErrors += rawCorrectErrors;
+            if (analysis.RejectionStage is not null)
+            {
+                var reason = $"{analysis.RejectionStage}: {analysis.RejectionReason}";
+                rejections[reason] = rejections.GetValueOrDefault(reason) + 1;
+            }
+            traces.Add(new
+            {
+                caseId,
+                input = item.InputText,
+                rawModelOutput = raw,
+                extractedCorrection = analysis.ExtractedCorrection,
+                rawCandidateTextEdits = analysis.RawCandidateEdits,
+                validatedTextEdits = analysis.Edits,
+                rejectionStage = analysis.RejectionStage,
+                rejectionReason = analysis.RejectionReason,
+                rejectedButRawCorrectErrors = analysis.RejectionStage is not null ? rawCorrectErrors : 0,
+                rawCandidateBenchmark = rawCaseMetrics,
+                acceptedBenchmark = acceptedCaseMetrics
+            });
+        }
+        if (predictions.Count != cases.Length || predictions.Select(item => item.CaseId).Distinct(StringComparer.Ordinal).Count() != cases.Length)
+            throw new InvalidDataException("Captured trace must contain exactly one response for each benchmark case.");
+        await File.WriteAllLinesAsync(args[4], predictions.Select(item => JsonSerializer.Serialize(item, options)));
+        await File.WriteAllLinesAsync(args[5], traces.Select(item => JsonSerializer.Serialize(item, options)));
+        var metrics = BenchmarkEvaluator.Evaluate(cases, predictions);
+        var rawMetrics = BenchmarkEvaluator.Evaluate(cases, rawPredictions);
+        var report = System.Text.Json.Nodes.JsonNode.Parse(await File.ReadAllTextAsync(args[3]))
+            ?? throw new InvalidDataException("Original run report is empty.");
+        report["metrics"] = JsonSerializer.SerializeToNode(metrics, options);
+        report["rawCandidateMetrics"] = JsonSerializer.SerializeToNode(rawMetrics, options);
+        report["rawCandidateMetrics"] = JsonSerializer.SerializeToNode(rawMetrics, options);
+        report["rejectedModelOutputs"] = rejections.Values.Sum();
+        report["rejectedModelOutputsByReason"] = JsonSerializer.SerializeToNode(rejections, options);
+        report["rejectedButRawCorrectErrors"] = rejectedButRawCorrectErrors;
+        report["postProcessingRevision"] = "current deterministic parser reapplied to captured raw generation; inference timings/memory are from the referenced run report";
+        await File.WriteAllTextAsync(args[6], report.ToJsonString(options));
+        Console.WriteLine(JsonSerializer.Serialize(metrics.Where(metric => metric.Category is "all" or "CorrectText"), options));
+        return 0;
+    }
+
     if (args[0] == "run")
     {
         if (args.Length < 5) throw new ArgumentException("Run requires a cases file, model, predictions output, and report output.");
@@ -48,7 +115,8 @@ try
         SampleWorkingSet();
         using var memorySampler = new Timer(_ => SampleWorkingSet(), null, TimeSpan.Zero, TimeSpan.FromMilliseconds(100));
         var loadTimer = Stopwatch.StartNew();
-        using var adapter = new LlamaSharpInferenceAdapter(args[2]);
+        using var nativeAdapter = new LlamaSharpInferenceAdapter(args[2]);
+        var adapter = new CapturingAdapter(nativeAdapter);
         loadTimer.Stop();
         var maximumOutputTokens = !runOptions.TryGetValue("max-output-tokens", out var maxTokensText)
             ? 512
@@ -56,6 +124,10 @@ try
             : throw new ArgumentException("--max-output-tokens must be a positive integer.");
         var engine = new ModelCorrectionEngine(adapter, maximumOutputTokens);
         var predictions = new List<BenchmarkPrediction>(cases.Length);
+        var rawPredictions = new List<BenchmarkPrediction>(cases.Length);
+        var traces = new List<object>(cases.Length);
+        var rejectionCounts = new Dictionary<string, int>(StringComparer.Ordinal);
+        var rejectedButRawCorrectErrors = 0;
         var latencies = new List<double>(cases.Length);
         foreach (var item in cases)
         {
@@ -67,11 +139,41 @@ try
             SampleWorkingSet();
             predictions.Add(new BenchmarkPrediction(item.Id, result.Edits));
             latencies.Add(timer.Elapsed.TotalMilliseconds);
+            var analysis = ModelCorrectionEngine.AnalyzeModelResponse(adapter.LastOutput ?? string.Empty, item.InputText);
+            var rawPrediction = new BenchmarkPrediction(item.Id, analysis.RawCandidateEdits);
+            rawPredictions.Add(rawPrediction);
+            var rawCaseMetrics = BenchmarkEvaluator.Evaluate([item], [rawPrediction]).Where(metric => metric.Category == "all").ToArray();
+            var acceptedCaseMetrics = BenchmarkEvaluator.Evaluate([item], [new BenchmarkPrediction(item.Id, result.Edits)])
+                .Where(metric => metric.Category == "all").ToArray();
+            var rawCorrectErrors = rawCaseMetrics[0].CorrectlyResolvedErrors;
+            if (analysis.RejectionStage is not null && rawCorrectErrors > 0) rejectedButRawCorrectErrors += rawCorrectErrors;
+            if (analysis.RejectionStage is not null)
+            {
+                var reasonKey = $"{analysis.RejectionStage}: {analysis.RejectionReason}";
+                rejectionCounts[reasonKey] = rejectionCounts.GetValueOrDefault(reasonKey) + 1;
+            }
+            traces.Add(new
+            {
+                caseId = item.Id,
+                input = item.InputText,
+                rawModelOutput = analysis.RawOutput,
+                extractedCorrection = analysis.ExtractedCorrection,
+                rawCandidateTextEdits = analysis.RawCandidateEdits,
+                validatedTextEdits = result.Edits,
+                rejectionStage = analysis.RejectionStage,
+                rejectionReason = analysis.RejectionReason,
+                rejectedButRawCorrectErrors = analysis.RejectionStage is not null ? rawCorrectErrors : 0,
+                rawCandidateBenchmark = rawCaseMetrics,
+                acceptedBenchmark = acceptedCaseMetrics
+            });
         }
         await File.WriteAllLinesAsync(args[3], predictions.Select(item => JsonSerializer.Serialize(item, options)));
+        if (runOptions.TryGetValue("trace", out var tracePath))
+            await File.WriteAllLinesAsync(tracePath, traces.Select(item => JsonSerializer.Serialize(item, options)));
         memorySampler.Dispose();
         SampleWorkingSet();
         var metrics = BenchmarkEvaluator.Evaluate(cases, predictions);
+        var rawMetrics = BenchmarkEvaluator.Evaluate(cases, rawPredictions);
         var modelHash = await HashFileAsync(args[2]);
         var datasetHash = await HashFileAsync(args[1]);
         var report = new
@@ -100,10 +202,13 @@ try
             peakMemoryMeasurement = "Maximum sampled process working set, sampled every 100 ms across model load and inference",
             managedHeapBytesAfterRun = GC.GetTotalMemory(forceFullCollection: false),
             rejectedModelOutputs = engine.RejectedOutputCount,
+            rejectedModelOutputsByReason = rejectionCounts,
+            rejectedButRawCorrectErrors,
             semanticAlterations = "Require human review; not inferred by this runner",
             decoding = new { temperature = 0.0, maximumOutputTokens = engine.MaximumOutputTokens },
             caseCount = cases.Length,
-            metrics
+            metrics,
+            rawCandidateMetrics = rawMetrics
         };
         await File.WriteAllTextAsync(args[4], JsonSerializer.Serialize(report, options));
         Console.WriteLine(JsonSerializer.Serialize(metrics, options));
@@ -161,7 +266,13 @@ try
                     hardware = report.RootElement.GetProperty("hardware"),
                     coldStartMilliseconds = report.RootElement.GetProperty("coldStartMilliseconds").GetDouble(),
                     latencyMilliseconds = report.RootElement.GetProperty("latencyMilliseconds"),
-                    metrics = report.RootElement.GetProperty("metrics")
+                    latencyMillisecondsByLanguage = report.RootElement.GetProperty("latencyMillisecondsByLanguage"),
+                    peakWorkingSetBytesByLanguage = report.RootElement.GetProperty("peakWorkingSetBytesByLanguage"),
+                    rejectedModelOutputs = report.RootElement.GetProperty("rejectedModelOutputs"),
+                    rejectedButRawCorrectErrors = report.RootElement.GetProperty("rejectedButRawCorrectErrors"),
+                    rejectedModelOutputsByReason = report.RootElement.GetProperty("rejectedModelOutputsByReason"),
+                    rawCandidateMetrics = report.RootElement.GetProperty("rawCandidateMetrics"),
+                    acceptedCorrectionMetrics = report.RootElement.GetProperty("metrics")
                 }).ToArray()
             };
             await File.WriteAllTextAsync(args[1], JsonSerializer.Serialize(comparison, options));
@@ -207,9 +318,19 @@ static Dictionary<string, string> ParseOptions(string[] arguments)
     if (arguments.Length % 2 != 0) throw new ArgumentException("Benchmark run options must be name/value pairs.");
     for (var i = 0; i < arguments.Length; i += 2)
     {
-        if (arguments[i] is not ("--model-revision" or "--quantization" or "--max-output-tokens"))
-            throw new ArgumentException("Supported run options are --model-revision, --quantization, and --max-output-tokens.");
+        if (arguments[i] is not ("--model-revision" or "--quantization" or "--max-output-tokens" or "--trace"))
+            throw new ArgumentException("Supported run options are --model-revision, --quantization, --max-output-tokens, and --trace.");
         if (!result.TryAdd(arguments[i][2..], arguments[i + 1])) throw new ArgumentException("Duplicate benchmark run option.");
     }
     return result;
+}
+
+sealed class CapturingAdapter(IModelInferenceAdapter inner) : IModelInferenceAdapter
+{
+    public string? LastOutput { get; private set; }
+    public async ValueTask<string> GenerateAsync(InferenceRequest request, CancellationToken cancellationToken = default)
+    {
+        LastOutput = await inner.GenerateAsync(request, cancellationToken).ConfigureAwait(false);
+        return LastOutput;
+    }
 }

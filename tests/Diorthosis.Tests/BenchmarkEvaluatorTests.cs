@@ -56,4 +56,65 @@ public sealed class BenchmarkEvaluatorTests
 
         Assert.Equal(BenchmarkEvaluator.Evaluate(cases, predictions), BenchmarkEvaluator.Evaluate(cases, predictions));
     }
+
+    [Fact]
+    public void EvaluatorAcceptsDifferentEditBoundariesOnlyWhenWholeAnnotatedRepairMatches()
+    {
+        var item = new BenchmarkCase("nl-compound", CorrectionLanguage.Dutch, "De vergader ruimte is klaar.", [
+            new ErrorAnnotation(3, 15, "vergader ruimte", ErrorCategory.Spelling,
+                [new AcceptedCorrection("vergaderruimte")])
+        ]);
+        var correct = new BenchmarkPrediction(item.Id, [new TextEdit(3, 15, "vergader ruimte", "vergaderruimte")]);
+        var partial = new BenchmarkPrediction(item.Id, [new TextEdit(3, 8, "vergader", "vergader")]);
+        var meaningChanging = new BenchmarkPrediction(item.Id, [new TextEdit(3, 15, "vergader ruimte", "vergaderruimte verloren")]);
+
+        var metrics = BenchmarkEvaluator.Evaluate([item], [correct]);
+        var all = Assert.Single(metrics, result => result.Language == "Dutch" && result.Category == "all");
+        Assert.Equal(1, all.CorrectlyResolvedErrors);
+        Assert.Equal(1, all.Precision);
+
+        var partialMetrics = BenchmarkEvaluator.Evaluate([item], [partial]);
+        var partialAll = Assert.Single(partialMetrics, result => result.Language == "Dutch" && result.Category == "all");
+        Assert.Equal(0, partialAll.CorrectlyResolvedErrors);
+        Assert.Equal(1, partialAll.FalsePositiveSuggestions);
+
+        var changedMetrics = BenchmarkEvaluator.Evaluate([item], [meaningChanging]);
+        var changedAll = Assert.Single(changedMetrics, result => result.Language == "Dutch" && result.Category == "all");
+        Assert.Equal(0, changedAll.CorrectlyResolvedErrors);
+    }
+
+    [Fact]
+    public void EvaluatorAcceptsMultipleFragmentsOnlyWhenTogetherTheyMakeExactRepair()
+    {
+        var item = new BenchmarkCase("en-1", CorrectionLanguage.English, "She have recieved it.", [
+            new ErrorAnnotation(4, 4, "have", ErrorCategory.Grammar, [new AcceptedCorrection("has")]),
+            new ErrorAnnotation(9, 8, "recieved", ErrorCategory.Spelling, [new AcceptedCorrection("received")])
+        ]);
+        var prediction = new BenchmarkPrediction(item.Id, [
+            new TextEdit(4, 4, "have", "has"),
+            new TextEdit(9, 8, "recieved", "received")
+        ]);
+        var all = Assert.Single(BenchmarkEvaluator.Evaluate([item], [prediction]),
+            result => result.Language == "English" && result.Category == "all");
+        Assert.Equal(2, all.CorrectlyResolvedErrors);
+        Assert.Equal(0, all.FalsePositiveSuggestions);
+    }
+
+    [Fact]
+    public void EvaluatorDoesNotCreditLocalRepairInsideUnannotatedLexicalRewrite()
+    {
+        var item = new BenchmarkCase("nl-translation", CorrectionLanguage.Dutch,
+            "Er zijn een probleem met de verbinding.", [
+                new ErrorAnnotation(3, 4, "zijn", ErrorCategory.Grammar, [new AcceptedCorrection("is")])
+            ]);
+        var prediction = new BenchmarkPrediction(item.Id, [
+            new TextEdit(0, 2, "Er", "There"),
+            new TextEdit(3, 4, "zijn", "is"),
+            new TextEdit(28, 10, "verbinding", "connection")
+        ]);
+        var all = Assert.Single(BenchmarkEvaluator.Evaluate([item], [prediction]),
+            result => result.Language == "Dutch" && result.Category == "all");
+        Assert.Equal(0, all.CorrectlyResolvedErrors);
+        Assert.Equal(0, all.CorrectSuggestions);
+    }
 }

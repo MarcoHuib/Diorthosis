@@ -48,16 +48,32 @@ public static class BenchmarkEvaluator
             var edits = predictions.TryGetValue(item.Id, out var prediction) ? prediction.Edits : [];
             ValidateEdits(item, edits);
             var matchedEdits = new HashSet<int>();
+            var caseCorrectSuggestions = 0;
+            var caseResolvedErrors = 0;
             foreach (var error in item.Errors)
             {
-                var match = Enumerable.Range(0, edits.Count).FirstOrDefault(index => !matchedEdits.Contains(index)
-                    && IsAccepted(error, edits[index]), -1);
-                if (match >= 0)
+                var related = Enumerable.Range(0, edits.Count).Where(index => !matchedEdits.Contains(index)
+                    && Touches(error, edits[index])).ToArray();
+                if (related.Length == 0) continue;
+                var expected = error.AcceptedCorrections.Select(correction =>
+                    item.InputText[..error.Start] + correction.ReplacementText + item.InputText[(error.Start + error.Length)..]);
+                if (expected.Contains(ApplyEdits(item.InputText, related.Select(index => edits[index])), StringComparer.Ordinal))
                 {
-                    matchedEdits.Add(match);
-                    correctSuggestions++;
-                    resolvedErrors++;
+                    foreach (var index in related) matchedEdits.Add(index);
+                    caseCorrectSuggestions += related.Length;
+                    caseResolvedErrors++;
                 }
+            }
+
+            var unmatchedEdits = Enumerable.Range(0, edits.Count).Where(index => !matchedEdits.Contains(index))
+                .Select(index => edits[index]).ToArray();
+            // Do not give recall credit when an otherwise matching local repair is embedded in
+            // an unannotated lexical rewrite, translation, or other potentially meaning-changing
+            // passage edit. Cosmetic case/spacing/punctuation false positives remain measurable.
+            if (unmatchedEdits.Length == 0 || unmatchedEdits.All(IsCosmeticEdit))
+            {
+                correctSuggestions += caseCorrectSuggestions;
+                resolvedErrors += caseResolvedErrors;
             }
 
             if (item.Errors.Count == 0)
@@ -74,18 +90,49 @@ public static class BenchmarkEvaluator
             Ratio(changedCorrectInputs, correctInputs), Ratio(correctInputs - changedCorrectInputs, correctInputs));
     }
 
-    private static bool IsAccepted(ErrorAnnotation error, TextEdit edit) =>
-        edit.Start == error.Start && edit.Length == error.Length && edit.OriginalText == error.OriginalText
-        && error.AcceptedCorrections.Any(accepted => accepted.ReplacementText == edit.ReplacementText);
+    private static bool IsCosmeticEdit(TextEdit edit)
+    {
+        if (string.Equals(edit.OriginalText, edit.ReplacementText, StringComparison.OrdinalIgnoreCase)) return true;
+        static bool HasWordCharacters(string value) => value.EnumerateRunes().Any(rune =>
+        {
+            var category = System.Text.Rune.GetUnicodeCategory(rune);
+            return category is System.Globalization.UnicodeCategory.UppercaseLetter or System.Globalization.UnicodeCategory.LowercaseLetter
+                or System.Globalization.UnicodeCategory.TitlecaseLetter or System.Globalization.UnicodeCategory.ModifierLetter
+                or System.Globalization.UnicodeCategory.OtherLetter or System.Globalization.UnicodeCategory.DecimalDigitNumber
+                or System.Globalization.UnicodeCategory.LetterNumber or System.Globalization.UnicodeCategory.OtherNumber;
+        });
+        return !HasWordCharacters(edit.OriginalText) && !HasWordCharacters(edit.ReplacementText);
+    }
+
+    private static bool Touches(ErrorAnnotation error, TextEdit edit)
+    {
+        var errorEnd = error.Start + error.Length;
+        var editEnd = edit.Start + edit.Length;
+        return edit.Length == 0 ? edit.Start >= error.Start && edit.Start <= errorEnd
+            : edit.Start < errorEnd && editEnd > error.Start;
+    }
+
+    private static string ApplyEdits(string source, IEnumerable<TextEdit> edits)
+    {
+        var result = new System.Text.StringBuilder(source);
+        foreach (var edit in edits.OrderByDescending(edit => edit.Start))
+            result.Remove(edit.Start, edit.Length).Insert(edit.Start, edit.ReplacementText);
+        return result.ToString();
+    }
 
     private static void ValidateEdits(BenchmarkCase item, IReadOnlyList<TextEdit> edits)
     {
         foreach (var edit in edits)
         {
-            if (edit.Start + edit.Length > item.InputText.Length
+            if (edit.Start < 0 || edit.Length < 0 || edit.Start > item.InputText.Length - edit.Length
                 || !item.InputText.AsSpan(edit.Start, edit.Length).SequenceEqual(edit.OriginalText.AsSpan()))
                 throw new ArgumentException($"Prediction for case '{item.Id}' has a span that does not match its input.");
         }
+        var ordered = edits.OrderBy(edit => edit.Start).ThenBy(edit => edit.Length).ToArray();
+        for (var i = 1; i < ordered.Length; i++)
+            if (ordered[i].Start < ordered[i - 1].Start + ordered[i - 1].Length
+                || ordered[i].Start == ordered[i - 1].Start && (ordered[i].Length == 0 || ordered[i - 1].Length == 0))
+                throw new ArgumentException($"Prediction for case '{item.Id}' contains overlapping edits.");
     }
 
     private static void ValidateCase(BenchmarkCase item)
