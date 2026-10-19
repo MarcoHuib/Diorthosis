@@ -1,0 +1,2 @@
+{"id":"nl-spelling-1","language":"dutch","inputText":"Ik loopd.","errors":[{"start":3,"length":5,"originalText":"loopd","category":"spelling","acceptedCorrections":[{"replacementText":"loop"}]}]}
+{"id":"en-clean-1","language":"english","inputText":"This sentence is correct.","errors":[]}

@@ -1,0 +1,36 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Diorthosis.Core", "src\Diorthosis.Core\Diorthosis.Core.csproj", "{7E3C211C-8545-4F7A-A655-9DB756C78630}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Diorthosis.Cli", "src\Diorthosis.Cli\Diorthosis.Cli.csproj", "{69B19EF1-45D9-4A30-B8F0-5E8661C8A199}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Diorthosis.Benchmarks", "src\Diorthosis.Benchmarks\Diorthosis.Benchmarks.csproj", "{43EE7162-253F-4F46-B150-9BF6262D6BA7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Diorthosis.Tests", "tests\Diorthosis.Tests\Diorthosis.Tests.csproj", "{1792E632-AFD2-4EF1-BF90-5E6AE9B630B7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7E3C211C-8545-4F7A-A655-9DB756C78630}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E3C211C-8545-4F7A-A655-9DB756C78630}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E3C211C-8545-4F7A-A655-9DB756C78630}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E3C211C-8545-4F7A-A655-9DB756C78630}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69B19EF1-45D9-4A30-B8F0-5E8661C8A199}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69B19EF1-45D9-4A30-B8F0-5E8661C8A199}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69B19EF1-45D9-4A30-B8F0-5E8661C8A199}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69B19EF1-45D9-4A30-B8F0-5E8661C8A199}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43EE7162-253F-4F46-B150-9BF6262D6BA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43EE7162-253F-4F46-B150-9BF6262D6BA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43EE7162-253F-4F46-B150-9BF6262D6BA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43EE7162-253F-4F46-B150-9BF6262D6BA7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1792E632-AFD2-4EF1-BF90-5E6AE9B630B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1792E632-AFD2-4EF1-BF90-5E6AE9B630B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1792E632-AFD2-4EF1-BF90-5E6AE9B630B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1792E632-AFD2-4EF1-BF90-5E6AE9B630B7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

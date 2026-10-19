@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Diorthosis benchmark JSONL case",
+  "type": "object",
+  "required": ["id", "language", "inputText", "errors"],
+  "properties": {
+    "id": { "type": "string", "minLength": 1 },
+    "language": { "enum": ["dutch", "english"] },
+    "inputText": { "type": "string", "minLength": 1 },
+    "errors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["start", "length", "originalText", "category", "acceptedCorrections"],
+        "properties": {
+          "start": { "type": "integer", "minimum": 0 },
+          "length": { "type": "integer", "minimum": 0 },
+          "originalText": { "type": "string" },
+          "category": { "enum": ["spelling", "grammar", "sentenceStructure", "punctuation", "correctText"] },
+          "acceptedCorrections": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": ["replacementText"],
+              "properties": { "replacementText": { "type": "string" } }
+            }
+          }
+        }
+      }
+    }
+  }
+}
