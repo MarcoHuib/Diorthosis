@@ -15,13 +15,13 @@ Diorthosis aims to help people confidently review spelling, grammar, and sentenc
 - Read `.txt`, `.docx`, and `.doc`. Produce reviewable suggestions; preserve originals and document formatting wherever verifiably supported.
 - Use open-source components and AI models whose terms permit commercial use and redistribution.
 - Use only European-origin AI models, excluding models originating in China or Russia.
-- Aim for **90–100%** correct repairs on a defined test set, while separately measuring false positives and unwanted semantic changes.
+- Target at least **90%** correct repairs per language, with an aspirational final goal of **95%**, while requiring strict precision, correct-text preservation, and reviewed semantic safety.
 
 ## Proposed architecture
 
 A shared C# command-line application is the starting point to evaluate. A pluggable local inference engine and an independently tested document-processing layer keep model selection and file-format support replaceable.
 
-See [architecture](docs/architecture.md), [benchmarks](docs/benchmarks.md), and [roadmap](docs/roadmap.md).
+See [architecture](docs/architecture.md), [benchmarks](docs/benchmarks.md), [roadmap](docs/roadmap.md), and the [model quality stop/go decision](docs/decisions/0005-model-quality-stop-go.md).
 
 Local text correction uses pinned LLamaSharp 0.27.0 with an in-process CPU backend. Publish a self-contained CLI and provide an explicit local GGUF path:
 

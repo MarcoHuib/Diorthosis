@@ -37,11 +37,11 @@ The application and CI never fetch weights. Download model files only after the 
 
 ## Core metrics (report per language and pooled)
 
-- **Error repair recall:** number of annotated errors correctly fixed / total annotated errors. **Proposed gate: >=90% for Dutch and >=90% for English.** A 90% figure is not a model capability claim until measured.
-- **Correction precision:** number of suggested changes judged correct / all suggested changes. **Initial aspirational gate: >=98%.**
+- **Error repair recall:** number of annotated errors correctly fixed / total annotated errors. **Proposed acceptance gate: >=90% for Dutch and >=90% for English. Aspirational final target: >=95% for each language.** Neither level is a model capability claim until measured on an independently reviewed held-out set.
+- **Correction precision:** number of suggested changes judged correct / all suggested changes. **Minimum aspirational gate: >=98%, with strict human review of every safety-critical change.**
 - **False-positive suggestions:** suggestions not matching an annotated error and one accepted alternative, reported separately as a count and through precision.
 - **False-positive rate on clean text:** clean cases with one or more unjustified edits / clean cases. This case-level rate is distinct from proposal precision.
-- **Correct-input preservation:** proportion of already-correct inputs left free of unjustified changes. **Initial aspirational gate: >=99%.**
+- **Correct-input preservation:** proportion of already-correct inputs left free of unjustified changes. **Minimum aspirational gate: >=99%.**
 - **Semantic/factual preservation:** independently inspect alterations of meaning, names, dates, numbers, quotations, links, and technical identifiers. **Release-blocking: zero known critical unwanted changes on the test suite.** No finite sample proves zero risk.
 - **Presentation/fidelity:** measure `.docx` style/content differences, supported `.doc` behavior, and whether review exports preserve original input.
 - **Operational measures:** tokens/sec where appropriate, wall-clock correction latency, memory use, cold-start time, package size, and fully offline operation.
