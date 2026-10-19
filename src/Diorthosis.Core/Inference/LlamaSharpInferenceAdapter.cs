@@ -13,7 +13,6 @@ public sealed class LlamaSharpInferenceAdapter : IModelInferenceAdapter, IDispos
     private readonly SemaphoreSlim _gate = new(1, 1);
     private readonly LLamaWeights _weights;
     private readonly LLamaContext _context;
-    private readonly InteractiveExecutor _executor;
     private bool _disposed;
 
     /// <summary>Initializes llama.cpp's native backend without loading a model.</summary>
@@ -50,7 +49,6 @@ public sealed class LlamaSharpInferenceAdapter : IModelInferenceAdapter, IDispos
             context = weights.CreateContext(parameters);
             _weights = weights;
             _context = context;
-            _executor = new InteractiveExecutor(_context);
         }
         catch (Exception exception) when (exception is not OutOfMemoryException)
         {
@@ -75,7 +73,13 @@ public sealed class LlamaSharpInferenceAdapter : IModelInferenceAdapter, IDispos
         try
         {
             ObjectDisposedException.ThrowIf(_disposed, this);
-            var session = new ChatSession(_executor);
+            // StatefulExecutorBase starts at sequence position zero. Clear the native KV
+            // sequence as well as managed executor state before beginning that new request.
+            _context.NativeHandle.MemoryClear(data: false);
+            // Executor state includes consumed tokens and conversation history. Reusing it for
+            // independent correction requests leaks prior input and eventually fills the context.
+            // A fresh executor reuses the loaded weights/context while isolating every request.
+            var session = new ChatSession(new InteractiveExecutor(_context));
             session.WithHistoryTransform(new PromptTemplateTransformer(_weights, withAssistant: true));
             var settings = new InferenceParams
             {
