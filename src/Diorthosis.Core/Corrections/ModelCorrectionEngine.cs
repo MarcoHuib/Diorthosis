@@ -10,8 +10,7 @@ public sealed class ModelCorrectionEngine(IModelInferenceAdapter adapter, int ma
 {
     private static readonly Regex UrlToken = new(@"(?:https?://|www\.)[^\s<>]+", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant);
     private static readonly Regex NumberToken = new(@"\d+(?:[.,:/-]\d+)*", RegexOptions.CultureInvariant);
-    private static readonly Regex ProtectedIdentifier = new(@"\b(?:[A-Za-z0-9]*[A-Z][a-z]+[A-Za-z0-9]*|[A-Z]{2,}[A-Z0-9]*|[A-Za-z0-9]*\d+[A-Za-z0-9]*|[A-Za-z0-9]+(?:_[A-Za-z0-9]+)+)\b", RegexOptions.CultureInvariant);
-    private static readonly Regex CapitalizedWord = new(@"\b\p{Lu}[\p{L}'’.-]*\b", RegexOptions.CultureInvariant);
+    private static readonly Regex ProtectedIdentifier = new(@"\b(?:[A-Za-z0-9]*[a-z][A-Z][A-Za-z0-9]*|[A-Z]{2,}[A-Z0-9]*|[A-Za-z0-9]*\d+[A-Za-z0-9]*|[A-Za-z0-9]+(?:_[A-Za-z0-9]+)+)\b", RegexOptions.CultureInvariant);
     private static readonly Regex WordToken = new(@"[\p{L}\p{N}_]+", RegexOptions.CultureInvariant);
     private readonly IModelInferenceAdapter _adapter = adapter ?? throw new ArgumentNullException(nameof(adapter));
     public int MaximumOutputTokens => maximumOutputTokens;
@@ -23,65 +22,59 @@ public sealed class ModelCorrectionEngine(IModelInferenceAdapter adapter, int ma
         ArgumentNullException.ThrowIfNull(request);
         if (maximumOutputTokens <= 0) throw new ArgumentOutOfRangeException(nameof(maximumOutputTokens));
         var raw = await _adapter.GenerateAsync(new InferenceRequest(CorrectionPrompt.Build(request), maximumOutputTokens), cancellationToken).ConfigureAwait(false);
-        try
-        {
-            return new CorrectionResult(ParseModelResponse(raw, request.Text));
-        }
-        catch (InvalidDataException)
+        var analysis = AnalyzeModelResponse(raw, request.Text);
+        if (analysis.RejectionReason is not null)
         {
             Interlocked.Increment(ref _rejectedOutputCount);
             return new CorrectionResult(Array.Empty<TextEdit>());
         }
+        return new CorrectionResult(analysis.Edits);
     }
 
-    /// <summary>Extracts a conservative corrected passage and derives a UTF-16 edit from the source diff.</summary>
-    public static IReadOnlyList<TextEdit> ParseModelResponse(string output, string source)
+    public static ModelResponseAnalysis AnalyzeModelResponse(string output, string source)
     {
         ArgumentNullException.ThrowIfNull(output);
         ArgumentNullException.ThrowIfNull(source);
-        var candidate = ExtractCandidate(output, source);
-        if (candidate == source || SameNonWhitespaceTokens(candidate, source))
-            return Array.Empty<TextEdit>();
-        if (HasSentenceEnding(source) && !HasSentenceEnding(candidate))
-            throw new InvalidDataException("Correction output appears incomplete at the end of the passage.");
-        if (!SameSymbols(source, candidate))
-            throw new InvalidDataException("Correction output changes a symbol or emoji from the source.");
-        EnsurePlausibleCorrection(candidate, source);
+        string candidate;
+        try { candidate = ExtractCandidate(output, source); }
+        catch (InvalidDataException exception) { return ModelResponseAnalysis.Rejected(output, null, [], "extraction", exception.Message); }
+        if (!source.Contains('\n') && candidate.Contains('\n'))
+            return ModelResponseAnalysis.Rejected(output, candidate, [], "extraction", "Correction output adds line breaks absent from the source.");
+        if (candidate == source) return ModelResponseAnalysis.Accepted(output, candidate, []);
+        if (OnlyWhitespaceChanged(source, candidate)
+            && WordToken.Matches(candidate).Count >= WordToken.Matches(source).Count)
+            return ModelResponseAnalysis.Accepted(output, candidate, []);
 
-        var prefix = 0;
-        while (prefix < source.Length && prefix < candidate.Length && source[prefix] == candidate[prefix])
-            prefix++;
-        if (prefix > 0 && (char.IsHighSurrogate(source[prefix - 1]) || char.IsHighSurrogate(candidate[prefix - 1])))
-            prefix--;
+        try
+        {
+            if (HasSentenceEnding(source) && !HasSentenceEnding(candidate))
+                throw new InvalidDataException("Correction output appears incomplete at the end of the passage.");
+            if (!SameSymbols(source, candidate))
+                throw new InvalidDataException("Correction output changes a symbol or emoji from the source.");
+            if (!SameProtectedContent(source, candidate))
+                throw new InvalidDataException("Correction output changes a number, URL, or protected identifier.");
+            if (!SameProtectedNames(source, candidate))
+                throw new InvalidDataException("Correction output changes a capitalized name or term.");
+            if (!OnlyWhitespaceChanged(source, candidate)) EnsurePlausibleCorrection(candidate, source);
+            var candidateEdits = Diff(source, candidate);
+            var edits = ValidateEdits(candidateEdits, source);
+            return ModelResponseAnalysis.Accepted(output, candidate, edits);
+        }
+        catch (InvalidDataException exception)
+        {
+            IReadOnlyList<TextEdit> rawEdits = [];
+            if (!exception.Message.Contains("incomplete", StringComparison.OrdinalIgnoreCase))
+                try { rawEdits = Diff(source, candidate); } catch (InvalidDataException) { }
+            return ModelResponseAnalysis.Rejected(output, candidate, rawEdits, "validation", exception.Message);
+        }
+    }
 
-        var suffix = 0;
-        while (suffix < source.Length - prefix && suffix < candidate.Length - prefix
-               && source[source.Length - suffix - 1] == candidate[candidate.Length - suffix - 1])
-            suffix++;
-        var sourceSuffixStart = source.Length - suffix;
-        if (suffix > 0 && sourceSuffixStart > 0 && char.IsHighSurrogate(source[sourceSuffixStart - 1]))
-            suffix--;
-
-        var sourceEnd = source.Length - suffix;
-        var candidateEnd = candidate.Length - suffix;
-        var sourceWord = WordToken.Matches(source).Cast<Match>()
-            .FirstOrDefault(match => match.Index < prefix && prefix < match.Index + match.Length);
-        var candidateWord = WordToken.Matches(candidate).Cast<Match>()
-            .FirstOrDefault(match => match.Index < prefix && prefix < match.Index + match.Length);
-        if (sourceWord is not null) prefix = Math.Min(prefix, sourceWord.Index);
-        if (candidateWord is not null) prefix = Math.Min(prefix, candidateWord.Index);
-        sourceEnd = source.Length - suffix;
-        candidateEnd = candidate.Length - suffix;
-        sourceWord = WordToken.Matches(source).Cast<Match>()
-            .FirstOrDefault(match => match.Index < sourceEnd && sourceEnd < match.Index + match.Length);
-        candidateWord = WordToken.Matches(candidate).Cast<Match>()
-            .FirstOrDefault(match => match.Index < candidateEnd && candidateEnd < match.Index + match.Length);
-        if (sourceWord is not null) suffix = Math.Min(suffix, source.Length - (sourceWord.Index + sourceWord.Length));
-        if (candidateWord is not null) suffix = Math.Min(suffix, candidate.Length - (candidateWord.Index + candidateWord.Length));
-
-        var original = source.Substring(prefix, source.Length - prefix - suffix);
-        var replacement = candidate.Substring(prefix, candidate.Length - prefix - suffix);
-        return ValidateEdits([new TextEdit(prefix, original.Length, original, replacement)], source);
+    /// <summary>Extracts a conservative corrected passage and derives validated UTF-16 edits.</summary>
+    public static IReadOnlyList<TextEdit> ParseModelResponse(string output, string source)
+    {
+        var result = AnalyzeModelResponse(output, source);
+        if (result.RejectionReason is not null) throw new InvalidDataException(result.RejectionReason);
+        return result.Edits;
     }
 
     private static string ExtractCandidate(string output, string source)
@@ -98,12 +91,35 @@ public sealed class ModelCorrectionEngine(IModelInferenceAdapter adapter, int ma
             text = text[(firstLineEnd + 1)..closingFence].Trim();
         }
 
+        if (!source.Contains('\n'))
+        {
+            var lines = text.Split('\n').Select(line => line.Trim()).Where(line => line.Length > 0).ToArray();
+            if (lines.Length > 1 && HasSentenceEnding(lines[0])
+                && lines.Skip(1).Count(line => string.Equals(line, lines[0], StringComparison.Ordinal)) >= 1)
+                text = lines[0];
+        }
+
+        if (Regex.IsMatch(text, @"^The complete corrected passage(?: with its paragraph breaks preserved)? is:\s*\r?\n", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant))
+            text = Regex.Replace(text, @"^The complete corrected passage(?: with its paragraph breaks preserved)? is:\s*\r?\n", "", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant).TrimStart();
+
+        // Instruct models sometimes wrap the requested sentence in quotes and then continue
+        // with unrelated analysis. Recover the first complete quoted line only when the source
+        // itself was not quoted; never strip quotes that belong to the user's passage.
+        var firstLine = text.Split('\n', 2)[0].Trim();
+        if (source.Length == 0 || source[0] is not ('"' or '\u201c' or '\u2018'))
+        {
+            var wrapper = firstLine.Length >= 2 && firstLine[0] is '"' or '\u201c' or '\u2018'
+                ? firstLine[^1] == (firstLine[0] == '\u201c' ? '\u201d' : firstLine[0] == '\u2018' ? '\u2019' : '"')
+                : false;
+            if (wrapper) text = firstLine[1..^1];
+        }
+
         // Some chat models append explanations after the requested text. Recognize explicit note
         // markers while preserving blank lines that belong to a multi-paragraph input.
         var noteStart = Regex.Match(text,
-            @"(?:^|\r?\n)\s*(?:\*+\s*\(|(?:Explanation|Note|Reasoning|Output|Final output|Corrected (?:text|output))\s*:)",
+            @"(?:^|\r?\n)\s*(?:\*+\s*\(|(?:The\s+)?(?:Explanation|Note|Reasoning|Output(?: text(?:\s*\([^)]*\))?)?|Final output|Input text(?:\s*\([^)]*\))?|Corrected (?:text|output)(?:\s*\([^)]*\))?)\s*:)",
             RegexOptions.IgnoreCase | RegexOptions.CultureInvariant);
-        if (noteStart.Success)
+        if (noteStart.Success && noteStart.Index > 0)
             text = text[..noteStart.Index].Trim();
 
         var responseLines = text.Split('\n').Select(line => line.Trim()).Where(line => line.Length > 0).ToArray();
@@ -120,23 +136,218 @@ public sealed class ModelCorrectionEngine(IModelInferenceAdapter adapter, int ma
         text = Regex.Replace(text, @"\*\*(.+?)\*\*|__(.+?)__|`([^`]+)`", match =>
             match.Groups[1].Success ? match.Groups[1].Value : match.Groups[2].Success ? match.Groups[2].Value : match.Groups[3].Value,
             RegexOptions.CultureInvariant);
-        text = Regex.Replace(text, @"^(?:Corrected (?:text|passage)|Correction|Output)\s*:\s*", "", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant);
+        text = Regex.Replace(text, @"^(?:Corrected (?:text|passage)(?:\s*\([^)]*\))?|Output(?: text(?:\s*\([^)]*\))?)?|Correction)\s*:\s*", "", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant);
         text = text.Trim();
+        var firstOutputLine = text.Split('\n', 2)[0].Trim();
+        if ((source.Length == 0 || source[0] is not ('"' or '\u201c' or '\u2018')) && firstOutputLine.Length >= 2
+            && (firstOutputLine[0] == '"' && firstOutputLine[^1] == '"'
+                || firstOutputLine[0] == '\u201c' && firstOutputLine[^1] == '\u201d'
+                || firstOutputLine[0] == '\u2018' && firstOutputLine[^1] == '\u2019'))
+            text = firstOutputLine[1..^1];
         if (text.Length == 0 || text.Contains("```", StringComparison.Ordinal)
-            || Regex.IsMatch(text, @"(?:^|\n)\s*(?:Explanation|Note|Reasoning|Output|Final output)\s*:", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant)
+            || Regex.IsMatch(text, @"(?:^|\n)\s*(?:Explanation|Note|Reasoning|Output(?: text)?|Final output)\s*:", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant)
             || text.StartsWith("Here is", StringComparison.OrdinalIgnoreCase)
-            || text.StartsWith("The corrected", StringComparison.OrdinalIgnoreCase))
+            || text.StartsWith("The corrected", StringComparison.OrdinalIgnoreCase)
+            || text.StartsWith("The input text", StringComparison.OrdinalIgnoreCase)
+            || text.StartsWith("Please provide", StringComparison.OrdinalIgnoreCase)
+            || text.StartsWith("Return the complete corrected", StringComparison.OrdinalIgnoreCase))
             throw new InvalidDataException("Correction output does not contain a verifiable corrected passage.");
         if (text.Length > Math.Max(8192, source.Length * 2 + 256))
             throw new InvalidDataException("Correction output is too long to validate safely.");
         return text;
     }
 
-    private static bool SameNonWhitespaceTokens(string first, string second)
+    private static bool OnlyWhitespaceChanged(string first, string second) =>
+        string.Equals(Regex.Replace(first, @"\s+", "", RegexOptions.CultureInvariant),
+            Regex.Replace(second, @"\s+", "", RegexOptions.CultureInvariant), StringComparison.Ordinal);
+
+    private static bool SameProtectedContent(string source, string candidate) =>
+        SameMatches(NumberToken, source, candidate)
+        && SameMatches(UrlToken, source, candidate)
+        && SameMatches(ProtectedIdentifier, source, candidate);
+
+    private static bool SameProtectedNames(string source, string candidate) =>
+        ProtectedNames(source).SequenceEqual(ProtectedNames(candidate), StringComparer.Ordinal);
+
+    private static IEnumerable<string> ProtectedNames(string value)
     {
-        static string Normalize(string value) => Regex.Replace(value, @"\s+", "", RegexOptions.CultureInvariant);
-        return string.Equals(Normalize(first), Normalize(second), StringComparison.Ordinal);
+        var sentenceInitialFunctionWords = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
+        {
+            "I", "you", "he", "she", "it", "we", "they", "the", "a", "an", "this", "that", "these", "those",
+            "there", "on", "in", "after", "please", "wait", "team", "tomorrow", "for", "when",
+            "ik", "je", "jij", "u", "hij", "zij", "ze", "het", "de", "een", "dit", "dat", "er", "op", "om", "morgen", "als", "we", "wij"
+        };
+        foreach (Match match in Regex.Matches(value, @"\b\p{Lu}[\p{L}'’.-]*\b", RegexOptions.CultureInvariant))
+        {
+            var previous = value.AsSpan(0, match.Index).TrimEnd();
+            var beginsSentence = previous.Length == 0 || previous[^1] is '.' or '!' or '?' or '…' or '\n' or '\r';
+            if (!beginsSentence || !sentenceInitialFunctionWords.Contains(match.Value)) yield return match.Value;
+        }
     }
+
+    private static IReadOnlyList<TextEdit> Diff(string source, string candidate)
+    {
+        var sourceStarts = StringInfo.ParseCombiningCharacters(source);
+        var candidateStarts = StringInfo.ParseCombiningCharacters(candidate);
+        var sourceParts = GetTextElements(source, sourceStarts);
+        var candidateParts = GetTextElements(candidate, candidateStarts);
+        var a = sourceParts.Select(part => part.Value).ToArray();
+        var b = candidateParts.Select(part => part.Value).ToArray();
+        var operations = MyersDiff(a, b);
+        var edits = new List<TextEdit>();
+        var ai = 0;
+        var bi = 0;
+        int? editStart = null;
+        var original = new StringBuilder();
+        var replacement = new StringBuilder();
+        void Flush()
+        {
+            if (editStart is null) return;
+            edits.Add(new TextEdit(editStart.Value, original.Length, original.ToString(), replacement.ToString()));
+            editStart = null;
+            original.Clear();
+            replacement.Clear();
+        }
+
+        foreach (var operation in operations)
+        {
+            if (operation == DiffOperation.Equal)
+            {
+                Flush(); ai++; bi++;
+            }
+            else
+            {
+                editStart ??= ai == sourceParts.Length ? source.Length : sourceParts[ai].Start;
+                if (operation == DiffOperation.Delete) { original.Append(sourceParts[ai].Value); ai++; }
+                else { replacement.Append(candidateParts[bi].Value); bi++; }
+            }
+        }
+        Flush();
+        MergeWordFragments(edits, source, candidate);
+        if (ApplyDiffForVerification(source, edits) != candidate)
+            throw new InvalidDataException("Correction output could not be represented by a source-aligned diff.");
+        return edits;
+    }
+
+    private static void MergeWordFragments(List<TextEdit> edits, string source, string candidate)
+    {
+        for (var index = 1; index < edits.Count;)
+        {
+            var previous = edits[index - 1];
+            var current = edits[index];
+            var sourceGapStart = previous.Start + previous.Length;
+            var sourceGap = source.AsSpan(sourceGapStart, current.Start - sourceGapStart);
+            var candidatePreviousStart = previous.Start + edits.Take(index - 1).Sum(edit => edit.ReplacementText.Length - edit.Length);
+            var candidatePreviousEnd = candidatePreviousStart + previous.ReplacementText.Length;
+            var candidateCurrentStart = current.Start + edits.Take(index).Sum(edit => edit.ReplacementText.Length - edit.Length);
+            var candidateGap = candidate.AsSpan(candidatePreviousEnd, candidateCurrentStart - candidatePreviousEnd);
+            if (IsWordGap(sourceGap) && IsWordGap(candidateGap))
+            {
+                var end = current.Start + current.Length;
+                var candidateEnd = candidateCurrentStart + current.ReplacementText.Length;
+                edits[index - 1] = new TextEdit(previous.Start, end - previous.Start,
+                    source.Substring(previous.Start, end - previous.Start),
+                    candidate.Substring(candidatePreviousStart, candidateEnd - candidatePreviousStart));
+                edits.RemoveAt(index);
+            }
+            else index++;
+        }
+    }
+
+    private static bool IsWordGap(ReadOnlySpan<char> value)
+    {
+        if (value.IsEmpty) return true;
+        foreach (var rune in value.EnumerateRunes())
+        {
+            var category = Rune.GetUnicodeCategory(rune);
+            if (category is not (UnicodeCategory.UppercaseLetter or UnicodeCategory.LowercaseLetter
+                or UnicodeCategory.TitlecaseLetter or UnicodeCategory.ModifierLetter or UnicodeCategory.OtherLetter
+                or UnicodeCategory.NonSpacingMark or UnicodeCategory.SpacingCombiningMark or UnicodeCategory.DecimalDigitNumber
+                or UnicodeCategory.LetterNumber or UnicodeCategory.OtherNumber or UnicodeCategory.ConnectorPunctuation)) return false;
+        }
+        return true;
+    }
+
+    private static string ApplyDiffForVerification(string source, IReadOnlyList<TextEdit> edits)
+    {
+        var result = new StringBuilder(source);
+        foreach (var edit in edits.OrderByDescending(edit => edit.Start))
+            result.Remove(edit.Start, edit.Length).Insert(edit.Start, edit.ReplacementText);
+        return result.ToString();
+    }
+
+    private static (int Start, string Value)[] GetTextElements(string value, int[] starts) => starts
+        .Select((start, index) => (start, value.Substring(start, (index + 1 < starts.Length ? starts[index + 1] : value.Length) - start)))
+        .ToArray();
+
+    private static DiffOperation[] MyersDiff(string[] a, string[] b)
+    {
+        var maximum = a.Length + b.Length;
+        if (maximum == 0) return [];
+        if ((long)a.Length * b.Length <= 4_000_000)
+        {
+            var lcs = new ushort[a.Length + 1, b.Length + 1];
+            for (var i = a.Length - 1; i >= 0; i--)
+                for (var j = b.Length - 1; j >= 0; j--)
+                    lcs[i, j] = a[i] == b[j] ? (ushort)(lcs[i + 1, j + 1] + 1)
+                        : Math.Max(lcs[i + 1, j], lcs[i, j + 1]);
+            var operations = new List<DiffOperation>(maximum);
+            var ai = 0;
+            var bi = 0;
+            while (ai < a.Length && bi < b.Length)
+            {
+                if (a[ai] == b[bi]) { operations.Add(DiffOperation.Equal); ai++; bi++; }
+                else if (lcs[ai + 1, bi] >= lcs[ai, bi + 1]) { operations.Add(DiffOperation.Delete); ai++; }
+                else { operations.Add(DiffOperation.Insert); bi++; }
+            }
+            while (ai++ < a.Length) operations.Add(DiffOperation.Delete);
+            while (bi++ < b.Length) operations.Add(DiffOperation.Insert);
+            return operations.ToArray();
+        }
+        var offset = maximum;
+        var v = new int[maximum * 2 + 3];
+        v[offset + 1] = 0;
+        var trace = new List<int[]>(Math.Min(maximum, 256));
+        var finalDistance = 0;
+        var done = false;
+        for (var d = 0; d <= maximum && !done; d++)
+        {
+            for (var k = -d; k <= d; k += 2)
+            {
+                var index = offset + k;
+                var x = k == -d || k != d && v[index - 1] < v[index + 1] ? v[index + 1] : v[index - 1] + 1;
+                var y = x - k;
+                while (x < a.Length && y < b.Length && a[x] == b[y]) { x++; y++; }
+                v[index] = x;
+                if (x >= a.Length && y >= b.Length) { finalDistance = d; done = true; break; }
+            }
+            if ((long)(trace.Count + 1) * v.Length > 4_000_000)
+                throw new InvalidDataException("Correction output diff exceeds the safe work limit.");
+            trace.Add((int[])v.Clone());
+        }
+
+        var result = new List<DiffOperation>(maximum);
+        var currentX = a.Length;
+        var currentY = b.Length;
+        for (var d = finalDistance; d > 0; d--)
+        {
+            var prior = trace[d - 1];
+            var k = currentX - currentY;
+            var priorK = k == -d || k != d && prior[offset + k - 1] < prior[offset + k + 1] ? k + 1 : k - 1;
+            var priorX = prior[offset + priorK];
+            var priorY = priorX - priorK;
+            while (currentX > priorX && currentY > priorY) { result.Add(DiffOperation.Equal); currentX--; currentY--; }
+            if (currentX == priorX) { result.Add(DiffOperation.Insert); currentY--; }
+            else { result.Add(DiffOperation.Delete); currentX--; }
+        }
+        while (currentX > 0 && currentY > 0) { result.Add(DiffOperation.Equal); currentX--; currentY--; }
+        while (currentX-- > 0) result.Add(DiffOperation.Delete);
+        while (currentY-- > 0) result.Add(DiffOperation.Insert);
+        result.Reverse();
+        return result.ToArray();
+    }
+
+    private enum DiffOperation { Equal, Delete, Insert }
 
     private static bool HasSentenceEnding(string value)
     {
@@ -214,8 +425,6 @@ public sealed class ModelCorrectionEngine(IModelInferenceAdapter adapter, int ma
                 throw new InvalidDataException("Correction output changes a URL.");
             if (!SameMatches(ProtectedIdentifier, edit.OriginalText, edit.ReplacementText))
                 throw new InvalidDataException("Correction output changes a likely technical identifier.");
-            if (!SameMatches(CapitalizedWord, edit.OriginalText, edit.ReplacementText))
-                throw new InvalidDataException("Correction output changes a capitalized name or term.");
             validated.Add(edit);
         }
 
@@ -241,4 +450,13 @@ public sealed class ModelCorrectionEngine(IModelInferenceAdapter adapter, int ma
                 yield return rune.ToString();
     }
 
+}
+
+public sealed record ModelResponseAnalysis(string RawOutput, string? ExtractedCorrection,
+    IReadOnlyList<TextEdit> Edits, IReadOnlyList<TextEdit> RawCandidateEdits, string? RejectionStage, string? RejectionReason)
+{
+    public static ModelResponseAnalysis Accepted(string raw, string correction, IReadOnlyList<TextEdit> edits) =>
+        new(raw, correction, edits, edits, null, null);
+    public static ModelResponseAnalysis Rejected(string raw, string? correction, IReadOnlyList<TextEdit> rawEdits, string stage, string reason) =>
+        new(raw, correction, [], rawEdits, stage, reason);
 }

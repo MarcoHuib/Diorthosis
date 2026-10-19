@@ -35,10 +35,8 @@ public sealed class CorrectionPipelineTests
         const string output = "🌷 Ik heb het document gisteren **verstuurd**.\n*(Note: the participle is corrected.)*";
         var edits = ModelCorrectionEngine.ParseModelResponse(output, source);
         var offset = source.IndexOf("verstuurt", StringComparison.Ordinal);
-        Assert.Single(edits);
-        Assert.Equal(offset, edits[0].Start);
-        Assert.Equal("verstuurt", edits[0].OriginalText);
-        Assert.Equal("verstuurd", edits[0].ReplacementText);
+        Assert.Contains(edits, edit => edit.Start >= offset && edit.Start < offset + "verstuurt".Length);
+        Assert.Equal("🌷 Ik heb het document gisteren verstuurd.", ApplyEdits(source, edits));
     }
 
     [Fact]
@@ -48,8 +46,7 @@ public sealed class CorrectionPipelineTests
         var edits = ModelCorrectionEngine.ParseModelResponse(
             "Ik heb het document gisteren verstuurd.\n\nOutput:\n\n\"Ik heb het document gisteren verstuurd.\"",
             source);
-        Assert.Single(edits);
-        Assert.Equal("verstuurd", edits[0].ReplacementText);
+        Assert.Equal("Ik heb het document gisteren verstuurd.", ApplyEdits(source, edits));
     }
 
     [Fact]
@@ -59,8 +56,41 @@ public sealed class CorrectionPipelineTests
         var edits = ModelCorrectionEngine.ParseModelResponse(
             "Please receive the signed form.\n\nCorrected text: \"Please receive the signed form.\"\n\nExplanation: the typo was repaired.",
             source);
-        Assert.Single(edits);
-        Assert.Equal("receive", edits[0].ReplacementText);
+        Assert.Equal("Please receive the signed form.", ApplyEdits(source, edits));
+    }
+
+    [Fact]
+    public void ExtractsCompleteQuotedCorrectionBeforeModelAnalysis()
+    {
+        const string source = "Als hij morgen kom, beginnen we om negen uur.";
+        var output = "\"Als hij morgen komt, beginnen we om negen uur.\"\n\nThe input text is grammatically correct. Output: \"Als hij morgen komt, beginnen we om negen uur.\"";
+        var edits = ModelCorrectionEngine.ParseModelResponse(output, source);
+        Assert.Equal("Als hij morgen komt, beginnen we om negen uur.", ApplyEdits(source, edits));
+    }
+
+    [Fact]
+    public void ExtractsRepeatedCompleteFirstAnswerBeforeModelLoop()
+    {
+        const string source = "The informations are included in the report.";
+        var output = "The information is included in the report.\n\n" + source
+            + "\nThe information is included in the report.\nThe information is included in the report.";
+        var edits = ModelCorrectionEngine.ParseModelResponse(output, source);
+        Assert.Equal("The information is included in the report.", ApplyEdits(source, edits));
+    }
+
+    [Fact]
+    public void ExtractsNamedQuotedOutputAndRejectsIncompleteTailWithoutScoringItAsRawCorrection()
+    {
+        const string source = "On May 3, 2025, ApiGateway-v2 starts at 09:30.";
+        var output = "Output text (JSON string): \"On May 3, 2025, ApiGateway-v2 will start at 09:30.\"\n\nPlease provide the JSON input.";
+        var analysis = ModelCorrectionEngine.AnalyzeModelResponse(output, source);
+        Assert.Equal("On May 3, 2025, ApiGateway-v2 will start at 09:30.", analysis.ExtractedCorrection);
+        Assert.Null(analysis.RejectionStage);
+        Assert.NotEmpty(analysis.Edits);
+
+        var incomplete = ModelCorrectionEngine.AnalyzeModelResponse("The corrected sentence is not finished", source);
+        Assert.Equal("extraction", incomplete.RejectionStage);
+        Assert.Empty(incomplete.RawCandidateEdits);
     }
 
     [Fact]
@@ -70,6 +100,68 @@ public sealed class CorrectionPipelineTests
         Assert.Empty(ModelCorrectionEngine.ParseModelResponse(source, source));
         Assert.Empty(ModelCorrectionEngine.ParseModelResponse("De   server start opnieuw.", source));
         Assert.Empty(ModelCorrectionEngine.ParseModelResponse("De server start opnieuw.\nDe server start opnieuw.", source));
+    }
+
+    [Fact]
+    public void AcceptsDutchCompoundCorrectionThatOnlyRemovesWhitespace()
+    {
+        const string source = "De vergader ruimte is gereserveerd.";
+        var edits = ModelCorrectionEngine.ParseModelResponse("De vergaderruimte is gereserveerd.", source);
+        var edit = Assert.Single(edits);
+        Assert.Equal(" ", edit.OriginalText);
+        Assert.Equal(string.Empty, edit.ReplacementText);
+    }
+
+    [Fact]
+    public void ProducesMultipleUnicodeSafeEditsForIndependentCorrections()
+    {
+        const string source = "🌷 She have recieved the forms and teh list.";
+        const string corrected = "🌷 She has received the forms and the list.";
+        var edits = ModelCorrectionEngine.ParseModelResponse(corrected, source);
+        Assert.True(edits.Count >= 2);
+        var result = source;
+        foreach (var edit in edits.OrderByDescending(edit => edit.Start))
+            result = result.Remove(edit.Start, edit.Length).Insert(edit.Start, edit.ReplacementText);
+        Assert.Equal(corrected, result);
+        Assert.All(edits, edit => Assert.Equal(edit.OriginalText, source.Substring(edit.Start, edit.Length)));
+    }
+
+    [Fact]
+    public void AllowsSentenceInitialFunctionWordCaseCorrectionButProtectsNames()
+    {
+        Assert.Single(ModelCorrectionEngine.ParseModelResponse("The server is ready.", "the server is ready."));
+        Assert.Throws<InvalidDataException>(() => ModelCorrectionEngine.ParseModelResponse(
+            "Alicia reviewed the file.", "Alice reviewed the file."));
+    }
+
+    [Fact]
+    public void AnalysisSeparatesRawCandidateFromSafetyRejectedEdits()
+    {
+        var analysis = ModelCorrectionEngine.AnalyzeModelResponse(
+            "Alicia reviewed the file.", "Alice reviewed the file.");
+        Assert.Equal("validation", analysis.RejectionStage);
+        Assert.NotEmpty(analysis.RawCandidateEdits);
+        Assert.Empty(analysis.Edits);
+    }
+
+    [Fact]
+    public void TranslationIsRejectedForChangedWordingRatherThanMistakenAsChangedName()
+    {
+        var analysis = ModelCorrectionEngine.AnalyzeModelResponse(
+            "There is a problem with the connection.", "Er zijn een probleem met de verbinding.");
+        Assert.Equal("validation", analysis.RejectionStage);
+        Assert.Contains("too much source wording", analysis.RejectionReason, StringComparison.Ordinal);
+    }
+
+    [Fact]
+    public void DoesNotTreatUnrequestedMultilineModelExplanationAsCandidateCorrections()
+    {
+        var analysis = ModelCorrectionEngine.AnalyzeModelResponse(
+            "Please recieve the form.\n\nThis is a repeated commentary paragraph.\nMore unrelated response text.",
+            "Please recieve the form.");
+        Assert.Equal("extraction", analysis.RejectionStage);
+        Assert.Empty(analysis.RawCandidateEdits);
+        Assert.Empty(analysis.Edits);
     }
 
     [Fact]
@@ -158,5 +250,12 @@ public sealed class CorrectionPipelineTests
             if (cancel) cancellationToken.ThrowIfCancellationRequested();
             return ValueTask.FromResult(response);
         }
+    }
+
+    private static string ApplyEdits(string source, IReadOnlyList<TextEdit> edits)
+    {
+        foreach (var edit in edits.OrderByDescending(edit => edit.Start))
+            source = source.Remove(edit.Start, edit.Length).Insert(edit.Start, edit.ReplacementText);
+        return source;
     }
 }
