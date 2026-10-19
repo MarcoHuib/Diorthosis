@@ -1,6 +1,16 @@
-# Diorthosis
+<a id="readme-top"></a>
 
-**An offline, privacy-first writing assistant for Dutch and English.**
+<div align="center">
+
+  <img src="docs/assets/diorthosis-logo.png" alt="Diorthosis logo" width="520">
+
+  <h1 align="center">Diorthosis</h1>
+
+  <p align="center">
+    <strong>An offline, privacy-first writing assistant for Dutch and English.</strong>
+  </p>
+
+</div>
 
 Diorthosis aims to help people confidently review spelling, grammar, and sentence structure in documents without uploading confidential content to a cloud service.
 
