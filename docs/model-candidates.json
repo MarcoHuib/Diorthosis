@@ -1,7 +1,7 @@
 {
   "manifestVersion": 1,
   "prepared": "2026-10-19",
-  "status": "candidates-only; no weights downloaded or approved",
+  "status": "Ministral 8B and 14B weights approved for local diagnostic evaluation; no model quality approved",
   "runtime": {
     "binding": "LLamaSharp 0.27.0",
     "llamaCppCommit": "3f7c29d318e317b63f54c558bc69803963d7d88c",

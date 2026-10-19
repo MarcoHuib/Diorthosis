@@ -157,6 +157,7 @@ try
                 caseId = item.Id,
                 input = item.InputText,
                 rawModelOutput = analysis.RawOutput,
+                latencyMilliseconds = latencies[^1],
                 extractedCorrection = analysis.ExtractedCorrection,
                 rawCandidateTextEdits = analysis.RawCandidateEdits,
                 validatedTextEdits = result.Edits,

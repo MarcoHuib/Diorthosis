@@ -4,7 +4,7 @@
 
 Diorthosis aims to help people confidently review spelling, grammar, and sentence structure in documents without uploading confidential content to a cloud service.
 
-> **Project status:** Local text correction has executed with Ministral and converted EuroLLM on macOS ARM64, including Native AOT. A 44-case smoke set produced preliminary results below the targets, but its annotations are unreviewed and it does not establish correction quality. The 600-case synthetic review candidate still needs independent review. Document processing remains out of scope.
+> **Project status:** Ministral 3B, 8B and 14B GGUFs have executed locally on macOS ARM64 with the CPU-only Native AOT CLI. On the same provisional 44-case diagnostic set, the larger models did not improve Dutch and English correction together; all three remain below the targets. This set is not held-out quality evidence. The 600-case synthetic review candidate still needs independent review. Document processing remains out of scope.
 
 ## Project goals
 

@@ -76,3 +76,5 @@ Do not treat model architecture, parameter count, quantization, or language supp
 ## Pipeline-corrected v2 smoke run
 
 The benchmark pipeline was corrected after reviewing all 44 cases. Version 2 revises two provisional references, applies the final parser to captured raw model generations, evaluates complete resulting passages, and records raw versus accepted metrics. The v2 results remain preliminary because the smoke data is small and not independently bilingual-adjudicated. See [the pipeline investigation](benchmark-pipeline-investigation.md) and [the v2 raw-output traces and reports](../benchmarks/model-validation/results/v2/).
+
+The Ministral 3B/8B/14B diagnostic screen used that same v2 dataset and frozen v3 pipeline. Results remain provisional and show no balanced improvement from the larger sizes. See the [family screening report](model-validation.md#ministral-family-v3-diagnostic-screen) and [raw traces/reports](../benchmarks/model-validation/results/v3/).
