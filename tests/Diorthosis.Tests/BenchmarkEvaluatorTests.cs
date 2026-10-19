@@ -11,17 +11,16 @@ public sealed class BenchmarkEvaluatorTests
     {
         var cases = new[]
         {
-            new BenchmarkCase("nl-1", CorrectionLanguage.Dutch, "Ik loopd.", new[]
-            {
+            new BenchmarkCase("nl-1", CorrectionLanguage.Dutch, "Ik loopd.", [
                 new ErrorAnnotation(3, 5, "loopd", ErrorCategory.Spelling,
-                    new[] { new AcceptedCorrection("loop"), new AcceptedCorrection("liep") })
-            }),
-            new BenchmarkCase("en-clean", CorrectionLanguage.English, "This is correct.", Array.Empty<ErrorAnnotation>())
+                    [new AcceptedCorrection("loop"), new AcceptedCorrection("liep")])
+            ]),
+            new BenchmarkCase("en-clean", CorrectionLanguage.English, "This is correct.", [])
         };
         var predictions = new[]
         {
-            new BenchmarkPrediction("nl-1", new[] { new TextEdit(3, 5, "loopd", "liep"), new TextEdit(0, 2, "Ik", "ik") }),
-            new BenchmarkPrediction("en-clean", new[] { new TextEdit(0, 4, "This", "That") })
+            new BenchmarkPrediction("nl-1", [new TextEdit(3, 5, "loopd", "liep"), new TextEdit(0, 2, "Ik", "ik")]),
+            new BenchmarkPrediction("en-clean", [new TextEdit(0, 4, "This", "That")])
         };
 
         var metrics = BenchmarkEvaluator.Evaluate(cases, predictions);
@@ -41,8 +40,8 @@ public sealed class BenchmarkEvaluatorTests
     [Fact]
     public void EvaluatorRejectsEditWhoseOriginalSpanDoesNotMatchInput()
     {
-        var cases = new[] { new BenchmarkCase("en-1", CorrectionLanguage.English, "hello", Array.Empty<ErrorAnnotation>()) };
-        var predictions = new[] { new BenchmarkPrediction("en-1", new[] { new TextEdit(0, 5, "world", "there") }) };
+        var cases = new[] { new BenchmarkCase("en-1", CorrectionLanguage.English, "hello", []) };
+        var predictions = new[] { new BenchmarkPrediction("en-1", [new TextEdit(0, 5, "world", "there")]) };
 
         Assert.Throws<ArgumentException>(() => BenchmarkEvaluator.Evaluate(cases, predictions));
     }
@@ -50,11 +49,10 @@ public sealed class BenchmarkEvaluatorTests
     [Fact]
     public void EvaluatorIsStableAcrossRepeatedRuns()
     {
-        var cases = new[] { new BenchmarkCase("en-1", CorrectionLanguage.English, "teh", new[]
-        {
-            new ErrorAnnotation(0, 3, "teh", ErrorCategory.Spelling, new[] { new AcceptedCorrection("the") })
-        }) };
-        var predictions = new[] { new BenchmarkPrediction("en-1", new[] { new TextEdit(0, 3, "teh", "the") }) };
+        var cases = new[] { new BenchmarkCase("en-1", CorrectionLanguage.English, "teh", [
+            new ErrorAnnotation(0, 3, "teh", ErrorCategory.Spelling, [new AcceptedCorrection("the")])
+        ]) };
+        var predictions = new[] { new BenchmarkPrediction("en-1", [new TextEdit(0, 3, "teh", "the")]) };
 
         Assert.Equal(BenchmarkEvaluator.Evaluate(cases, predictions), BenchmarkEvaluator.Evaluate(cases, predictions));
     }

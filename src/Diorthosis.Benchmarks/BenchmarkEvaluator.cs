@@ -24,7 +24,7 @@ public static class BenchmarkEvaluator
             foreach (var category in Enum.GetValues<ErrorCategory>().Where(category => category != ErrorCategory.CorrectText))
             {
                 var categoryCases = languageCases.Where(item => item.Errors.Any(error => error.Category == category))
-                    .Select(item => item with { Errors = item.Errors.Where(error => error.Category == category).ToArray() }).ToArray();
+                    .Select(item => item with { Errors = [.. item.Errors.Where(error => error.Category == category)] }).ToArray();
                 results.Add(EvaluateGroup(language, category.ToString(), categoryCases, predictionMap));
             }
             var correctCases = languageCases.Where(item => item.Errors.Count == 0).ToArray();
@@ -45,7 +45,7 @@ public static class BenchmarkEvaluator
 
         foreach (var item in cases)
         {
-            var edits = predictions.TryGetValue(item.Id, out var prediction) ? prediction.Edits : Array.Empty<TextEdit>();
+            var edits = predictions.TryGetValue(item.Id, out var prediction) ? prediction.Edits : [];
             ValidateEdits(item, edits);
             var matchedEdits = new HashSet<int>();
             foreach (var error in item.Errors)
