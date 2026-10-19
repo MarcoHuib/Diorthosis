@@ -4,7 +4,7 @@
 
 Diorthosis aims to help people confidently review spelling, grammar, and sentence structure in documents without uploading confidential content to a cloud service.
 
-> **Project status:** Local correction and inference plumbing is implemented. No real model has been evaluated; document processing remains out of scope. Model accuracy and six-platform inference compatibility still need validation.
+> **Project status:** Local text correction has executed with Ministral and converted EuroLLM on macOS ARM64, including Native AOT. A 44-case smoke set produced preliminary results below the targets, but its annotations are unreviewed and it does not establish correction quality. The 600-case synthetic review candidate still needs independent review. Document processing remains out of scope.
 
 ## Project goals
 
@@ -30,7 +30,7 @@ dotnet publish src/Diorthosis.Cli -c Release -r osx-arm64
 ./src/Diorthosis.Cli/bin/Release/net10.0/osx-arm64/publish/Diorthosis.Cli correct-text --language nl --model /path/to/model.gguf --text "Ik heb het document verstuurt." --json
 ```
 
-The application never downloads models. Candidate status and benchmark commands are in [benchmarks](docs/benchmarks.md). The official Ministral 3 3B GGUF and EuroLLM 1.7B remain evaluation candidates; neither has been executed or quality-approved.
+The application never downloads models. Both candidates were executed locally as Q4_K_M on macOS ARM64; neither is quality-approved. The exact revisions, conversion recipe, smoke results and limitations are in [model validation](docs/model-validation.md). Benchmark datasets and commands are in [benchmarks](docs/benchmarks.md).
 
 ## Document workflows (not implemented yet)
 

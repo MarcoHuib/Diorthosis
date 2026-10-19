@@ -1,6 +1,6 @@
 # ADR 0004: In-process llama.cpp binding for local correction
 
-- **Status:** Accepted for implementation; platform/model validation pending
+- **Status:** Accepted; macOS ARM64 model/AOT path validated, quality and other-platform validation pending
 - **Date:** 2026-10-19
 
 ## Context
@@ -16,10 +16,10 @@ The correction milestone requires an in-process CPU GGUF backend, Native AOT, si
 
 ## Validation and limitations
 
-- Local .NET 10 compile/tests, native CPU backend load, and Native AOT `osx-arm64` publish and launch passed. LLamaSharp's default resolver triggers IL3000 because `Assembly.Location` is empty under AOT; Diorthosis configures the native search directory from `AppContext.BaseDirectory` and suppresses only IL3000 with the reason documented in both project files. CI now executes a backend-load check for each RID. Other RIDs remain unvalidated until CI runs.
-- No GGUF weights were locally available, so neither candidate's model load, chat template, text-only path, correction quality, latency, nor memory use was tested.
+- Local deterministic tests pass. Native AOT `osx-arm64` publish and actual model correction succeeded for both models with network access denied and `DOTNET_ROOT` pointing at a nonexistent directory. All model layers and KV cache were logged on CPU; the bundled Metal backend had a zero-sized compute buffer. LLamaSharp's default resolver triggers IL3000 because `Assembly.Location` is empty under AOT; Diorthosis configures the native search directory from `AppContext.BaseDirectory` and suppresses only IL3000. CI retains six RID native build/start checks. Other RIDs remain unvalidated with real weights.
+- Ministral Q4_K_M and a reproducible EuroLLM Q4_K_M conversion load and generate. Their 44-case results are recorded in `docs/model-validation.md`, but the cases have unreviewed annotations and are not a quality benchmark. The 600-case synthetic candidate needs independent review before held-out measurement.
 - LLamaSharp's CPU backend NuGet package contains native libraries for multiple RIDs, including an unused `libmtmd` library. The upstream llama.cpp commit mapping is recorded in `THIRD_PARTY_NOTICES.md`; complete redistribution notices and unnecessary asset removal must be settled before shipping release artifacts.
-- Peak native memory and GGUF embedded revision/quantization metadata are not currently emitted by the benchmark report.
+- Benchmark process working-set peak is sampled at 100 ms intervals and can miss short-lived peaks. The observed process-level model-load time used a warmable OS file cache; true cold-boot startup is not measured. Native dependency redistribution notices remain a release task.
 
 ## Rejected alternative
 

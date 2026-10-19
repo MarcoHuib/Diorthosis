@@ -1,6 +1,6 @@
 # Architecture: Phase 1 foundation
 
-**Status:** Local inference and correction plumbing implemented; real-model quality and cross-platform native validation remain open.
+**Status:** Both Q4_K_M models have executed on macOS ARM64 through the in-process CPU backend and Native AOT CLI. The 44-case results are preliminary only; the 600-case candidate still needs independent human review and held-out model evaluation. Other platforms have not run real weights.
 
 ## Implemented scope
 
@@ -10,12 +10,12 @@ The baseline uses in-process CPU inference. Model weights are a separate local f
 
 ## Preferred small model candidates
 
-1. **Primary:** [`mistralai/Ministral-3-3B-Instruct-2512-GGUF`](https://huggingface.co/mistralai/Ministral-3-3B-Instruct-2512-GGUF). The official model page lists Apache 2.0, English and Dutch, an official llama.cpp path, and Q4_K_M at 2.15 GB. It includes a vision encoder, but Phase 1 evaluates text correction only. Model quality, CPU memory/latency and required runtime treatment of the vision components remain to be tested.
-2. **Secondary:** [`utter-project/EuroLLM-1.7B-Instruct`](https://huggingface.co/utter-project/EuroLLM-1.7B-Instruct). Its model card lists 1.7B parameters, Dutch and English, Apache 2.0, and European Union funding with a European research consortium. GGUF conversion and llama.cpp compatibility require validation before use.
+1. **Primary:** [`mistralai/Ministral-3-3B-Instruct-2512-GGUF`](https://huggingface.co/mistralai/Ministral-3-3B-Instruct-2512-GGUF). The official Q4_K_M text GGUF (2,147,023,008 bytes) loaded and ran on CPU. No separate vision projector was downloaded or used. See [`model-validation.md`](model-validation.md) for revision, checksum, smoke outcomes and limitations.
+2. **Secondary:** [`utter-project/EuroLLM-1.7B-Instruct`](https://huggingface.co/utter-project/EuroLLM-1.7B-Instruct). The official checkpoint was converted at the pinned llama.cpp revision to Q4_K_M (1,045,157,024 bytes); it loaded and ran on CPU. See [`model-validation.md`](model-validation.md) for conversion, chat-template, checksum, smoke outcomes and limitations.
 
 EuroLLM-9B and Mistral Small 3.1 24B are optional quality-reference candidates, not the lightweight baseline. The older Ministral 8B 2410 research-licensed checkpoint is distinct from the Apache-licensed Ministral 3 family and is not a preferred candidate.
 
-These license/origin statements record upstream model card disclosures, not an independent supply-chain or training-data audit. The official Ministral GGUF page lists Apache 2.0, Q4_K_M and llama.cpp usage, but no immutable model revision is pinned here. Its separate vision `mmproj` file is not needed for text input. `PromptTemplateTransformer` delegates to the GGUF template in llama.cpp; actual template compatibility and inference behavior remain unverified. EuroLLM's Apache-2.0 model card and European consortium disclosure do not clear a particular GGUF conversion. No model weights are stored or downloaded automatically.
+These license/origin statements record upstream disclosures, not an independent supply-chain or training-data audit. Exact immutable revisions, file checksums and Apache-2.0 declarations are recorded in [`model-validation.md`](model-validation.md). `PromptTemplateTransformer` uses the GGUF-embedded chat template; real generation succeeded for both models. The app does not download weights; local assets are not stored in Git.
 
 ## Intended processing flow
 
@@ -34,7 +34,7 @@ Local document (.txt, .docx, .doc)
 ## Candidate technology
 
 - **Main application:** C# / .NET 10, CLI and Native AOT publishing, with platform-specific self-contained artifacts. End users should not need the .NET runtime.
-- **Inference:** LLamaSharp 0.27.0 with `LLamaSharp.Backend.Cpu` 0.27.0 (MIT) is pinned. CPU selection is explicit (`GpuLayerCount = 0`). Native AOT publish and a native backend load check succeeded on macOS ARM64 locally. LLamaSharp's IL3000 warning about its fallback `Assembly.Location` resolver is suppressed narrowly; Diorthosis sets a runtime-specific native search directory using `AppContext.BaseDirectory`. CI checks all six target RIDs. Native dependencies are carried by the backend NuGet package; exact binary notices and redistribution packaging still need review.
+- **Inference:** LLamaSharp 0.27.0 with `LLamaSharp.Backend.Cpu` 0.27.0 (MIT) is pinned. CPU selection is explicit (`GpuLayerCount = 0`). Native AOT publication and real in-process inference with both models succeeded on macOS ARM64, with all model layers/KV cache on CPU and zero Metal compute buffer. LLamaSharp initializes its bundled Metal backend, but no model layers are assigned to it. LLamaSharp's IL3000 warning about its fallback `Assembly.Location` resolver is suppressed narrowly; Diorthosis sets a runtime-specific native search directory using `AppContext.BaseDirectory`. CI has six RID build/start checks; other platforms have not been tested with real weights. Native dependency redistribution notices remain to be completed before releases.
 - **Models:** prioritize the small Ministral 3 3B GGUF and EuroLLM 1.7B candidates above; benchmark evidence still determines suitability.
 - **Office documents:** prefer cross-platform, no-Java, commercially permissive components. `.docx` is a ZIP/OpenXML format; `.doc` is a separate legacy binary format and requires dedicated parsing or conversion. Investigate extraction, tracked changes, embedded objects, section layout and round-trip fidelity independently.
 - **Spelling libraries:** optional. Start AI-only, then use benchmark evidence to decide whether supplementary detection improves quality enough to justify its footprint and license obligations.
