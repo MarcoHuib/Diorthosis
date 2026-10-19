@@ -1,10 +1,10 @@
 # Architecture: Phase 1 foundation
 
-**Status:** Both Q4_K_M models have executed on macOS ARM64 through the in-process CPU backend and Native AOT CLI. The 44-case results are preliminary only; the 600-case candidate still needs independent human review and held-out model evaluation. Other platforms have not run real weights.
+**Status:** The existing Ministral 3B GGUF generated and corrected text on macOS ARM64 through the published Native AOT CLI when using llama.cpp rebuilt at the pinned revision with Metal disabled. The stock LLamaSharp 0.27.0 macOS package still fails here during Metal backend initialization; see [ADR 0006](decisions/0006-cpu-only-macos-inference-and-next-model-manifest.md) for the CPU-only build remedy and validation. The 44-case results are preliminary only; the 600-case candidate still needs independent human review and held-out model evaluation. Other platforms have not run real weights.
 
 ## Implemented scope
 
-The solution targets .NET 10 and a CLI. Core owns correction types, a versioned correction prompt, edit validation, and an `IModelInferenceAdapter`. `LlamaSharpInferenceAdapter` uses pinned LLamaSharp 0.27.0 and its CPU-only backend to load a user-selected local GGUF in-process. The application makes no network request and does not download weights. The benchmark project can run cases and pass structured predictions to the existing evaluator.
+The solution targets .NET 10 and a CLI. Core owns correction types, a versioned correction prompt, edit validation, and an `IModelInferenceAdapter`. `LlamaSharpInferenceAdapter` uses pinned LLamaSharp 0.27.0 to load a user-selected local GGUF in-process with GPU layer offload disabled. On macOS ARM64, the stock native package also contains and initializes Metal; publish the custom Metal-disabled CPU backend from ADR 0006 to avoid that startup failure. The application makes no network request and does not download weights. The benchmark project can run cases and pass structured predictions to the existing evaluator.
 
 The baseline uses in-process CPU inference. Model weights are a separate local file and are never downloaded by the application. No service or listening port is part of the design.
 
@@ -12,6 +12,8 @@ The baseline uses in-process CPU inference. Model weights are a separate local f
 
 1. **Primary:** [`mistralai/Ministral-3-3B-Instruct-2512-GGUF`](https://huggingface.co/mistralai/Ministral-3-3B-Instruct-2512-GGUF). The official Q4_K_M text GGUF (2,147,023,008 bytes) loaded and ran on CPU. No separate vision projector was downloaded or used. See [`model-validation.md`](model-validation.md) for revision, checksum, smoke outcomes and limitations.
 2. **Secondary:** [`utter-project/EuroLLM-1.7B-Instruct`](https://huggingface.co/utter-project/EuroLLM-1.7B-Instruct). The official checkpoint was converted at the pinned llama.cpp revision to Q4_K_M (1,045,157,024 bytes); it loaded and ran on CPU. See [`model-validation.md`](model-validation.md) for conversion, chat-template, checksum, smoke outcomes and limitations.
+
+The macOS ARM64 LLamaSharp 0.27.0 CPU package initializes its compiled Metal backend even with zero GPU layers. The current remedy and bounded next-candidate manifest are recorded in [ADR 0006](decisions/0006-cpu-only-macos-inference-and-next-model-manifest.md). Do not treat candidate metadata or smoke diagnostics as model-quality approval.
 
 EuroLLM-9B and Mistral Small 3.1 24B are optional quality-reference candidates, not the lightweight baseline. The older Ministral 8B 2410 research-licensed checkpoint is distinct from the Apache-licensed Ministral 3 family and is not a preferred candidate.
 

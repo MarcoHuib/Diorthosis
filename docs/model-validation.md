@@ -1,5 +1,7 @@
 # Local model validation record
 
+The macOS ARM64 native-runtime failure diagnosis and CPU-only generation reproduction are in [ADR 0006](decisions/0006-cpu-only-macos-inference-and-next-model-manifest.md). The replacement uses the same pinned llama.cpp commit as LLamaSharp 0.27.0 with Metal disabled. It generated an English spelling correction from the existing local Ministral 3B GGUF using the published Native AOT CLI; model-quality claims are out of scope for this one runtime check.
+
 **Validation date:** 2026-10-19 (macOS local run)  
 **Status:** Both real-weight candidates completed the original and a pipeline-corrected 44-case smoke run. The v1 results are retained unchanged; see the pipeline investigation for v2 outputs and causes. All smoke references remain provisional, and the 600-case candidate is not independently reviewed.
 

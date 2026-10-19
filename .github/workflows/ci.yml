@@ -48,6 +48,8 @@ jobs:
         with:
           dotnet-version: 10.0.x
       - run: dotnet publish src/Diorthosis.Cli/Diorthosis.Cli.csproj -c Release -r ${{ matrix.rid }} -o artifacts/${{ matrix.rid }}
+      - if: matrix.rid == 'osx-arm64'
+        run: scripts/build-osx-arm64-cpu-backend.sh artifacts/osx-arm64
       - if: runner.os != 'Windows'
         run: chmod +x artifacts/${{ matrix.rid }}/${{ matrix.executable }}
       - run: artifacts/${{ matrix.rid }}/${{ matrix.executable }} --version
