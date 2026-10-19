@@ -55,10 +55,20 @@ jobs:
         env:
           DOTNET_ROOT: ${{ runner.temp }}/no-dotnet-runtime
           DOTNET_MULTILEVEL_LOOKUP: 0
+      - run: artifacts/${{ matrix.rid }}/${{ matrix.executable }} --check-native-inference
+        shell: bash
+        env:
+          DOTNET_ROOT: ${{ runner.temp }}/no-dotnet-runtime
+          DOTNET_MULTILEVEL_LOOKUP: 0
       - if: matrix.rid == 'linux-x64'
         run: |
           strace -f -e trace=network -o network.trace artifacts/${{ matrix.rid }}/${{ matrix.executable }} --version
+          strace -f -e trace=network -o inference-network.trace artifacts/${{ matrix.rid }}/${{ matrix.executable }} --check-native-inference
           if grep -Eq 'socket\(|connect\(|bind\(|listen\(|sendto\(|recvfrom\(' network.trace; then
-            echo "Unexpected network syscall during offline CLI startup"
+            echo "Unexpected network syscall during offline CLI startup or native inference initialization"
+            exit 1
+          fi
+          if grep -Eq 'socket\(|connect\(|bind\(|listen\(|sendto\(|recvfrom\(' inference-network.trace; then
+            echo "Unexpected network syscall during offline native inference initialization"
             exit 1
           fi

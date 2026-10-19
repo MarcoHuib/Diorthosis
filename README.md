@@ -4,7 +4,7 @@
 
 Diorthosis aims to help people confidently review spelling, grammar, and sentence structure in documents without uploading confidential content to a cloud service.
 
-> **Project status:** Phase 1 foundation. The .NET solution, CLI shell, contracts, and deterministic benchmark evaluator are implemented. No model inference or document converter is included. Model accuracy, format preservation, and target-platform compatibility still require testing.
+> **Project status:** Local correction and inference plumbing is implemented. No real model has been evaluated; document processing remains out of scope. Model accuracy and six-platform inference compatibility still need validation.
 
 ## Project goals
 
@@ -23,14 +23,19 @@ A shared C# command-line application is the starting point to evaluate. A plugga
 
 See [architecture](docs/architecture.md), [benchmarks](docs/benchmarks.md), and [roadmap](docs/roadmap.md).
 
-The preferred small model candidates are official Ministral 3 3B GGUF and EuroLLM 1.7B Instruct. Their weights are not included or downloaded by the application. EuroLLM GGUF conversion remains unverified.
+Local text correction uses pinned LLamaSharp 0.27.0 with an in-process CPU backend. Publish a self-contained CLI and provide an explicit local GGUF path:
 
-## Planned usage (not implemented yet)
+```sh
+dotnet publish src/Diorthosis.Cli -c Release -r osx-arm64
+./src/Diorthosis.Cli/bin/Release/net10.0/osx-arm64/publish/Diorthosis.Cli correct-text --language nl --model /path/to/model.gguf --text "Ik heb het document verstuurt." --json
+```
+
+The application never downloads models. Candidate status and benchmark commands are in [benchmarks](docs/benchmarks.md). The official Ministral 3 3B GGUF and EuroLLM 1.7B remain evaluation candidates; neither has been executed or quality-approved.
+
+## Document workflows (not implemented yet)
 
 ```console
-# Illustrative CLI only; commands will be finalized after the prototype
-corrector document.docx --language nl --review
-corrector document.txt --language en --report corrections.html
+# Document ingestion and export are a later phase.
 ```
 
 ## Contributing

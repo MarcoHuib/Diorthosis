@@ -18,7 +18,7 @@
 - [ ] Evaluate multiple legally suitable European models in consistent conditions.
 - [ ] Compare accuracy, semantic fidelity, false positives, memory and performance.
 
-**Foundation complete; quality exit remains open:** no model has been evaluated. Model/engine selection requires a reproducible benchmark; if none meets the target, document a different approach rather than claiming success.
+**Local inference and harness implemented; quality exit remains open:** LLamaSharp CPU backend, correction prompt/parser, CLI, and benchmark run path exist. No model has been evaluated. Model/engine selection requires a reproducible benchmark; if none meets the target, document a different approach rather than claiming success.
 
 ## Phase 2: document ingestion
 

@@ -1,6 +1,6 @@
 # Correction quality benchmark
 
-**Status:** Phase 1 schema and deterministic evaluator implemented. No quality benchmark dataset has been assembled and no model has been evaluated.
+**Status:** Schema/evaluator plus local inference runner implemented. No quality benchmark dataset has been assembled and no real model has been evaluated.
 
 ## Objective
 
@@ -22,6 +22,16 @@ Use hand-annotated errors and acceptable corrections. Keep a separate developmen
 Each JSONL case contains a stable `id`, `language`, `inputText`, and `errors`. Each error has a UTF-16 source `start` and `length`, `originalText`, `category`, and one or more `acceptedCorrections` containing valid alternative replacement texts. The parallel predictions JSONL maps `caseId` to proposed edits (`start`, `length`, `originalText`, `replacementText`). The evaluator checks bounds and exact source-span text before scoring. A tiny synthetic CLI smoke fixture is stored at `benchmarks/smoke/`; it validates the tool path only and is not a quality benchmark.
 
 Run the evaluator with `dotnet run --project src/Diorthosis.Benchmarks -- evaluate cases.jsonl predictions.jsonl`. It emits stable JSON metric rows by language and category. Missing predictions are counted as no edits. Duplicate IDs, unknown prediction IDs, and invalid source spans are rejected.
+
+Run local inference with `dotnet run --project src/Diorthosis.Benchmarks -- run cases.jsonl /path/to/model.gguf predictions.jsonl report.json --model-revision <commit> --quantization Q4_K_M`. The model must already exist locally. The runner writes one prediction per input case and a report with model and dataset SHA-256, supplied model revision/quantization, prompt/runtime versions, decoding settings, OS, process architecture, cold load time, per-case latency summary, peak working set, and post-run managed heap reading. CPU model identification is not collected, so the report is not a complete reproducibility record. Semantic changes require human review and are not inferred by this runner. Evaluate saved predictions with the existing `evaluate` command. Generate a comparison using `dotnet run --project src/Diorthosis.Benchmarks -- compare comparison.json run-a.json run-b.json`; it rejects reports with mismatched dataset hashes, prompt versions, runtime versions, or decoding settings. Keep prompt development cases separate from held-out cases.
+
+No weights are included. Downloading multi-gigabyte candidates is a deliberate developer action; verify immutable upstream revision, license, tokenizer, GGUF provenance, and redistribution obligations before use. Ministral's upstream GGUF page lists Apache 2.0 and Q4_K_M, but no exact revision is pinned. EuroLLM declares Apache 2.0 and European consortium/EU funding; a rights-cleared reproducible GGUF conversion remains unresolved. Neither candidate has been executed. No platform has real-model validation.
+
+### Explicit local model setup
+
+The application and CI never fetch weights. To prepare a developer-only evaluation, use the upstream model pages in a browser and download one chosen GGUF to a local directory. For Ministral, use `Ministral-3-3B-Instruct-2512-Q4_K_M.gguf`; do not download the separate vision projector for text correction. Record the immutable repository commit shown by the model file page and compute a local SHA-256 before benchmarking. Candidate terms and supply-chain metadata still require review before redistribution.
+
+EuroLLM's source page is a Transformers checkpoint. A conversion investigation can use llama.cpp's `convert_hf_to_gguf.py` and its conversion documentation, but that developer-only toolchain uses Python and is not part of Diorthosis or an end-user prerequisite. Pin llama.cpp source and conversion dependencies, convert the exact reviewed source revision, verify tokenizer/template metadata and CPU load, then quantify the output checksum and quantization. If the converter does not support EuroLLM's architecture, stop and document the gap rather than adopting an unverified community conversion. No such conversion has been run.
 
 ## Core metrics (report per language and pooled)
 

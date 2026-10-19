@@ -1,12 +1,12 @@
 # Architecture: Phase 1 foundation
 
-**Status:** Phase 1 foundation implemented; inference and document processing remain unimplemented.
+**Status:** Local inference and correction plumbing implemented; real-model quality and cross-platform native validation remain open.
 
-## Phase 1 boundaries
+## Implemented scope
 
-The solution targets .NET 10 and a CLI. The Core project owns correction request/result types and the correction and inference adapter contracts. The benchmark project evaluates offline JSONL cases against structured edits. No model runner, model weight, document parser, grammar engine, or GPU dependency is included.
+The solution targets .NET 10 and a CLI. Core owns correction types, a versioned correction prompt, edit validation, and an `IModelInferenceAdapter`. `LlamaSharpInferenceAdapter` uses pinned LLamaSharp 0.27.0 and its CPU-only backend to load a user-selected local GGUF in-process. The application makes no network request and does not download weights. The benchmark project can run cases and pass structured predictions to the existing evaluator.
 
-The baseline target is CPU inference with an in-process native adapter in a later phase. Model weights are a separate local file and are never downloaded by the application. No service or listening port is part of the design.
+The baseline uses in-process CPU inference. Model weights are a separate local file and are never downloaded by the application. No service or listening port is part of the design.
 
 ## Preferred small model candidates
 
@@ -15,7 +15,7 @@ The baseline target is CPU inference with an in-process native adapter in a late
 
 EuroLLM-9B and Mistral Small 3.1 24B are optional quality-reference candidates, not the lightweight baseline. The older Ministral 8B 2410 research-licensed checkpoint is distinct from the Apache-licensed Ministral 3 family and is not a preferred candidate.
 
-These license/origin statements record upstream model card disclosures, not an independent supply-chain or training-data audit. Do not download, bundle, or claim a model is approved until exact revisions, weights, tokenizer, notices, and redistribution obligations have been reviewed. No weights are stored in this repository.
+These license/origin statements record upstream model card disclosures, not an independent supply-chain or training-data audit. The official Ministral GGUF page lists Apache 2.0, Q4_K_M and llama.cpp usage, but no immutable model revision is pinned here. Its separate vision `mmproj` file is not needed for text input. `PromptTemplateTransformer` delegates to the GGUF template in llama.cpp; actual template compatibility and inference behavior remain unverified. EuroLLM's Apache-2.0 model card and European consortium disclosure do not clear a particular GGUF conversion. No model weights are stored or downloaded automatically.
 
 ## Intended processing flow
 
@@ -34,7 +34,7 @@ Local document (.txt, .docx, .doc)
 ## Candidate technology
 
 - **Main application:** C# / .NET 10, CLI and Native AOT publishing, with platform-specific self-contained artifacts. End users should not need the .NET runtime.
-- **Inference:** `IModelInferenceAdapter` contract only in Phase 1. Evaluate direct in-process llama.cpp integration for CPU first; do not introduce an external process, local server, GPU package, or runtime model download in the baseline.
+- **Inference:** LLamaSharp 0.27.0 with `LLamaSharp.Backend.Cpu` 0.27.0 (MIT) is pinned. CPU selection is explicit (`GpuLayerCount = 0`). Native AOT publish and a native backend load check succeeded on macOS ARM64 locally. LLamaSharp's IL3000 warning about its fallback `Assembly.Location` resolver is suppressed narrowly; Diorthosis sets a runtime-specific native search directory using `AppContext.BaseDirectory`. CI checks all six target RIDs. Native dependencies are carried by the backend NuGet package; exact binary notices and redistribution packaging still need review.
 - **Models:** prioritize the small Ministral 3 3B GGUF and EuroLLM 1.7B candidates above; benchmark evidence still determines suitability.
 - **Office documents:** prefer cross-platform, no-Java, commercially permissive components. `.docx` is a ZIP/OpenXML format; `.doc` is a separate legacy binary format and requires dedicated parsing or conversion. Investigate extraction, tracked changes, embedded objects, section layout and round-trip fidelity independently.
 - **Spelling libraries:** optional. Start AI-only, then use benchmark evidence to decide whether supplementary detection improves quality enough to justify its footprint and license obligations.
@@ -52,7 +52,7 @@ All choices must undergo an explicit license and supply-chain audit before relea
 
 These are conceptual contracts, not required method or project names.
 
-Implemented contracts are deliberately narrower: `ICorrectionEngine` and `IModelInferenceAdapter` in Core. Document contracts and the remaining presentation/validation abstractions are deferred until document work is in scope.
+Implemented contracts are `ICorrectionEngine` and `IModelInferenceAdapter` in Core, with a model-backed correction engine and validated UTF-16 edits. Document contracts and presentation/export abstractions are deferred until document work is in scope.
 
 ## Security and privacy design
 
@@ -73,7 +73,7 @@ Implemented contracts are deliberately narrower: `ICorrectionEngine` and `IModel
 
 ## Cross-platform packaging
 
-Phase 1 CI publishes and launches the CLI on matching OS/architecture runners for all six target RIDs: Windows x64/ARM64, macOS x64/ARM64, and Linux x64/ARM64. The launch overrides `DOTNET_ROOT` to a nonexistent path. Linux x64 also traces network syscalls during `--version` startup. The Phase 1 CI run passed all six publish and launch checks. This verifies only the current CLI startup path; it does not prove model inference is offline or validate model compatibility, document behavior, or release packaging on every supported OS.
+The existing six-RID CI matrix now also loads the native CPU backend on matching OS/architecture runners: Windows x64/ARM64, macOS x64/ARM64, and Linux x64/ARM64. The launch overrides `DOTNET_ROOT` to a nonexistent path. Linux x64 traces network syscalls during CLI startup and native backend initialization. These checks do not execute a model or prove the real inference path is offline. The updated matrix has not run yet.
 
 Prepare independent artifacts for Windows, macOS, and Linux; target x64/ARM64 wherever validated. A Windows `.exe` is not executable natively on macOS/Linux. macOS signing/notarization and Linux libc compatibility are release considerations, not reasons to add an installer prerequisite.
 
