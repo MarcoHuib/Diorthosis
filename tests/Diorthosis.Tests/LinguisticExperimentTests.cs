@@ -94,6 +94,22 @@ public sealed class LinguisticExperimentTests
         Assert.Equal(0,result.EligibleCandidates);
     }
     [Fact]
+    public void IntroducedForeignScriptCannotGainConsensusSafety()
+    {
+        const string source="De coördinator besprak de reünie in een café waar ook geïmproviseerde muziek klonk.";
+        const string candidate="De coordinator besprak deոց een café waar ook improviserende muziek klonk.";
+        Assert.True(LocalEdits.Derive(source,candidate).IntroducesNonLatinLetters);
+        var request=new CorrectionRequest(CorrectionLanguage.Dutch,source);
+        var samples=Enumerable.Range(0,3).Select(i=>new VotingCandidate(i.ToString(),new(candidate,GenerationTermination.EndOfGeneration,25))).ToArray();
+        Assert.Empty(EditVoting.Aggregate(request,samples).Analysis.Edits);
+    }
+    [Fact]
+    public void ExistingInternationalLettersAndLatinDiacriticsArePreserved()
+    {
+        Assert.False(LocalEdits.Derive("Het teken Ո staat hier.","Het teken Ո staat hier.").IntroducesNonLatinLetters);
+        Assert.False(LocalEdits.Derive("De reunie.","De reünie.").IntroducesNonLatinLetters);
+    }
+    [Fact]
     public void MinorityNegationNeverEntersResult()
     {
         var result = Vote("Do not remove it.", "Do remove it.", "Do not remove it.", "Do not remove it.");

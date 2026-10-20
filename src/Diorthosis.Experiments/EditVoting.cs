@@ -1,10 +1,11 @@
 using Diorthosis.Core.Corrections;
 using Diorthosis.Core.Inference;
+using System.Text;
 
 namespace Diorthosis.Experiments;
 
 public sealed record LocalOperation(string Kind, TextEdit Edit);
-public sealed record LocalEditGroup(string DependencyPolicy, IReadOnlyList<LocalOperation> Operations, bool AlignmentAmbiguous);
+public sealed record LocalEditGroup(string DependencyPolicy, IReadOnlyList<LocalOperation> Operations, bool AlignmentAmbiguous, bool IntroducesNonLatinLetters);
 public sealed record VotingCandidate(string GenerationId, InferenceResult Inference);
 public sealed record EditSupport(TextEdit Edit, IReadOnlyList<string> GenerationIds);
 public sealed record VotingResult(ModelResponseAnalysis Analysis, IReadOnlyList<EditSupport> Support,
@@ -32,19 +33,24 @@ public static class LocalEdits
                 catch (InvalidDataException) { }
             }
         }
+        var originalLetters = source.EnumerateRunes().Where(Rune.IsLetter).ToHashSet();
+        // Dutch/English correction cannot justify newly invented foreign-script letters. Existing international
+        // names/content remain literal; this flag is experimental and never normalizes or rewrites characters.
+        var foreignLetters = candidate.EnumerateRunes().Any(r => Rune.IsLetter(r) && !originalLetters.Contains(r)
+            && !(r.Value <= 0x02af || r.Value is >= 0x1e00 and <= 0x1eff || r.Value is >= 0xa720 and <= 0xa7ff || r.Value is >= 0xab30 and <= 0xab6f));
         return new("all passage edits remain dependency-linked; no grammatical independence inferred", edits.Select(edit =>
         {
             var kind = edit.Length == 0 ? "INSERT" : edit.ReplacementText.Length == 0 ? "DELETE"
                 : edit.OriginalText.Any(char.IsWhiteSpace) && !edit.ReplacementText.Any(char.IsWhiteSpace) ? "MERGE"
                 : !edit.OriginalText.Any(char.IsWhiteSpace) && edit.ReplacementText.Any(char.IsWhiteSpace) ? "SPLIT" : "REPLACE";
             return new LocalOperation(kind, edit);
-        }).ToArray(), ambiguous);
+        }).ToArray(), ambiguous, foreignLetters);
     }
 }
 
 public static class EditVoting
 {
-    public const string Version = "guarded-edit-voting-1.0.0";
+    public const string Version = "guarded-edit-voting-1.1.0";
     public static VotingResult Aggregate(CorrectionRequest request, IReadOnlyList<VotingCandidate> candidates)
     {
         if (candidates.Count is not (3 or 5) || candidates.Any(c => string.IsNullOrWhiteSpace(c.GenerationId))
@@ -58,7 +64,7 @@ public static class EditVoting
             var analysis = ModelCorrectionEngine.AnalyzeInference(candidate.Inference, request);
             if (analysis.Disposition is not (CorrectionDisposition.Accepted or CorrectionDisposition.Unchanged)) continue;
             var group = LocalEdits.Derive(request.Text, analysis.ExtractedCorrection!);
-            if (group.AlignmentAmbiguous) continue;
+            if (group.AlignmentAmbiguous || group.IntroducesNonLatinLetters) continue;
             eligible.Add(analysis);
             foreach (var operation in group.Operations.Distinct())
             {

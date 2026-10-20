@@ -13,6 +13,11 @@ Require(!dictionary.Check(CorrectionLanguage.English,"recieve"),"English misspel
 var request=new CorrectionRequest(CorrectionLanguage.Dutch,"De vergadering start om negen uur.");
 Require(SpellingDiagnostics.InspectReplacements(dictionary,request,[new(20,0,"","t")]).Single().Status=="recognized-source-to-unrecognized-target","full-word start -> startt diagnostic");
 Require(SpellingDiagnostics.HintPrompt(request,SpellingDiagnostics.Inspect(dictionary,request.Language,request.Text)).Contains("authoritative",StringComparison.Ordinal),"AOT hint JSON");
+var votingRequest=new CorrectionRequest(CorrectionLanguage.English,"We recieved it.");
+var candidates=Enumerable.Range(0,3).Select(i=>new VotingCandidate(i.ToString(),new("We received it.",GenerationTermination.EndOfGeneration,8))).ToArray();
+Require(EditVoting.Aggregate(votingRequest,candidates).Analysis.Disposition==CorrectionDisposition.Accepted,"AOT strict-majority source alignment");
+Require(LocalEdits.Derive("We can can go.","We can go.").AlignmentAmbiguous,"AOT repeated-word ambiguity");
+Require(LocalEdits.Derive("De reünie.","De reոցnie.").IntroducesNonLatinLetters,"AOT introduced foreign-script flag");
 if (args.Length==2)
 {
     using var adapter=new LlamaSharpInferenceAdapter(args[1],threads:9);
