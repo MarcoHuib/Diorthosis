@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="src/Diorthosis.Core/Diorthosis.Core.csproj" />
+  <Project Path="src/Diorthosis.Cli/Diorthosis.Cli.csproj" />
+  <Project Path="src/Diorthosis.Benchmarks/Diorthosis.Benchmarks.csproj" />
+  <Project Path="tests/Diorthosis.Tests/Diorthosis.Tests.csproj" />
+</Solution>

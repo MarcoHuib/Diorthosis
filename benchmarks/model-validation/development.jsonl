@@ -1,0 +1,6 @@
+{"id":"dev-nl-dt","language":"Dutch","inputText":"Ik heb het document gisteren verstuurt.","errors":[{"start":29,"length":9,"originalText":"verstuurt","category":"Grammar","acceptedCorrections":[{"replacementText":"verstuurd"}]}]}
+{"id":"dev-nl-compound","language":"Dutch","inputText":"De vergadering is in de vergader ruimte.","errors":[{"start":24,"length":15,"originalText":"vergader ruimte","category":"Spelling","acceptedCorrections":[{"replacementText":"vergaderruimte"}]}]}
+{"id":"dev-nl-clean","language":"Dutch","inputText":"De server is gisteren succesvol opnieuw opgestart.","errors":[]}
+{"id":"dev-en-grammar","language":"English","inputText":"She have send the documents yesterday.","errors":[{"start":4,"length":9,"originalText":"have send","category":"Grammar","acceptedCorrections":[{"replacementText":"sent"}]}]}
+{"id":"dev-en-spelling","language":"English","inputText":"Please recieve the signed form.","errors":[{"start":7,"length":7,"originalText":"recieve","category":"Spelling","acceptedCorrections":[{"replacementText":"receive"}]}]}
+{"id":"dev-en-clean","language":"English","inputText":"The server restarted successfully yesterday.","errors":[]}

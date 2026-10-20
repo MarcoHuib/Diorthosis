@@ -1,0 +1,6 @@
+{
+  "completionState": "failed-driver",
+  "reason": "Python strict UTF-8 decoding of native stderr failed; no CLI correctness result recorded by this attempt.",
+  "followUp": "native-cli-v2",
+  "fix": "Decode native diagnostic stderr with replacement; JSON stdout is still parsed strictly."
+}

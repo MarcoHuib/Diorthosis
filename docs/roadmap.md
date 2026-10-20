@@ -15,10 +15,12 @@
 
 - [x] Define the Dutch/English test schema, smoke fixtures and metric evaluator.
 - [x] Build the repeatable evaluation harness and local inference abstraction contract.
-- [ ] Evaluate multiple legally suitable European models in consistent conditions.
+- [x] Execute local smoke inference with both European model candidates on macOS ARM64 (preliminary results in `docs/model-validation.md`).
+- [ ] Independently review and approve the 600-case candidate dataset.
+- [ ] Evaluate multiple legally suitable European models on the same approved held-out cases.
 - [ ] Compare accuracy, semantic fidelity, false positives, memory and performance.
 
-**Foundation complete; quality exit remains open:** no model has been evaluated. Model/engine selection requires a reproducible benchmark; if none meets the target, document a different approach rather than claiming success.
+**Local inference and harness implemented; quality exit remains open:** LLamaSharp CPU backend, correction prompt/parser, CLI, and benchmark run path exist. Both candidate models have run locally, including through the macOS ARM64 Native AOT executable. Provisional smoke tests are not acceptance evidence. Model/engine selection requires independent dataset review and a reproducible held-out benchmark; if none meets the target, document a different approach rather than claiming success.
 
 ## Phase 2: document ingestion
 
@@ -45,3 +47,7 @@
 - [ ] Test network-isolated execution, code signing requirements and license notices.
 
 **Exit:** reproducible portable release artifacts and a published support matrix.
+
+## Quality engineering progress
+
+Dataset diagnostics/provenance, experimental v3 reference scoring, explicit correction outcomes, stronger bounded safety tests and opt-in prompt/edit experiments are implemented. [The report](quality-engineering-report.md) lists completed and partial phases. Independent linguistic review, held-out quality gates, spelling dependency approval, document fidelity and cross-platform real-weight inference remain open; no later milestone is declared complete.

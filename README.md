@@ -1,10 +1,22 @@
-# Diorthosis
+<a id="readme-top"></a>
 
-**An offline, privacy-first writing assistant for Dutch and English.**
+<div align="center">
+
+  <img src="docs/assets/diorthosis-logo.png" alt="Diorthosis logo" width="520">
+
+  <h1 align="center">Diorthosis</h1>
+
+  <p align="center">
+    <strong>An offline, privacy-first writing assistant for Dutch and English.</strong>
+  </p>
+
+</div>
 
 Diorthosis aims to help people confidently review spelling, grammar, and sentence structure in documents without uploading confidential content to a cloud service.
 
-> **Project status:** Phase 1 foundation. The .NET solution, CLI shell, contracts, and deterministic benchmark evaluator are implemented. No model inference or document converter is included. Model accuracy, format preservation, and target-platform compatibility still require testing.
+> **Project status:** Ministral 3B, 8B and 14B GGUFs have executed locally on macOS ARM64 with the CPU-only Native AOT CLI. On the same provisional 44-case diagnostic set, the larger models did not improve Dutch and English correction together; all three remain below the targets. This set is not held-out quality evidence. The 600-case synthetic review candidate still needs independent review. Document processing remains out of scope.
+
+The [quality engineering report](docs/quality-engineering-report.md) records the dataset audit (263 exact unique inputs among 600 records), versioned evaluator, safety/result contracts and controlled prompt/edit experiments. None establishes independent held-out quality or release readiness.
 
 ## Project goals
 
@@ -15,22 +27,27 @@ Diorthosis aims to help people confidently review spelling, grammar, and sentenc
 - Read `.txt`, `.docx`, and `.doc`. Produce reviewable suggestions; preserve originals and document formatting wherever verifiably supported.
 - Use open-source components and AI models whose terms permit commercial use and redistribution.
 - Use only European-origin AI models, excluding models originating in China or Russia.
-- Aim for **90–100%** correct repairs on a defined test set, while separately measuring false positives and unwanted semantic changes.
+- Target at least **90%** correct repairs per language, with an aspirational final goal of **95%**, while requiring strict precision, correct-text preservation, and reviewed semantic safety.
 
 ## Proposed architecture
 
 A shared C# command-line application is the starting point to evaluate. A pluggable local inference engine and an independently tested document-processing layer keep model selection and file-format support replaceable.
 
-See [architecture](docs/architecture.md), [benchmarks](docs/benchmarks.md), and [roadmap](docs/roadmap.md).
+See [architecture](docs/architecture.md), [benchmarks](docs/benchmarks.md), [roadmap](docs/roadmap.md), and the [model quality stop/go decision](docs/decisions/0005-model-quality-stop-go.md).
 
-The preferred small model candidates are official Ministral 3 3B GGUF and EuroLLM 1.7B Instruct. Their weights are not included or downloaded by the application. EuroLLM GGUF conversion remains unverified.
+Local text correction uses pinned LLamaSharp 0.27.0 with an in-process CPU backend. Publish a self-contained CLI and provide an explicit local GGUF path:
 
-## Planned usage (not implemented yet)
+```sh
+dotnet publish src/Diorthosis.Cli -c Release -r osx-arm64
+./src/Diorthosis.Cli/bin/Release/net10.0/osx-arm64/publish/Diorthosis.Cli correct-text --language nl --model /path/to/model.gguf --text "Ik heb het document verstuurt." --json
+```
+
+The application never downloads models. Both candidates were executed locally as Q4_K_M on macOS ARM64; neither is quality-approved. The exact revisions, conversion recipe, original and pipeline-corrected smoke results, and limitations are in [model validation](docs/model-validation.md) and the [benchmark pipeline investigation](docs/benchmark-pipeline-investigation.md). Benchmark datasets and commands are in [benchmarks](docs/benchmarks.md).
+
+## Document workflows (not implemented yet)
 
 ```console
-# Illustrative CLI only; commands will be finalized after the prototype
-corrector document.docx --language nl --review
-corrector document.txt --language en --report corrections.html
+# Document ingestion and export are a later phase.
 ```
 
 ## Contributing

@@ -1,0 +1,30 @@
+# Phase 2 technical peer review
+
+Classification: **Verified defects fixed and retested in the bounded reviewed scope**. Three separate AI reviewer contexts reviewed evaluator, safety, and dataset/inference/pipeline code. This is not human approval. Baseline: `9801b57266fa96dd4b42efd731d33b84a177e160`. Detailed reproductions, expected/actual behavior, roots, locations, risks by severity and regression search terms: [machine-readable findings](../benchmarks/phase2/v1/technical-findings.json). Fixes alter current behavior only; frozen evidence is untouched.
+
+| ID | Severity | Verified defect / correction |
+|---|---|---|
+| A01 | High | `ModelCorrectionEngine.Diff/MergeWordFragments`: An NFC-equivalent prefix with different UTF-16 length shifts later candidate offsets. Evaluator threw on shifted candidate substring. Track actual candidate starts through canonical diff merges. |
+| A02 | High | `ReferenceEvaluator.Score`: One canonical edit can touch independent annotations, but was scored twice independently. 0/2 repairs and duplicated unresolved proposals. Union annotation/dependency components touched by a shared edit. |
+| A03 | High | `ReferenceEvaluator.Evaluate`: Unknown full-passage reference product was put in failure denominator. Complete-passage aggregate 0/1 despite local9/9. Exclude unknown judgments from success denominator; expose coverage. |
+| A04 | High | `ReferenceEvaluator proposal identity`: Position-based annotation IDs were reusable after annotation reorder. annotation:0 transferred a positive grammar review to a spelling miss. Bind IDs to source, language, sorted annotation contract, group and edits. |
+| A05 | Critical | `ModelCorrectionEngine.ApplyProtectedSpans`: Insertion endpoints were excluded from protected-span intersection. Prefix/suffix accepted at span edge. Protect both insertion boundaries. |
+| A06 | Critical | `ModelCorrectionEngine.ValidatePassageSafety`: Global punctuation/word inventories lose proposition association and multiplicity. Accepted changed speech acts / omitted statement. Compare ordered speech acts and detect full-statement deletion with lost token multiplicity. |
+| A07 | Critical | `ModelCorrectionEngine protected content`: Combining marks, single quotation marks, and dates without years were missing from protection. Candidates accepted. Include Unicode marks, unambiguous single quotes and yearless dates. |
+| A08 | Critical | `ModelCorrectionEngine semantic anchors`: Demonstrated no/time/agent/relation substitutions were not covered. Accepted unsafe suggestions. Add bounded negation, temporal/relational and ordered personal anchors. |
+| A09 | High | `ExperimentalCorrectionEngine structured candidate`: An already parsed literal candidate was passed through chat-wrapper extraction. Markup stripped while extracted field reported literal markup. Separate literal-candidate validation from wrapper extraction. |
+| A10 | Medium | `ModelCorrectionEngine.ParseEditData`: JsonElement.GetString throws InvalidOperationException on escaped lone surrogate. Implementation exception escaped contract. Normalize JSON/string extraction failures. |
+| A11 | Critical | `Benchmarks Program compare`: Compare output accepted an existing input file. Source report overwritten. Require distinct new outputs and exclusive CreateNew writes. |
+| A12 | High | `Benchmarks Program reparse`: Original report identity was copied without dataset/trace binding. Replayed metrics carried unrelated model/resource claims. Verify dataset/count and optional trace hash; retain original claims nested; hash emitted trace. |
+| A13 | High | `scripts/build-osx-arm64-cpu-backend.sh`: Pinned HEAD alone does not exclude dirty cached source. Modified cached source could be compiled at pinned HEAD. Fresh private source/build roots and origin/HEAD/clean verifier. |
+| A14 | Medium | `ModelCorrectionEngine.ProtectedNames`: English I was treated as a name only in interior position. Rejected by inconsistent name inventory. Recognize I consistently; retain personal-anchor protection. |
+
+All original reviewer reproductions were independently rerun against fixes. The evaluator reviewer reproduced four historical v1 arrays exactly and invoked 25 targeted tests through a temporary reflection harness because its sandbox denied VSTest sockets. Root verification uses the real test runner. Second review caught a stale replay trace hash, now recomputed from emitted bytes and tested through successive bound replays.
+
+The new semantic-anchor rules trade recall for conservatism: `na denken→nadenken`, `voor bereid→voorbereid`, `after noon→afternoon`, `hun→hen`, subject/object case repairs and clause reorder can be rejected. These are verified policy false rejections, retained rather than bypassing anchors without adjudicated safety evidence. Sentence-initial capitalization (`hello→Hello`) can also trip name protection. Review-required and rejected results remain observable. Ordinary final full stops and safe movement of the English pronoun I are covered.
+
+Heuristics cannot prove arbitrary meaning preservation, negation scope, argument structure, numerical relationships or legal equivalence. No claim of universal safety follows from blocking these reproductions. Independent passage judgments, larger semantic adversarial material and document round-trip tests remain required. No new model, dependency or production prompt was adopted.
+
+Validation: 169/169 model-free tests passed (one real-weight test separately skipped); four native-source fixtures passed; 165 frozen artifacts verified unchanged. Real-model and subsequent integration results are recorded in the final Phase 2 report. No merges, releases or protection changes.
+
+Follow-up inherited contract finding: `CorrectionRequest.ProtectedSpans` exposed a castable mutable array despite validating/copying input. The collection is now read-only; a caller cannot replace a validated span through `IList<ProtectedSpan>`. Regression: `ProtectedSpanImmutabilityTests.CallerCannotMutateValidatedProtectionPolicy`. No public shape or prompt change.

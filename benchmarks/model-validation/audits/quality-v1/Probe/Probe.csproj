@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+  </PropertyGroup>
+  <!-- Analysis only: compile the unchanged evaluator and parser, without any native runtime or packages. -->
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="../../../../../src/Diorthosis.Benchmarks/BenchmarkEvaluator.cs" Link="BenchmarkEvaluator.cs" />
+    <Compile Include="../../../../../src/Diorthosis.Benchmarks/BenchmarkModels.cs" Link="BenchmarkModels.cs" />
+    <Compile Include="../../../../../src/Diorthosis.Core/Corrections/CorrectionModels.cs" Link="CorrectionModels.cs" />
+    <Compile Include="../../../../../src/Diorthosis.Core/Corrections/CorrectionPrompt.cs" Link="CorrectionPrompt.cs" />
+    <Compile Include="../../../../../src/Diorthosis.Core/Corrections/ICorrectionEngine.cs" Link="ICorrectionEngine.cs" />
+    <Compile Include="../../../../../src/Diorthosis.Core/Corrections/ModelCorrectionEngine.cs" Link="ModelCorrectionEngine.cs" />
+    <Compile Include="../../../../../src/Diorthosis.Core/Inference/IModelInferenceAdapter.cs" Link="IModelInferenceAdapter.cs" />
+  </ItemGroup>
+</Project>

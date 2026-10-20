@@ -1,0 +1,121 @@
+{
+  "manifestVersion": 1,
+  "prepared": "2026-10-19",
+  "status": "Ministral 8B and 14B weights approved for local diagnostic evaluation; no model quality approved",
+  "runtime": {
+    "binding": "LLamaSharp 0.27.0",
+    "llamaCppCommit": "3f7c29d318e317b63f54c558bc69803963d7d88c",
+    "macOsArm64Backend": "GGML_METAL=OFF; GGML_NATIVE=OFF; GGML_CPU_ARM_ARCH=armv8.2-a; GGML_BLAS=ON; GGML_BLAS_VENDOR=Apple; GGML_OPENMP=OFF",
+    "contextTokens": 4096,
+    "sampling": {
+      "temperature": 0,
+      "maxOutputTokens": 512
+    },
+    "hardwareForMemoryEstimate": "Apple M4 Mac mini, 32 GB unified memory, macOS 26.6",
+    "memoryEstimatesAreMeasurements": false
+  },
+  "candidates": [
+    {
+      "id": "ministral-3-14b-instruct-2512-q4_k_m",
+      "source": {
+        "repository": "mistralai/Ministral-3-14B-Instruct-2512-GGUF",
+        "revision": "fb49df4a3cde2c774da8def12437118a66c4f5cf",
+        "url": "https://huggingface.co/mistralai/Ministral-3-14B-Instruct-2512-GGUF/resolve/fb49df4a3cde2c774da8def12437118a66c4f5cf/Ministral-3-14B-Instruct-2512-Q4_K_M.gguf"
+      },
+      "artifact": {
+        "file": "Ministral-3-14B-Instruct-2512-Q4_K_M.gguf",
+        "quantization": "Q4_K_M",
+        "reportedSize": "8.24 GB",
+        "sha256": "824e0f3373e69b84f2cae46fdcb9bd1ebc6ab3bfc7acc125d818b7b8178cc613",
+        "sha256Source": "Hugging Face Xet file metadata; verify locally on acquisition"
+      },
+      "license": {
+        "spdx": "Apache-2.0",
+        "redistribution": "commercial redistribution permitted subject to Apache-2.0 conditions and notices; review pinned repository contents before distribution"
+      },
+      "provenance": "Mistral AI, France; provider origin disclosed, no independent training-data audit",
+      "languages": ["nl", "en"],
+      "architecture": "mistral3",
+      "chatTemplate": "Mistral 3 template embedded in GGUF; application runtime must confirm template extraction on load",
+      "textOnly": "Use the text GGUF only; omit separate BF16-mmproj.gguf vision projector",
+      "estimatedPeakRamAt4096": "12-17 GB; estimate only",
+      "estimatedPersistentDisk": "8.24 GB",
+      "compatibilityRisks": [
+        "14B GGUF has not been loaded by Diorthosis or the pinned LLamaSharp runtime",
+        "Official file is part of a vision-capable family; do not acquire or package mmproj for text-only correction"
+      ]
+    },
+    {
+      "id": "eurollm-9b-instruct-2512-q4_k_m",
+      "source": {
+        "repository": "utter-project/EuroLLM-9B-Instruct-2512",
+        "revision": "def82454026b0353f12e48a0de081a9ed380d91e",
+        "checkpointFormat": "Transformers safetensors, four weight shards, tokenizer assets and config/chat template",
+        "reportedCheckpointSize": "18.3 GB",
+        "conversion": {
+          "tool": "ggml-org/llama.cpp convert_hf_to_gguf.py and llama-quantize",
+          "revision": "3f7c29d318e317b63f54c558bc69803963d7d88c",
+          "outputQuantization": "Q4_K_M",
+          "finalOutputSha256": null,
+          "finalOutputSha256Note": "Generated file checksum will be recorded after approved, reproducible conversion"
+        }
+      },
+      "referenceCommunityArtifact": {
+        "repository": "mradermacher/EuroLLM-9B-Instruct-2512-GGUF",
+        "revision": "5138603fccb9dc1f35c25cfd1a4981a78617e9ff",
+        "url": "https://huggingface.co/mradermacher/EuroLLM-9B-Instruct-2512-GGUF/resolve/5138603fccb9dc1f35c25cfd1a4981a78617e9ff/EuroLLM-9B-Instruct-2512.Q4_K_M.gguf",
+        "file": "EuroLLM-9B-Instruct-2512.Q4_K_M.gguf",
+        "reportedSize": "5.58 GB",
+        "sha256": "fe9b50d4ba67eb0131f1ceeaab2e56ea8fb6b2bbc37391d3219c791c3b140a28",
+        "sha256Source": "Hugging Face Xet file metadata; verify locally on acquisition",
+        "independentlyInspected": false
+      },
+      "license": {
+        "spdx": "Apache-2.0",
+        "redistribution": "official model card declares Apache-2.0; commercial redistribution permitted subject to license conditions and notices; review pinned source and converter notices before distribution"
+      },
+      "provenance": "EuroLLM consortium with EU funding; contributors include Lisbon, Edinburgh, Paris-Saclay, Amsterdam and Sorbonne; no independent training-data audit",
+      "languages": ["nl", "en"],
+      "architecture": "llama (official checkpoint metadata/model card); verify converter output GGUF metadata",
+      "chatTemplate": "ChatML-style Jinja template supplied by official checkpoint; verify faithfully embedded template after conversion",
+      "textOnly": "Text-generation checkpoint; no image encoder or vision projector required",
+      "estimatedPeakRamAt4096": "9-13 GB; estimate only",
+      "estimatedPersistentDisk": "about 5.58 GB final GGUF",
+      "estimatedTemporaryConversionDisk": "at least 45 GB for source checkpoint, F16 intermediate, quantized output and work files",
+      "compatibilityRisks": [
+        "9B checkpoint conversion and direct template compatibility with pinned llama.cpp have not been tested",
+        "Community GGUF checksum is published but the artifact has not been downloaded or validated; reproducible official-checkpoint conversion is preferred"
+      ]
+    },
+    {
+      "id": "ministral-3-8b-instruct-2512-q4_k_m",
+      "source": {
+        "repository": "mistralai/Ministral-3-8B-Instruct-2512-GGUF",
+        "revision": "0102285ad796bd99af90f58de616092e5630e970",
+        "url": "https://huggingface.co/mistralai/Ministral-3-8B-Instruct-2512-GGUF/resolve/0102285ad796bd99af90f58de616092e5630e970/Ministral-3-8B-Instruct-2512-Q4_K_M.gguf"
+      },
+      "artifact": {
+        "file": "Ministral-3-8B-Instruct-2512-Q4_K_M.gguf",
+        "quantization": "Q4_K_M",
+        "reportedSize": "5.2 GB",
+        "sha256": "33e7a72cf5e6e2cfc2f2847075acc013d68bba023e35310cef86b5cf8fdca761",
+        "sha256Source": "Hugging Face Xet file metadata; verify locally on acquisition"
+      },
+      "license": {
+        "spdx": "Apache-2.0",
+        "redistribution": "commercial redistribution permitted subject to Apache-2.0 conditions and notices; review pinned repository contents before distribution"
+      },
+      "provenance": "Mistral AI, France; provider origin disclosed, no independent training-data audit",
+      "languages": ["nl", "en"],
+      "architecture": "mistral3",
+      "chatTemplate": "Mistral 3 template embedded in GGUF; application runtime must confirm template extraction on load",
+      "textOnly": "Use the text GGUF only; omit separate BF16-mmproj.gguf vision projector",
+      "estimatedPeakRamAt4096": "8-11 GB; estimate only",
+      "estimatedPersistentDisk": "5.2 GB",
+      "compatibilityRisks": [
+        "8B GGUF has not been loaded by Diorthosis or the pinned LLamaSharp runtime",
+        "Official file is part of a vision-capable family; do not acquire or package mmproj for text-only correction"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+{"modelLoadMilliseconds":195.0107,"loadPolicy":"OS file-cache uncontrolled; not cold boot","meanLatencyMilliseconds":2122.90055,"maximumLatencyMilliseconds":3295.3813,"totalSampledTokens":192,"sampledPeakProcessWorkingSetBytes":2964357120,"memorySamplingMilliseconds":100,"memoryLimitations":"sampling may miss brief peaks; not system-wide pressure","completedCases":8}

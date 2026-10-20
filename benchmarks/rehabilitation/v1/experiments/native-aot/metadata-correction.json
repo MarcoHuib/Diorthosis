@@ -1,0 +1,9 @@
+{
+  "reason": "Original inline driver indexed the model argument when labeling binarySha256; result.json is preserved as recorded.",
+  "originalFieldMeaning": "modelSha256, not binarySha256",
+  "binarySha256": "4d2897d97f8380511b17b9f31da2e755d4274d29f68fa94073ff112aba34c85e",
+  "sourceCheckpoint": "bbcf355 plus NativeGrammarProbe.csproj IL3000 suppression matching the existing CLI",
+  "grammarVersion": "offset-gbnf-1.1.0",
+  "probeSourceSha256": "10f3e4898a7aadbe94ad48b7966e44a65907538e16239e99266c0a359491572f",
+  "inferenceResultUnchanged": true
+}

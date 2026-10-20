@@ -1,0 +1,6 @@
+{"caseId":"smoke-nl-spelling","edits":[{"start":11,"length":1,"originalText":" ","replacementText":""}]}
+{"caseId":"smoke-nl-grammar","edits":[{"start":18,"length":0,"originalText":"","replacementText":"t"}]}
+{"caseId":"smoke-en-grammar","edits":[{"start":6,"length":2,"originalText":"ve","replacementText":"s"}]}
+{"caseId":"smoke-technical-identifier","edits":[]}
+{"caseId":"smoke-clean","edits":[]}
+{"caseId":"smoke-restructure","edits":[{"start":26,"length":1,"originalText":".","replacementText":","},{"start":28,"length":1,"originalText":"T","replacementText":"t"}]}

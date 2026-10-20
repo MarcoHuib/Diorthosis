@@ -1,0 +1,8 @@
+{"id":"nl-01","language":"Dutch","inputText":"Ik heb met haar gespreekt.","errors":[{"start":16,"length":9,"originalText":"gespreekt","category":"Grammar","acceptedCorrections":[{"replacementText":"gesproken"}]}]}
+{"id":"nl-03","language":"Dutch","inputText":"Hij vindt dat de afspraak morgen plaatsvind.","errors":[{"start":33,"length":10,"originalText":"plaatsvind","category":"Grammar","acceptedCorrections":[{"replacementText":"plaatsvindt"}]}]}
+{"id":"nl-17","language":"Dutch","inputText":"Op 19 oktober 2026 start ApiGateway-v2 om 09:30 op node-04.","errors":[]}
+{"id":"nl-21","language":"Dutch","inputText":"Voor deze toepassing gebruiken we OAuth2 en PostgreSQL.","errors":[]}
+{"id":"en-03","language":"English","inputText":"The informations are included in the report.","errors":[{"start":4,"length":12,"originalText":"informations","category":"Grammar","acceptedCorrections":[{"replacementText":"information"}]},{"start":17,"length":3,"originalText":"are","category":"Grammar","acceptedCorrections":[{"replacementText":"is"}]}]}
+{"id":"en-04","language":"English","inputText":"Tomorrow I will the package send.","errors":[{"start":0,"length":33,"originalText":"Tomorrow I will the package send.","category":"SentenceStructure","acceptedCorrections":[{"replacementText":"I will send the package tomorrow."}]}]}
+{"id":"en-17","language":"English","inputText":"On October 19, 2026, ApiGateway-v2 starts at 09:30 on node-04.","errors":[]}
+{"id":"en-21","language":"English","inputText":"This service uses OAuth2 and PostgreSQL.","errors":[]}

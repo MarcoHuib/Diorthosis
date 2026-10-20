@@ -1,0 +1,48 @@
+{
+  "experimentId": "evaluator-v3-replay-1",
+  "kind": "deterministic saved-prediction replay; no new inference",
+  "repositoryCommit": "b9e1be4eda266a009524c6a65e72180fc58180eb",
+  "sourceState": "v3 working tree; implementation committed after artifact creation",
+  "datasetSha256": "2190c109f5f8e8ce1979637a1beea9fcce615959033aa76576b32ba537465fa2",
+  "evaluator": "reference-groups-3.0.0",
+  "prompt": "historical diorthosis-correction-v3",
+  "independentLinguisticReview": false,
+  "runs": [
+    {
+      "model": "ministral-3b",
+      "predictions": "benchmarks/model-validation/results/v4/ministral-3b-predictions.jsonl",
+      "predictionsSha256": "13797c75d4450614313326b5d35fae8ab10c82bebb4cf3eff44ca6508d2fbe59",
+      "sourceReport": "benchmarks/model-validation/results/v4/ministral-3b-report.json",
+      "sourceReportSha256": "23ce3eb2d721070beac517c175de9e1c59b0739d5dfdddb8f0f5b7c77d9a07a4",
+      "historicalV1Reproduced": true,
+      "resultSha256": "afc7e813d14fd8c7f54cd824b6a33b83c9e25f791ae2a221ced0ea9a25b8f182"
+    },
+    {
+      "model": "ministral-3-8b",
+      "predictions": "benchmarks/model-validation/results/v4/ministral-3-8b-predictions.jsonl",
+      "predictionsSha256": "f3e417aa9245e3e7bfd704ed33ed5737abf587831ef339202dc5481ceb530c32",
+      "sourceReport": "benchmarks/model-validation/results/v4/ministral-3-8b-report.json",
+      "sourceReportSha256": "37095130f0b93ecadc1ea0be74873a2db50e69a448a73a7bafeb2f18a89e7f63",
+      "historicalV1Reproduced": true,
+      "resultSha256": "0d8f4c311bdadb8f7d78e3be16781fa3c7223e82b99f1ef0bb0a3737aa4f3338"
+    },
+    {
+      "model": "ministral-3-14b",
+      "predictions": "benchmarks/model-validation/results/v4/ministral-3-14b-predictions.jsonl",
+      "predictionsSha256": "36be90144872bc10aff152e070dcb492a69c0a61e086c15c482ecd0b2d76985c",
+      "sourceReport": "benchmarks/model-validation/results/v4/ministral-3-14b-report.json",
+      "sourceReportSha256": "8cd07f4e7846ad985a46df9e7872d0c2b060ef568e1852e158f4b54f0b164631",
+      "historicalV1Reproduced": true,
+      "resultSha256": "275f892b2c7c753df14018109e895b4f58a88be774e363f329dbd1d7e03c2a6f"
+    },
+    {
+      "model": "eurollm-9b",
+      "predictions": "benchmarks/model-validation/results/eurollm-9b-v1/predictions.jsonl",
+      "predictionsSha256": "461a6bdb231deb653621d1faad2f1a0d506687a4d62c73b628d1eda041f1d3b3",
+      "sourceReport": "benchmarks/model-validation/results/eurollm-9b-v1/report.json",
+      "sourceReportSha256": "fe0383a6c4d7becafc93acdff750cbb6219294d4af98a89b14ed21d50dfdaa06",
+      "historicalV1Reproduced": true,
+      "resultSha256": "ac6e0002383f501820ef211162bb8f4713aef7fbcebd23535d3657445e969e70"
+    }
+  ]
+}

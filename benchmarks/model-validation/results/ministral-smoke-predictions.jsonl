@@ -1,0 +1,44 @@
+{"caseId":"nl-01","edits":[]}
+{"caseId":"nl-02","edits":[]}
+{"caseId":"nl-03","edits":[{"start":33,"length":10,"originalText":"plaatsvind","replacementText":"plaatsvindt"}]}
+{"caseId":"nl-04","edits":[]}
+{"caseId":"nl-05","edits":[]}
+{"caseId":"nl-06","edits":[]}
+{"caseId":"nl-07","edits":[]}
+{"caseId":"nl-08","edits":[{"start":15,"length":11,"originalText":"onmiddelijk","replacementText":"onmiddellijk"}]}
+{"caseId":"nl-09","edits":[{"start":15,"length":3,"originalText":"kom","replacementText":"komt"}]}
+{"caseId":"nl-10","edits":[{"start":19,"length":14,"originalText":"gecontrolleerd","replacementText":"gecontroleerd"}]}
+{"caseId":"nl-11","edits":[{"start":25,"length":3,"originalText":"als","replacementText":"dan"}]}
+{"caseId":"nl-12","edits":[]}
+{"caseId":"nl-13","edits":[{"start":35,"length":13,"originalText":"geinstalleerd","replacementText":"ge\u00EFnstalleerd"}]}
+{"caseId":"nl-14","edits":[{"start":35,"length":8,"originalText":"ontvangd","replacementText":"ontvangen"}]}
+{"caseId":"nl-15","edits":[]}
+{"caseId":"nl-16","edits":[]}
+{"caseId":"nl-17","edits":[{"start":19,"length":5,"originalText":"start","replacementText":"startt"}]}
+{"caseId":"nl-18","edits":[]}
+{"caseId":"nl-19","edits":[]}
+{"caseId":"nl-20","edits":[]}
+{"caseId":"nl-21","edits":[]}
+{"caseId":"nl-22","edits":[{"start":35,"length":0,"originalText":"","replacementText":"het "}]}
+{"caseId":"en-01","edits":[{"start":4,"length":9,"originalText":"have send","replacementText":"has sent"}]}
+{"caseId":"en-02","edits":[{"start":7,"length":7,"originalText":"recieve","replacementText":"receive"}]}
+{"caseId":"en-03","edits":[]}
+{"caseId":"en-04","edits":[{"start":16,"length":16,"originalText":"the package send","replacementText":"send the package"}]}
+{"caseId":"en-05","edits":[{"start":4,"length":5,"originalText":" lets","replacementText":", let\u2019s"}]}
+{"caseId":"en-06","edits":[{"start":9,"length":11,"originalText":"succesfully","replacementText":"successfully"}]}
+{"caseId":"en-07","edits":[{"start":5,"length":3,"originalText":"was","replacementText":"were"}]}
+{"caseId":"en-08","edits":[{"start":18,"length":4,"originalText":"hear","replacementText":"hearing"}]}
+{"caseId":"en-09","edits":[]}
+{"caseId":"en-10","edits":[{"start":3,"length":8,"originalText":"recieved","replacementText":"received"}]}
+{"caseId":"en-11","edits":[]}
+{"caseId":"en-12","edits":[{"start":15,"length":6,"originalText":"wether","replacementText":"whether"}]}
+{"caseId":"en-13","edits":[]}
+{"caseId":"en-14","edits":[{"start":15,"length":4,"originalText":"send","replacementText":"sent"}]}
+{"caseId":"en-15","edits":[{"start":11,"length":8,"originalText":"seperate","replacementText":"separate"}]}
+{"caseId":"en-16","edits":[]}
+{"caseId":"en-17","edits":[]}
+{"caseId":"en-18","edits":[]}
+{"caseId":"en-19","edits":[]}
+{"caseId":"en-20","edits":[]}
+{"caseId":"en-21","edits":[]}
+{"caseId":"en-22","edits":[]}

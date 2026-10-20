@@ -1,0 +1,507 @@
+{
+  "status": "Current behavior observations, not fixes or future acceptance criteria",
+  "observations": [
+    {
+      "id": "category-filter-and-cross-boundary",
+      "splitMetrics": [
+        {
+          "language": "Dutch",
+          "category": "all",
+          "annotatedErrors": 0,
+          "correctlyResolvedErrors": 0,
+          "suggestedEdits": 0,
+          "correctSuggestions": 0,
+          "falsePositiveSuggestions": 0,
+          "correctInputs": 0,
+          "correctInputsChanged": 0,
+          "recall": 0,
+          "precision": 0,
+          "falsePositiveRate": 0,
+          "correctTextPreservation": 0
+        },
+        {
+          "language": "Dutch",
+          "category": "Spelling",
+          "annotatedErrors": 0,
+          "correctlyResolvedErrors": 0,
+          "suggestedEdits": 0,
+          "correctSuggestions": 0,
+          "falsePositiveSuggestions": 0,
+          "correctInputs": 0,
+          "correctInputsChanged": 0,
+          "recall": 0,
+          "precision": 0,
+          "falsePositiveRate": 0,
+          "correctTextPreservation": 0
+        },
+        {
+          "language": "Dutch",
+          "category": "Grammar",
+          "annotatedErrors": 0,
+          "correctlyResolvedErrors": 0,
+          "suggestedEdits": 0,
+          "correctSuggestions": 0,
+          "falsePositiveSuggestions": 0,
+          "correctInputs": 0,
+          "correctInputsChanged": 0,
+          "recall": 0,
+          "precision": 0,
+          "falsePositiveRate": 0,
+          "correctTextPreservation": 0
+        },
+        {
+          "language": "Dutch",
+          "category": "SentenceStructure",
+          "annotatedErrors": 0,
+          "correctlyResolvedErrors": 0,
+          "suggestedEdits": 0,
+          "correctSuggestions": 0,
+          "falsePositiveSuggestions": 0,
+          "correctInputs": 0,
+          "correctInputsChanged": 0,
+          "recall": 0,
+          "precision": 0,
+          "falsePositiveRate": 0,
+          "correctTextPreservation": 0
+        },
+        {
+          "language": "Dutch",
+          "category": "Punctuation",
+          "annotatedErrors": 0,
+          "correctlyResolvedErrors": 0,
+          "suggestedEdits": 0,
+          "correctSuggestions": 0,
+          "falsePositiveSuggestions": 0,
+          "correctInputs": 0,
+          "correctInputsChanged": 0,
+          "recall": 0,
+          "precision": 0,
+          "falsePositiveRate": 0,
+          "correctTextPreservation": 0
+        },
+        {
+          "language": "Dutch",
+          "category": "CorrectText",
+          "annotatedErrors": 0,
+          "correctlyResolvedErrors": 0,
+          "suggestedEdits": 0,
+          "correctSuggestions": 0,
+          "falsePositiveSuggestions": 0,
+          "correctInputs": 0,
+          "correctInputsChanged": 0,
+          "recall": 0,
+          "precision": 0,
+          "falsePositiveRate": 0,
+          "correctTextPreservation": 0
+        },
+        {
+          "language": "English",
+          "category": "all",
+          "annotatedErrors": 2,
+          "correctlyResolvedErrors": 2,
+          "suggestedEdits": 2,
+          "correctSuggestions": 2,
+          "falsePositiveSuggestions": 0,
+          "correctInputs": 0,
+          "correctInputsChanged": 0,
+          "recall": 1,
+          "precision": 1,
+          "falsePositiveRate": 0,
+          "correctTextPreservation": 0
+        },
+        {
+          "language": "English",
+          "category": "Spelling",
+          "annotatedErrors": 1,
+          "correctlyResolvedErrors": 0,
+          "suggestedEdits": 2,
+          "correctSuggestions": 0,
+          "falsePositiveSuggestions": 2,
+          "correctInputs": 0,
+          "correctInputsChanged": 0,
+          "recall": 0,
+          "precision": 0,
+          "falsePositiveRate": 0,
+          "correctTextPreservation": 0
+        },
+        {
+          "language": "English",
+          "category": "Grammar",
+          "annotatedErrors": 1,
+          "correctlyResolvedErrors": 0,
+          "suggestedEdits": 2,
+          "correctSuggestions": 0,
+          "falsePositiveSuggestions": 2,
+          "correctInputs": 0,
+          "correctInputsChanged": 0,
+          "recall": 0,
+          "precision": 0,
+          "falsePositiveRate": 0,
+          "correctTextPreservation": 0
+        },
+        {
+          "language": "English",
+          "category": "SentenceStructure",
+          "annotatedErrors": 0,
+          "correctlyResolvedErrors": 0,
+          "suggestedEdits": 0,
+          "correctSuggestions": 0,
+          "falsePositiveSuggestions": 0,
+          "correctInputs": 0,
+          "correctInputsChanged": 0,
+          "recall": 0,
+          "precision": 0,
+          "falsePositiveRate": 0,
+          "correctTextPreservation": 0
+        },
+        {
+          "language": "English",
+          "category": "Punctuation",
+          "annotatedErrors": 0,
+          "correctlyResolvedErrors": 0,
+          "suggestedEdits": 0,
+          "correctSuggestions": 0,
+          "falsePositiveSuggestions": 0,
+          "correctInputs": 0,
+          "correctInputsChanged": 0,
+          "recall": 0,
+          "precision": 0,
+          "falsePositiveRate": 0,
+          "correctTextPreservation": 0
+        },
+        {
+          "language": "English",
+          "category": "CorrectText",
+          "annotatedErrors": 0,
+          "correctlyResolvedErrors": 0,
+          "suggestedEdits": 0,
+          "correctSuggestions": 0,
+          "falsePositiveSuggestions": 0,
+          "correctInputs": 0,
+          "correctInputsChanged": 0,
+          "recall": 0,
+          "precision": 0,
+          "falsePositiveRate": 0,
+          "correctTextPreservation": 0
+        }
+      ],
+      "combined": {
+        "language": "English",
+        "category": "all",
+        "annotatedErrors": 2,
+        "correctlyResolvedErrors": 0,
+        "suggestedEdits": 1,
+        "correctSuggestions": 0,
+        "falsePositiveSuggestions": 1,
+        "correctInputs": 0,
+        "correctInputsChanged": 0,
+        "recall": 0,
+        "precision": 0,
+        "falsePositiveRate": 0,
+        "correctTextPreservation": 0
+      }
+    },
+    {
+      "id": "same-repair-different-precision-weight",
+      "multi": {
+        "language": "English",
+        "category": "all",
+        "annotatedErrors": 1,
+        "correctlyResolvedErrors": 1,
+        "suggestedEdits": 3,
+        "correctSuggestions": 3,
+        "falsePositiveSuggestions": 0,
+        "correctInputs": 0,
+        "correctInputsChanged": 0,
+        "recall": 1,
+        "precision": 1,
+        "falsePositiveRate": 0,
+        "correctTextPreservation": 0
+      },
+      "single": {
+        "language": "English",
+        "category": "all",
+        "annotatedErrors": 1,
+        "correctlyResolvedErrors": 1,
+        "suggestedEdits": 1,
+        "correctSuggestions": 1,
+        "falsePositiveSuggestions": 0,
+        "correctInputs": 0,
+        "correctInputsChanged": 0,
+        "recall": 1,
+        "precision": 1,
+        "falsePositiveRate": 0,
+        "correctTextPreservation": 0
+      },
+      "edits": [
+        {
+          "start": 8,
+          "length": 0,
+          "originalText": "",
+          "replacementText": ","
+        },
+        {
+          "start": 16,
+          "length": 0,
+          "originalText": "",
+          "replacementText": "send "
+        },
+        {
+          "start": 27,
+          "length": 5,
+          "originalText": " send",
+          "replacementText": ""
+        }
+      ]
+    },
+    {
+      "id": "repair-plus-style-rewrite",
+      "metrics": {
+        "language": "English",
+        "category": "all",
+        "annotatedErrors": 1,
+        "correctlyResolvedErrors": 0,
+        "suggestedEdits": 2,
+        "correctSuggestions": 0,
+        "falsePositiveSuggestions": 2,
+        "correctInputs": 0,
+        "correctInputsChanged": 0,
+        "recall": 0,
+        "precision": 0,
+        "falsePositiveRate": 0,
+        "correctTextPreservation": 0
+      },
+      "prediction": {
+        "caseId": "lexical-veto",
+        "edits": [
+          {
+            "start": 0,
+            "length": 6,
+            "originalText": "Please",
+            "replacementText": "Kindly"
+          },
+          {
+            "start": 7,
+            "length": 7,
+            "originalText": "recieve",
+            "replacementText": "receive"
+          }
+        ]
+      }
+    },
+    {
+      "id": "punctuation-changes-speech-act",
+      "metrics": {
+        "language": "English",
+        "category": "all",
+        "annotatedErrors": 1,
+        "correctlyResolvedErrors": 1,
+        "suggestedEdits": 2,
+        "correctSuggestions": 1,
+        "falsePositiveSuggestions": 1,
+        "correctInputs": 0,
+        "correctInputsChanged": 0,
+        "recall": 1,
+        "precision": 0.5,
+        "falsePositiveRate": 0,
+        "correctTextPreservation": 0
+      },
+      "prediction": {
+        "caseId": "punctuation-meaning",
+        "edits": [
+          {
+            "start": 9,
+            "length": 7,
+            "originalText": "recieve",
+            "replacementText": "receive"
+          },
+          {
+            "start": 19,
+            "length": 1,
+            "originalText": ".",
+            "replacementText": "?"
+          }
+        ]
+      }
+    },
+    {
+      "id": "canonical-unicode-exact-mismatch",
+      "metrics": {
+        "language": "Dutch",
+        "category": "all",
+        "annotatedErrors": 1,
+        "correctlyResolvedErrors": 0,
+        "suggestedEdits": 1,
+        "correctSuggestions": 0,
+        "falsePositiveSuggestions": 1,
+        "correctInputs": 0,
+        "correctInputsChanged": 0,
+        "recall": 0,
+        "precision": 0,
+        "falsePositiveRate": 0,
+        "correctTextPreservation": 0
+      }
+    },
+    {
+      "id": "identifier-hyphen",
+      "input": "The service starts on node-04.",
+      "candidate": "The service starts on node 04.",
+      "accepted": "The service starts on node 04.",
+      "analysis": {
+        "rawOutput": "The service starts on node 04.",
+        "extractedCorrection": "The service starts on node 04.",
+        "edits": [
+          {
+            "start": 26,
+            "length": 1,
+            "originalText": "-",
+            "replacementText": " "
+          }
+        ],
+        "rawCandidateEdits": [
+          {
+            "start": 26,
+            "length": 1,
+            "originalText": "-",
+            "replacementText": " "
+          }
+        ],
+        "rejectionStage": null,
+        "rejectionReason": null
+      }
+    },
+    {
+      "id": "identifier-space-noop",
+      "input": "We use OAuth2 here.",
+      "candidate": "We use OAuth 2 here.",
+      "accepted": "We use OAuth2 here.",
+      "analysis": {
+        "rawOutput": "We use OAuth 2 here.",
+        "extractedCorrection": "We use OAuth 2 here.",
+        "edits": [],
+        "rawCandidateEdits": [],
+        "rejectionStage": null,
+        "rejectionReason": null
+      }
+    },
+    {
+      "id": "negation",
+      "input": "She must not send it.",
+      "candidate": "She must send it.",
+      "accepted": "She must send it.",
+      "analysis": {
+        "rawOutput": "She must send it.",
+        "extractedCorrection": "She must send it.",
+        "edits": [
+          {
+            "start": 9,
+            "length": 4,
+            "originalText": "not ",
+            "replacementText": ""
+          }
+        ],
+        "rawCandidateEdits": [
+          {
+            "start": 9,
+            "length": 4,
+            "originalText": "not ",
+            "replacementText": ""
+          }
+        ],
+        "rejectionStage": null,
+        "rejectionReason": null
+      }
+    },
+    {
+      "id": "month-name",
+      "input": "Het start op 3 mei 2025.",
+      "candidate": "Het start op 3 juni 2025.",
+      "accepted": "Het start op 3 juni 2025.",
+      "analysis": {
+        "rawOutput": "Het start op 3 juni 2025.",
+        "extractedCorrection": "Het start op 3 juni 2025.",
+        "edits": [
+          {
+            "start": 15,
+            "length": 2,
+            "originalText": "me",
+            "replacementText": "jun"
+          }
+        ],
+        "rawCandidateEdits": [
+          {
+            "start": 15,
+            "length": 2,
+            "originalText": "me",
+            "replacementText": "jun"
+          }
+        ],
+        "rejectionStage": null,
+        "rejectionReason": null
+      }
+    },
+    {
+      "id": "name-control",
+      "input": "Alice reviewed the file.",
+      "candidate": "Alicia reviewed the file.",
+      "accepted": "Alice reviewed the file.",
+      "analysis": {
+        "rawOutput": "Alicia reviewed the file.",
+        "extractedCorrection": "Alicia reviewed the file.",
+        "edits": [],
+        "rawCandidateEdits": [
+          {
+            "start": 4,
+            "length": 1,
+            "originalText": "e",
+            "replacementText": "ia"
+          }
+        ],
+        "rejectionStage": "validation",
+        "rejectionReason": "Correction output changes a capitalized name or term."
+      }
+    },
+    {
+      "id": "number-control",
+      "input": "The task starts at 09:30.",
+      "candidate": "The task starts at 10:30.",
+      "accepted": "The task starts at 09:30.",
+      "analysis": {
+        "rawOutput": "The task starts at 10:30.",
+        "extractedCorrection": "The task starts at 10:30.",
+        "edits": [],
+        "rawCandidateEdits": [
+          {
+            "start": 19,
+            "length": 2,
+            "originalText": "09",
+            "replacementText": "10"
+          }
+        ],
+        "rejectionStage": "validation",
+        "rejectionReason": "Correction output changes a number, URL, or protected identifier."
+      }
+    },
+    {
+      "id": "url-control",
+      "input": "See https://example.test/a.",
+      "candidate": "See https://example.test/b.",
+      "accepted": "See https://example.test/a.",
+      "analysis": {
+        "rawOutput": "See https://example.test/b.",
+        "extractedCorrection": "See https://example.test/b.",
+        "edits": [],
+        "rawCandidateEdits": [
+          {
+            "start": 25,
+            "length": 1,
+            "originalText": "a",
+            "replacementText": "b"
+          }
+        ],
+        "rejectionStage": "validation",
+        "rejectionReason": "Correction output changes a number, URL, or protected identifier."
+      }
+    }
+  ]
+}

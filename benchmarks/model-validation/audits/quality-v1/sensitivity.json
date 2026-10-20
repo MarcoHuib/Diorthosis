@@ -1,0 +1,1588 @@
+{
+  "status": "PROVISIONAL annotation-only sensitivity analysis; unchanged evaluator; saved v4 predictions; no inference",
+  "baseCommit": "bd28ef5e9d584e849edb39d8566194a231d68f58",
+  "sourceDatasetSha256": "2190c109f5f8e8ce1979637a1beea9fcce615959033aa76576b32ba537465fa2",
+  "proposedDatasetSha256": "5b1810b0dfff1156facba81c4a9d0e72487e9652c11c637badd9bca7488c9e55",
+  "evaluatorSha256": "8f11bea6e18ef296782d1b800c45105a45af479a26af001584c5a3d09c1f3bd6",
+  "changedAnnotationCases": [
+    "nl-12",
+    "en-04",
+    "en-05",
+    "en-09"
+  ],
+  "scores": [
+    {
+      "model": "ministral-3b",
+      "modelRevision": "be4e90342e4468f37d4bea40ec143997f9256475",
+      "modelSha256": "9ed150d4367e68df0ac8e1540f6ddc65b42d0ee26378329d1ecbca60f93fc5f8",
+      "quantization": "Q4_K_M",
+      "replayIdenticalRows": 44,
+      "rejectedOutputs": 2,
+      "generationTerminations": {
+        "EndOfGeneration": 44
+      },
+      "accepted": {
+        "original": {
+          "byLanguage": [
+            {
+              "language": "Dutch",
+              "category": "all",
+              "annotatedErrors": 16,
+              "correctlyResolvedErrors": 11,
+              "suggestedEdits": 13,
+              "correctSuggestions": 11,
+              "falsePositiveSuggestions": 2,
+              "correctInputs": 7,
+              "correctInputsChanged": 2,
+              "recall": 0.6875,
+              "precision": 0.8461538461538461,
+              "falsePositiveRate": 0.2857142857142857,
+              "correctTextPreservation": 0.7142857142857143
+            },
+            {
+              "language": "English",
+              "category": "all",
+              "annotatedErrors": 16,
+              "correctlyResolvedErrors": 11,
+              "suggestedEdits": 20,
+              "correctSuggestions": 12,
+              "falsePositiveSuggestions": 8,
+              "correctInputs": 7,
+              "correctInputsChanged": 0,
+              "recall": 0.6875,
+              "precision": 0.6,
+              "falsePositiveRate": 0,
+              "correctTextPreservation": 1
+            }
+          ],
+          "pooled": {
+            "annotatedErrors": 32,
+            "correctlyResolvedErrors": 22,
+            "suggestedEdits": 33,
+            "correctSuggestions": 23,
+            "falsePositiveSuggestions": 10,
+            "correctInputs": 14,
+            "correctInputsChanged": 2,
+            "recall": 0.6875,
+            "precision": 0.696969696969697,
+            "falsePositiveRate": 0.14285714285714285,
+            "correctTextPreservation": 0.8571428571428572
+          }
+        },
+        "proposed": {
+          "byLanguage": [
+            {
+              "language": "Dutch",
+              "category": "all",
+              "annotatedErrors": 16,
+              "correctlyResolvedErrors": 11,
+              "suggestedEdits": 13,
+              "correctSuggestions": 11,
+              "falsePositiveSuggestions": 2,
+              "correctInputs": 7,
+              "correctInputsChanged": 2,
+              "recall": 0.6875,
+              "precision": 0.8461538461538461,
+              "falsePositiveRate": 0.2857142857142857,
+              "correctTextPreservation": 0.7142857142857143
+            },
+            {
+              "language": "English",
+              "category": "all",
+              "annotatedErrors": 16,
+              "correctlyResolvedErrors": 14,
+              "suggestedEdits": 20,
+              "correctSuggestions": 18,
+              "falsePositiveSuggestions": 2,
+              "correctInputs": 7,
+              "correctInputsChanged": 0,
+              "recall": 0.875,
+              "precision": 0.9,
+              "falsePositiveRate": 0,
+              "correctTextPreservation": 1
+            }
+          ],
+          "pooled": {
+            "annotatedErrors": 32,
+            "correctlyResolvedErrors": 25,
+            "suggestedEdits": 33,
+            "correctSuggestions": 29,
+            "falsePositiveSuggestions": 4,
+            "correctInputs": 14,
+            "correctInputsChanged": 2,
+            "recall": 0.78125,
+            "precision": 0.8787878787878788,
+            "falsePositiveRate": 0.14285714285714285,
+            "correctTextPreservation": 0.8571428571428572
+          }
+        }
+      },
+      "rawCandidateEdits": {
+        "original": {
+          "byLanguage": [
+            {
+              "language": "Dutch",
+              "category": "all",
+              "annotatedErrors": 16,
+              "correctlyResolvedErrors": 11,
+              "suggestedEdits": 16,
+              "correctSuggestions": 11,
+              "falsePositiveSuggestions": 5,
+              "correctInputs": 7,
+              "correctInputsChanged": 3,
+              "recall": 0.6875,
+              "precision": 0.6875,
+              "falsePositiveRate": 0.42857142857142855,
+              "correctTextPreservation": 0.5714285714285714
+            },
+            {
+              "language": "English",
+              "category": "all",
+              "annotatedErrors": 16,
+              "correctlyResolvedErrors": 11,
+              "suggestedEdits": 23,
+              "correctSuggestions": 12,
+              "falsePositiveSuggestions": 11,
+              "correctInputs": 7,
+              "correctInputsChanged": 1,
+              "recall": 0.6875,
+              "precision": 0.5217391304347826,
+              "falsePositiveRate": 0.14285714285714285,
+              "correctTextPreservation": 0.8571428571428571
+            }
+          ],
+          "pooled": {
+            "annotatedErrors": 32,
+            "correctlyResolvedErrors": 22,
+            "suggestedEdits": 39,
+            "correctSuggestions": 23,
+            "falsePositiveSuggestions": 16,
+            "correctInputs": 14,
+            "correctInputsChanged": 4,
+            "recall": 0.6875,
+            "precision": 0.5897435897435898,
+            "falsePositiveRate": 0.2857142857142857,
+            "correctTextPreservation": 0.7142857142857143
+          }
+        },
+        "proposed": {
+          "byLanguage": [
+            {
+              "language": "Dutch",
+              "category": "all",
+              "annotatedErrors": 16,
+              "correctlyResolvedErrors": 11,
+              "suggestedEdits": 16,
+              "correctSuggestions": 11,
+              "falsePositiveSuggestions": 5,
+              "correctInputs": 7,
+              "correctInputsChanged": 3,
+              "recall": 0.6875,
+              "precision": 0.6875,
+              "falsePositiveRate": 0.42857142857142855,
+              "correctTextPreservation": 0.5714285714285714
+            },
+            {
+              "language": "English",
+              "category": "all",
+              "annotatedErrors": 16,
+              "correctlyResolvedErrors": 14,
+              "suggestedEdits": 23,
+              "correctSuggestions": 18,
+              "falsePositiveSuggestions": 5,
+              "correctInputs": 7,
+              "correctInputsChanged": 1,
+              "recall": 0.875,
+              "precision": 0.782608695652174,
+              "falsePositiveRate": 0.14285714285714285,
+              "correctTextPreservation": 0.8571428571428571
+            }
+          ],
+          "pooled": {
+            "annotatedErrors": 32,
+            "correctlyResolvedErrors": 25,
+            "suggestedEdits": 39,
+            "correctSuggestions": 29,
+            "falsePositiveSuggestions": 10,
+            "correctInputs": 14,
+            "correctInputsChanged": 4,
+            "recall": 0.78125,
+            "precision": 0.7435897435897436,
+            "falsePositiveRate": 0.2857142857142857,
+            "correctTextPreservation": 0.7142857142857143
+          }
+        }
+      }
+    },
+    {
+      "model": "ministral-3-8b",
+      "modelRevision": "0102285ad796bd99af90f58de616092e5630e970",
+      "modelSha256": "33e7a72cf5e6e2cfc2f2847075acc013d68bba023e35310cef86b5cf8fdca761",
+      "quantization": "Q4_K_M",
+      "replayIdenticalRows": 44,
+      "rejectedOutputs": 4,
+      "generationTerminations": {
+        "EndOfGeneration": 44
+      },
+      "accepted": {
+        "original": {
+          "byLanguage": [
+            {
+              "language": "Dutch",
+              "category": "all",
+              "annotatedErrors": 16,
+              "correctlyResolvedErrors": 12,
+              "suggestedEdits": 21,
+              "correctSuggestions": 13,
+              "falsePositiveSuggestions": 8,
+              "correctInputs": 7,
+              "correctInputsChanged": 2,
+              "recall": 0.75,
+              "precision": 0.6190476190476191,
+              "falsePositiveRate": 0.2857142857142857,
+              "correctTextPreservation": 0.7142857142857143
+            },
+            {
+              "language": "English",
+              "category": "all",
+              "annotatedErrors": 16,
+              "correctlyResolvedErrors": 11,
+              "suggestedEdits": 22,
+              "correctSuggestions": 12,
+              "falsePositiveSuggestions": 10,
+              "correctInputs": 7,
+              "correctInputsChanged": 1,
+              "recall": 0.6875,
+              "precision": 0.5454545454545454,
+              "falsePositiveRate": 0.14285714285714285,
+              "correctTextPreservation": 0.8571428571428571
+            }
+          ],
+          "pooled": {
+            "annotatedErrors": 32,
+            "correctlyResolvedErrors": 23,
+            "suggestedEdits": 43,
+            "correctSuggestions": 25,
+            "falsePositiveSuggestions": 18,
+            "correctInputs": 14,
+            "correctInputsChanged": 3,
+            "recall": 0.71875,
+            "precision": 0.5813953488372093,
+            "falsePositiveRate": 0.21428571428571427,
+            "correctTextPreservation": 0.7857142857142857
+          }
+        },
+        "proposed": {
+          "byLanguage": [
+            {
+              "language": "Dutch",
+              "category": "all",
+              "annotatedErrors": 16,
+              "correctlyResolvedErrors": 13,
+              "suggestedEdits": 21,
+              "correctSuggestions": 17,
+              "falsePositiveSuggestions": 4,
+              "correctInputs": 7,
+              "correctInputsChanged": 2,
+              "recall": 0.8125,
+              "precision": 0.8095238095238095,
+              "falsePositiveRate": 0.2857142857142857,
+              "correctTextPreservation": 0.7142857142857143
+            },
+            {
+              "language": "English",
+              "category": "all",
+              "annotatedErrors": 16,
+              "correctlyResolvedErrors": 14,
+              "suggestedEdits": 22,
+              "correctSuggestions": 19,
+              "falsePositiveSuggestions": 3,
+              "correctInputs": 7,
+              "correctInputsChanged": 1,
+              "recall": 0.875,
+              "precision": 0.8636363636363636,
+              "falsePositiveRate": 0.14285714285714285,
+              "correctTextPreservation": 0.8571428571428571
+            }
+          ],
+          "pooled": {
+            "annotatedErrors": 32,
+            "correctlyResolvedErrors": 27,
+            "suggestedEdits": 43,
+            "correctSuggestions": 36,
+            "falsePositiveSuggestions": 7,
+            "correctInputs": 14,
+            "correctInputsChanged": 3,
+            "recall": 0.84375,
+            "precision": 0.8372093023255814,
+            "falsePositiveRate": 0.21428571428571427,
+            "correctTextPreservation": 0.7857142857142857
+          }
+        }
+      },
+      "rawCandidateEdits": {
+        "original": {
+          "byLanguage": [
+            {
+              "language": "Dutch",
+              "category": "all",
+              "annotatedErrors": 16,
+              "correctlyResolvedErrors": 12,
+              "suggestedEdits": 25,
+              "correctSuggestions": 13,
+              "falsePositiveSuggestions": 12,
+              "correctInputs": 7,
+              "correctInputsChanged": 4,
+              "recall": 0.75,
+              "precision": 0.52,
+              "falsePositiveRate": 0.5714285714285714,
+              "correctTextPreservation": 0.42857142857142855
+            },
+            {
+              "language": "English",
+              "category": "all",
+              "annotatedErrors": 16,
+              "correctlyResolvedErrors": 11,
+              "suggestedEdits": 26,
+              "correctSuggestions": 12,
+              "falsePositiveSuggestions": 14,
+              "correctInputs": 7,
+              "correctInputsChanged": 3,
+              "recall": 0.6875,
+              "precision": 0.46153846153846156,
+              "falsePositiveRate": 0.42857142857142855,
+              "correctTextPreservation": 0.5714285714285714
+            }
+          ],
+          "pooled": {
+            "annotatedErrors": 32,
+            "correctlyResolvedErrors": 23,
+            "suggestedEdits": 51,
+            "correctSuggestions": 25,
+            "falsePositiveSuggestions": 26,
+            "correctInputs": 14,
+            "correctInputsChanged": 7,
+            "recall": 0.71875,
+            "precision": 0.49019607843137253,
+            "falsePositiveRate": 0.5,
+            "correctTextPreservation": 0.5
+          }
+        },
+        "proposed": {
+          "byLanguage": [
+            {
+              "language": "Dutch",
+              "category": "all",
+              "annotatedErrors": 16,
+              "correctlyResolvedErrors": 13,
+              "suggestedEdits": 25,
+              "correctSuggestions": 17,
+              "falsePositiveSuggestions": 8,
+              "correctInputs": 7,
+              "correctInputsChanged": 4,
+              "recall": 0.8125,
+              "precision": 0.68,
+              "falsePositiveRate": 0.5714285714285714,
+              "correctTextPreservation": 0.42857142857142855
+            },
+            {
+              "language": "English",
+              "category": "all",
+              "annotatedErrors": 16,
+              "correctlyResolvedErrors": 14,
+              "suggestedEdits": 26,
+              "correctSuggestions": 19,
+              "falsePositiveSuggestions": 7,
+              "correctInputs": 7,
+              "correctInputsChanged": 3,
+              "recall": 0.875,
+              "precision": 0.7307692307692307,
+              "falsePositiveRate": 0.42857142857142855,
+              "correctTextPreservation": 0.5714285714285714
+            }
+          ],
+          "pooled": {
+            "annotatedErrors": 32,
+            "correctlyResolvedErrors": 27,
+            "suggestedEdits": 51,
+            "correctSuggestions": 36,
+            "falsePositiveSuggestions": 15,
+            "correctInputs": 14,
+            "correctInputsChanged": 7,
+            "recall": 0.84375,
+            "precision": 0.7058823529411765,
+            "falsePositiveRate": 0.5,
+            "correctTextPreservation": 0.5
+          }
+        }
+      }
+    },
+    {
+      "model": "ministral-3-14b",
+      "modelRevision": "fb49df4a3cde2c774da8def12437118a66c4f5cf",
+      "modelSha256": "824e0f3373e69b84f2cae46fdcb9bd1ebc6ab3bfc7acc125d818b7b8178cc613",
+      "quantization": "Q4_K_M",
+      "replayIdenticalRows": 44,
+      "rejectedOutputs": 1,
+      "generationTerminations": {
+        "EndOfGeneration": 44
+      },
+      "accepted": {
+        "original": {
+          "byLanguage": [
+            {
+              "language": "Dutch",
+              "category": "all",
+              "annotatedErrors": 16,
+              "correctlyResolvedErrors": 14,
+              "suggestedEdits": 20,
+              "correctSuggestions": 15,
+              "falsePositiveSuggestions": 5,
+              "correctInputs": 7,
+              "correctInputsChanged": 1,
+              "recall": 0.875,
+              "precision": 0.75,
+              "falsePositiveRate": 0.14285714285714285,
+              "correctTextPreservation": 0.8571428571428571
+            },
+            {
+              "language": "English",
+              "category": "all",
+              "annotatedErrors": 16,
+              "correctlyResolvedErrors": 12,
+              "suggestedEdits": 22,
+              "correctSuggestions": 13,
+              "falsePositiveSuggestions": 9,
+              "correctInputs": 7,
+              "correctInputsChanged": 0,
+              "recall": 0.75,
+              "precision": 0.5909090909090909,
+              "falsePositiveRate": 0,
+              "correctTextPreservation": 1
+            }
+          ],
+          "pooled": {
+            "annotatedErrors": 32,
+            "correctlyResolvedErrors": 26,
+            "suggestedEdits": 42,
+            "correctSuggestions": 28,
+            "falsePositiveSuggestions": 14,
+            "correctInputs": 14,
+            "correctInputsChanged": 1,
+            "recall": 0.8125,
+            "precision": 0.6666666666666666,
+            "falsePositiveRate": 0.07142857142857142,
+            "correctTextPreservation": 0.9285714285714286
+          }
+        },
+        "proposed": {
+          "byLanguage": [
+            {
+              "language": "Dutch",
+              "category": "all",
+              "annotatedErrors": 16,
+              "correctlyResolvedErrors": 15,
+              "suggestedEdits": 20,
+              "correctSuggestions": 19,
+              "falsePositiveSuggestions": 1,
+              "correctInputs": 7,
+              "correctInputsChanged": 1,
+              "recall": 0.9375,
+              "precision": 0.95,
+              "falsePositiveRate": 0.14285714285714285,
+              "correctTextPreservation": 0.8571428571428571
+            },
+            {
+              "language": "English",
+              "category": "all",
+              "annotatedErrors": 16,
+              "correctlyResolvedErrors": 15,
+              "suggestedEdits": 22,
+              "correctSuggestions": 20,
+              "falsePositiveSuggestions": 2,
+              "correctInputs": 7,
+              "correctInputsChanged": 0,
+              "recall": 0.9375,
+              "precision": 0.9090909090909091,
+              "falsePositiveRate": 0,
+              "correctTextPreservation": 1
+            }
+          ],
+          "pooled": {
+            "annotatedErrors": 32,
+            "correctlyResolvedErrors": 30,
+            "suggestedEdits": 42,
+            "correctSuggestions": 39,
+            "falsePositiveSuggestions": 3,
+            "correctInputs": 14,
+            "correctInputsChanged": 1,
+            "recall": 0.9375,
+            "precision": 0.9285714285714286,
+            "falsePositiveRate": 0.07142857142857142,
+            "correctTextPreservation": 0.9285714285714286
+          }
+        }
+      },
+      "rawCandidateEdits": {
+        "original": {
+          "byLanguage": [
+            {
+              "language": "Dutch",
+              "category": "all",
+              "annotatedErrors": 16,
+              "correctlyResolvedErrors": 14,
+              "suggestedEdits": 23,
+              "correctSuggestions": 15,
+              "falsePositiveSuggestions": 8,
+              "correctInputs": 7,
+              "correctInputsChanged": 2,
+              "recall": 0.875,
+              "precision": 0.6521739130434783,
+              "falsePositiveRate": 0.2857142857142857,
+              "correctTextPreservation": 0.7142857142857143
+            },
+            {
+              "language": "English",
+              "category": "all",
+              "annotatedErrors": 16,
+              "correctlyResolvedErrors": 12,
+              "suggestedEdits": 22,
+              "correctSuggestions": 13,
+              "falsePositiveSuggestions": 9,
+              "correctInputs": 7,
+              "correctInputsChanged": 0,
+              "recall": 0.75,
+              "precision": 0.5909090909090909,
+              "falsePositiveRate": 0,
+              "correctTextPreservation": 1
+            }
+          ],
+          "pooled": {
+            "annotatedErrors": 32,
+            "correctlyResolvedErrors": 26,
+            "suggestedEdits": 45,
+            "correctSuggestions": 28,
+            "falsePositiveSuggestions": 17,
+            "correctInputs": 14,
+            "correctInputsChanged": 2,
+            "recall": 0.8125,
+            "precision": 0.6222222222222222,
+            "falsePositiveRate": 0.14285714285714285,
+            "correctTextPreservation": 0.8571428571428572
+          }
+        },
+        "proposed": {
+          "byLanguage": [
+            {
+              "language": "Dutch",
+              "category": "all",
+              "annotatedErrors": 16,
+              "correctlyResolvedErrors": 15,
+              "suggestedEdits": 23,
+              "correctSuggestions": 19,
+              "falsePositiveSuggestions": 4,
+              "correctInputs": 7,
+              "correctInputsChanged": 2,
+              "recall": 0.9375,
+              "precision": 0.8260869565217391,
+              "falsePositiveRate": 0.2857142857142857,
+              "correctTextPreservation": 0.7142857142857143
+            },
+            {
+              "language": "English",
+              "category": "all",
+              "annotatedErrors": 16,
+              "correctlyResolvedErrors": 15,
+              "suggestedEdits": 22,
+              "correctSuggestions": 20,
+              "falsePositiveSuggestions": 2,
+              "correctInputs": 7,
+              "correctInputsChanged": 0,
+              "recall": 0.9375,
+              "precision": 0.9090909090909091,
+              "falsePositiveRate": 0,
+              "correctTextPreservation": 1
+            }
+          ],
+          "pooled": {
+            "annotatedErrors": 32,
+            "correctlyResolvedErrors": 30,
+            "suggestedEdits": 45,
+            "correctSuggestions": 39,
+            "falsePositiveSuggestions": 6,
+            "correctInputs": 14,
+            "correctInputsChanged": 2,
+            "recall": 0.9375,
+            "precision": 0.8666666666666667,
+            "falsePositiveRate": 0.14285714285714285,
+            "correctTextPreservation": 0.8571428571428572
+          }
+        }
+      }
+    }
+  ],
+  "caseDeltas": [
+    {
+      "model": "ministral-3b",
+      "layer": "accepted",
+      "caseId": "en-04",
+      "output": "Tomorrow I will send the package.",
+      "original": {
+        "language": "English",
+        "category": "all",
+        "annotatedErrors": 1,
+        "correctlyResolvedErrors": 0,
+        "suggestedEdits": 2,
+        "correctSuggestions": 0,
+        "falsePositiveSuggestions": 2,
+        "correctInputs": 0,
+        "correctInputsChanged": 0,
+        "recall": 0,
+        "precision": 0,
+        "falsePositiveRate": 0,
+        "correctTextPreservation": 0
+      },
+      "proposed": {
+        "language": "English",
+        "category": "all",
+        "annotatedErrors": 1,
+        "correctlyResolvedErrors": 1,
+        "suggestedEdits": 2,
+        "correctSuggestions": 2,
+        "falsePositiveSuggestions": 0,
+        "correctInputs": 0,
+        "correctInputsChanged": 0,
+        "recall": 1,
+        "precision": 1,
+        "falsePositiveRate": 0,
+        "correctTextPreservation": 0
+      },
+      "reason": "English verb-object order requires send the package. Existing I will send the package tomorrow is valid, but shifts the time adjunct. Keeping Tomorrow initially is equally valid and closer to the input. The short introductory adjunct allows a comma or none."
+    },
+    {
+      "model": "ministral-3b",
+      "layer": "accepted",
+      "caseId": "en-05",
+      "output": "Wait, let’s review the result.",
+      "original": {
+        "language": "English",
+        "category": "all",
+        "annotatedErrors": 1,
+        "correctlyResolvedErrors": 0,
+        "suggestedEdits": 2,
+        "correctSuggestions": 0,
+        "falsePositiveSuggestions": 2,
+        "correctInputs": 0,
+        "correctInputsChanged": 0,
+        "recall": 0,
+        "precision": 0,
+        "falsePositiveRate": 0,
+        "correctTextPreservation": 0
+      },
+      "proposed": {
+        "language": "English",
+        "category": "all",
+        "annotatedErrors": 1,
+        "correctlyResolvedErrors": 1,
+        "suggestedEdits": 2,
+        "correctSuggestions": 2,
+        "falsePositiveSuggestions": 0,
+        "correctInputs": 0,
+        "correctInputsChanged": 0,
+        "recall": 1,
+        "precision": 1,
+        "falsePositiveRate": 0,
+        "correctTextPreservation": 0
+      },
+      "reason": "The intended invitation needs let's (let us), and Wait needs separation. Existing Wait, let's is valid; both straight and typographic apostrophes express the same contraction. Two punctuation defects are bundled into one annotation."
+    },
+    {
+      "model": "ministral-3b",
+      "layer": "accepted",
+      "caseId": "en-09",
+      "output": "Wait, let’s proceed with the review.",
+      "original": {
+        "language": "English",
+        "category": "all",
+        "annotatedErrors": 1,
+        "correctlyResolvedErrors": 0,
+        "suggestedEdits": 2,
+        "correctSuggestions": 0,
+        "falsePositiveSuggestions": 2,
+        "correctInputs": 0,
+        "correctInputsChanged": 0,
+        "recall": 0,
+        "precision": 0,
+        "falsePositiveRate": 0,
+        "correctTextPreservation": 0
+      },
+      "proposed": {
+        "language": "English",
+        "category": "all",
+        "annotatedErrors": 1,
+        "correctlyResolvedErrors": 1,
+        "suggestedEdits": 2,
+        "correctSuggestions": 2,
+        "falsePositiveSuggestions": 0,
+        "correctInputs": 0,
+        "correctInputsChanged": 0,
+        "recall": 1,
+        "precision": 1,
+        "falsePositiveRate": 0,
+        "correctTextPreservation": 0
+      },
+      "reason": "Same contraction and separation errors as en-05; the existing correction is valid but omits the typographic apostrophe equivalent. This is a near-duplicate, not independent coverage of another construction."
+    },
+    {
+      "model": "ministral-3b",
+      "layer": "rawCandidateEdits",
+      "caseId": "en-04",
+      "output": "Tomorrow I will send the package.",
+      "original": {
+        "language": "English",
+        "category": "all",
+        "annotatedErrors": 1,
+        "correctlyResolvedErrors": 0,
+        "suggestedEdits": 2,
+        "correctSuggestions": 0,
+        "falsePositiveSuggestions": 2,
+        "correctInputs": 0,
+        "correctInputsChanged": 0,
+        "recall": 0,
+        "precision": 0,
+        "falsePositiveRate": 0,
+        "correctTextPreservation": 0
+      },
+      "proposed": {
+        "language": "English",
+        "category": "all",
+        "annotatedErrors": 1,
+        "correctlyResolvedErrors": 1,
+        "suggestedEdits": 2,
+        "correctSuggestions": 2,
+        "falsePositiveSuggestions": 0,
+        "correctInputs": 0,
+        "correctInputsChanged": 0,
+        "recall": 1,
+        "precision": 1,
+        "falsePositiveRate": 0,
+        "correctTextPreservation": 0
+      },
+      "reason": "English verb-object order requires send the package. Existing I will send the package tomorrow is valid, but shifts the time adjunct. Keeping Tomorrow initially is equally valid and closer to the input. The short introductory adjunct allows a comma or none."
+    },
+    {
+      "model": "ministral-3b",
+      "layer": "rawCandidateEdits",
+      "caseId": "en-05",
+      "output": "Wait, let’s review the result.",
+      "original": {
+        "language": "English",
+        "category": "all",
+        "annotatedErrors": 1,
+        "correctlyResolvedErrors": 0,
+        "suggestedEdits": 2,
+        "correctSuggestions": 0,
+        "falsePositiveSuggestions": 2,
+        "correctInputs": 0,
+        "correctInputsChanged": 0,
+        "recall": 0,
+        "precision": 0,
+        "falsePositiveRate": 0,
+        "correctTextPreservation": 0
+      },
+      "proposed": {
+        "language": "English",
+        "category": "all",
+        "annotatedErrors": 1,
+        "correctlyResolvedErrors": 1,
+        "suggestedEdits": 2,
+        "correctSuggestions": 2,
+        "falsePositiveSuggestions": 0,
+        "correctInputs": 0,
+        "correctInputsChanged": 0,
+        "recall": 1,
+        "precision": 1,
+        "falsePositiveRate": 0,
+        "correctTextPreservation": 0
+      },
+      "reason": "The intended invitation needs let's (let us), and Wait needs separation. Existing Wait, let's is valid; both straight and typographic apostrophes express the same contraction. Two punctuation defects are bundled into one annotation."
+    },
+    {
+      "model": "ministral-3b",
+      "layer": "rawCandidateEdits",
+      "caseId": "en-09",
+      "output": "Wait, let’s proceed with the review.",
+      "original": {
+        "language": "English",
+        "category": "all",
+        "annotatedErrors": 1,
+        "correctlyResolvedErrors": 0,
+        "suggestedEdits": 2,
+        "correctSuggestions": 0,
+        "falsePositiveSuggestions": 2,
+        "correctInputs": 0,
+        "correctInputsChanged": 0,
+        "recall": 0,
+        "precision": 0,
+        "falsePositiveRate": 0,
+        "correctTextPreservation": 0
+      },
+      "proposed": {
+        "language": "English",
+        "category": "all",
+        "annotatedErrors": 1,
+        "correctlyResolvedErrors": 1,
+        "suggestedEdits": 2,
+        "correctSuggestions": 2,
+        "falsePositiveSuggestions": 0,
+        "correctInputs": 0,
+        "correctInputsChanged": 0,
+        "recall": 1,
+        "precision": 1,
+        "falsePositiveRate": 0,
+        "correctTextPreservation": 0
+      },
+      "reason": "Same contraction and separation errors as en-05; the existing correction is valid but omits the typographic apostrophe equivalent. This is a near-duplicate, not independent coverage of another construction."
+    },
+    {
+      "model": "ministral-3-8b",
+      "layer": "accepted",
+      "caseId": "nl-12",
+      "output": "Omdat de server opnieuw opstartte, werd de taak onderbroken.",
+      "original": {
+        "language": "Dutch",
+        "category": "all",
+        "annotatedErrors": 1,
+        "correctlyResolvedErrors": 0,
+        "suggestedEdits": 4,
+        "correctSuggestions": 0,
+        "falsePositiveSuggestions": 4,
+        "correctInputs": 0,
+        "correctInputsChanged": 0,
+        "recall": 0,
+        "precision": 0,
+        "falsePositiveRate": 0,
+        "correctTextPreservation": 0
+      },
+      "proposed": {
+        "language": "Dutch",
+        "category": "all",
+        "annotatedErrors": 1,
+        "correctlyResolvedErrors": 1,
+        "suggestedEdits": 4,
+        "correctSuggestions": 4,
+        "falsePositiveSuggestions": 0,
+        "correctInputs": 0,
+        "correctInputsChanged": 0,
+        "recall": 1,
+        "precision": 1,
+        "falsePositiveRate": 0,
+        "correctTextPreservation": 0
+      },
+      "reason": "Under continuous-prose interpretation the Omdat clause is stranded. Existing repair is grammatical and preserves causal direction, but unnecessarily reverses clause order. Fronted Omdat plus main-clause inversion preserves the original order and meaning."
+    },
+    {
+      "model": "ministral-3-8b",
+      "layer": "accepted",
+      "caseId": "en-04",
+      "output": "Tomorrow, I will send the package.",
+      "original": {
+        "language": "English",
+        "category": "all",
+        "annotatedErrors": 1,
+        "correctlyResolvedErrors": 0,
+        "suggestedEdits": 3,
+        "correctSuggestions": 0,
+        "falsePositiveSuggestions": 3,
+        "correctInputs": 0,
+        "correctInputsChanged": 0,
+        "recall": 0,
+        "precision": 0,
+        "falsePositiveRate": 0,
+        "correctTextPreservation": 0
+      },
+      "proposed": {
+        "language": "English",
+        "category": "all",
+        "annotatedErrors": 1,
+        "correctlyResolvedErrors": 1,
+        "suggestedEdits": 3,
+        "correctSuggestions": 3,
+        "falsePositiveSuggestions": 0,
+        "correctInputs": 0,
+        "correctInputsChanged": 0,
+        "recall": 1,
+        "precision": 1,
+        "falsePositiveRate": 0,
+        "correctTextPreservation": 0
+      },
+      "reason": "English verb-object order requires send the package. Existing I will send the package tomorrow is valid, but shifts the time adjunct. Keeping Tomorrow initially is equally valid and closer to the input. The short introductory adjunct allows a comma or none."
+    },
+    {
+      "model": "ministral-3-8b",
+      "layer": "accepted",
+      "caseId": "en-05",
+      "output": "Wait, let’s review the result.",
+      "original": {
+        "language": "English",
+        "category": "all",
+        "annotatedErrors": 1,
+        "correctlyResolvedErrors": 0,
+        "suggestedEdits": 2,
+        "correctSuggestions": 0,
+        "falsePositiveSuggestions": 2,
+        "correctInputs": 0,
+        "correctInputsChanged": 0,
+        "recall": 0,
+        "precision": 0,
+        "falsePositiveRate": 0,
+        "correctTextPreservation": 0
+      },
+      "proposed": {
+        "language": "English",
+        "category": "all",
+        "annotatedErrors": 1,
+        "correctlyResolvedErrors": 1,
+        "suggestedEdits": 2,
+        "correctSuggestions": 2,
+        "falsePositiveSuggestions": 0,
+        "correctInputs": 0,
+        "correctInputsChanged": 0,
+        "recall": 1,
+        "precision": 1,
+        "falsePositiveRate": 0,
+        "correctTextPreservation": 0
+      },
+      "reason": "The intended invitation needs let's (let us), and Wait needs separation. Existing Wait, let's is valid; both straight and typographic apostrophes express the same contraction. Two punctuation defects are bundled into one annotation."
+    },
+    {
+      "model": "ministral-3-8b",
+      "layer": "accepted",
+      "caseId": "en-09",
+      "output": "Wait, let’s proceed with the review.",
+      "original": {
+        "language": "English",
+        "category": "all",
+        "annotatedErrors": 1,
+        "correctlyResolvedErrors": 0,
+        "suggestedEdits": 2,
+        "correctSuggestions": 0,
+        "falsePositiveSuggestions": 2,
+        "correctInputs": 0,
+        "correctInputsChanged": 0,
+        "recall": 0,
+        "precision": 0,
+        "falsePositiveRate": 0,
+        "correctTextPreservation": 0
+      },
+      "proposed": {
+        "language": "English",
+        "category": "all",
+        "annotatedErrors": 1,
+        "correctlyResolvedErrors": 1,
+        "suggestedEdits": 2,
+        "correctSuggestions": 2,
+        "falsePositiveSuggestions": 0,
+        "correctInputs": 0,
+        "correctInputsChanged": 0,
+        "recall": 1,
+        "precision": 1,
+        "falsePositiveRate": 0,
+        "correctTextPreservation": 0
+      },
+      "reason": "Same contraction and separation errors as en-05; the existing correction is valid but omits the typographic apostrophe equivalent. This is a near-duplicate, not independent coverage of another construction."
+    },
+    {
+      "model": "ministral-3-8b",
+      "layer": "rawCandidateEdits",
+      "caseId": "nl-12",
+      "output": "Omdat de server opnieuw opstartte, werd de taak onderbroken.",
+      "original": {
+        "language": "Dutch",
+        "category": "all",
+        "annotatedErrors": 1,
+        "correctlyResolvedErrors": 0,
+        "suggestedEdits": 4,
+        "correctSuggestions": 0,
+        "falsePositiveSuggestions": 4,
+        "correctInputs": 0,
+        "correctInputsChanged": 0,
+        "recall": 0,
+        "precision": 0,
+        "falsePositiveRate": 0,
+        "correctTextPreservation": 0
+      },
+      "proposed": {
+        "language": "Dutch",
+        "category": "all",
+        "annotatedErrors": 1,
+        "correctlyResolvedErrors": 1,
+        "suggestedEdits": 4,
+        "correctSuggestions": 4,
+        "falsePositiveSuggestions": 0,
+        "correctInputs": 0,
+        "correctInputsChanged": 0,
+        "recall": 1,
+        "precision": 1,
+        "falsePositiveRate": 0,
+        "correctTextPreservation": 0
+      },
+      "reason": "Under continuous-prose interpretation the Omdat clause is stranded. Existing repair is grammatical and preserves causal direction, but unnecessarily reverses clause order. Fronted Omdat plus main-clause inversion preserves the original order and meaning."
+    },
+    {
+      "model": "ministral-3-8b",
+      "layer": "rawCandidateEdits",
+      "caseId": "en-04",
+      "output": "Tomorrow, I will send the package.",
+      "original": {
+        "language": "English",
+        "category": "all",
+        "annotatedErrors": 1,
+        "correctlyResolvedErrors": 0,
+        "suggestedEdits": 3,
+        "correctSuggestions": 0,
+        "falsePositiveSuggestions": 3,
+        "correctInputs": 0,
+        "correctInputsChanged": 0,
+        "recall": 0,
+        "precision": 0,
+        "falsePositiveRate": 0,
+        "correctTextPreservation": 0
+      },
+      "proposed": {
+        "language": "English",
+        "category": "all",
+        "annotatedErrors": 1,
+        "correctlyResolvedErrors": 1,
+        "suggestedEdits": 3,
+        "correctSuggestions": 3,
+        "falsePositiveSuggestions": 0,
+        "correctInputs": 0,
+        "correctInputsChanged": 0,
+        "recall": 1,
+        "precision": 1,
+        "falsePositiveRate": 0,
+        "correctTextPreservation": 0
+      },
+      "reason": "English verb-object order requires send the package. Existing I will send the package tomorrow is valid, but shifts the time adjunct. Keeping Tomorrow initially is equally valid and closer to the input. The short introductory adjunct allows a comma or none."
+    },
+    {
+      "model": "ministral-3-8b",
+      "layer": "rawCandidateEdits",
+      "caseId": "en-05",
+      "output": "Wait, let’s review the result.",
+      "original": {
+        "language": "English",
+        "category": "all",
+        "annotatedErrors": 1,
+        "correctlyResolvedErrors": 0,
+        "suggestedEdits": 2,
+        "correctSuggestions": 0,
+        "falsePositiveSuggestions": 2,
+        "correctInputs": 0,
+        "correctInputsChanged": 0,
+        "recall": 0,
+        "precision": 0,
+        "falsePositiveRate": 0,
+        "correctTextPreservation": 0
+      },
+      "proposed": {
+        "language": "English",
+        "category": "all",
+        "annotatedErrors": 1,
+        "correctlyResolvedErrors": 1,
+        "suggestedEdits": 2,
+        "correctSuggestions": 2,
+        "falsePositiveSuggestions": 0,
+        "correctInputs": 0,
+        "correctInputsChanged": 0,
+        "recall": 1,
+        "precision": 1,
+        "falsePositiveRate": 0,
+        "correctTextPreservation": 0
+      },
+      "reason": "The intended invitation needs let's (let us), and Wait needs separation. Existing Wait, let's is valid; both straight and typographic apostrophes express the same contraction. Two punctuation defects are bundled into one annotation."
+    },
+    {
+      "model": "ministral-3-8b",
+      "layer": "rawCandidateEdits",
+      "caseId": "en-09",
+      "output": "Wait, let’s proceed with the review.",
+      "original": {
+        "language": "English",
+        "category": "all",
+        "annotatedErrors": 1,
+        "correctlyResolvedErrors": 0,
+        "suggestedEdits": 2,
+        "correctSuggestions": 0,
+        "falsePositiveSuggestions": 2,
+        "correctInputs": 0,
+        "correctInputsChanged": 0,
+        "recall": 0,
+        "precision": 0,
+        "falsePositiveRate": 0,
+        "correctTextPreservation": 0
+      },
+      "proposed": {
+        "language": "English",
+        "category": "all",
+        "annotatedErrors": 1,
+        "correctlyResolvedErrors": 1,
+        "suggestedEdits": 2,
+        "correctSuggestions": 2,
+        "falsePositiveSuggestions": 0,
+        "correctInputs": 0,
+        "correctInputsChanged": 0,
+        "recall": 1,
+        "precision": 1,
+        "falsePositiveRate": 0,
+        "correctTextPreservation": 0
+      },
+      "reason": "Same contraction and separation errors as en-05; the existing correction is valid but omits the typographic apostrophe equivalent. This is a near-duplicate, not independent coverage of another construction."
+    },
+    {
+      "model": "ministral-3-14b",
+      "layer": "accepted",
+      "caseId": "nl-12",
+      "output": "Omdat de server opnieuw opstartte, werd de taak onderbroken.",
+      "original": {
+        "language": "Dutch",
+        "category": "all",
+        "annotatedErrors": 1,
+        "correctlyResolvedErrors": 0,
+        "suggestedEdits": 4,
+        "correctSuggestions": 0,
+        "falsePositiveSuggestions": 4,
+        "correctInputs": 0,
+        "correctInputsChanged": 0,
+        "recall": 0,
+        "precision": 0,
+        "falsePositiveRate": 0,
+        "correctTextPreservation": 0
+      },
+      "proposed": {
+        "language": "Dutch",
+        "category": "all",
+        "annotatedErrors": 1,
+        "correctlyResolvedErrors": 1,
+        "suggestedEdits": 4,
+        "correctSuggestions": 4,
+        "falsePositiveSuggestions": 0,
+        "correctInputs": 0,
+        "correctInputsChanged": 0,
+        "recall": 1,
+        "precision": 1,
+        "falsePositiveRate": 0,
+        "correctTextPreservation": 0
+      },
+      "reason": "Under continuous-prose interpretation the Omdat clause is stranded. Existing repair is grammatical and preserves causal direction, but unnecessarily reverses clause order. Fronted Omdat plus main-clause inversion preserves the original order and meaning."
+    },
+    {
+      "model": "ministral-3-14b",
+      "layer": "accepted",
+      "caseId": "en-04",
+      "output": "Tomorrow, I will send the package.",
+      "original": {
+        "language": "English",
+        "category": "all",
+        "annotatedErrors": 1,
+        "correctlyResolvedErrors": 0,
+        "suggestedEdits": 3,
+        "correctSuggestions": 0,
+        "falsePositiveSuggestions": 3,
+        "correctInputs": 0,
+        "correctInputsChanged": 0,
+        "recall": 0,
+        "precision": 0,
+        "falsePositiveRate": 0,
+        "correctTextPreservation": 0
+      },
+      "proposed": {
+        "language": "English",
+        "category": "all",
+        "annotatedErrors": 1,
+        "correctlyResolvedErrors": 1,
+        "suggestedEdits": 3,
+        "correctSuggestions": 3,
+        "falsePositiveSuggestions": 0,
+        "correctInputs": 0,
+        "correctInputsChanged": 0,
+        "recall": 1,
+        "precision": 1,
+        "falsePositiveRate": 0,
+        "correctTextPreservation": 0
+      },
+      "reason": "English verb-object order requires send the package. Existing I will send the package tomorrow is valid, but shifts the time adjunct. Keeping Tomorrow initially is equally valid and closer to the input. The short introductory adjunct allows a comma or none."
+    },
+    {
+      "model": "ministral-3-14b",
+      "layer": "accepted",
+      "caseId": "en-05",
+      "output": "Wait, let’s review the result.",
+      "original": {
+        "language": "English",
+        "category": "all",
+        "annotatedErrors": 1,
+        "correctlyResolvedErrors": 0,
+        "suggestedEdits": 2,
+        "correctSuggestions": 0,
+        "falsePositiveSuggestions": 2,
+        "correctInputs": 0,
+        "correctInputsChanged": 0,
+        "recall": 0,
+        "precision": 0,
+        "falsePositiveRate": 0,
+        "correctTextPreservation": 0
+      },
+      "proposed": {
+        "language": "English",
+        "category": "all",
+        "annotatedErrors": 1,
+        "correctlyResolvedErrors": 1,
+        "suggestedEdits": 2,
+        "correctSuggestions": 2,
+        "falsePositiveSuggestions": 0,
+        "correctInputs": 0,
+        "correctInputsChanged": 0,
+        "recall": 1,
+        "precision": 1,
+        "falsePositiveRate": 0,
+        "correctTextPreservation": 0
+      },
+      "reason": "The intended invitation needs let's (let us), and Wait needs separation. Existing Wait, let's is valid; both straight and typographic apostrophes express the same contraction. Two punctuation defects are bundled into one annotation."
+    },
+    {
+      "model": "ministral-3-14b",
+      "layer": "accepted",
+      "caseId": "en-09",
+      "output": "Wait, let’s proceed with the review.",
+      "original": {
+        "language": "English",
+        "category": "all",
+        "annotatedErrors": 1,
+        "correctlyResolvedErrors": 0,
+        "suggestedEdits": 2,
+        "correctSuggestions": 0,
+        "falsePositiveSuggestions": 2,
+        "correctInputs": 0,
+        "correctInputsChanged": 0,
+        "recall": 0,
+        "precision": 0,
+        "falsePositiveRate": 0,
+        "correctTextPreservation": 0
+      },
+      "proposed": {
+        "language": "English",
+        "category": "all",
+        "annotatedErrors": 1,
+        "correctlyResolvedErrors": 1,
+        "suggestedEdits": 2,
+        "correctSuggestions": 2,
+        "falsePositiveSuggestions": 0,
+        "correctInputs": 0,
+        "correctInputsChanged": 0,
+        "recall": 1,
+        "precision": 1,
+        "falsePositiveRate": 0,
+        "correctTextPreservation": 0
+      },
+      "reason": "Same contraction and separation errors as en-05; the existing correction is valid but omits the typographic apostrophe equivalent. This is a near-duplicate, not independent coverage of another construction."
+    },
+    {
+      "model": "ministral-3-14b",
+      "layer": "rawCandidateEdits",
+      "caseId": "nl-12",
+      "output": "Omdat de server opnieuw opstartte, werd de taak onderbroken.",
+      "original": {
+        "language": "Dutch",
+        "category": "all",
+        "annotatedErrors": 1,
+        "correctlyResolvedErrors": 0,
+        "suggestedEdits": 4,
+        "correctSuggestions": 0,
+        "falsePositiveSuggestions": 4,
+        "correctInputs": 0,
+        "correctInputsChanged": 0,
+        "recall": 0,
+        "precision": 0,
+        "falsePositiveRate": 0,
+        "correctTextPreservation": 0
+      },
+      "proposed": {
+        "language": "Dutch",
+        "category": "all",
+        "annotatedErrors": 1,
+        "correctlyResolvedErrors": 1,
+        "suggestedEdits": 4,
+        "correctSuggestions": 4,
+        "falsePositiveSuggestions": 0,
+        "correctInputs": 0,
+        "correctInputsChanged": 0,
+        "recall": 1,
+        "precision": 1,
+        "falsePositiveRate": 0,
+        "correctTextPreservation": 0
+      },
+      "reason": "Under continuous-prose interpretation the Omdat clause is stranded. Existing repair is grammatical and preserves causal direction, but unnecessarily reverses clause order. Fronted Omdat plus main-clause inversion preserves the original order and meaning."
+    },
+    {
+      "model": "ministral-3-14b",
+      "layer": "rawCandidateEdits",
+      "caseId": "en-04",
+      "output": "Tomorrow, I will send the package.",
+      "original": {
+        "language": "English",
+        "category": "all",
+        "annotatedErrors": 1,
+        "correctlyResolvedErrors": 0,
+        "suggestedEdits": 3,
+        "correctSuggestions": 0,
+        "falsePositiveSuggestions": 3,
+        "correctInputs": 0,
+        "correctInputsChanged": 0,
+        "recall": 0,
+        "precision": 0,
+        "falsePositiveRate": 0,
+        "correctTextPreservation": 0
+      },
+      "proposed": {
+        "language": "English",
+        "category": "all",
+        "annotatedErrors": 1,
+        "correctlyResolvedErrors": 1,
+        "suggestedEdits": 3,
+        "correctSuggestions": 3,
+        "falsePositiveSuggestions": 0,
+        "correctInputs": 0,
+        "correctInputsChanged": 0,
+        "recall": 1,
+        "precision": 1,
+        "falsePositiveRate": 0,
+        "correctTextPreservation": 0
+      },
+      "reason": "English verb-object order requires send the package. Existing I will send the package tomorrow is valid, but shifts the time adjunct. Keeping Tomorrow initially is equally valid and closer to the input. The short introductory adjunct allows a comma or none."
+    },
+    {
+      "model": "ministral-3-14b",
+      "layer": "rawCandidateEdits",
+      "caseId": "en-05",
+      "output": "Wait, let’s review the result.",
+      "original": {
+        "language": "English",
+        "category": "all",
+        "annotatedErrors": 1,
+        "correctlyResolvedErrors": 0,
+        "suggestedEdits": 2,
+        "correctSuggestions": 0,
+        "falsePositiveSuggestions": 2,
+        "correctInputs": 0,
+        "correctInputsChanged": 0,
+        "recall": 0,
+        "precision": 0,
+        "falsePositiveRate": 0,
+        "correctTextPreservation": 0
+      },
+      "proposed": {
+        "language": "English",
+        "category": "all",
+        "annotatedErrors": 1,
+        "correctlyResolvedErrors": 1,
+        "suggestedEdits": 2,
+        "correctSuggestions": 2,
+        "falsePositiveSuggestions": 0,
+        "correctInputs": 0,
+        "correctInputsChanged": 0,
+        "recall": 1,
+        "precision": 1,
+        "falsePositiveRate": 0,
+        "correctTextPreservation": 0
+      },
+      "reason": "The intended invitation needs let's (let us), and Wait needs separation. Existing Wait, let's is valid; both straight and typographic apostrophes express the same contraction. Two punctuation defects are bundled into one annotation."
+    },
+    {
+      "model": "ministral-3-14b",
+      "layer": "rawCandidateEdits",
+      "caseId": "en-09",
+      "output": "Wait, let’s proceed with the review.",
+      "original": {
+        "language": "English",
+        "category": "all",
+        "annotatedErrors": 1,
+        "correctlyResolvedErrors": 0,
+        "suggestedEdits": 2,
+        "correctSuggestions": 0,
+        "falsePositiveSuggestions": 2,
+        "correctInputs": 0,
+        "correctInputsChanged": 0,
+        "recall": 0,
+        "precision": 0,
+        "falsePositiveRate": 0,
+        "correctTextPreservation": 0
+      },
+      "proposed": {
+        "language": "English",
+        "category": "all",
+        "annotatedErrors": 1,
+        "correctlyResolvedErrors": 1,
+        "suggestedEdits": 2,
+        "correctSuggestions": 2,
+        "falsePositiveSuggestions": 0,
+        "correctInputs": 0,
+        "correctInputsChanged": 0,
+        "recall": 1,
+        "precision": 1,
+        "falsePositiveRate": 0,
+        "correctTextPreservation": 0
+      },
+      "reason": "Same contraction and separation errors as en-05; the existing correction is valid but omits the typographic apostrophe equivalent. This is a near-duplicate, not independent coverage of another construction."
+    }
+  ],
+  "adjudicationCounts": {
+    "ministral-3b": {
+      "rawClassification": {
+        "Correct minimal correction": 33,
+        "Correct but unnecessarily rewritten": 0,
+        "Grammatically acceptable but semantically ambiguous": 0,
+        "Grammatically correct with altered meaning": 0,
+        "Incorrect or incomplete correction": 7,
+        "Unnecessary change to already-correct text": 2,
+        "Protected-content violation": 2,
+        "Requires independent human review": 0
+      },
+      "extractedClassification": {
+        "Correct minimal correction": 33,
+        "Correct but unnecessarily rewritten": 0,
+        "Grammatically acceptable but semantically ambiguous": 0,
+        "Grammatically correct with altered meaning": 0,
+        "Incorrect or incomplete correction": 7,
+        "Unnecessary change to already-correct text": 2,
+        "Protected-content violation": 2,
+        "Requires independent human review": 0
+      },
+      "acceptedClassification": {
+        "Correct minimal correction": 35,
+        "Correct but unnecessarily rewritten": 0,
+        "Grammatically acceptable but semantically ambiguous": 0,
+        "Grammatically correct with altered meaning": 0,
+        "Incorrect or incomplete correction": 7,
+        "Unnecessary change to already-correct text": 2,
+        "Protected-content violation": 0,
+        "Requires independent human review": 0
+      },
+      "strictSentenceSuccess": {
+        "nl": {
+          "successfulErroneousCases": 10,
+          "erroneousCases": 15,
+          "preservedCleanCases": 5,
+          "cleanCases": 7,
+          "note": "AI judgments under strict proposal, not independent semantic validation"
+        },
+        "en": {
+          "successfulErroneousCases": 13,
+          "erroneousCases": 15,
+          "preservedCleanCases": 7,
+          "cleanCases": 7,
+          "note": "AI judgments under strict proposal, not independent semantic validation"
+        }
+      }
+    },
+    "ministral-3-8b": {
+      "rawClassification": {
+        "Correct minimal correction": 32,
+        "Correct but unnecessarily rewritten": 0,
+        "Grammatically acceptable but semantically ambiguous": 1,
+        "Grammatically correct with altered meaning": 1,
+        "Incorrect or incomplete correction": 2,
+        "Unnecessary change to already-correct text": 2,
+        "Protected-content violation": 5,
+        "Requires independent human review": 1
+      },
+      "extractedClassification": {
+        "Correct minimal correction": 32,
+        "Correct but unnecessarily rewritten": 0,
+        "Grammatically acceptable but semantically ambiguous": 1,
+        "Grammatically correct with altered meaning": 1,
+        "Incorrect or incomplete correction": 3,
+        "Unnecessary change to already-correct text": 2,
+        "Protected-content violation": 5,
+        "Requires independent human review": 0
+      },
+      "acceptedClassification": {
+        "Correct minimal correction": 36,
+        "Correct but unnecessarily rewritten": 0,
+        "Grammatically acceptable but semantically ambiguous": 1,
+        "Grammatically correct with altered meaning": 1,
+        "Incorrect or incomplete correction": 3,
+        "Unnecessary change to already-correct text": 2,
+        "Protected-content violation": 1,
+        "Requires independent human review": 0
+      },
+      "strictSentenceSuccess": {
+        "nl": {
+          "successfulErroneousCases": 12,
+          "erroneousCases": 15,
+          "preservedCleanCases": 5,
+          "cleanCases": 7,
+          "note": "AI judgments under strict proposal, not independent semantic validation"
+        },
+        "en": {
+          "successfulErroneousCases": 13,
+          "erroneousCases": 15,
+          "preservedCleanCases": 6,
+          "cleanCases": 7,
+          "note": "AI judgments under strict proposal, not independent semantic validation"
+        }
+      }
+    },
+    "ministral-3-14b": {
+      "rawClassification": {
+        "Correct minimal correction": 39,
+        "Correct but unnecessarily rewritten": 0,
+        "Grammatically acceptable but semantically ambiguous": 1,
+        "Grammatically correct with altered meaning": 0,
+        "Incorrect or incomplete correction": 1,
+        "Unnecessary change to already-correct text": 1,
+        "Protected-content violation": 2,
+        "Requires independent human review": 0
+      },
+      "extractedClassification": {
+        "Correct minimal correction": 39,
+        "Correct but unnecessarily rewritten": 0,
+        "Grammatically acceptable but semantically ambiguous": 1,
+        "Grammatically correct with altered meaning": 0,
+        "Incorrect or incomplete correction": 1,
+        "Unnecessary change to already-correct text": 1,
+        "Protected-content violation": 2,
+        "Requires independent human review": 0
+      },
+      "acceptedClassification": {
+        "Correct minimal correction": 41,
+        "Correct but unnecessarily rewritten": 0,
+        "Grammatically acceptable but semantically ambiguous": 1,
+        "Grammatically correct with altered meaning": 0,
+        "Incorrect or incomplete correction": 1,
+        "Unnecessary change to already-correct text": 1,
+        "Protected-content violation": 0,
+        "Requires independent human review": 0
+      },
+      "strictSentenceSuccess": {
+        "nl": {
+          "successfulErroneousCases": 14,
+          "erroneousCases": 15,
+          "preservedCleanCases": 6,
+          "cleanCases": 7,
+          "note": "AI judgments under strict proposal, not independent semantic validation"
+        },
+        "en": {
+          "successfulErroneousCases": 14,
+          "erroneousCases": 15,
+          "preservedCleanCases": 7,
+          "cleanCases": 7,
+          "note": "AI judgments under strict proposal, not independent semantic validation"
+        }
+      }
+    }
+  },
+  "excludedAmbiguousAlternative": "en-01 had sent is not granted automatic equivalence",
+  "noErrorHunkRatesAreNotIndependentSamples": true
+}

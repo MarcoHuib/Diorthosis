@@ -15,9 +15,18 @@ public enum ErrorCategory
     CorrectText
 }
 
+public enum CorrectionDisposition
+{
+    Unchanged,
+    Accepted,
+    Suppressed,
+    Rejected,
+    NeedsReview
+}
+
 public sealed record CorrectionRequest
 {
-    public CorrectionRequest(CorrectionLanguage language, string text)
+    public CorrectionRequest(CorrectionLanguage language, string text, IReadOnlyList<ProtectedSpan>? protectedSpans = null)
     {
         if (!Enum.IsDefined(language))
         {
@@ -25,12 +34,18 @@ public sealed record CorrectionRequest
         }
 
         ArgumentException.ThrowIfNullOrWhiteSpace(text);
+        if (text.Length > 32768) throw new ArgumentException("Correction input exceeds the 32768 UTF-16 unit safety limit.", nameof(text));
+        SourceEdits.EnsureUnicode(text);
+        ProtectedSpans = Array.AsReadOnly((protectedSpans ?? []).ToArray());
+        SourceEdits.Validate(text, ProtectedSpans.Select(span => new TextEdit(span.Start, span.Length, span.OriginalText, span.OriginalText)), allowNoOps: true);
+        if (ProtectedSpans.Any(span => span.Length == 0)) throw new ArgumentException("Protected spans must be nonempty.", nameof(protectedSpans));
         Language = language;
         Text = text;
     }
 
     public CorrectionLanguage Language { get; }
     public string Text { get; }
+    public IReadOnlyList<ProtectedSpan> ProtectedSpans { get; }
 }
 
 public sealed record TextEdit
@@ -56,18 +71,29 @@ public sealed record TextEdit
     public string ReplacementText { get; }
 }
 
-public sealed record CorrectionResult(IReadOnlyList<TextEdit> Edits);
+public sealed record ProtectedSpan(int Start, int Length, string OriginalText);
+
+public sealed record CorrectionResult(IReadOnlyList<TextEdit> Edits)
+{
+    public const string ContractVersion = "correction-result-2.0.0";
+    public CorrectionDisposition Disposition { get; init; } = Edits.Count == 0 ? CorrectionDisposition.Unchanged : CorrectionDisposition.Accepted;
+    // Diagnostic candidate data is never an authorization to apply it. Normal CLI output omits raw data.
+    public ModelResponseAnalysis? Analysis { get; init; }
+    public Diorthosis.Core.Inference.GenerationTermination? Termination { get; init; }
+}
 
 public sealed record InferenceRequest
 {
-    public InferenceRequest(string prompt, int maximumOutputTokens = 512)
+    public InferenceRequest(string prompt, int maximumOutputTokens = 512, string? gbnfGrammar = null)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(prompt);
         if (maximumOutputTokens <= 0) throw new ArgumentOutOfRangeException(nameof(maximumOutputTokens));
         Prompt = prompt;
         MaximumOutputTokens = maximumOutputTokens;
+        GbnfGrammar = gbnfGrammar;
     }
 
     public string Prompt { get; }
     public int MaximumOutputTokens { get; }
+    public string? GbnfGrammar { get; }
 }
