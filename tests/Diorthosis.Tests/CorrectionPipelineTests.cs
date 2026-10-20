@@ -103,6 +103,7 @@ public sealed class CorrectionPipelineTests
     }
 
     [Theory]
+    [InlineData(@"C:\Program Files\Diorthosis\settings", @"C:\Program Files\Diorthosis\options")]
     [InlineData("node-04", "node 04")]
     [InlineData("ApiGateway-v2", "ApiGateway v2")]
     [InlineData("OAuth2", "OAuth 2")]

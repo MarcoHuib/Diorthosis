@@ -10,7 +10,7 @@ public sealed class ModelCorrectionEngine(IModelInferenceAdapter adapter, int ma
 {
     private static readonly Regex UrlToken = new(@"(?:https?://|www\.)[^\s<>]+", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant);
     private static readonly Regex EmailToken = new(@"(?<![\p{L}\p{N}])[\p{L}\p{N}._%+\-]+@[\p{L}\p{N}.\-]+\.[\p{L}]{2,}(?![\p{L}\p{N}])", RegexOptions.CultureInvariant);
-    private static readonly Regex PathToken = new(@"(?<![\p{L}\p{N}])(?:[A-Za-z]:\\[^\s<>]+|/(?:[^\s<>/]+/)*[^\s<>/]+)(?![\p{L}\p{N}])", RegexOptions.CultureInvariant);
+    private static readonly Regex PathToken = new(@"(?<![\p{L}\p{N}])(?:[A-Za-z]:\\(?:[^\\<>\r\n]+\\)*[^\s<>\\]+|/(?:[^\s<>/]+/)*[^\s<>/]+)(?![\p{L}\p{N}])", RegexOptions.CultureInvariant);
     private static readonly Regex DomainToken = new(@"(?<![\p{L}\p{N}])(?:[\p{L}\p{N}-]+\.)+[\p{L}]{2,}(?![\p{L}\p{N}])", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant);
     private static readonly Regex IpToken = new(@"(?<![\p{L}\p{N}])(?:\d{1,3}\.){3}\d{1,3}|(?<![\p{L}\p{N}])(?:[0-9A-Fa-f]{0,4}:){2,7}[0-9A-Fa-f]{0,4}(?![\p{L}\p{N}])", RegexOptions.CultureInvariant);
     private static readonly Regex WrittenDateToken = new(@"(?<![\p{L}\p{N}])(?:[0-3]?\d\s+(?:jan(?:uary|uari)?|feb(?:ruary|ruari)?|march|mar|maart|mrt|apr(?:il)?|may|mei|june|jun|juni|july|jul|juli|aug(?:ust|ustus)?|sep(?:tember)?|okt(?:ober)?|oct(?:ober)?|nov(?:ember)?|dec(?:ember)?)[\s,]+\d{4}|(?:jan(?:uary|uari)?|feb(?:ruary|ruari)?|march|mar|maart|mrt|apr(?:il)?|may|mei|june|jun|juni|july|jul|juli|aug(?:ust|ustus)?|sep(?:tember)?|okt(?:ober)?|oct(?:ober)?|nov(?:ember)?|dec(?:ember)?)\s+[0-3]?\d(?:st|nd|rd|th)?[\s,]+\d{4})(?![\p{L}\p{N}])", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant);

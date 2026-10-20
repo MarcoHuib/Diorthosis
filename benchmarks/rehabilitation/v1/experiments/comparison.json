@@ -1,0 +1,843 @@
+{
+  "evidence": "development diagnostics, not independent linguistic validation",
+  "alignmentDiagnostic": "Literal UTF-16/shape replay; full grapheme and safety checks are enforced by .NET. Missing corrections in an empty array are not repairs.",
+  "configurations": [
+    {
+      "configuration": "Baseline",
+      "manifestSha256": "f1b054abe85413c34f54bbb0e6fb2b169dc9e19b922de251a9062f33edde795b",
+      "traceSha256": "546ee220fe3cf33dba277e245e599af8fd1296c48361b9187ece5a2c1de40474",
+      "cases": 8,
+      "naturalEog": 8,
+      "syntacticallyValidJson": 0,
+      "strictOffsetShapeValid": 0,
+      "literalUtf16AlignedIncludingEmpty": 0,
+      "dispositions": {
+        "accepted": 5,
+        "unchanged": 3
+      },
+      "resources": {
+        "modelLoadMilliseconds": 1482.1532,
+        "loadPolicy": "OS file-cache uncontrolled; not cold boot",
+        "meanLatencyMilliseconds": 1420.9807124999998,
+        "maximumLatencyMilliseconds": 1908.1434,
+        "totalSampledTokens": 129,
+        "sampledPeakProcessWorkingSetBytes": 2931802112,
+        "memorySamplingMilliseconds": 100,
+        "memoryLimitations": "sampling may miss brief peaks; not system-wide pressure",
+        "completedCases": 8
+      },
+      "languages": [
+        {
+          "language": "Dutch",
+          "category": "all",
+          "repairRecall": {
+            "numerator": 2,
+            "denominator": 2,
+            "estimate": 1,
+            "wilsonLower": 0.34238022750665303,
+            "wilsonUpper": 1
+          },
+          "referenceGroupPrecision": {
+            "numerator": 2,
+            "denominator": 3,
+            "estimate": 0.6666666666666666,
+            "wilsonLower": 0.2076596008020477,
+            "wilsonUpper": 0.9385080552796037
+          },
+          "adjudicatedProposalPrecision": null,
+          "cleanLiteralPreservation": {
+            "numerator": 1,
+            "denominator": 2,
+            "estimate": 0.5,
+            "wilsonLower": 0.09453120573423074,
+            "wilsonUpper": 0.9054687942657693
+          },
+          "completeReferencePassages": {
+            "numerator": 3,
+            "denominator": 4,
+            "estimate": 0.75,
+            "wilsonLower": 0.30064184258240184,
+            "wilsonUpper": 0.9544127391902995
+          },
+          "predictionCoverage": {
+            "numerator": 4,
+            "denominator": 4,
+            "estimate": 1,
+            "wilsonLower": 0.5101091635454027,
+            "wilsonUpper": 1
+          },
+          "referenceUnresolvedGroups": 1,
+          "proposedGroups": 3,
+          "reviewedGroups": 0,
+          "dispositions": {
+            "Accepted": 3,
+            "Unchanged": 1
+          }
+        },
+        {
+          "language": "English",
+          "category": "all",
+          "repairRecall": {
+            "numerator": 2,
+            "denominator": 3,
+            "estimate": 0.6666666666666666,
+            "wilsonLower": 0.2076596008020477,
+            "wilsonUpper": 0.9385080552796037
+          },
+          "referenceGroupPrecision": {
+            "numerator": 2,
+            "denominator": 3,
+            "estimate": 0.6666666666666666,
+            "wilsonLower": 0.2076596008020477,
+            "wilsonUpper": 0.9385080552796037
+          },
+          "adjudicatedProposalPrecision": null,
+          "cleanLiteralPreservation": {
+            "numerator": 2,
+            "denominator": 2,
+            "estimate": 1,
+            "wilsonLower": 0.34238022750665303,
+            "wilsonUpper": 1
+          },
+          "completeReferencePassages": {
+            "numerator": 3,
+            "denominator": 4,
+            "estimate": 0.75,
+            "wilsonLower": 0.30064184258240184,
+            "wilsonUpper": 0.9544127391902995
+          },
+          "predictionCoverage": {
+            "numerator": 4,
+            "denominator": 4,
+            "estimate": 1,
+            "wilsonLower": 0.5101091635454027,
+            "wilsonUpper": 1
+          },
+          "referenceUnresolvedGroups": 1,
+          "proposedGroups": 3,
+          "reviewedGroups": 0,
+          "dispositions": {
+            "Accepted": 2,
+            "Unchanged": 2
+          }
+        }
+      ]
+    },
+    {
+      "configuration": "FewShot",
+      "manifestSha256": "4dd26e702746984d436c65882eb86ac254f7bb65b2dc5f0b1301286162332c0f",
+      "traceSha256": "5d192a9e0cfdadfa2a4bcdd89056904b09f50c73f92373739d61bdabdd0aa801",
+      "cases": 8,
+      "naturalEog": 8,
+      "syntacticallyValidJson": 0,
+      "strictOffsetShapeValid": 0,
+      "literalUtf16AlignedIncludingEmpty": 0,
+      "dispositions": {
+        "accepted": 5,
+        "rejected": 3
+      },
+      "resources": {
+        "modelLoadMilliseconds": 191.9552,
+        "loadPolicy": "OS file-cache uncontrolled; not cold boot",
+        "meanLatencyMilliseconds": 1879.8309125000003,
+        "maximumLatencyMilliseconds": 2477.2281,
+        "totalSampledTokens": 136,
+        "sampledPeakProcessWorkingSetBytes": 2963947520,
+        "memorySamplingMilliseconds": 100,
+        "memoryLimitations": "sampling may miss brief peaks; not system-wide pressure",
+        "completedCases": 8
+      },
+      "languages": [
+        {
+          "language": "Dutch",
+          "category": "all",
+          "repairRecall": {
+            "numerator": 2,
+            "denominator": 2,
+            "estimate": 1,
+            "wilsonLower": 0.34238022750665303,
+            "wilsonUpper": 1
+          },
+          "referenceGroupPrecision": {
+            "numerator": 2,
+            "denominator": 4,
+            "estimate": 0.5,
+            "wilsonLower": 0.15003898915214947,
+            "wilsonUpper": 0.8499610108478506
+          },
+          "adjudicatedProposalPrecision": null,
+          "cleanLiteralPreservation": {
+            "numerator": 1,
+            "denominator": 2,
+            "estimate": 0.5,
+            "wilsonLower": 0.09453120573423074,
+            "wilsonUpper": 0.9054687942657693
+          },
+          "completeReferencePassages": {
+            "numerator": 3,
+            "denominator": 4,
+            "estimate": 0.75,
+            "wilsonLower": 0.30064184258240184,
+            "wilsonUpper": 0.9544127391902995
+          },
+          "predictionCoverage": {
+            "numerator": 4,
+            "denominator": 4,
+            "estimate": 1,
+            "wilsonLower": 0.5101091635454027,
+            "wilsonUpper": 1
+          },
+          "referenceUnresolvedGroups": 2,
+          "proposedGroups": 4,
+          "reviewedGroups": 0,
+          "dispositions": {
+            "Accepted": 3,
+            "Rejected": 1
+          }
+        },
+        {
+          "language": "English",
+          "category": "all",
+          "repairRecall": {
+            "numerator": 2,
+            "denominator": 3,
+            "estimate": 0.6666666666666666,
+            "wilsonLower": 0.2076596008020477,
+            "wilsonUpper": 0.9385080552796037
+          },
+          "referenceGroupPrecision": {
+            "numerator": 2,
+            "denominator": 3,
+            "estimate": 0.6666666666666666,
+            "wilsonLower": 0.2076596008020477,
+            "wilsonUpper": 0.9385080552796037
+          },
+          "adjudicatedProposalPrecision": null,
+          "cleanLiteralPreservation": {
+            "numerator": 2,
+            "denominator": 2,
+            "estimate": 1,
+            "wilsonLower": 0.34238022750665303,
+            "wilsonUpper": 1
+          },
+          "completeReferencePassages": {
+            "numerator": 3,
+            "denominator": 4,
+            "estimate": 0.75,
+            "wilsonLower": 0.30064184258240184,
+            "wilsonUpper": 0.9544127391902995
+          },
+          "predictionCoverage": {
+            "numerator": 4,
+            "denominator": 4,
+            "estimate": 1,
+            "wilsonLower": 0.5101091635454027,
+            "wilsonUpper": 1
+          },
+          "referenceUnresolvedGroups": 1,
+          "proposedGroups": 3,
+          "reviewedGroups": 0,
+          "dispositions": {
+            "Accepted": 2,
+            "Rejected": 2
+          }
+        }
+      ]
+    },
+    {
+      "configuration": "LanguageMinimal",
+      "manifestSha256": "7e8375533f106aba49b0ff063c43062826a938e2f658a27565f83571c5a1321a",
+      "traceSha256": "1214778271099f0992f315804223ae0a4be2467dac37a940a9ebda8faaa1d7d1",
+      "cases": 8,
+      "naturalEog": 8,
+      "syntacticallyValidJson": 0,
+      "strictOffsetShapeValid": 0,
+      "literalUtf16AlignedIncludingEmpty": 0,
+      "dispositions": {
+        "accepted": 5,
+        "rejected": 2,
+        "unchanged": 1
+      },
+      "resources": {
+        "modelLoadMilliseconds": 188.69,
+        "loadPolicy": "OS file-cache uncontrolled; not cold boot",
+        "meanLatencyMilliseconds": 1750.1956625000003,
+        "maximumLatencyMilliseconds": 2295.8954,
+        "totalSampledTokens": 141,
+        "sampledPeakProcessWorkingSetBytes": 2945777664,
+        "memorySamplingMilliseconds": 100,
+        "memoryLimitations": "sampling may miss brief peaks; not system-wide pressure",
+        "completedCases": 8
+      },
+      "languages": [
+        {
+          "language": "Dutch",
+          "category": "all",
+          "repairRecall": {
+            "numerator": 1,
+            "denominator": 2,
+            "estimate": 0.5,
+            "wilsonLower": 0.09453120573423074,
+            "wilsonUpper": 0.9054687942657693
+          },
+          "referenceGroupPrecision": {
+            "numerator": 1,
+            "denominator": 4,
+            "estimate": 0.25,
+            "wilsonLower": 0.04558726080970055,
+            "wilsonUpper": 0.6993581574175981
+          },
+          "adjudicatedProposalPrecision": null,
+          "cleanLiteralPreservation": {
+            "numerator": 1,
+            "denominator": 2,
+            "estimate": 0.5,
+            "wilsonLower": 0.09453120573423074,
+            "wilsonUpper": 0.9054687942657693
+          },
+          "completeReferencePassages": {
+            "numerator": 2,
+            "denominator": 4,
+            "estimate": 0.5,
+            "wilsonLower": 0.15003898915214947,
+            "wilsonUpper": 0.8499610108478506
+          },
+          "predictionCoverage": {
+            "numerator": 4,
+            "denominator": 4,
+            "estimate": 1,
+            "wilsonLower": 0.5101091635454027,
+            "wilsonUpper": 1
+          },
+          "referenceUnresolvedGroups": 3,
+          "proposedGroups": 4,
+          "reviewedGroups": 0,
+          "dispositions": {
+            "Accepted": 3,
+            "Rejected": 1
+          }
+        },
+        {
+          "language": "English",
+          "category": "all",
+          "repairRecall": {
+            "numerator": 2,
+            "denominator": 3,
+            "estimate": 0.6666666666666666,
+            "wilsonLower": 0.2076596008020477,
+            "wilsonUpper": 0.9385080552796037
+          },
+          "referenceGroupPrecision": {
+            "numerator": 2,
+            "denominator": 3,
+            "estimate": 0.6666666666666666,
+            "wilsonLower": 0.2076596008020477,
+            "wilsonUpper": 0.9385080552796037
+          },
+          "adjudicatedProposalPrecision": null,
+          "cleanLiteralPreservation": {
+            "numerator": 2,
+            "denominator": 2,
+            "estimate": 1,
+            "wilsonLower": 0.34238022750665303,
+            "wilsonUpper": 1
+          },
+          "completeReferencePassages": {
+            "numerator": 3,
+            "denominator": 4,
+            "estimate": 0.75,
+            "wilsonLower": 0.30064184258240184,
+            "wilsonUpper": 0.9544127391902995
+          },
+          "predictionCoverage": {
+            "numerator": 4,
+            "denominator": 4,
+            "estimate": 1,
+            "wilsonLower": 0.5101091635454027,
+            "wilsonUpper": 1
+          },
+          "referenceUnresolvedGroups": 1,
+          "proposedGroups": 3,
+          "reviewedGroups": 0,
+          "dispositions": {
+            "Accepted": 2,
+            "Rejected": 1,
+            "Unchanged": 1
+          }
+        }
+      ]
+    },
+    {
+      "configuration": "StructuredFragments",
+      "manifestSha256": "b4679433109fea56c459c23c91afe66069805a04de0f07ff17431b91cb9ff7a0",
+      "traceSha256": "f28625649a7e67652c6d32416a5c3aa0332360ca20580d6bc31e2b32c3d87f3b",
+      "cases": 8,
+      "naturalEog": 8,
+      "syntacticallyValidJson": 0,
+      "strictOffsetShapeValid": 0,
+      "literalUtf16AlignedIncludingEmpty": 0,
+      "dispositions": {
+        "rejected": 8
+      },
+      "resources": {
+        "modelLoadMilliseconds": 195.0107,
+        "loadPolicy": "OS file-cache uncontrolled; not cold boot",
+        "meanLatencyMilliseconds": 2122.90055,
+        "maximumLatencyMilliseconds": 3295.3813,
+        "totalSampledTokens": 192,
+        "sampledPeakProcessWorkingSetBytes": 2964357120,
+        "memorySamplingMilliseconds": 100,
+        "memoryLimitations": "sampling may miss brief peaks; not system-wide pressure",
+        "completedCases": 8
+      },
+      "languages": [
+        {
+          "language": "Dutch",
+          "category": "all",
+          "repairRecall": {
+            "numerator": 0,
+            "denominator": 2,
+            "estimate": 0,
+            "wilsonLower": 0,
+            "wilsonUpper": 0.6576197724933469
+          },
+          "referenceGroupPrecision": {
+            "numerator": 0,
+            "denominator": 0,
+            "estimate": null,
+            "wilsonLower": null,
+            "wilsonUpper": null
+          },
+          "adjudicatedProposalPrecision": null,
+          "cleanLiteralPreservation": {
+            "numerator": 2,
+            "denominator": 2,
+            "estimate": 1,
+            "wilsonLower": 0.34238022750665303,
+            "wilsonUpper": 1
+          },
+          "completeReferencePassages": {
+            "numerator": 2,
+            "denominator": 4,
+            "estimate": 0.5,
+            "wilsonLower": 0.15003898915214947,
+            "wilsonUpper": 0.8499610108478506
+          },
+          "predictionCoverage": {
+            "numerator": 4,
+            "denominator": 4,
+            "estimate": 1,
+            "wilsonLower": 0.5101091635454027,
+            "wilsonUpper": 1
+          },
+          "referenceUnresolvedGroups": 0,
+          "proposedGroups": 0,
+          "reviewedGroups": 0,
+          "dispositions": {
+            "Rejected": 4
+          }
+        },
+        {
+          "language": "English",
+          "category": "all",
+          "repairRecall": {
+            "numerator": 0,
+            "denominator": 3,
+            "estimate": 0,
+            "wilsonLower": 5.551115123125783e-17,
+            "wilsonUpper": 0.5614970317550454
+          },
+          "referenceGroupPrecision": {
+            "numerator": 0,
+            "denominator": 0,
+            "estimate": null,
+            "wilsonLower": null,
+            "wilsonUpper": null
+          },
+          "adjudicatedProposalPrecision": null,
+          "cleanLiteralPreservation": {
+            "numerator": 2,
+            "denominator": 2,
+            "estimate": 1,
+            "wilsonLower": 0.34238022750665303,
+            "wilsonUpper": 1
+          },
+          "completeReferencePassages": {
+            "numerator": 2,
+            "denominator": 4,
+            "estimate": 0.5,
+            "wilsonLower": 0.15003898915214947,
+            "wilsonUpper": 0.8499610108478506
+          },
+          "predictionCoverage": {
+            "numerator": 4,
+            "denominator": 4,
+            "estimate": 1,
+            "wilsonLower": 0.5101091635454027,
+            "wilsonUpper": 1
+          },
+          "referenceUnresolvedGroups": 0,
+          "proposedGroups": 0,
+          "reviewedGroups": 0,
+          "dispositions": {
+            "Rejected": 4
+          }
+        }
+      ]
+    },
+    {
+      "configuration": "StructuredOffsets",
+      "manifestSha256": "55b36e97b8644636486deea9c8b973a78f7fb0962ac7a1dd0cc38ede215c7f70",
+      "traceSha256": "1acb597baa85e839e86d00709c01d08920c08591813e0e09e47cd740a671bf0d",
+      "cases": 8,
+      "naturalEog": 8,
+      "syntacticallyValidJson": 0,
+      "strictOffsetShapeValid": 0,
+      "literalUtf16AlignedIncludingEmpty": 0,
+      "dispositions": {
+        "rejected": 8
+      },
+      "resources": {
+        "modelLoadMilliseconds": 192.2519,
+        "loadPolicy": "OS file-cache uncontrolled; not cold boot",
+        "meanLatencyMilliseconds": 2330.964075,
+        "maximumLatencyMilliseconds": 3012.0996,
+        "totalSampledTokens": 225,
+        "sampledPeakProcessWorkingSetBytes": 2966847488,
+        "memorySamplingMilliseconds": 100,
+        "memoryLimitations": "sampling may miss brief peaks; not system-wide pressure",
+        "completedCases": 8
+      },
+      "languages": [
+        {
+          "language": "Dutch",
+          "category": "all",
+          "repairRecall": {
+            "numerator": 0,
+            "denominator": 2,
+            "estimate": 0,
+            "wilsonLower": 0,
+            "wilsonUpper": 0.6576197724933469
+          },
+          "referenceGroupPrecision": {
+            "numerator": 0,
+            "denominator": 0,
+            "estimate": null,
+            "wilsonLower": null,
+            "wilsonUpper": null
+          },
+          "adjudicatedProposalPrecision": null,
+          "cleanLiteralPreservation": {
+            "numerator": 2,
+            "denominator": 2,
+            "estimate": 1,
+            "wilsonLower": 0.34238022750665303,
+            "wilsonUpper": 1
+          },
+          "completeReferencePassages": {
+            "numerator": 2,
+            "denominator": 4,
+            "estimate": 0.5,
+            "wilsonLower": 0.15003898915214947,
+            "wilsonUpper": 0.8499610108478506
+          },
+          "predictionCoverage": {
+            "numerator": 4,
+            "denominator": 4,
+            "estimate": 1,
+            "wilsonLower": 0.5101091635454027,
+            "wilsonUpper": 1
+          },
+          "referenceUnresolvedGroups": 0,
+          "proposedGroups": 0,
+          "reviewedGroups": 0,
+          "dispositions": {
+            "Rejected": 4
+          }
+        },
+        {
+          "language": "English",
+          "category": "all",
+          "repairRecall": {
+            "numerator": 0,
+            "denominator": 3,
+            "estimate": 0,
+            "wilsonLower": 5.551115123125783e-17,
+            "wilsonUpper": 0.5614970317550454
+          },
+          "referenceGroupPrecision": {
+            "numerator": 0,
+            "denominator": 0,
+            "estimate": null,
+            "wilsonLower": null,
+            "wilsonUpper": null
+          },
+          "adjudicatedProposalPrecision": null,
+          "cleanLiteralPreservation": {
+            "numerator": 2,
+            "denominator": 2,
+            "estimate": 1,
+            "wilsonLower": 0.34238022750665303,
+            "wilsonUpper": 1
+          },
+          "completeReferencePassages": {
+            "numerator": 2,
+            "denominator": 4,
+            "estimate": 0.5,
+            "wilsonLower": 0.15003898915214947,
+            "wilsonUpper": 0.8499610108478506
+          },
+          "predictionCoverage": {
+            "numerator": 4,
+            "denominator": 4,
+            "estimate": 1,
+            "wilsonLower": 0.5101091635454027,
+            "wilsonUpper": 1
+          },
+          "referenceUnresolvedGroups": 0,
+          "proposedGroups": 0,
+          "reviewedGroups": 0,
+          "dispositions": {
+            "Rejected": 4
+          }
+        }
+      ]
+    },
+    {
+      "configuration": "StructuredOffsets-grammar",
+      "manifestSha256": "3edba24d8a962eda9147249be4c655218d5b59ad3db6ac2ba852d67af2d82219",
+      "traceSha256": "03e386a9650d447000ef55d4b08d3b0cc4a1c683fefc2396c3c4f2bfefa99a44",
+      "cases": 8,
+      "naturalEog": 6,
+      "syntacticallyValidJson": 8,
+      "strictOffsetShapeValid": 8,
+      "literalUtf16AlignedIncludingEmpty": 1,
+      "dispositions": {
+        "rejected": 8
+      },
+      "resources": {
+        "modelLoadMilliseconds": 197.2985,
+        "loadPolicy": "OS file-cache uncontrolled; not cold boot",
+        "meanLatencyMilliseconds": 4933.7166875,
+        "maximumLatencyMilliseconds": 11707.269,
+        "totalSampledTokens": 717,
+        "sampledPeakProcessWorkingSetBytes": 3045801984,
+        "memorySamplingMilliseconds": 100,
+        "memoryLimitations": "sampling may miss brief peaks; not system-wide pressure",
+        "completedCases": 8
+      },
+      "languages": [
+        {
+          "language": "Dutch",
+          "category": "all",
+          "repairRecall": {
+            "numerator": 0,
+            "denominator": 2,
+            "estimate": 0,
+            "wilsonLower": 0,
+            "wilsonUpper": 0.6576197724933469
+          },
+          "referenceGroupPrecision": {
+            "numerator": 0,
+            "denominator": 0,
+            "estimate": null,
+            "wilsonLower": null,
+            "wilsonUpper": null
+          },
+          "adjudicatedProposalPrecision": null,
+          "cleanLiteralPreservation": {
+            "numerator": 2,
+            "denominator": 2,
+            "estimate": 1,
+            "wilsonLower": 0.34238022750665303,
+            "wilsonUpper": 1
+          },
+          "completeReferencePassages": {
+            "numerator": 2,
+            "denominator": 4,
+            "estimate": 0.5,
+            "wilsonLower": 0.15003898915214947,
+            "wilsonUpper": 0.8499610108478506
+          },
+          "predictionCoverage": {
+            "numerator": 4,
+            "denominator": 4,
+            "estimate": 1,
+            "wilsonLower": 0.5101091635454027,
+            "wilsonUpper": 1
+          },
+          "referenceUnresolvedGroups": 0,
+          "proposedGroups": 0,
+          "reviewedGroups": 0,
+          "dispositions": {
+            "Rejected": 4
+          }
+        },
+        {
+          "language": "English",
+          "category": "all",
+          "repairRecall": {
+            "numerator": 0,
+            "denominator": 3,
+            "estimate": 0,
+            "wilsonLower": 5.551115123125783e-17,
+            "wilsonUpper": 0.5614970317550454
+          },
+          "referenceGroupPrecision": {
+            "numerator": 0,
+            "denominator": 0,
+            "estimate": null,
+            "wilsonLower": null,
+            "wilsonUpper": null
+          },
+          "adjudicatedProposalPrecision": null,
+          "cleanLiteralPreservation": {
+            "numerator": 2,
+            "denominator": 2,
+            "estimate": 1,
+            "wilsonLower": 0.34238022750665303,
+            "wilsonUpper": 1
+          },
+          "completeReferencePassages": {
+            "numerator": 2,
+            "denominator": 4,
+            "estimate": 0.5,
+            "wilsonLower": 0.15003898915214947,
+            "wilsonUpper": 0.8499610108478506
+          },
+          "predictionCoverage": {
+            "numerator": 4,
+            "denominator": 4,
+            "estimate": 1,
+            "wilsonLower": 0.5101091635454027,
+            "wilsonUpper": 1
+          },
+          "referenceUnresolvedGroups": 0,
+          "proposedGroups": 0,
+          "reviewedGroups": 0,
+          "dispositions": {
+            "Rejected": 4
+          }
+        }
+      ]
+    },
+    {
+      "configuration": "StructuredOffsets-grammar-v2",
+      "manifestSha256": "4052d26ae64c913f8e0302292c9314f3d07f6e3768064a227f798afce5c66002",
+      "traceSha256": "4416b88844659239bf1a70c56dd08298a25f22e835bedf2fc7fb6f5b3e8bb16e",
+      "cases": 8,
+      "naturalEog": 8,
+      "syntacticallyValidJson": 8,
+      "strictOffsetShapeValid": 8,
+      "literalUtf16AlignedIncludingEmpty": 0,
+      "dispositions": {
+        "rejected": 8
+      },
+      "resources": {
+        "modelLoadMilliseconds": 1447.2937,
+        "loadPolicy": "OS file-cache uncontrolled; not cold boot",
+        "meanLatencyMilliseconds": 2732.2833375,
+        "maximumLatencyMilliseconds": 2936.3419,
+        "totalSampledTokens": 266,
+        "sampledPeakProcessWorkingSetBytes": 3053404160,
+        "memorySamplingMilliseconds": 100,
+        "memoryLimitations": "sampling may miss brief peaks; not system-wide pressure",
+        "completedCases": 8
+      },
+      "languages": [
+        {
+          "language": "Dutch",
+          "category": "all",
+          "repairRecall": {
+            "numerator": 0,
+            "denominator": 2,
+            "estimate": 0,
+            "wilsonLower": 0,
+            "wilsonUpper": 0.6576197724933469
+          },
+          "referenceGroupPrecision": {
+            "numerator": 0,
+            "denominator": 0,
+            "estimate": null,
+            "wilsonLower": null,
+            "wilsonUpper": null
+          },
+          "adjudicatedProposalPrecision": null,
+          "cleanLiteralPreservation": {
+            "numerator": 2,
+            "denominator": 2,
+            "estimate": 1,
+            "wilsonLower": 0.34238022750665303,
+            "wilsonUpper": 1
+          },
+          "completeReferencePassages": {
+            "numerator": 2,
+            "denominator": 4,
+            "estimate": 0.5,
+            "wilsonLower": 0.15003898915214947,
+            "wilsonUpper": 0.8499610108478506
+          },
+          "predictionCoverage": {
+            "numerator": 4,
+            "denominator": 4,
+            "estimate": 1,
+            "wilsonLower": 0.5101091635454027,
+            "wilsonUpper": 1
+          },
+          "referenceUnresolvedGroups": 0,
+          "proposedGroups": 0,
+          "reviewedGroups": 0,
+          "dispositions": {
+            "Rejected": 4
+          }
+        },
+        {
+          "language": "English",
+          "category": "all",
+          "repairRecall": {
+            "numerator": 0,
+            "denominator": 3,
+            "estimate": 0,
+            "wilsonLower": 5.551115123125783e-17,
+            "wilsonUpper": 0.5614970317550454
+          },
+          "referenceGroupPrecision": {
+            "numerator": 0,
+            "denominator": 0,
+            "estimate": null,
+            "wilsonLower": null,
+            "wilsonUpper": null
+          },
+          "adjudicatedProposalPrecision": null,
+          "cleanLiteralPreservation": {
+            "numerator": 2,
+            "denominator": 2,
+            "estimate": 1,
+            "wilsonLower": 0.34238022750665303,
+            "wilsonUpper": 1
+          },
+          "completeReferencePassages": {
+            "numerator": 2,
+            "denominator": 4,
+            "estimate": 0.5,
+            "wilsonLower": 0.15003898915214947,
+            "wilsonUpper": 0.8499610108478506
+          },
+          "predictionCoverage": {
+            "numerator": 4,
+            "denominator": 4,
+            "estimate": 1,
+            "wilsonLower": 0.5101091635454027,
+            "wilsonUpper": 1
+          },
+          "referenceUnresolvedGroups": 0,
+          "proposedGroups": 0,
+          "reviewedGroups": 0,
+          "dispositions": {
+            "Rejected": 4
+          }
+        }
+      ]
+    }
+  ]
+}
