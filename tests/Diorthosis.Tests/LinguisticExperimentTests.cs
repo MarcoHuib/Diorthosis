@@ -86,6 +86,14 @@ public sealed class LinguisticExperimentTests
         Assert.Throws<ArgumentException>(() => EditVoting.Aggregate(new(CorrectionLanguage.English, "Hello."), [c,c,c]));
     }
     [Fact]
+    public void RepeatedWordAmbiguityIsNotConfidence()
+    {
+        Assert.True(LocalEdits.Derive("We can can go.","We can go.").AlignmentAmbiguous);
+        var result=Vote("We can can go.","We can go.","We can go.","We can go.");
+        Assert.Empty(result.Analysis.Edits);
+        Assert.Equal(0,result.EligibleCandidates);
+    }
+    [Fact]
     public void MinorityNegationNeverEntersResult()
     {
         var result = Vote("Do not remove it.", "Do remove it.", "Do not remove it.", "Do not remove it.");

@@ -10,6 +10,46 @@ namespace Diorthosis.Benchmarks;
 
 internal static class LinguisticExperiment
 {
+    public static async Task<int> ReplayAsync(string[] args, JsonSerializerOptions options)
+    {
+        if (args.Length != 4) throw new ArgumentException("linguistic-replay <panel.jsonl> <completed-run-directory> <NEW-report.json>");
+        BenchmarkArtifactPolicy.RequireNewOutputs(args[3]);
+        using var manifest = JsonDocument.Parse(File.ReadAllText(Path.Combine(args[2], "manifest.json")));
+        if (manifest.RootElement.GetProperty("state").GetString() != "complete" || manifest.RootElement.GetProperty("datasetSha256").GetString() != Hash(args[1]))
+            throw new InvalidDataException("Replay requires a complete dataset-bound run.");
+        var cases = DatasetCommands.ReadCases(args[1], options).ToDictionary(c => c.Id, StringComparer.Ordinal);
+        var sourceRows = File.ReadLines(args[1]).Select(line => JsonSerializer.Deserialize<JsonElement>(line, options)).ToDictionary(r => r.GetProperty("id").GetString()!, r => r);
+        var rows = File.ReadLines(Path.Combine(args[2], "trace.jsonl")).Select(line => JsonSerializer.Deserialize<JsonElement>(line, options)).ToArray();
+        var seen = new HashSet<(string, string)>();
+        var mismatches = new List<string>();
+        foreach (var group in rows.GroupBy(r => r.GetProperty("id").GetString()!, StringComparer.Ordinal))
+        {
+            var item = cases[group.Key];
+            var spans = sourceRows[item.Id].TryGetProperty("protectedSpans", out var value) ? JsonSerializer.Deserialize<ProtectedSpan[]>(value, options) ?? [] : [];
+            var request = new CorrectionRequest(item.Language, item.InputText, spans);
+            var candidates = new List<VotingCandidate>();
+            foreach (var row in group.Where(r => r.TryGetProperty("inference", out _)))
+            {
+                var arm = row.GetProperty("arm").GetString()!;
+                if (!seen.Add((item.Id, arm)) || row.GetProperty("input").GetString() != request.Text) throw new InvalidDataException("Duplicate or source-mismatched trace.");
+                var inference = JsonSerializer.Deserialize<InferenceResult>(row.GetProperty("inference"), options)!;
+                var analysis = ModelCorrectionEngine.AnalyzeInference(inference, request);
+                if (JsonSerializer.Serialize(analysis, options) != row.GetProperty("analysis").GetRawText()) mismatches.Add(item.Id + "/" + arm + "/analysis");
+                var prompt = arm == "hints" ? SpellingDiagnostics.HintPrompt(request, JsonSerializer.Deserialize<WordDiagnostic[]>(row.GetProperty("dictionaryDiagnostics"), options)!) : CorrectionPrompt.Build(request);
+                if (prompt != row.GetProperty("prompt").GetString() || DatasetAudit.Hash(prompt) != row.GetProperty("promptSha256").GetString()) mismatches.Add(item.Id + "/" + arm + "/prompt");
+                if (arm.StartsWith("sample-", StringComparison.Ordinal)) candidates.Add(new(arm, inference));
+            }
+            var voted = EditVoting.Aggregate(request, candidates);
+            var savedVote = group.Single(r => r.GetProperty("arm").GetString() == "voting-3");
+            if (JsonSerializer.Serialize(voted.Analysis, options) != savedVote.GetProperty("analysis").GetRawText()) mismatches.Add(item.Id + "/voting-3/analysis");
+        }
+        if (seen.Count != cases.Count * 5 || rows.Length != cases.Count * 6) throw new InvalidDataException("Incomplete replay coverage.");
+        await BenchmarkArtifactPolicy.WriteTextNewAsync(args[3], JsonSerializer.Serialize(new { version = "phase3-replay-1.0.0", cases = cases.Count,
+            generatedCandidates = seen.Count, votedPassages = cases.Count, traceSha256 = Hash(Path.Combine(args[2], "trace.jsonl")), datasetSha256 = Hash(args[1]),
+            mismatches, interpretation = "Deterministic replay of retained outputs and literal prompts, not fresh model inference or human linguistic validation." }, options));
+        return mismatches.Count == 0 ? 0 : 1;
+    }
+
     public static async Task<int> RunAsync(string[] args, JsonSerializerOptions options)
     {
         if (args.Length != 7) throw new ArgumentException("linguistic-experiment <panel.jsonl> <local.gguf> <asset-directory> <assets.json> <model-provenance.json> <NEW-output-directory>");
@@ -40,11 +80,15 @@ internal static class LinguisticExperiment
         var native = Path.Combine(AppContext.BaseDirectory, "runtimes", RuntimeInformation.RuntimeIdentifier, "native");
         var nativeHashes = Directory.GetFiles(native).Where(p => p.EndsWith(".dylib", StringComparison.Ordinal) || p.EndsWith(".dll", StringComparison.Ordinal) || p.EndsWith(".so", StringComparison.Ordinal))
             .Order(StringComparer.Ordinal).ToDictionary(p => Path.GetFileName(p)!, Hash);
+        // Freeze software identity at start, even if a developer rebuilds files during a long run.
+        var assemblyHash = Hash(typeof(LinguisticExperiment).Assembly.Location);
+        var coreHash = Hash(typeof(ModelCorrectionEngine).Assembly.Location);
+        var experimentalHash = Hash(typeof(EditVoting).Assembly.Location);
         object Manifest() => new { version = "phase3-linguistic-experiment-1.0.0", state = complete ? "complete" : "incomplete",
             startedUtc = started, updatedUtc = DateTimeOffset.UtcNow, repositoryCommit = Environment.GetEnvironmentVariable("DIORTHOSIS_EXPERIMENT_COMMIT") ?? "unknown",
             datasetSha256 = Hash(args[1]), assetManifestSha256 = Hash(args[4]), provenance = provenance.RootElement.Clone(),
-            assemblySha256 = Hash(typeof(LinguisticExperiment).Assembly.Location), coreAssemblySha256 = Hash(typeof(ModelCorrectionEngine).Assembly.Location),
-            experimentalAssemblySha256 = Hash(typeof(EditVoting).Assembly.Location), evaluator = ReferenceEvaluator.Version,
+            assemblySha256 = assemblyHash, coreAssemblySha256 = coreHash,
+            experimentalAssemblySha256 = experimentalHash, evaluator = ReferenceEvaluator.Version,
             modelBytes = new FileInfo(args[2]).Length, runtime = LlamaSharpInferenceAdapter.RuntimeVersion,
             llamaCppRevision = "3f7c29d318e317b63f54c558bc69803963d7d88c", nativeHashes,
             os = RuntimeInformation.OSDescription, architecture = RuntimeInformation.ProcessArchitecture.ToString(), framework = RuntimeInformation.FrameworkDescription,
