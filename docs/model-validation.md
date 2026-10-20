@@ -155,3 +155,7 @@ shasum -a 256 /path/outside/repository/EuroLLM-1.7B-Instruct-Q4_K_M.gguf
 ```
 
 Compute SHA-256 after acquisition/conversion and compare it with the table above. Use the commands in [`docs/benchmarks.md`](benchmarks.md) and keep temperature, context, prompt, token limit and case-file hash identical between models. The `compare` command rejects mismatched data/settings. The benchmark runner's process peak working set is the reported memory metric; it is not a measurement of system-wide unified-memory pressure.
+
+## 2026-10-20 quality engineering addendum
+
+The [new report](quality-engineering-report.md) separates deterministic replay of four historical model runs from fresh 3B prompt/format diagnostics. The evaluated EuroLLM 9B artifact is documented in [its existing evidence record](../benchmarks/model-validation/results/eurollm-9b-v1/README.md). No official model is selected, no new weights were downloaded, and original historical results remain unchanged.

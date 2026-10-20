@@ -80,3 +80,7 @@ The existing six-RID CI matrix now also loads the native CPU backend on matching
 Prepare independent artifacts for Windows, macOS, and Linux; target x64/ARM64 wherever validated. A Windows `.exe` is not executable natively on macOS/Linux. macOS signing/notarization and Linux libc compatibility are release considerations, not reasons to add an installer prerequisite.
 
 Use reproducible, pinned builds and publish an SBOM/license manifest when dependencies are actually included. Model weights may be distributed separately from binaries if it simplifies updates, provided the resulting end-user package remains offline and self-contained.
+
+## Correction quality checkpoint
+
+See [ADR 0011](decisions/0011-observable-conservative-correction-results.md) for observable result states, source/grapheme checks and conservative scope review; [ADR 0012](decisions/0012-opt-in-prompt-and-edit-experiments.md) for isolated prompt/edit/grammar research. Default prompt/runtime remain pinned. [Context investigation](document-context-investigation.md) adds target-offset validation only, without document parsing or export. Baseline CI at `968f4dc` passed all six publish/native-start jobs; the earlier statement that the matrix had not run is superseded for that commit only.

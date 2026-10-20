@@ -16,6 +16,8 @@ Diorthosis aims to help people confidently review spelling, grammar, and sentenc
 
 > **Project status:** Ministral 3B, 8B and 14B GGUFs have executed locally on macOS ARM64 with the CPU-only Native AOT CLI. On the same provisional 44-case diagnostic set, the larger models did not improve Dutch and English correction together; all three remain below the targets. This set is not held-out quality evidence. The 600-case synthetic review candidate still needs independent review. Document processing remains out of scope.
 
+The [quality engineering report](docs/quality-engineering-report.md) records the dataset audit (263 exact unique inputs among 600 records), versioned evaluator, safety/result contracts and controlled prompt/edit experiments. None establishes independent held-out quality or release readiness.
+
 ## Project goals
 
 - Run entirely on the user's own computer, with no network access or telemetry.

@@ -47,3 +47,7 @@
 - [ ] Test network-isolated execution, code signing requirements and license notices.
 
 **Exit:** reproducible portable release artifacts and a published support matrix.
+
+## Quality engineering progress
+
+Dataset diagnostics/provenance, experimental v3 reference scoring, explicit correction outcomes, stronger bounded safety tests and opt-in prompt/edit experiments are implemented. [The report](quality-engineering-report.md) lists completed and partial phases. Independent linguistic review, held-out quality gates, spelling dependency approval, document fidelity and cross-platform real-weight inference remain open; no later milestone is declared complete.
