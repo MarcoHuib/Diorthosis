@@ -200,11 +200,12 @@ def main():
                       independentReviewers=[None,None],adjudication=None)
             for layer,candidate,reference in [('raw',row['rawModelOutput'],None),('parsed',parsed_candidate,parsed_ref),('delivered',delivered,delivered_ref)]:
                 if candidate is None or layer=='delivered' and not delivered_assessable(row['disposition']):continue
-                sid=add(subject(item,layer,'passage',candidate,item['errors'],dict(meta,assessable=True,disposition=row['disposition']) if layer=='delivered' else meta),origins);subject_ids.append(sid)
+                layer_meta=dict(meta,assessable=True,disposition=row['disposition']) if layer=='delivered' else meta
+                sid=add(subject(item,layer,'passage',candidate,item['errors'],layer_meta),origins);subject_ids.append(sid)
                 if reference:
                     for proposal in reference['proposals']:
                         candidate_group=apply(item['inputText'],proposal['edits'])
-                        sid=add(subject(item,layer,'proposal',candidate_group,item['errors'],dict(meta,proposalId=proposal['id'],edits=proposal['edits'],annotationIndexes=proposal['annotationIndexes'])),origins);subject_ids.append(sid)
+                        sid=add(subject(item,layer,'proposal',candidate_group,item['errors'],dict(layer_meta,proposalId=proposal['id'],edits=proposal['edits'],annotationIndexes=proposal['annotationIndexes'])),origins);subject_ids.append(sid)
             if row['disposition'] in ('rejected','needsReview'):
                 sid=add(subject(item,'rejected','rejection',parsed_candidate,item['errors'],dict(meta,disposition=row['disposition'],stage=row.get('rejectionStage'),reason=row.get('rejectionReason'))),origins);subject_ids.append(sid)
             failure_rows.append(dict(caseId=item['id'],language=item['language'],provenance=origins,input=item['inputText'],rawOutput=row['rawModelOutput'],parsedCandidate=parsed_candidate,
