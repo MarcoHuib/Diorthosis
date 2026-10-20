@@ -40,14 +40,14 @@ foreach (var (language, targetText) in new[]
     var request = new ContextCorrectionRequest("real-context-fixture-1", document, language, target,
         [new("before", "paragraph-1", 0, before, new Dictionary<string, string>()),
          new("after", "paragraph-3", before.Length + targetText.Length + 2, after, new Dictionary<string, string>())]);
-    var result = await new ContextCorrectionEngine(adapter).CorrectAsync(request, timeout.Token);
-    if (result.Correction.Termination != GenerationTermination.EndOfGeneration) throw new InvalidDataException("Real context probe did not reach EOG.");
-    var edits = ContextCorrectionEngine.MapToCurrentSnapshot(request, result, request.DocumentRevision, document);
+    var realResult = await new ContextCorrectionEngine(adapter).CorrectAsync(request, timeout.Token);
+    if (realResult.Correction.Termination != GenerationTermination.EndOfGeneration) throw new InvalidDataException("Real context probe did not reach EOG.");
+    var edits = ContextCorrectionEngine.MapToCurrentSnapshot(request, realResult, request.DocumentRevision, document);
     var preview = SourceEdits.Apply(document, edits);
     if (!preview.StartsWith(before + "\n", StringComparison.Ordinal) || !preview.EndsWith("\n" + after, StringComparison.Ordinal)
-        || result.FormattingMetadata["structure"] != "table-cell") throw new InvalidDataException("Real context isolation failed.");
-    var correctedTarget = SourceEdits.Apply(targetText, result.Correction.Edits);
-    Console.WriteLine($"Native AOT real context {language}: natural EOG; disposition {result.Correction.Disposition}; target \"{JsonEncodedText.Encode(correctedTarget)}\"; neighbors/metadata preserved.");
+        || realResult.FormattingMetadata["structure"] != "table-cell") throw new InvalidDataException("Real context isolation failed.");
+    var correctedTarget = SourceEdits.Apply(targetText, realResult.Correction.Edits);
+    Console.WriteLine($"Native AOT real context {language}: natural EOG; disposition {realResult.Correction.Disposition}; target \"{JsonEncodedText.Encode(correctedTarget)}\"; neighbors/metadata preserved.");
 }
 return 0;
 
