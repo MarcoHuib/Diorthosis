@@ -1,0 +1,19 @@
+{
+  "version": "phase2-diversity-1",
+  "count": 80,
+  "languages": {
+    "Dutch": {
+      "cases": 40,
+      "proposedClean": 24
+    },
+    "English": {
+      "cases": 40,
+      "proposedClean": 24
+    }
+  },
+  "approval": "NONE; AI-authored development proposals requiring independent annotation review",
+  "independentHumanReviewedErrors": 0,
+  "independentHumanReviewedClean": 0,
+  "knownLimitations": "Same AI author/batch; related NL/EN scenarios; distinct scenario families are not proven independent sources. No selection or held-out set.",
+  "sha256": "9d657981aa9d072eab9156d0ea0282c2075e33c09a43499f33a04cef85d81c21"
+}

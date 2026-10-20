@@ -1,3 +1,4 @@
+using Xunit;
 using Diorthosis.Benchmarks;
 using Diorthosis.Core.Corrections;
 
@@ -42,11 +43,35 @@ public sealed class LinguisticReviewTests
     public void StaleSourceCandidateAnnotationAndDecisionVersionFail()
     {
         var subject = Subject(); var a = Vote(subject, "test-A"); var b = Vote(subject, "test-B");
-        foreach (var altered in new[] { subject with { SourceText = "Anders." }, subject with { CandidateText = "Andere kandidaat." }, subject with { AnnotationsJson = "[{}]" }, subject with { SourceFamily = "changed" } })
+        foreach (var altered in new[] { subject with { SourceText = "Anders." }, subject with { CandidateText = "Andere kandidaat." }, subject with { AnnotationsJson = "[{}]" }, subject with { SourceFamily = "changed" }, subject with { SourceFamily = "" }, subject with { DocumentId = "" }, subject with { CandidateText = "" } })
             Assert.Throws<InvalidDataException>(() => LinguisticReview.Evaluate([altered], [], []));
         Assert.Throws<InvalidDataException>(() => LinguisticReview.Evaluate([subject], [a, b, b with { Version = 2 }], [Final(subject)]));
         Assert.Throws<InvalidDataException>(() => LinguisticReview.Evaluate([subject], [a, a], []));
         Assert.Throws<InvalidDataException>(() => LinguisticReview.Evaluate([subject], [a with { Language = CorrectionLanguage.English }], []));
+    }
+    [Fact]
+    public void FreshAdjudicationPreservesPriorVersionsAndDisagreement()
+    {
+        var subject = Subject(); var a = Vote(subject, "test-A"); var b = Vote(subject, "test-B");
+        var revision = a with { Version = 2, Judgment = Good with { Justified = false } };
+        var revised = Final(subject) with { Version = 2, ReviewerVersions = new Dictionary<string, int> { ["test-A"] = 2, ["test-B"] = 1 }, Judgment = Good with { Justified = false } };
+        var report = LinguisticReview.Evaluate([subject], [a, b, revision], [Final(subject), revised]);
+        Assert.Equal(3, report.DecisionHistory.Count);
+        Assert.Equal(2, report.AdjudicationHistory.Count);
+        Assert.Equal(0.0, report.Metrics[0].ProposalPrecision.Estimate);
+        Assert.Equal(1, report.Metrics[0].Disagreements);
+    }
+    [Fact]
+    public void DefiniteFailuresRemainInDenominatorWithOtherUnknownJudgments()
+    {
+        foreach (var kind in new[] { "proposal", "passage" })
+        {
+            var subject = Subject(kind);
+            var final = Final(subject) with { Judgment = Good with { Justified = false, MeaningPreserved = null } };
+            var report = LinguisticReview.Evaluate([subject], [Vote(subject, "test-A"), Vote(subject, "test-B")], [final]);
+            var metric = kind == "proposal" ? report.Metrics[0].ProposalPrecision : report.Metrics[0].CompletePassageSuccess;
+            Assert.Equal(0, metric.Numerator); Assert.Equal(1, metric.Denominator); Assert.Equal(0.0, metric.Estimate);
+        }
     }
     [Fact]
     public void UnknownPassageJudgmentsStayOutOfSuccessDenominator()
@@ -57,5 +82,7 @@ public sealed class LinguisticReviewTests
         Assert.Equal(0, report.Metrics[0].CompletePassageSuccess.Denominator);
         Assert.Equal(1, report.Metrics[0].AdjudicationCoverage.Numerator);
         Assert.Equal(1, report.Metrics[0].CleanPreservation.Numerator);
+        Assert.Equal(0, report.Metrics[0].JudgmentCoverage["completePassageSuccess"].Numerator);
+        Assert.Equal(1, report.Metrics[0].JudgmentCoverage["completePassageSuccess"].Denominator);
     }
 }

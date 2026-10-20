@@ -20,7 +20,7 @@ public sealed record AdjudicatedLayerMetrics(string Language, string Layer, int 
     int KnownSourceFamilies, int UnknownSourceFamilies, int? KnownDocuments, int ProposedCleanPassages,
     int Finalized, int Pending, int Disagreements, Proportion ProposalPrecision, Proportion CompletePassageSuccess,
     Proportion CleanPreservation, Proportion CriticalSemanticFailures, Proportion RejectionAppropriateness,
-    Proportion AdjudicationCoverage);
+    Proportion AdjudicationCoverage, IReadOnlyDictionary<string, Proportion> JudgmentCoverage);
 public sealed record LinguisticReviewReport(string Version, string Policy, IReadOnlyList<AdjudicatedLayerMetrics> Metrics,
     IReadOnlyList<ReviewDecision> DecisionHistory, IReadOnlyList<ReviewAdjudication> AdjudicationHistory);
 
@@ -28,10 +28,11 @@ public sealed record LinguisticReviewReport(string Version, string Policy, IRead
 public static class LinguisticReview
 {
     public const string Version = "linguistic-review-1.0.0";
+    private static string Optional(string? value) => value is null ? "null" : "string:" + value;
     public static string Binding(ReviewSubject subject)
     {
         var fields = new[] { subject.CaseId, subject.Language.ToString(), subject.Layer, subject.Kind, subject.SourceText,
-            subject.CandidateText ?? "", subject.AnnotationsJson, subject.MetadataJson, subject.SourceFamily ?? "", subject.DocumentId ?? "", subject.ProposedClean ? "true" : "false" };
+            Optional(subject.CandidateText), subject.AnnotationsJson, subject.MetadataJson, Optional(subject.SourceFamily), Optional(subject.DocumentId), subject.ProposedClean ? "true" : "false" };
         return DatasetAudit.Hash(string.Concat(fields.Select(value => Encoding.UTF8.GetByteCount(value).ToString(CultureInfo.InvariantCulture) + ":" + value)));
     }
 
@@ -42,7 +43,10 @@ public static class LinguisticReview
             throw new InvalidDataException("Review subjects must be nonempty and unique.");
         foreach (var item in subjects)
         {
-            if (!Enum.IsDefined(item.Language) || item.BindingSha256 != Binding(item) || item.SubjectId != "review-" + item.BindingSha256
+            if (item.AnnotationsJson is null || item.MetadataJson is null || string.IsNullOrWhiteSpace(item.CaseId) || string.IsNullOrWhiteSpace(item.SourceText)
+                || item.SourceFamily is not null && string.IsNullOrWhiteSpace(item.SourceFamily)
+                || item.DocumentId is not null && string.IsNullOrWhiteSpace(item.DocumentId)
+                || !Enum.IsDefined(item.Language) || item.BindingSha256 != Binding(item) || item.SubjectId != "review-" + item.BindingSha256
                 || string.IsNullOrWhiteSpace(item.CaseId) || string.IsNullOrWhiteSpace(item.SourceText)
                 || item.Layer is not ("annotations" or "raw" or "parsed" or "delivered" or "rejected")
                 || item.Kind is not ("case" or "proposal" or "passage" or "rejection")) throw new InvalidDataException("Invalid or stale review subject.");
@@ -67,6 +71,7 @@ public static class LinguisticReview
         {
             Validate(final.SubjectId, final.BindingSha256, final.Language, final.AdjudicatorId, final.ReviewerKind, final.Qualifications, final.Version);
             ValidateJudgment(final.Judgment);
+            if (final.ReviewerVersions is null) throw new InvalidDataException("Missing adjudication reviewer versions.");
             if (!adjudicationVersions.Add((final.SubjectId, final.Version)) || final.Status is not ("pending" or "disputed" or "approved"))
                 throw new InvalidDataException("Invalid adjudication status/version.");
             if (final.Status == "approved")
@@ -77,13 +82,16 @@ public static class LinguisticReview
                     throw new InvalidDataException("Approval requires a separate declared human adjudicator and two distinct reviewers.");
                 foreach (var reviewer in final.ReviewerVersions.Keys)
                 {
-                    if (!latest.TryGetValue((final.SubjectId, Identity(reviewer)), out var vote)
-                        || vote.Version != final.ReviewerVersions[reviewer] || vote.ReviewerKind != "human-declared" || !vote.IndependenceDeclared)
+                    var vote = decisions.SingleOrDefault(value => value.SubjectId == final.SubjectId && Identity(value.ReviewerId) == Identity(reviewer) && value.Version == final.ReviewerVersions[reviewer]);
+                    if (vote is null || vote.ReviewerKind != "human-declared" || !vote.IndependenceDeclared)
                         throw new InvalidDataException("Approval lacks two independent declared human reviews for this bound subject.");
                 }
             }
             if (!finals.TryGetValue(final.SubjectId, out var prior) || prior.Version < final.Version) finals[final.SubjectId] = final;
         }
+        foreach (var final in finals.Values.Where(value => value.Status == "approved"))
+            if (final.ReviewerVersions.Any(pair => latest[(final.SubjectId, Identity(pair.Key))].Version != pair.Value))
+                throw new InvalidDataException("Latest approval is stale after a reviewer decision changed; re-adjudicate.");
         var metrics = subjects.GroupBy(item => (item.Language, item.Layer)).OrderBy(group => group.Key.Language).ThenBy(group => group.Key.Layer, StringComparer.Ordinal).Select(group =>
         {
             var approved = group.Where(item => finals.TryGetValue(item.SubjectId, out var final) && final.Status == "approved")
@@ -100,11 +108,18 @@ public static class LinguisticReview
                 group.Where(item => item.SourceFamily is null).Select(item => item.CaseId).Distinct(StringComparer.Ordinal).Count(),
                 group.All(item => item.DocumentId is null) ? null : group.Where(item => item.DocumentId is not null).Select(item => item.DocumentId).Distinct(StringComparer.Ordinal).Count(),
                 group.Count(item => item.Kind == "passage" && item.ProposedClean), approved.Length, group.Count() - approved.Length, disagreements,
-                Measure("proposal", value => value.Justified is null || value.MeaningPreserved is null ? null : value.Justified == true && value.MeaningPreserved == true),
-                Measure("passage", value => value.AllDefectsRepaired is null || value.NoNewErrors is null || value.MeaningPreserved is null || value.Justified is null ? null
-                    : value.AllDefectsRepaired == true && value.NoNewErrors == true && value.MeaningPreserved == true && value.Justified == true),
+                Measure("proposal", value => And(value.Justified, value.MeaningPreserved)),
+                Measure("passage", value => And(value.AllDefectsRepaired, value.NoNewErrors, value.MeaningPreserved, value.Justified)),
                 Measure("passage", value => value.CleanPreserved, cleanOnly: true), Measure("passage", value => value.CriticalSemanticFailure),
-                Measure("rejection", value => value.RejectionAppropriate), Ratio(approved.Length, group.Count()));
+                Measure("rejection", value => value.RejectionAppropriate), Ratio(approved.Length, group.Count()),
+                new Dictionary<string, Proportion>
+                {
+                    ["proposalPrecision"] = Ratio(Measure("proposal", value => And(value.Justified, value.MeaningPreserved)).Denominator, group.Count(item => item.Kind == "proposal")),
+                    ["completePassageSuccess"] = Ratio(Measure("passage", value => And(value.AllDefectsRepaired, value.NoNewErrors, value.MeaningPreserved, value.Justified)).Denominator, group.Count(item => item.Kind == "passage")),
+                    ["cleanPreservation"] = Ratio(Measure("passage", value => value.CleanPreserved, cleanOnly: true).Denominator, group.Count(item => item.Kind == "passage" && item.ProposedClean)),
+                    ["criticalSemanticFailures"] = Ratio(Measure("passage", value => value.CriticalSemanticFailure).Denominator, group.Count(item => item.Kind == "passage")),
+                    ["rejectionAppropriateness"] = Ratio(Measure("rejection", value => value.RejectionAppropriate).Denominator, group.Count(item => item.Kind == "rejection"))
+                });
         }).ToArray();
         return new(Version, "Only approved, content-bound external human-declared judgments enter linguistic metrics. Identities/qualifications/independence are declarations requiring external verification. Unknowns excluded with coverage; descriptive Wilson intervals do not establish independence. Cases/families/documents are counts, not inferred independent observations. AI decisions remain recorded and cannot approve. Existing predictions are unchanged.", metrics, decisions, adjudications);
 
@@ -115,6 +130,7 @@ public static class LinguisticReview
                 throw new InvalidDataException("Stale subject binding or invalid reviewer metadata.");
         }
     }
+    private static bool? And(params bool?[] values) => values.Any(value => value == false) ? false : values.Any(value => value is null) ? null : true;
     private static string Identity(string value) => value.Trim().ToUpperInvariant();
     private static void ValidateJudgment(LinguisticJudgment value)
     {

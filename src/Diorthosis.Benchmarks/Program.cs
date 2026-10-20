@@ -18,12 +18,31 @@ try
 {
     if (args[0] == "adjudicate")
     {
-        if (args.Length != 5) throw new ArgumentException("adjudicate <subjects.jsonl> <decisions.jsonl> <adjudications.jsonl> <NEW-report.json>");
+        if (args.Length is not (5 or 7) || args.Length == 7 && args[5] != "--lineage") throw new ArgumentException("adjudicate <subjects.jsonl> <decisions.jsonl> <adjudications.jsonl> <NEW-report.json> [--lineage <lineage.json>]");
         BenchmarkArtifactPolicy.RequireNewOutputs(args[4]);
         T[] Lines<T>(string path) => File.ReadLines(path).Where(line => !string.IsNullOrWhiteSpace(line))
             .Select(line => JsonSerializer.Deserialize<T>(line, options) ?? throw new InvalidDataException("Null review record.")).ToArray();
-        var reviewed = LinguisticReview.Evaluate(Lines<ReviewSubject>(args[1]), Lines<ReviewDecision>(args[2]), Lines<ReviewAdjudication>(args[3]));
-        await BenchmarkArtifactPolicy.WriteTextNewAsync(args[4], JsonSerializer.Serialize(reviewed, options));
+        var subjects = Lines<ReviewSubject>(args[1]); var decisions = Lines<ReviewDecision>(args[2]); var finals = Lines<ReviewAdjudication>(args[3]);
+        var reviewed = LinguisticReview.Evaluate(subjects, decisions, finals);
+        object output = reviewed;
+        if (args.Length == 7)
+        {
+            var lineage = JsonSerializer.Deserialize<Dictionary<string, JsonElement[]>>(await File.ReadAllTextAsync(args[6]), options)
+                ?? throw new InvalidDataException("Missing lineage.");
+            var known = subjects.Select(item => item.SubjectId).ToHashSet(StringComparer.Ordinal);
+            if (lineage.Any(pair => !known.Contains(pair.Key) || pair.Value is null || pair.Value.Length == 0
+                || pair.Value.Any(value => !value.TryGetProperty("model", out var model) || model.ValueKind != JsonValueKind.String || string.IsNullOrWhiteSpace(model.GetString()))))
+                throw new InvalidDataException("Lineage must reference known bound subjects and explicit model names.");
+            var names = lineage.Values.SelectMany(values => values).Select(value => value.GetProperty("model").GetString()!).Distinct(StringComparer.Ordinal);
+            var byModel = names.ToDictionary(name => name, name =>
+            {
+                var ids = lineage.Where(pair => pair.Value.Any(value => value.GetProperty("model").GetString() == name)).Select(pair => pair.Key).ToHashSet(StringComparer.Ordinal);
+                return LinguisticReview.Evaluate(subjects.Where(item => ids.Contains(item.SubjectId)).ToArray(), decisions.Where(item => ids.Contains(item.SubjectId)).ToArray(), finals.Where(item => ids.Contains(item.SubjectId)).ToArray());
+            }, StringComparer.Ordinal);
+            output = new { aggregateUniqueSubjects = reviewed, byModel, declaredLineageSha256 = await HashFileAsync(args[6]),
+                lineagePolicy = "Model membership is a declared mapping, not authenticated identity. Source trace/run binding status remains in lineage records; shared judgments are reused per model, never independent observations." };
+        }
+        await BenchmarkArtifactPolicy.WriteTextNewAsync(args[4], JsonSerializer.Serialize(output, options));
         return 0;
     }
     if (args[0] == "experiment") return await CorrectionExperiment.RunAsync(args, options);

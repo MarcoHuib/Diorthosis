@@ -53,12 +53,12 @@ internal static class CorrectionExperiment
         await File.WriteAllTextAsync(manifestPath, JsonSerializer.Serialize(Manifest("running"), options));
         try
         {
-            var load = Stopwatch.StartNew();
-            using var adapter = new LlamaSharpInferenceAdapter(args[2], threads: 9);
-            load.Stop();
             using var process = Process.GetCurrentProcess();
             long peak = process.WorkingSet64;
             await using var memoryTimer = new Timer(_ => { process.Refresh(); InterlockedExtensions.Max(ref peak, process.WorkingSet64); }, null, 0, 100);
+            var load = Stopwatch.StartNew();
+            using var adapter = new LlamaSharpInferenceAdapter(args[2], threads: 9);
+            load.Stop();
             var capturing = new ExperimentAdapter(adapter);
             var engine = new ExperimentalCorrectionEngine(capturing, variant, maxTokens, constrain);
             using var traceWriter = new StreamWriter(Path.Combine(args[3], "trace.jsonl"), append: false);
@@ -88,7 +88,7 @@ internal static class CorrectionExperiment
             await File.WriteAllTextAsync(Path.Combine(args[3], "metrics.json"), JsonSerializer.Serialize(ReferenceEvaluator.Evaluate(cases, predictions, dispositions), options));
             await File.WriteAllTextAsync(Path.Combine(args[3], "resources.json"), JsonSerializer.Serialize(new { modelLoadMilliseconds = load.Elapsed.TotalMilliseconds,
                 loadPolicy = "OS file-cache uncontrolled; not cold boot", meanLatencyMilliseconds = latencies.Average(), maximumLatencyMilliseconds = latencies.Max(),
-                totalSampledTokens = tokens.Sum(), sampledPeakProcessWorkingSetBytes = peak, memorySamplingMilliseconds = 100, memoryLimitations = "sampling may miss brief peaks; not system-wide pressure", completedCases = predictions.Count }, options));
+                totalSampledTokens = tokens.Sum(), sampledPeakProcessWorkingSetBytes = peak, memorySamplingMilliseconds = 100, memoryScope = "process working set sampled across model load and inference", memoryLimitations = "sampling may miss brief peaks; not system-wide pressure", completedCases = predictions.Count }, options));
             complete = true;
             return 0;
         }
