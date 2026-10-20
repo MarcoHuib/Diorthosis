@@ -26,6 +26,29 @@ foreach (var language in new[] { CorrectionLanguage.Dutch, CorrectionLanguage.En
         throw new InvalidDataException("Native AOT context mapping failed.");
 }
 Console.WriteLine("Native AOT context: target-only UTF-16 mapping and metadata policy passed (fake adapter; no linguistic measurement).");
+// Two bounded real-context contract checks, not a comparison or linguistic-quality benchmark.
+foreach (var (language, targetText) in new[]
+{
+    (CorrectionLanguage.Dutch, "Ik heb het document verstuurt."),
+    (CorrectionLanguage.English, "Please recieve the signed form.")
+})
+{
+    const string before = "🌷 Read-only heading. Preserve OAuth2.";
+    const string after = "Read-only footer. Preserve ApiGateway-v2.";
+    var document = before + "\n" + targetText + "\n" + after;
+    var target = new ContextSegment("target", "paragraph-2", before.Length + 1, targetText, new Dictionary<string, string> { ["structure"] = "table-cell" });
+    var request = new ContextCorrectionRequest("real-context-fixture-1", document, language, target,
+        [new("before", "paragraph-1", 0, before, new Dictionary<string, string>()),
+         new("after", "paragraph-3", before.Length + targetText.Length + 2, after, new Dictionary<string, string>())]);
+    var result = await new ContextCorrectionEngine(adapter).CorrectAsync(request, timeout.Token);
+    if (result.Correction.Termination != GenerationTermination.EndOfGeneration) throw new InvalidDataException("Real context probe did not reach EOG.");
+    var edits = ContextCorrectionEngine.MapToCurrentSnapshot(request, result, request.DocumentRevision, document);
+    var preview = SourceEdits.Apply(document, edits);
+    if (!preview.StartsWith(before + "\n", StringComparison.Ordinal) || !preview.EndsWith("\n" + after, StringComparison.Ordinal)
+        || result.FormattingMetadata["structure"] != "table-cell") throw new InvalidDataException("Real context isolation failed.");
+    var correctedTarget = SourceEdits.Apply(targetText, result.Correction.Edits);
+    Console.WriteLine($"Native AOT real context {language}: natural EOG; disposition {result.Correction.Disposition}; target \"{JsonEncodedText.Encode(correctedTarget)}\"; neighbors/metadata preserved.");
+}
 return 0;
 
 sealed class FixedAdapter : IModelInferenceAdapter
