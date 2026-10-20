@@ -1,0 +1,7 @@
+{
+  "modelRepository": "utter-project/EuroLLM-9B-Instruct; bartowski/EuroLLM-9B-Instruct-GGUF",
+  "modelRevision": "utter-project/EuroLLM-9B-Instruct@f7ae2bc3bcbb538c0b93fa6cfbf388d9898b1ace; bartowski/EuroLLM-9B-Instruct-GGUF@55e5590cc457e42ed197c34c5b10403472b05d54",
+  "modelSha256": "785a3b2883532381704ef74f866f822f179a931801d1ed1cf12e6deeb838806b",
+  "quantization": "Q4_K_M",
+  "reviewReference": "docs/model-validation.md; docs/quality-engineering-report.md; existing evaluation-only assets; no new download or redistribution approval"
+}
