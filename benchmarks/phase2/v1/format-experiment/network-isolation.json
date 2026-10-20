@@ -1,0 +1,5 @@
+{
+  "policy": "(version 1) (allow default) (deny network*)",
+  "selfCheckErrno": 1,
+  "diagnosticsDisabled": true
+}

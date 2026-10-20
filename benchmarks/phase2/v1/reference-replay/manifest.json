@@ -1,0 +1,48 @@
+{
+  "experimentId": "evaluator-v3-replay-1",
+  "kind": "deterministic saved-prediction replay; no new inference",
+  "repositoryCommit": "c0cc3b296a94ad5694e3ddbf13874bf30e88a250",
+  "sourceState": "current implementation at recorded commit; working-tree state must be recorded by the caller if modified",
+  "datasetSha256": "2190c109f5f8e8ce1979637a1beea9fcce615959033aa76576b32ba537465fa2",
+  "evaluator": "reference-groups-3.1.0",
+  "prompt": "historical diorthosis-correction-v3",
+  "independentLinguisticReview": false,
+  "runs": [
+    {
+      "model": "ministral-3b",
+      "predictions": "benchmarks/model-validation/results/v4/ministral-3b-predictions.jsonl",
+      "predictionsSha256": "13797c75d4450614313326b5d35fae8ab10c82bebb4cf3eff44ca6508d2fbe59",
+      "sourceReport": "benchmarks/model-validation/results/v4/ministral-3b-report.json",
+      "sourceReportSha256": "23ce3eb2d721070beac517c175de9e1c59b0739d5dfdddb8f0f5b7c77d9a07a4",
+      "historicalV1Reproduced": true,
+      "resultSha256": "7af9d4b1ab2f8cc78c4cff5abeed54b8f2dd2c4ee2a776c9eb4cc75795aeec4d"
+    },
+    {
+      "model": "ministral-3-8b",
+      "predictions": "benchmarks/model-validation/results/v4/ministral-3-8b-predictions.jsonl",
+      "predictionsSha256": "f3e417aa9245e3e7bfd704ed33ed5737abf587831ef339202dc5481ceb530c32",
+      "sourceReport": "benchmarks/model-validation/results/v4/ministral-3-8b-report.json",
+      "sourceReportSha256": "37095130f0b93ecadc1ea0be74873a2db50e69a448a73a7bafeb2f18a89e7f63",
+      "historicalV1Reproduced": true,
+      "resultSha256": "94b8adabcb18fa37c6c17572e72be1803a395533ab0fad4f3c3f2a18385ff8a7"
+    },
+    {
+      "model": "ministral-3-14b",
+      "predictions": "benchmarks/model-validation/results/v4/ministral-3-14b-predictions.jsonl",
+      "predictionsSha256": "36be90144872bc10aff152e070dcb492a69c0a61e086c15c482ecd0b2d76985c",
+      "sourceReport": "benchmarks/model-validation/results/v4/ministral-3-14b-report.json",
+      "sourceReportSha256": "8cd07f4e7846ad985a46df9e7872d0c2b060ef568e1852e158f4b54f0b164631",
+      "historicalV1Reproduced": true,
+      "resultSha256": "70e5c32380832f6439d40918e392fed67d0137419ebf67f4ded5a67dbe34063b"
+    },
+    {
+      "model": "eurollm-9b",
+      "predictions": "benchmarks/model-validation/results/eurollm-9b-v1/predictions.jsonl",
+      "predictionsSha256": "461a6bdb231deb653621d1faad2f1a0d506687a4d62c73b628d1eda041f1d3b3",
+      "sourceReport": "benchmarks/model-validation/results/eurollm-9b-v1/report.json",
+      "sourceReportSha256": "fe0383a6c4d7becafc93acdff750cbb6219294d4af98a89b14ed21d50dfdaa06",
+      "historicalV1Reproduced": true,
+      "resultSha256": "3277f1b45698ab13efbaa2cacf2eea99ff1e659d4110ec8b893bce08d533db59"
+    }
+  ]
+}

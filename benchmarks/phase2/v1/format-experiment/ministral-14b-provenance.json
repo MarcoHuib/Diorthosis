@@ -1,0 +1,7 @@
+{
+  "modelRepository": "mistralai/Ministral-3-14B-Instruct-2512-GGUF",
+  "modelRevision": "fb49df4a3cde2c774da8def12437118a66c4f5cf",
+  "modelSha256": "824e0f3373e69b84f2cae46fdcb9bd1ebc6ab3bfc7acc125d818b7b8178cc613",
+  "quantization": "Q4_K_M",
+  "reviewReference": "docs/model-validation.md; docs/quality-engineering-report.md; existing evaluation-only assets; no new download or redistribution approval"
+}

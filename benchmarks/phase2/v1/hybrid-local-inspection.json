@@ -1,0 +1,24 @@
+{
+  "date": "2026-10-20",
+  "inspectedPaths": [
+    "/Users/marco/Projects/Diorthosis",
+    "/private/tmp/diorthosis-model-assets",
+    "/private/tmp/diorthosis-models",
+    "/Users/marco/.nuget/packages"
+  ],
+  "pathExecutables": {
+    "hunspell": null,
+    "nuspell": null
+  },
+  "candidateFiles": [],
+  "reviewedEngineDictionaryBundleAvailable": false,
+  "scope": "Bounded local inspection; no whole-disk inventory or acquisition. Existing research reused.",
+  "decision": "postpone-no-integration",
+  "threeArmExperimentExecuted": false,
+  "missingPrerequisites": [
+    "Legally reviewed immutable engine source/native binary and all transitives for six target RIDs, meeting permissive-native policy.",
+    "Matching pinned nl/en dictionaries with exact affix/data version, licenses, notices and checksums.",
+    "Native ABI, ICU/compiler-runtime obligations, packaging and zero-prerequisite validation.",
+    "Human-adjudicated contextual-error and varied clean-text labels before benefit/promotion decisions."
+  ]
+}

@@ -1,0 +1,1378 @@
+{
+  "version": "phase2-trace-analysis-1.0.0",
+  "models": [
+    {
+      "replayBinding": {
+        "datasetVerified": true,
+        "traceBoundToRun": false,
+        "modelIdentityStatus": "unverified legacy run identity; source report retained separately"
+      },
+      "identityPolicy": "Original source report model identity claims; legacy trace/run association is unverified where traceBoundToRun is false.",
+      "model": "ministral-3b",
+      "modelRevision": "be4e90342e4468f37d4bea40ec143997f9256475",
+      "modelSha256": "9ed150d4367e68df0ac8e1540f6ddc65b42d0ee26378329d1ecbca60f93fc5f8",
+      "counts": {
+        "inputs": 44,
+        "rawOutputsAvailable": 44,
+        "naturalEog": 44,
+        "parsedAssessable": 44,
+        "deliveredAssessable": 42,
+        "validatedEdits": 33,
+        "accepted": 26,
+        "unchanged": 16,
+        "rejected": 2,
+        "missingInferencePredictions": 0
+      },
+      "rejectionReasons": {
+        "unsupported-output-or-unclassified": 2
+      },
+      "referenceSymptoms": {
+        "Reference-unrepaired:SentenceStructure": 3,
+        "Reference-unrepaired:Punctuation": 3,
+        "Reference-unrepaired:Grammar": 4
+      },
+      "taxonomyAIOrMechanical": {
+        "Word-order failure": 2,
+        "Missing punctuation correction": 1,
+        "Missed grammatical correction": 4,
+        "Model response-format failure": 1,
+        "Unnecessary stylistic rewrite": 2,
+        "Valid alternative missing from the reference": 3
+      },
+      "coverage": [
+        {
+          "language": "Dutch",
+          "inputs": 22,
+          "cleanPassages": 7,
+          "exactUniqueTexts": 22,
+          "independentSourceGroups": null,
+          "documents": null,
+          "parsedCoverage": {
+            "numerator": 22,
+            "denominator": 22,
+            "estimate": 1.0
+          },
+          "deliveredCoverage": {
+            "numerator": 21,
+            "denominator": 22,
+            "estimate": 0.9545454545454546
+          },
+          "rejected": {
+            "numerator": 1,
+            "denominator": 22,
+            "estimate": 0.045454545454545456
+          },
+          "needsReview": {
+            "numerator": 0,
+            "denominator": 22,
+            "estimate": 0.0
+          },
+          "linguisticProposalPrecision": null,
+          "linguisticCompletePassageSuccess": null,
+          "cleanLinguisticPreservation": null,
+          "criticalSemanticFailureRate": null
+        },
+        {
+          "language": "English",
+          "inputs": 22,
+          "cleanPassages": 7,
+          "exactUniqueTexts": 22,
+          "independentSourceGroups": null,
+          "documents": null,
+          "parsedCoverage": {
+            "numerator": 22,
+            "denominator": 22,
+            "estimate": 1.0
+          },
+          "deliveredCoverage": {
+            "numerator": 21,
+            "denominator": 22,
+            "estimate": 0.9545454545454546
+          },
+          "rejected": {
+            "numerator": 1,
+            "denominator": 22,
+            "estimate": 0.045454545454545456
+          },
+          "needsReview": {
+            "numerator": 0,
+            "denominator": 22,
+            "estimate": 0.0
+          },
+          "linguisticProposalPrecision": null,
+          "linguisticCompletePassageSuccess": null,
+          "cleanLinguisticPreservation": null,
+          "criticalSemanticFailureRate": null
+        }
+      ],
+      "resources": "No inference performed; historical resources remain solely in source report."
+    },
+    {
+      "replayBinding": {
+        "datasetVerified": true,
+        "traceBoundToRun": false,
+        "modelIdentityStatus": "unverified legacy run identity; source report retained separately"
+      },
+      "identityPolicy": "Original source report model identity claims; legacy trace/run association is unverified where traceBoundToRun is false.",
+      "model": "ministral-3-8b",
+      "modelRevision": "0102285ad796bd99af90f58de616092e5630e970",
+      "modelSha256": "33e7a72cf5e6e2cfc2f2847075acc013d68bba023e35310cef86b5cf8fdca761",
+      "counts": {
+        "inputs": 44,
+        "rawOutputsAvailable": 44,
+        "naturalEog": 44,
+        "parsedAssessable": 44,
+        "deliveredAssessable": 39,
+        "validatedEdits": 42,
+        "accepted": 30,
+        "unchanged": 9,
+        "rejected": 5,
+        "missingInferencePredictions": 0
+      },
+      "rejectionReasons": {
+        "unsupported-output-or-unclassified": 2,
+        "protected-content-violation": 3
+      },
+      "referenceSymptoms": {
+        "Reference-unrepaired:Spelling": 1,
+        "Reference-unrepaired:Grammar": 4,
+        "Reference-unrepaired:SentenceStructure": 2,
+        "Reference-unrepaired:Punctuation": 2
+      },
+      "taxonomyAIOrMechanical": {
+        "Meaning change": 1,
+        "Missed grammatical correction": 3,
+        "Word-order failure": 1,
+        "Incorrect grammatical correction": 1,
+        "Model response-format failure": 6,
+        "Valid alternative missing from the reference": 4,
+        "Unnecessary stylistic rewrite": 2,
+        "Ambiguous linguistic judgment": 1
+      },
+      "coverage": [
+        {
+          "language": "Dutch",
+          "inputs": 22,
+          "cleanPassages": 7,
+          "exactUniqueTexts": 22,
+          "independentSourceGroups": null,
+          "documents": null,
+          "parsedCoverage": {
+            "numerator": 22,
+            "denominator": 22,
+            "estimate": 1.0
+          },
+          "deliveredCoverage": {
+            "numerator": 20,
+            "denominator": 22,
+            "estimate": 0.9090909090909091
+          },
+          "rejected": {
+            "numerator": 2,
+            "denominator": 22,
+            "estimate": 0.09090909090909091
+          },
+          "needsReview": {
+            "numerator": 0,
+            "denominator": 22,
+            "estimate": 0.0
+          },
+          "linguisticProposalPrecision": null,
+          "linguisticCompletePassageSuccess": null,
+          "cleanLinguisticPreservation": null,
+          "criticalSemanticFailureRate": null
+        },
+        {
+          "language": "English",
+          "inputs": 22,
+          "cleanPassages": 7,
+          "exactUniqueTexts": 22,
+          "independentSourceGroups": null,
+          "documents": null,
+          "parsedCoverage": {
+            "numerator": 22,
+            "denominator": 22,
+            "estimate": 1.0
+          },
+          "deliveredCoverage": {
+            "numerator": 19,
+            "denominator": 22,
+            "estimate": 0.8636363636363636
+          },
+          "rejected": {
+            "numerator": 3,
+            "denominator": 22,
+            "estimate": 0.13636363636363635
+          },
+          "needsReview": {
+            "numerator": 0,
+            "denominator": 22,
+            "estimate": 0.0
+          },
+          "linguisticProposalPrecision": null,
+          "linguisticCompletePassageSuccess": null,
+          "cleanLinguisticPreservation": null,
+          "criticalSemanticFailureRate": null
+        }
+      ],
+      "resources": "No inference performed; historical resources remain solely in source report."
+    },
+    {
+      "replayBinding": {
+        "datasetVerified": true,
+        "traceBoundToRun": false,
+        "modelIdentityStatus": "unverified legacy run identity; source report retained separately"
+      },
+      "identityPolicy": "Original source report model identity claims; legacy trace/run association is unverified where traceBoundToRun is false.",
+      "model": "ministral-3-14b",
+      "modelRevision": "fb49df4a3cde2c774da8def12437118a66c4f5cf",
+      "modelSha256": "824e0f3373e69b84f2cae46fdcb9bd1ebc6ab3bfc7acc125d818b7b8178cc613",
+      "counts": {
+        "inputs": 44,
+        "rawOutputsAvailable": 44,
+        "naturalEog": 44,
+        "parsedAssessable": 44,
+        "deliveredAssessable": 42,
+        "validatedEdits": 42,
+        "accepted": 30,
+        "unchanged": 12,
+        "rejected": 2,
+        "missingInferencePredictions": 0
+      },
+      "rejectionReasons": {
+        "unsupported-output-or-unclassified": 1,
+        "protected-content-violation": 1
+      },
+      "referenceSymptoms": {
+        "Reference-unrepaired:SentenceStructure": 2,
+        "Reference-unrepaired:Grammar": 2,
+        "Reference-unrepaired:Punctuation": 2
+      },
+      "taxonomyAIOrMechanical": {
+        "Model response-format failure": 3,
+        "Valid alternative missing from the reference": 4,
+        "Missed grammatical correction": 1,
+        "Unnecessary stylistic rewrite": 1,
+        "Ambiguous linguistic judgment": 1
+      },
+      "coverage": [
+        {
+          "language": "Dutch",
+          "inputs": 22,
+          "cleanPassages": 7,
+          "exactUniqueTexts": 22,
+          "independentSourceGroups": null,
+          "documents": null,
+          "parsedCoverage": {
+            "numerator": 22,
+            "denominator": 22,
+            "estimate": 1.0
+          },
+          "deliveredCoverage": {
+            "numerator": 20,
+            "denominator": 22,
+            "estimate": 0.9090909090909091
+          },
+          "rejected": {
+            "numerator": 2,
+            "denominator": 22,
+            "estimate": 0.09090909090909091
+          },
+          "needsReview": {
+            "numerator": 0,
+            "denominator": 22,
+            "estimate": 0.0
+          },
+          "linguisticProposalPrecision": null,
+          "linguisticCompletePassageSuccess": null,
+          "cleanLinguisticPreservation": null,
+          "criticalSemanticFailureRate": null
+        },
+        {
+          "language": "English",
+          "inputs": 22,
+          "cleanPassages": 7,
+          "exactUniqueTexts": 22,
+          "independentSourceGroups": null,
+          "documents": null,
+          "parsedCoverage": {
+            "numerator": 22,
+            "denominator": 22,
+            "estimate": 1.0
+          },
+          "deliveredCoverage": {
+            "numerator": 22,
+            "denominator": 22,
+            "estimate": 1.0
+          },
+          "rejected": {
+            "numerator": 0,
+            "denominator": 22,
+            "estimate": 0.0
+          },
+          "needsReview": {
+            "numerator": 0,
+            "denominator": 22,
+            "estimate": 0.0
+          },
+          "linguisticProposalPrecision": null,
+          "linguisticCompletePassageSuccess": null,
+          "cleanLinguisticPreservation": null,
+          "criticalSemanticFailureRate": null
+        }
+      ],
+      "resources": "No inference performed; historical resources remain solely in source report."
+    },
+    {
+      "replayBinding": {
+        "datasetVerified": true,
+        "traceBoundToRun": false,
+        "modelIdentityStatus": "unverified legacy run identity; source report retained separately"
+      },
+      "identityPolicy": "Original source report model identity claims; legacy trace/run association is unverified where traceBoundToRun is false.",
+      "model": "eurollm-9b",
+      "modelRevision": "utter-project/EuroLLM-9B-Instruct@f7ae2bc3bcbb538c0b93fa6cfbf388d9898b1ace; bartowski/EuroLLM-9B-Instruct-GGUF@55e5590cc457e42ed197c34c5b10403472b05d54",
+      "modelSha256": "785a3b2883532381704ef74f866f822f179a931801d1ed1cf12e6deeb838806b",
+      "counts": {
+        "inputs": 44,
+        "rawOutputsAvailable": 44,
+        "naturalEog": 44,
+        "parsedAssessable": 44,
+        "deliveredAssessable": 44,
+        "validatedEdits": 30,
+        "accepted": 23,
+        "unchanged": 21,
+        "missingInferencePredictions": 0
+      },
+      "rejectionReasons": {},
+      "referenceSymptoms": {
+        "Reference-unrepaired:SentenceStructure": 3,
+        "Reference-unrepaired:Punctuation": 1,
+        "Reference-unrepaired:Grammar": 4,
+        "Reference-unrepaired:Spelling": 1
+      },
+      "taxonomyAIOrMechanical": {
+        "Word-order failure": 2,
+        "Missing punctuation correction": 1,
+        "Missed grammatical correction": 4,
+        "Missed spelling correction": 1,
+        "Valid alternative missing from the reference": 1
+      },
+      "coverage": [
+        {
+          "language": "Dutch",
+          "inputs": 22,
+          "cleanPassages": 7,
+          "exactUniqueTexts": 22,
+          "independentSourceGroups": null,
+          "documents": null,
+          "parsedCoverage": {
+            "numerator": 22,
+            "denominator": 22,
+            "estimate": 1.0
+          },
+          "deliveredCoverage": {
+            "numerator": 22,
+            "denominator": 22,
+            "estimate": 1.0
+          },
+          "rejected": {
+            "numerator": 0,
+            "denominator": 22,
+            "estimate": 0.0
+          },
+          "needsReview": {
+            "numerator": 0,
+            "denominator": 22,
+            "estimate": 0.0
+          },
+          "linguisticProposalPrecision": null,
+          "linguisticCompletePassageSuccess": null,
+          "cleanLinguisticPreservation": null,
+          "criticalSemanticFailureRate": null
+        },
+        {
+          "language": "English",
+          "inputs": 22,
+          "cleanPassages": 7,
+          "exactUniqueTexts": 22,
+          "independentSourceGroups": null,
+          "documents": null,
+          "parsedCoverage": {
+            "numerator": 22,
+            "denominator": 22,
+            "estimate": 1.0
+          },
+          "deliveredCoverage": {
+            "numerator": 22,
+            "denominator": 22,
+            "estimate": 1.0
+          },
+          "rejected": {
+            "numerator": 0,
+            "denominator": 22,
+            "estimate": 0.0
+          },
+          "needsReview": {
+            "numerator": 0,
+            "denominator": 22,
+            "estimate": 0.0
+          },
+          "linguisticProposalPrecision": null,
+          "linguisticCompletePassageSuccess": null,
+          "cleanLinguisticPreservation": null,
+          "criticalSemanticFailureRate": null
+        }
+      ],
+      "resources": "No inference performed; historical resources remain solely in source report."
+    }
+  ],
+  "taxonomy": [
+    {
+      "category": "Missed spelling correction",
+      "count": 1,
+      "referenceSymptomPassages": 2,
+      "denominator": 176,
+      "judgmentKind": "mechanical or historical AI only",
+      "independentlyHumanConfirmed": 0,
+      "examples": [
+        {
+          "model": "eurollm-9b",
+          "caseId": "nl-13",
+          "traceSha256": "18d84a18cbc5465884c07b196b7b54c73e67f88ad8c2e6fae5b6ecc02ce54c17",
+          "sourceLine": 13
+        }
+      ],
+      "limitation": "Zero does not mean absent; specific incorrect/missed linguistic subtypes and document structure lack independent labels. Reference misses are counted separately."
+    },
+    {
+      "category": "Incorrect spelling correction",
+      "count": 0,
+      "referenceSymptomPassages": 0,
+      "denominator": 176,
+      "judgmentKind": "mechanical or historical AI only",
+      "independentlyHumanConfirmed": 0,
+      "examples": [],
+      "limitation": "Zero does not mean absent; specific incorrect/missed linguistic subtypes and document structure lack independent labels. Reference misses are counted separately."
+    },
+    {
+      "category": "Missed grammatical correction",
+      "count": 12,
+      "referenceSymptomPassages": 14,
+      "denominator": 176,
+      "judgmentKind": "mechanical or historical AI only",
+      "independentlyHumanConfirmed": 0,
+      "examples": [
+        {
+          "model": "ministral-3b",
+          "caseId": "nl-07",
+          "traceSha256": "15fccfc86fd0d8b31f2ffcaa08fd180067096f93a67b792a90f0b0fd14a121c5",
+          "sourceLine": 7
+        },
+        {
+          "model": "ministral-3b",
+          "caseId": "nl-15",
+          "traceSha256": "15fccfc86fd0d8b31f2ffcaa08fd180067096f93a67b792a90f0b0fd14a121c5",
+          "sourceLine": 15
+        },
+        {
+          "model": "ministral-3b",
+          "caseId": "en-01",
+          "traceSha256": "15fccfc86fd0d8b31f2ffcaa08fd180067096f93a67b792a90f0b0fd14a121c5",
+          "sourceLine": 23
+        },
+        {
+          "model": "ministral-3b",
+          "caseId": "en-13",
+          "traceSha256": "15fccfc86fd0d8b31f2ffcaa08fd180067096f93a67b792a90f0b0fd14a121c5",
+          "sourceLine": 35
+        }
+      ],
+      "limitation": "Zero does not mean absent; specific incorrect/missed linguistic subtypes and document structure lack independent labels. Reference misses are counted separately."
+    },
+    {
+      "category": "Incorrect grammatical correction",
+      "count": 1,
+      "referenceSymptomPassages": 0,
+      "denominator": 176,
+      "judgmentKind": "mechanical or historical AI only",
+      "independentlyHumanConfirmed": 0,
+      "examples": [
+        {
+          "model": "ministral-3-8b",
+          "caseId": "nl-03",
+          "traceSha256": "d6b3f9ac948cd125fb49521e057e83556f40bbd6235f61b3297bcc461f228075",
+          "sourceLine": 3
+        }
+      ],
+      "limitation": "Zero does not mean absent; specific incorrect/missed linguistic subtypes and document structure lack independent labels. Reference misses are counted separately."
+    },
+    {
+      "category": "Word-order failure",
+      "count": 5,
+      "referenceSymptomPassages": 10,
+      "denominator": 176,
+      "judgmentKind": "mechanical or historical AI only",
+      "independentlyHumanConfirmed": 0,
+      "examples": [
+        {
+          "model": "ministral-3b",
+          "caseId": "nl-04",
+          "traceSha256": "15fccfc86fd0d8b31f2ffcaa08fd180067096f93a67b792a90f0b0fd14a121c5",
+          "sourceLine": 4
+        },
+        {
+          "model": "ministral-3b",
+          "caseId": "nl-12",
+          "traceSha256": "15fccfc86fd0d8b31f2ffcaa08fd180067096f93a67b792a90f0b0fd14a121c5",
+          "sourceLine": 12
+        },
+        {
+          "model": "ministral-3-8b",
+          "caseId": "nl-03",
+          "traceSha256": "d6b3f9ac948cd125fb49521e057e83556f40bbd6235f61b3297bcc461f228075",
+          "sourceLine": 3
+        },
+        {
+          "model": "eurollm-9b",
+          "caseId": "nl-04",
+          "traceSha256": "18d84a18cbc5465884c07b196b7b54c73e67f88ad8c2e6fae5b6ecc02ce54c17",
+          "sourceLine": 4
+        }
+      ],
+      "limitation": "Zero does not mean absent; specific incorrect/missed linguistic subtypes and document structure lack independent labels. Reference misses are counted separately."
+    },
+    {
+      "category": "Missing punctuation correction",
+      "count": 2,
+      "referenceSymptomPassages": 8,
+      "denominator": 176,
+      "judgmentKind": "mechanical or historical AI only",
+      "independentlyHumanConfirmed": 0,
+      "examples": [
+        {
+          "model": "ministral-3b",
+          "caseId": "nl-05",
+          "traceSha256": "15fccfc86fd0d8b31f2ffcaa08fd180067096f93a67b792a90f0b0fd14a121c5",
+          "sourceLine": 5
+        },
+        {
+          "model": "eurollm-9b",
+          "caseId": "nl-05",
+          "traceSha256": "18d84a18cbc5465884c07b196b7b54c73e67f88ad8c2e6fae5b6ecc02ce54c17",
+          "sourceLine": 5
+        }
+      ],
+      "limitation": "Zero does not mean absent; specific incorrect/missed linguistic subtypes and document structure lack independent labels. Reference misses are counted separately."
+    },
+    {
+      "category": "Incorrect punctuation change",
+      "count": 0,
+      "referenceSymptomPassages": 0,
+      "denominator": 176,
+      "judgmentKind": "mechanical or historical AI only",
+      "independentlyHumanConfirmed": 0,
+      "examples": [],
+      "limitation": "Zero does not mean absent; specific incorrect/missed linguistic subtypes and document structure lack independent labels. Reference misses are counted separately."
+    },
+    {
+      "category": "Valid alternative missing from the reference",
+      "count": 12,
+      "referenceSymptomPassages": 0,
+      "denominator": 176,
+      "judgmentKind": "mechanical or historical AI only",
+      "independentlyHumanConfirmed": 0,
+      "examples": [
+        {
+          "model": "ministral-3b",
+          "caseId": "en-04",
+          "traceSha256": "15fccfc86fd0d8b31f2ffcaa08fd180067096f93a67b792a90f0b0fd14a121c5",
+          "sourceLine": 26
+        },
+        {
+          "model": "ministral-3b",
+          "caseId": "en-05",
+          "traceSha256": "15fccfc86fd0d8b31f2ffcaa08fd180067096f93a67b792a90f0b0fd14a121c5",
+          "sourceLine": 27
+        },
+        {
+          "model": "ministral-3b",
+          "caseId": "en-09",
+          "traceSha256": "15fccfc86fd0d8b31f2ffcaa08fd180067096f93a67b792a90f0b0fd14a121c5",
+          "sourceLine": 31
+        },
+        {
+          "model": "ministral-3-8b",
+          "caseId": "nl-12",
+          "traceSha256": "d6b3f9ac948cd125fb49521e057e83556f40bbd6235f61b3297bcc461f228075",
+          "sourceLine": 12
+        }
+      ],
+      "limitation": "Zero does not mean absent; specific incorrect/missed linguistic subtypes and document structure lack independent labels. Reference misses are counted separately."
+    },
+    {
+      "category": "Unnecessary stylistic rewrite",
+      "count": 5,
+      "referenceSymptomPassages": 0,
+      "denominator": 176,
+      "judgmentKind": "mechanical or historical AI only",
+      "independentlyHumanConfirmed": 0,
+      "examples": [
+        {
+          "model": "ministral-3b",
+          "caseId": "nl-17",
+          "traceSha256": "15fccfc86fd0d8b31f2ffcaa08fd180067096f93a67b792a90f0b0fd14a121c5",
+          "sourceLine": 17
+        },
+        {
+          "model": "ministral-3b",
+          "caseId": "nl-22",
+          "traceSha256": "15fccfc86fd0d8b31f2ffcaa08fd180067096f93a67b792a90f0b0fd14a121c5",
+          "sourceLine": 22
+        },
+        {
+          "model": "ministral-3-8b",
+          "caseId": "nl-19",
+          "traceSha256": "d6b3f9ac948cd125fb49521e057e83556f40bbd6235f61b3297bcc461f228075",
+          "sourceLine": 19
+        },
+        {
+          "model": "ministral-3-8b",
+          "caseId": "nl-22",
+          "traceSha256": "d6b3f9ac948cd125fb49521e057e83556f40bbd6235f61b3297bcc461f228075",
+          "sourceLine": 22
+        }
+      ],
+      "limitation": "Zero does not mean absent; specific incorrect/missed linguistic subtypes and document structure lack independent labels. Reference misses are counted separately."
+    },
+    {
+      "category": "Meaning change",
+      "count": 1,
+      "referenceSymptomPassages": 0,
+      "denominator": 176,
+      "judgmentKind": "mechanical or historical AI only",
+      "independentlyHumanConfirmed": 0,
+      "examples": [
+        {
+          "model": "ministral-3-8b",
+          "caseId": "nl-02",
+          "traceSha256": "d6b3f9ac948cd125fb49521e057e83556f40bbd6235f61b3297bcc461f228075",
+          "sourceLine": 2
+        }
+      ],
+      "limitation": "Zero does not mean absent; specific incorrect/missed linguistic subtypes and document structure lack independent labels. Reference misses are counted separately."
+    },
+    {
+      "category": "Technical identifier change",
+      "count": 0,
+      "referenceSymptomPassages": 0,
+      "denominator": 176,
+      "judgmentKind": "mechanical or historical AI only",
+      "independentlyHumanConfirmed": 0,
+      "examples": [],
+      "limitation": "Zero does not mean absent; specific incorrect/missed linguistic subtypes and document structure lack independent labels. Reference misses are counted separately."
+    },
+    {
+      "category": "Unsupported document structure",
+      "count": 0,
+      "referenceSymptomPassages": 0,
+      "denominator": 176,
+      "judgmentKind": "mechanical or historical AI only",
+      "independentlyHumanConfirmed": 0,
+      "examples": [],
+      "limitation": "Zero does not mean absent; specific incorrect/missed linguistic subtypes and document structure lack independent labels. Reference misses are counted separately."
+    },
+    {
+      "category": "Model response-format failure",
+      "count": 10,
+      "referenceSymptomPassages": 0,
+      "denominator": 176,
+      "judgmentKind": "mechanical or historical AI only",
+      "independentlyHumanConfirmed": 0,
+      "examples": [
+        {
+          "model": "ministral-3b",
+          "caseId": "nl-07",
+          "traceSha256": "15fccfc86fd0d8b31f2ffcaa08fd180067096f93a67b792a90f0b0fd14a121c5",
+          "sourceLine": 7
+        },
+        {
+          "model": "ministral-3-8b",
+          "caseId": "nl-03",
+          "traceSha256": "d6b3f9ac948cd125fb49521e057e83556f40bbd6235f61b3297bcc461f228075",
+          "sourceLine": 3
+        },
+        {
+          "model": "ministral-3-8b",
+          "caseId": "nl-04",
+          "traceSha256": "d6b3f9ac948cd125fb49521e057e83556f40bbd6235f61b3297bcc461f228075",
+          "sourceLine": 4
+        },
+        {
+          "model": "ministral-3-8b",
+          "caseId": "nl-17",
+          "traceSha256": "d6b3f9ac948cd125fb49521e057e83556f40bbd6235f61b3297bcc461f228075",
+          "sourceLine": 17
+        }
+      ],
+      "limitation": "Zero does not mean absent; specific incorrect/missed linguistic subtypes and document structure lack independent labels. Reference misses are counted separately."
+    },
+    {
+      "category": "Incomplete output",
+      "count": 0,
+      "referenceSymptomPassages": 0,
+      "denominator": 176,
+      "judgmentKind": "mechanical or historical AI only",
+      "independentlyHumanConfirmed": 0,
+      "examples": [],
+      "limitation": "Zero does not mean absent; specific incorrect/missed linguistic subtypes and document structure lack independent labels. Reference misses are counted separately."
+    },
+    {
+      "category": "Validator false rejection",
+      "count": 0,
+      "referenceSymptomPassages": 0,
+      "denominator": 176,
+      "judgmentKind": "mechanical or historical AI only",
+      "independentlyHumanConfirmed": 0,
+      "examples": [],
+      "limitation": "Zero does not mean absent; specific incorrect/missed linguistic subtypes and document structure lack independent labels. Reference misses are counted separately."
+    },
+    {
+      "category": "Ambiguous linguistic judgment",
+      "count": 2,
+      "referenceSymptomPassages": 0,
+      "denominator": 176,
+      "judgmentKind": "mechanical or historical AI only",
+      "independentlyHumanConfirmed": 0,
+      "examples": [
+        {
+          "model": "ministral-3-8b",
+          "caseId": "en-01",
+          "traceSha256": "d6b3f9ac948cd125fb49521e057e83556f40bbd6235f61b3297bcc461f228075",
+          "sourceLine": 23
+        },
+        {
+          "model": "ministral-3-14b",
+          "caseId": "en-01",
+          "traceSha256": "90933426f1b802a230af81762849f7b3812fb967e2b588dbf7d021b5b63220ef",
+          "sourceLine": 23
+        }
+      ],
+      "limitation": "Zero does not mean absent; specific incorrect/missed linguistic subtypes and document structure lack independent labels. Reference misses are counted separately."
+    }
+  ],
+  "paired": [
+    {
+      "models": [
+        "ministral-3b",
+        "ministral-3-8b"
+      ],
+      "language": "Dutch",
+      "metric": "complete-reference-match; exposed/unreviewed labels",
+      "both": [
+        "nl-01",
+        "nl-06",
+        "nl-08",
+        "nl-09",
+        "nl-10",
+        "nl-11",
+        "nl-13",
+        "nl-14",
+        "nl-16",
+        "nl-18"
+      ],
+      "aOnly": [
+        "nl-02",
+        "nl-03",
+        "nl-19"
+      ],
+      "bOnly": [
+        "nl-04",
+        "nl-05",
+        "nl-07",
+        "nl-17"
+      ],
+      "neither": [
+        "nl-12",
+        "nl-15",
+        "nl-22"
+      ],
+      "pairedKnown": 20,
+      "unassessableOrUnknown": 2,
+      "populationInference": "none"
+    },
+    {
+      "models": [
+        "ministral-3b",
+        "ministral-3-8b"
+      ],
+      "language": "English",
+      "metric": "complete-reference-match; exposed/unreviewed labels",
+      "both": [
+        "en-02",
+        "en-03",
+        "en-06",
+        "en-07",
+        "en-08",
+        "en-10",
+        "en-11",
+        "en-12",
+        "en-14",
+        "en-15",
+        "en-16",
+        "en-18",
+        "en-19",
+        "en-22"
+      ],
+      "aOnly": [],
+      "bOnly": [],
+      "neither": [
+        "en-01",
+        "en-04",
+        "en-05",
+        "en-09",
+        "en-13"
+      ],
+      "pairedKnown": 19,
+      "unassessableOrUnknown": 3,
+      "populationInference": "none"
+    },
+    {
+      "models": [
+        "ministral-3b",
+        "ministral-3-14b"
+      ],
+      "language": "Dutch",
+      "metric": "complete-reference-match; exposed/unreviewed labels",
+      "both": [
+        "nl-01",
+        "nl-02",
+        "nl-03",
+        "nl-06",
+        "nl-08",
+        "nl-09",
+        "nl-10",
+        "nl-11",
+        "nl-13",
+        "nl-14",
+        "nl-16",
+        "nl-18"
+      ],
+      "aOnly": [
+        "nl-19"
+      ],
+      "bOnly": [
+        "nl-04",
+        "nl-05",
+        "nl-07",
+        "nl-17",
+        "nl-22"
+      ],
+      "neither": [
+        "nl-12",
+        "nl-15"
+      ],
+      "pairedKnown": 20,
+      "unassessableOrUnknown": 2,
+      "populationInference": "none"
+    },
+    {
+      "models": [
+        "ministral-3b",
+        "ministral-3-14b"
+      ],
+      "language": "English",
+      "metric": "complete-reference-match; exposed/unreviewed labels",
+      "both": [
+        "en-02",
+        "en-03",
+        "en-06",
+        "en-07",
+        "en-08",
+        "en-10",
+        "en-11",
+        "en-12",
+        "en-14",
+        "en-15",
+        "en-16",
+        "en-17",
+        "en-18",
+        "en-19",
+        "en-21",
+        "en-22"
+      ],
+      "aOnly": [],
+      "bOnly": [
+        "en-13"
+      ],
+      "neither": [
+        "en-01",
+        "en-04",
+        "en-05",
+        "en-09"
+      ],
+      "pairedKnown": 21,
+      "unassessableOrUnknown": 1,
+      "populationInference": "none"
+    },
+    {
+      "models": [
+        "ministral-3b",
+        "eurollm-9b"
+      ],
+      "language": "Dutch",
+      "metric": "complete-reference-match; exposed/unreviewed labels",
+      "both": [
+        "nl-01",
+        "nl-02",
+        "nl-03",
+        "nl-06",
+        "nl-08",
+        "nl-09",
+        "nl-10",
+        "nl-14",
+        "nl-16",
+        "nl-18",
+        "nl-19",
+        "nl-21"
+      ],
+      "aOnly": [
+        "nl-11",
+        "nl-13"
+      ],
+      "bOnly": [
+        "nl-17",
+        "nl-22"
+      ],
+      "neither": [
+        "nl-04",
+        "nl-05",
+        "nl-07",
+        "nl-12",
+        "nl-15"
+      ],
+      "pairedKnown": 21,
+      "unassessableOrUnknown": 1,
+      "populationInference": "none"
+    },
+    {
+      "models": [
+        "ministral-3b",
+        "eurollm-9b"
+      ],
+      "language": "English",
+      "metric": "complete-reference-match; exposed/unreviewed labels",
+      "both": [
+        "en-02",
+        "en-03",
+        "en-06",
+        "en-07",
+        "en-08",
+        "en-10",
+        "en-11",
+        "en-12",
+        "en-14",
+        "en-15",
+        "en-16",
+        "en-17",
+        "en-18",
+        "en-19",
+        "en-21",
+        "en-22"
+      ],
+      "aOnly": [],
+      "bOnly": [
+        "en-05",
+        "en-09",
+        "en-13"
+      ],
+      "neither": [
+        "en-01",
+        "en-04"
+      ],
+      "pairedKnown": 21,
+      "unassessableOrUnknown": 1,
+      "populationInference": "none"
+    },
+    {
+      "models": [
+        "ministral-3-8b",
+        "ministral-3-14b"
+      ],
+      "language": "Dutch",
+      "metric": "complete-reference-match; exposed/unreviewed labels",
+      "both": [
+        "nl-01",
+        "nl-04",
+        "nl-05",
+        "nl-06",
+        "nl-07",
+        "nl-08",
+        "nl-09",
+        "nl-10",
+        "nl-11",
+        "nl-13",
+        "nl-14",
+        "nl-16",
+        "nl-17",
+        "nl-18"
+      ],
+      "aOnly": [],
+      "bOnly": [
+        "nl-02",
+        "nl-03",
+        "nl-22"
+      ],
+      "neither": [
+        "nl-12",
+        "nl-15",
+        "nl-19"
+      ],
+      "pairedKnown": 20,
+      "unassessableOrUnknown": 2,
+      "populationInference": "none"
+    },
+    {
+      "models": [
+        "ministral-3-8b",
+        "ministral-3-14b"
+      ],
+      "language": "English",
+      "metric": "complete-reference-match; exposed/unreviewed labels",
+      "both": [
+        "en-02",
+        "en-03",
+        "en-06",
+        "en-07",
+        "en-08",
+        "en-10",
+        "en-11",
+        "en-12",
+        "en-14",
+        "en-15",
+        "en-16",
+        "en-18",
+        "en-19",
+        "en-22"
+      ],
+      "aOnly": [],
+      "bOnly": [
+        "en-13"
+      ],
+      "neither": [
+        "en-01",
+        "en-04",
+        "en-05",
+        "en-09"
+      ],
+      "pairedKnown": 19,
+      "unassessableOrUnknown": 3,
+      "populationInference": "none"
+    },
+    {
+      "models": [
+        "ministral-3-8b",
+        "eurollm-9b"
+      ],
+      "language": "Dutch",
+      "metric": "complete-reference-match; exposed/unreviewed labels",
+      "both": [
+        "nl-01",
+        "nl-06",
+        "nl-08",
+        "nl-09",
+        "nl-10",
+        "nl-14",
+        "nl-16",
+        "nl-17",
+        "nl-18"
+      ],
+      "aOnly": [
+        "nl-04",
+        "nl-05",
+        "nl-07",
+        "nl-11",
+        "nl-13"
+      ],
+      "bOnly": [
+        "nl-02",
+        "nl-03",
+        "nl-19",
+        "nl-22"
+      ],
+      "neither": [
+        "nl-12",
+        "nl-15"
+      ],
+      "pairedKnown": 20,
+      "unassessableOrUnknown": 2,
+      "populationInference": "none"
+    },
+    {
+      "models": [
+        "ministral-3-8b",
+        "eurollm-9b"
+      ],
+      "language": "English",
+      "metric": "complete-reference-match; exposed/unreviewed labels",
+      "both": [
+        "en-02",
+        "en-03",
+        "en-06",
+        "en-07",
+        "en-08",
+        "en-10",
+        "en-11",
+        "en-12",
+        "en-14",
+        "en-15",
+        "en-16",
+        "en-18",
+        "en-19",
+        "en-22"
+      ],
+      "aOnly": [],
+      "bOnly": [
+        "en-05",
+        "en-09",
+        "en-13"
+      ],
+      "neither": [
+        "en-01",
+        "en-04"
+      ],
+      "pairedKnown": 19,
+      "unassessableOrUnknown": 3,
+      "populationInference": "none"
+    },
+    {
+      "models": [
+        "ministral-3-14b",
+        "eurollm-9b"
+      ],
+      "language": "Dutch",
+      "metric": "complete-reference-match; exposed/unreviewed labels",
+      "both": [
+        "nl-01",
+        "nl-02",
+        "nl-03",
+        "nl-06",
+        "nl-08",
+        "nl-09",
+        "nl-10",
+        "nl-14",
+        "nl-16",
+        "nl-17",
+        "nl-18",
+        "nl-22"
+      ],
+      "aOnly": [
+        "nl-04",
+        "nl-05",
+        "nl-07",
+        "nl-11",
+        "nl-13"
+      ],
+      "bOnly": [
+        "nl-19"
+      ],
+      "neither": [
+        "nl-12",
+        "nl-15"
+      ],
+      "pairedKnown": 20,
+      "unassessableOrUnknown": 2,
+      "populationInference": "none"
+    },
+    {
+      "models": [
+        "ministral-3-14b",
+        "eurollm-9b"
+      ],
+      "language": "English",
+      "metric": "complete-reference-match; exposed/unreviewed labels",
+      "both": [
+        "en-02",
+        "en-03",
+        "en-06",
+        "en-07",
+        "en-08",
+        "en-10",
+        "en-11",
+        "en-12",
+        "en-13",
+        "en-14",
+        "en-15",
+        "en-16",
+        "en-17",
+        "en-18",
+        "en-19",
+        "en-20",
+        "en-21",
+        "en-22"
+      ],
+      "aOnly": [],
+      "bOnly": [
+        "en-05",
+        "en-09"
+      ],
+      "neither": [
+        "en-01",
+        "en-04"
+      ],
+      "pairedKnown": 22,
+      "unassessableOrUnknown": 0,
+      "populationInference": "none"
+    }
+  ],
+  "sharedReferenceMisses": [
+    {
+      "caseId": "nl-12",
+      "commonUnrepairedAnnotations": [
+        0
+      ],
+      "byModel": {
+        "ministral-3b": [
+          0
+        ],
+        "ministral-3-8b": [
+          0
+        ],
+        "ministral-3-14b": [
+          0
+        ],
+        "eurollm-9b": [
+          0
+        ]
+      },
+      "interpretation": "Reference symptom; inspect ambiguity, missing alternatives, safety and linguistic judgments before assigning a cause."
+    },
+    {
+      "caseId": "nl-15",
+      "commonUnrepairedAnnotations": [
+        0
+      ],
+      "byModel": {
+        "ministral-3b": [
+          0
+        ],
+        "ministral-3-8b": [
+          0
+        ],
+        "ministral-3-14b": [
+          0
+        ],
+        "eurollm-9b": [
+          0
+        ]
+      },
+      "interpretation": "Reference symptom; inspect ambiguity, missing alternatives, safety and linguistic judgments before assigning a cause."
+    },
+    {
+      "caseId": "en-01",
+      "commonUnrepairedAnnotations": [
+        0
+      ],
+      "byModel": {
+        "ministral-3b": [
+          0
+        ],
+        "ministral-3-8b": [
+          0
+        ],
+        "ministral-3-14b": [
+          0
+        ],
+        "eurollm-9b": [
+          0
+        ]
+      },
+      "interpretation": "Reference symptom; inspect ambiguity, missing alternatives, safety and linguistic judgments before assigning a cause."
+    },
+    {
+      "caseId": "en-04",
+      "commonUnrepairedAnnotations": [
+        0
+      ],
+      "byModel": {
+        "ministral-3b": [
+          0
+        ],
+        "ministral-3-8b": [
+          0
+        ],
+        "ministral-3-14b": [
+          0
+        ],
+        "eurollm-9b": [
+          0
+        ]
+      },
+      "interpretation": "Reference symptom; inspect ambiguity, missing alternatives, safety and linguistic judgments before assigning a cause."
+    }
+  ],
+  "independentHumanDecisions": 0,
+  "policy": "Reference matches, validator outcomes, and historical AI labels are separate. No model ranking or population generalization. Rejected unchanged delivery is not an assessable successful correction.",
+  "subjects": 685,
+  "caseInventory": 387,
+  "inventoryByCollection": {
+    "smoke-44": 44,
+    "candidate-groups-263": 263,
+    "diverse-80": 80
+  },
+  "sourceHashes": {
+    "benchmarks/phase2/v1/eurollm-ai-screen.jsonl": "dec2d529e2b8aa4963c898633de6a6021542e5dc52c0b869f2a9692d1aeb3f8a",
+    "benchmarks/model-validation/audits/quality-v1/output-adjudications.jsonl": "c8f9dd5551a1f925af0297d0a55f83fb5ed6bfcc414c41f1a7e02a05ece04ebe",
+    "benchmarks/model-validation/audits/quality-v1/reference-notes.json": "d62982523be6225adbcb1658a9ac3b60a76aed5b3504458d366eeaae35856273",
+    "benchmarks/model-validation/smoke-44-reviewed-v2.jsonl": "2190c109f5f8e8ce1979637a1beea9fcce615959033aa76576b32ba537465fa2",
+    "benchmarks/rehabilitation/v1/dataset/candidate-groups-1.0.0.jsonl": "85de79e68eab1c5ca9c303ecb92779c43c788303f64910b622c7460628d8e87b",
+    "benchmarks/phase2/v1/diversity/cases.jsonl": "9d657981aa9d072eab9156d0ea0282c2075e33c09a43499f33a04cef85d81c21",
+    "benchmarks/model-validation/results/v4/ministral-3b-trace.jsonl": "15fccfc86fd0d8b31f2ffcaa08fd180067096f93a67b792a90f0b0fd14a121c5",
+    "benchmarks/model-validation/results/v4/ministral-3b-report.json": "23ce3eb2d721070beac517c175de9e1c59b0739d5dfdddb8f0f5b7c77d9a07a4",
+    "benchmarks/model-validation/results/v4/ministral-3-8b-trace.jsonl": "d6b3f9ac948cd125fb49521e057e83556f40bbd6235f61b3297bcc461f228075",
+    "benchmarks/model-validation/results/v4/ministral-3-8b-report.json": "37095130f0b93ecadc1ea0be74873a2db50e69a448a73a7bafeb2f18a89e7f63",
+    "benchmarks/model-validation/results/v4/ministral-3-14b-trace.jsonl": "90933426f1b802a230af81762849f7b3812fb967e2b588dbf7d021b5b63220ef",
+    "benchmarks/model-validation/results/v4/ministral-3-14b-report.json": "8cd07f4e7846ad985a46df9e7872d0c2b060ef568e1852e158f4b54f0b164631",
+    "benchmarks/model-validation/results/eurollm-9b-v1/trace.jsonl": "18d84a18cbc5465884c07b196b7b54c73e67f88ad8c2e6fae5b6ecc02ce54c17",
+    "benchmarks/model-validation/results/eurollm-9b-v1/report.json": "fe0383a6c4d7becafc93acdff750cbb6219294d4af98a89b14ed21d50dfdaa06"
+  },
+  "repositoryCommit": "4a8cdb054365e3a1afdfc6d22bcb0ca2619d1aee",
+  "sourceWorkingTree": "clean tracked implementation",
+  "implementationHashes": {
+    "scripts/verify-native-source.sh": "5fac45a0f2dadcf1bd3b5512fc6d5558334206db2631fddb0a4ea3b66a17a20c",
+    "scripts/run-development-panel.py": "2f434bb0cee64b82fc724def121c2ee07d6743370745861f993293d5a5837366",
+    "scripts/verify-historical-artifacts.py": "2be8c416f91b4b575bba47e5829b1238e0313b2509be1fc39d47d198fb0e4937",
+    "scripts/summarize-development-panel.py": "5603093a8fe8c99fdd34fe6a14a80c5ce19bb22dea2c3d65200541fa773bc4f4",
+    "scripts/summarize-phase2-formats.py": "c21e936ff82e28d6925b6c2826a28c99ac39e7453e3e02b6c5c77e5369f6d267",
+    "scripts/run-native-validation.py": "24a5663f7d27da543146b9dbcf6ff2c08eae30cca82847dc694cadc46beafdea",
+    "scripts/replay-evaluator-v3.py": "a5c62202a53422d10ae84104f5ba87ec8ad7085781af8a8102746d26ad226e02",
+    "scripts/phase2-candidates.py": "af4d2148b3407491e7cbf4e9b5bc28e69e225d3e0ab22ce73aec4a6b2915a746",
+    "scripts/phase2-analysis.py": "258a007d49224f524eeff21c796e9e3b2bf7549c600e08f29f356876f023781f",
+    "scripts/verify-phase2-artifacts.py": "1f6eca2ec9f56bf73922be44bb969b39454b13bef11d22216121320f2e00d3fc",
+    "scripts/replay-safety.py": "5c895c81c63265dedaac78576d5ce1ba6ae276550b1e181b32967bd27eb63aa3",
+    "scripts/build-osx-arm64-cpu-backend.sh": "a144672c30f8fc84533133883382a843bd2d32e29d84cf323e3080584bd24d71",
+    "src/Diorthosis.Benchmarks/Diorthosis.Benchmarks.csproj": "232b7235261ad1f8aabe5d67c65b1d73bd9acb00fc9bf4e615be1d25fccb44c2",
+    "src/Diorthosis.Benchmarks/DatasetCommands.cs": "6bb9f174f4bfe8b5055bab82f61f3e909619445dc7470b4b41d194ce7725dcb2",
+    "src/Diorthosis.Benchmarks/BenchmarkModels.cs": "cd80a9d884ba2306b3d0d9aafc45b050c0aea8a22c3d6dc190b27b3c6bcb16ba",
+    "src/Diorthosis.Benchmarks/BenchmarkEvaluator.cs": "a3dcfc2531361e808d9f2eb92d19a34fb303a424e2044cf5515cf856e0b7d4e9",
+    "src/Diorthosis.Benchmarks/BenchmarkArtifactPolicy.cs": "0b9b643093cbd34fa0fe057bcde878b74a5fbb807cff5d3cc3547049fbcbaf10",
+    "src/Diorthosis.Benchmarks/DatasetAudit.cs": "7ac57025c9b72926b35b0fed1abf7b03f7b3bcfe6a861ee53e0b26879ce8811b",
+    "src/Diorthosis.Benchmarks/CorrectionExperiment.cs": "950b25c730bdcb426c530065e1badc6cfc244c81f333a44b0f6b9fe490d9fce4",
+    "src/Diorthosis.Benchmarks/LinguisticReview.cs": "ed9839ec4ec14b655bcfda13589a246ebf49c9a8ec2afc93bc39594ac8eef101",
+    "src/Diorthosis.Benchmarks/ReferenceEvaluator.cs": "64d2db9cf523262025244c4ea1ee24937a632b92afa411faf4c0867aef5452dc",
+    "src/Diorthosis.Benchmarks/Program.cs": "353eeabb80dbb1d7319be5c7090591eba39e7c2aa06d139f12118a488d3b8226",
+    "src/Diorthosis.Cli/Diorthosis.Cli.csproj": "6922229e406dc55dc110ea175192496bdbae6997bcda7089683011740d973d0a",
+    "src/Diorthosis.Cli/Program.cs": "77c332a05510deeecac1f16732a7fb4bb2233f37a78e465d967c624a6082a1ba",
+    "src/Diorthosis.Core/Diorthosis.Core.csproj": "933c1c42b9adad78ec7af8b74ea1459682275d122df49eabf0884d959da891ee",
+    "src/Diorthosis.Core/Inference/LlamaSharpInferenceAdapter.cs": "d694fa74cfef6fc49ac790f0d4c37d4399883e2a63fabe414295c0e838a8bb09",
+    "src/Diorthosis.Core/Inference/IModelInferenceAdapter.cs": "b3aa53e9c9d8f1cf3631240bb108a847d9076f4bbe24ef6c6b4a82b5af2edb41",
+    "src/Diorthosis.Core/Corrections/SourceEdits.cs": "c7bcc470a4f44fa9414ded78014ab4c4ca5c7468da09b329ce3f580862c0ad67",
+    "src/Diorthosis.Core/Corrections/SegmentEditMapper.cs": "4c7fba04aadd94026da0717b5214e4ced2866720f63753f0b2a2124499c30e65",
+    "src/Diorthosis.Core/Corrections/ICorrectionEngine.cs": "b283377fc187b80889702b589fc5547dee33254f2492ab0596c83310528e5f30",
+    "src/Diorthosis.Core/Corrections/CorrectionPrompt.cs": "bf55c756e66681e699d67b24cfae0062a67943a8d258b2d8fccf6f19d7279fbe",
+    "src/Diorthosis.Core/Corrections/ExperimentalCorrection.cs": "18e03c2d95aeeb0342d4887d6600e68c0be56037cb59b4ec827f28b70e113159",
+    "src/Diorthosis.Core/Corrections/CorrectionModels.cs": "32cb68d181668143194a68f494fe00a5ab03e2a73432cced96b240981d00aff2",
+    "src/Diorthosis.Core/Corrections/ModelCorrectionEngine.cs": "85e9b7d76f3ff4c412be5e6bfaa9e699be99e5f3933b8b9fe34cfc86e5d72758",
+    "src/Diorthosis.Core/Corrections/ContextCorrection.cs": "2429c03521c983d8faf386634be69c71efa52e3899451c79014b03812bafce94"
+  }
+}

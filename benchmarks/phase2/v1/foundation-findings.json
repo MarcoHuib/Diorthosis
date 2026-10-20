@@ -1,0 +1,139 @@
+{
+  "review": "separate AI technical contexts; no human approval",
+  "status": "fixed; concrete reviewer reruns and root regression suite passed",
+  "sourcePolicy": "Foundation issues were found in development working trees before publication; A15 was fixed separately on PR2 at91af4e1.",
+  "findings": [
+    {
+      "id": "F01",
+      "severity": "Critical",
+      "location": "src/Diorthosis.Core/Corrections/ContextCorrection.cs: ContextCorrectionEngine.MapToCurrentSnapshot",
+      "reproduction": "Map result produced without protected spans under the same-text request protecting eligible.",
+      "rootCause": "Document/target IDs omitted policy/language/structural binding.",
+      "expected": "Reject replay under a different request policy.",
+      "actualBeforeFix": "Returned ineligible edit under protected request.",
+      "risk": "Unsafe edit under stricter protection.",
+      "correction": "Bind complete request and revalidate candidate at map time.",
+      "regression": "ResultsCannotReplayAcrossProtectionLanguageOrMetadataPolicies"
+    },
+    {
+      "id": "F02",
+      "severity": "High",
+      "location": "src/Diorthosis.Core/Corrections/ContextCorrection.cs: MapToCurrentSnapshot",
+      "reproduction": "Change an accepted result disposition to Rejected while retaining edits.",
+      "rootCause": "Disposition was ignored by the mapping helper.",
+      "expected": "Refuse inconsistent non-accepted edits.",
+      "actualBeforeFix": "Returned nonempty edits.",
+      "risk": "Rejected proposals could look deliverable.",
+      "correction": "Check disposition before mapping.",
+      "regression": "ResultsCannotReplayAcrossProtectionLanguageOrMetadataPolicies"
+    },
+    {
+      "id": "F03",
+      "severity": "Medium",
+      "location": "src/Diorthosis.Core/Corrections/ContextCorrection.cs: MapToCurrentSnapshot/BuildPrompt",
+      "reproduction": "Replay bold result under italic metadata; move a neighbor from before to after target.",
+      "rootCause": "Metadata not bound; prompt lacked target-relative neighbor labels.",
+      "expected": "Refuse mismatched metadata and expose neighbor position.",
+      "actualBeforeFix": "Old metadata accepted and neighbor prompts identical.",
+      "risk": "Stale structure/context contract.",
+      "correction": "Bind copied metadata and before/after labels.",
+      "regression": "ContextCorrectionTests"
+    },
+    {
+      "id": "F04",
+      "severity": "High",
+      "location": "src/Diorthosis.Benchmarks/LinguisticReview.cs: metric conjunction",
+      "reproduction": "One good proposal plus justified=false/meaning=null.",
+      "rootCause": "Unknown-first conjunction dropped definite failure.",
+      "expected": "Precision1/2, not1/1.",
+      "actualBeforeFix": "Precision1/1.",
+      "risk": "Inflated quality estimate.",
+      "correction": "Tri-state AND returns false if any prerequisite false.",
+      "regression": "DefiniteFailuresRemainInDenominatorWithOtherUnknownJudgments"
+    },
+    {
+      "id": "F05",
+      "severity": "High",
+      "location": "src/Diorthosis.Benchmarks/LinguisticReview.cs: Binding",
+      "reproduction": "Change SourceFamily null to empty using old subject hash.",
+      "rootCause": "Null/empty coalesced in binding.",
+      "expected": "Reject stale binding and blank optional IDs.",
+      "actualBeforeFix": "Reused approval while changing family counts.",
+      "risk": "Incorrect source accounting and stale identity.",
+      "correction": "Tagged optional values and blank-ID rejection.",
+      "regression": "StaleSourceCandidateAnnotationAndDecisionVersionFail"
+    },
+    {
+      "id": "F06",
+      "severity": "High",
+      "location": "src/Diorthosis.Benchmarks/LinguisticReview.cs: metric coverage",
+      "reproduction": "Approved passage with unknown allDefectsRepaired.",
+      "rootCause": "Workflow approval coverage was not known metric judgment coverage.",
+      "expected": "Separate each metric known-judgment coverage.",
+      "actualBeforeFix": "Full approval coverage accompanied an unexplained0/0 metric.",
+      "risk": "Missing evidence hidden by status coverage.",
+      "correction": "Add metric-specific numerator/denominator coverage.",
+      "regression": "UnknownPassageJudgmentsStayOutOfSuccessDenominator"
+    },
+    {
+      "id": "F07",
+      "severity": "High",
+      "location": "scripts/phase2-analysis.py: delivered subjects/predictions",
+      "reproduction": "Rejected clean en-20 generated delivered source-no-op subject.",
+      "rootCause": "Delivery eligibility was not applied before review/scoring.",
+      "expected": "No successful delivery credit for rejected generation.",
+      "actualBeforeFix": "Could receive complete-passage1/1 after approval of source no-op.",
+      "risk": "Reject-all system can appear useful.",
+      "correction": "Exclude rejected/NeedsReview from assessable delivery; retain rejection diagnostics.",
+      "regression": "test_delivery_eligibility_and_annotation_conflicts_fail_closed; generated packet assertions"
+    },
+    {
+      "id": "F08",
+      "severity": "High",
+      "location": "scripts/phase2-analysis.py: origins/model summaries",
+      "reproduction": "Replay legacy trace with unbound source report identity.",
+      "rootCause": "Analysis dropped ReplayBinding uncertainty.",
+      "expected": "Keep model association explicitly unverified.",
+      "actualBeforeFix": "Copied model hashes/revisions without caveat.",
+      "risk": "Misattributed model evidence.",
+      "correction": "Carry replay binding and original-claim policy in every origin/model summary.",
+      "regression": "Generated final packet identity validation; independent reviewer rerun"
+    },
+    {
+      "id": "F09",
+      "severity": "High",
+      "location": "scripts/phase2-analysis.py: parsed predictions",
+      "reproduction": "Please recieve it. \u2192 Please receive it (missing final stop).",
+      "rootCause": "Incomplete candidate retained extracted text but raw diagnostic edits empty.",
+      "expected": "Score exact extracted candidate spelling repair.",
+      "actualBeforeFix": "Scored unchanged source.",
+      "risk": "Incorrect parsed-layer evaluation.",
+      "correction": "Full-span diagnostic reconstruction, never application authorization.",
+      "regression": "test_parsed_candidate_reconstruction_retains_partial_output_repairs"
+    },
+    {
+      "id": "F10",
+      "severity": "Medium",
+      "location": "scripts/phase2-analysis.py: annotation_errors",
+      "reproduction": "Feed two conflicting annotationVariants.",
+      "rootCause": "Selected first variant.",
+      "expected": "Fail pending explicit adjudication.",
+      "actualBeforeFix": "Would discard conflicts; current263 inputs have one variant.",
+      "risk": "Future annotation disagreement loss.",
+      "correction": "Reject multiple variants.",
+      "regression": "test_delivery_eligibility_and_annotation_conflicts_fail_closed"
+    },
+    {
+      "id": "A15",
+      "severity": "Critical",
+      "location": "src/Diorthosis.Core/Corrections/CorrectionModels.cs: CorrectionRequest.ProtectedSpans",
+      "reproduction": "Cast validated ProtectedSpans to IList and replace span.",
+      "rootCause": "Validated copy remained a mutable backing array.",
+      "expected": "Protection policy remains immutable after validation.",
+      "actualBeforeFix": "Caller could replace validated span.",
+      "risk": "Policy bypass through mutation.",
+      "correction": "Expose Array.AsReadOnly copy.",
+      "regression": "ProtectedSpanImmutabilityTests.CallerCannotMutateValidatedProtectionPolicy"
+    }
+  ]
+}

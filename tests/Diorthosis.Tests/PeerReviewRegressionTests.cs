@@ -206,6 +206,45 @@ public sealed class PeerReviewRegressionTests
         finally { directory.Delete(recursive: true); }
     }
 
+    [Fact]
+    public async Task AdjudicationCommandProjectsSharedJudgmentsWithoutPoolingModels()
+    {
+        var directory = Directory.CreateTempSubdirectory("diorthosis-review-projection-");
+        try
+        {
+            var options = new JsonSerializerOptions(JsonSerializerDefaults.Web);
+            options.Converters.Add(new System.Text.Json.Serialization.JsonStringEnumConverter(JsonNamingPolicy.CamelCase));
+            ReviewSubject Subject(string id)
+            {
+                var value = new ReviewSubject("", "", id, CorrectionLanguage.English, "delivered", "proposal", "Please recieve it.", "Please receive it.", "[]", "{}", null, null, false);
+                var hash = LinguisticReview.Binding(value);
+                return value with { SubjectId = "review-" + hash, BindingSha256 = hash };
+            }
+            var one = Subject("one"); var two = Subject("two");
+            var good = new LinguisticJudgment(true, true, true, true, true, false, true, [], [], "none", "Synthetic test fixture only.");
+            var votes = new[] { one, two }.SelectMany(subject => new[] { "fixture-A", "fixture-B" }.Select(id => new ReviewDecision(subject.SubjectId, subject.BindingSha256,
+                id, "human-declared", subject.Language, "Synthetic test role", true, 1, good))).ToArray();
+            var finals = new[] { one, two }.Select(subject => new ReviewAdjudication(subject.SubjectId, subject.BindingSha256, "fixture-adjudicator", "human-declared", subject.Language,
+                "Synthetic test role", true, 1, "approved", new Dictionary<string, int> { ["fixture-A"] = 1, ["fixture-B"] = 1 },
+                subject == one ? good : good with { Justified = false, MeaningPreserved = null })).ToArray();
+            var subjectsPath = Path.Combine(directory.FullName, "subjects.jsonl");
+            var votesPath = Path.Combine(directory.FullName, "votes.jsonl"); var finalsPath = Path.Combine(directory.FullName, "finals.jsonl");
+            var lineagePath = Path.Combine(directory.FullName, "lineage.json"); var outputPath = Path.Combine(directory.FullName, "report.json");
+            await File.WriteAllLinesAsync(subjectsPath, new[] { one, two }.Select(value => JsonSerializer.Serialize(value, options)));
+            await File.WriteAllLinesAsync(votesPath, votes.Select(value => JsonSerializer.Serialize(value, options)));
+            await File.WriteAllLinesAsync(finalsPath, finals.Select(value => JsonSerializer.Serialize(value, options)));
+            await File.WriteAllTextAsync(lineagePath, JsonSerializer.Serialize(new Dictionary<string, object> { [one.SubjectId] = new[] { new { model = "model-A" }, new { model = "model-B" } }, [two.SubjectId] = new[] { new { model = "model-A" } } }, options));
+            Assert.Equal(0, await RunBenchmark("adjudicate", subjectsPath, votesPath, finalsPath, outputPath, "--lineage", lineagePath));
+            using var report = JsonDocument.Parse(await File.ReadAllTextAsync(outputPath));
+            var models = report.RootElement.GetProperty("byModel");
+            var a = models.GetProperty("model-A").GetProperty("metrics")[0].GetProperty("proposalPrecision");
+            var b = models.GetProperty("model-B").GetProperty("metrics")[0].GetProperty("proposalPrecision");
+            Assert.Equal(1, a.GetProperty("numerator").GetInt32()); Assert.Equal(2, a.GetProperty("denominator").GetInt32());
+            Assert.Equal(1, b.GetProperty("numerator").GetInt32()); Assert.Equal(1, b.GetProperty("denominator").GetInt32());
+        }
+        finally { directory.Delete(recursive: true); }
+    }
+
     private static string RepositoryRoot()
     {
         var root = new DirectoryInfo(AppContext.BaseDirectory);

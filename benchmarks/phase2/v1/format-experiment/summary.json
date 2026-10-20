@@ -1,0 +1,784 @@
+{
+  "version": "phase2-format-summary-1.0.0",
+  "runs": [
+    {
+      "model": "ministral-3b",
+      "arm": "baseline",
+      "sourceCommit": "f3200da3ca1895ef59d35715ab29ed20e0da333d",
+      "modelProvenance": {
+        "modelRepository": "mistralai/Ministral-3-3B-Instruct-2512-GGUF",
+        "modelRevision": "be4e90342e4468f37d4bea40ec143997f9256475",
+        "modelSha256": "9ed150d4367e68df0ac8e1540f6ddc65b42d0ee26378329d1ecbca60f93fc5f8",
+        "quantization": "Q4_K_M",
+        "reviewReference": "docs/model-validation.md; docs/quality-engineering-report.md; existing evaluation-only assets; no new download or redistribution approval"
+      },
+      "datasetSha256": "84f58a26d0df5fed9c09d4715f324f4a34b264e7ec8f6261808efeb17995939e",
+      "evaluatorVersion": "reference-groups-3.1.0",
+      "promptVersion": "diorthosis-correction-v3",
+      "inference": {
+        "contextSize": 4096,
+        "threads": 9,
+        "gpuLayers": 0,
+        "temperature": 0,
+        "decoding": "greedy",
+        "seed": null,
+        "seedPolicy": "no random sampler",
+        "maxTokens": 256,
+        "constrain": false,
+        "grammarVersion": null,
+        "grammarSha256": null,
+        "timeoutSecondsPerCase": 90,
+        "completionPolicy": "natural EOG required"
+      },
+      "hardware": {
+        "cpu": "Apple M4",
+        "ramBytes": "34359738368",
+        "os": "macOS 26.6.2",
+        "architecture": "Arm64"
+      },
+      "naturalEog": {
+        "numerator": 8,
+        "denominator": 8
+      },
+      "jsonValid": {
+        "numerator": 0,
+        "denominator": 8
+      },
+      "assessableDelivery": {
+        "numerator": 8,
+        "denominator": 8
+      },
+      "dispositions": {
+        "accepted": 5,
+        "unchanged": 3
+      },
+      "rejectionReasons": {},
+      "referenceRepairRecall": {
+        "Dutch": {
+          "numerator": 2,
+          "denominator": 2,
+          "estimate": 1,
+          "wilsonLower": 0.34238022750665303,
+          "wilsonUpper": 1
+        },
+        "English": {
+          "numerator": 2,
+          "denominator": 3,
+          "estimate": 0.6666666666666666,
+          "wilsonLower": 0.2076596008020477,
+          "wilsonUpper": 0.9385080552796037
+        }
+      },
+      "resources": {
+        "modelLoadMilliseconds": 1505.4998,
+        "loadPolicy": "OS file-cache uncontrolled; not cold boot",
+        "meanLatencyMilliseconds": 1431.1772625,
+        "maximumLatencyMilliseconds": 1886.3657,
+        "totalSampledTokens": 129,
+        "sampledPeakProcessWorkingSetBytes": 2932588544,
+        "memorySamplingMilliseconds": 100,
+        "memoryScope": "process working set sampled across model load and inference",
+        "memoryLimitations": "sampling may miss brief peaks; not system-wide pressure",
+        "completedCases": 8
+      },
+      "files": {
+        "metrics.json": "ddb751dee09943d82d8e8273bf603c4c84c5c7e93b3a5d2484bc993ced0d82c3",
+        "predictions.jsonl": "ab436f607681400334e68f1a90ab7ed489e3ae6b29fd8ebc9f055968380107eb",
+        "resources.json": "451b871cefe8444d9a115ad08baa2bbcef59065f9997c4253ffc5f562f4307eb",
+        "manifest.json": "e5dfabb6699750e9b76d32a8203b1556a25f636fd19397e685094f1fa7c7a5d5",
+        "trace.jsonl": "2446ee5058ae44bb2078cae4f6223d128fb96131ec15201efdbf63aebc9969f5"
+      },
+      "linguisticPrecision": null,
+      "linguisticCompletePassageSuccess": null,
+      "limitations": [
+        "Eight exposed AI/synthetic cases; unreviewed alternatives.",
+        "Natural EOG/JSON validity are format observations, not source alignment or correction quality.",
+        "No independent human judgments or model promotion.",
+        "OS cache and other developer process load were not isolated; resource/timing figures are diagnostic process measurements."
+      ]
+    },
+    {
+      "model": "ministral-3b",
+      "arm": "offsets",
+      "sourceCommit": "f3200da3ca1895ef59d35715ab29ed20e0da333d",
+      "modelProvenance": {
+        "modelRepository": "mistralai/Ministral-3-3B-Instruct-2512-GGUF",
+        "modelRevision": "be4e90342e4468f37d4bea40ec143997f9256475",
+        "modelSha256": "9ed150d4367e68df0ac8e1540f6ddc65b42d0ee26378329d1ecbca60f93fc5f8",
+        "quantization": "Q4_K_M",
+        "reviewReference": "docs/model-validation.md; docs/quality-engineering-report.md; existing evaluation-only assets; no new download or redistribution approval"
+      },
+      "datasetSha256": "84f58a26d0df5fed9c09d4715f324f4a34b264e7ec8f6261808efeb17995939e",
+      "evaluatorVersion": "reference-groups-3.1.0",
+      "promptVersion": "structured-offsets-1.0.0",
+      "inference": {
+        "contextSize": 4096,
+        "threads": 9,
+        "gpuLayers": 0,
+        "temperature": 0,
+        "decoding": "greedy",
+        "seed": null,
+        "seedPolicy": "no random sampler",
+        "maxTokens": 256,
+        "constrain": true,
+        "grammarVersion": "offset-gbnf-1.1.0",
+        "grammarSha256": "3ead70cd55686490b682a4a994562c366ba776fe5eab86093743422999af4e08",
+        "timeoutSecondsPerCase": 90,
+        "completionPolicy": "natural EOG required"
+      },
+      "hardware": {
+        "cpu": "Apple M4",
+        "ramBytes": "34359738368",
+        "os": "macOS 26.6.2",
+        "architecture": "Arm64"
+      },
+      "naturalEog": {
+        "numerator": 8,
+        "denominator": 8
+      },
+      "jsonValid": {
+        "numerator": 8,
+        "denominator": 8
+      },
+      "assessableDelivery": {
+        "numerator": 0,
+        "denominator": 8
+      },
+      "dispositions": {
+        "rejected": 8
+      },
+      "rejectionReasons": {
+        "structured-validation: Structured output failed format, source-alignment, or safety validation.": 8
+      },
+      "referenceRepairRecall": {
+        "Dutch": {
+          "numerator": 0,
+          "denominator": 2,
+          "estimate": 0,
+          "wilsonLower": 0,
+          "wilsonUpper": 0.6576197724933469
+        },
+        "English": {
+          "numerator": 0,
+          "denominator": 3,
+          "estimate": 0,
+          "wilsonLower": 5.551115123125783e-17,
+          "wilsonUpper": 0.5614970317550454
+        }
+      },
+      "resources": {
+        "modelLoadMilliseconds": 204.2687,
+        "loadPolicy": "OS file-cache uncontrolled; not cold boot",
+        "meanLatencyMilliseconds": 2722.4844999999996,
+        "maximumLatencyMilliseconds": 2947.8661,
+        "totalSampledTokens": 266,
+        "sampledPeakProcessWorkingSetBytes": 3053535232,
+        "memorySamplingMilliseconds": 100,
+        "memoryScope": "process working set sampled across model load and inference",
+        "memoryLimitations": "sampling may miss brief peaks; not system-wide pressure",
+        "completedCases": 8
+      },
+      "files": {
+        "metrics.json": "afa7f323b2062fedd23e5cb038b70ddb5a6294130195f2e997522b0e6f54ad90",
+        "predictions.jsonl": "230bc69eaa8b22b756e75835215420c5b2f2261bcaa6b676e9523f7c2be8a200",
+        "resources.json": "4a9f89941b0ffdafe56528eff6d3804c7b415bec3a074ae8bfd3d6f6d971448d",
+        "manifest.json": "d83f8f259ff5f936c08f4320870b266d41ad2de0a596b1d67a1184418bcd88a4",
+        "trace.jsonl": "755a7c9badbda681bb9e3e0ea8d6fb43ac5081b28293aba538066341e412fa1a"
+      },
+      "linguisticPrecision": null,
+      "linguisticCompletePassageSuccess": null,
+      "limitations": [
+        "Eight exposed AI/synthetic cases; unreviewed alternatives.",
+        "Natural EOG/JSON validity are format observations, not source alignment or correction quality.",
+        "No independent human judgments or model promotion.",
+        "OS cache and other developer process load were not isolated; resource/timing figures are diagnostic process measurements."
+      ]
+    },
+    {
+      "model": "ministral-14b",
+      "arm": "baseline",
+      "sourceCommit": "f3200da3ca1895ef59d35715ab29ed20e0da333d",
+      "modelProvenance": {
+        "modelRepository": "mistralai/Ministral-3-14B-Instruct-2512-GGUF",
+        "modelRevision": "fb49df4a3cde2c774da8def12437118a66c4f5cf",
+        "modelSha256": "824e0f3373e69b84f2cae46fdcb9bd1ebc6ab3bfc7acc125d818b7b8178cc613",
+        "quantization": "Q4_K_M",
+        "reviewReference": "docs/model-validation.md; docs/quality-engineering-report.md; existing evaluation-only assets; no new download or redistribution approval"
+      },
+      "datasetSha256": "84f58a26d0df5fed9c09d4715f324f4a34b264e7ec8f6261808efeb17995939e",
+      "evaluatorVersion": "reference-groups-3.1.0",
+      "promptVersion": "diorthosis-correction-v3",
+      "inference": {
+        "contextSize": 4096,
+        "threads": 9,
+        "gpuLayers": 0,
+        "temperature": 0,
+        "decoding": "greedy",
+        "seed": null,
+        "seedPolicy": "no random sampler",
+        "maxTokens": 256,
+        "constrain": false,
+        "grammarVersion": null,
+        "grammarSha256": null,
+        "timeoutSecondsPerCase": 90,
+        "completionPolicy": "natural EOG required"
+      },
+      "hardware": {
+        "cpu": "Apple M4",
+        "ramBytes": "34359738368",
+        "os": "macOS 26.6.2",
+        "architecture": "Arm64"
+      },
+      "naturalEog": {
+        "numerator": 8,
+        "denominator": 8
+      },
+      "jsonValid": {
+        "numerator": 0,
+        "denominator": 8
+      },
+      "assessableDelivery": {
+        "numerator": 7,
+        "denominator": 8
+      },
+      "dispositions": {
+        "accepted": 4,
+        "unchanged": 3,
+        "rejected": 1
+      },
+      "rejectionReasons": {
+        "validation: Correction output changes protected content such as a number, URL, path, date, or identifier.": 1
+      },
+      "referenceRepairRecall": {
+        "Dutch": {
+          "numerator": 2,
+          "denominator": 2,
+          "estimate": 1,
+          "wilsonLower": 0.34238022750665303,
+          "wilsonUpper": 1
+        },
+        "English": {
+          "numerator": 2,
+          "denominator": 3,
+          "estimate": 0.6666666666666666,
+          "wilsonLower": 0.2076596008020477,
+          "wilsonUpper": 0.9385080552796037
+        }
+      },
+      "resources": {
+        "modelLoadMilliseconds": 448.0796,
+        "loadPolicy": "OS file-cache uncontrolled; not cold boot",
+        "meanLatencyMilliseconds": 5178.7303625,
+        "maximumLatencyMilliseconds": 6778.7702,
+        "totalSampledTokens": 132,
+        "sampledPeakProcessWorkingSetBytes": 9516744704,
+        "memorySamplingMilliseconds": 100,
+        "memoryScope": "process working set sampled across model load and inference",
+        "memoryLimitations": "sampling may miss brief peaks; not system-wide pressure",
+        "completedCases": 8
+      },
+      "files": {
+        "metrics.json": "a792cbf804bab7563da3e797e6128f797663021504aca724b5f92f83c6bc940a",
+        "predictions.jsonl": "4bb4a00335d141448702d2cfed21f05ffbf53f34e1adc30c9b427e94c698f92b",
+        "resources.json": "c182183e311e3275baa0b3773dd8e432b4ce556471eb8da403594270145ef0c6",
+        "manifest.json": "3f491c0560fd4a2a0a898f4fd2755b7188eb9f9c29554980a1a33ec91727bd83",
+        "trace.jsonl": "ff228cb9b49a83fff5642221253d6eed7ff76ed6bee15dbed4dfc18b44ba0cf4"
+      },
+      "linguisticPrecision": null,
+      "linguisticCompletePassageSuccess": null,
+      "limitations": [
+        "Eight exposed AI/synthetic cases; unreviewed alternatives.",
+        "Natural EOG/JSON validity are format observations, not source alignment or correction quality.",
+        "No independent human judgments or model promotion.",
+        "OS cache and other developer process load were not isolated; resource/timing figures are diagnostic process measurements."
+      ]
+    },
+    {
+      "model": "ministral-14b",
+      "arm": "offsets",
+      "sourceCommit": "f3200da3ca1895ef59d35715ab29ed20e0da333d",
+      "modelProvenance": {
+        "modelRepository": "mistralai/Ministral-3-14B-Instruct-2512-GGUF",
+        "modelRevision": "fb49df4a3cde2c774da8def12437118a66c4f5cf",
+        "modelSha256": "824e0f3373e69b84f2cae46fdcb9bd1ebc6ab3bfc7acc125d818b7b8178cc613",
+        "quantization": "Q4_K_M",
+        "reviewReference": "docs/model-validation.md; docs/quality-engineering-report.md; existing evaluation-only assets; no new download or redistribution approval"
+      },
+      "datasetSha256": "84f58a26d0df5fed9c09d4715f324f4a34b264e7ec8f6261808efeb17995939e",
+      "evaluatorVersion": "reference-groups-3.1.0",
+      "promptVersion": "structured-offsets-1.0.0",
+      "inference": {
+        "contextSize": 4096,
+        "threads": 9,
+        "gpuLayers": 0,
+        "temperature": 0,
+        "decoding": "greedy",
+        "seed": null,
+        "seedPolicy": "no random sampler",
+        "maxTokens": 256,
+        "constrain": true,
+        "grammarVersion": "offset-gbnf-1.1.0",
+        "grammarSha256": "3ead70cd55686490b682a4a994562c366ba776fe5eab86093743422999af4e08",
+        "timeoutSecondsPerCase": 90,
+        "completionPolicy": "natural EOG required"
+      },
+      "hardware": {
+        "cpu": "Apple M4",
+        "ramBytes": "34359738368",
+        "os": "macOS 26.6.2",
+        "architecture": "Arm64"
+      },
+      "naturalEog": {
+        "numerator": 8,
+        "denominator": 8
+      },
+      "jsonValid": {
+        "numerator": 8,
+        "denominator": 8
+      },
+      "assessableDelivery": {
+        "numerator": 6,
+        "denominator": 8
+      },
+      "dispositions": {
+        "unchanged": 6,
+        "rejected": 2
+      },
+      "rejectionReasons": {
+        "structured-validation: Structured output failed format, source-alignment, or safety validation.": 2
+      },
+      "referenceRepairRecall": {
+        "Dutch": {
+          "numerator": 0,
+          "denominator": 2,
+          "estimate": 0,
+          "wilsonLower": 0,
+          "wilsonUpper": 0.6576197724933469
+        },
+        "English": {
+          "numerator": 0,
+          "denominator": 3,
+          "estimate": 0,
+          "wilsonLower": 5.551115123125783e-17,
+          "wilsonUpper": 0.5614970317550454
+        }
+      },
+      "resources": {
+        "modelLoadMilliseconds": 414.6362,
+        "loadPolicy": "OS file-cache uncontrolled; not cold boot",
+        "meanLatencyMilliseconds": 6972.8495375,
+        "maximumLatencyMilliseconds": 11393.7645,
+        "totalSampledTokens": 108,
+        "sampledPeakProcessWorkingSetBytes": 9645129728,
+        "memorySamplingMilliseconds": 100,
+        "memoryScope": "process working set sampled across model load and inference",
+        "memoryLimitations": "sampling may miss brief peaks; not system-wide pressure",
+        "completedCases": 8
+      },
+      "files": {
+        "metrics.json": "8620c87aef1360dc0f380ddf989ad88ea2419c6f40d9200e98f2ab1c51f16cb6",
+        "predictions.jsonl": "230bc69eaa8b22b756e75835215420c5b2f2261bcaa6b676e9523f7c2be8a200",
+        "resources.json": "e7e3b8e16003c681d5d111c0adcb9b1a5a0632bd4ccc126dd7a29ae1ca25b5ca",
+        "manifest.json": "335deed55429f3dbfbbb1361cdc5d2249f1e790bfca24b2a4e286af505bd7fcf",
+        "trace.jsonl": "dd8487c5a948162d0ef9d34d42be297365ebed26914a069c5da293b3c0ce5836"
+      },
+      "linguisticPrecision": null,
+      "linguisticCompletePassageSuccess": null,
+      "limitations": [
+        "Eight exposed AI/synthetic cases; unreviewed alternatives.",
+        "Natural EOG/JSON validity are format observations, not source alignment or correction quality.",
+        "No independent human judgments or model promotion.",
+        "OS cache and other developer process load were not isolated; resource/timing figures are diagnostic process measurements."
+      ]
+    },
+    {
+      "model": "eurollm-9b",
+      "arm": "baseline",
+      "sourceCommit": "f3200da3ca1895ef59d35715ab29ed20e0da333d",
+      "modelProvenance": {
+        "modelRepository": "utter-project/EuroLLM-9B-Instruct; bartowski/EuroLLM-9B-Instruct-GGUF",
+        "modelRevision": "utter-project/EuroLLM-9B-Instruct@f7ae2bc3bcbb538c0b93fa6cfbf388d9898b1ace; bartowski/EuroLLM-9B-Instruct-GGUF@55e5590cc457e42ed197c34c5b10403472b05d54",
+        "modelSha256": "785a3b2883532381704ef74f866f822f179a931801d1ed1cf12e6deeb838806b",
+        "quantization": "Q4_K_M",
+        "reviewReference": "docs/model-validation.md; docs/quality-engineering-report.md; existing evaluation-only assets; no new download or redistribution approval"
+      },
+      "datasetSha256": "84f58a26d0df5fed9c09d4715f324f4a34b264e7ec8f6261808efeb17995939e",
+      "evaluatorVersion": "reference-groups-3.1.0",
+      "promptVersion": "diorthosis-correction-v3",
+      "inference": {
+        "contextSize": 4096,
+        "threads": 9,
+        "gpuLayers": 0,
+        "temperature": 0,
+        "decoding": "greedy",
+        "seed": null,
+        "seedPolicy": "no random sampler",
+        "maxTokens": 256,
+        "constrain": false,
+        "grammarVersion": null,
+        "grammarSha256": null,
+        "timeoutSecondsPerCase": 90,
+        "completionPolicy": "natural EOG required"
+      },
+      "hardware": {
+        "cpu": "Apple M4",
+        "ramBytes": "34359738368",
+        "os": "macOS 26.6.2",
+        "architecture": "Arm64"
+      },
+      "naturalEog": {
+        "numerator": 8,
+        "denominator": 8
+      },
+      "jsonValid": {
+        "numerator": 1,
+        "denominator": 8
+      },
+      "assessableDelivery": {
+        "numerator": 8,
+        "denominator": 8
+      },
+      "dispositions": {
+        "accepted": 4,
+        "unchanged": 4
+      },
+      "rejectionReasons": {},
+      "referenceRepairRecall": {
+        "Dutch": {
+          "numerator": 2,
+          "denominator": 2,
+          "estimate": 1,
+          "wilsonLower": 0.34238022750665303,
+          "wilsonUpper": 1
+        },
+        "English": {
+          "numerator": 2,
+          "denominator": 3,
+          "estimate": 0.6666666666666666,
+          "wilsonLower": 0.2076596008020477,
+          "wilsonUpper": 0.9385080552796037
+        }
+      },
+      "resources": {
+        "modelLoadMilliseconds": 308.4457,
+        "loadPolicy": "OS file-cache uncontrolled; not cold boot",
+        "meanLatencyMilliseconds": 3830.1182875,
+        "maximumLatencyMilliseconds": 4942.7916,
+        "totalSampledTokens": 134,
+        "sampledPeakProcessWorkingSetBytes": 6708232192,
+        "memorySamplingMilliseconds": 100,
+        "memoryScope": "process working set sampled across model load and inference",
+        "memoryLimitations": "sampling may miss brief peaks; not system-wide pressure",
+        "completedCases": 8
+      },
+      "files": {
+        "metrics.json": "c4cead9fb1887cbc995cd004402ecebaf09840e65bd233aa3cfdbe6f87be30e0",
+        "predictions.jsonl": "b0f382edaac22f4090c130a21851d2b094841dd8e01ff3c2b002b39b6eb7dae8",
+        "resources.json": "b439f57f725e31764901150c899fcac812e8f15d5135a6bde2537531c6331ac1",
+        "manifest.json": "0fce1402e7b941e67d8f7ec8a1b87e57bec6d28c76220080c6b3fdcad8122d35",
+        "trace.jsonl": "2647e04591bdd9e72afb9dbf7e22c9e494d4ce19bda3a4a8951fc7823ff349f7"
+      },
+      "linguisticPrecision": null,
+      "linguisticCompletePassageSuccess": null,
+      "limitations": [
+        "Eight exposed AI/synthetic cases; unreviewed alternatives.",
+        "Natural EOG/JSON validity are format observations, not source alignment or correction quality.",
+        "No independent human judgments or model promotion.",
+        "OS cache and other developer process load were not isolated; resource/timing figures are diagnostic process measurements."
+      ]
+    },
+    {
+      "model": "eurollm-9b",
+      "arm": "offsets",
+      "sourceCommit": "f3200da3ca1895ef59d35715ab29ed20e0da333d",
+      "modelProvenance": {
+        "modelRepository": "utter-project/EuroLLM-9B-Instruct; bartowski/EuroLLM-9B-Instruct-GGUF",
+        "modelRevision": "utter-project/EuroLLM-9B-Instruct@f7ae2bc3bcbb538c0b93fa6cfbf388d9898b1ace; bartowski/EuroLLM-9B-Instruct-GGUF@55e5590cc457e42ed197c34c5b10403472b05d54",
+        "modelSha256": "785a3b2883532381704ef74f866f822f179a931801d1ed1cf12e6deeb838806b",
+        "quantization": "Q4_K_M",
+        "reviewReference": "docs/model-validation.md; docs/quality-engineering-report.md; existing evaluation-only assets; no new download or redistribution approval"
+      },
+      "datasetSha256": "84f58a26d0df5fed9c09d4715f324f4a34b264e7ec8f6261808efeb17995939e",
+      "evaluatorVersion": "reference-groups-3.1.0",
+      "promptVersion": "structured-offsets-1.0.0",
+      "inference": {
+        "contextSize": 4096,
+        "threads": 9,
+        "gpuLayers": 0,
+        "temperature": 0,
+        "decoding": "greedy",
+        "seed": null,
+        "seedPolicy": "no random sampler",
+        "maxTokens": 256,
+        "constrain": true,
+        "grammarVersion": "offset-gbnf-1.1.0",
+        "grammarSha256": "3ead70cd55686490b682a4a994562c366ba776fe5eab86093743422999af4e08",
+        "timeoutSecondsPerCase": 90,
+        "completionPolicy": "natural EOG required"
+      },
+      "hardware": {
+        "cpu": "Apple M4",
+        "ramBytes": "34359738368",
+        "os": "macOS 26.6.2",
+        "architecture": "Arm64"
+      },
+      "naturalEog": {
+        "numerator": 6,
+        "denominator": 8
+      },
+      "jsonValid": {
+        "numerator": 6,
+        "denominator": 8
+      },
+      "assessableDelivery": {
+        "numerator": 0,
+        "denominator": 8
+      },
+      "dispositions": {
+        "rejected": 8
+      },
+      "rejectionReasons": {
+        "structured-validation: Structured output failed format, source-alignment, or safety validation.": 6,
+        "termination: Generation did not finish naturally at end-of-generation.": 2
+      },
+      "referenceRepairRecall": {
+        "Dutch": {
+          "numerator": 0,
+          "denominator": 2,
+          "estimate": 0,
+          "wilsonLower": 0,
+          "wilsonUpper": 0.6576197724933469
+        },
+        "English": {
+          "numerator": 0,
+          "denominator": 3,
+          "estimate": 0,
+          "wilsonLower": 5.551115123125783e-17,
+          "wilsonUpper": 0.5614970317550454
+        }
+      },
+      "resources": {
+        "modelLoadMilliseconds": 277.1018,
+        "loadPolicy": "OS file-cache uncontrolled; not cold boot",
+        "meanLatencyMilliseconds": 11806.0648625,
+        "maximumLatencyMilliseconds": 23796.3983,
+        "totalSampledTokens": 817,
+        "sampledPeakProcessWorkingSetBytes": 6860734464,
+        "memorySamplingMilliseconds": 100,
+        "memoryScope": "process working set sampled across model load and inference",
+        "memoryLimitations": "sampling may miss brief peaks; not system-wide pressure",
+        "completedCases": 8
+      },
+      "files": {
+        "metrics.json": "afa7f323b2062fedd23e5cb038b70ddb5a6294130195f2e997522b0e6f54ad90",
+        "predictions.jsonl": "230bc69eaa8b22b756e75835215420c5b2f2261bcaa6b676e9523f7c2be8a200",
+        "resources.json": "bbf60b9d1ffdcef3c4689b6589ede9f5430a1611c3ac76dcf84628aad9fbc8af",
+        "manifest.json": "00c413dd53646206117d1d439dc3cc1618df0b4978f72af6d95691fbcbc98c55",
+        "trace.jsonl": "1bc187af6ae13b7738552a31a8518281da138ff2674b2dc919ec274041ef5b97"
+      },
+      "linguisticPrecision": null,
+      "linguisticCompletePassageSuccess": null,
+      "limitations": [
+        "Eight exposed AI/synthetic cases; unreviewed alternatives.",
+        "Natural EOG/JSON validity are format observations, not source alignment or correction quality.",
+        "No independent human judgments or model promotion.",
+        "OS cache and other developer process load were not isolated; resource/timing figures are diagnostic process measurements."
+      ]
+    }
+  ],
+  "pairedContrasts": [
+    {
+      "model": "ministral-3b",
+      "principalVariable": "existing full-passage vs existing grammar-constrained offset protocol",
+      "pairedCases": [
+        {
+          "caseId": "nl-01",
+          "baselineDisposition": "accepted",
+          "offsetDisposition": "rejected",
+          "baselineTermination": "endOfGeneration",
+          "offsetTermination": "endOfGeneration"
+        },
+        {
+          "caseId": "nl-03",
+          "baselineDisposition": "accepted",
+          "offsetDisposition": "rejected",
+          "baselineTermination": "endOfGeneration",
+          "offsetTermination": "endOfGeneration"
+        },
+        {
+          "caseId": "nl-17",
+          "baselineDisposition": "accepted",
+          "offsetDisposition": "rejected",
+          "baselineTermination": "endOfGeneration",
+          "offsetTermination": "endOfGeneration"
+        },
+        {
+          "caseId": "nl-21",
+          "baselineDisposition": "unchanged",
+          "offsetDisposition": "rejected",
+          "baselineTermination": "endOfGeneration",
+          "offsetTermination": "endOfGeneration"
+        },
+        {
+          "caseId": "en-03",
+          "baselineDisposition": "accepted",
+          "offsetDisposition": "rejected",
+          "baselineTermination": "endOfGeneration",
+          "offsetTermination": "endOfGeneration"
+        },
+        {
+          "caseId": "en-04",
+          "baselineDisposition": "accepted",
+          "offsetDisposition": "rejected",
+          "baselineTermination": "endOfGeneration",
+          "offsetTermination": "endOfGeneration"
+        },
+        {
+          "caseId": "en-17",
+          "baselineDisposition": "unchanged",
+          "offsetDisposition": "rejected",
+          "baselineTermination": "endOfGeneration",
+          "offsetTermination": "endOfGeneration"
+        },
+        {
+          "caseId": "en-21",
+          "baselineDisposition": "unchanged",
+          "offsetDisposition": "rejected",
+          "baselineTermination": "endOfGeneration",
+          "offsetTermination": "endOfGeneration"
+        }
+      ],
+      "decision": "No promotion; offsets deliver zero reference repairs on this exposed panel."
+    },
+    {
+      "model": "ministral-14b",
+      "principalVariable": "existing full-passage vs existing grammar-constrained offset protocol",
+      "pairedCases": [
+        {
+          "caseId": "nl-01",
+          "baselineDisposition": "accepted",
+          "offsetDisposition": "unchanged",
+          "baselineTermination": "endOfGeneration",
+          "offsetTermination": "endOfGeneration"
+        },
+        {
+          "caseId": "nl-03",
+          "baselineDisposition": "accepted",
+          "offsetDisposition": "unchanged",
+          "baselineTermination": "endOfGeneration",
+          "offsetTermination": "endOfGeneration"
+        },
+        {
+          "caseId": "nl-17",
+          "baselineDisposition": "unchanged",
+          "offsetDisposition": "unchanged",
+          "baselineTermination": "endOfGeneration",
+          "offsetTermination": "endOfGeneration"
+        },
+        {
+          "caseId": "nl-21",
+          "baselineDisposition": "rejected",
+          "offsetDisposition": "unchanged",
+          "baselineTermination": "endOfGeneration",
+          "offsetTermination": "endOfGeneration"
+        },
+        {
+          "caseId": "en-03",
+          "baselineDisposition": "accepted",
+          "offsetDisposition": "rejected",
+          "baselineTermination": "endOfGeneration",
+          "offsetTermination": "endOfGeneration"
+        },
+        {
+          "caseId": "en-04",
+          "baselineDisposition": "accepted",
+          "offsetDisposition": "rejected",
+          "baselineTermination": "endOfGeneration",
+          "offsetTermination": "endOfGeneration"
+        },
+        {
+          "caseId": "en-17",
+          "baselineDisposition": "unchanged",
+          "offsetDisposition": "unchanged",
+          "baselineTermination": "endOfGeneration",
+          "offsetTermination": "endOfGeneration"
+        },
+        {
+          "caseId": "en-21",
+          "baselineDisposition": "unchanged",
+          "offsetDisposition": "unchanged",
+          "baselineTermination": "endOfGeneration",
+          "offsetTermination": "endOfGeneration"
+        }
+      ],
+      "decision": "No promotion; offsets deliver zero reference repairs on this exposed panel."
+    },
+    {
+      "model": "eurollm-9b",
+      "principalVariable": "existing full-passage vs existing grammar-constrained offset protocol",
+      "pairedCases": [
+        {
+          "caseId": "nl-01",
+          "baselineDisposition": "accepted",
+          "offsetDisposition": "rejected",
+          "baselineTermination": "endOfGeneration",
+          "offsetTermination": "endOfGeneration"
+        },
+        {
+          "caseId": "nl-03",
+          "baselineDisposition": "accepted",
+          "offsetDisposition": "rejected",
+          "baselineTermination": "endOfGeneration",
+          "offsetTermination": "maximumTokens"
+        },
+        {
+          "caseId": "nl-17",
+          "baselineDisposition": "unchanged",
+          "offsetDisposition": "rejected",
+          "baselineTermination": "endOfGeneration",
+          "offsetTermination": "endOfGeneration"
+        },
+        {
+          "caseId": "nl-21",
+          "baselineDisposition": "unchanged",
+          "offsetDisposition": "rejected",
+          "baselineTermination": "endOfGeneration",
+          "offsetTermination": "endOfGeneration"
+        },
+        {
+          "caseId": "en-03",
+          "baselineDisposition": "accepted",
+          "offsetDisposition": "rejected",
+          "baselineTermination": "endOfGeneration",
+          "offsetTermination": "endOfGeneration"
+        },
+        {
+          "caseId": "en-04",
+          "baselineDisposition": "accepted",
+          "offsetDisposition": "rejected",
+          "baselineTermination": "endOfGeneration",
+          "offsetTermination": "endOfGeneration"
+        },
+        {
+          "caseId": "en-17",
+          "baselineDisposition": "unchanged",
+          "offsetDisposition": "rejected",
+          "baselineTermination": "endOfGeneration",
+          "offsetTermination": "maximumTokens"
+        },
+        {
+          "caseId": "en-21",
+          "baselineDisposition": "unchanged",
+          "offsetDisposition": "rejected",
+          "baselineTermination": "endOfGeneration",
+          "offsetTermination": "endOfGeneration"
+        }
+      ],
+      "decision": "No promotion; offsets deliver zero reference repairs on this exposed panel."
+    }
+  ],
+  "productionPromptChanged": false,
+  "newModelDownloads": false,
+  "independentHumanJudgments": 0,
+  "conclusion": "Larger local models did not rescue direct model-generated offsets here. Keep production v3 available; do not promote an experimental protocol or select a model from this panel."
+}
