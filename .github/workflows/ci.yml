@@ -18,9 +18,11 @@ jobs:
       - run: dotnet test Diorthosis.sln --configuration Release
       - run: dotnet run --project src/Diorthosis.Benchmarks --configuration Release --no-build -- evaluate benchmarks/smoke/cases.jsonl benchmarks/smoke/predictions.jsonl
       - run: python3 scripts/verify-historical-artifacts.py
+      - run: python3 scripts/verify-phase2-artifacts.py
       - run: python3 -m unittest discover -s tests/tooling -p 'test_*.py'
       - run: dotnet run --project src/Diorthosis.Benchmarks --configuration Release --no-build -- audit-dataset benchmarks/model-validation/provisional-600.jsonl artifacts/dataset-audit
       - run: diff -r benchmarks/rehabilitation/v1/dataset artifacts/dataset-audit
+      - run: dotnet run --project src/Diorthosis.Benchmarks --configuration Release --no-build -- adjudicate benchmarks/phase2/v1/review-analysis/subjects.jsonl benchmarks/phase2/v1/review-analysis/decisions.jsonl benchmarks/phase2/v1/review-analysis/adjudications.jsonl artifacts/review-import-check.json --lineage benchmarks/phase2/v1/review-analysis/lineage-DO-NOT-SEND-TO-REVIEWERS.json
 
   publish-and-smoke:
     strategy:

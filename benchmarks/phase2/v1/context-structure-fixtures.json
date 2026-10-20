@@ -1,0 +1,78 @@
+{
+  "status": "fixture design; not actual format files or round-trip evidence",
+  "implementedTests": "ContextCorrectionTests; target UTF-16 and copied opaque metadata",
+  "fixtures": [
+    {
+      "kind": "paragraph",
+      "representativeText": "Body paragraph",
+      "requiredMetadata": "Paragraph style plus stable ID",
+      "exportExpectation": "unimplemented; preserve source and block unsupported structure"
+    },
+    {
+      "kind": "table-cell",
+      "representativeText": "Cell B2\nPlease recieve it.",
+      "requiredMetadata": "Row/column/cell identity and merged-cell ownership",
+      "exportExpectation": "unimplemented; preserve source and block unsupported structure"
+    },
+    {
+      "kind": "heading",
+      "representativeText": "Maintenance instructions",
+      "requiredMetadata": "Heading level and bookmark",
+      "exportExpectation": "unimplemented; preserve source and block unsupported structure"
+    },
+    {
+      "kind": "list-item",
+      "representativeText": "3. Please recieve it.",
+      "requiredMetadata": "Numbering definition and list-level identity",
+      "exportExpectation": "unimplemented; preserve source and block unsupported structure"
+    },
+    {
+      "kind": "hyperlink",
+      "representativeText": "Please recieve it at https://example.test/.",
+      "requiredMetadata": "Display run vs immutable relationship target",
+      "exportExpectation": "unimplemented; preserve source and block unsupported structure"
+    },
+    {
+      "kind": "header",
+      "representativeText": "Draft \u2014 internal review",
+      "requiredMetadata": "Header part and section identity",
+      "exportExpectation": "unimplemented; preserve source and block unsupported structure"
+    },
+    {
+      "kind": "footer",
+      "representativeText": "Page field placeholder",
+      "requiredMetadata": "Footer part and immutable field",
+      "exportExpectation": "unimplemented; preserve source and block unsupported structure"
+    },
+    {
+      "kind": "footnote",
+      "representativeText": "Note: preserve this reference.",
+      "requiredMetadata": "Footnote ID and anchor ownership",
+      "exportExpectation": "unimplemented; preserve source and block unsupported structure"
+    },
+    {
+      "kind": "mixed-formatting",
+      "representativeText": "Please recieve it.",
+      "requiredMetadata": "Bold/italic/hyperlink run boundaries; changing lengths requires future run mapper",
+      "exportExpectation": "unimplemented; preserve source and block unsupported structure"
+    },
+    {
+      "kind": "technical-identifier",
+      "representativeText": "Set `retry_count` to 3.",
+      "requiredMetadata": "Protected token/date/number spans",
+      "exportExpectation": "unimplemented; preserve source and block unsupported structure"
+    },
+    {
+      "kind": "embedded-content",
+      "representativeText": "[opaque embedded object]",
+      "requiredMetadata": "Do not edit or discard binary/object relationships",
+      "exportExpectation": "unimplemented; preserve source and block unsupported structure"
+    },
+    {
+      "kind": "tracked-change",
+      "representativeText": "[insertion/deletion placeholder]",
+      "requiredMetadata": "No silent accept/reject of tracked revisions",
+      "exportExpectation": "unimplemented; preserve source and block unsupported structure"
+    }
+  ]
+}

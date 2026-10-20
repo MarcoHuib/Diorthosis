@@ -153,8 +153,10 @@ def main():
         for row in replay:
             if row.get('extractedCorrection') is not None:parsed.append(candidate_prediction(case_map[row['caseId']],row['extractedCorrection']))
         write_lines(target/'parsed-predictions.jsonl',parsed)
+        delivered_assessable_predictions=[dict(caseId=row['caseId'],edits=row['validatedTextEdits']) for row in replay if delivered_assessable(row['disposition'])]
+        write_lines(target/'assessable-delivered-predictions.jsonl',delivered_assessable_predictions)
         refs={}
-        for layer,pred in [('delivered',target/'predictions.jsonl'),('parsed',target/'parsed-predictions.jsonl')]:
+        for layer,pred in [('delivered',target/'assessable-delivered-predictions.jsonl'),('parsed',target/'parsed-predictions.jsonl')]:
             refs[layer]=json.loads(command('evaluate-v3',DATA,pred));write(target/(layer+'-references.json'),refs[layer])
         all_refs[model]={layer:{r['caseId']:r for r in value['cases']} for layer,value in refs.items()}
         counts=collections.Counter();rej=collections.Counter();symptoms=collections.Counter();ai_tax=collections.Counter();layer_cases=[]
@@ -225,6 +227,7 @@ def main():
                                  parsedCoverage=ratio(sum(r['parsed'] for r in selected)),deliveredCoverage=ratio(sum(r['delivered'] for r in selected)),
                                  rejected=ratio(sum(r['disposition']=='rejected' for r in selected)),needsReview=ratio(sum(r['disposition']=='needsReview' for r in selected)),
                                  linguisticProposalPrecision=None,linguisticCompletePassageSuccess=None,cleanLinguisticPreservation=None,criticalSemanticFailureRate=None))
+        counts['missingInferencePredictions']=len(cases)-counts['rawOutputsAvailable']
         model_reports.append(dict(replayBinding=replay_binding,identityPolicy='Original source report model identity claims; legacy trace/run association is unverified where traceBoundToRun is false.',model=model,modelRevision=original_report.get('modelRevision'),modelSha256=original_report.get('modelSha256'),counts=counts,rejectionReasons=rej,
                                   referenceSymptoms=symptoms,taxonomyAIOrMechanical=ai_tax,coverage=coverage,resources='No inference performed; historical resources remain solely in source report.'))
     paired=[]
@@ -236,7 +239,7 @@ def main():
                 x=all_refs[a]['delivered'][item['id']]['referenceCompletePassage'];y=all_refs[b]['delivered'][item['id']]['referenceCompletePassage']
                 if x is None or y is None:continue
                 (both if x and y else a_only if x else b_only if y else neither).append(item['id'])
-            paired.append(dict(models=[a,b],language=language,metric='complete-reference-match; exposed/unreviewed labels',both=both,aOnly=a_only,bOnly=b_only,neither=neither,pairedKnown=len(both+a_only+b_only+neither),populationInference='none'))
+            paired.append(dict(models=[a,b],language=language,metric='complete-reference-match; exposed/unreviewed labels',both=both,aOnly=a_only,bOnly=b_only,neither=neither,pairedKnown=len(both+a_only+b_only+neither),unassessableOrUnknown=len(chosen)-len(both+a_only+b_only+neither),populationInference='none'))
     shared=[]
     for item in cases:
         misses={m:[i for i in range(len(item['errors'])) if i not in all_refs[m]['delivered'][item['id']]['repairedAnnotations']] for m in MODELS}

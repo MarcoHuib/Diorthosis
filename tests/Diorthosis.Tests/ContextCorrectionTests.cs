@@ -70,6 +70,17 @@ public sealed class ContextCorrectionTests
         var forged = result with { RequestSha256 = protectedRequest.RequestSha256 };
         Assert.Throws<InvalidDataException>(() => ContextCorrectionEngine.MapToCurrentSnapshot(protectedRequest, forged, "r", segment.Text));
     }
+    [Theory]
+    [InlineData(CorrectionLanguage.Dutch, "Dit verslag bevat een duidelijke uitleg.", "This report contains a clear explanation.")]
+    [InlineData(CorrectionLanguage.English, "Please send the complete report today.", "Stuur vandaag het volledige verslag.")]
+    public async Task WholeTargetTranslationIsNotDelivered(CorrectionLanguage language, string source, string translated)
+    {
+        var target = new ContextSegment("t", "p", 0, source, new Dictionary<string, string>());
+        var request = new ContextCorrectionRequest("r", source, language, target, []);
+        var result = await new ContextCorrectionEngine(new Fake(translated)).CorrectAsync(request);
+        Assert.Empty(result.DocumentEdits);
+        Assert.Equal(CorrectionDisposition.Rejected, result.Correction.Disposition);
+    }
     private sealed class Fake(string candidate, GenerationTermination termination = GenerationTermination.EndOfGeneration) : IModelInferenceAdapter
     {
         public string Prompt { get; private set; } = "";
