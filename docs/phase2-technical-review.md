@@ -26,3 +26,5 @@ The new semantic-anchor rules trade recall for conservatism: `na denken→nadenk
 Heuristics cannot prove arbitrary meaning preservation, negation scope, argument structure, numerical relationships or legal equivalence. No claim of universal safety follows from blocking these reproductions. Independent passage judgments, larger semantic adversarial material and document round-trip tests remain required. No new model, dependency or production prompt was adopted.
 
 Validation: 169/169 model-free tests passed (one real-weight test separately skipped); four native-source fixtures passed; 165 frozen artifacts verified unchanged. Real-model and subsequent integration results are recorded in the final Phase 2 report. No merges, releases or protection changes.
+
+Follow-up inherited contract finding: `CorrectionRequest.ProtectedSpans` exposed a castable mutable array despite validating/copying input. The collection is now read-only; a caller cannot replace a validated span through `IList<ProtectedSpan>`. Regression: `ProtectedSpanImmutabilityTests.CallerCannotMutateValidatedProtectionPolicy`. No public shape or prompt change.
