@@ -1,0 +1,33 @@
+{
+  "cliSourceCommit": "8ea2ac9",
+  "grammarContextProbeSourceCommit": "f3200da",
+  "runtime": "LLamaSharp0.27.0/.NET10.0",
+  "nativeBackendRevision": "3f7c29d318e317b63f54c558bc69803963d7d88c",
+  "os": "macOS ARM64",
+  "cpu": "Apple M4",
+  "physicalRamBytes": 34359738368,
+  "nativeHashes": {
+    "libggml-blas.0.9.11.dylib": "6784bc32e510aec32c30dc44bc1c0a8bc4dbcf5f99fb53d7a1acfdc67b5a8895",
+    "libggml-cpu.0.9.11.dylib": "5208ad03f654d9493a01b8ccba042894b12175c0647a9249ad7ae0c9adb453ad",
+    "libllama.0.dylib": "44feedc97cae85796fe41a18dabae16f8064406fa7810dde26a04814439da116",
+    "libggml.0.9.11.dylib": "9be09aa06e5b3b2be8a75fe4f252a74ae9bc592df1bc998edc0ea6c17c3518d3",
+    "libggml.dylib": "9be09aa06e5b3b2be8a75fe4f252a74ae9bc592df1bc998edc0ea6c17c3518d3",
+    "libggml.0.dylib": "9be09aa06e5b3b2be8a75fe4f252a74ae9bc592df1bc998edc0ea6c17c3518d3",
+    "libggml-base.dylib": "f8ddbbeaba94be7fa63503bd1990a16a6bc3b9cb14b438a909efc76365c222f9",
+    "libggml-blas.dylib": "6784bc32e510aec32c30dc44bc1c0a8bc4dbcf5f99fb53d7a1acfdc67b5a8895",
+    "libllama.dylib": "44feedc97cae85796fe41a18dabae16f8064406fa7810dde26a04814439da116",
+    "libggml-cpu.dylib": "5208ad03f654d9493a01b8ccba042894b12175c0647a9249ad7ae0c9adb453ad",
+    "libllama.0.0.1.dylib": "44feedc97cae85796fe41a18dabae16f8064406fa7810dde26a04814439da116",
+    "libggml-base.0.dylib": "f8ddbbeaba94be7fa63503bd1990a16a6bc3b9cb14b438a909efc76365c222f9",
+    "libggml-blas.0.dylib": "6784bc32e510aec32c30dc44bc1c0a8bc4dbcf5f99fb53d7a1acfdc67b5a8895",
+    "libggml-cpu.0.dylib": "5208ad03f654d9493a01b8ccba042894b12175c0647a9249ad7ae0c9adb453ad",
+    "libggml-base.0.9.11.dylib": "f8ddbbeaba94be7fa63503bd1990a16a6bc3b9cb14b438a909efc76365c222f9"
+  },
+  "policy": "Current CLI published using cached packages; existing CPU-only backend reused, not rebuilt locally. Network denial self-check errno1; no installed-runtime lookup. Synthetic probes are not quality or format-fidelity approval.",
+  "model": {
+    "repository": "mistralai/Ministral-3-3B-Instruct-2512-GGUF",
+    "revision": "be4e90342e4468f37d4bea40ec143997f9256475",
+    "sha256": "9ed150d4367e68df0ac8e1540f6ddc65b42d0ee26378329d1ecbca60f93fc5f8",
+    "quantization": "Q4_K_M"
+  }
+}

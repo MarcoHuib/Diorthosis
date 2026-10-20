@@ -1,0 +1,54 @@
+{
+  "date": "2026-10-20",
+  "testImplementationCommit": "4a8cdb054365e3a1afdfc6d22bcb0ca2619d1aee",
+  "realModelSuite": {
+    "total": "185",
+    "executed": "185",
+    "passed": "185",
+    "failed": "0",
+    "error": "0",
+    "timeout": "0",
+    "aborted": "0",
+    "inconclusive": "0",
+    "passedButRunAborted": "0",
+    "notRunnable": "0",
+    "notExecuted": "0",
+    "disconnected": "0",
+    "warning": "0",
+    "completed": "0",
+    "inProgress": "0",
+    "pending": "0"
+  },
+  "realModelSuiteSource": "phase2-final-real.trx (ignored local test-run artifact)",
+  "toolingTests": {
+    "passed": 10,
+    "failed": 0
+  },
+  "inheritedArtifactsVerified": 165,
+  "olderHistoricalCheckVerified": 84,
+  "historicalV1ArraysReproduced": 4,
+  "v1v2RegressionTestsPassed": true,
+  "nativeCliPublication": "passed osx-arm64",
+  "nativeGrammarContextPublication": "passed osx-arm64",
+  "realContextContractInputs": 2,
+  "newFormatGenerations": 48,
+  "newModelDownloads": 0,
+  "independentHumanApprovals": 0,
+  "productionPromptUnchanged": true,
+  "ciBasePr": {
+    "number": 2,
+    "head": "91af4e14ec65ab6fed3aaf305fd0ce6fc52bc6f6",
+    "state": "OPEN",
+    "tests": "SUCCESS",
+    "publishNativeStartTargets": 6,
+    "allTargets": "SUCCESS"
+  },
+  "realWeightPlatformsExercised": [
+    "osx-arm64"
+  ],
+  "limitations": [
+    "No independent linguistic quality judgments.",
+    "No dictionary/hybrid trial or real .doc/.docx export.",
+    "Other RIDs have CI native-start, not real-weight inference evidence."
+  ]
+}

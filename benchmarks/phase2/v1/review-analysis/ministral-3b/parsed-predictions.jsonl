@@ -1,0 +1,44 @@
+{"caseId":"nl-01","edits":[{"start":0,"length":26,"originalText":"Ik heb met haar gespreekt.","replacementText":"Ik heb met haar gesproken."}]}
+{"caseId":"nl-02","edits":[{"start":0,"length":38,"originalText":"De vergader ruimte is al gereserveerd.","replacementText":"De vergaderruimte is al gereserveerd."}]}
+{"caseId":"nl-03","edits":[{"start":0,"length":44,"originalText":"Hij vindt dat de afspraak morgen plaatsvind.","replacementText":"Hij vindt dat de afspraak morgen plaatsvindt."}]}
+{"caseId":"nl-04","edits":[]}
+{"caseId":"nl-05","edits":[]}
+{"caseId":"nl-06","edits":[{"start":0,"length":44,"originalText":"De gebruikers naam staat in het log bestand.","replacementText":"De gebruikersnaam staat in het logbestand."}]}
+{"caseId":"nl-07","edits":[]}
+{"caseId":"nl-08","edits":[{"start":0,"length":39,"originalText":"Het systeem is onmiddelijk beschikbaar.","replacementText":"Het systeem is onmiddellijk beschikbaar."}]}
+{"caseId":"nl-09","edits":[{"start":0,"length":45,"originalText":"Als hij morgen kom, beginnen we om negen uur.","replacementText":"Als hij morgen komt, beginnen we om negen uur."}]}
+{"caseId":"nl-10","edits":[{"start":0,"length":34,"originalText":"Ik heb de adressen gecontrolleerd.","replacementText":"Ik heb de adressen gecontroleerd."}]}
+{"caseId":"nl-11","edits":[{"start":0,"length":38,"originalText":"De resultaten zijn beter als verwacht.","replacementText":"De resultaten zijn beter dan verwacht."}]}
+{"caseId":"nl-12","edits":[]}
+{"caseId":"nl-13","edits":[{"start":0,"length":49,"originalText":"We hebben maandag de nieuwe versie geinstalleerd.","replacementText":"We hebben maandag de nieuwe versie geïnstalleerd."}]}
+{"caseId":"nl-14","edits":[{"start":0,"length":44,"originalText":"De klant heeft het pakket gisteren ontvangd.","replacementText":"De klant heeft het pakket gisteren ontvangen."}]}
+{"caseId":"nl-15","edits":[]}
+{"caseId":"nl-16","edits":[]}
+{"caseId":"nl-17","edits":[{"start":0,"length":59,"originalText":"Op 19 oktober 2026 start ApiGateway-v2 om 09:30 op node-04.","replacementText":"Op 19 oktober 2026 startt ApiGateway-v2 om 09:30 op node-04."}]}
+{"caseId":"nl-18","edits":[]}
+{"caseId":"nl-19","edits":[]}
+{"caseId":"nl-20","edits":[{"start":0,"length":73,"originalText":"De back-up van klant Acme BV staat op https://example.test/rapport?id=42.","replacementText":"De back-up van klant Acme BV staat op [https://example.test/rapport?id=42](https://example.test/rapport?id=42)."}]}
+{"caseId":"nl-21","edits":[]}
+{"caseId":"nl-22","edits":[{"start":0,"length":58,"originalText":"De wijziging is op 3 mei 2025 door team Atlas goedgekeurd.","replacementText":"De wijziging is op 3 mei 2025 door het team Atlas goedgekeurd."}]}
+{"caseId":"en-01","edits":[{"start":0,"length":38,"originalText":"She have send the documents yesterday.","replacementText":"She has sent the documents yesterday."}]}
+{"caseId":"en-02","edits":[{"start":0,"length":31,"originalText":"Please recieve the signed form.","replacementText":"Please receive the signed form."}]}
+{"caseId":"en-03","edits":[{"start":0,"length":44,"originalText":"The informations are included in the report.","replacementText":"The information is included in the report."}]}
+{"caseId":"en-04","edits":[{"start":0,"length":33,"originalText":"Tomorrow I will the package send.","replacementText":"Tomorrow I will send the package."}]}
+{"caseId":"en-05","edits":[{"start":0,"length":28,"originalText":"Wait lets review the result.","replacementText":"Wait, let’s review the result."}]}
+{"caseId":"en-06","edits":[{"start":0,"length":31,"originalText":"The user succesfully logged in.","replacementText":"The user successfully logged in."}]}
+{"caseId":"en-07","edits":[{"start":0,"length":36,"originalText":"They was waiting outside the office.","replacementText":"They were waiting outside the office."}]}
+{"caseId":"en-08","edits":[{"start":0,"length":32,"originalText":"I look forward to hear from you.","replacementText":"I look forward to hearing from you."}]}
+{"caseId":"en-09","edits":[{"start":0,"length":34,"originalText":"Wait lets proceed with the review.","replacementText":"Wait, let’s proceed with the review."}]}
+{"caseId":"en-10","edits":[{"start":0,"length":38,"originalText":"We recieved your request this morning.","replacementText":"We received your request this morning."}]}
+{"caseId":"en-11","edits":[{"start":0,"length":50,"originalText":"After the update completed. The service restarted.","replacementText":"After the update completed, the service restarted."}]}
+{"caseId":"en-12","edits":[{"start":0,"length":42,"originalText":"Please confirm wether the backup finished.","replacementText":"Please confirm whether the backup finished."}]}
+{"caseId":"en-13","edits":[]}
+{"caseId":"en-14","edits":[{"start":0,"length":41,"originalText":"The report was send to the wrong address.","replacementText":"The report was sent to the wrong address."}]}
+{"caseId":"en-15","edits":[{"start":0,"length":48,"originalText":"We need to seperate the two configuration files.","replacementText":"We need to separate the two configuration files."}]}
+{"caseId":"en-16","edits":[]}
+{"caseId":"en-17","edits":[]}
+{"caseId":"en-18","edits":[]}
+{"caseId":"en-19","edits":[]}
+{"caseId":"en-20","edits":[{"start":0,"length":60,"originalText":"The customer backup is at https://example.test/report?id=42.","replacementText":"The customer backup is at [https://example.test/report?id=42](https://example.test/report?id=42)."}]}
+{"caseId":"en-21","edits":[]}
+{"caseId":"en-22","edits":[]}
