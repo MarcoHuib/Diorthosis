@@ -1,0 +1,97 @@
+{
+  "policy": "Isolated development assets; no app distribution. Explicit developer acquisition only.",
+  "files": [
+    {
+      "path": "nl/nl.dic",
+      "url": "https://raw.githubusercontent.com/OpenTaal/opentaal-hunspell/ad0351b7c1a862f05d88131046a054f1cc84944a/nl.dic",
+      "bytes": 2489168,
+      "sha256": "33aa357194e7e90e2e4791aeca925a6ad29dbf20e2291bfbbb3ff77ffe4cf0be",
+      "license": "BSD-3-Clause",
+      "revision": "ad0351b7c1a862f05d88131046a054f1cc84944a"
+    },
+    {
+      "path": "nl/nl.aff",
+      "url": "https://raw.githubusercontent.com/OpenTaal/opentaal-hunspell/ad0351b7c1a862f05d88131046a054f1cc84944a/nl.aff",
+      "bytes": 46741,
+      "sha256": "1a042dc6b6580afd4588679c894f5fc41e99567159c09e0d262708c3f33ac41e",
+      "license": "BSD-3-Clause",
+      "revision": "ad0351b7c1a862f05d88131046a054f1cc84944a"
+    },
+    {
+      "path": "nl/LICENSE.txt",
+      "url": "https://raw.githubusercontent.com/OpenTaal/opentaal-hunspell/ad0351b7c1a862f05d88131046a054f1cc84944a/LICENSE.txt",
+      "bytes": 25817,
+      "sha256": "fd9e95c360245eab3c388885062820754785faa4123964994cfdecb950b71948",
+      "license": "BSD-3-Clause",
+      "revision": "ad0351b7c1a862f05d88131046a054f1cc84944a"
+    },
+    {
+      "path": "nl/datetimeversion.txt",
+      "url": "https://raw.githubusercontent.com/OpenTaal/opentaal-hunspell/ad0351b7c1a862f05d88131046a054f1cc84944a/datetimeversion.txt",
+      "bytes": 28,
+      "sha256": "afcd8a330e5fa0faaacb4ccf723894c19f2a8eeaafed7f0297b80f1d23f9599d",
+      "license": "BSD-3-Clause",
+      "revision": "ad0351b7c1a862f05d88131046a054f1cc84944a"
+    },
+    {
+      "path": "hunspell-en_US-2026.02.25.zip",
+      "url": "https://github.com/en-wl/wordlist/releases/download/rel-2026.02.25/hunspell-en_US-2026.02.25.zip",
+      "bytes": 187271,
+      "sha256": "ac8e73310e951d88c52c2cf2ba54ceaca34f8486a81630ac8a75dc5f931179f9",
+      "license": "SCOWL MIT-like; retain notices",
+      "revision": "7e99edab8e32f9f9ea2b15f249ca8d4d67237410"
+    },
+    {
+      "path": "en_US/README_en_US.txt",
+      "archive": "hunspell-en_US-2026.02.25.zip",
+      "bytes": 6976,
+      "sha256": "d63c711523fc9504fb71e1278489c6d7bb8cafcba75158c107cd17844955470f"
+    },
+    {
+      "path": "en_US/en_US.dic",
+      "archive": "hunspell-en_US-2026.02.25.zip",
+      "bytes": 508614,
+      "sha256": "ab012ae86ce4b46b60db5b150869288de9c4a87bc747911764e582125b1b961e"
+    },
+    {
+      "path": "en_US/en_US.aff",
+      "archive": "hunspell-en_US-2026.02.25.zip",
+      "bytes": 3240,
+      "sha256": "526e1dc32d1c0e8806dd72809c017b5546f2104b08b9424a4c47311aca526cca"
+    },
+    {
+      "path": "hunspell-en_GB-ise-2026.02.25.zip",
+      "url": "https://github.com/en-wl/wordlist/releases/download/rel-2026.02.25/hunspell-en_GB-ise-2026.02.25.zip",
+      "bytes": 187291,
+      "sha256": "d6fbb91ae7824c52fb02f74d7bc2cd9092f130faec60f42326a59437fa7247a3",
+      "license": "SCOWL MIT-like; retain notices",
+      "revision": "7e99edab8e32f9f9ea2b15f249ca8d4d67237410"
+    },
+    {
+      "path": "en_GB-ise/README_en_GB-ise.txt",
+      "archive": "hunspell-en_GB-ise-2026.02.25.zip",
+      "bytes": 6984,
+      "sha256": "72827bd23b623a253f7928657d68a7b020eea3c7ab8bdfbb1e61323bc8b010c4"
+    },
+    {
+      "path": "en_GB-ise/en_GB-ise.dic",
+      "archive": "hunspell-en_GB-ise-2026.02.25.zip",
+      "bytes": 508689,
+      "sha256": "4fdb00d235ac2f0634f455f757ba15036261f1557e1b693ac264ee42dbd7c7eb"
+    },
+    {
+      "path": "en_GB-ise/en_GB-ise.aff",
+      "archive": "hunspell-en_GB-ise-2026.02.25.zip",
+      "bytes": 3244,
+      "sha256": "e5478627cc7413a2874134b518c9a3dc667a8886414c72ed47eea65185bd3a88"
+    },
+    {
+      "path": "wecantspell.hunspell.7.0.1.nupkg",
+      "url": "https://api.nuget.org/v3-flatcontainer/wecantspell.hunspell/7.0.1/wecantspell.hunspell.7.0.1.nupkg",
+      "bytes": 367195,
+      "sha256": "2cdbac31adefa4bbe0048266ea32275be7f802139e8f70754ded265f0e33ed45",
+      "license": "MPL-1.1 selected",
+      "revision": "ab5709d95b2d23541984d22baa0ab2d1e783582f"
+    }
+  ]
+}
