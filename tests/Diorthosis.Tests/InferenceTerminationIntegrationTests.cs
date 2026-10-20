@@ -23,8 +23,9 @@ public sealed class InferenceTerminationIntegrationTests
 
         foreach (var (language, source) in cases)
         {
-            var raw = await adapter.GenerateAsync(new InferenceRequest(
+            var result = await adapter.GenerateAsync(new InferenceRequest(
                 CorrectionPrompt.Build(new CorrectionRequest(language, source)), 128));
+            var raw = result.Text;
 
             Assert.Equal(LlamaSharpInferenceAdapter.GenerationTermination.EndOfGeneration, adapter.LastTermination);
             Assert.InRange(adapter.LastSampledTokenCount, 1, 128);
@@ -39,12 +40,13 @@ public sealed class InferenceTerminationIntegrationTests
 
         var repeatedEnglish = await adapter.GenerateAsync(new InferenceRequest(
             CorrectionPrompt.Build(new CorrectionRequest(cases[0].Item1, cases[0].Item2)), 128));
+        var repeatedEnglishText = repeatedEnglish.Text;
         Assert.Equal(LlamaSharpInferenceAdapter.GenerationTermination.EndOfGeneration, adapter.LastTermination);
-        Assert.Equal(firstEnglishOutput, repeatedEnglish);
+        Assert.Equal(firstEnglishOutput, repeatedEnglishText);
 
         var limited = await adapter.GenerateAsync(new InferenceRequest("Write one word and stop.", 1));
         Assert.InRange(adapter.LastSampledTokenCount, 1, 1);
-        Assert.NotNull(limited);
+        Assert.NotNull(limited.Text);
         Assert.Contains(adapter.LastTermination, new[]
         {
             LlamaSharpInferenceAdapter.GenerationTermination.MaximumTokens,
@@ -61,7 +63,7 @@ public sealed class InferenceTerminationIntegrationTests
         var afterCancellation = await adapter.GenerateAsync(new InferenceRequest(
             CorrectionPrompt.Build(new CorrectionRequest(cases[0].Item1, cases[0].Item2)), 128));
         Assert.Equal(LlamaSharpInferenceAdapter.GenerationTermination.EndOfGeneration, adapter.LastTermination);
-        Assert.Equal(repeatedEnglish, afterCancellation);
+        Assert.Equal(repeatedEnglishText, afterCancellation.Text);
 
         var correct = "De server is gisteren succesvol opnieuw opgestart.";
         var correctResult = await engine.CorrectAsync(new CorrectionRequest(CorrectionLanguage.Dutch, correct));

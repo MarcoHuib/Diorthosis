@@ -14,13 +14,13 @@ public sealed class LlamaSharpInferenceAdapter : IModelInferenceAdapter, IDispos
     private readonly StatelessExecutor _executor;
     private bool _disposed;
 
-    /// <summary>Termination details for the most recently completed request.</summary>
-    public GenerationTermination LastTermination { get; private set; }
-
     /// <summary>Number of tokens sampled, including a sampled end-of-generation token.</summary>
     public int LastSampledTokenCount { get; private set; }
 
     public enum GenerationTermination { Unknown, EndOfGeneration, MaximumTokens, Cancelled }
+
+    // Kept as a compatibility diagnostic for existing callers; completion decisions use InferenceResult.
+    public GenerationTermination LastTermination { get; private set; }
 
     /// <summary>Initializes llama.cpp's native backend without loading a model.</summary>
     public static void ValidateNativeBackend()
@@ -70,7 +70,7 @@ public sealed class LlamaSharpInferenceAdapter : IModelInferenceAdapter, IDispos
             NativeLibraryConfig.All.WithCuda(false).WithVulkan(false).WithSearchDirectory(nativeDirectory);
     }
 
-    public async ValueTask<string> GenerateAsync(Corrections.InferenceRequest request, CancellationToken cancellationToken = default)
+    public async ValueTask<InferenceResult> GenerateAsync(Corrections.InferenceRequest request, CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(request);
         ObjectDisposedException.ThrowIf(_disposed, this);
@@ -104,10 +104,16 @@ public sealed class LlamaSharpInferenceAdapter : IModelInferenceAdapter, IDispos
                 LastTermination = GenerationTermination.Cancelled;
                 cancellationToken.ThrowIfCancellationRequested();
             }
-            LastTermination = samplingPipeline.EndOfGenerationSampled
-                ? GenerationTermination.EndOfGeneration
-                : GenerationTermination.MaximumTokens;
-            return output.ToString().Trim();
+            var termination = samplingPipeline.EndOfGenerationSampled
+                ? Diorthosis.Core.Inference.GenerationTermination.EndOfGeneration
+                : Diorthosis.Core.Inference.GenerationTermination.MaximumTokens;
+            LastTermination = termination switch
+            {
+                Diorthosis.Core.Inference.GenerationTermination.EndOfGeneration => GenerationTermination.EndOfGeneration,
+                Diorthosis.Core.Inference.GenerationTermination.MaximumTokens => GenerationTermination.MaximumTokens,
+                _ => GenerationTermination.Unknown
+            };
+            return new InferenceResult(output.ToString(), termination, samplingPipeline.SampledTokenCount);
         }
         finally
         {

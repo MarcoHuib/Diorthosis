@@ -68,10 +68,12 @@ try
         await File.WriteAllLinesAsync(args[4], predictions.Select(item => JsonSerializer.Serialize(item, options)));
         await File.WriteAllLinesAsync(args[5], traces.Select(item => JsonSerializer.Serialize(item, options)));
         var metrics = BenchmarkEvaluator.Evaluate(cases, predictions);
+        var qualityMetrics = BenchmarkEvaluator.EvaluateQuality(cases, predictions);
         var rawMetrics = BenchmarkEvaluator.Evaluate(cases, rawPredictions);
         var report = System.Text.Json.Nodes.JsonNode.Parse(await File.ReadAllTextAsync(args[3]))
             ?? throw new InvalidDataException("Original run report is empty.");
         report["metrics"] = JsonSerializer.SerializeToNode(metrics, options);
+        report["qualityMetrics"] = JsonSerializer.SerializeToNode(qualityMetrics, options);
         report["rawCandidateMetrics"] = JsonSerializer.SerializeToNode(rawMetrics, options);
         report["rawCandidateMetrics"] = JsonSerializer.SerializeToNode(rawMetrics, options);
         report["rejectedModelOutputs"] = rejections.Values.Sum();
@@ -178,6 +180,7 @@ try
         memorySampler.Dispose();
         SampleWorkingSet();
         var metrics = BenchmarkEvaluator.Evaluate(cases, predictions);
+        var qualityMetrics = BenchmarkEvaluator.EvaluateQuality(cases, predictions);
         var rawMetrics = BenchmarkEvaluator.Evaluate(cases, rawPredictions);
         var modelHash = await HashFileAsync(args[2]);
         var datasetHash = await HashFileAsync(args[1]);
@@ -214,6 +217,7 @@ try
             decoding = new { sampler = "GreedySamplingPipeline", temperature = 0.0, maximumOutputTokens = engine.MaximumOutputTokens },
             caseCount = cases.Length,
             metrics,
+            qualityMetrics,
             rawCandidateMetrics = rawMetrics
         };
         await File.WriteAllTextAsync(args[4], JsonSerializer.Serialize(report, options));
@@ -338,14 +342,17 @@ sealed class CapturingAdapter(IModelInferenceAdapter inner) : IModelInferenceAda
     public string? LastOutput { get; private set; }
     public string LastTerminationReason { get; private set; } = "NotReportedByAdapter";
     public int? LastSampledTokenCount { get; private set; }
-    public async ValueTask<string> GenerateAsync(InferenceRequest request, CancellationToken cancellationToken = default)
+    public async ValueTask<InferenceResult> GenerateAsync(InferenceRequest request, CancellationToken cancellationToken = default)
     {
-        LastOutput = await inner.GenerateAsync(request, cancellationToken).ConfigureAwait(false);
+        var result = await inner.GenerateAsync(request, cancellationToken).ConfigureAwait(false);
+        LastOutput = result.Text;
+        LastTerminationReason = result.Termination.ToString();
+        LastSampledTokenCount = result.SampledTokens;
         if (inner is LlamaSharpInferenceAdapter native)
         {
             LastTerminationReason = native.LastTermination.ToString();
             LastSampledTokenCount = native.LastSampledTokenCount;
         }
-        return LastOutput;
+        return result;
     }
 }
