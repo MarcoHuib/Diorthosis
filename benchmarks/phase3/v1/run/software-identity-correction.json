@@ -1,0 +1,14 @@
+{
+  "reason": "Build output files were replaced while the already-loaded process was executing. Original start/end manifests are retained. Use the start manifest software hashes for the run at 9c4a0ac. A later fix freezes these values at start.",
+  "authoritativeSoftwareIdentity": {
+    "assemblySha256": "8e2debe809b69bbdb229961b10f80930dca7e917f2d4eec9c8c18ef02e0f8a42",
+    "coreAssemblySha256": "8c87ab948a71dd504107aa25ef978274f732995d656a89058f6c2823bab7ca73",
+    "experimentalAssemblySha256": "fd3526dc0ee1d3fdc58fed566a223bc68e7aa30699f0c5890b73be606bb7b5bd"
+  },
+  "onDiskFinalIdentity": {
+    "assemblySha256": "72827a1c43a91acda9bbacda3fad9dc76fe485a69c519cd5fdb0b2c437797a3b",
+    "coreAssemblySha256": "34059951f72543d511f85273210f79088964424edc13ab8854595b8bdb1d21be",
+    "experimentalAssemblySha256": "3ccf910aeba0f629e66a76e1750166fb28ed303b521d2b72864d0c23a8e7684e"
+  },
+  "behavior": "The original source-generated and later direct-writer hint JSON use the same keys, ordering and escaping; literal prompts and outputs are preserved in the trace. Do not claim the later binary generated this run."
+}

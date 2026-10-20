@@ -60,7 +60,7 @@ def summarize(base, output):
                 dispositions=dict(collections.Counter(r['analysis']['disposition'] for r in subset)),
                 meanLatencyMilliseconds=statistics.mean(r['latencyMilliseconds'] for r in subset),medianLatencyMilliseconds=statistics.median(r['latencyMilliseconds'] for r in subset),
                 totalSampledTokens=sum(r.get('inference',{}).get('sampledTokens',r.get('sampledTokens',0)) for r in subset),
-                inferenceCpuMilliseconds=None if arm=='voting-3' else sum(r['cpuMilliseconds'] for r in subset)))
+                generationProcessCpuMilliseconds=None if arm=='voting-3' else sum(r['cpuMilliseconds'] for r in subset)))
     unknowns=[]
     for r in rows:
         if r['arm']=='baseline':

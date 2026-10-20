@@ -1,0 +1,618 @@
+{
+  "review-b827feda8d17d40b6d9a8d77fe5fbbc9bbc0c99e3f7e07d1e0d71d45fd637216": [
+    {
+      "model": "ministral-3b",
+      "arm": "annotations",
+      "originalCaseId": "p2-en-article-error"
+    }
+  ],
+  "review-f7d9b70a1d5b891efeb6e0a23c7f4cf09a72c160dd8894cbb7a70cdd45fd12cc": [
+    {
+      "model": "ministral-3b",
+      "arm": "baseline",
+      "originalCaseId": "p2-en-article-error",
+      "traceSha256": "c5a4336b3ba76cb1d6462d1447e68688dea501743c90bf69d947e5daed8f192d",
+      "disposition": "accepted"
+    },
+    {
+      "model": "ministral-3b",
+      "arm": "hints",
+      "originalCaseId": "p2-en-article-error",
+      "traceSha256": "c5a4336b3ba76cb1d6462d1447e68688dea501743c90bf69d947e5daed8f192d",
+      "disposition": "accepted"
+    },
+    {
+      "model": "ministral-3b",
+      "arm": "voting-3",
+      "originalCaseId": "p2-en-article-error",
+      "traceSha256": "c5a4336b3ba76cb1d6462d1447e68688dea501743c90bf69d947e5daed8f192d",
+      "disposition": "accepted"
+    }
+  ],
+  "review-1ff58714b72f78972a29c7351965f43d892ee54fc3cb8bc5d97b83bbfff357f9": [
+    {
+      "model": "ministral-3b",
+      "arm": "annotations",
+      "originalCaseId": "p2-nl-participle"
+    }
+  ],
+  "review-211319822ebf237c93b89e54e2c0e09e30e5426b1ea856511f95995032cda3bc": [
+    {
+      "model": "ministral-3b",
+      "arm": "baseline",
+      "originalCaseId": "p2-nl-participle",
+      "traceSha256": "c5a4336b3ba76cb1d6462d1447e68688dea501743c90bf69d947e5daed8f192d",
+      "disposition": "accepted"
+    },
+    {
+      "model": "ministral-3b",
+      "arm": "hints",
+      "originalCaseId": "p2-nl-participle",
+      "traceSha256": "c5a4336b3ba76cb1d6462d1447e68688dea501743c90bf69d947e5daed8f192d",
+      "disposition": "accepted"
+    },
+    {
+      "model": "ministral-3b",
+      "arm": "voting-3",
+      "originalCaseId": "p2-nl-participle",
+      "traceSha256": "c5a4336b3ba76cb1d6462d1447e68688dea501743c90bf69d947e5daed8f192d",
+      "disposition": "accepted"
+    }
+  ],
+  "review-579f82728a62cc85a005defaf32299866f87924b1e58a7c2dc53e4c134e0398b": [
+    {
+      "model": "ministral-3b",
+      "arm": "annotations",
+      "originalCaseId": "p2-en-technical"
+    }
+  ],
+  "review-723cde59ba395e88f2934c8cc1af701a8abe67c53b840694a87cc1be122aaae5": [
+    {
+      "model": "ministral-3b",
+      "arm": "baseline",
+      "originalCaseId": "p2-en-technical",
+      "traceSha256": "c5a4336b3ba76cb1d6462d1447e68688dea501743c90bf69d947e5daed8f192d",
+      "disposition": "unchanged"
+    },
+    {
+      "model": "ministral-3b",
+      "arm": "hints",
+      "originalCaseId": "p2-en-technical",
+      "traceSha256": "c5a4336b3ba76cb1d6462d1447e68688dea501743c90bf69d947e5daed8f192d",
+      "disposition": "unchanged"
+    }
+  ],
+  "review-444a9c35f1bfdee584cc368722dd62a8e7975f906e7c2b83a1fd7f1859a25f3e": [
+    {
+      "model": "ministral-3b",
+      "arm": "voting-3",
+      "originalCaseId": "p2-en-technical",
+      "traceSha256": "c5a4336b3ba76cb1d6462d1447e68688dea501743c90bf69d947e5daed8f192d",
+      "disposition": "rejected"
+    }
+  ],
+  "review-8f5faf2ae437dd1615595dacd230b81dbd8b537a3b6972f1036205271984b8f2": [
+    {
+      "model": "ministral-3b",
+      "arm": "annotations",
+      "originalCaseId": "p2-nl-informal"
+    }
+  ],
+  "review-dd06291501a96efe2b4c61c2663a288e8e6750bb62dc4434c316e6d489cf6ffc": [
+    {
+      "model": "ministral-3b",
+      "arm": "baseline",
+      "originalCaseId": "p2-nl-informal",
+      "traceSha256": "c5a4336b3ba76cb1d6462d1447e68688dea501743c90bf69d947e5daed8f192d",
+      "disposition": "unchanged"
+    },
+    {
+      "model": "ministral-3b",
+      "arm": "hints",
+      "originalCaseId": "p2-nl-informal",
+      "traceSha256": "c5a4336b3ba76cb1d6462d1447e68688dea501743c90bf69d947e5daed8f192d",
+      "disposition": "unchanged"
+    },
+    {
+      "model": "ministral-3b",
+      "arm": "voting-3",
+      "originalCaseId": "p2-nl-informal",
+      "traceSha256": "c5a4336b3ba76cb1d6462d1447e68688dea501743c90bf69d947e5daed8f192d",
+      "disposition": "unchanged"
+    }
+  ],
+  "review-a2b425849159bd773f4450b8e36de85fa649451c27ce43cfbf2dc922574d1c33": [
+    {
+      "model": "ministral-3b",
+      "arm": "annotations",
+      "originalCaseId": "p2-en-uk"
+    }
+  ],
+  "review-60a63b60798f7eb4ac0a0546c816b116c7692a0be2c4be5044f808e3128e3048": [
+    {
+      "model": "ministral-3b",
+      "arm": "baseline",
+      "originalCaseId": "p2-en-uk",
+      "traceSha256": "c5a4336b3ba76cb1d6462d1447e68688dea501743c90bf69d947e5daed8f192d",
+      "disposition": "unchanged"
+    },
+    {
+      "model": "ministral-3b",
+      "arm": "hints",
+      "originalCaseId": "p2-en-uk",
+      "traceSha256": "c5a4336b3ba76cb1d6462d1447e68688dea501743c90bf69d947e5daed8f192d",
+      "disposition": "unchanged"
+    },
+    {
+      "model": "ministral-3b",
+      "arm": "voting-3",
+      "originalCaseId": "p2-en-uk",
+      "traceSha256": "c5a4336b3ba76cb1d6462d1447e68688dea501743c90bf69d947e5daed8f192d",
+      "disposition": "unchanged"
+    }
+  ],
+  "review-fada914b14d9a989e206cf30354eefd94b80aa96cd493636adf93a97c68ed89d": [
+    {
+      "model": "ministral-3b",
+      "arm": "annotations",
+      "originalCaseId": "p2-en-agreement"
+    }
+  ],
+  "review-814a87123e46932ff3d1b2bd256376a9d032fdc0dad99765c1cfe04d4cb14e80": [
+    {
+      "model": "ministral-3b",
+      "arm": "baseline",
+      "originalCaseId": "p2-en-agreement",
+      "traceSha256": "c5a4336b3ba76cb1d6462d1447e68688dea501743c90bf69d947e5daed8f192d",
+      "disposition": "accepted"
+    },
+    {
+      "model": "ministral-3b",
+      "arm": "hints",
+      "originalCaseId": "p2-en-agreement",
+      "traceSha256": "c5a4336b3ba76cb1d6462d1447e68688dea501743c90bf69d947e5daed8f192d",
+      "disposition": "accepted"
+    },
+    {
+      "model": "ministral-3b",
+      "arm": "voting-3",
+      "originalCaseId": "p2-en-agreement",
+      "traceSha256": "c5a4336b3ba76cb1d6462d1447e68688dea501743c90bf69d947e5daed8f192d",
+      "disposition": "accepted"
+    }
+  ],
+  "review-6e8de102b577e3d75a5e084931d4b3ccf7d0f8220a40ff70f9f4f3ac60d9c432": [
+    {
+      "model": "ministral-3b",
+      "arm": "annotations",
+      "originalCaseId": "p2-nl-order"
+    }
+  ],
+  "review-6196a7c488e980c62d72fb2aad3f961111e00843464ea20364067af1270dd9f3": [
+    {
+      "model": "ministral-3b",
+      "arm": "hints",
+      "originalCaseId": "p2-nl-order",
+      "traceSha256": "c5a4336b3ba76cb1d6462d1447e68688dea501743c90bf69d947e5daed8f192d",
+      "disposition": "accepted"
+    }
+  ],
+  "review-e0225429ef338782345bfd519d9954f0fa70b1d85e188e4d8168a42a06ead38b": [
+    {
+      "model": "ministral-3b",
+      "arm": "baseline",
+      "originalCaseId": "p2-nl-order",
+      "traceSha256": "c5a4336b3ba76cb1d6462d1447e68688dea501743c90bf69d947e5daed8f192d",
+      "disposition": "accepted"
+    },
+    {
+      "model": "ministral-3b",
+      "arm": "voting-3",
+      "originalCaseId": "p2-nl-order",
+      "traceSha256": "c5a4336b3ba76cb1d6462d1447e68688dea501743c90bf69d947e5daed8f192d",
+      "disposition": "accepted"
+    }
+  ],
+  "review-a48ddd82b790de98e2314f7e3f85152a599aef2edd07776d5a6e9f298bfe6dec": [
+    {
+      "model": "ministral-3b",
+      "arm": "annotations",
+      "originalCaseId": "p2-en-us"
+    }
+  ],
+  "review-266e45d8b8ae0064207ab312958acd315a38a8a91dee5381a6e705e586e57d74": [
+    {
+      "model": "ministral-3b",
+      "arm": "baseline",
+      "originalCaseId": "p2-en-us",
+      "traceSha256": "c5a4336b3ba76cb1d6462d1447e68688dea501743c90bf69d947e5daed8f192d",
+      "disposition": "unchanged"
+    },
+    {
+      "model": "ministral-3b",
+      "arm": "hints",
+      "originalCaseId": "p2-en-us",
+      "traceSha256": "c5a4336b3ba76cb1d6462d1447e68688dea501743c90bf69d947e5daed8f192d",
+      "disposition": "unchanged"
+    },
+    {
+      "model": "ministral-3b",
+      "arm": "voting-3",
+      "originalCaseId": "p2-en-us",
+      "traceSha256": "c5a4336b3ba76cb1d6462d1447e68688dea501743c90bf69d947e5daed8f192d",
+      "disposition": "unchanged"
+    }
+  ],
+  "review-17ef58d95b7003ce1484c27f11080227695cea33eb3e335560ae4b614af5751c": [
+    {
+      "model": "ministral-3b",
+      "arm": "annotations",
+      "originalCaseId": "p2-nl-technical"
+    }
+  ],
+  "review-44d0997732d1aa38a0d93eae11c3e5b3cd8a930f479e7fcd288c57f7744e466f": [
+    {
+      "model": "ministral-3b",
+      "arm": "voting-3",
+      "originalCaseId": "p2-nl-technical",
+      "traceSha256": "c5a4336b3ba76cb1d6462d1447e68688dea501743c90bf69d947e5daed8f192d",
+      "disposition": "rejected"
+    }
+  ],
+  "review-e8a68f064f3afbe2f3faaaea921c968a4aa0bde7da8b698216ce941436d3af1f": [
+    {
+      "model": "ministral-3b",
+      "arm": "baseline",
+      "originalCaseId": "p2-nl-technical",
+      "traceSha256": "c5a4336b3ba76cb1d6462d1447e68688dea501743c90bf69d947e5daed8f192d",
+      "disposition": "rejected"
+    },
+    {
+      "model": "ministral-3b",
+      "arm": "hints",
+      "originalCaseId": "p2-nl-technical",
+      "traceSha256": "c5a4336b3ba76cb1d6462d1447e68688dea501743c90bf69d947e5daed8f192d",
+      "disposition": "rejected"
+    }
+  ],
+  "review-5e1f7ef82d33c9d25ce64c7b366c44319a8d8f286ede099f5cc45adee67d7edb": [
+    {
+      "model": "ministral-3b",
+      "arm": "annotations",
+      "originalCaseId": "p2-nl-compound-error"
+    }
+  ],
+  "review-893fed241d2bb0006d0301f1a51cc83a3c4dd393827e0f026547871a7a0f8526": [
+    {
+      "model": "ministral-3b",
+      "arm": "baseline",
+      "originalCaseId": "p2-nl-compound-error",
+      "traceSha256": "c5a4336b3ba76cb1d6462d1447e68688dea501743c90bf69d947e5daed8f192d",
+      "disposition": "unchanged"
+    },
+    {
+      "model": "ministral-3b",
+      "arm": "hints",
+      "originalCaseId": "p2-nl-compound-error",
+      "traceSha256": "c5a4336b3ba76cb1d6462d1447e68688dea501743c90bf69d947e5daed8f192d",
+      "disposition": "unchanged"
+    },
+    {
+      "model": "ministral-3b",
+      "arm": "voting-3",
+      "originalCaseId": "p2-nl-compound-error",
+      "traceSha256": "c5a4336b3ba76cb1d6462d1447e68688dea501743c90bf69d947e5daed8f192d",
+      "disposition": "unchanged"
+    }
+  ],
+  "review-4db6637f9c9c388e60c6cf220991c86b1cef94c9786c6d58ee87539dba77371c": [
+    {
+      "model": "ministral-3b",
+      "arm": "annotations",
+      "originalCaseId": "p2-nl-diacritics"
+    }
+  ],
+  "review-c1123b9ae7c8540d8cbbdf4385fb812d9deac6a52a345e907d24bd934df6f2c8": [
+    {
+      "model": "ministral-3b",
+      "arm": "baseline",
+      "originalCaseId": "p2-nl-diacritics",
+      "traceSha256": "c5a4336b3ba76cb1d6462d1447e68688dea501743c90bf69d947e5daed8f192d",
+      "disposition": "unchanged"
+    },
+    {
+      "model": "ministral-3b",
+      "arm": "hints",
+      "originalCaseId": "p2-nl-diacritics",
+      "traceSha256": "c5a4336b3ba76cb1d6462d1447e68688dea501743c90bf69d947e5daed8f192d",
+      "disposition": "unchanged"
+    },
+    {
+      "model": "ministral-3b",
+      "arm": "voting-3",
+      "originalCaseId": "p2-nl-diacritics",
+      "traceSha256": "c5a4336b3ba76cb1d6462d1447e68688dea501743c90bf69d947e5daed8f192d",
+      "disposition": "unchanged"
+    }
+  ],
+  "review-437433a87719c284df132c87180abd27e51468f9a3fceeff31092e8d470c07c0": [
+    {
+      "model": "ministral-3b",
+      "arm": "annotations",
+      "originalCaseId": "p2-nl-dt"
+    }
+  ],
+  "review-32508d643e921c8438208a565719fc4789b46791ea8f680d3cca9f411925cea6": [
+    {
+      "model": "ministral-3b",
+      "arm": "baseline",
+      "originalCaseId": "p2-nl-dt",
+      "traceSha256": "c5a4336b3ba76cb1d6462d1447e68688dea501743c90bf69d947e5daed8f192d",
+      "disposition": "accepted"
+    },
+    {
+      "model": "ministral-3b",
+      "arm": "hints",
+      "originalCaseId": "p2-nl-dt",
+      "traceSha256": "c5a4336b3ba76cb1d6462d1447e68688dea501743c90bf69d947e5daed8f192d",
+      "disposition": "accepted"
+    }
+  ],
+  "review-9ef92892a9562124cc1be76177729c24f0da8588dcd75c95b1cf696d60299d80": [
+    {
+      "model": "ministral-3b",
+      "arm": "voting-3",
+      "originalCaseId": "p2-nl-dt",
+      "traceSha256": "c5a4336b3ba76cb1d6462d1447e68688dea501743c90bf69d947e5daed8f192d",
+      "disposition": "unchanged"
+    }
+  ],
+  "review-762173e411717334b98a02404ad4854d24815b511eb5a41b4e3aae20b567a5e1": [
+    {
+      "model": "ministral-3b",
+      "arm": "annotations",
+      "originalCaseId": "p2-nl-belgian"
+    }
+  ],
+  "review-9439987ad6741823a877d21bfcc681eaa286e6b3a14bf5d0413cb49ecad3461a": [
+    {
+      "model": "ministral-3b",
+      "arm": "baseline",
+      "originalCaseId": "p2-nl-belgian",
+      "traceSha256": "c5a4336b3ba76cb1d6462d1447e68688dea501743c90bf69d947e5daed8f192d",
+      "disposition": "unchanged"
+    },
+    {
+      "model": "ministral-3b",
+      "arm": "hints",
+      "originalCaseId": "p2-nl-belgian",
+      "traceSha256": "c5a4336b3ba76cb1d6462d1447e68688dea501743c90bf69d947e5daed8f192d",
+      "disposition": "unchanged"
+    },
+    {
+      "model": "ministral-3b",
+      "arm": "voting-3",
+      "originalCaseId": "p2-nl-belgian",
+      "traceSha256": "c5a4336b3ba76cb1d6462d1447e68688dea501743c90bf69d947e5daed8f192d",
+      "disposition": "unchanged"
+    }
+  ],
+  "review-cb2e1d82f4e249c3424134409d234a5f03e1b60ac04642758f6b0625e7b73888": [
+    {
+      "model": "ministral-3b",
+      "arm": "annotations",
+      "originalCaseId": "p2-en-spell"
+    }
+  ],
+  "review-81c1e770b485d3902088703620228eb649a2a79d87866d5551e3396f6324923a": [
+    {
+      "model": "ministral-3b",
+      "arm": "baseline",
+      "originalCaseId": "p2-en-spell",
+      "traceSha256": "c5a4336b3ba76cb1d6462d1447e68688dea501743c90bf69d947e5daed8f192d",
+      "disposition": "accepted"
+    },
+    {
+      "model": "ministral-3b",
+      "arm": "hints",
+      "originalCaseId": "p2-en-spell",
+      "traceSha256": "c5a4336b3ba76cb1d6462d1447e68688dea501743c90bf69d947e5daed8f192d",
+      "disposition": "accepted"
+    },
+    {
+      "model": "ministral-3b",
+      "arm": "voting-3",
+      "originalCaseId": "p2-en-spell",
+      "traceSha256": "c5a4336b3ba76cb1d6462d1447e68688dea501743c90bf69d947e5daed8f192d",
+      "disposition": "accepted"
+    }
+  ],
+  "review-30c3820ee7de5122ea9efc643e942c00e7c30264a687ecd7714f8c1bad611f63": [
+    {
+      "model": "ministral-3b",
+      "arm": "annotations",
+      "originalCaseId": "p2-en-order"
+    }
+  ],
+  "review-2d8ec06880e9df8ac6a4a1ff512dbe3265d22c775994aebab4e22139a36f8242": [
+    {
+      "model": "ministral-3b",
+      "arm": "voting-3",
+      "originalCaseId": "p2-en-order",
+      "traceSha256": "c5a4336b3ba76cb1d6462d1447e68688dea501743c90bf69d947e5daed8f192d",
+      "disposition": "rejected"
+    }
+  ],
+  "review-2d6292a4cdca83aaa5750a320e9c573c292cb7c4f09da9d706dd918b71789436": [
+    {
+      "model": "ministral-3b",
+      "arm": "baseline",
+      "originalCaseId": "p2-en-order",
+      "traceSha256": "c5a4336b3ba76cb1d6462d1447e68688dea501743c90bf69d947e5daed8f192d",
+      "disposition": "rejected"
+    },
+    {
+      "model": "ministral-3b",
+      "arm": "hints",
+      "originalCaseId": "p2-en-order",
+      "traceSha256": "c5a4336b3ba76cb1d6462d1447e68688dea501743c90bf69d947e5daed8f192d",
+      "disposition": "rejected"
+    }
+  ],
+  "review-b2fe724c9f3951c75ca84315384a23c1db09d9953602378ccdd77471e9025486": [
+    {
+      "model": "ministral-3b",
+      "arm": "annotations",
+      "originalCaseId": "p2-en-past-participle"
+    }
+  ],
+  "review-310ed5cc89fb594f092429baf755a028c84a386648ff06eec28f8336afd6a2a5": [
+    {
+      "model": "ministral-3b",
+      "arm": "baseline",
+      "originalCaseId": "p2-en-past-participle",
+      "traceSha256": "c5a4336b3ba76cb1d6462d1447e68688dea501743c90bf69d947e5daed8f192d",
+      "disposition": "accepted"
+    },
+    {
+      "model": "ministral-3b",
+      "arm": "hints",
+      "originalCaseId": "p2-en-past-participle",
+      "traceSha256": "c5a4336b3ba76cb1d6462d1447e68688dea501743c90bf69d947e5daed8f192d",
+      "disposition": "accepted"
+    },
+    {
+      "model": "ministral-3b",
+      "arm": "voting-3",
+      "originalCaseId": "p2-en-past-participle",
+      "traceSha256": "c5a4336b3ba76cb1d6462d1447e68688dea501743c90bf69d947e5daed8f192d",
+      "disposition": "accepted"
+    }
+  ],
+  "review-0d1796b60d43d79e958fe35402165c7bcaff10abac4eec94acfef1473fcf7956": [
+    {
+      "model": "ministral-3b",
+      "arm": "annotations",
+      "originalCaseId": "p2-en-contraction"
+    }
+  ],
+  "review-4c837cd361be23c8888a4e32af0788343749867cdb13657eaf524ea38e1beea2": [
+    {
+      "model": "ministral-3b",
+      "arm": "baseline",
+      "originalCaseId": "p2-en-contraction",
+      "traceSha256": "c5a4336b3ba76cb1d6462d1447e68688dea501743c90bf69d947e5daed8f192d",
+      "disposition": "rejected"
+    },
+    {
+      "model": "ministral-3b",
+      "arm": "hints",
+      "originalCaseId": "p2-en-contraction",
+      "traceSha256": "c5a4336b3ba76cb1d6462d1447e68688dea501743c90bf69d947e5daed8f192d",
+      "disposition": "rejected"
+    }
+  ],
+  "review-41cb38c725ef757114dccbbf2a361efb69a82ab1fb9bad9a7354c0015d36d89b": [
+    {
+      "model": "ministral-3b",
+      "arm": "voting-3",
+      "originalCaseId": "p2-en-contraction",
+      "traceSha256": "c5a4336b3ba76cb1d6462d1447e68688dea501743c90bf69d947e5daed8f192d",
+      "disposition": "rejected"
+    }
+  ],
+  "review-a9893206cdbf3e26522b01a06ed42dd3ff5fc7a0ff1999ee00f50668729736a6": [
+    {
+      "model": "ministral-3b",
+      "arm": "annotations",
+      "originalCaseId": "p2-nl-multi"
+    }
+  ],
+  "review-3c92187f720db05011c812c79c4adb5fc2da9c6f3b4c07b13ccd4fa42eac1212": [
+    {
+      "model": "ministral-3b",
+      "arm": "baseline",
+      "originalCaseId": "p2-nl-multi",
+      "traceSha256": "c5a4336b3ba76cb1d6462d1447e68688dea501743c90bf69d947e5daed8f192d",
+      "disposition": "accepted"
+    },
+    {
+      "model": "ministral-3b",
+      "arm": "hints",
+      "originalCaseId": "p2-nl-multi",
+      "traceSha256": "c5a4336b3ba76cb1d6462d1447e68688dea501743c90bf69d947e5daed8f192d",
+      "disposition": "accepted"
+    },
+    {
+      "model": "ministral-3b",
+      "arm": "voting-3",
+      "originalCaseId": "p2-nl-multi",
+      "traceSha256": "c5a4336b3ba76cb1d6462d1447e68688dea501743c90bf69d947e5daed8f192d",
+      "disposition": "accepted"
+    }
+  ],
+  "review-e659cd9ca102456e7acbc6a6d8f2963fda65f1500bd4b2b9f155b74b4f6f09fc": [
+    {
+      "model": "ministral-3b",
+      "arm": "annotations",
+      "originalCaseId": "p2-nl-typo"
+    }
+  ],
+  "review-223194e4255c1ec439c7455f6e32173970cd645a7c3ce39cb288ce7c4b59665d": [
+    {
+      "model": "ministral-3b",
+      "arm": "baseline",
+      "originalCaseId": "p2-nl-typo",
+      "traceSha256": "c5a4336b3ba76cb1d6462d1447e68688dea501743c90bf69d947e5daed8f192d",
+      "disposition": "unchanged"
+    },
+    {
+      "model": "ministral-3b",
+      "arm": "voting-3",
+      "originalCaseId": "p2-nl-typo",
+      "traceSha256": "c5a4336b3ba76cb1d6462d1447e68688dea501743c90bf69d947e5daed8f192d",
+      "disposition": "unchanged"
+    }
+  ],
+  "review-a6f9b0b7a56815247c182ebf924cc8f2fa0080cde934e180b326d488107dc0d3": [
+    {
+      "model": "ministral-3b",
+      "arm": "hints",
+      "originalCaseId": "p2-nl-typo",
+      "traceSha256": "c5a4336b3ba76cb1d6462d1447e68688dea501743c90bf69d947e5daed8f192d",
+      "disposition": "accepted"
+    }
+  ],
+  "review-f44154d1b449b6e44fef402caa22f62fdcb1edc13f73fe0907fe16c826c5721b": [
+    {
+      "model": "ministral-3b",
+      "arm": "annotations",
+      "originalCaseId": "p2-en-multi"
+    }
+  ],
+  "review-7c83fcb907c9d81bbd944e834accf56b3b9941b97c0ba2ead60dd51f07b2ac7d": [
+    {
+      "model": "ministral-3b",
+      "arm": "baseline",
+      "originalCaseId": "p2-en-multi",
+      "traceSha256": "c5a4336b3ba76cb1d6462d1447e68688dea501743c90bf69d947e5daed8f192d",
+      "disposition": "accepted"
+    },
+    {
+      "model": "ministral-3b",
+      "arm": "voting-3",
+      "originalCaseId": "p2-en-multi",
+      "traceSha256": "c5a4336b3ba76cb1d6462d1447e68688dea501743c90bf69d947e5daed8f192d",
+      "disposition": "accepted"
+    }
+  ],
+  "review-f319cf3a566dadb690111d5f390f881d8e9e973f0630d1be939876af88d9fd65": [
+    {
+      "model": "ministral-3b",
+      "arm": "hints",
+      "originalCaseId": "p2-en-multi",
+      "traceSha256": "c5a4336b3ba76cb1d6462d1447e68688dea501743c90bf69d947e5daed8f192d",
+      "disposition": "accepted"
+    }
+  ]
+}

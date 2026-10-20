@@ -1,0 +1,8 @@
+{
+  "policy": "(version 1) (allow default) (deny network*)",
+  "mechanism": "macOS sandbox-exec",
+  "preflight": "loopback connect denied with EPERM",
+  "inferenceExitCode": 0,
+  "scope": "entire dictionary and inference process",
+  "driver": "scripts/run-linguistic-experiment.py"
+}

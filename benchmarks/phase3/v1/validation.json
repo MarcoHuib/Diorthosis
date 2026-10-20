@@ -1,0 +1,82 @@
+{
+  "date": "2026-10-21",
+  "implementationCommit": "d4eae5204a817cbbf0cbf80ce753d19ba1470d39",
+  "dotnet": {
+    "passed": 213,
+    "failed": 0,
+    "skipped": 0,
+    "includes": "available local Ministral 3B EOG/request isolation/cancellation/recovery; 28 new linguistic tests"
+  },
+  "python": {
+    "passed": 12,
+    "failed": 0,
+    "includes": "packet reproducibility, ID/model blinding, HTML escaping, stale/private-input rejection"
+  },
+  "replay": {
+    "generatedCandidates": 100,
+    "votedPassages": 20,
+    "promptAndAnalysisMismatches": 0,
+    "report": "replay-voting-1.1.json"
+  },
+  "native": {
+    "platform": "macOS ARM64",
+    "aot": "final probe and CLI published with warnings as errors; no new suppression",
+    "networkPolicy": "sandbox-exec deny network*; denial preflight retained in run/isolation.json and native-cli/result.json",
+    "dotnetRoot": "nonexistent runtime path",
+    "modelFreeProbeExitCode": 0,
+    "modelFreeProbeChecks": [
+      "PASS Dutch start",
+      "PASS Dutch startt",
+      "PASS Dutch onmiddelijk",
+      "PASS Dutch onmiddellijk",
+      "PASS Dutch rapport",
+      "PASS Dutch raport",
+      "PASS Dutch langetermijnplanning",
+      "PASS Dutch opgebeld",
+      "PASS Dutch co\u00f6rdinator",
+      "PASS Dutch re\u00fcnie",
+      "PASS Dutch goesting",
+      "PASS English colour",
+      "PASS English color",
+      "PASS English can't",
+      "PASS English can\u2019t",
+      "PASS English organize",
+      "PASS English organise",
+      "PASS English reports",
+      "PASS English misspelling",
+      "PASS full-word start -> startt diagnostic",
+      "PASS AOT hint JSON",
+      "PASS AOT strict-majority source alignment",
+      "PASS AOT repeated-word ambiguity",
+      "PASS AOT introduced foreign-script flag",
+      "PASS native linguistic probe"
+    ],
+    "modelFreeProbeSha256": "9256ead4efd1de1627499886a4b366f3f170089a8ee15c59358d7fa02c617097",
+    "stdoutSha256": "2c821ca2d418455ce3f80847f51db0365905514248940736b819abbd53118e15",
+    "realSeededProbe": "native-validation.json; repeated stochastic output/token equality, EOG, cancellation and recovery passed with existing local weights",
+    "cli": "native-cli/result.json"
+  },
+  "historical": {
+    "hashesUnchanged": 84,
+    "phase2InheritedArtifactsUnchanged": 165
+  },
+  "assetReacquisition": "All 13 pinned asset hashes reproduced from fresh developer-only acquisition",
+  "humanValidation": {
+    "independentHumanApprovals": 0,
+    "independentChatGPTAssessment": "pending"
+  },
+  "notRun": [
+    "five-sample or pre-hint voting inference: predeclared trigger not met",
+    "larger-model inference: no justified expansion",
+    "foreign-platform real-weight inference",
+    "held-out/human linguistic validation"
+  ],
+  "sourceSha256": {
+    "src/Diorthosis.Benchmarks/LinguisticExperiment.cs": "3dfea4265e7e8cd657efba70bbb7585877305c1fc6f966630af34d9c7187857f",
+    "src/Diorthosis.Core/Corrections/CorrectionModels.cs": "5bacbfb03154d2e9d7f1898b9fa30d4c596d73ff6f3eb1289a7271442bd477a6",
+    "src/Diorthosis.Core/Inference/LlamaSharpInferenceAdapter.cs": "d13095acbb00c355f394167e7df82893e3e1ede18b232a2b410287b3bbaee6a6",
+    "src/Diorthosis.Experiments/EditVoting.cs": "956753927d55ac4e3c59bccc706a7870977b6826c0ad99eb0e609f78178ae489",
+    "src/Diorthosis.Experiments/SpellingDiagnostics.cs": "7d90bfa8a53b1e024701d2c12d8f09a7a46b05249a58a1563c0e35ae78229ae2",
+    "tests/NativeLinguisticProbe/Program.cs": "cbc9868c0e5b724af5fea683791c65d46f0fc74cb044f38ecb644cb3f71a17a9"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "file": "chatgpt-review.zip",
+  "sha256": "f4830501edbbbbdfa84a2c27d2b7681ea75f0ceccccfd6967335bd28e0deedaa",
+  "files": [
+    "CHATGPT-REVIEW.md",
+    "subjects.jsonl",
+    "review.html"
+  ],
+  "policy": "Only this fictional blinded packet is intended for independent ChatGPT review. Withhold model/arm lineage, preparer decisions and experiment reports until reviewer locks decisions.",
+  "blinding": "Source IDs and model/arm identities withheld; source text remains literal. Not an anonymizer for arbitrary private documents."
+}
