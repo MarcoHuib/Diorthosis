@@ -16,3 +16,10 @@ public sealed record MetricResult(string Language, string Category, int Annotate
     int SuggestedEdits, int CorrectSuggestions, int FalsePositiveSuggestions, int CorrectInputs,
     int CorrectInputsChanged, double Recall, double Precision, double FalsePositiveRate,
     double CorrectTextPreservation);
+
+public sealed record QualityMetricResult(string EvaluatorVersion, string Language, int AnnotatedErrors,
+    int CorrectlyResolvedErrors, int SuggestedEdits, int CorrectSuggestions, int CorrectInputs,
+    int CorrectInputsChanged, int StrictlyAcceptedCases, int StrictCaseDenominator,
+    int UnnecessaryModifications, int AcceptedChanges, int RejectedChanges, int SuppressedChanges,
+    double? ErrorLevelRecall, double? StrictCompletePassageAcceptability,
+    double? HistoricalHunkPrecision, double? CleanInputPreservation);

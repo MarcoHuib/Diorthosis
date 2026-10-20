@@ -101,6 +101,29 @@ public sealed class BenchmarkEvaluatorTests
     }
 
     [Fact]
+    public void EvaluatorCreditsOneCompleteEditAcrossMultipleAnnotations()
+    {
+        var item = new BenchmarkCase("en-combined", CorrectionLanguage.English, "She have recieved it.", [
+            new ErrorAnnotation(4, 4, "have", ErrorCategory.Grammar, [new AcceptedCorrection("has")]),
+            new ErrorAnnotation(9, 8, "recieved", ErrorCategory.Spelling, [new AcceptedCorrection("received")])
+        ]);
+        var prediction = new BenchmarkPrediction(item.Id,
+            [new TextEdit(4, 13, "have recieved", "has received")]);
+
+        var all = Assert.Single(BenchmarkEvaluator.Evaluate([item], [prediction]),
+            result => result.Language == "English" && result.Category == "all");
+        Assert.Equal(2, all.CorrectlyResolvedErrors);
+        Assert.Equal(1, all.CorrectSuggestions);
+
+        var grammar = Assert.Single(BenchmarkEvaluator.Evaluate([item], [prediction]),
+            result => result.Language == "English" && result.Category == "Grammar");
+        var spelling = Assert.Single(BenchmarkEvaluator.Evaluate([item], [prediction]),
+            result => result.Language == "English" && result.Category == "Spelling");
+        Assert.Equal(1, grammar.CorrectlyResolvedErrors);
+        Assert.Equal(1, spelling.CorrectlyResolvedErrors);
+    }
+
+    [Fact]
     public void EvaluatorDoesNotCreditLocalRepairInsideUnannotatedLexicalRewrite()
     {
         var item = new BenchmarkCase("nl-translation", CorrectionLanguage.Dutch,
