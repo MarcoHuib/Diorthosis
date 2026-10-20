@@ -91,6 +91,10 @@ public sealed class ModelCorrectionEngine(IModelInferenceAdapter adapter, int ma
 
     private static string ExtractCandidate(string output, string source)
     {
+        var sourceLeadingWhitespace = output.StartsWith(LeadingWhitespace(source), StringComparison.Ordinal)
+            ? LeadingWhitespace(source) : string.Empty;
+        var sourceTrailingWhitespace = output.EndsWith(TrailingWhitespace(source), StringComparison.Ordinal)
+            ? TrailingWhitespace(source) : string.Empty;
         var text = output.Trim();
         if (text.Length == 0) throw new InvalidDataException("Correction output is empty.");
 
@@ -152,6 +156,8 @@ public sealed class ModelCorrectionEngine(IModelInferenceAdapter adapter, int ma
                 RegexOptions.CultureInvariant);
         text = Regex.Replace(text, @"^(?:Corrected (?:text|passage)(?:\s*\([^)]*\))?|Output(?: text(?:\s*\([^)]*\))?)?|Correction)\s*:\s*", "", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant);
         text = text.Trim();
+        if (sourceLeadingWhitespace.Length > 0) text = sourceLeadingWhitespace + text;
+        if (sourceTrailingWhitespace.Length > 0) text += sourceTrailingWhitespace;
         var firstOutputLine = text.Split('\n', 2)[0].Trim();
         if ((source.Length == 0 || source[0] is not ('"' or '\u201c' or '\u2018')) && firstOutputLine.Length >= 2
             && (firstOutputLine[0] == '"' && firstOutputLine[^1] == '"'
@@ -170,6 +176,9 @@ public sealed class ModelCorrectionEngine(IModelInferenceAdapter adapter, int ma
             throw new InvalidDataException("Correction output is too long to validate safely.");
         return text;
     }
+
+    private static string LeadingWhitespace(string value) => new(value.TakeWhile(char.IsWhiteSpace).ToArray());
+    private static string TrailingWhitespace(string value) => new(value.Reverse().TakeWhile(char.IsWhiteSpace).Reverse().ToArray());
 
     private static bool OnlyWhitespaceChanged(string first, string second) =>
         string.Equals(Regex.Replace(first, @"\s+", "", RegexOptions.CultureInvariant),
@@ -203,7 +212,7 @@ public sealed class ModelCorrectionEngine(IModelInferenceAdapter adapter, int ma
     private static IEnumerable<string> CriticalMeaningMarkers(string value)
     {
         foreach (Match match in Regex.Matches(value,
-            @"\b(?:not|n't|never|must|may|can|cannot|need|should|niet|nooit|moet|moeten|mag|mogen|kan|kunnen|mocht|mochten)\b",
+            @"(?<![\p{L}\p{N}])(?:can't|can’t|cannot|don't|don’t|doesn't|doesn’t|isn't|isn’t|aren't|aren’t|wasn't|wasn’t|weren't|weren’t|won't|won’t|wouldn't|wouldn’t|shouldn't|shouldn’t|mustn't|mustn’t|needn't|needn’t|never|not|must|may|can|need|should|niet|geen|nooit|moet|moeten|mag|mogen|kan|kunnen|mocht|mochten)(?![\p{L}\p{N}])",
             RegexOptions.IgnoreCase | RegexOptions.CultureInvariant))
             yield return match.Value.ToLowerInvariant();
     }
@@ -469,6 +478,7 @@ public sealed class ModelCorrectionEngine(IModelInferenceAdapter adapter, int ma
             var candidate = ApplyDiffForVerification(source, validated);
             if (candidate == source) return validated;
             ValidateCandidatePassage(source, candidate);
+            if (!OnlyWhitespaceChanged(source, candidate)) EnsurePlausibleCorrection(candidate, source);
             return validated;
         }
         catch (JsonException exception)

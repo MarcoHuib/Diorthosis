@@ -140,4 +140,56 @@ public sealed class BenchmarkEvaluatorTests
         Assert.Equal(0, all.CorrectlyResolvedErrors);
         Assert.Equal(0, all.CorrectSuggestions);
     }
+
+    [Fact]
+    public void CategoryRowsAttributeOnlyEditsForThatCategory()
+    {
+        var item = new BenchmarkCase("mixed", CorrectionLanguage.English, "She have recieved it.", [
+            new ErrorAnnotation(4, 4, "have", ErrorCategory.Grammar, [new AcceptedCorrection("has")]),
+            new ErrorAnnotation(9, 8, "recieved", ErrorCategory.Spelling, [new AcceptedCorrection("received")])
+        ]);
+        var prediction = new BenchmarkPrediction(item.Id, [
+            new TextEdit(4, 4, "have", "has"),
+            new TextEdit(9, 8, "recieved", "received")
+        ]);
+
+        var rows = BenchmarkEvaluator.Evaluate([item], [prediction]);
+        var grammar = Assert.Single(rows, row => row.Language == "English" && row.Category == "Grammar");
+        var spelling = Assert.Single(rows, row => row.Language == "English" && row.Category == "Spelling");
+        Assert.Equal(1, grammar.SuggestedEdits);
+        Assert.Equal(1, grammar.CorrectSuggestions);
+        Assert.Equal(1, spelling.SuggestedEdits);
+        Assert.Equal(1, spelling.CorrectSuggestions);
+    }
+
+    [Fact]
+    public void CategoryRecallSurvivesAnIncorrectRepairInAnotherCategory()
+    {
+        var item = new BenchmarkCase("mixed-partial", CorrectionLanguage.English, "She have recieved it.", [
+            new ErrorAnnotation(4, 4, "have", ErrorCategory.Grammar, [new AcceptedCorrection("has")]),
+            new ErrorAnnotation(9, 8, "recieved", ErrorCategory.Spelling, [new AcceptedCorrection("received")])
+        ]);
+        var prediction = new BenchmarkPrediction(item.Id, [
+            new TextEdit(4, 4, "have", "has"),
+            new TextEdit(9, 8, "recieved", "recovered")
+        ]);
+
+        var grammar = Assert.Single(BenchmarkEvaluator.Evaluate([item], [prediction]),
+            row => row.Language == "English" && row.Category == "Grammar");
+        Assert.Equal(1, grammar.CorrectlyResolvedErrors);
+        Assert.Equal(1, grammar.CorrectSuggestions);
+    }
+
+    [Fact]
+    public void LegacyEvaluatorRemainsAvailableForHistoricalRows()
+    {
+        var item = new BenchmarkCase("legacy", CorrectionLanguage.English, "She have it.", [
+            new ErrorAnnotation(4, 4, "have", ErrorCategory.Grammar, [new AcceptedCorrection("has")])
+        ]);
+        var prediction = new BenchmarkPrediction(item.Id, [new TextEdit(4, 4, "have", "has")]);
+        var current = Assert.Single(BenchmarkEvaluator.Evaluate([item], [prediction]), row => row.Language == "English" && row.Category == "all");
+        var legacy = Assert.Single(BenchmarkEvaluator.EvaluateHistorical([item], [prediction]), row => row.Language == "English" && row.Category == "all");
+        Assert.Equal(BenchmarkEvaluator.HistoricalEvaluatorVersion, BenchmarkEvaluator.HistoricalEvaluatorVersion);
+        Assert.Equal(legacy, current);
+    }
 }

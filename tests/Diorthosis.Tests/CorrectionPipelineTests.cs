@@ -137,6 +137,29 @@ public sealed class CorrectionPipelineTests
         Assert.Empty(analysis.Edits);
     }
 
+    [Theory]
+    [InlineData("I can't send it.", "I can send it.")]
+    [InlineData("She doesn't agree.", "She does agree.")]
+    [InlineData("The service isn't ready.", "The service is ready.")]
+    [InlineData("We won't deploy it.", "We will deploy it.")]
+    [InlineData("Er is geen risico.", "Er is risico.")]
+    public void ContractedAndDutchNegationChangesAreNotAccepted(string source, string candidate)
+    {
+        var analysis = ModelCorrectionEngine.AnalyzeModelResponse(candidate, source);
+        Assert.NotEqual(CorrectionDisposition.Accepted, analysis.Disposition);
+        Assert.Empty(analysis.Edits);
+    }
+
+    [Fact]
+    public void CorrectedPassagePreservesMeaningfulOuterWhitespace()
+    {
+        const string source = "  Ik heb het document verstuurt.  ";
+        const string corrected = "  Ik heb het document verstuurd.  ";
+        var edits = ModelCorrectionEngine.ParseModelResponse(corrected, source);
+        Assert.Equal(corrected, ApplyEdits(source, edits));
+        Assert.DoesNotContain(edits, edit => edit.OriginalText is " " or "\n");
+    }
+
     [Fact]
     public void CompleteIndependentStatementRemovalIsRejectedButClauseJoiningIsAllowed()
     {
@@ -196,6 +219,18 @@ public sealed class CorrectionPipelineTests
         const string source = "The server is not available.";
         var json = "[{\"start\":14,\"length\":3,\"originalText\":\"not\",\"replacementText\":\"\"}]";
         Assert.Throws<InvalidDataException>(() => ModelCorrectionEngine.ParseAndValidate(json, source));
+    }
+
+    [Fact]
+    public void StructuredJsonUsesTheSamePlausibilityPolicyAsPassageResponses()
+    {
+        const string source = "The server is ready for maintenance.";
+        const string candidate = "A completely unrelated correction is ready.";
+        var output = $$"""[{"start":0,"length":{{source.Length}},"originalText":"The server is ready for maintenance.","replacementText":"A completely unrelated correction is ready."}]""";
+
+        var passage = ModelCorrectionEngine.AnalyzeModelResponse(candidate, source);
+        Assert.NotEqual(CorrectionDisposition.Accepted, passage.Disposition);
+        Assert.Throws<InvalidDataException>(() => ModelCorrectionEngine.ParseAndValidate(output, source));
     }
 
     [Fact]

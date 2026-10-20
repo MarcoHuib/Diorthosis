@@ -38,8 +38,8 @@ try
             predictions.Add(new BenchmarkPrediction(caseId, analysis.Edits));
             var rawPrediction = new BenchmarkPrediction(caseId, analysis.RawCandidateEdits);
             rawPredictions.Add(rawPrediction);
-            var rawCaseMetrics = BenchmarkEvaluator.Evaluate([item], [rawPrediction]).Where(metric => metric.Category == "all").ToArray();
-            var acceptedCaseMetrics = BenchmarkEvaluator.Evaluate([item], [new BenchmarkPrediction(caseId, analysis.Edits)])
+            var rawCaseMetrics = BenchmarkEvaluator.EvaluateHistorical([item], [rawPrediction]).Where(metric => metric.Category == "all").ToArray();
+            var acceptedCaseMetrics = BenchmarkEvaluator.EvaluateHistorical([item], [new BenchmarkPrediction(caseId, analysis.Edits)])
                 .Where(metric => metric.Category == "all").ToArray();
             var rawCorrectErrors = rawCaseMetrics[0].CorrectlyResolvedErrors;
             if (analysis.RejectionStage is not null && rawCorrectErrors > 0) rejectedButRawCorrectErrors += rawCorrectErrors;
@@ -67,9 +67,9 @@ try
             throw new InvalidDataException("Captured trace must contain exactly one response for each benchmark case.");
         await File.WriteAllLinesAsync(args[4], predictions.Select(item => JsonSerializer.Serialize(item, options)));
         await File.WriteAllLinesAsync(args[5], traces.Select(item => JsonSerializer.Serialize(item, options)));
-        var metrics = BenchmarkEvaluator.Evaluate(cases, predictions);
+        var metrics = BenchmarkEvaluator.EvaluateHistorical(cases, predictions);
         var qualityMetrics = BenchmarkEvaluator.EvaluateQuality(cases, predictions);
-        var rawMetrics = BenchmarkEvaluator.Evaluate(cases, rawPredictions);
+        var rawMetrics = BenchmarkEvaluator.EvaluateHistorical(cases, rawPredictions);
         var report = System.Text.Json.Nodes.JsonNode.Parse(await File.ReadAllTextAsync(args[3]))
             ?? throw new InvalidDataException("Original run report is empty.");
         report["metrics"] = JsonSerializer.SerializeToNode(metrics, options);
@@ -146,8 +146,8 @@ try
             var analysis = ModelCorrectionEngine.AnalyzeModelResponse(adapter.LastOutput ?? string.Empty, item.InputText);
             var rawPrediction = new BenchmarkPrediction(item.Id, analysis.RawCandidateEdits);
             rawPredictions.Add(rawPrediction);
-            var rawCaseMetrics = BenchmarkEvaluator.Evaluate([item], [rawPrediction]).Where(metric => metric.Category == "all").ToArray();
-            var acceptedCaseMetrics = BenchmarkEvaluator.Evaluate([item], [new BenchmarkPrediction(item.Id, result.Edits)])
+            var rawCaseMetrics = BenchmarkEvaluator.EvaluateHistorical([item], [rawPrediction]).Where(metric => metric.Category == "all").ToArray();
+            var acceptedCaseMetrics = BenchmarkEvaluator.EvaluateHistorical([item], [new BenchmarkPrediction(item.Id, result.Edits)])
                 .Where(metric => metric.Category == "all").ToArray();
             var rawCorrectErrors = rawCaseMetrics[0].CorrectlyResolvedErrors;
             if (analysis.RejectionStage is not null && rawCorrectErrors > 0) rejectedButRawCorrectErrors += rawCorrectErrors;
@@ -179,9 +179,9 @@ try
             await File.WriteAllLinesAsync(tracePath, traces.Select(item => JsonSerializer.Serialize(item, options)));
         memorySampler.Dispose();
         SampleWorkingSet();
-        var metrics = BenchmarkEvaluator.Evaluate(cases, predictions);
+        var metrics = BenchmarkEvaluator.EvaluateHistorical(cases, predictions);
         var qualityMetrics = BenchmarkEvaluator.EvaluateQuality(cases, predictions);
-        var rawMetrics = BenchmarkEvaluator.Evaluate(cases, rawPredictions);
+        var rawMetrics = BenchmarkEvaluator.EvaluateHistorical(cases, rawPredictions);
         var modelHash = await HashFileAsync(args[2]);
         var datasetHash = await HashFileAsync(args[1]);
         var report = new
@@ -302,7 +302,7 @@ try
     var predictionsFromFile = File.ReadLines(args[2]).Where(line => !string.IsNullOrWhiteSpace(line))
         .Select(line => JsonSerializer.Deserialize<BenchmarkPrediction>(line, options)
             ?? throw new InvalidDataException("Prediction line is null.")).ToArray();
-    Console.WriteLine(JsonSerializer.Serialize(BenchmarkEvaluator.Evaluate(evalCases, predictionsFromFile), options));
+    Console.WriteLine(JsonSerializer.Serialize(BenchmarkEvaluator.EvaluateHistorical(evalCases, predictionsFromFile), options));
     return 0;
 }
 catch (Exception exception) when (exception is IOException or JsonException or ArgumentException or InvalidDataException or DllNotFoundException or BadImageFormatException)

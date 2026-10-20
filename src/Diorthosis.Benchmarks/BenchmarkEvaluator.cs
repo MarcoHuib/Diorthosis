@@ -82,7 +82,9 @@ public static class BenchmarkEvaluator
         var errors = cases.SelectMany(item => item.Errors
             .Where(error => categoryFilter is null || error.Category == categoryFilter)
             .Select(error => (item, error))).ToArray();
-        var suggestions = cases.Sum(item => predictions.TryGetValue(item.Id, out var prediction) ? prediction.Edits.Count : 0);
+        var suggestions = cases.Sum(item => predictions.TryGetValue(item.Id, out var prediction)
+            ? CategoryEditIndexes(item, prediction.Edits, categoryFilter).Count
+            : 0);
         var correctSuggestions = 0;
         var resolvedErrors = 0;
         var correctInputs = 0;
@@ -94,17 +96,19 @@ public static class BenchmarkEvaluator
             ValidateEdits(item, edits);
             var evaluation = EvaluateCase(item, edits);
             var relevantErrors = item.Errors.Where(error => categoryFilter is null || error.Category == categoryFilter).ToArray();
+            var relevantEditIndexes = CategoryEditIndexes(item, edits, categoryFilter);
             var matchedEdits = evaluation.MatchedEdits;
-            var caseCorrectSuggestions = matchedEdits.Count(index => categoryFilter is null
-                ? true
-                : relevantErrors.Any(error => Touches(error, edits[index])));
+            var caseCorrectSuggestions = matchedEdits.Count(index => relevantEditIndexes.Contains(index));
             var caseResolvedErrors = relevantErrors.Count(error => evaluation.ResolvedErrors.Contains(error));
-            var unmatchedEdits = Enumerable.Range(0, edits.Count).Where(index => !matchedEdits.Contains(index))
+            var unmatchedEdits = relevantEditIndexes.Where(index => !matchedEdits.Contains(index))
                 .Select(index => edits[index]).ToArray();
             // Do not give recall credit when an otherwise matching local repair is embedded in
             // an unannotated lexical rewrite, translation, or other potentially meaning-changing
             // passage edit. Cosmetic case/spacing/punctuation false positives remain measurable.
-            if ((unmatchedEdits.Length == 0 || unmatchedEdits.All(IsCosmeticEdit)) && !evaluation.HasUnsafeUnmatchedEdit)
+            var hasUnsafeUnmatchedEdit = categoryFilter is null
+                ? evaluation.HasUnsafeUnmatchedEdit
+                : unmatchedEdits.Any(edit => !IsCosmeticEdit(edit));
+            if ((unmatchedEdits.Length == 0 || unmatchedEdits.All(IsCosmeticEdit)) && !hasUnsafeUnmatchedEdit)
             {
                 correctSuggestions += caseCorrectSuggestions;
                 resolvedErrors += caseResolvedErrors;
@@ -120,6 +124,86 @@ public static class BenchmarkEvaluator
         var falsePositives = suggestions - correctSuggestions;
         return new MetricResult(language.ToString(), category, errors.Length, resolvedErrors, suggestions, correctSuggestions,
             falsePositives, correctInputs, changedCorrectInputs,
+            Ratio(resolvedErrors, errors.Length), Ratio(correctSuggestions, suggestions),
+            Ratio(changedCorrectInputs, correctInputs), Ratio(correctInputs - changedCorrectInputs, correctInputs));
+    }
+
+    private static IReadOnlySet<int> CategoryEditIndexes(BenchmarkCase item, IReadOnlyList<TextEdit> edits,
+        ErrorCategory? categoryFilter) => Enumerable.Range(0, edits.Count)
+        .Where(index => categoryFilter is null || item.Errors.Any(error => error.Category == categoryFilter && Touches(error, edits[index])))
+        .ToHashSet();
+
+    /// <summary>Reproduces the pre-v2 hunk-weighted evaluator for frozen historical reports.</summary>
+    public static IReadOnlyList<MetricResult> EvaluateHistorical(IReadOnlyList<BenchmarkCase> cases,
+        IReadOnlyList<BenchmarkPrediction> predictions)
+    {
+        ArgumentNullException.ThrowIfNull(cases);
+        ArgumentNullException.ThrowIfNull(predictions);
+        var caseMap = cases.ToDictionary(item => item.Id, StringComparer.Ordinal);
+        if (caseMap.Count != cases.Count) throw new ArgumentException("Benchmark case IDs must be unique.", nameof(cases));
+        foreach (var item in cases) ValidateCase(item);
+        var predictionMap = predictions.ToDictionary(item => item.CaseId, StringComparer.Ordinal);
+        if (predictionMap.Count != predictions.Count) throw new ArgumentException("Prediction case IDs must be unique.", nameof(predictions));
+        if (predictionMap.Keys.Any(key => !caseMap.ContainsKey(key))) throw new ArgumentException("Predictions contain an unknown case ID.", nameof(predictions));
+        var results = new List<MetricResult>();
+        foreach (var language in Enum.GetValues<CorrectionLanguage>())
+        {
+            var languageCases = cases.Where(item => item.Language == language).ToArray();
+            results.Add(EvaluateHistoricalGroup(language, "all", languageCases, predictionMap));
+            foreach (var category in Enum.GetValues<ErrorCategory>().Where(category => category != ErrorCategory.CorrectText))
+            {
+                var categoryCases = languageCases.Where(item => item.Errors.Any(error => error.Category == category))
+                    .Select(item => item with { Errors = [.. item.Errors.Where(error => error.Category == category)] }).ToArray();
+                results.Add(EvaluateHistoricalGroup(language, category.ToString(), categoryCases, predictionMap));
+            }
+            results.Add(EvaluateHistoricalGroup(language, ErrorCategory.CorrectText.ToString(),
+                languageCases.Where(item => item.Errors.Count == 0).ToArray(), predictionMap));
+        }
+        return results;
+    }
+
+    private static MetricResult EvaluateHistoricalGroup(CorrectionLanguage language, string category, BenchmarkCase[] cases,
+        IReadOnlyDictionary<string, BenchmarkPrediction> predictions)
+    {
+        var errors = cases.SelectMany(item => item.Errors).ToArray();
+        var suggestions = cases.Sum(item => predictions.TryGetValue(item.Id, out var prediction) ? prediction.Edits.Count : 0);
+        var correctSuggestions = 0;
+        var resolvedErrors = 0;
+        var correctInputs = 0;
+        var changedCorrectInputs = 0;
+        foreach (var item in cases)
+        {
+            var edits = predictions.TryGetValue(item.Id, out var prediction) ? prediction.Edits : [];
+            ValidateEdits(item, edits);
+            var matchedEdits = new HashSet<int>();
+            var caseCorrectSuggestions = 0;
+            var caseResolvedErrors = 0;
+            foreach (var error in item.Errors)
+            {
+                var related = Enumerable.Range(0, edits.Count).Where(index => !matchedEdits.Contains(index) && Touches(error, edits[index])).ToArray();
+                var expected = error.AcceptedCorrections.Select(correction =>
+                    item.InputText[..error.Start] + correction.ReplacementText + item.InputText[(error.Start + error.Length)..]);
+                if (related.Length > 0 && expected.Contains(ApplyEdits(item.InputText, related.Select(index => edits[index])), StringComparer.Ordinal))
+                {
+                    foreach (var index in related) matchedEdits.Add(index);
+                    caseCorrectSuggestions += related.Length;
+                    caseResolvedErrors++;
+                }
+            }
+            var unmatched = edits.Where((_, index) => !matchedEdits.Contains(index)).ToArray();
+            if (unmatched.Length == 0 || unmatched.All(IsCosmeticEdit))
+            {
+                correctSuggestions += caseCorrectSuggestions;
+                resolvedErrors += caseResolvedErrors;
+            }
+            if (item.Errors.Count == 0)
+            {
+                correctInputs++;
+                if (edits.Count > 0) changedCorrectInputs++;
+            }
+        }
+        return new MetricResult(language.ToString(), category, errors.Length, resolvedErrors, suggestions,
+            correctSuggestions, suggestions - correctSuggestions, correctInputs, changedCorrectInputs,
             Ratio(resolvedErrors, errors.Length), Ratio(correctSuggestions, suggestions),
             Ratio(changedCorrectInputs, correctInputs), Ratio(correctInputs - changedCorrectInputs, correctInputs));
     }
