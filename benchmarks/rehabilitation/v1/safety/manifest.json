@@ -1,0 +1,74 @@
+{
+  "experimentId": "safety-replay-1",
+  "repositoryCommit": "976a8074f07d148b8117a2566214fc141c11d58d",
+  "sourceState": "safety working tree; committed after artifact creation",
+  "kind": "deterministic replay only",
+  "datasetSha256": "2190c109f5f8e8ce1979637a1beea9fcce615959033aa76576b32ba537465fa2",
+  "correctionContract": "correction-result-2.0.0",
+  "inferenceTimings": "historical, not remeasured",
+  "independentSemanticReview": false,
+  "runs": [
+    {
+      "model": "ministral-3b",
+      "sourceTraceSha256": "15fccfc86fd0d8b31f2ffcaa08fd180067096f93a67b792a90f0b0fd14a121c5",
+      "sourceReportSha256": "23ce3eb2d721070beac517c175de9e1c59b0739d5dfdddb8f0f5b7c77d9a07a4",
+      "dispositions": {
+        "Accepted": 26,
+        "Unchanged": 16,
+        "Rejected": 2
+      },
+      "changes": {
+        "NoMaterialReplayChange": 24,
+        "UnchangedOutput": 16,
+        "AcceptedChangeNeedsHumanReview": 2,
+        "RejectedUnverifiableOutput": 2
+      }
+    },
+    {
+      "model": "ministral-3-8b",
+      "sourceTraceSha256": "d6b3f9ac948cd125fb49521e057e83556f40bbd6235f61b3297bcc461f228075",
+      "sourceReportSha256": "37095130f0b93ecadc1ea0be74873a2db50e69a448a73a7bafeb2f18a89e7f63",
+      "dispositions": {
+        "Accepted": 30,
+        "Unchanged": 9,
+        "Rejected": 5
+      },
+      "changes": {
+        "NoMaterialReplayChange": 25,
+        "AcceptedChangeNeedsHumanReview": 5,
+        "UnchangedOutput": 9,
+        "RejectedUnverifiableOutput": 4,
+        "PreviouslyAcceptedUnsafeModificationBlocked": 1
+      }
+    },
+    {
+      "model": "ministral-3-14b",
+      "sourceTraceSha256": "90933426f1b802a230af81762849f7b3812fb967e2b588dbf7d021b5b63220ef",
+      "sourceReportSha256": "8cd07f4e7846ad985a46df9e7872d0c2b060ef568e1852e158f4b54f0b164631",
+      "dispositions": {
+        "Accepted": 30,
+        "Unchanged": 12,
+        "Rejected": 2
+      },
+      "changes": {
+        "NoMaterialReplayChange": 28,
+        "AcceptedChangeNeedsHumanReview": 2,
+        "UnchangedOutput": 12,
+        "RejectedUnverifiableOutput": 2
+      }
+    },
+    {
+      "model": "eurollm-9b",
+      "sourceTraceSha256": "18d84a18cbc5465884c07b196b7b54c73e67f88ad8c2e6fae5b6ecc02ce54c17",
+      "sourceReportSha256": "fe0383a6c4d7becafc93acdff750cbb6219294d4af98a89b14ed21d50dfdaa06",
+      "dispositions": {
+        "Accepted": 23,
+        "Unchanged": 21
+      },
+      "changes": {
+        "NoMaterialReplayChange": 23,
+        "UnchangedOutput": 21
+      }
+    }
+  ]
+}

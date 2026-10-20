@@ -52,10 +52,12 @@ if (args.Length > 0 && args[0] == "correct-text")
         {
             var editsJson = string.Join(",", result.Edits.Select(edit =>
                 $"{{\"start\":{edit.Start},\"length\":{edit.Length},\"originalText\":{EncodeJsonString(edit.OriginalText)},\"replacementText\":{EncodeJsonString(edit.ReplacementText)}}}"));
-            Console.WriteLine($"{{\"language\":{EncodeJsonString(languageText)},\"correctedText\":{EncodeJsonString(corrected)},\"edits\":[{editsJson}]}}");
+            Console.WriteLine($"{{\"disposition\":{EncodeJsonString(result.Disposition.ToString())},\"reason\":{(result.Analysis?.RejectionReason is { } reason ? EncodeJsonString(reason) : "null")},\"language\":{EncodeJsonString(languageText)},\"correctedText\":{EncodeJsonString(corrected)},\"edits\":[{editsJson}]}}");
         }
         else
         {
+            Console.WriteLine($"Outcome: {result.Disposition}");
+            if (result.Analysis?.RejectionReason is { } reason) Console.WriteLine(reason);
             foreach (var edit in result.Edits)
                 Console.WriteLine($"{edit.Start}:{edit.Length}  {EncodeJsonString(edit.OriginalText)} → {EncodeJsonString(edit.ReplacementText)}");
             Console.WriteLine(corrected);

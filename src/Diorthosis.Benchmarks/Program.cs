@@ -28,6 +28,7 @@ try
     if (args[0] == "reparse")
     {
         if (args.Length != 7) throw new ArgumentException("Reparse requires cases, captured raw trace, original run report, and three output paths.");
+        RequireNewOutputs(args[4], args[5], args[6]);
         var cases = ReadCases(args[1], options);
         var caseMap = cases.ToDictionary(item => item.Id, StringComparer.Ordinal);
         var predictions = new List<BenchmarkPrediction>(cases.Length);
@@ -49,7 +50,9 @@ try
                 ? JsonSerializer.Deserialize<IReadOnlyList<TextEdit>>(historicalEditsValue.GetRawText(), options) ?? []
                 : [];
             var historicalCorrectErrors = ReadTraceMetric(trace, "acceptedBenchmark", "correctlyResolvedErrors");
-            var analysis = ModelCorrectionEngine.AnalyzeModelResponse(raw, item.InputText);
+            var termination = trace.TryGetProperty("terminationReason", out var terminationElement)
+                && Enum.TryParse<GenerationTermination>(terminationElement.GetString(), out var parsedTermination) ? parsedTermination : GenerationTermination.Unknown;
+            var analysis = ModelCorrectionEngine.AnalyzeInference(new InferenceResult(raw, termination, 0), new CorrectionRequest(item.Language, item.InputText));
             dispositions[caseId] = analysis.Disposition;
             predictions.Add(new BenchmarkPrediction(caseId, analysis.Edits));
             var rawPrediction = new BenchmarkPrediction(caseId, analysis.RawCandidateEdits);
@@ -114,7 +117,6 @@ try
         report["metrics"] = JsonSerializer.SerializeToNode(metrics, options);
         report["qualityMetrics"] = JsonSerializer.SerializeToNode(qualityMetrics, options);
         report["rawCandidateMetrics"] = JsonSerializer.SerializeToNode(rawMetrics, options);
-        report["rawCandidateMetrics"] = JsonSerializer.SerializeToNode(rawMetrics, options);
         report["rejectedModelOutputs"] = rejections.Values.Sum();
         report["rejectedModelOutputsByReason"] = JsonSerializer.SerializeToNode(rejections, options);
         report["rejectedButRawCorrectErrors"] = rejectedButRawCorrectErrors;
@@ -135,6 +137,7 @@ try
     {
         if (args.Length < 5) throw new ArgumentException("Run requires a cases file, model, predictions output, and report output.");
         var runOptions = ParseOptions([.. args.Skip(5)]);
+        RequireNewOutputs([args[3], args[4], .. (runOptions.TryGetValue("trace", out var requestedTrace) ? new[] { requestedTrace } : Array.Empty<string>())]);
         var cases = ReadCases(args[1], options);
         using var process = Process.GetCurrentProcess();
         long sampledPeakWorkingSet = 0;
@@ -190,7 +193,7 @@ try
             terminationCounts[adapter.LastTerminationReason] = terminationCounts.GetValueOrDefault(adapter.LastTerminationReason) + 1;
             predictions.Add(new BenchmarkPrediction(item.Id, result.Edits));
             latencies.Add(timer.Elapsed.TotalMilliseconds);
-            var analysis = ModelCorrectionEngine.AnalyzeModelResponse(adapter.LastOutput ?? string.Empty, item.InputText);
+            var analysis = result.Analysis!;
             dispositions[item.Id] = analysis.Disposition;
             var rawPrediction = new BenchmarkPrediction(item.Id, analysis.RawCandidateEdits);
             rawPredictions.Add(rawPrediction);
@@ -361,6 +364,13 @@ catch (Exception exception) when (exception is IOException or JsonException or A
 {
     Console.Error.WriteLine(exception.Message);
     return 1;
+}
+
+static void RequireNewOutputs(params string[] paths)
+{
+    if (paths.Any(path => File.Exists(path) || Directory.Exists(path))
+        || paths.Select(Path.GetFullPath).Distinct(OperatingSystem.IsWindows() || OperatingSystem.IsMacOS() ? StringComparer.OrdinalIgnoreCase : StringComparer.Ordinal).Count() != paths.Length)
+        throw new IOException("Benchmark outputs must be distinct new paths; historical artifacts cannot be overwritten.");
 }
 
 static BenchmarkCase[] ReadCases(string path, JsonSerializerOptions options) =>

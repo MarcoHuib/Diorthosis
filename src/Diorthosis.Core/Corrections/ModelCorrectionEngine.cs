@@ -27,24 +27,34 @@ public sealed class ModelCorrectionEngine(IModelInferenceAdapter adapter, int ma
         ArgumentNullException.ThrowIfNull(request);
         if (maximumOutputTokens <= 0) throw new ArgumentOutOfRangeException(nameof(maximumOutputTokens));
         var inference = await _adapter.GenerateAsync(new InferenceRequest(CorrectionPrompt.Build(request), maximumOutputTokens), cancellationToken).ConfigureAwait(false);
-        if (inference.Termination != GenerationTermination.EndOfGeneration)
-        {
-            Interlocked.Increment(ref _rejectedOutputCount);
-            return new CorrectionResult(Array.Empty<TextEdit>());
-        }
-        var analysis = AnalyzeModelResponse(inference.Text, request.Text);
+        var analysis = AnalyzeInference(inference, request);
         if (analysis.Disposition is CorrectionDisposition.Rejected or CorrectionDisposition.NeedsReview)
-        {
             Interlocked.Increment(ref _rejectedOutputCount);
-            return new CorrectionResult(Array.Empty<TextEdit>());
-        }
-        return new CorrectionResult(analysis.Edits);
+        return new CorrectionResult(analysis.Edits) { Disposition = analysis.Disposition, Analysis = analysis, Termination = inference.Termination };
+    }
+
+    public static ModelResponseAnalysis AnalyzeInference(InferenceResult inference, CorrectionRequest request)
+    {
+        ArgumentNullException.ThrowIfNull(inference);
+        ArgumentNullException.ThrowIfNull(request);
+        if (inference.Termination != GenerationTermination.EndOfGeneration)
+            return ModelResponseAnalysis.Rejected(inference.Text, null, [], "termination", "Generation did not finish naturally at end-of-generation.");
+        var analysis = AnalyzeModelResponse(inference.Text, request.Text);
+        if (analysis.Disposition == CorrectionDisposition.Accepted && request.ProtectedSpans.Any(span => analysis.Edits.Any(edit =>
+            edit.Length == 0 ? edit.Start > span.Start && edit.Start < span.Start + span.Length
+                : edit.Start < span.Start + span.Length && edit.Start + edit.Length > span.Start)))
+            return ModelResponseAnalysis.Rejected(inference.Text, analysis.ExtractedCorrection, analysis.RawCandidateEdits, "protected-span", "Candidate intersects explicitly protected source content.");
+        return analysis;
     }
 
     public static ModelResponseAnalysis AnalyzeModelResponse(string output, string source)
     {
         ArgumentNullException.ThrowIfNull(output);
         ArgumentNullException.ThrowIfNull(source);
+        if (source.Length > 32768 || output.Length > Math.Max(8192, source.Length * 2 + 256))
+            return ModelResponseAnalysis.Rejected(output, null, [], "limits", "Text exceeds correction validation limits.");
+        try { SourceEdits.EnsureUnicode(source); SourceEdits.EnsureUnicode(output); }
+        catch (InvalidDataException) { return ModelResponseAnalysis.Rejected(output, null, [], "unicode", "Malformed UTF-16 text."); }
         if (output == source) return ModelResponseAnalysis.Unchanged(output, source);
         string candidate;
         try { candidate = ExtractCandidate(output, source); }
@@ -64,6 +74,8 @@ public sealed class ModelCorrectionEngine(IModelInferenceAdapter adapter, int ma
             if (!SameSymbols(source, candidate))
                 throw new InvalidDataException("Correction output changes a symbol or emoji from the source.");
             ValidateCandidatePassage(source, candidate);
+            if (MeaningScopeNeedsReview(source, candidate))
+                return ModelResponseAnalysis.NeedsReview(output, candidate, Diff(source, candidate), "Meaning-critical clause scope, quotation, or paragraph structure changed.");
             if (!SameProtectedNames(source, candidate))
                 throw new InvalidDataException("Correction output changes a capitalized name or term.");
             if (!OnlyWhitespaceChanged(source, candidate)) EnsurePlausibleCorrection(candidate, source);
@@ -204,7 +216,9 @@ public sealed class ModelCorrectionEngine(IModelInferenceAdapter adapter, int ma
             throw new InvalidDataException("Correction output changes a capitalized name or term.");
         if (CriticalMeaningMarkers(source).OrderBy(value => value).SequenceEqual(CriticalMeaningMarkers(candidate).OrderBy(value => value), StringComparer.Ordinal) is false)
             throw new InvalidDataException("Correction output changes negation or modality and requires review.");
-        if (TerminalSpeechAct(source) != TerminalSpeechAct(candidate))
+        if (source.Count(character => character == '?') != candidate.Count(character => character == '?')
+            || source.Count(character => character == '!') != candidate.Count(character => character == '!')
+            || TerminalSpeechAct(source) != TerminalSpeechAct(candidate))
             throw new InvalidDataException("Correction output changes the statement/question speech act.");
         EnsureNoIndependentContentOmission(source, candidate);
     }
@@ -215,6 +229,18 @@ public sealed class ModelCorrectionEngine(IModelInferenceAdapter adapter, int ma
             @"(?<![\p{L}\p{N}])(?:can't|can’t|cannot|don't|don’t|doesn't|doesn’t|isn't|isn’t|aren't|aren’t|wasn't|wasn’t|weren't|weren’t|won't|won’t|wouldn't|wouldn’t|shouldn't|shouldn’t|mustn't|mustn’t|needn't|needn’t|never|not|must|may|can|need|should|niet|geen|nooit|moet|moeten|mag|mogen|kan|kunnen|mocht|mochten)(?![\p{L}\p{N}])",
             RegexOptions.IgnoreCase | RegexOptions.CultureInvariant))
             yield return match.Value.ToLowerInvariant();
+    }
+
+    private static bool MeaningScopeNeedsReview(string source, string candidate)
+    {
+        if (source.Count(character => character == '\n') != candidate.Count(character => character == '\n')) return true;
+        // Preserve marker association with clauses, not just an unordered bag of tokens.
+        static string Scope(string text) => string.Join("|", Regex.Split(text,
+            @"[.!?;\r\n]+|(?<![\p{L}\p{N}])(?:but|maar|and|en|if|als|unless|tenzij)(?![\p{L}\p{N}])",
+            RegexOptions.IgnoreCase | RegexOptions.CultureInvariant).Select(clause => string.Join(",", CriticalMeaningMarkers(clause))));
+        if ((CriticalMeaningMarkers(source).Any() || CriticalMeaningMarkers(candidate).Any()) && Scope(source) != Scope(candidate)) return true;
+        static IEnumerable<string> Quotes(string text) => Regex.Matches(text, "\"[^\"]*\"|“[^”]*”", RegexOptions.CultureInvariant).Select(match => match.Value);
+        return !Quotes(source).SequenceEqual(Quotes(candidate), StringComparer.Ordinal);
     }
 
     private static char TerminalSpeechAct(string value)
@@ -464,14 +490,21 @@ public sealed class ModelCorrectionEngine(IModelInferenceAdapter adapter, int ma
         ArgumentNullException.ThrowIfNull(source);
         try
         {
-            using var document = JsonDocument.Parse(output);
+            if (output.Length > 65536 || source.Length > 32768) throw new InvalidDataException("Structured edit data exceeds safety limits.");
+            using var document = JsonDocument.Parse(output, new JsonDocumentOptions { MaxDepth = 16 });
             if (document.RootElement.ValueKind != JsonValueKind.Array)
                 throw new InvalidDataException("Correction output must be a JSON array.");
+            if (document.RootElement.GetArrayLength() > 256) throw new InvalidDataException("Too many structured edits.");
             var edits = new List<TextEdit>(document.RootElement.GetArrayLength());
             foreach (var item in document.RootElement.EnumerateArray())
             {
-                if (!item.TryGetProperty("start", out var startValue) || !startValue.TryGetInt32(out var start)
-                    || !item.TryGetProperty("length", out var lengthValue) || !lengthValue.TryGetInt32(out var length))
+                if (item.ValueKind != JsonValueKind.Object) throw new InvalidDataException("Each edit must be a JSON object.");
+                var names = item.EnumerateObject().Select(property => property.Name).ToArray();
+                if (names.Length != 4 || names.Distinct(StringComparer.Ordinal).Count() != 4
+                    || names.Any(name => name is not ("start" or "length" or "originalText" or "replacementText")))
+                    throw new InvalidDataException("Edit contains missing, duplicate, or unknown properties.");
+                if (!item.TryGetProperty("start", out var startValue) || startValue.ValueKind != JsonValueKind.Number || !startValue.TryGetInt32(out var start)
+                    || !item.TryGetProperty("length", out var lengthValue) || lengthValue.ValueKind != JsonValueKind.Number || !lengthValue.TryGetInt32(out var length))
                     throw new InvalidDataException("Correction output is missing a valid source span.");
                 if (start < 0 || length < 0 || start > source.Length - length)
                     throw new InvalidDataException("Correction output contains an out-of-range source span.");
@@ -488,6 +521,8 @@ public sealed class ModelCorrectionEngine(IModelInferenceAdapter adapter, int ma
             var candidate = ApplyDiffForVerification(source, validated);
             if (candidate == source) return validated;
             ValidateCandidatePassage(source, candidate);
+            if (MeaningScopeNeedsReview(source, candidate)) throw new InvalidDataException("Meaning-critical clause scope, quotation, or paragraph structure requires review.");
+            if (HasSentenceEnding(source) && !HasSentenceEnding(candidate)) throw new InvalidDataException("Correction output appears incomplete.");
             if (!OnlyWhitespaceChanged(source, candidate)) EnsurePlausibleCorrection(candidate, source);
             return validated;
         }
@@ -497,27 +532,7 @@ public sealed class ModelCorrectionEngine(IModelInferenceAdapter adapter, int ma
         }
     }
 
-    private static IReadOnlyList<TextEdit> ValidateEdits(IEnumerable<TextEdit> edits, string source)
-    {
-        var validated = new List<TextEdit>();
-        foreach (var edit in edits)
-        {
-            if (edit.Start < 0 || edit.Length < 0 || edit.Start > source.Length - edit.Length)
-                throw new InvalidDataException("Correction output contains an out-of-range source span.");
-            if (!source.AsSpan(edit.Start, edit.Length).SequenceEqual(edit.OriginalText.AsSpan()))
-                throw new InvalidDataException("Correction output source text does not match its span.");
-            if (edit.OriginalText == edit.ReplacementText)
-                throw new InvalidDataException("Correction output contains an unchanged edit.");
-            validated.Add(edit);
-        }
-
-        var ordered = validated.OrderBy(edit => edit.Start).ThenBy(edit => edit.Length).ToArray();
-        for (var i = 1; i < ordered.Length; i++)
-            if (ordered[i].Start < ordered[i - 1].Start + ordered[i - 1].Length
-                || ordered[i].Start == ordered[i - 1].Start && (ordered[i].Length == 0 || ordered[i - 1].Length == 0))
-                throw new InvalidDataException("Correction output contains overlapping edits.");
-        return ordered;
-    }
+    private static IReadOnlyList<TextEdit> ValidateEdits(IEnumerable<TextEdit> edits, string source) => SourceEdits.Validate(source, edits);
 
     private static bool SameMatches(Regex pattern, string original, string replacement) =>
         pattern.Matches(original).Select(match => match.Value).SequenceEqual(pattern.Matches(replacement).Select(match => match.Value), StringComparer.Ordinal);
@@ -545,6 +560,8 @@ public sealed record ModelResponseAnalysis(string RawOutput, string? ExtractedCo
         new(raw, correction, [], [], CorrectionDisposition.Unchanged, null, null);
     public static ModelResponseAnalysis Suppressed(string raw, string correction, string reason) =>
         new(raw, correction, [], [], CorrectionDisposition.Suppressed, "normalization", reason);
+    public static ModelResponseAnalysis NeedsReview(string raw, string correction, IReadOnlyList<TextEdit> rawEdits, string reason) =>
+        new(raw, correction, [], rawEdits, CorrectionDisposition.NeedsReview, "meaning-review", reason);
     public static ModelResponseAnalysis Rejected(string raw, string? correction, IReadOnlyList<TextEdit> rawEdits, string stage, string reason) =>
         new(raw, correction, [], rawEdits, CorrectionDisposition.Rejected, stage, reason);
 }
