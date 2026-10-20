@@ -15,6 +15,15 @@ public enum ErrorCategory
     CorrectText
 }
 
+public enum CorrectionDisposition
+{
+    Unchanged,
+    Accepted,
+    Suppressed,
+    Rejected,
+    NeedsReview
+}
+
 public sealed record CorrectionRequest
 {
     public CorrectionRequest(CorrectionLanguage language, string text)

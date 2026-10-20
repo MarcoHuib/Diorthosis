@@ -102,6 +102,111 @@ public sealed class CorrectionPipelineTests
         Assert.Empty(ModelCorrectionEngine.ParseModelResponse("De server start opnieuw.\nDe server start opnieuw.", source));
     }
 
+    [Theory]
+    [InlineData("node-04", "node 04")]
+    [InlineData("ApiGateway-v2", "ApiGateway v2")]
+    [InlineData("OAuth2", "OAuth 2")]
+    [InlineData("NL-2026-041", "NL 2026 041")]
+    [InlineData("help@company.test", "help@other.test")]
+    [InlineData("/etc/diorthosis/config.yaml", "/etc/diorthosis/other.yaml")]
+    [InlineData("10.0.0.1", "10.0.0.2")]
+    [InlineData("v2.1.0", "v2.2.0")]
+    [InlineData("2001:db8::1", "2001:db8::2")]
+    [InlineData("server_name", "server-name")]
+    [InlineData("example.test", "example.invalid")]
+    [InlineData(@"C:\\Program Files\\Diorthosis\\config.yaml", @"C:\\Program Files\\Diorthosis\\other.yaml")]
+    public void ProtectedSourceTokensAreNeverAccepted(string sourceFragment, string candidateFragment)
+    {
+        const string prefix = "Use ";
+        var source = prefix + sourceFragment + ".";
+        var candidate = prefix + candidateFragment + ".";
+        var analysis = ModelCorrectionEngine.AnalyzeModelResponse(candidate, source);
+        Assert.NotEqual(CorrectionDisposition.Accepted, analysis.Disposition);
+        Assert.Empty(analysis.Edits);
+    }
+
+    [Theory]
+    [InlineData("The server is not available.", "The server is available.")]
+    [InlineData("She must not send it.", "She must send it.")]
+    [InlineData("You must submit the form.", "You may submit the form.")]
+    [InlineData("De server is niet bereikbaar.", "De server is bereikbaar.")]
+    public void NegationAndModalityChangesAreNotAccepted(string source, string candidate)
+    {
+        var analysis = ModelCorrectionEngine.AnalyzeModelResponse(candidate, source);
+        Assert.NotEqual(CorrectionDisposition.Accepted, analysis.Disposition);
+        Assert.Empty(analysis.Edits);
+    }
+
+    [Fact]
+    public void CompleteIndependentStatementRemovalIsRejectedButClauseJoiningIsAllowed()
+    {
+        var omitted = ModelCorrectionEngine.AnalyzeModelResponse("The server starts.", "The server starts. It runs.");
+        Assert.NotEqual(CorrectionDisposition.Accepted, omitted.Disposition);
+        Assert.Empty(omitted.Edits);
+
+        var joined = ModelCorrectionEngine.ParseModelResponse(
+            "Omdat de server opnieuw opstartte, werd de taak onderbroken.",
+            "Omdat de server opnieuw opstartte. De taak werd onderbroken.");
+        Assert.NotEmpty(joined);
+    }
+
+    [Theory]
+    [InlineData("Het start op 3 mei 2025.", "Het start op 3 juni 2025.")]
+    [InlineData("It starts on May 3, 2025.", "It starts on June 3, 2025.")]
+    [InlineData("The meeting is on 3 May 2025.", "The meeting is on 3 June 2025.")]
+    public void WrittenDatesRemainSourceDerived(string source, string candidate)
+    {
+        var analysis = ModelCorrectionEngine.AnalyzeModelResponse(candidate, source);
+        Assert.NotEqual(CorrectionDisposition.Accepted, analysis.Disposition);
+    }
+
+    [Theory]
+    [InlineData("vergader ruimte", "vergaderruimte")]
+    [InlineData("alot", "a lot")]
+    [InlineData("Ik heb teveel betaald.", "Ik heb te veel betaald.")]
+    public void LegitimateWhitespaceCorrectionsRemainOperational(string source, string candidate)
+    {
+        var edits = ModelCorrectionEngine.ParseModelResponse(candidate, source);
+        Assert.NotEmpty(edits);
+    }
+
+    [Fact]
+    public void CosmeticWhitespaceSuppressionIsExplicitAndDoesNotEraseSourceFormatting()
+    {
+        var source = "  The **server**  is `ready`.  ";
+        var unchanged = ModelCorrectionEngine.AnalyzeModelResponse(source, source);
+        Assert.Equal(CorrectionDisposition.Unchanged, unchanged.Disposition);
+        Assert.Empty(unchanged.Edits);
+
+        var cosmetic = ModelCorrectionEngine.AnalyzeModelResponse("The  server is ready.", "The server is ready.");
+        Assert.Equal(CorrectionDisposition.Suppressed, cosmetic.Disposition);
+        Assert.Empty(cosmetic.Edits);
+    }
+
+    [Fact]
+    public void StatementToQuestionIsNotCosmetic()
+    {
+        var analysis = ModelCorrectionEngine.AnalyzeModelResponse("The server is ready?", "The server is ready.");
+        Assert.NotEqual(CorrectionDisposition.Accepted, analysis.Disposition);
+    }
+
+    [Fact]
+    public void StructuredJsonUsesTheSamePassageSafetyPolicy()
+    {
+        const string source = "The server is not available.";
+        var json = "[{\"start\":14,\"length\":3,\"originalText\":\"not\",\"replacementText\":\"\"}]";
+        Assert.Throws<InvalidDataException>(() => ModelCorrectionEngine.ParseAndValidate(json, source));
+    }
+
+    [Fact]
+    public async Task MaximumTokenInferenceCannotBecomeAcceptedCorrection()
+    {
+        var adapter = new FakeAdapter("She has received it.", GenerationTermination.MaximumTokens);
+        var result = await new ModelCorrectionEngine(adapter).CorrectAsync(
+            new CorrectionRequest(CorrectionLanguage.English, "She have recieved it."));
+        Assert.Empty(result.Edits);
+    }
+
     [Fact]
     public void AcceptsDutchCompoundCorrectionThatOnlyRemovesWhitespace()
     {
@@ -241,14 +346,14 @@ public sealed class CorrectionPipelineTests
         finally { File.Delete(path); }
     }
 
-    private sealed class FakeAdapter(string response, bool cancel = false) : IModelInferenceAdapter
+    private sealed class FakeAdapter(string response, GenerationTermination termination = GenerationTermination.EndOfGeneration, bool cancel = false) : IModelInferenceAdapter
     {
         public string LastResponse { get; private set; } = string.Empty;
-        public ValueTask<string> GenerateAsync(InferenceRequest request, CancellationToken cancellationToken = default)
+        public ValueTask<InferenceResult> GenerateAsync(InferenceRequest request, CancellationToken cancellationToken = default)
         {
             LastResponse = response;
             if (cancel) cancellationToken.ThrowIfCancellationRequested();
-            return ValueTask.FromResult(response);
+            return ValueTask.FromResult(new InferenceResult(response, termination, 1));
         }
     }
 

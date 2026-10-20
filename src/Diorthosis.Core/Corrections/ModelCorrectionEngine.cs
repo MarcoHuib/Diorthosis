@@ -9,8 +9,13 @@ namespace Diorthosis.Core.Corrections;
 public sealed class ModelCorrectionEngine(IModelInferenceAdapter adapter, int maximumOutputTokens = 512) : ICorrectionEngine
 {
     private static readonly Regex UrlToken = new(@"(?:https?://|www\.)[^\s<>]+", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant);
+    private static readonly Regex EmailToken = new(@"(?<![\p{L}\p{N}])[\p{L}\p{N}._%+\-]+@[\p{L}\p{N}.\-]+\.[\p{L}]{2,}(?![\p{L}\p{N}])", RegexOptions.CultureInvariant);
+    private static readonly Regex PathToken = new(@"(?<![\p{L}\p{N}])(?:[A-Za-z]:\\[^\s<>]+|/(?:[^\s<>/]+/)*[^\s<>/]+)(?![\p{L}\p{N}])", RegexOptions.CultureInvariant);
+    private static readonly Regex DomainToken = new(@"(?<![\p{L}\p{N}])(?:[\p{L}\p{N}-]+\.)+[\p{L}]{2,}(?![\p{L}\p{N}])", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant);
+    private static readonly Regex IpToken = new(@"(?<![\p{L}\p{N}])(?:\d{1,3}\.){3}\d{1,3}|(?<![\p{L}\p{N}])(?:[0-9A-Fa-f]{0,4}:){2,7}[0-9A-Fa-f]{0,4}(?![\p{L}\p{N}])", RegexOptions.CultureInvariant);
+    private static readonly Regex WrittenDateToken = new(@"(?<![\p{L}\p{N}])(?:[0-3]?\d\s+(?:jan(?:uary|uari)?|feb(?:ruary|ruari)?|march|mar|maart|mrt|apr(?:il)?|may|mei|june|jun|juni|july|jul|juli|aug(?:ust|ustus)?|sep(?:tember)?|okt(?:ober)?|oct(?:ober)?|nov(?:ember)?|dec(?:ember)?)[\s,]+\d{4}|(?:jan(?:uary|uari)?|feb(?:ruary|ruari)?|march|mar|maart|mrt|apr(?:il)?|may|mei|june|jun|juni|july|jul|juli|aug(?:ust|ustus)?|sep(?:tember)?|okt(?:ober)?|oct(?:ober)?|nov(?:ember)?|dec(?:ember)?)\s+[0-3]?\d(?:st|nd|rd|th)?[\s,]+\d{4})(?![\p{L}\p{N}])", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant);
     private static readonly Regex NumberToken = new(@"\d+(?:[.,:/-]\d+)*", RegexOptions.CultureInvariant);
-    private static readonly Regex ProtectedIdentifier = new(@"\b(?:[A-Za-z0-9]*[a-z][A-Z][A-Za-z0-9]*|[A-Z]{2,}[A-Z0-9]*|[A-Za-z0-9]*\d+[A-Za-z0-9]*|[A-Za-z0-9]+(?:_[A-Za-z0-9]+)+)\b", RegexOptions.CultureInvariant);
+    private static readonly Regex ProtectedIdentifier = new(@"\b(?:[A-Za-z0-9]*[a-z][A-Z][A-Za-z0-9]*|[A-Z]{2,}[A-Z0-9]*|[A-Za-z0-9]*\d+[A-Za-z0-9]*|[A-Za-z0-9]+(?:[-_][A-Za-z0-9]+)+)\b", RegexOptions.CultureInvariant);
     private static readonly Regex WordToken = new(@"[\p{L}\p{N}_]+", RegexOptions.CultureInvariant);
     private readonly IModelInferenceAdapter _adapter = adapter ?? throw new ArgumentNullException(nameof(adapter));
     public int MaximumOutputTokens => maximumOutputTokens;
@@ -21,9 +26,14 @@ public sealed class ModelCorrectionEngine(IModelInferenceAdapter adapter, int ma
     {
         ArgumentNullException.ThrowIfNull(request);
         if (maximumOutputTokens <= 0) throw new ArgumentOutOfRangeException(nameof(maximumOutputTokens));
-        var raw = await _adapter.GenerateAsync(new InferenceRequest(CorrectionPrompt.Build(request), maximumOutputTokens), cancellationToken).ConfigureAwait(false);
-        var analysis = AnalyzeModelResponse(raw, request.Text);
-        if (analysis.RejectionReason is not null)
+        var inference = await _adapter.GenerateAsync(new InferenceRequest(CorrectionPrompt.Build(request), maximumOutputTokens), cancellationToken).ConfigureAwait(false);
+        if (inference.Termination != GenerationTermination.EndOfGeneration)
+        {
+            Interlocked.Increment(ref _rejectedOutputCount);
+            return new CorrectionResult(Array.Empty<TextEdit>());
+        }
+        var analysis = AnalyzeModelResponse(inference.Text, request.Text);
+        if (analysis.Disposition is CorrectionDisposition.Rejected or CorrectionDisposition.NeedsReview)
         {
             Interlocked.Increment(ref _rejectedOutputCount);
             return new CorrectionResult(Array.Empty<TextEdit>());
@@ -35,15 +45,17 @@ public sealed class ModelCorrectionEngine(IModelInferenceAdapter adapter, int ma
     {
         ArgumentNullException.ThrowIfNull(output);
         ArgumentNullException.ThrowIfNull(source);
+        if (output == source) return ModelResponseAnalysis.Unchanged(output, source);
         string candidate;
         try { candidate = ExtractCandidate(output, source); }
         catch (InvalidDataException exception) { return ModelResponseAnalysis.Rejected(output, null, [], "extraction", exception.Message); }
         if (!source.Contains('\n') && candidate.Contains('\n'))
             return ModelResponseAnalysis.Rejected(output, candidate, [], "extraction", "Correction output adds line breaks absent from the source.");
-        if (candidate == source) return ModelResponseAnalysis.Accepted(output, candidate, []);
+        if (candidate == source) return ModelResponseAnalysis.Unchanged(output, candidate);
         if (OnlyWhitespaceChanged(source, candidate)
-            && WordToken.Matches(candidate).Count >= WordToken.Matches(source).Count)
-            return ModelResponseAnalysis.Accepted(output, candidate, []);
+            && WordToken.Matches(candidate).Count == WordToken.Matches(source).Count
+            && SameProtectedContent(source, candidate))
+            return ModelResponseAnalysis.Suppressed(output, candidate, "Cosmetic whitespace-only change.");
 
         try
         {
@@ -51,8 +63,7 @@ public sealed class ModelCorrectionEngine(IModelInferenceAdapter adapter, int ma
                 throw new InvalidDataException("Correction output appears incomplete at the end of the passage.");
             if (!SameSymbols(source, candidate))
                 throw new InvalidDataException("Correction output changes a symbol or emoji from the source.");
-            if (!SameProtectedContent(source, candidate))
-                throw new InvalidDataException("Correction output changes a number, URL, or protected identifier.");
+            ValidateCandidatePassage(source, candidate);
             if (!SameProtectedNames(source, candidate))
                 throw new InvalidDataException("Correction output changes a capitalized name or term.");
             if (!OnlyWhitespaceChanged(source, candidate)) EnsurePlausibleCorrection(candidate, source);
@@ -73,7 +84,8 @@ public sealed class ModelCorrectionEngine(IModelInferenceAdapter adapter, int ma
     public static IReadOnlyList<TextEdit> ParseModelResponse(string output, string source)
     {
         var result = AnalyzeModelResponse(output, source);
-        if (result.RejectionReason is not null) throw new InvalidDataException(result.RejectionReason);
+        if (result.Disposition is CorrectionDisposition.Rejected or CorrectionDisposition.NeedsReview)
+            throw new InvalidDataException(result.RejectionReason);
         return result.Edits;
     }
 
@@ -133,9 +145,11 @@ public sealed class ModelCorrectionEngine(IModelInferenceAdapter adapter, int ma
             && (endsWithPartialRepeat || responseLines.All(line => string.Equals(line, responseLines[0], StringComparison.Ordinal))))
             text = responseLines[0];
 
-        text = Regex.Replace(text, @"\*\*(.+?)\*\*|__(.+?)__|`([^`]+)`", match =>
-            match.Groups[1].Success ? match.Groups[1].Value : match.Groups[2].Success ? match.Groups[2].Value : match.Groups[3].Value,
-            RegexOptions.CultureInvariant);
+        if (!source.Contains("**", StringComparison.Ordinal) && !source.Contains("__", StringComparison.Ordinal)
+            && !source.Contains('`'))
+            text = Regex.Replace(text, @"\*\*(.+?)\*\*|__(.+?)__|`([^`]+)`", match =>
+                match.Groups[1].Success ? match.Groups[1].Value : match.Groups[2].Success ? match.Groups[2].Value : match.Groups[3].Value,
+                RegexOptions.CultureInvariant);
         text = Regex.Replace(text, @"^(?:Corrected (?:text|passage)(?:\s*\([^)]*\))?|Output(?: text(?:\s*\([^)]*\))?)?|Correction)\s*:\s*", "", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant);
         text = text.Trim();
         var firstOutputLine = text.Split('\n', 2)[0].Trim();
@@ -164,7 +178,58 @@ public sealed class ModelCorrectionEngine(IModelInferenceAdapter adapter, int ma
     private static bool SameProtectedContent(string source, string candidate) =>
         SameMatches(NumberToken, source, candidate)
         && SameMatches(UrlToken, source, candidate)
+        && SameMatches(EmailToken, source, candidate)
+        && SameMatches(PathToken, source, candidate)
+        && SameMatches(DomainToken, source, candidate)
+        && SameMatches(IpToken, source, candidate)
+        && SameMatches(WrittenDateToken, source, candidate)
         && SameMatches(ProtectedIdentifier, source, candidate);
+
+    private static void ValidateCandidatePassage(string source, string candidate)
+    {
+        if (!SameSymbols(source, candidate))
+            throw new InvalidDataException("Correction output changes a symbol or emoji from the source.");
+        if (!SameProtectedContent(source, candidate))
+            throw new InvalidDataException("Correction output changes protected content such as a number, URL, path, date, or identifier.");
+        if (!SameProtectedNames(source, candidate))
+            throw new InvalidDataException("Correction output changes a capitalized name or term.");
+        if (CriticalMeaningMarkers(source).OrderBy(value => value).SequenceEqual(CriticalMeaningMarkers(candidate).OrderBy(value => value), StringComparer.Ordinal) is false)
+            throw new InvalidDataException("Correction output changes negation or modality and requires review.");
+        if (TerminalSpeechAct(source) != TerminalSpeechAct(candidate))
+            throw new InvalidDataException("Correction output changes the statement/question speech act.");
+        EnsureNoIndependentContentOmission(source, candidate);
+    }
+
+    private static IEnumerable<string> CriticalMeaningMarkers(string value)
+    {
+        foreach (Match match in Regex.Matches(value,
+            @"\b(?:not|n't|never|must|may|can|cannot|need|should|niet|nooit|moet|moeten|mag|mogen|kan|kunnen|mocht|mochten)\b",
+            RegexOptions.IgnoreCase | RegexOptions.CultureInvariant))
+            yield return match.Value.ToLowerInvariant();
+    }
+
+    private static char TerminalSpeechAct(string value)
+    {
+        var trimmed = value.TrimEnd();
+        while (trimmed.Length > 0 && trimmed[^1] is '"' or '\'' or '’' or '”' or ')' or ']' or '}')
+            trimmed = trimmed[..^1].TrimEnd();
+        return trimmed.Length == 0 ? '\0' : trimmed[^1] is '?' or '!' or '.' ? trimmed[^1] : '\0';
+    }
+
+    private static void EnsureNoIndependentContentOmission(string source, string candidate)
+    {
+        var sourceSentences = Regex.Split(source, @"(?<=[.!?…])\s+")
+            .Where(sentence => WordToken.Matches(sentence).Count >= 2).ToArray();
+        if (sourceSentences.Length < 2) return;
+        var candidateWords = WordToken.Matches(candidate).Select(match => match.Value).ToArray();
+        foreach (var sentence in sourceSentences)
+        {
+            var words = WordToken.Matches(sentence).Select(match => match.Value).ToArray();
+            var shared = words.Count(word => candidateWords.Contains(word, StringComparer.OrdinalIgnoreCase));
+            if (shared == 0 || shared * 2 < words.Length)
+                throw new InvalidDataException("Correction output omits an independent source statement.");
+        }
+    }
 
     private static bool SameProtectedNames(string source, string candidate) =>
         ProtectedNames(source).SequenceEqual(ProtectedNames(candidate), StringComparer.Ordinal);
@@ -400,7 +465,11 @@ public sealed class ModelCorrectionEngine(IModelInferenceAdapter adapter, int ma
                     throw new InvalidDataException("Correction output contains a span length that does not match its source text.");
                 edits.Add(new TextEdit(start, length, original, replacement));
             }
-            return ValidateEdits(edits, source);
+            var validated = ValidateEdits(edits, source);
+            var candidate = ApplyDiffForVerification(source, validated);
+            if (candidate == source) return validated;
+            ValidateCandidatePassage(source, candidate);
+            return validated;
         }
         catch (JsonException exception)
         {
@@ -419,12 +488,6 @@ public sealed class ModelCorrectionEngine(IModelInferenceAdapter adapter, int ma
                 throw new InvalidDataException("Correction output source text does not match its span.");
             if (edit.OriginalText == edit.ReplacementText)
                 throw new InvalidDataException("Correction output contains an unchanged edit.");
-            if (!SameMatches(NumberToken, edit.OriginalText, edit.ReplacementText))
-                throw new InvalidDataException("Correction output changes numeric content.");
-            if (!SameMatches(UrlToken, edit.OriginalText, edit.ReplacementText))
-                throw new InvalidDataException("Correction output changes a URL.");
-            if (!SameMatches(ProtectedIdentifier, edit.OriginalText, edit.ReplacementText))
-                throw new InvalidDataException("Correction output changes a likely technical identifier.");
             validated.Add(edit);
         }
 
@@ -453,10 +516,15 @@ public sealed class ModelCorrectionEngine(IModelInferenceAdapter adapter, int ma
 }
 
 public sealed record ModelResponseAnalysis(string RawOutput, string? ExtractedCorrection,
-    IReadOnlyList<TextEdit> Edits, IReadOnlyList<TextEdit> RawCandidateEdits, string? RejectionStage, string? RejectionReason)
+    IReadOnlyList<TextEdit> Edits, IReadOnlyList<TextEdit> RawCandidateEdits, CorrectionDisposition Disposition,
+    string? RejectionStage, string? RejectionReason)
 {
     public static ModelResponseAnalysis Accepted(string raw, string correction, IReadOnlyList<TextEdit> edits) =>
-        new(raw, correction, edits, edits, null, null);
+        new(raw, correction, edits, edits, CorrectionDisposition.Accepted, null, null);
+    public static ModelResponseAnalysis Unchanged(string raw, string correction) =>
+        new(raw, correction, [], [], CorrectionDisposition.Unchanged, null, null);
+    public static ModelResponseAnalysis Suppressed(string raw, string correction, string reason) =>
+        new(raw, correction, [], [], CorrectionDisposition.Suppressed, "normalization", reason);
     public static ModelResponseAnalysis Rejected(string raw, string? correction, IReadOnlyList<TextEdit> rawEdits, string stage, string reason) =>
-        new(raw, correction, [], rawEdits, stage, reason);
+        new(raw, correction, [], rawEdits, CorrectionDisposition.Rejected, stage, reason);
 }
