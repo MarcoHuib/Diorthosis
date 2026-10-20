@@ -8,6 +8,7 @@ public sealed record ErrorAnnotation(int Start, int Length, string OriginalText,
     IReadOnlyList<AcceptedCorrection> AcceptedCorrections)
 {
     // Explicit dependency groups are atomic; absent metadata means independent annotations.
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
     public string? DependencyGroup { get; init; }
 }
 

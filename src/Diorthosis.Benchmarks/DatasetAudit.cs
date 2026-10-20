@@ -142,7 +142,7 @@ public static class DatasetAudit
     private static string Signature(IReadOnlyList<ErrorAnnotation> errors) => Hash(JsonSerializer.Serialize(errors
         .OrderBy(error => error.Start).ThenBy(error => error.Length).ThenBy(error => error.Category)
         .Select(error => new { error.Start, error.Length, error.OriginalText, error.Category,
-            alternatives = error.AcceptedCorrections.Select(correction => correction.ReplacementText).Distinct(StringComparer.Ordinal).Order(StringComparer.Ordinal).ToArray() })));
+            alternatives = error.AcceptedCorrections.Select(correction => correction.ReplacementText).Distinct(StringComparer.Ordinal).Order(StringComparer.Ordinal).ToArray() })) + (errors.Any(error => error.DependencyGroup is not null) ? "|dependencies:" + JsonSerializer.Serialize(errors.OrderBy(error => error.Start).ThenBy(error => error.Length).Select(error => error.DependencyGroup)) : ""));
     private static void CheckThreshold(double threshold)
     {
         if (!double.IsFinite(threshold) || threshold <= 0 || threshold > 1) throw new ArgumentOutOfRangeException(nameof(threshold));

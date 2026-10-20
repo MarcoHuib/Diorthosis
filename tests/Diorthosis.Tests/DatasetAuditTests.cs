@@ -76,6 +76,14 @@ public sealed class DatasetAuditTests
     }
 
     [Fact]
+    public void DependencyDisagreementsAreNotSilentlyMerged()
+    {
+        var error = Error(0, "teh", "the");
+        var report = DatasetAudit.Analyze([Case("a", "teh", error), Case("b", "teh", error with { DependencyGroup = "atomic" })]);
+        Assert.False(Assert.Single(report.Groups).AnnotationsEquivalent);
+    }
+
+    [Fact]
     public void InsertionsAndEmptyDatasetAreSupportedButDuplicateIdsAreRejected()
     {
         Assert.Empty(DatasetAudit.InspectAnnotations(Case("a", "text", Error(0, "", "A "))));

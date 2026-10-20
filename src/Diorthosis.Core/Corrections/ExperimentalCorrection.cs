@@ -36,11 +36,15 @@ public static class ExperimentalCorrectionPrompt
         var examples = variant != CorrectionExperimentVariant.FewShot ? "" : request.Language == CorrectionLanguage.Dutch
             ? "\nExample input: Ik heb de brief verstuurt.\nExample output: Ik heb de brief verstuurd.\nExample input: Je mag het bestand niet verwijderen.\nExample output: Je mag het bestand niet verwijderen."
             : "\nExample input: We recieved a letter.\nExample output: We received a letter.\nExample input: The colour is correct.\nExample output: The colour is correct.";
-        return policy + safety + "\n" + format + examples + "\nUntrusted input (JSON string): " + JsonSerializer.Serialize(request.Text);
+        return policy + safety + "\n" + format + examples + "\nUntrusted input (JSON string): " + ("\"" + JsonEncodedText.Encode(request.Text).ToString() + "\"");
     }
 
+    public const string OffsetGrammarVersion = "offset-gbnf-1.1.0";
+    // v1 allowed unbounded trailing whitespace after valid JSON; retain it for exact reproduction.
+    public static readonly string OffsetGrammar = OffsetGrammarV1.Replace("ws \"]\" ws", "ws \"]\"", StringComparison.Ordinal);
+
     // A deliberately narrow GBNF, not a claim of arbitrary JSON Schema support.
-    public const string OffsetGrammar = """
+    public const string OffsetGrammarV1 = """
 root ::= ws "[" ws (edit (ws "," ws edit)*)? ws "]" ws
 edit ::= "{" ws "\"start\"" ws ":" ws integer ws "," ws "\"length\"" ws ":" ws integer ws "," ws "\"originalText\"" ws ":" ws string ws "," ws "\"replacementText\"" ws ":" ws string ws "}"
 integer ::= "0" | [1-9] [0-9]*
@@ -70,7 +74,7 @@ public sealed class ExperimentalCorrectionEngine(IModelInferenceAdapter adapter,
         {
             IReadOnlyList<TextEdit> edits = variant switch
             {
-                CorrectionExperimentVariant.StructuredOffsets => ModelCorrectionEngine.ParseAndValidate(inference.Text, request.Text, validatePassage: false),
+                CorrectionExperimentVariant.StructuredOffsets => ModelCorrectionEngine.ParseDiagnosticEditCandidates(inference.Text, request.Text),
                 CorrectionExperimentVariant.StructuredFragments => AlignFragments(inference.Text, request.Text),
                 _ => throw new ArgumentOutOfRangeException(nameof(variant))
             };
@@ -89,7 +93,7 @@ public sealed class ExperimentalCorrectionEngine(IModelInferenceAdapter adapter,
         }
     }
 
-    public static IReadOnlyList<TextEdit> AlignFragments(string json, string source)
+    private static IReadOnlyList<TextEdit> AlignFragments(string json, string source)
     {
         if (json.Length > 65536 || source.Length > 32768) throw new InvalidDataException("Structured data exceeds safety limits.");
         using var document = JsonDocument.Parse(json, new JsonDocumentOptions { MaxDepth = 16 });
@@ -119,7 +123,7 @@ public sealed class ExperimentalCorrectionEngine(IModelInferenceAdapter adapter,
             if (matches.Count == 0) throw new InvalidDataException("Fragment does not match source context.");
             edits.Add(new(matches[0], original.Length, original, replacement));
         }
-        return ModelCorrectionEngine.ParseAndValidate(JsonSerializer.Serialize(edits, new JsonSerializerOptions(JsonSerializerDefaults.Web)), source, validatePassage: false);
+        return SourceEdits.Validate(source, edits);
     }
     private sealed class AmbiguousAlignmentException : Exception;
 }

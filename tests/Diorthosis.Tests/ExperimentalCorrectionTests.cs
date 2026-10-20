@@ -115,6 +115,14 @@ public sealed class ExperimentalCorrectionTests
         await Assert.ThrowsAsync<ArgumentException>(async () => await new ExperimentalCorrectionEngine(adapter, CorrectionExperimentVariant.Baseline, constrainJson: true).CorrectAsync(new(CorrectionLanguage.English, "Correct text.")));
     }
 
+    [Fact]
+    public void RevisedGrammarEndsAtClosingBracketAndRetainsFrozenV1()
+    {
+        Assert.Contains("ws \"]\" ws", ExperimentalCorrectionPrompt.OffsetGrammarV1.Split('\n')[0]);
+        Assert.EndsWith("ws \"]\"", ExperimentalCorrectionPrompt.OffsetGrammar.Split('\n')[0]);
+        Assert.Equal("offset-gbnf-1.1.0", ExperimentalCorrectionPrompt.OffsetGrammarVersion);
+    }
+
     private sealed class CaptureAdapter : IModelInferenceAdapter
     {
         public InferenceRequest? Last { get; private set; }

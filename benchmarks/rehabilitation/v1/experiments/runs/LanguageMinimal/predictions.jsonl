@@ -1,0 +1,8 @@
+{"caseId":"nl-01","edits":[{"start":21,"length":4,"originalText":"eekt","replacementText":"oken"}]}
+{"caseId":"nl-03","edits":[{"start":33,"length":10,"originalText":"plaatsvind","replacementText":"vindt plaats"}]}
+{"caseId":"nl-17","edits":[{"start":25,"length":0,"originalText":"","replacementText":"de "},{"start":48,"length":0,"originalText":"","replacementText":"uur "}]}
+{"caseId":"nl-21","edits":[]}
+{"caseId":"en-03","edits":[{"start":15,"length":1,"originalText":"s","replacementText":""},{"start":17,"length":3,"originalText":"are","replacementText":"is"}]}
+{"caseId":"en-04","edits":[{"start":16,"length":0,"originalText":"","replacementText":"send "},{"start":27,"length":5,"originalText":" send","replacementText":""}]}
+{"caseId":"en-17","edits":[]}
+{"caseId":"en-21","edits":[]}

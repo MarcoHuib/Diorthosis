@@ -484,7 +484,12 @@ public sealed class ModelCorrectionEngine(IModelInferenceAdapter adapter, int ma
             throw new InvalidDataException("Correction output changes too much source wording to validate safely.");
     }
 
-    public static IReadOnlyList<TextEdit> ParseAndValidate(string output, string source, bool validatePassage = true)
+    public static IReadOnlyList<TextEdit> ParseAndValidate(string output, string source) => ParseEditData(output, source, validatePassage: true);
+
+    // Untrusted source-aligned candidates for the experimental engine; never bypasses final passage validation.
+    internal static IReadOnlyList<TextEdit> ParseDiagnosticEditCandidates(string output, string source) => ParseEditData(output, source, validatePassage: false);
+
+    private static IReadOnlyList<TextEdit> ParseEditData(string output, string source, bool validatePassage)
     {
         ArgumentNullException.ThrowIfNull(output);
         ArgumentNullException.ThrowIfNull(source);

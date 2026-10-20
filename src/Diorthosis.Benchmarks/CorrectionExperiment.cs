@@ -47,7 +47,7 @@ internal static class CorrectionExperiment
             operatingSystem = RuntimeInformation.OSDescription, architecture = RuntimeInformation.ProcessArchitecture.ToString(), framework = RuntimeInformation.FrameworkDescription,
             cpuModel = Environment.GetEnvironmentVariable("DIORTHOSIS_EXPERIMENT_CPU") ?? "unknown", physicalRamBytes = Environment.GetEnvironmentVariable("DIORTHOSIS_EXPERIMENT_RAM_BYTES") ?? "unknown",
             inference = new { contextSize = 4096, threads = 9, gpuLayers = 0, temperature = 0, decoding = "greedy", seed = (int?)null, seedPolicy = "no random sampler", maxTokens, constrain,
-                grammarSha256 = constrain ? DatasetAudit.Hash(ExperimentalCorrectionPrompt.OffsetGrammar) : null, timeoutSecondsPerCase = 90, completionPolicy = "natural EOG required" },
+                grammarVersion = constrain ? ExperimentalCorrectionPrompt.OffsetGrammarVersion : null, grammarSha256 = constrain ? DatasetAudit.Hash(ExperimentalCorrectionPrompt.OffsetGrammar) : null, timeoutSecondsPerCase = 90, completionPolicy = "natural EOG required" },
             startedUtc = started, updatedUtc = DateTimeOffset.UtcNow, completionState = state, completedCases = predictions.Count };
         var manifestPath = Path.Combine(args[3], "manifest.json");
         await File.WriteAllTextAsync(manifestPath, JsonSerializer.Serialize(Manifest("running"), options));

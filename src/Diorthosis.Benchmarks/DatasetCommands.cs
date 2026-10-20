@@ -41,7 +41,22 @@ internal static class DatasetCommands
             limitation = "Absence of detected overlap does not establish unseen template-family independence." }, options));
         return overlaps.Count == 0 ? 0 : 1;
     }
-    internal static BenchmarkCase[] ReadCases(string path, JsonSerializerOptions options) => File.ReadLines(path).Where(line => !string.IsNullOrWhiteSpace(line))
-        .Select(line => JsonSerializer.Deserialize<BenchmarkCase>(line, options) ?? throw new InvalidDataException("Null dataset record.")).ToArray();
+    internal static BenchmarkCase[] ReadCases(string path, JsonSerializerOptions options)
+    {
+        var result = new List<BenchmarkCase>();
+        foreach (var line in File.ReadLines(path).Where(line => !string.IsNullOrWhiteSpace(line)))
+        {
+            if (line.Length > 1048576 || result.Count >= 10000) throw new InvalidDataException("Dataset exceeds diagnostic input limits.");
+            var item = JsonSerializer.Deserialize<BenchmarkCase>(line, options) ?? throw new InvalidDataException("Null dataset record.");
+            if (string.IsNullOrWhiteSpace(item.Id) || string.IsNullOrWhiteSpace(item.InputText) || item.InputText.Length > 32768
+                || item.Errors is null || item.Errors.Count > 256 || item.Errors.Any(error => error is null || error.OriginalText is null
+                    || error.AcceptedCorrections is null || error.AcceptedCorrections.Count > 256
+                    || error.AcceptedCorrections.Any(correction => correction is null || correction.ReplacementText is null || correction.ReplacementText.Length > 32768)))
+                throw new InvalidDataException("Dataset record contains missing or oversized fields.");
+            Diorthosis.Core.Corrections.SourceEdits.EnsureUnicode(item.InputText);
+            result.Add(item);
+        }
+        return result.ToArray();
+    }
     private sealed record SplitFile(string Partition, string Path, IReadOnlyDictionary<string, string>? SourceFamilies);
 }

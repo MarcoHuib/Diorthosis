@@ -374,12 +374,7 @@ static void RequireNewOutputs(params string[] paths)
         throw new IOException("Benchmark outputs must be distinct new paths; historical artifacts cannot be overwritten.");
 }
 
-static BenchmarkCase[] ReadCases(string path, JsonSerializerOptions options) =>
-[
-    .. File.ReadLines(path).Where(line => !string.IsNullOrWhiteSpace(line))
-        .Select(line => JsonSerializer.Deserialize<BenchmarkCase>(line, options)
-                        ?? throw new InvalidDataException("Benchmark case line is null."))
-];
+static BenchmarkCase[] ReadCases(string path, JsonSerializerOptions options) => DatasetCommands.ReadCases(path, options);
 
 static async Task<string> HashFileAsync(string path)
 {

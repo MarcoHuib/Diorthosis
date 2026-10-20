@@ -1,0 +1,6 @@
+{
+  "policy": "macOS sandbox-exec (deny network*)",
+  "scope": "all six inference processes",
+  "driver": "scripts/run-development-panel.py",
+  "developmentOnly": true
+}
