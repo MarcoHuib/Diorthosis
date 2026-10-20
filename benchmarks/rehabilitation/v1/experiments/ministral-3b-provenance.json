@@ -1,0 +1,7 @@
+{
+  "modelRepository": "mistralai/Ministral-3-3B-Instruct-2512-GGUF",
+  "modelRevision": "be4e90342e4468f37d4bea40ec143997f9256475",
+  "modelSha256": "9ed150d4367e68df0ac8e1540f6ddc65b42d0ee26378329d1ecbca60f93fc5f8",
+  "quantization": "Q4_K_M",
+  "reviewReference": "docs/model-validation.md and ADR 0006; existing evaluation asset, not release approval"
+}

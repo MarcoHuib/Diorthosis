@@ -84,14 +84,16 @@ public sealed record CorrectionResult(IReadOnlyList<TextEdit> Edits)
 
 public sealed record InferenceRequest
 {
-    public InferenceRequest(string prompt, int maximumOutputTokens = 512)
+    public InferenceRequest(string prompt, int maximumOutputTokens = 512, string? gbnfGrammar = null)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(prompt);
         if (maximumOutputTokens <= 0) throw new ArgumentOutOfRangeException(nameof(maximumOutputTokens));
         Prompt = prompt;
         MaximumOutputTokens = maximumOutputTokens;
+        GbnfGrammar = gbnfGrammar;
     }
 
     public string Prompt { get; }
     public int MaximumOutputTokens { get; }
+    public string? GbnfGrammar { get; }
 }

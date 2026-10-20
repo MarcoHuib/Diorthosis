@@ -80,7 +80,10 @@ public sealed class LlamaSharpInferenceAdapter : IModelInferenceAdapter, IDispos
             ObjectDisposedException.ThrowIf(_disposed, this);
             LastTermination = GenerationTermination.Unknown;
             LastSampledTokenCount = 0;
-            using var samplingPipeline = new TerminationTrackingGreedySamplingPipeline(_weights);
+            using var samplingPipeline = new TerminationTrackingGreedySamplingPipeline(_weights)
+            {
+                Grammar = request.GbnfGrammar is null ? null : new Grammar(request.GbnfGrammar, "root")
+            };
             var settings = new InferenceParams
             {
                 MaxTokens = request.MaximumOutputTokens,

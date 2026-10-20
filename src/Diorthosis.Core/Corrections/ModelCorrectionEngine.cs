@@ -484,7 +484,7 @@ public sealed class ModelCorrectionEngine(IModelInferenceAdapter adapter, int ma
             throw new InvalidDataException("Correction output changes too much source wording to validate safely.");
     }
 
-    public static IReadOnlyList<TextEdit> ParseAndValidate(string output, string source)
+    public static IReadOnlyList<TextEdit> ParseAndValidate(string output, string source, bool validatePassage = true)
     {
         ArgumentNullException.ThrowIfNull(output);
         ArgumentNullException.ThrowIfNull(source);
@@ -519,7 +519,7 @@ public sealed class ModelCorrectionEngine(IModelInferenceAdapter adapter, int ma
             }
             var validated = ValidateEdits(edits, source);
             var candidate = ApplyDiffForVerification(source, validated);
-            if (candidate == source) return validated;
+            if (!validatePassage || candidate == source) return validated;
             ValidateCandidatePassage(source, candidate);
             if (MeaningScopeNeedsReview(source, candidate)) throw new InvalidDataException("Meaning-critical clause scope, quotation, or paragraph structure requires review.");
             if (HasSentenceEnding(source) && !HasSentenceEnding(candidate)) throw new InvalidDataException("Correction output appears incomplete.");

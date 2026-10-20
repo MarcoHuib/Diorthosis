@@ -8,7 +8,7 @@ using Diorthosis.Core.Inference;
 
 var options = new JsonSerializerOptions(JsonSerializerDefaults.Web);
 options.Converters.Add(new JsonStringEnumConverter(JsonNamingPolicy.CamelCase));
-if (args.Length < 1 || (args[0] != "evaluate" && args[0] != "run" && args[0] != "compare" && args[0] != "reparse" && args[0] != "audit-dataset" && args[0] != "check-splits" && args[0] != "evaluate-v3"))
+if (args.Length < 1 || (args[0] != "evaluate" && args[0] != "run" && args[0] != "compare" && args[0] != "reparse" && args[0] != "audit-dataset" && args[0] != "check-splits" && args[0] != "evaluate-v3" && args[0] != "experiment"))
 {
     Console.Error.WriteLine("Usage: diorthosis-benchmarks evaluate <cases.jsonl> <predictions.jsonl> | run <cases.jsonl> <model.gguf> <predictions.jsonl> <report.json> [--trace <trace.jsonl>] | reparse <cases.jsonl> <raw-trace.jsonl> <run-report.json> <predictions.jsonl> <trace.jsonl> <report.json> | compare <comparison.json> <report1.json> <report2.json> [reportN.json ...]");
     return 2;
@@ -16,6 +16,7 @@ if (args.Length < 1 || (args[0] != "evaluate" && args[0] != "run" && args[0] != 
 
 try
 {
+    if (args[0] == "experiment") return await CorrectionExperiment.RunAsync(args, options);
     if (args[0] == "evaluate-v3")
     {
         if (args.Length != 3) throw new ArgumentException("evaluate-v3 <cases.jsonl> <predictions.jsonl>");
