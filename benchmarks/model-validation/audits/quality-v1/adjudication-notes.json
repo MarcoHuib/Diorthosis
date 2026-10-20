@@ -1,0 +1,31 @@
+{
+  "status": "AI linguistic adjudication, recorded with model identities hidden; not independent human validation",
+  "method": "All 132 packet rows were inspected. Equal candidate texts receive equal linguistic judgments. Formatting wrappers are assessed separately from extracted and accepted text. Reference judgments were frozen first; user examples and historic documentation limit blindness. Correct minimal correction includes a correct no-op on clean input, explicitly marked correct preservation, because the requested eight-label taxonomy lacks that successful outcome.",
+  "routineRules": {
+    "exactProposedRepair": "Correct minimal correction: all annotated defects repaired, original factual content and tense intent retained, no additional wording change. For nl-12/en-04 this includes the reference-first alternatives; for en-05/en-09 U+2019 is a legitimate contraction apostrophe.",
+    "unchangedError": "Incorrect or incomplete correction: the input's annotated defect remains under the stated standard-prose policy.",
+    "unchangedClean": "Correct minimal correction, subtype correct preservation: no edit was needed or supplied. This is not counted as a corrected error or suggested edit."
+  },
+  "exceptions": {
+    "B003": {"label":"Grammatically correct with altered meaning","reason":"vergader ruimte denotes a meeting room; vergadering denotes a meeting. Reserving a meeting is not the same proposition as reserving the room. The compound-spelling repair should retain ruimte.","humanReview":true},
+    "B073": {"label":"Incorrect or incomplete correction","reason":"dat de afspraak morgen vindt plaats retains main-clause placement inside a subordinate clause; standard Dutch requires plaatsvindt at the end."},
+    "B039": {"label":"Unnecessary change to already-correct text","reason":"start was correct; startt introduces a third-person verb spelling error. Date, time and identifiers are retained."},
+    "B002": {"label":"Unnecessary change to already-correct text","reason":"HTTP 404 can be returned as a status without an article. een is grammatically defensible through an understood status/error noun but is unnecessary in this correct technical sentence."},
+    "B122": {"label":"Unnecessary change to already-correct text","reason":"Same article addition as B002: no linguistic error required repair, even if the output can be read as grammatical."},
+    "B082": {"label":"Protected-content violation","reason":"Plain-text source URL is turned into Markdown with a duplicated URL and delimiters. The destination is unchanged, but literal protected-content/format preservation fails. Rejected by validator; accepted text is unchanged and safe."},
+    "B107": {"label":"Protected-content violation","reason":"Same duplicated Markdown URL transformation as B082. This is a raw surface violation, not evidence of a changed destination. Rejected; accepted text is unchanged."},
+    "B124": {"label":"Protected-content violation","reason":"Same duplicated Markdown URL transformation as B082. Rejected; accepted text is unchanged."},
+    "B085": {"label":"Protected-content violation","reason":"OAuth2 becomes OAuth 2.0, changing protected identifier and numeric form. Could denote related technology, but such normalization is unauthorized. Rejected; accepted text unchanged."},
+    "B104": {"label":"Protected-content violation","reason":"Raw/extracted OAuth2 becomes OAuth 2, changing the literal identifier. The whitespace-only early return emits zero edits, so accepted text actually preserves OAuth2. This is a raw-proposal and trace-observability issue, not an accepted identifier violation."},
+    "B119": {"label":"Unnecessary change to already-correct text","reason":"team Atlas is already valid Dutch. Adding het is optional phrasing and should not be counted as a necessary proofreading repair."},
+    "B126": {"label":"Unnecessary change to already-correct text","reason":"Same optional het insertion as B119; original is correct and meaning is substantially retained."},
+    "B015": {"label":"Incorrect or incomplete correction","reason":"has sent repairs agreement and participle but leaves present perfect with definite finished-time yesterday in this isolated standard-prose context."},
+    "B020": {"label":"Grammatically acceptable but semantically ambiguous","reason":"had sent is grammatical with an implicit past reference point but introduces a temporal relation not established by the source. Do not equate it automatically with sent; independent human context review required.","humanReview":true},
+    "B050": {"label":"Grammatically acceptable but semantically ambiguous","reason":"Same past-perfect ambiguity as B020. No automatic full repair credit in the strict proposal; no assertion that the sentence is ungrammatical.","humanReview":true},
+    "B008": {"label":"Requires independent human review","reason":"Raw response first repeats the incorrect sentence, then supplies the correct There are sentence in a note. It contains a correct answer but does not unambiguously deliver the requested single corrected passage. The parser selects the incorrect first sentence. This is a response-format/extraction issue, not a missing gold alternative.","humanReview":true,"extractedLabel":"Incorrect or incomplete correction","acceptedLabel":"Incorrect or incomplete correction"},
+    "B058": {"label":"Protected-content violation","reason":"node-04 becomes node 04, altering an exact technical identifier. Removing the hyphen can change a host/resource name. Validator accepts the change: demonstrated safety-coverage gap."},
+    "B110": {"label":"Protected-content violation","reason":"Plain-text URL is duplicated into Markdown, as in the Dutch URL cases. Rejected by the validator; accepted text unchanged."},
+    "B115": {"label":"Protected-content violation","reason":"Same duplicated Markdown URL transformation as B110. Rejected; accepted text unchanged."},
+    "B070": {"label":"Protected-content violation","reason":"OAuth2 becomes OAuth 2.0, changing a protected technical identifier and numeric form. Rejected; accepted text unchanged."}
+  }
+}

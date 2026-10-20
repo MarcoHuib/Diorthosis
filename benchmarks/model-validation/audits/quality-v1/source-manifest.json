@@ -1,0 +1,21 @@
+{
+  "baseCommit": "bd28ef5e9d584e849edb39d8566194a231d68f58",
+  "referenceFirstFreeze": true,
+  "sha256": {
+    "benchmarks/model-validation/smoke-44-reviewed-v2.jsonl": "2190c109f5f8e8ce1979637a1beea9fcce615959033aa76576b32ba537465fa2",
+    "src/Diorthosis.Benchmarks/BenchmarkEvaluator.cs": "8f11bea6e18ef296782d1b800c45105a45af479a26af001584c5a3d09c1f3bd6",
+    "src/Diorthosis.Core/Corrections/CorrectionPrompt.cs": "bf55c756e66681e699d67b24cfae0062a67943a8d258b2d8fccf6f19d7279fbe",
+    "benchmarks/model-validation/audits/quality-v1/reference-notes.json": "d62982523be6225adbcb1658a9ac3b60a76aed5b3504458d366eeaae35856273",
+    "benchmarks/model-validation/results/v4/README.md": "767260109ba5fd2a0cc93c72ac0f4bfd44c3d93fc7f78561d7a6cd124f43fd50",
+    "benchmarks/model-validation/results/v4/comparison.json": "40d31f934421fbd45481e62ad5fd0da15b19e693c0de5cb624ecde77aa8c4e8e",
+    "benchmarks/model-validation/results/v4/ministral-3-14b-predictions.jsonl": "36be90144872bc10aff152e070dcb492a69c0a61e086c15c482ecd0b2d76985c",
+    "benchmarks/model-validation/results/v4/ministral-3-14b-report.json": "8cd07f4e7846ad985a46df9e7872d0c2b060ef568e1852e158f4b54f0b164631",
+    "benchmarks/model-validation/results/v4/ministral-3-14b-trace.jsonl": "90933426f1b802a230af81762849f7b3812fb967e2b588dbf7d021b5b63220ef",
+    "benchmarks/model-validation/results/v4/ministral-3-8b-predictions.jsonl": "f3e417aa9245e3e7bfd704ed33ed5737abf587831ef339202dc5481ceb530c32",
+    "benchmarks/model-validation/results/v4/ministral-3-8b-report.json": "37095130f0b93ecadc1ea0be74873a2db50e69a448a73a7bafeb2f18a89e7f63",
+    "benchmarks/model-validation/results/v4/ministral-3-8b-trace.jsonl": "d6b3f9ac948cd125fb49521e057e83556f40bbd6235f61b3297bcc461f228075",
+    "benchmarks/model-validation/results/v4/ministral-3b-predictions.jsonl": "13797c75d4450614313326b5d35fae8ab10c82bebb4cf3eff44ca6508d2fbe59",
+    "benchmarks/model-validation/results/v4/ministral-3b-report.json": "23ce3eb2d721070beac517c175de9e1c59b0739d5dfdddb8f0f5b7c77d9a07a4",
+    "benchmarks/model-validation/results/v4/ministral-3b-trace.jsonl": "15fccfc86fd0d8b31f2ffcaa08fd180067096f93a67b792a90f0b0fd14a121c5"
+  }
+}

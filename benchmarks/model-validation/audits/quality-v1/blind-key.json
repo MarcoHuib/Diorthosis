@@ -1,0 +1,662 @@
+[
+  {
+    "blindId": "B001",
+    "caseId": "en-17",
+    "model": "ministral-3-14b"
+  },
+  {
+    "blindId": "B002",
+    "caseId": "nl-19",
+    "model": "ministral-3-8b"
+  },
+  {
+    "blindId": "B003",
+    "caseId": "nl-02",
+    "model": "ministral-3-8b"
+  },
+  {
+    "blindId": "B004",
+    "caseId": "nl-03",
+    "model": "ministral-3-14b"
+  },
+  {
+    "blindId": "B005",
+    "caseId": "nl-19",
+    "model": "ministral-3b"
+  },
+  {
+    "blindId": "B006",
+    "caseId": "en-02",
+    "model": "ministral-3-14b"
+  },
+  {
+    "blindId": "B007",
+    "caseId": "en-05",
+    "model": "ministral-3b"
+  },
+  {
+    "blindId": "B008",
+    "caseId": "en-13",
+    "model": "ministral-3-8b"
+  },
+  {
+    "blindId": "B009",
+    "caseId": "nl-17",
+    "model": "ministral-3-8b"
+  },
+  {
+    "blindId": "B010",
+    "caseId": "en-16",
+    "model": "ministral-3b"
+  },
+  {
+    "blindId": "B011",
+    "caseId": "en-11",
+    "model": "ministral-3-14b"
+  },
+  {
+    "blindId": "B012",
+    "caseId": "en-16",
+    "model": "ministral-3-14b"
+  },
+  {
+    "blindId": "B013",
+    "caseId": "nl-21",
+    "model": "ministral-3b"
+  },
+  {
+    "blindId": "B014",
+    "caseId": "en-06",
+    "model": "ministral-3b"
+  },
+  {
+    "blindId": "B015",
+    "caseId": "en-01",
+    "model": "ministral-3b"
+  },
+  {
+    "blindId": "B016",
+    "caseId": "nl-14",
+    "model": "ministral-3-8b"
+  },
+  {
+    "blindId": "B017",
+    "caseId": "en-10",
+    "model": "ministral-3-8b"
+  },
+  {
+    "blindId": "B018",
+    "caseId": "nl-18",
+    "model": "ministral-3-8b"
+  },
+  {
+    "blindId": "B019",
+    "caseId": "nl-03",
+    "model": "ministral-3b"
+  },
+  {
+    "blindId": "B020",
+    "caseId": "en-01",
+    "model": "ministral-3-8b"
+  },
+  {
+    "blindId": "B021",
+    "caseId": "en-15",
+    "model": "ministral-3-14b"
+  },
+  {
+    "blindId": "B022",
+    "caseId": "nl-12",
+    "model": "ministral-3-8b"
+  },
+  {
+    "blindId": "B023",
+    "caseId": "nl-10",
+    "model": "ministral-3b"
+  },
+  {
+    "blindId": "B024",
+    "caseId": "nl-01",
+    "model": "ministral-3-8b"
+  },
+  {
+    "blindId": "B025",
+    "caseId": "nl-17",
+    "model": "ministral-3-14b"
+  },
+  {
+    "blindId": "B026",
+    "caseId": "nl-15",
+    "model": "ministral-3b"
+  },
+  {
+    "blindId": "B027",
+    "caseId": "en-08",
+    "model": "ministral-3-8b"
+  },
+  {
+    "blindId": "B028",
+    "caseId": "en-03",
+    "model": "ministral-3-8b"
+  },
+  {
+    "blindId": "B029",
+    "caseId": "en-16",
+    "model": "ministral-3-8b"
+  },
+  {
+    "blindId": "B030",
+    "caseId": "en-11",
+    "model": "ministral-3-8b"
+  },
+  {
+    "blindId": "B031",
+    "caseId": "nl-16",
+    "model": "ministral-3b"
+  },
+  {
+    "blindId": "B032",
+    "caseId": "nl-08",
+    "model": "ministral-3-14b"
+  },
+  {
+    "blindId": "B033",
+    "caseId": "nl-04",
+    "model": "ministral-3-14b"
+  },
+  {
+    "blindId": "B034",
+    "caseId": "nl-10",
+    "model": "ministral-3-8b"
+  },
+  {
+    "blindId": "B035",
+    "caseId": "nl-06",
+    "model": "ministral-3-8b"
+  },
+  {
+    "blindId": "B036",
+    "caseId": "nl-10",
+    "model": "ministral-3-14b"
+  },
+  {
+    "blindId": "B037",
+    "caseId": "nl-09",
+    "model": "ministral-3b"
+  },
+  {
+    "blindId": "B038",
+    "caseId": "nl-12",
+    "model": "ministral-3b"
+  },
+  {
+    "blindId": "B039",
+    "caseId": "nl-17",
+    "model": "ministral-3b"
+  },
+  {
+    "blindId": "B040",
+    "caseId": "en-03",
+    "model": "ministral-3b"
+  },
+  {
+    "blindId": "B041",
+    "caseId": "en-12",
+    "model": "ministral-3-14b"
+  },
+  {
+    "blindId": "B042",
+    "caseId": "en-21",
+    "model": "ministral-3-14b"
+  },
+  {
+    "blindId": "B043",
+    "caseId": "nl-02",
+    "model": "ministral-3-14b"
+  },
+  {
+    "blindId": "B044",
+    "caseId": "nl-06",
+    "model": "ministral-3b"
+  },
+  {
+    "blindId": "B045",
+    "caseId": "en-18",
+    "model": "ministral-3b"
+  },
+  {
+    "blindId": "B046",
+    "caseId": "en-02",
+    "model": "ministral-3b"
+  },
+  {
+    "blindId": "B047",
+    "caseId": "nl-05",
+    "model": "ministral-3-8b"
+  },
+  {
+    "blindId": "B048",
+    "caseId": "en-17",
+    "model": "ministral-3b"
+  },
+  {
+    "blindId": "B049",
+    "caseId": "en-08",
+    "model": "ministral-3-14b"
+  },
+  {
+    "blindId": "B050",
+    "caseId": "en-01",
+    "model": "ministral-3-14b"
+  },
+  {
+    "blindId": "B051",
+    "caseId": "en-09",
+    "model": "ministral-3-14b"
+  },
+  {
+    "blindId": "B052",
+    "caseId": "en-19",
+    "model": "ministral-3b"
+  },
+  {
+    "blindId": "B053",
+    "caseId": "en-12",
+    "model": "ministral-3b"
+  },
+  {
+    "blindId": "B054",
+    "caseId": "en-04",
+    "model": "ministral-3-8b"
+  },
+  {
+    "blindId": "B055",
+    "caseId": "en-14",
+    "model": "ministral-3-8b"
+  },
+  {
+    "blindId": "B056",
+    "caseId": "nl-04",
+    "model": "ministral-3-8b"
+  },
+  {
+    "blindId": "B057",
+    "caseId": "nl-14",
+    "model": "ministral-3-14b"
+  },
+  {
+    "blindId": "B058",
+    "caseId": "en-17",
+    "model": "ministral-3-8b"
+  },
+  {
+    "blindId": "B059",
+    "caseId": "en-04",
+    "model": "ministral-3-14b"
+  },
+  {
+    "blindId": "B060",
+    "caseId": "en-13",
+    "model": "ministral-3b"
+  },
+  {
+    "blindId": "B061",
+    "caseId": "en-22",
+    "model": "ministral-3-14b"
+  },
+  {
+    "blindId": "B062",
+    "caseId": "en-07",
+    "model": "ministral-3b"
+  },
+  {
+    "blindId": "B063",
+    "caseId": "en-12",
+    "model": "ministral-3-8b"
+  },
+  {
+    "blindId": "B064",
+    "caseId": "en-09",
+    "model": "ministral-3b"
+  },
+  {
+    "blindId": "B065",
+    "caseId": "en-19",
+    "model": "ministral-3-8b"
+  },
+  {
+    "blindId": "B066",
+    "caseId": "nl-08",
+    "model": "ministral-3-8b"
+  },
+  {
+    "blindId": "B067",
+    "caseId": "nl-01",
+    "model": "ministral-3-14b"
+  },
+  {
+    "blindId": "B068",
+    "caseId": "en-05",
+    "model": "ministral-3-8b"
+  },
+  {
+    "blindId": "B069",
+    "caseId": "nl-07",
+    "model": "ministral-3-8b"
+  },
+  {
+    "blindId": "B070",
+    "caseId": "en-21",
+    "model": "ministral-3-8b"
+  },
+  {
+    "blindId": "B071",
+    "caseId": "en-03",
+    "model": "ministral-3-14b"
+  },
+  {
+    "blindId": "B072",
+    "caseId": "nl-13",
+    "model": "ministral-3-14b"
+  },
+  {
+    "blindId": "B073",
+    "caseId": "nl-03",
+    "model": "ministral-3-8b"
+  },
+  {
+    "blindId": "B074",
+    "caseId": "nl-06",
+    "model": "ministral-3-14b"
+  },
+  {
+    "blindId": "B075",
+    "caseId": "nl-01",
+    "model": "ministral-3b"
+  },
+  {
+    "blindId": "B076",
+    "caseId": "nl-18",
+    "model": "ministral-3-14b"
+  },
+  {
+    "blindId": "B077",
+    "caseId": "en-07",
+    "model": "ministral-3-8b"
+  },
+  {
+    "blindId": "B078",
+    "caseId": "en-18",
+    "model": "ministral-3-14b"
+  },
+  {
+    "blindId": "B079",
+    "caseId": "nl-22",
+    "model": "ministral-3-14b"
+  },
+  {
+    "blindId": "B080",
+    "caseId": "en-10",
+    "model": "ministral-3b"
+  },
+  {
+    "blindId": "B081",
+    "caseId": "nl-11",
+    "model": "ministral-3b"
+  },
+  {
+    "blindId": "B082",
+    "caseId": "nl-20",
+    "model": "ministral-3b"
+  },
+  {
+    "blindId": "B083",
+    "caseId": "nl-15",
+    "model": "ministral-3-8b"
+  },
+  {
+    "blindId": "B084",
+    "caseId": "nl-02",
+    "model": "ministral-3b"
+  },
+  {
+    "blindId": "B085",
+    "caseId": "nl-21",
+    "model": "ministral-3-8b"
+  },
+  {
+    "blindId": "B086",
+    "caseId": "nl-18",
+    "model": "ministral-3b"
+  },
+  {
+    "blindId": "B087",
+    "caseId": "nl-07",
+    "model": "ministral-3b"
+  },
+  {
+    "blindId": "B088",
+    "caseId": "en-09",
+    "model": "ministral-3-8b"
+  },
+  {
+    "blindId": "B089",
+    "caseId": "nl-05",
+    "model": "ministral-3b"
+  },
+  {
+    "blindId": "B090",
+    "caseId": "nl-13",
+    "model": "ministral-3b"
+  },
+  {
+    "blindId": "B091",
+    "caseId": "en-19",
+    "model": "ministral-3-14b"
+  },
+  {
+    "blindId": "B092",
+    "caseId": "en-04",
+    "model": "ministral-3b"
+  },
+  {
+    "blindId": "B093",
+    "caseId": "nl-04",
+    "model": "ministral-3b"
+  },
+  {
+    "blindId": "B094",
+    "caseId": "nl-13",
+    "model": "ministral-3-8b"
+  },
+  {
+    "blindId": "B095",
+    "caseId": "en-22",
+    "model": "ministral-3-8b"
+  },
+  {
+    "blindId": "B096",
+    "caseId": "en-22",
+    "model": "ministral-3b"
+  },
+  {
+    "blindId": "B097",
+    "caseId": "en-14",
+    "model": "ministral-3-14b"
+  },
+  {
+    "blindId": "B098",
+    "caseId": "nl-09",
+    "model": "ministral-3-8b"
+  },
+  {
+    "blindId": "B099",
+    "caseId": "nl-16",
+    "model": "ministral-3-8b"
+  },
+  {
+    "blindId": "B100",
+    "caseId": "en-13",
+    "model": "ministral-3-14b"
+  },
+  {
+    "blindId": "B101",
+    "caseId": "en-15",
+    "model": "ministral-3b"
+  },
+  {
+    "blindId": "B102",
+    "caseId": "nl-08",
+    "model": "ministral-3b"
+  },
+  {
+    "blindId": "B103",
+    "caseId": "nl-15",
+    "model": "ministral-3-14b"
+  },
+  {
+    "blindId": "B104",
+    "caseId": "nl-21",
+    "model": "ministral-3-14b"
+  },
+  {
+    "blindId": "B105",
+    "caseId": "en-11",
+    "model": "ministral-3b"
+  },
+  {
+    "blindId": "B106",
+    "caseId": "nl-07",
+    "model": "ministral-3-14b"
+  },
+  {
+    "blindId": "B107",
+    "caseId": "nl-20",
+    "model": "ministral-3-14b"
+  },
+  {
+    "blindId": "B108",
+    "caseId": "en-06",
+    "model": "ministral-3-14b"
+  },
+  {
+    "blindId": "B109",
+    "caseId": "en-02",
+    "model": "ministral-3-8b"
+  },
+  {
+    "blindId": "B110",
+    "caseId": "en-20",
+    "model": "ministral-3-8b"
+  },
+  {
+    "blindId": "B111",
+    "caseId": "en-21",
+    "model": "ministral-3b"
+  },
+  {
+    "blindId": "B112",
+    "caseId": "en-07",
+    "model": "ministral-3-14b"
+  },
+  {
+    "blindId": "B113",
+    "caseId": "en-06",
+    "model": "ministral-3-8b"
+  },
+  {
+    "blindId": "B114",
+    "caseId": "nl-12",
+    "model": "ministral-3-14b"
+  },
+  {
+    "blindId": "B115",
+    "caseId": "en-20",
+    "model": "ministral-3b"
+  },
+  {
+    "blindId": "B116",
+    "caseId": "en-10",
+    "model": "ministral-3-14b"
+  },
+  {
+    "blindId": "B117",
+    "caseId": "nl-09",
+    "model": "ministral-3-14b"
+  },
+  {
+    "blindId": "B118",
+    "caseId": "en-05",
+    "model": "ministral-3-14b"
+  },
+  {
+    "blindId": "B119",
+    "caseId": "nl-22",
+    "model": "ministral-3-8b"
+  },
+  {
+    "blindId": "B120",
+    "caseId": "en-20",
+    "model": "ministral-3-14b"
+  },
+  {
+    "blindId": "B121",
+    "caseId": "nl-05",
+    "model": "ministral-3-14b"
+  },
+  {
+    "blindId": "B122",
+    "caseId": "nl-19",
+    "model": "ministral-3-14b"
+  },
+  {
+    "blindId": "B123",
+    "caseId": "nl-11",
+    "model": "ministral-3-14b"
+  },
+  {
+    "blindId": "B124",
+    "caseId": "nl-20",
+    "model": "ministral-3-8b"
+  },
+  {
+    "blindId": "B125",
+    "caseId": "nl-14",
+    "model": "ministral-3b"
+  },
+  {
+    "blindId": "B126",
+    "caseId": "nl-22",
+    "model": "ministral-3b"
+  },
+  {
+    "blindId": "B127",
+    "caseId": "en-18",
+    "model": "ministral-3-8b"
+  },
+  {
+    "blindId": "B128",
+    "caseId": "nl-16",
+    "model": "ministral-3-14b"
+  },
+  {
+    "blindId": "B129",
+    "caseId": "en-14",
+    "model": "ministral-3b"
+  },
+  {
+    "blindId": "B130",
+    "caseId": "nl-11",
+    "model": "ministral-3-8b"
+  },
+  {
+    "blindId": "B131",
+    "caseId": "en-15",
+    "model": "ministral-3-8b"
+  },
+  {
+    "blindId": "B132",
+    "caseId": "en-08",
+    "model": "ministral-3b"
+  }
+]
