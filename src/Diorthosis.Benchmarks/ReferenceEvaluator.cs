@@ -1,4 +1,5 @@
 using System.Text;
+using System.Text.Json;
 using Diorthosis.Core.Corrections;
 
 namespace Diorthosis.Benchmarks;
@@ -12,14 +13,18 @@ public sealed record ProposalReview(string CaseId, string CandidateSha256, strin
 public sealed record ReferenceMetrics(string Language, string Category, Proportion RepairRecall, Proportion ReferenceGroupPrecision,
     Proportion? AdjudicatedProposalPrecision, Proportion CleanLiteralPreservation, Proportion CompleteReferencePassages,
     Proportion PredictionCoverage, int ReferenceUnresolvedGroups, int ProposedGroups, int ReviewedGroups,
-    IReadOnlyDictionary<string, int> Dispositions);
+    IReadOnlyDictionary<string, int> Dispositions)
+{
+    public Proportion? CompletePassageJudgmentCoverage { get; init; }
+    public int UnknownCompletePassages { get; init; }
+}
 public sealed record ReferenceReport(string EvaluatorVersion, string PrecisionPolicy, string IntervalPolicy,
     IReadOnlyList<ReferenceMetrics> Metrics, IReadOnlyList<ReferenceCaseResult> Cases);
 
 /// <summary>Reference-based diagnostic scoring, distinct from independent linguistic adjudication.</summary>
 public static class ReferenceEvaluator
 {
-    public const string Version = "reference-groups-3.0.0";
+    public const string Version = "reference-groups-3.1.0";
     private static bool Equal(string a, string b) => a.Normalize(NormalizationForm.FormC) == b.Normalize(NormalizationForm.FormC);
 
     public static ReferenceReport Evaluate(IReadOnlyList<BenchmarkCase> cases, IReadOnlyList<BenchmarkPrediction> predictions,
@@ -60,9 +65,13 @@ public static class ReferenceEvaluator
                     Ratio(groups.Count(value => value.proposal.ReferenceMatched), groups.Length),
                     reviewed.Length == 0 ? null : Ratio(reviewed.Count(value => reviewMap[(value.row.CaseId, value.proposal.Id)] is { NecessaryAndCorrect: true, MeaningPreserved: true }), reviewed.Length),
                     Ratio(clean.Count(pair => pair.row.Proposals.Count == 0 && pair.row.CandidateSha256 == DatasetAudit.Hash(pair.item.InputText)), clean.Length),
-                    Ratio(observed.Count(pair => pair.row.ReferenceCompletePassage == true), observed.Length),
+                    Ratio(observed.Count(pair => pair.row.ReferenceCompletePassage == true), observed.Count(pair => pair.row.ReferenceCompletePassage is not null)),
                     Ratio(observed.Length, selected.Length), groups.Count(value => !value.proposal.ReferenceMatched), groups.Length, reviewed.Length,
-                    selected.GroupBy(pair => pair.row.Disposition?.ToString() ?? "Unknown", StringComparer.Ordinal).OrderBy(group => group.Key, StringComparer.Ordinal).ToDictionary(group => group.Key, group => group.Count())));
+                    selected.GroupBy(pair => pair.row.Disposition?.ToString() ?? "Unknown", StringComparer.Ordinal).OrderBy(group => group.Key, StringComparer.Ordinal).ToDictionary(group => group.Key, group => group.Count()))
+                {
+                    CompletePassageJudgmentCoverage = Ratio(observed.Count(pair => pair.row.ReferenceCompletePassage is not null), observed.Length),
+                    UnknownCompletePassages = observed.Count(pair => pair.row.ReferenceCompletePassage is null)
+                });
             }
         return new ReferenceReport(Version, "Reference-group precision is a proxy. Linguistic precision is available only for explicitly adjudicated proposals; review coverage is reported. Residual groups require review.",
             "Wilson 95% intervals are descriptive only; dependence/template repetition and unreviewed labels prevent population inference. No hunk-based independence or model-superiority test is assumed.", metrics, rows);
@@ -81,20 +90,28 @@ public static class ReferenceEvaluator
         var used = new HashSet<int>();
         var repaired = new HashSet<int>();
         var proposals = new List<ReferenceProposal>();
-        var groups = item.Errors.Select((error, index) => (error, index))
+        var initial = item.Errors.Select((error, index) => (error, index))
             .GroupBy(value => value.error.DependencyGroup is { Length: > 0 } dependency ? "dependency:" + dependency : "annotation:" + value.index)
-            .ToArray();
-        foreach (var group in groups)
+            .Select(group => group.Select(value => value.index).ToArray()).ToArray();
+        var parents = Enumerable.Range(0, initial.Length).ToArray();
+        int Root(int index) { while (parents[index] != index) { parents[index] = parents[parents[index]]; index = parents[index]; } return index; }
+        foreach (var edit in canonicalEdits)
         {
-            var indexes = group.Select(value => value.index).ToArray();
-            var related = Enumerable.Range(0, canonicalEdits.Count).Where(index => group.Any(value => Touches(value.error, canonicalEdits[index]))).ToArray();
+            var touching = Enumerable.Range(0, initial.Length).Where(index => initial[index].Any(annotation => Touches(item.Errors[annotation], edit))).ToArray();
+            foreach (var index in touching.Skip(1)) parents[Root(index)] = Root(touching[0]);
+        }
+        var groups = Enumerable.Range(0, initial.Length).GroupBy(Root).Select(group => group.SelectMany(index => initial[index]).Order().ToArray());
+        foreach (var indexes in groups)
+        {
+            var related = Enumerable.Range(0, canonicalEdits.Count).Where(index => indexes.Any(annotation => Touches(item.Errors[annotation], canonicalEdits[index]))).ToArray();
             if (related.Length == 0) continue;
             var localCandidate = SourceEdits.Apply(item.InputText, related.Select(index => canonicalEdits[index]));
             var references = BuildReferences(item, indexes);
             var matched = references is not null && references.Any(reference => Equal(reference, localCandidate));
             foreach (var index in related) used.Add(index);
             if (matched) foreach (var index in indexes) repaired.Add(index);
-            proposals.Add(new(group.Key, indexes, matched, related.Select(index => canonicalEdits[index]).ToArray()));
+            var proposalEdits = related.Select(index => canonicalEdits[index]).ToArray();
+            proposals.Add(new(ProposalId(item, indexes, proposalEdits), indexes, matched, proposalEdits));
         }
         // A compound canonical edit can touch several annotations. Full-group matching resolves these consistently.
         var allReferences = BuildReferences(item, Enumerable.Range(0, item.Errors.Count).ToArray());
@@ -106,9 +123,18 @@ public static class ReferenceEvaluator
             proposals = proposals.Select(proposal => proposal with { ReferenceMatched = true }).ToList();
         }
         for (var index = 0; index < canonicalEdits.Count; index++)
-            if (!used.Contains(index)) proposals.Add(new("residual:" + index, [], false, [canonicalEdits[index]]));
+            if (!used.Contains(index)) proposals.Add(new(ProposalId(item, [], [canonicalEdits[index]]), [], false, [canonicalEdits[index]]));
         return new(item.Id, DatasetAudit.Hash(candidate), true, complete, repaired.Order().ToArray(), proposals,
             proposals.Count(proposal => !proposal.ReferenceMatched), disposition, "unassessed; deterministic reference matching is not semantic validation");
+    }
+
+    private static string ProposalId(BenchmarkCase item, IReadOnlyList<int> members, IReadOnlyList<TextEdit> edits)
+    {
+        static object Annotation(ErrorAnnotation error) => new { error.Start, error.Length, error.OriginalText, error.Category, error.DependencyGroup,
+            alternatives = error.AcceptedCorrections.Select(correction => correction.ReplacementText).Distinct(StringComparer.Ordinal).Order(StringComparer.Ordinal).ToArray() };
+        var ordered = item.Errors.Select(Annotation).Select(value => JsonSerializer.Serialize(value)).Order(StringComparer.Ordinal).ToArray();
+        var group = members.Select(index => JsonSerializer.Serialize(Annotation(item.Errors[index]))).Order(StringComparer.Ordinal).ToArray();
+        return "proposal:" + DatasetAudit.Hash(JsonSerializer.Serialize(new { item.Id, item.Language, item.InputText, annotations = ordered, group, edits }));
     }
 
     private static IReadOnlyList<string>? BuildReferences(BenchmarkCase item, IReadOnlyList<int> indexes)

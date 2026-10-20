@@ -31,6 +31,11 @@ try
         if (args.Length != 7) throw new ArgumentException("Reparse requires cases, captured raw trace, original run report, and three output paths.");
         RequireNewOutputs(args[4], args[5], args[6]);
         var cases = ReadCases(args[1], options);
+        using var sourceReportDocument = JsonDocument.Parse(await File.ReadAllTextAsync(args[3]));
+        var datasetSha256 = await HashFileAsync(args[1]);
+        var sourceTraceSha256 = await HashFileAsync(args[2]);
+        var sourceReportSha256 = await HashFileAsync(args[3]);
+        var binding = BenchmarkArtifactPolicy.ValidateReplay(sourceReportDocument.RootElement, datasetSha256, cases.Length, sourceTraceSha256);
         var caseMap = cases.ToDictionary(item => item.Id, StringComparer.Ordinal);
         var predictions = new List<BenchmarkPrediction>(cases.Length);
         var rawPredictions = new List<BenchmarkPrediction>(cases.Length);
@@ -52,7 +57,7 @@ try
                 : [];
             var historicalCorrectErrors = ReadTraceMetric(trace, "acceptedBenchmark", "correctlyResolvedErrors");
             var termination = trace.TryGetProperty("terminationReason", out var terminationElement)
-                && Enum.TryParse<GenerationTermination>(terminationElement.GetString(), out var parsedTermination) ? parsedTermination : GenerationTermination.Unknown;
+                && Enum.TryParse<GenerationTermination>(terminationElement.GetString(), ignoreCase: true, out var parsedTermination) ? parsedTermination : GenerationTermination.Unknown;
             var analysis = ModelCorrectionEngine.AnalyzeInference(new InferenceResult(raw, termination, 0), new CorrectionRequest(item.Language, item.InputText));
             dispositions[caseId] = analysis.Disposition;
             predictions.Add(new BenchmarkPrediction(caseId, analysis.Edits));
@@ -78,6 +83,8 @@ try
                 caseId,
                 input = item.InputText,
                 rawModelOutput = raw,
+                terminationReason = termination,
+                sampledTokenCount = trace.TryGetProperty("sampledTokenCount", out var sampled) ? sampled.Clone() : (JsonElement?)null,
                 extractedCorrection = analysis.ExtractedCorrection,
                 rawCandidateTextEdits = analysis.RawCandidateEdits,
                 validatedTextEdits = analysis.Edits,
@@ -106,13 +113,25 @@ try
         }
         if (predictions.Count != cases.Length || predictions.Select(item => item.CaseId).Distinct(StringComparer.Ordinal).Count() != cases.Length)
             throw new InvalidDataException("Captured trace must contain exactly one response for each benchmark case.");
-        await File.WriteAllLinesAsync(args[4], predictions.Select(item => JsonSerializer.Serialize(item, options)));
-        await File.WriteAllLinesAsync(args[5], traces.Select(item => JsonSerializer.Serialize(item, options)));
+        await BenchmarkArtifactPolicy.WriteLinesNewAsync(args[4], predictions.Select(item => JsonSerializer.Serialize(item, options)));
+        await BenchmarkArtifactPolicy.WriteLinesNewAsync(args[5], traces.Select(item => JsonSerializer.Serialize(item, options)));
         var metrics = BenchmarkEvaluator.EvaluateHistorical(cases, predictions);
         var qualityMetrics = BenchmarkEvaluator.EvaluateQuality(cases, predictions, dispositions);
         var rawMetrics = BenchmarkEvaluator.EvaluateHistorical(cases, rawPredictions);
-        var report = System.Text.Json.Nodes.JsonNode.Parse(await File.ReadAllTextAsync(args[3]))
+        var report = System.Text.Json.Nodes.JsonNode.Parse(sourceReportDocument.RootElement.GetRawText())
             ?? throw new InvalidDataException("Original run report is empty.");
+        var originalRunReport = report.DeepClone();
+        report["kind"] = "deterministic-replay";
+        report["originalRunReport"] = originalRunReport;
+        // Inference identities/resources are source claims, never newly measured replay values.
+        foreach (var key in new[] { "modelFile", "modelSha256", "modelRevision", "quantization", "promptVersion", "runtime", "operatingSystem", "hardware", "inference", "decoding", "coldStartMilliseconds", "latencyMilliseconds", "latencyMillisecondsByLanguage", "peakWorkingSetBytes", "peakWorkingSetBytesByLanguage", "peakMemoryMeasurement", "managedHeapBytesAfterRun", "generationTerminations" })
+            report.AsObject().Remove(key);
+        report["datasetSha256"] = datasetSha256;
+        report["caseCount"] = cases.Length;
+        report["traceSha256"] = await HashFileAsync(args[5]);
+        report["replayProvenance"] = JsonSerializer.SerializeToNode(new { binding, sourceReportSha256, sourceTraceSha256,
+            evaluatorVersion = BenchmarkEvaluator.QualityEvaluatorVersion, correctionContract = CorrectionResult.ContractVersion,
+            sourceRevision = Environment.GetEnvironmentVariable("DIORTHOSIS_EXPERIMENT_COMMIT") ?? "unknown" }, options);
         report["historicalV4Metrics"] = report["metrics"]?.DeepClone();
         report["historicalV4RawCandidateMetrics"] = report["rawCandidateMetrics"]?.DeepClone();
         report["metrics"] = JsonSerializer.SerializeToNode(metrics, options);
@@ -129,7 +148,7 @@ try
             .Select(item => ((JsonElement)JsonSerializer.SerializeToElement(item, options)).GetProperty("replayClassification").GetString()!)
             .GroupBy(value => value).ToDictionary(group => group.Key, group => group.Count()), options);
         report["postProcessingRevision"] = "current deterministic parser reapplied to captured raw generation; inference timings/memory are from the referenced run report";
-        await File.WriteAllTextAsync(args[6], report.ToJsonString(options));
+        await BenchmarkArtifactPolicy.WriteTextNewAsync(args[6], report.ToJsonString(options));
         Console.WriteLine(JsonSerializer.Serialize(metrics.Where(metric => metric.Category is "all" or "CorrectText"), options));
         return 0;
     }
@@ -227,9 +246,9 @@ try
                 acceptedBenchmark = acceptedCaseMetrics
             });
         }
-        await File.WriteAllLinesAsync(args[3], predictions.Select(item => JsonSerializer.Serialize(item, options)));
+        await BenchmarkArtifactPolicy.WriteLinesNewAsync(args[3], predictions.Select(item => JsonSerializer.Serialize(item, options)));
         if (runOptions.TryGetValue("trace", out var tracePath))
-            await File.WriteAllLinesAsync(tracePath, traces.Select(item => JsonSerializer.Serialize(item, options)));
+            await BenchmarkArtifactPolicy.WriteLinesNewAsync(tracePath, traces.Select(item => JsonSerializer.Serialize(item, options)));
         memorySampler.Dispose();
         SampleWorkingSet();
         var metrics = BenchmarkEvaluator.EvaluateHistorical(cases, predictions);
@@ -244,6 +263,7 @@ try
             modelRevision = runOptions.GetValueOrDefault("model-revision", "unspecified-local-file"),
             quantization = runOptions.GetValueOrDefault("quantization", "unspecified; inspect GGUF metadata"),
             datasetSha256 = datasetHash,
+            traceSha256 = runOptions.TryGetValue("trace", out var emittedTracePath) ? await HashFileAsync(emittedTracePath) : null,
             runtime = LlamaSharpInferenceAdapter.RuntimeVersion,
             promptVersion = CorrectionPrompt.Version,
             hardware = new { architecture = System.Runtime.InteropServices.RuntimeInformation.ProcessArchitecture.ToString(), logicalProcessorCount = Environment.ProcessorCount, framework = System.Runtime.InteropServices.RuntimeInformation.FrameworkDescription },
@@ -276,7 +296,7 @@ try
             qualityMetrics,
             rawCandidateMetrics = rawMetrics
         };
-        await File.WriteAllTextAsync(args[4], JsonSerializer.Serialize(report, options));
+        await BenchmarkArtifactPolicy.WriteTextNewAsync(args[4], JsonSerializer.Serialize(report, options));
         Console.WriteLine(JsonSerializer.Serialize(metrics, options));
         return 0;
     }
@@ -284,7 +304,10 @@ try
     if (args[0] == "compare")
     {
         if (args.Length < 4) throw new ArgumentException("Compare requires an output path and at least two run reports.");
+        RequireNewOutputs(args[1]);
         using var first = JsonDocument.Parse(await File.ReadAllTextAsync(args[2]));
+        if (first.RootElement.TryGetProperty("kind", out var firstKind) && firstKind.GetString() == "deterministic-replay")
+            throw new ArgumentException("Compare original inference reports; replay source metadata is recorded separately.");
         var datasetHash = first.RootElement.GetProperty("datasetSha256").GetString();
         var promptVersion = first.RootElement.GetProperty("promptVersion").GetString();
         var runtimeVersion = first.RootElement.GetProperty("runtime").GetString();
@@ -302,6 +325,8 @@ try
             {
                 var report = JsonDocument.Parse(await File.ReadAllTextAsync(reportPath));
                 reports.Add(report);
+                if (report.RootElement.TryGetProperty("kind", out var kind) && kind.GetString() == "deterministic-replay")
+                    throw new ArgumentException("Compare original inference reports; replay source metadata is recorded separately.");
                 if (report.RootElement.GetProperty("datasetSha256").GetString() != datasetHash
                     || report.RootElement.GetProperty("promptVersion").GetString() != promptVersion
                     || report.RootElement.GetProperty("runtime").GetString() != runtimeVersion
@@ -343,7 +368,7 @@ try
                     acceptedCorrectionMetrics = report.RootElement.GetProperty("metrics")
                 }).ToArray()
             };
-            await File.WriteAllTextAsync(args[1], JsonSerializer.Serialize(comparison, options));
+            await BenchmarkArtifactPolicy.WriteTextNewAsync(args[1], JsonSerializer.Serialize(comparison, options));
             Console.WriteLine($"Compared {reports.Count} model runs on the same dataset and decoding settings.");
             return 0;
         }
@@ -367,12 +392,7 @@ catch (Exception exception) when (exception is IOException or JsonException or A
     return 1;
 }
 
-static void RequireNewOutputs(params string[] paths)
-{
-    if (paths.Any(path => File.Exists(path) || Directory.Exists(path))
-        || paths.Select(Path.GetFullPath).Distinct(OperatingSystem.IsWindows() || OperatingSystem.IsMacOS() ? StringComparer.OrdinalIgnoreCase : StringComparer.Ordinal).Count() != paths.Length)
-        throw new IOException("Benchmark outputs must be distinct new paths; historical artifacts cannot be overwritten.");
-}
+static void RequireNewOutputs(params string[] paths) => BenchmarkArtifactPolicy.RequireNewOutputs(paths);
 
 static BenchmarkCase[] ReadCases(string path, JsonSerializerOptions options) => DatasetCommands.ReadCases(path, options);
 

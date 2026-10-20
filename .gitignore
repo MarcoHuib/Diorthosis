@@ -11,3 +11,6 @@ artifacts/
 
 # Local test reports
 **/TestResults/
+
+# Python developer-tool caches
+**/__pycache__/

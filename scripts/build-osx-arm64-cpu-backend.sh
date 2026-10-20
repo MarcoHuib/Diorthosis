@@ -24,16 +24,15 @@ command -v ninja >/dev/null || { echo "Ninja 1.11.1.4 or compatible is required 
 command -v xcrun >/dev/null || { echo "Xcode Command Line Tools are required to build the pinned native backend." >&2; exit 2; }
 
 llama_commit=3f7c29d318e317b63f54c558bc69803963d7d88c
-work_root="${TMPDIR:-/tmp}/diorthosis-llama-cpu-${llama_commit}"
+# A fresh checkout/build root prevents a dirty cached tree from masquerading as the pin.
+work_root="$(mktemp -d "${TMPDIR:-/tmp}/diorthosis-llama-cpu-${llama_commit}.XXXXXX")"
+trap 'rm -rf "$work_root"' EXIT
 source_dir="$work_root/source"
 build_dir="$work_root/build"
-
-if [[ ! -d "$source_dir/.git" ]]; then
-  mkdir -p "$work_root"
-  git clone --filter=blob:none --no-checkout https://github.com/ggml-org/llama.cpp.git "$source_dir"
-fi
+git clone --filter=blob:none --no-checkout https://github.com/ggml-org/llama.cpp.git "$source_dir"
 git -C "$source_dir" fetch --depth 1 origin "$llama_commit"
 git -C "$source_dir" checkout --detach "$llama_commit"
+bash "$(dirname "$0")/verify-native-source.sh" "$source_dir" "$llama_commit"
 
 cmake -S "$source_dir" -B "$build_dir" -G Ninja \
   -DCMAKE_BUILD_TYPE=Release \

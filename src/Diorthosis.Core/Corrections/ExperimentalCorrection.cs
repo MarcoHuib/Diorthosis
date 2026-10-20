@@ -80,8 +80,8 @@ public sealed class ExperimentalCorrectionEngine(IModelInferenceAdapter adapter,
             };
             var candidate = SourceEdits.Apply(request.Text, edits);
             // Use the identical passage/protection policy after strict JSON/source validation.
-            var validated = ModelCorrectionEngine.AnalyzeInference(new(candidate, GenerationTermination.EndOfGeneration, inference.SampledTokens), request);
-            return validated with { RawOutput = inference.Text, ExtractedCorrection = candidate };
+            var validated = ModelCorrectionEngine.AnalyzeLiteralCandidate(candidate, request);
+            return validated with { RawOutput = inference.Text };
         }
         catch (AmbiguousAlignmentException)
         {

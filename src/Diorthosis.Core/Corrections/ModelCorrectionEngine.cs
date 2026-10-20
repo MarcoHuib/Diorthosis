@@ -13,7 +13,7 @@ public sealed class ModelCorrectionEngine(IModelInferenceAdapter adapter, int ma
     private static readonly Regex PathToken = new(@"(?<![\p{L}\p{N}])(?:[A-Za-z]:\\(?:[^\\<>\r\n]+\\)*[^\s<>\\]+|/(?:[^\s<>/]+/)*[^\s<>/]+)(?![\p{L}\p{N}])", RegexOptions.CultureInvariant);
     private static readonly Regex DomainToken = new(@"(?<![\p{L}\p{N}])(?:[\p{L}\p{N}-]+\.)+[\p{L}]{2,}(?![\p{L}\p{N}])", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant);
     private static readonly Regex IpToken = new(@"(?<![\p{L}\p{N}])(?:\d{1,3}\.){3}\d{1,3}|(?<![\p{L}\p{N}])(?:[0-9A-Fa-f]{0,4}:){2,7}[0-9A-Fa-f]{0,4}(?![\p{L}\p{N}])", RegexOptions.CultureInvariant);
-    private static readonly Regex WrittenDateToken = new(@"(?<![\p{L}\p{N}])(?:[0-3]?\d\s+(?:jan(?:uary|uari)?|feb(?:ruary|ruari)?|march|mar|maart|mrt|apr(?:il)?|may|mei|june|jun|juni|july|jul|juli|aug(?:ust|ustus)?|sep(?:tember)?|okt(?:ober)?|oct(?:ober)?|nov(?:ember)?|dec(?:ember)?)[\s,]+\d{4}|(?:jan(?:uary|uari)?|feb(?:ruary|ruari)?|march|mar|maart|mrt|apr(?:il)?|may|mei|june|jun|juni|july|jul|juli|aug(?:ust|ustus)?|sep(?:tember)?|okt(?:ober)?|oct(?:ober)?|nov(?:ember)?|dec(?:ember)?)\s+[0-3]?\d(?:st|nd|rd|th)?[\s,]+\d{4})(?![\p{L}\p{N}])", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant);
+    private static readonly Regex WrittenDateToken = new(@"(?<![\p{L}\p{N}])(?:[0-3]?\d(?:st|nd|rd|th)?\s+(?:jan(?:uary|uari)?|feb(?:ruary|ruari)?|march|mar|maart|mrt|apr(?:il)?|may|mei|june|jun|juni|july|jul|juli|aug(?:ust|ustus)?|sep(?:tember)?|okt(?:ober)?|oct(?:ober)?|nov(?:ember)?|dec(?:ember)?)(?:[\s,]+\d{4})?|(?:jan(?:uary|uari)?|feb(?:ruary|ruari)?|march|mar|maart|mrt|apr(?:il)?|may|mei|june|jun|juni|july|jul|juli|aug(?:ust|ustus)?|sep(?:tember)?|okt(?:ober)?|oct(?:ober)?|nov(?:ember)?|dec(?:ember)?)\s+[0-3]?\d(?:st|nd|rd|th)?(?:[\s,]+\d{4})?)(?![\p{L}\p{N}])", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant);
     private static readonly Regex NumberToken = new(@"\d+(?:[.,:/-]\d+)*", RegexOptions.CultureInvariant);
     private static readonly Regex ProtectedIdentifier = new(@"\b(?:[A-Za-z0-9]*[a-z][A-Z][A-Za-z0-9]*|[A-Z]{2,}[A-Z0-9]*|[A-Za-z0-9]*\d+[A-Za-z0-9]*|[A-Za-z0-9]+(?:[-_][A-Za-z0-9]+)+)\b", RegexOptions.CultureInvariant);
     private static readonly Regex WordToken = new(@"[\p{L}\p{N}_]+", RegexOptions.CultureInvariant);
@@ -39,15 +39,24 @@ public sealed class ModelCorrectionEngine(IModelInferenceAdapter adapter, int ma
         ArgumentNullException.ThrowIfNull(request);
         if (inference.Termination != GenerationTermination.EndOfGeneration)
             return ModelResponseAnalysis.Rejected(inference.Text, null, [], "termination", "Generation did not finish naturally at end-of-generation.");
-        var analysis = AnalyzeModelResponse(inference.Text, request.Text);
+        return ApplyProtectedSpans(AnalyzeModelResponse(inference.Text, request.Text), request);
+    }
+
+    public static ModelResponseAnalysis AnalyzeLiteralCandidate(string candidate, CorrectionRequest request) =>
+        ApplyProtectedSpans(AnalyzeResponse(candidate, request.Text, literalCandidate: true), request);
+
+    private static ModelResponseAnalysis ApplyProtectedSpans(ModelResponseAnalysis analysis, CorrectionRequest request)
+    {
         if (analysis.Disposition == CorrectionDisposition.Accepted && request.ProtectedSpans.Any(span => analysis.Edits.Any(edit =>
-            edit.Length == 0 ? edit.Start > span.Start && edit.Start < span.Start + span.Length
+            edit.Length == 0 ? edit.Start >= span.Start && edit.Start <= span.Start + span.Length
                 : edit.Start < span.Start + span.Length && edit.Start + edit.Length > span.Start)))
-            return ModelResponseAnalysis.Rejected(inference.Text, analysis.ExtractedCorrection, analysis.RawCandidateEdits, "protected-span", "Candidate intersects explicitly protected source content.");
+            return ModelResponseAnalysis.Rejected(analysis.RawOutput, analysis.ExtractedCorrection, analysis.RawCandidateEdits, "protected-span", "Candidate intersects explicitly protected source content.");
         return analysis;
     }
 
-    public static ModelResponseAnalysis AnalyzeModelResponse(string output, string source)
+    public static ModelResponseAnalysis AnalyzeModelResponse(string output, string source) => AnalyzeResponse(output, source, literalCandidate: false);
+
+    private static ModelResponseAnalysis AnalyzeResponse(string output, string source, bool literalCandidate)
     {
         ArgumentNullException.ThrowIfNull(output);
         ArgumentNullException.ThrowIfNull(source);
@@ -57,7 +66,7 @@ public sealed class ModelCorrectionEngine(IModelInferenceAdapter adapter, int ma
         catch (InvalidDataException) { return ModelResponseAnalysis.Rejected(output, null, [], "unicode", "Malformed UTF-16 text."); }
         if (output == source) return ModelResponseAnalysis.Unchanged(output, source);
         string candidate;
-        try { candidate = ExtractCandidate(output, source); }
+        try { candidate = literalCandidate ? output : ExtractCandidate(output, source); }
         catch (InvalidDataException exception) { return ModelResponseAnalysis.Rejected(output, null, [], "extraction", exception.Message); }
         if (!source.Contains('\n') && candidate.Contains('\n'))
             return ModelResponseAnalysis.Rejected(output, candidate, [], "extraction", "Correction output adds line breaks absent from the source.");
@@ -218,15 +227,19 @@ public sealed class ModelCorrectionEngine(IModelInferenceAdapter adapter, int ma
             throw new InvalidDataException("Correction output changes negation or modality and requires review.");
         if (source.Count(character => character == '?') != candidate.Count(character => character == '?')
             || source.Count(character => character == '!') != candidate.Count(character => character == '!')
-            || TerminalSpeechAct(source) != TerminalSpeechAct(candidate))
+            || NormalizeStatementEnding(TerminalSpeechAct(source)) != NormalizeStatementEnding(TerminalSpeechAct(candidate))
+            || (source.Contains('?') || source.Contains('!') || candidate.Contains('?') || candidate.Contains('!'))
+                && !SpeechActs(source).SequenceEqual(SpeechActs(candidate)))
             throw new InvalidDataException("Correction output changes the statement/question speech act.");
+        if (!SemanticAnchors(source).SequenceEqual(SemanticAnchors(candidate), StringComparer.Ordinal))
+            throw new InvalidDataException("Correction output changes protected temporal, relational, or personal-agent anchors.");
         EnsureNoIndependentContentOmission(source, candidate);
     }
 
     private static IEnumerable<string> CriticalMeaningMarkers(string value)
     {
         foreach (Match match in Regex.Matches(value,
-            @"(?<![\p{L}\p{N}])(?:can't|can’t|cannot|don't|don’t|doesn't|doesn’t|isn't|isn’t|aren't|aren’t|wasn't|wasn’t|weren't|weren’t|won't|won’t|wouldn't|wouldn’t|shouldn't|shouldn’t|mustn't|mustn’t|needn't|needn’t|never|not|must|may|can|need|should|niet|geen|nooit|moet|moeten|mag|mogen|kan|kunnen|mocht|mochten)(?![\p{L}\p{N}])",
+            @"(?<![\p{L}\p{N}])(?:can't|can’t|cannot|don't|don’t|doesn't|doesn’t|isn't|isn’t|aren't|aren’t|wasn't|wasn’t|weren't|weren’t|won't|won’t|wouldn't|wouldn’t|shouldn't|shouldn’t|mustn't|mustn’t|needn't|needn’t|never|not|no|must|may|can|need|should|niet|geen|nooit|moet|moeten|mag|mogen|kan|kunnen|mocht|mochten)(?![\p{L}\p{N}])",
             RegexOptions.IgnoreCase | RegexOptions.CultureInvariant))
             yield return match.Value.ToLowerInvariant();
     }
@@ -239,8 +252,26 @@ public sealed class ModelCorrectionEngine(IModelInferenceAdapter adapter, int ma
             @"[.!?;\r\n]+|(?<![\p{L}\p{N}])(?:but|maar|and|en|if|als|unless|tenzij)(?![\p{L}\p{N}])",
             RegexOptions.IgnoreCase | RegexOptions.CultureInvariant).Select(clause => string.Join(",", CriticalMeaningMarkers(clause))));
         if ((CriticalMeaningMarkers(source).Any() || CriticalMeaningMarkers(candidate).Any()) && Scope(source) != Scope(candidate)) return true;
-        static IEnumerable<string> Quotes(string text) => Regex.Matches(text, "\"[^\"]*\"|“[^”]*”", RegexOptions.CultureInvariant).Select(match => match.Value);
+        static IEnumerable<string> Quotes(string text) => Regex.Matches(text,
+            """
+            "[^"]*"|“[^”]*”|‘[^’\r\n]*’|(?<![\p{L}\p{M}\p{N}])'[^'\r\n]+'(?![\p{L}\p{M}\p{N}])
+            """, RegexOptions.CultureInvariant).Select(match => match.Value);
         return !Quotes(source).SequenceEqual(Quotes(candidate), StringComparer.Ordinal);
+    }
+
+    private static char NormalizeStatementEnding(char ending) => ending == '.' ? '\0' : ending;
+
+    private static IEnumerable<char> SpeechActs(string text) => Regex.Matches(text, @"[^.!?…]+[.!?…]+", RegexOptions.CultureInvariant)
+        .Select(match => match.Value.Contains('?') ? '?' : match.Value.Contains('!') ? '!' : '.');
+
+    private static IEnumerable<string> SemanticAnchors(string text)
+    {
+        static string Matches(string value, string alternatives) => string.Join("|", Regex.Matches(value,
+            @"(?<![\p{L}\p{M}\p{N}])(?:" + alternatives + @")(?![\p{L}\p{M}\p{N}])",
+            RegexOptions.IgnoreCase | RegexOptions.CultureInvariant).Select(match => match.Value.ToLowerInvariant()));
+        // Moving a temporal adjunct past the same agent is a legitimate word-order repair.
+        yield return Matches(text, "yesterday|today|tomorrow|before|after|gisteren|vandaag|morgen|voor|na");
+        yield return Matches(text, "I|you|he|she|we|they|me|him|her|us|them|ik|jij|je|u|hij|zij|ze|wij|mij|hem|haar|ons|hen|hun");
     }
 
     private static char TerminalSpeechAct(string value)
@@ -257,6 +288,12 @@ public sealed class ModelCorrectionEngine(IModelInferenceAdapter adapter, int ma
             .Where(sentence => WordToken.Matches(sentence).Count >= 2).ToArray();
         if (sourceSentences.Length < 2) return;
         var candidateWords = WordToken.Matches(candidate).Select(match => match.Value).ToArray();
+        var sourceCounts = WordToken.Matches(source).Select(match => match.Value).GroupBy(word => word, StringComparer.OrdinalIgnoreCase).ToDictionary(group => group.Key, group => group.Count(), StringComparer.OrdinalIgnoreCase);
+        var candidateCounts = candidateWords.GroupBy(word => word, StringComparer.OrdinalIgnoreCase).ToDictionary(group => group.Key, group => group.Count(), StringComparer.OrdinalIgnoreCase);
+        var removedSentences = Diff(source, candidate).Where(edit => edit.ReplacementText.Length == 0)
+            .Any(edit => sourceSentences.Any(sentence => edit.OriginalText.Contains(sentence.Trim(), StringComparison.Ordinal)));
+        if (removedSentences && sourceCounts.Any(pair => candidateCounts.GetValueOrDefault(pair.Key) < pair.Value))
+            throw new InvalidDataException("Correction output removes a complete independent source statement.");
         foreach (var sentence in sourceSentences)
         {
             var words = WordToken.Matches(sentence).Select(match => match.Value).ToArray();
@@ -277,8 +314,11 @@ public sealed class ModelCorrectionEngine(IModelInferenceAdapter adapter, int ma
             "there", "on", "in", "after", "please", "wait", "team", "tomorrow", "for", "when",
             "ik", "je", "jij", "u", "hij", "zij", "ze", "het", "de", "een", "dit", "dat", "er", "op", "om", "morgen", "als", "we", "wij"
         };
-        foreach (Match match in Regex.Matches(value, @"\b\p{Lu}[\p{L}'’.-]*\b", RegexOptions.CultureInvariant))
+        foreach (Match match in Regex.Matches(value, @"\b\p{Lu}[\p{L}\p{M}'’.-]*\b", RegexOptions.CultureInvariant))
         {
+            // The English pronoun remains a pronoun at every sentence position.
+            // Its identity/order is checked by SemanticAnchors, not name detection.
+            if (match.Value == "I") continue;
             var previous = value.AsSpan(0, match.Index).TrimEnd();
             var beginsSentence = previous.Length == 0 || previous[^1] is '.' or '!' or '?' or '…' or '\n' or '\r';
             if (!beginsSentence || !sentenceInitialFunctionWords.Contains(match.Value)) yield return match.Value;
@@ -303,6 +343,8 @@ public sealed class ModelCorrectionEngine(IModelInferenceAdapter adapter, int ma
         var b = candidateParts.Select(part => canonicalEquivalence ? part.Value.Normalize(NormalizationForm.FormC) : part.Value).ToArray();
         var operations = MyersDiff(a, b);
         var edits = new List<TextEdit>();
+        var candidateEditStarts = new List<int>();
+        int? candidateEditStart = null;
         var ai = 0;
         var bi = 0;
         int? editStart = null;
@@ -312,6 +354,8 @@ public sealed class ModelCorrectionEngine(IModelInferenceAdapter adapter, int ma
         {
             if (editStart is null) return;
             edits.Add(new TextEdit(editStart.Value, original.Length, original.ToString(), replacement.ToString()));
+            candidateEditStarts.Add(candidateEditStart!.Value);
+            candidateEditStart = null;
             editStart = null;
             original.Clear();
             replacement.Clear();
@@ -326,12 +370,13 @@ public sealed class ModelCorrectionEngine(IModelInferenceAdapter adapter, int ma
             else
             {
                 editStart ??= ai == sourceParts.Length ? source.Length : sourceParts[ai].Start;
+                candidateEditStart ??= bi == candidateParts.Length ? candidate.Length : candidateParts[bi].Start;
                 if (operation == DiffOperation.Delete) { original.Append(sourceParts[ai].Value); ai++; }
                 else { replacement.Append(candidateParts[bi].Value); bi++; }
             }
         }
         Flush();
-        MergeWordFragments(edits, source, candidate);
+        MergeWordFragments(edits, candidateEditStarts, source, candidate);
         if (canonicalEquivalence
             ? ApplyDiffForVerification(source, edits).Normalize(NormalizationForm.FormC) != candidate.Normalize(NormalizationForm.FormC)
             : ApplyDiffForVerification(source, edits) != candidate)
@@ -339,7 +384,7 @@ public sealed class ModelCorrectionEngine(IModelInferenceAdapter adapter, int ma
         return edits;
     }
 
-    private static void MergeWordFragments(List<TextEdit> edits, string source, string candidate)
+    private static void MergeWordFragments(List<TextEdit> edits, List<int> candidateStarts, string source, string candidate)
     {
         for (var index = 1; index < edits.Count;)
         {
@@ -347,9 +392,9 @@ public sealed class ModelCorrectionEngine(IModelInferenceAdapter adapter, int ma
             var current = edits[index];
             var sourceGapStart = previous.Start + previous.Length;
             var sourceGap = source.AsSpan(sourceGapStart, current.Start - sourceGapStart);
-            var candidatePreviousStart = previous.Start + edits.Take(index - 1).Sum(edit => edit.ReplacementText.Length - edit.Length);
+            var candidatePreviousStart = candidateStarts[index - 1];
             var candidatePreviousEnd = candidatePreviousStart + previous.ReplacementText.Length;
-            var candidateCurrentStart = current.Start + edits.Take(index).Sum(edit => edit.ReplacementText.Length - edit.Length);
+            var candidateCurrentStart = candidateStarts[index];
             var candidateGap = candidate.AsSpan(candidatePreviousEnd, candidateCurrentStart - candidatePreviousEnd);
             if (IsWordGap(sourceGap) && IsWordGap(candidateGap))
             {
@@ -359,6 +404,7 @@ public sealed class ModelCorrectionEngine(IModelInferenceAdapter adapter, int ma
                     source.Substring(previous.Start, end - previous.Start),
                     candidate.Substring(candidatePreviousStart, candidateEnd - candidatePreviousStart));
                 edits.RemoveAt(index);
+                candidateStarts.RemoveAt(index);
             }
             else index++;
         }
@@ -531,7 +577,7 @@ public sealed class ModelCorrectionEngine(IModelInferenceAdapter adapter, int ma
             if (!OnlyWhitespaceChanged(source, candidate)) EnsurePlausibleCorrection(candidate, source);
             return validated;
         }
-        catch (JsonException exception)
+        catch (Exception exception) when (exception is JsonException or InvalidOperationException)
         {
             throw new InvalidDataException("Correction output is not valid JSON edit data.", exception);
         }
