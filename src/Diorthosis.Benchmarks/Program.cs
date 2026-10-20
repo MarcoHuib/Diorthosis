@@ -8,7 +8,7 @@ using Diorthosis.Core.Inference;
 
 var options = new JsonSerializerOptions(JsonSerializerDefaults.Web);
 options.Converters.Add(new JsonStringEnumConverter(JsonNamingPolicy.CamelCase));
-if (args.Length < 1 || (args[0] != "evaluate" && args[0] != "run" && args[0] != "compare" && args[0] != "reparse" && args[0] != "audit-dataset" && args[0] != "check-splits" && args[0] != "evaluate-v3" && args[0] != "experiment"))
+if (args.Length < 1 || (args[0] != "evaluate" && args[0] != "run" && args[0] != "compare" && args[0] != "reparse" && args[0] != "audit-dataset" && args[0] != "check-splits" && args[0] != "evaluate-v3" && args[0] != "experiment" && args[0] != "adjudicate"))
 {
     Console.Error.WriteLine("Usage: diorthosis-benchmarks evaluate <cases.jsonl> <predictions.jsonl> | run <cases.jsonl> <model.gguf> <predictions.jsonl> <report.json> [--trace <trace.jsonl>] | reparse <cases.jsonl> <raw-trace.jsonl> <run-report.json> <predictions.jsonl> <trace.jsonl> <report.json> | compare <comparison.json> <report1.json> <report2.json> [reportN.json ...]");
     return 2;
@@ -16,6 +16,16 @@ if (args.Length < 1 || (args[0] != "evaluate" && args[0] != "run" && args[0] != 
 
 try
 {
+    if (args[0] == "adjudicate")
+    {
+        if (args.Length != 5) throw new ArgumentException("adjudicate <subjects.jsonl> <decisions.jsonl> <adjudications.jsonl> <NEW-report.json>");
+        BenchmarkArtifactPolicy.RequireNewOutputs(args[4]);
+        T[] Lines<T>(string path) => File.ReadLines(path).Where(line => !string.IsNullOrWhiteSpace(line))
+            .Select(line => JsonSerializer.Deserialize<T>(line, options) ?? throw new InvalidDataException("Null review record.")).ToArray();
+        var reviewed = LinguisticReview.Evaluate(Lines<ReviewSubject>(args[1]), Lines<ReviewDecision>(args[2]), Lines<ReviewAdjudication>(args[3]));
+        await BenchmarkArtifactPolicy.WriteTextNewAsync(args[4], JsonSerializer.Serialize(reviewed, options));
+        return 0;
+    }
     if (args[0] == "experiment") return await CorrectionExperiment.RunAsync(args, options);
     if (args[0] == "evaluate-v3")
     {
