@@ -36,7 +36,7 @@ public sealed record CorrectionRequest
         ArgumentException.ThrowIfNullOrWhiteSpace(text);
         if (text.Length > 32768) throw new ArgumentException("Correction input exceeds the 32768 UTF-16 unit safety limit.", nameof(text));
         SourceEdits.EnsureUnicode(text);
-        ProtectedSpans = (protectedSpans ?? []).ToArray();
+        ProtectedSpans = Array.AsReadOnly((protectedSpans ?? []).ToArray());
         SourceEdits.Validate(text, ProtectedSpans.Select(span => new TextEdit(span.Start, span.Length, span.OriginalText, span.OriginalText)), allowNoOps: true);
         if (ProtectedSpans.Any(span => span.Length == 0)) throw new ArgumentException("Protected spans must be nonempty.", nameof(protectedSpans));
         Language = language;
