@@ -259,14 +259,22 @@ public sealed class ModelCorrectionEngine(IModelInferenceAdapter adapter, int ma
         }
     }
 
-    private static IReadOnlyList<TextEdit> Diff(string source, string candidate)
+    /// <summary>Diagnostic source alignment only; does not authorize applying the candidate.</summary>
+    public static IReadOnlyList<TextEdit> DeriveDiagnosticEdits(string source, string candidate, bool canonicalEquivalence = false)
+    {
+        ArgumentNullException.ThrowIfNull(source);
+        ArgumentNullException.ThrowIfNull(candidate);
+        return Diff(source, candidate, canonicalEquivalence);
+    }
+
+    private static IReadOnlyList<TextEdit> Diff(string source, string candidate, bool canonicalEquivalence = false)
     {
         var sourceStarts = StringInfo.ParseCombiningCharacters(source);
         var candidateStarts = StringInfo.ParseCombiningCharacters(candidate);
         var sourceParts = GetTextElements(source, sourceStarts);
         var candidateParts = GetTextElements(candidate, candidateStarts);
-        var a = sourceParts.Select(part => part.Value).ToArray();
-        var b = candidateParts.Select(part => part.Value).ToArray();
+        var a = sourceParts.Select(part => canonicalEquivalence ? part.Value.Normalize(NormalizationForm.FormC) : part.Value).ToArray();
+        var b = candidateParts.Select(part => canonicalEquivalence ? part.Value.Normalize(NormalizationForm.FormC) : part.Value).ToArray();
         var operations = MyersDiff(a, b);
         var edits = new List<TextEdit>();
         var ai = 0;
@@ -298,7 +306,9 @@ public sealed class ModelCorrectionEngine(IModelInferenceAdapter adapter, int ma
         }
         Flush();
         MergeWordFragments(edits, source, candidate);
-        if (ApplyDiffForVerification(source, edits) != candidate)
+        if (canonicalEquivalence
+            ? ApplyDiffForVerification(source, edits).Normalize(NormalizationForm.FormC) != candidate.Normalize(NormalizationForm.FormC)
+            : ApplyDiffForVerification(source, edits) != candidate)
             throw new InvalidDataException("Correction output could not be represented by a source-aligned diff.");
         return edits;
     }

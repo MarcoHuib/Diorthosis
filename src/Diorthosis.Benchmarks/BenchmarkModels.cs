@@ -5,7 +5,11 @@ namespace Diorthosis.Benchmarks;
 public sealed record AcceptedCorrection(string ReplacementText);
 
 public sealed record ErrorAnnotation(int Start, int Length, string OriginalText, ErrorCategory Category,
-    IReadOnlyList<AcceptedCorrection> AcceptedCorrections);
+    IReadOnlyList<AcceptedCorrection> AcceptedCorrections)
+{
+    // Explicit dependency groups are atomic; absent metadata means independent annotations.
+    public string? DependencyGroup { get; init; }
+}
 
 public sealed record BenchmarkCase(string Id, CorrectionLanguage Language, string InputText,
     IReadOnlyList<ErrorAnnotation> Errors);

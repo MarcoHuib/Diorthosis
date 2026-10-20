@@ -1,0 +1,7 @@
+# Experimental reference evaluator
+
+Use `dotnet run --project src/Diorthosis.Benchmarks -- evaluate-v3 <cases.jsonl> <predictions.jsonl>`. The existing `evaluate` command reproduces v1; `BenchmarkEvaluator.Evaluate` and `EvaluateQuality` retain v2. Run `python3 scripts/replay-evaluator-v3.py <NEW-directory>` after a Release build for deterministic comparison of the four saved model runs.
+
+Read [ADR 0010](decisions/0010-reference-group-evaluator.md) for grouping, dependency, normalization, denominator and uncertainty policies. The new API `ReferenceEvaluator.Evaluate` optionally accepts correction dispositions and explicit candidate-bound proposal reviews. CLI prediction files cannot infer dispositions; absence is `Unknown`, never fabricated as accepted. Necessary-and-correct and meaning-preserved judgments both need to pass for an adjudicated proposal. This is a recording mechanism; no automatic semantic judge or invented independent reviewer is supplied.
+
+Remaining gaps: reference completeness; automatic bilingual linguistic proposal grouping; explicit annotated speech acts/temporal scope; reviewer identity and provenance governance for externally supplied review labels; full-passage alternatives beyond combinations of replacement alternatives; and family-aware statistical inference on a frozen held-out sample. Grouping is stable for equivalent outputs but a canonical diff can still align repetitive words ambiguously. Unknown local alternatives require adjudication. V3 is an infrastructure improvement, not proof of superior model quality.
