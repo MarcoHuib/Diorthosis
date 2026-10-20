@@ -20,6 +20,7 @@ public sealed record MetricResult(string Language, string Category, int Annotate
 public sealed record QualityMetricResult(string EvaluatorVersion, string Language, int AnnotatedErrors,
     int CorrectlyResolvedErrors, int SuggestedEdits, int CorrectSuggestions, int CorrectInputs,
     int CorrectInputsChanged, int StrictlyAcceptedCases, int StrictCaseDenominator,
-    int UnnecessaryModifications, int AcceptedChanges, int RejectedChanges, int SuppressedChanges,
+    int UnnecessaryModifications, bool DispositionsAvailable, int? AcceptedChanges, int? RejectedChanges,
+    int? SuppressedChanges, int? UnchangedChanges, int? NeedsReviewChanges,
     double? ErrorLevelRecall, double? StrictCompletePassageAcceptability,
     double? HistoricalHunkPrecision, double? CleanInputPreservation);

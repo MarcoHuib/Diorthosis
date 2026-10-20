@@ -24,6 +24,8 @@ try
         var predictions = new List<BenchmarkPrediction>(cases.Length);
         var rawPredictions = new List<BenchmarkPrediction>(cases.Length);
         var traces = new List<object>(cases.Length);
+        var dispositions = new Dictionary<string, CorrectionDisposition>(StringComparer.Ordinal);
+        var replayComparisons = new List<object>(cases.Length);
         var rejections = new Dictionary<string, int>(StringComparer.Ordinal);
         var rejectedButRawCorrectErrors = 0;
         foreach (var line in File.ReadLines(args[2]).Where(line => !string.IsNullOrWhiteSpace(line)))
@@ -34,13 +36,23 @@ try
             if (!caseMap.TryGetValue(caseId, out var item)) throw new InvalidDataException("Captured trace contains an unknown benchmark case ID.");
             if (trace.GetProperty("input").GetString() != item.InputText) throw new InvalidDataException("Captured trace input does not match the benchmark dataset.");
             var raw = trace.GetProperty("rawModelOutput").GetString() ?? string.Empty;
+            var historicalEdits = trace.TryGetProperty("validatedTextEdits", out var historicalEditsValue)
+                ? JsonSerializer.Deserialize<IReadOnlyList<TextEdit>>(historicalEditsValue.GetRawText(), options) ?? []
+                : [];
+            var historicalCorrectErrors = ReadTraceMetric(trace, "acceptedBenchmark", "correctlyResolvedErrors");
             var analysis = ModelCorrectionEngine.AnalyzeModelResponse(raw, item.InputText);
+            dispositions[caseId] = analysis.Disposition;
             predictions.Add(new BenchmarkPrediction(caseId, analysis.Edits));
             var rawPrediction = new BenchmarkPrediction(caseId, analysis.RawCandidateEdits);
             rawPredictions.Add(rawPrediction);
             var rawCaseMetrics = BenchmarkEvaluator.EvaluateHistorical([item], [rawPrediction]).Where(metric => metric.Category == "all").ToArray();
             var acceptedCaseMetrics = BenchmarkEvaluator.EvaluateHistorical([item], [new BenchmarkPrediction(caseId, analysis.Edits)])
                 .Where(metric => metric.Category == "all").ToArray();
+            var currentCorrectErrors = acceptedCaseMetrics[0].CorrectlyResolvedErrors;
+            var currentFalsePositives = acceptedCaseMetrics[0].FalsePositiveSuggestions;
+            var replayClassification = ClassifyReplayChange(historicalEdits.Count, analysis.Edits.Count,
+                analysis.Disposition, analysis.RejectionReason, historicalCorrectErrors, currentCorrectErrors,
+                currentFalsePositives);
             var rawCorrectErrors = rawCaseMetrics[0].CorrectlyResolvedErrors;
             if (analysis.RejectionStage is not null && rawCorrectErrors > 0) rejectedButRawCorrectErrors += rawCorrectErrors;
             if (analysis.RejectionStage is not null)
@@ -56,11 +68,27 @@ try
                 extractedCorrection = analysis.ExtractedCorrection,
                 rawCandidateTextEdits = analysis.RawCandidateEdits,
                 validatedTextEdits = analysis.Edits,
+                historicalValidatedTextEdits = historicalEdits,
+                disposition = analysis.Disposition,
+                replayClassification,
                 rejectionStage = analysis.RejectionStage,
                 rejectionReason = analysis.RejectionReason,
                 rejectedButRawCorrectErrors = analysis.RejectionStage is not null ? rawCorrectErrors : 0,
                 rawCandidateBenchmark = rawCaseMetrics,
                 acceptedBenchmark = acceptedCaseMetrics
+            });
+            replayComparisons.Add(new
+            {
+                caseId,
+                language = item.Language.ToString(),
+                disposition = analysis.Disposition,
+                replayClassification,
+                historicalEditCount = historicalEdits.Count,
+                currentEditCount = analysis.Edits.Count,
+                historicalCorrectErrors,
+                currentCorrectErrors,
+                currentFalsePositiveSuggestions = currentFalsePositives,
+                rejectionReason = analysis.RejectionReason
             });
         }
         if (predictions.Count != cases.Length || predictions.Select(item => item.CaseId).Distinct(StringComparer.Ordinal).Count() != cases.Length)
@@ -68,10 +96,12 @@ try
         await File.WriteAllLinesAsync(args[4], predictions.Select(item => JsonSerializer.Serialize(item, options)));
         await File.WriteAllLinesAsync(args[5], traces.Select(item => JsonSerializer.Serialize(item, options)));
         var metrics = BenchmarkEvaluator.EvaluateHistorical(cases, predictions);
-        var qualityMetrics = BenchmarkEvaluator.EvaluateQuality(cases, predictions);
+        var qualityMetrics = BenchmarkEvaluator.EvaluateQuality(cases, predictions, dispositions);
         var rawMetrics = BenchmarkEvaluator.EvaluateHistorical(cases, rawPredictions);
         var report = System.Text.Json.Nodes.JsonNode.Parse(await File.ReadAllTextAsync(args[3]))
             ?? throw new InvalidDataException("Original run report is empty.");
+        report["historicalV4Metrics"] = report["metrics"]?.DeepClone();
+        report["historicalV4RawCandidateMetrics"] = report["rawCandidateMetrics"]?.DeepClone();
         report["metrics"] = JsonSerializer.SerializeToNode(metrics, options);
         report["qualityMetrics"] = JsonSerializer.SerializeToNode(qualityMetrics, options);
         report["rawCandidateMetrics"] = JsonSerializer.SerializeToNode(rawMetrics, options);
@@ -79,6 +109,13 @@ try
         report["rejectedModelOutputs"] = rejections.Values.Sum();
         report["rejectedModelOutputsByReason"] = JsonSerializer.SerializeToNode(rejections, options);
         report["rejectedButRawCorrectErrors"] = rejectedButRawCorrectErrors;
+        report["dispositionsAvailable"] = true;
+        report["dispositionCounts"] = JsonSerializer.SerializeToNode(dispositions.Values
+            .GroupBy(value => value.ToString()).ToDictionary(group => group.Key, group => group.Count()), options);
+        report["replayComparisons"] = JsonSerializer.SerializeToNode(replayComparisons, options);
+        report["replaySummary"] = JsonSerializer.SerializeToNode(replayComparisons
+            .Select(item => ((JsonElement)JsonSerializer.SerializeToElement(item, options)).GetProperty("replayClassification").GetString()!)
+            .GroupBy(value => value).ToDictionary(group => group.Key, group => group.Count()), options);
         report["postProcessingRevision"] = "current deterministic parser reapplied to captured raw generation; inference timings/memory are from the referenced run report";
         await File.WriteAllTextAsync(args[6], report.ToJsonString(options));
         Console.WriteLine(JsonSerializer.Serialize(metrics.Where(metric => metric.Category is "all" or "CorrectText"), options));
@@ -128,6 +165,7 @@ try
         var predictions = new List<BenchmarkPrediction>(cases.Length);
         var rawPredictions = new List<BenchmarkPrediction>(cases.Length);
         var traces = new List<object>(cases.Length);
+        var dispositions = new Dictionary<string, CorrectionDisposition>(StringComparer.Ordinal);
         var rejectionCounts = new Dictionary<string, int>(StringComparer.Ordinal);
         var terminationCounts = new Dictionary<string, int>(StringComparer.Ordinal);
         var rejectedButRawCorrectErrors = 0;
@@ -144,6 +182,7 @@ try
             predictions.Add(new BenchmarkPrediction(item.Id, result.Edits));
             latencies.Add(timer.Elapsed.TotalMilliseconds);
             var analysis = ModelCorrectionEngine.AnalyzeModelResponse(adapter.LastOutput ?? string.Empty, item.InputText);
+            dispositions[item.Id] = analysis.Disposition;
             var rawPrediction = new BenchmarkPrediction(item.Id, analysis.RawCandidateEdits);
             rawPredictions.Add(rawPrediction);
             var rawCaseMetrics = BenchmarkEvaluator.EvaluateHistorical([item], [rawPrediction]).Where(metric => metric.Category == "all").ToArray();
@@ -167,6 +206,7 @@ try
                 extractedCorrection = analysis.ExtractedCorrection,
                 rawCandidateTextEdits = analysis.RawCandidateEdits,
                 validatedTextEdits = result.Edits,
+                disposition = analysis.Disposition,
                 rejectionStage = analysis.RejectionStage,
                 rejectionReason = analysis.RejectionReason,
                 rejectedButRawCorrectErrors = analysis.RejectionStage is not null ? rawCorrectErrors : 0,
@@ -180,7 +220,7 @@ try
         memorySampler.Dispose();
         SampleWorkingSet();
         var metrics = BenchmarkEvaluator.EvaluateHistorical(cases, predictions);
-        var qualityMetrics = BenchmarkEvaluator.EvaluateQuality(cases, predictions);
+        var qualityMetrics = BenchmarkEvaluator.EvaluateQuality(cases, predictions, dispositions);
         var rawMetrics = BenchmarkEvaluator.EvaluateHistorical(cases, rawPredictions);
         var modelHash = await HashFileAsync(args[2]);
         var datasetHash = await HashFileAsync(args[1]);
@@ -213,6 +253,9 @@ try
             generationTerminations = terminationCounts,
             rejectedModelOutputsByReason = rejectionCounts,
             rejectedButRawCorrectErrors,
+            dispositionsAvailable = true,
+            dispositionCounts = dispositions.Values.GroupBy(value => value.ToString())
+                .ToDictionary(group => group.Key, group => group.Count()),
             semanticAlterations = "Require human review; not inferred by this runner",
             decoding = new { sampler = "GreedySamplingPipeline", temperature = 0.0, maximumOutputTokens = engine.MaximumOutputTokens },
             caseCount = cases.Length,
@@ -322,6 +365,45 @@ static async Task<string> HashFileAsync(string path)
 {
     await using var stream = File.OpenRead(path);
     return Convert.ToHexString(await SHA256.HashDataAsync(stream)).ToLowerInvariant();
+}
+
+static int ReadTraceMetric(JsonElement trace, string arrayProperty, string metricProperty)
+{
+    if (!trace.TryGetProperty(arrayProperty, out var values) || values.ValueKind != JsonValueKind.Array) return 0;
+    foreach (var value in values.EnumerateArray())
+        if (value.TryGetProperty("category", out var category) && category.GetString() == "all"
+            && value.TryGetProperty(metricProperty, out var metric) && metric.TryGetInt32(out var result))
+            return result;
+    return 0;
+}
+
+static string ClassifyReplayChange(int historicalEditCount, int currentEditCount,
+    CorrectionDisposition disposition, string? rejectionReason, int historicalCorrectErrors,
+    int currentCorrectErrors, int currentFalsePositiveSuggestions)
+{
+    if (disposition == CorrectionDisposition.Suppressed) return "SuppressedCosmeticOutput";
+    if (disposition == CorrectionDisposition.Unchanged) return "UnchangedOutput";
+    if (disposition == CorrectionDisposition.NeedsReview) return "NeedsHumanReview";
+    if (historicalEditCount > 0 && currentEditCount == 0 && disposition == CorrectionDisposition.Rejected)
+    {
+        var safetyReason = rejectionReason?.Contains("protected", StringComparison.OrdinalIgnoreCase) == true
+            || rejectionReason?.Contains("negation", StringComparison.OrdinalIgnoreCase) == true
+            || rejectionReason?.Contains("speech act", StringComparison.OrdinalIgnoreCase) == true
+            || rejectionReason?.Contains("omits", StringComparison.OrdinalIgnoreCase) == true
+            || rejectionReason?.Contains("symbol", StringComparison.OrdinalIgnoreCase) == true;
+        return safetyReason ? "PreviouslyAcceptedUnsafeModificationBlocked"
+            : historicalCorrectErrors > 0 ? "PreviouslyAcceptedValidCorrectionBlocked"
+            : "PreviouslyAcceptedUncreditedChangeBlocked";
+    }
+    if (historicalEditCount == 0 && currentEditCount > 0 && currentCorrectErrors > 0)
+        return "ValidCorrectionNewlyAccepted";
+    if (disposition == CorrectionDisposition.Rejected && currentEditCount == 0)
+        return "RejectedUnverifiableOutput";
+    if (disposition == CorrectionDisposition.Accepted && currentFalsePositiveSuggestions > 0)
+        return "AcceptedChangeNeedsHumanReview";
+    if (historicalEditCount != currentEditCount)
+        return "AcceptedEditSetChangedNeedsHumanReview";
+    return "NoMaterialReplayChange";
 }
 
 static Dictionary<string, string> ParseOptions(string[] arguments)

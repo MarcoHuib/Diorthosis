@@ -56,14 +56,17 @@ public static class BenchmarkEvaluator
             var correctInputs = languageCases.Count(item => item.Errors.Count == 0);
             var changedCorrectInputs = languageCases.Where(item => item.Errors.Count == 0)
                 .Count(item => (predictions.FirstOrDefault(prediction => prediction.CaseId == item.Id)?.Edits.Count ?? 0) > 0);
-            var counts = dispositions is null ? (0, 0, 0) : (
-                languageCases.Count(item => dispositions.TryGetValue(item.Id, out var value) && value == CorrectionDisposition.Accepted),
-                languageCases.Count(item => dispositions.TryGetValue(item.Id, out var value) && value == CorrectionDisposition.Rejected),
-                languageCases.Count(item => dispositions.TryGetValue(item.Id, out var value) && value == CorrectionDisposition.Suppressed));
+            (int Accepted, int Rejected, int Suppressed, int Unchanged, int NeedsReview)? counts = dispositions is null ? null : (
+                Accepted: languageCases.Count(item => dispositions.TryGetValue(item.Id, out var value) && value == CorrectionDisposition.Accepted),
+                Rejected: languageCases.Count(item => dispositions.TryGetValue(item.Id, out var value) && value == CorrectionDisposition.Rejected),
+                Suppressed: languageCases.Count(item => dispositions.TryGetValue(item.Id, out var value) && value == CorrectionDisposition.Suppressed),
+                Unchanged: languageCases.Count(item => dispositions.TryGetValue(item.Id, out var value) && value == CorrectionDisposition.Unchanged),
+                NeedsReview: languageCases.Count(item => dispositions.TryGetValue(item.Id, out var value) && value == CorrectionDisposition.NeedsReview));
             output.Add(new QualityMetricResult(QualityEvaluatorVersion, language.ToString(), row.AnnotatedErrors,
                 row.CorrectlyResolvedErrors, row.SuggestedEdits, row.CorrectSuggestions, correctInputs,
-                changedCorrectInputs, acceptedCases, denominator, changedCorrectInputs, counts.Item1,
-                counts.Item2, counts.Item3, NullableRatio(row.CorrectlyResolvedErrors, row.AnnotatedErrors),
+                changedCorrectInputs, acceptedCases, denominator, changedCorrectInputs, counts is not null,
+                counts?.Accepted, counts?.Rejected, counts?.Suppressed, counts?.Unchanged, counts?.NeedsReview,
+                NullableRatio(row.CorrectlyResolvedErrors, row.AnnotatedErrors),
                 NullableRatio(acceptedCases, denominator), NullableRatio(row.CorrectSuggestions, row.SuggestedEdits),
                 NullableRatio(correctInputs - changedCorrectInputs, correctInputs)));
         }

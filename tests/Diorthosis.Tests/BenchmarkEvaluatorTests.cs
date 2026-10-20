@@ -192,4 +192,23 @@ public sealed class BenchmarkEvaluatorTests
         Assert.Equal(BenchmarkEvaluator.HistoricalEvaluatorVersion, BenchmarkEvaluator.HistoricalEvaluatorVersion);
         Assert.Equal(legacy, current);
     }
+
+    [Fact]
+    public void QualityMetricsDoNotTurnUnavailableDispositionsIntoZero()
+    {
+        var item = new BenchmarkCase("quality", CorrectionLanguage.English, "Correct text.", []);
+        var unavailable = Assert.Single(BenchmarkEvaluator.EvaluateQuality([item], []), row => row.Language == "English");
+        Assert.False(unavailable.DispositionsAvailable);
+        Assert.Null(unavailable.AcceptedChanges);
+        Assert.Null(unavailable.RejectedChanges);
+        Assert.Null(unavailable.SuppressedChanges);
+        Assert.Null(unavailable.UnchangedChanges);
+        Assert.Null(unavailable.NeedsReviewChanges);
+
+        var available = Assert.Single(BenchmarkEvaluator.EvaluateQuality([item], [],
+            new Dictionary<string, CorrectionDisposition> { [item.Id] = CorrectionDisposition.Unchanged }),
+            row => row.Language == "English");
+        Assert.True(available.DispositionsAvailable);
+        Assert.Equal(1, available.UnchangedChanges);
+    }
 }
