@@ -59,3 +59,5 @@ Read [AGENTS.md](AGENTS.md) before proposing design or code changes. Significant
 ## License
 
 The original code and project documentation in this repository are intended to be published under **Apache License 2.0**, see [LICENSE](LICENSE). Dependencies, third-party data, model weights, and dictionaries retain their own licenses and require independent approval and notices before redistribution. No AI-model weights are bundled in this starter repository.
+
+Phase 4 prompt-quality evidence: [report](docs/phase4-report.md), [draft PR #7](https://github.com/MarcoHuib/Diorthosis/pull/7), and [blinded linguistic review ZIP](benchmarks/phase4/v1/review/chatgpt-review.zip). Production prompt v3 remains unchanged; the next step is external AI linguistic assessment, with zero human approvals.
