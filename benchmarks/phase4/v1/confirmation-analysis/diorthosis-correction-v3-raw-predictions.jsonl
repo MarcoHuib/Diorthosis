@@ -1,0 +1,40 @@
+{"caseId":"p4-nl-confirmation-001","edits":[{"start":0,"length":40,"originalText":"De postbode vermoed dat de bel kapot is.","replacementText":"De postbode vermoedt dat de bel kapot is."}]}
+{"caseId":"p4-nl-confirmation-002","edits":[{"start":0,"length":47,"originalText":"De brandweer heeft de kat uit de boom geredden.","replacementText":"De brandweer heeft de kat uit de boom gered."}]}
+{"caseId":"p4-nl-confirmation-003","edits":[]}
+{"caseId":"p4-nl-confirmation-004","edits":[{"start":0,"length":41,"originalText":"Dat plan is tijdens de lunch voorgestelt.","replacementText":"Dat plan is tijdens de lunch voorgesteld."}]}
+{"caseId":"p4-nl-confirmation-005","edits":[{"start":0,"length":54,"originalText":"Neem een regen jas mee voor de wandeling over de dijk.","replacementText":"Neem een regenjas mee voor de wandeling over de dijk."}]}
+{"caseId":"p4-nl-confirmation-006","edits":[{"start":0,"length":58,"originalText":"Ik kreeg een berciht over de opening van de nieuwe winkel.","replacementText":"Ik kreeg een bericht over de opening van de nieuwe winkel."}]}
+{"caseId":"p4-nl-confirmation-007","edits":[]}
+{"caseId":"p4-nl-confirmation-008","edits":[]}
+{"caseId":"p4-nl-confirmation-009","edits":[{"start":0,"length":49,"originalText":"In de gang moeten nog twee lamp worden vervangen.","replacementText":"In de gang moeten nog twee lampen worden vervangen."}]}
+{"caseId":"p4-nl-confirmation-010","edits":[{"start":0,"length":67,"originalText":"Het bericht met `trace_id` is verzondenne, maar nog niet bevestigd.","replacementText":"Het bericht met *trace_id* is verzonden, maar nog niet bevestigd."}]}
+{"caseId":"p4-nl-confirmation-011","edits":[{"start":0,"length":59,"originalText":"De factuur is niet betaalt; stuur dus nog geen bevestiging.","replacementText":"De factuur is niet betaald; stuur dus nog geen bevestiging."}]}
+{"caseId":"p4-nl-confirmation-012","edits":[{"start":0,"length":51,"originalText":"In het café wachten we totdatd de regen ophoudt. ☔","replacementText":"In het café wachten we totdat de regen ophoudt. 😊"}]}
+{"caseId":"p4-nl-confirmation-013","edits":[{"start":0,"length":68,"originalText":"De patiënt vroeg de diëtist of hüttenkäse op het menu mocht blijven.","replacementText":"De patiënt vroeg de diëtist of huitkase op het menu mocht blijven."}]}
+{"caseId":"p4-nl-confirmation-014","edits":[]}
+{"caseId":"p4-nl-confirmation-015","edits":[{"start":0,"length":73,"originalText":"`client_secret` blijft geheim; deel alleen `public_key` met de ontvanger.","replacementText":"client_secret blijft geheim; deel alleen public_key met de ontvanger."}]}
+{"caseId":"p4-nl-confirmation-016","edits":[]}
+{"caseId":"p4-nl-confirmation-017","edits":[]}
+{"caseId":"p4-nl-confirmation-018","edits":[{"start":0,"length":46,"originalText":"Het opschrift luidt hola, bonjour en γεια σας.","replacementText":"Het opschrift luidt hola, bonjour en γειά σας."}]}
+{"caseId":"p4-nl-confirmation-019","edits":[]}
+{"caseId":"p4-nl-confirmation-020","edits":[{"start":0,"length":72,"originalText":"Hoi allemaal,\nDe sleutels liggen bij de buren. Veel plezier dit weekend!","replacementText":"Hoi allemaal,\n\nDe sleutels liggen bij de buren. Veel plezier dit weekend!"}]}
+{"caseId":"p4-en-confirmation-001","edits":[{"start":0,"length":53,"originalText":"The driver of the delivery vans take a break at noon.","replacementText":"The driver of the delivery vans takes a break at noon."}]}
+{"caseId":"p4-en-confirmation-002","edits":[{"start":0,"length":42,"originalText":"There was a unusual smell near the boiler.","replacementText":"There was an unusual smell near the boiler."}]}
+{"caseId":"p4-en-confirmation-003","edits":[{"start":0,"length":43,"originalText":"The park needs several bench near the pond.","replacementText":"The park needs several benches near the pond."}]}
+{"caseId":"p4-en-confirmation-004","edits":[{"start":0,"length":49,"originalText":"I have forgot where the spare batteries are kept.","replacementText":"I have forgotten where the spare batteries are kept."}]}
+{"caseId":"p4-en-confirmation-005","edits":[{"start":0,"length":47,"originalText":"She insisted to paying for the repairs herself.","replacementText":"She insisted on paying for the repairs herself."}]}
+{"caseId":"p4-en-confirmation-006","edits":[{"start":0,"length":54,"originalText":"Please add the collection date to the shared calnedar.","replacementText":"Please add the collection date to the shared calendar."}]}
+{"caseId":"p4-en-confirmation-007","edits":[{"start":0,"length":35,"originalText":"We haven't saw that warning before.","replacementText":"We haven’t seen that warning before."}]}
+{"caseId":"p4-en-confirmation-008","edits":[{"start":0,"length":48,"originalText":"The `session_token` contain no personal details.","replacementText":"The session token contains no personal details."}]}
+{"caseId":"p4-en-confirmation-009","edits":[{"start":0,"length":53,"originalText":"The exhibiton includes photographs by Ömer and Chloë.","replacementText":"The exhibition includes photographs by Ömer and Chloé."}]}
+{"caseId":"p4-en-confirmation-010","edits":[{"start":0,"length":51,"originalText":"The price does not includes delivery to the island.","replacementText":"The price does not include delivery to the island."}]}
+{"caseId":"p4-en-confirmation-011","edits":[{"start":0,"length":47,"originalText":"We'll meet outside the café tommorrow morning.","replacementText":"We’ll meet outside the café tomorrow morning."}]}
+{"caseId":"p4-en-confirmation-012","edits":[{"start":0,"length":45,"originalText":"If the power go out, do not open the freezer.","replacementText":"If the power goes out, do not open the freezer."}]}
+{"caseId":"p4-en-confirmation-013","edits":[{"start":0,"length":67,"originalText":"We queued outside the chemist's while the rain soaked our trousers.","replacementText":"We queued outside the chemist’s while the rain soaked our trousers."}]}
+{"caseId":"p4-en-confirmation-014","edits":[]}
+{"caseId":"p4-en-confirmation-015","edits":[{"start":0,"length":56,"originalText":"They've said they won't need another copy, haven't they?","replacementText":"They’ve said they won’t need another copy, haven’t they?"}]}
+{"caseId":"p4-en-confirmation-016","edits":[{"start":0,"length":50,"originalText":"The résumé mentions work in Curaçao and São Paulo.","replacementText":"The résumé mentions work in Curauçao and São Paulo."}]}
+{"caseId":"p4-en-confirmation-017","edits":[]}
+{"caseId":"p4-en-confirmation-018","edits":[]}
+{"caseId":"p4-en-confirmation-019","edits":[{"start":0,"length":56,"originalText":"Well done! 🎈 The whole team is pleased with the result.","replacementText":"Well done! 😊 The whole team is pleased with the result."}]}
+{"caseId":"p4-en-confirmation-020","edits":[{"start":0,"length":63,"originalText":"Hi folks,\nThere's fresh coffee in the kitchen. Help yourselves.","replacementText":"Hi folks,\n\nThere’s fresh coffee in the kitchen. Help yourselves."}]}

@@ -1,0 +1,18 @@
+{
+  "version": "phase4-substrate-decision-1.0.0",
+  "selectedForFurtherExperiments": "LiteralJson",
+  "instructionControl": "Original",
+  "authority": "Provisional developer research decision; confirmed by user continuation; not independently validated superiority",
+  "sourceRun": "benchmarks/phase4/v1/representation",
+  "rationale": [
+    "Literal JSON retains the original correction instructions and changes only the JSON encoder, allowing isolated instruction comparisons on a controlled substrate.",
+    "Observed real gains include preserving retry_count while repairing wachtworod, plural agreement beside /var/cache, correct conciërge, multilingual Greek and naïve_mode. The English contraction/preposition example also reaches delivery.",
+    "Accepted hesje -> hemdje, goesting -> geest, French translation and other meaning failures remain. Plain text has additional observed drift, including plural pumps -> singular pump and malformed clean Dutch.",
+    "The original frozen panel, unsuccessful generations and path/control-character errata remain intact. Reference differences alone do not establish linguistic superiority."
+  ],
+  "nextArms": ["LiteralJson:Minimal", "LiteralJson:LanguageSpecific", "LiteralJson:FewShot"],
+  "controlReuse": "Original literal JSON outputs from the complete paired representation run are reused with exact trace lineage; no extra control generation or independent observation is claimed.",
+  "promptPolicy": "All instructions and eight development examples remain exactly as frozen at cf8fdfe, before representation inference. No case-specific prompt tuning.",
+  "productionDecision": "Retain diorthosis-correction-v3 unchanged. No promotion or merge.",
+  "confirmation": "No confirmation generation until one candidate is selected and locked after isolated results."
+}

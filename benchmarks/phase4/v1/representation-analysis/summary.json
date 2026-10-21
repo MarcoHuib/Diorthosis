@@ -1,0 +1,482 @@
+{
+  "version": "phase4-comparison-1.0.0",
+  "datasetSha256": "5e922d776806de0c8e78a818ad4ee144c821a0f6a2570fea9a7b8aeb635a8eb1",
+  "sourceCases": 140,
+  "generationOccurrences": 420,
+  "policy": "Provisional reference diagnostics only; denominator all attempted sources. Abstention never earns a repair. Clean source fallback reported separately. No independently assessed meaning/precision/new-error metrics yet.",
+  "metrics": [
+    {
+      "promptVersion": "diorthosis-correction-v3",
+      "language": "dutch",
+      "attempted": 70,
+      "annotatedErrors": 43,
+      "referenceRepairs": 26,
+      "referenceMisses": 17,
+      "referenceEligibleComplete": {
+        "numerator": 38,
+        "denominator": 70,
+        "estimate": 0.5428571428571428,
+        "lower": 0.42698259205475575,
+        "upper": 0.6542725740243641
+      },
+      "rawReferenceComplete": {
+        "numerator": 38,
+        "denominator": 70,
+        "estimate": 0.5428571428571428,
+        "lower": 0.42698259205475575,
+        "upper": 0.6542725740243641
+      },
+      "eligibleCleanLiteral": {
+        "numerator": 13,
+        "denominator": 28,
+        "estimate": 0.4642857142857143,
+        "lower": 0.2953156998279538,
+        "upper": 0.6418731076553209
+      },
+      "fallbackInclusiveCleanLiteral": {
+        "numerator": 24,
+        "denominator": 28,
+        "estimate": 0.8571428571428571,
+        "lower": 0.685101978364747,
+        "upper": 0.9430099468025059
+      },
+      "eligibleCleanChanged": 4,
+      "cleanAbstentions": 11,
+      "dispositions": {
+        "unchanged": 22,
+        "accepted": 33,
+        "rejected": 13,
+        "needsReview": 1,
+        "suppressed": 1
+      },
+      "failures": 0,
+      "terminations": {
+        "EndOfGeneration": 70
+      },
+      "promptContentTokens": {
+        "mean": 122.07142857142857,
+        "total": 8545
+      },
+      "sampledOutputTokens": 1248,
+      "latencyMilliseconds": {
+        "mean": 1565.1944957142857,
+        "median": 1529.8656999999998,
+        "maximum": 2156.6372
+      },
+      "sampledPeakProcessWorkingSetBytes": 2964930560
+    },
+    {
+      "promptVersion": "diorthosis-correction-v3",
+      "language": "english",
+      "attempted": 70,
+      "annotatedErrors": 43,
+      "referenceRepairs": 29,
+      "referenceMisses": 14,
+      "referenceEligibleComplete": {
+        "numerator": 41,
+        "denominator": 70,
+        "estimate": 0.5857142857142857,
+        "lower": 0.46881211784560456,
+        "upper": 0.6936982143126353
+      },
+      "rawReferenceComplete": {
+        "numerator": 41,
+        "denominator": 70,
+        "estimate": 0.5857142857142857,
+        "lower": 0.46881211784560456,
+        "upper": 0.6936982143126353
+      },
+      "eligibleCleanLiteral": {
+        "numerator": 13,
+        "denominator": 28,
+        "estimate": 0.4642857142857143,
+        "lower": 0.2953156998279538,
+        "upper": 0.6418731076553209
+      },
+      "fallbackInclusiveCleanLiteral": {
+        "numerator": 24,
+        "denominator": 28,
+        "estimate": 0.8571428571428571,
+        "lower": 0.685101978364747,
+        "upper": 0.9430099468025059
+      },
+      "eligibleCleanChanged": 4,
+      "cleanAbstentions": 11,
+      "dispositions": {
+        "rejected": 16,
+        "accepted": 33,
+        "unchanged": 17,
+        "needsReview": 2,
+        "suppressed": 2
+      },
+      "failures": 0,
+      "terminations": {
+        "EndOfGeneration": 70
+      },
+      "promptContentTokens": {
+        "mean": 118.64285714285714,
+        "total": 8305
+      },
+      "sampledOutputTokens": 956,
+      "latencyMilliseconds": {
+        "mean": 1440.1682614285714,
+        "median": 1342.4666499999998,
+        "maximum": 2311.7567
+      },
+      "sampledPeakProcessWorkingSetBytes": 2963668992
+    },
+    {
+      "promptVersion": "phase4-LiteralJson-Original-1.0.0",
+      "language": "dutch",
+      "attempted": 70,
+      "annotatedErrors": 43,
+      "referenceRepairs": 28,
+      "referenceMisses": 15,
+      "referenceEligibleComplete": {
+        "numerator": 43,
+        "denominator": 70,
+        "estimate": 0.6142857142857143,
+        "lower": 0.4971573558930424,
+        "upper": 0.7195230869846111
+      },
+      "rawReferenceComplete": {
+        "numerator": 43,
+        "denominator": 70,
+        "estimate": 0.6142857142857143,
+        "lower": 0.4971573558930424,
+        "upper": 0.7195230869846111
+      },
+      "eligibleCleanLiteral": {
+        "numerator": 16,
+        "denominator": 28,
+        "estimate": 0.5714285714285714,
+        "lower": 0.3907078562746876,
+        "upper": 0.734914528758763
+      },
+      "fallbackInclusiveCleanLiteral": {
+        "numerator": 25,
+        "denominator": 28,
+        "estimate": 0.8928571428571429,
+        "lower": 0.7280414845132785,
+        "upper": 0.9628816331707
+      },
+      "eligibleCleanChanged": 3,
+      "cleanAbstentions": 9,
+      "dispositions": {
+        "unchanged": 24,
+        "accepted": 34,
+        "rejected": 10,
+        "needsReview": 1,
+        "suppressed": 1
+      },
+      "failures": 0,
+      "terminations": {
+        "EndOfGeneration": 70
+      },
+      "promptContentTokens": {
+        "mean": 119.04285714285714,
+        "total": 8333
+      },
+      "sampledOutputTokens": 1243,
+      "latencyMilliseconds": {
+        "mean": 1527.18667,
+        "median": 1483.4053,
+        "maximum": 2257.1437
+      },
+      "sampledPeakProcessWorkingSetBytes": 2958868480
+    },
+    {
+      "promptVersion": "phase4-LiteralJson-Original-1.0.0",
+      "language": "english",
+      "attempted": 70,
+      "annotatedErrors": 43,
+      "referenceRepairs": 32,
+      "referenceMisses": 11,
+      "referenceEligibleComplete": {
+        "numerator": 48,
+        "denominator": 70,
+        "estimate": 0.6857142857142857,
+        "lower": 0.5697286201420141,
+        "upper": 0.7823770995341724
+      },
+      "rawReferenceComplete": {
+        "numerator": 47,
+        "denominator": 70,
+        "estimate": 0.6714285714285714,
+        "lower": 0.5550093573883407,
+        "upper": 0.770011306928139
+      },
+      "eligibleCleanLiteral": {
+        "numerator": 18,
+        "denominator": 28,
+        "estimate": 0.6428571428571429,
+        "lower": 0.4583030651442781,
+        "upper": 0.7929417049226233
+      },
+      "fallbackInclusiveCleanLiteral": {
+        "numerator": 25,
+        "denominator": 28,
+        "estimate": 0.8928571428571429,
+        "lower": 0.7280414845132785,
+        "upper": 0.9628816331707
+      },
+      "eligibleCleanChanged": 3,
+      "cleanAbstentions": 7,
+      "dispositions": {
+        "rejected": 10,
+        "accepted": 35,
+        "unchanged": 22,
+        "suppressed": 2,
+        "needsReview": 1
+      },
+      "failures": 0,
+      "terminations": {
+        "EndOfGeneration": 70
+      },
+      "promptContentTokens": {
+        "mean": 115.05714285714286,
+        "total": 8054
+      },
+      "sampledOutputTokens": 948,
+      "latencyMilliseconds": {
+        "mean": 1449.8001,
+        "median": 1339.86805,
+        "maximum": 3769.8643
+      },
+      "sampledPeakProcessWorkingSetBytes": 2958737408
+    },
+    {
+      "promptVersion": "phase4-PlainText-Original-1.0.0",
+      "language": "dutch",
+      "attempted": 70,
+      "annotatedErrors": 43,
+      "referenceRepairs": 28,
+      "referenceMisses": 15,
+      "referenceEligibleComplete": {
+        "numerator": 37,
+        "denominator": 70,
+        "estimate": 0.5285714285714286,
+        "lower": 0.4132188746832562,
+        "upper": 0.6409512360361571
+      },
+      "rawReferenceComplete": {
+        "numerator": 35,
+        "denominator": 70,
+        "estimate": 0.5,
+        "lower": 0.3859571764530239,
+        "upper": 0.6140428235469761
+      },
+      "eligibleCleanLiteral": {
+        "numerator": 12,
+        "denominator": 28,
+        "estimate": 0.42857142857142855,
+        "lower": 0.26508547124123694,
+        "upper": 0.6092921437253123
+      },
+      "fallbackInclusiveCleanLiteral": {
+        "numerator": 21,
+        "denominator": 28,
+        "estimate": 0.75,
+        "lower": 0.5664432968100104,
+        "upper": 0.8732350508070668
+      },
+      "eligibleCleanChanged": 7,
+      "cleanAbstentions": 9,
+      "dispositions": {
+        "unchanged": 19,
+        "accepted": 36,
+        "rejected": 14,
+        "needsReview": 1
+      },
+      "failures": 0,
+      "terminations": {
+        "EndOfGeneration": 70
+      },
+      "promptContentTokens": {
+        "mean": 188.31428571428572,
+        "total": 13182
+      },
+      "sampledOutputTokens": 1268,
+      "latencyMilliseconds": {
+        "mean": 1809.5166242857142,
+        "median": 1780.5434,
+        "maximum": 2414.8382
+      },
+      "sampledPeakProcessWorkingSetBytes": 2970779648
+    },
+    {
+      "promptVersion": "phase4-PlainText-Original-1.0.0",
+      "language": "english",
+      "attempted": 70,
+      "annotatedErrors": 43,
+      "referenceRepairs": 29,
+      "referenceMisses": 14,
+      "referenceEligibleComplete": {
+        "numerator": 41,
+        "denominator": 70,
+        "estimate": 0.5857142857142857,
+        "lower": 0.46881211784560456,
+        "upper": 0.6936982143126353
+      },
+      "rawReferenceComplete": {
+        "numerator": 42,
+        "denominator": 70,
+        "estimate": 0.6,
+        "lower": 0.48293796477356277,
+        "upper": 0.7066574227443838
+      },
+      "eligibleCleanLiteral": {
+        "numerator": 14,
+        "denominator": 28,
+        "estimate": 0.5,
+        "lower": 0.32633127457293465,
+        "upper": 0.6736687254270654
+      },
+      "fallbackInclusiveCleanLiteral": {
+        "numerator": 26,
+        "denominator": 28,
+        "estimate": 0.9285714285714286,
+        "lower": 0.7735463743160095,
+        "upper": 0.9801879358846942
+      },
+      "eligibleCleanChanged": 2,
+      "cleanAbstentions": 12,
+      "dispositions": {
+        "rejected": 17,
+        "accepted": 32,
+        "unchanged": 17,
+        "needsReview": 3,
+        "suppressed": 1
+      },
+      "failures": 0,
+      "terminations": {
+        "EndOfGeneration": 70
+      },
+      "promptContentTokens": {
+        "mean": 184.0142857142857,
+        "total": 12881
+      },
+      "sampledOutputTokens": 1054,
+      "latencyMilliseconds": {
+        "mean": 1732.05203,
+        "median": 1587.29605,
+        "maximum": 2990.2552
+      },
+      "sampledPeakProcessWorkingSetBytes": 2972254208
+    }
+  ],
+  "paired": [
+    {
+      "language": "dutch",
+      "baseline": "diorthosis-correction-v3",
+      "other": "phase4-LiteralJson-Original-1.0.0",
+      "attempted": 70,
+      "referencePassageGains": 5,
+      "referencePassageLosses": 0,
+      "ties": 65,
+      "gainedReferenceErrors": 2,
+      "lostReferenceErrors": 0,
+      "changedDeliveries": [
+        "p4-nl-selection-022",
+        "p4-nl-selection-023",
+        "p4-nl-selection-043"
+      ],
+      "descriptivePairedInterval": {
+        "meanDifference": 0.07142857142857142,
+        "lower": 0.014285714285714285,
+        "upper": 0.12857142857142856,
+        "method": "10,000 source-case paired bootstrap resamples, fixed seed 41021; descriptive development diagnostic, no population or post-selection inference"
+      },
+      "exactDiscordanceP": 0.0625,
+      "caution": "Reference labels unvalidated; post-selection/multiple comparisons and narrow synthetic distribution prevent population superiority claim."
+    },
+    {
+      "language": "english",
+      "baseline": "diorthosis-correction-v3",
+      "other": "phase4-LiteralJson-Original-1.0.0",
+      "attempted": 70,
+      "referencePassageGains": 8,
+      "referencePassageLosses": 1,
+      "ties": 61,
+      "gainedReferenceErrors": 3,
+      "lostReferenceErrors": 0,
+      "changedDeliveries": [
+        "p4-en-selection-013",
+        "p4-en-selection-020",
+        "p4-en-selection-023",
+        "p4-en-selection-031",
+        "p4-en-selection-067"
+      ],
+      "descriptivePairedInterval": {
+        "meanDifference": 0.1,
+        "lower": 0.02857142857142857,
+        "upper": 0.18571428571428572,
+        "method": "10,000 source-case paired bootstrap resamples, fixed seed 41021; descriptive development diagnostic, no population or post-selection inference"
+      },
+      "exactDiscordanceP": 0.0390625,
+      "caution": "Reference labels unvalidated; post-selection/multiple comparisons and narrow synthetic distribution prevent population superiority claim."
+    },
+    {
+      "language": "dutch",
+      "baseline": "diorthosis-correction-v3",
+      "other": "phase4-PlainText-Original-1.0.0",
+      "attempted": 70,
+      "referencePassageGains": 3,
+      "referencePassageLosses": 4,
+      "ties": 63,
+      "gainedReferenceErrors": 3,
+      "lostReferenceErrors": 1,
+      "changedDeliveries": [
+        "p4-nl-selection-004",
+        "p4-nl-selection-007",
+        "p4-nl-selection-022",
+        "p4-nl-selection-023",
+        "p4-nl-selection-028",
+        "p4-nl-selection-033",
+        "p4-nl-selection-046",
+        "p4-nl-selection-050",
+        "p4-nl-selection-051",
+        "p4-nl-selection-059"
+      ],
+      "descriptivePairedInterval": {
+        "meanDifference": -0.014285714285714285,
+        "lower": -0.08571428571428572,
+        "upper": 0.05714285714285714,
+        "method": "10,000 source-case paired bootstrap resamples, fixed seed 41021; descriptive development diagnostic, no population or post-selection inference"
+      },
+      "exactDiscordanceP": 1,
+      "caution": "Reference labels unvalidated; post-selection/multiple comparisons and narrow synthetic distribution prevent population superiority claim."
+    },
+    {
+      "language": "english",
+      "baseline": "diorthosis-correction-v3",
+      "other": "phase4-PlainText-Original-1.0.0",
+      "attempted": 70,
+      "referencePassageGains": 6,
+      "referencePassageLosses": 6,
+      "ties": 58,
+      "gainedReferenceErrors": 2,
+      "lostReferenceErrors": 2,
+      "changedDeliveries": [
+        "p4-en-selection-003",
+        "p4-en-selection-009",
+        "p4-en-selection-013",
+        "p4-en-selection-023",
+        "p4-en-selection-031",
+        "p4-en-selection-039",
+        "p4-en-selection-048",
+        "p4-en-selection-052",
+        "p4-en-selection-053",
+        "p4-en-selection-067"
+      ],
+      "descriptivePairedInterval": {
+        "meanDifference": 0.0,
+        "lower": -0.1,
+        "upper": 0.1,
+        "method": "10,000 source-case paired bootstrap resamples, fixed seed 41021; descriptive development diagnostic, no population or post-selection inference"
+      },
+      "exactDiscordanceP": 1,
+      "caution": "Reference labels unvalidated; post-selection/multiple comparisons and narrow synthetic distribution prevent population superiority claim."
+    }
+  ]
+}

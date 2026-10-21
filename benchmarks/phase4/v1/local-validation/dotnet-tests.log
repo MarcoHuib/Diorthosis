@@ -1,0 +1,5 @@
+Test run for [workspace]/tests/Diorthosis.Tests/bin/Release/net10.0/Diorthosis.Tests.dll (.NETCoreApp,Version=v10.0)
+A total of 1 test files matched the specified pattern.
+Results File: [temporary]/diorthosis-phase4-test-results/phase4.trx
+
+Passed!  - Failed:     0, Passed:   233, Skipped:     0, Total:   233, Duration: 10 s - Diorthosis.Tests.dll (net10.0)

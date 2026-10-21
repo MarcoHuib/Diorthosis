@@ -1,0 +1,342 @@
+{
+  "version": "phase4-comparison-1.1.0",
+  "datasetSha256": "47936154eb369bc4d5e2f60b428853e9420f95d840c8be1b9d2f267e32cfd8f5",
+  "sourceCases": 40,
+  "generationOccurrences": 80,
+  "policy": "Provisional reference diagnostics only; denominator all attempted sources. Abstention never earns a repair. Clean source fallback reported separately. No independently assessed meaning/precision/new-error metrics yet.",
+  "metrics": [
+    {
+      "promptVersion": "diorthosis-correction-v3",
+      "language": "dutch",
+      "attempted": 20,
+      "annotatedErrors": 12,
+      "referenceRepairs": 7,
+      "referenceMisses": 5,
+      "referenceEligibleComplete": {
+        "numerator": 11,
+        "denominator": 20,
+        "estimate": 0.55,
+        "lower": 0.34208534245034233,
+        "upper": 0.7418021417443759
+      },
+      "rawReferenceComplete": {
+        "numerator": 11,
+        "denominator": 20,
+        "estimate": 0.55,
+        "lower": 0.34208534245034233,
+        "upper": 0.7418021417443759
+      },
+      "eligibleCleanLiteral": {
+        "numerator": 4,
+        "denominator": 8,
+        "estimate": 0.5,
+        "lower": 0.21521606221387757,
+        "upper": 0.7847839377861224
+      },
+      "fallbackInclusiveCleanLiteral": {
+        "numerator": 6,
+        "denominator": 8,
+        "estimate": 0.75,
+        "lower": 0.40927543031016883,
+        "upper": 0.9285207872478909
+      },
+      "eligibleCleanChanged": 2,
+      "cleanAbstentions": 2,
+      "dispositions": {
+        "accepted": 9,
+        "unchanged": 7,
+        "rejected": 3,
+        "suppressed": 1
+      },
+      "failures": 0,
+      "terminations": {
+        "EndOfGeneration": 20
+      },
+      "promptContentTokens": {
+        "mean": 123.1,
+        "total": 2462
+      },
+      "sampledOutputTokens": 344,
+      "latencyMilliseconds": {
+        "mean": 1464.011705,
+        "median": 1406.0354499999999,
+        "maximum": 1850.9923
+      },
+      "sampledPeakProcessWorkingSetBytes": 2954444800
+    },
+    {
+      "promptVersion": "diorthosis-correction-v3",
+      "language": "english",
+      "attempted": 20,
+      "annotatedErrors": 12,
+      "referenceRepairs": 8,
+      "referenceMisses": 4,
+      "referenceEligibleComplete": {
+        "numerator": 11,
+        "denominator": 20,
+        "estimate": 0.55,
+        "lower": 0.34208534245034233,
+        "upper": 0.7418021417443759
+      },
+      "rawReferenceComplete": {
+        "numerator": 11,
+        "denominator": 20,
+        "estimate": 0.55,
+        "lower": 0.34208534245034233,
+        "upper": 0.7418021417443759
+      },
+      "eligibleCleanLiteral": {
+        "numerator": 3,
+        "denominator": 8,
+        "estimate": 0.375,
+        "lower": 0.13684428582359742,
+        "upper": 0.6942576053973727
+      },
+      "fallbackInclusiveCleanLiteral": {
+        "numerator": 7,
+        "denominator": 8,
+        "estimate": 0.875,
+        "lower": 0.5291118177871464,
+        "upper": 0.9775825085499433
+      },
+      "eligibleCleanChanged": 1,
+      "cleanAbstentions": 4,
+      "dispositions": {
+        "accepted": 10,
+        "rejected": 7,
+        "unchanged": 3
+      },
+      "failures": 0,
+      "terminations": {
+        "EndOfGeneration": 20
+      },
+      "promptContentTokens": {
+        "mean": 118.55,
+        "total": 2371
+      },
+      "sampledOutputTokens": 252,
+      "latencyMilliseconds": {
+        "mean": 1324.668325,
+        "median": 1318.5384,
+        "maximum": 1491.2709
+      },
+      "sampledPeakProcessWorkingSetBytes": 2950856704
+    },
+    {
+      "promptVersion": "phase4-LiteralJson-Original-1.0.0",
+      "language": "dutch",
+      "attempted": 20,
+      "annotatedErrors": 12,
+      "referenceRepairs": 9,
+      "referenceMisses": 3,
+      "referenceEligibleComplete": {
+        "numerator": 14,
+        "denominator": 20,
+        "estimate": 0.7,
+        "lower": 0.4810271816464765,
+        "upper": 0.8545227551323956
+      },
+      "rawReferenceComplete": {
+        "numerator": 14,
+        "denominator": 20,
+        "estimate": 0.7,
+        "lower": 0.4810271816464765,
+        "upper": 0.8545227551323956
+      },
+      "eligibleCleanLiteral": {
+        "numerator": 5,
+        "denominator": 8,
+        "estimate": 0.625,
+        "lower": 0.30574239460262737,
+        "upper": 0.8631557141764026
+      },
+      "fallbackInclusiveCleanLiteral": {
+        "numerator": 7,
+        "denominator": 8,
+        "estimate": 0.875,
+        "lower": 0.5291118177871464,
+        "upper": 0.9775825085499433
+      },
+      "eligibleCleanChanged": 1,
+      "cleanAbstentions": 2,
+      "dispositions": {
+        "accepted": 10,
+        "unchanged": 8,
+        "suppressed": 2
+      },
+      "failures": 0,
+      "terminations": {
+        "EndOfGeneration": 20
+      },
+      "promptContentTokens": {
+        "mean": 118.65,
+        "total": 2373
+      },
+      "sampledOutputTokens": 348,
+      "latencyMilliseconds": {
+        "mean": 1440.78403,
+        "median": 1400.1266,
+        "maximum": 1749.6165
+      },
+      "sampledPeakProcessWorkingSetBytes": 2948120576
+    },
+    {
+      "promptVersion": "phase4-LiteralJson-Original-1.0.0",
+      "language": "english",
+      "attempted": 20,
+      "annotatedErrors": 12,
+      "referenceRepairs": 11,
+      "referenceMisses": 1,
+      "referenceEligibleComplete": {
+        "numerator": 15,
+        "denominator": 20,
+        "estimate": 0.75,
+        "lower": 0.531299122381256,
+        "upper": 0.8881382985923343
+      },
+      "rawReferenceComplete": {
+        "numerator": 15,
+        "denominator": 20,
+        "estimate": 0.75,
+        "lower": 0.531299122381256,
+        "upper": 0.8881382985923343
+      },
+      "eligibleCleanLiteral": {
+        "numerator": 4,
+        "denominator": 8,
+        "estimate": 0.5,
+        "lower": 0.21521606221387757,
+        "upper": 0.7847839377861224
+      },
+      "fallbackInclusiveCleanLiteral": {
+        "numerator": 7,
+        "denominator": 8,
+        "estimate": 0.875,
+        "lower": 0.5291118177871464,
+        "upper": 0.9775825085499433
+      },
+      "eligibleCleanChanged": 1,
+      "cleanAbstentions": 3,
+      "dispositions": {
+        "accepted": 12,
+        "rejected": 4,
+        "unchanged": 4
+      },
+      "failures": 0,
+      "terminations": {
+        "EndOfGeneration": 20
+      },
+      "promptContentTokens": {
+        "mean": 114.35,
+        "total": 2287
+      },
+      "sampledOutputTokens": 255,
+      "latencyMilliseconds": {
+        "mean": 1321.546785,
+        "median": 1301.88995,
+        "maximum": 1453.491
+      },
+      "sampledPeakProcessWorkingSetBytes": 2948300800
+    }
+  ],
+  "paired": [
+    {
+      "language": "dutch",
+      "baseline": "diorthosis-correction-v3",
+      "other": "phase4-LiteralJson-Original-1.0.0",
+      "attempted": 20,
+      "referencePassageGains": 4,
+      "referencePassageLosses": 1,
+      "ties": 15,
+      "gainedReferenceErrors": 2,
+      "lostReferenceErrors": 0,
+      "changedDeliveries": [
+        "p4-nl-confirmation-010",
+        "p4-nl-confirmation-012",
+        "p4-nl-confirmation-013",
+        "p4-nl-confirmation-018"
+      ],
+      "descriptivePairedInterval": {
+        "meanDifference": 0.15,
+        "lower": -0.05,
+        "upper": 0.35,
+        "method": "10,000 source-case paired bootstrap resamples, fixed seed 41021; descriptive development diagnostic, no population or post-selection inference"
+      },
+      "exactDiscordanceP": 0.375,
+      "caution": "Reference labels unvalidated; post-selection/multiple comparisons and narrow synthetic distribution prevent population superiority claim."
+    },
+    {
+      "language": "english",
+      "baseline": "diorthosis-correction-v3",
+      "other": "phase4-LiteralJson-Original-1.0.0",
+      "attempted": 20,
+      "referencePassageGains": 4,
+      "referencePassageLosses": 0,
+      "ties": 16,
+      "gainedReferenceErrors": 3,
+      "lostReferenceErrors": 0,
+      "changedDeliveries": [
+        "p4-en-confirmation-007",
+        "p4-en-confirmation-008",
+        "p4-en-confirmation-009"
+      ],
+      "descriptivePairedInterval": {
+        "meanDifference": 0.2,
+        "lower": 0.05,
+        "upper": 0.4,
+        "method": "10,000 source-case paired bootstrap resamples, fixed seed 41021; descriptive development diagnostic, no population or post-selection inference"
+      },
+      "exactDiscordanceP": 0.125,
+      "caution": "Reference labels unvalidated; post-selection/multiple comparisons and narrow synthetic distribution prevent population superiority claim."
+    },
+    {
+      "language": "dutch",
+      "baseline": "phase4-LiteralJson-Original-1.0.0",
+      "other": "diorthosis-correction-v3",
+      "attempted": 20,
+      "referencePassageGains": 1,
+      "referencePassageLosses": 4,
+      "ties": 15,
+      "gainedReferenceErrors": 0,
+      "lostReferenceErrors": 2,
+      "changedDeliveries": [
+        "p4-nl-confirmation-010",
+        "p4-nl-confirmation-012",
+        "p4-nl-confirmation-013",
+        "p4-nl-confirmation-018"
+      ],
+      "descriptivePairedInterval": {
+        "meanDifference": -0.15,
+        "lower": -0.35,
+        "upper": 0.05,
+        "method": "10,000 source-case paired bootstrap resamples, fixed seed 41021; descriptive development diagnostic, no population or post-selection inference"
+      },
+      "exactDiscordanceP": 0.375,
+      "caution": "Reference labels unvalidated; post-selection/multiple comparisons and narrow synthetic distribution prevent population superiority claim."
+    },
+    {
+      "language": "english",
+      "baseline": "phase4-LiteralJson-Original-1.0.0",
+      "other": "diorthosis-correction-v3",
+      "attempted": 20,
+      "referencePassageGains": 0,
+      "referencePassageLosses": 4,
+      "ties": 16,
+      "gainedReferenceErrors": 0,
+      "lostReferenceErrors": 3,
+      "changedDeliveries": [
+        "p4-en-confirmation-007",
+        "p4-en-confirmation-008",
+        "p4-en-confirmation-009"
+      ],
+      "descriptivePairedInterval": {
+        "meanDifference": -0.2,
+        "lower": -0.4,
+        "upper": -0.05,
+        "method": "10,000 source-case paired bootstrap resamples, fixed seed 41021; descriptive development diagnostic, no population or post-selection inference"
+      },
+      "exactDiscordanceP": 0.125,
+      "caution": "Reference labels unvalidated; post-selection/multiple comparisons and narrow synthetic distribution prevent population superiority claim."
+    }
+  ]
+}

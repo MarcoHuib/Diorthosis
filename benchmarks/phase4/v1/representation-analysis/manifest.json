@@ -1,0 +1,29 @@
+{
+  "datasetSha256": "5e922d776806de0c8e78a818ad4ee144c821a0f6a2570fea9a7b8aeb635a8eb1",
+  "runs": {
+    "/Users/marco/Projects/Diorthosis/benchmarks/phase4/v1/representation": "13e085717d94d3df72b5e42ea9989680f001bb9b84238ecad0374a0676821c50"
+  },
+  "scriptSha256": "b5c993bf0d132d2bccf48f10e04c3f1627faf294d5e60b95487c3ff13c47b295",
+  "files": {
+    "diorthosis-correction-v3-delivered-reference.json": "54a5fe0a8101fb8f826d593f41cffe78dc135ad2a0be9497487ed1132b4ff5a3",
+    "paired-ledger.jsonl": "2f810297a9b1ad8ca9fa85b03fd824e12096eb59d4fcea4f8e78a09d53a8c00e",
+    "phase4-PlainText-Original-1.0.0-raw-reference.json": "f5727d6dc9dd3d3ba96a00565fa3e2f99a0bc5d543409c2c0702f209c3ccc0a7",
+    "summary.json": "d46ba3dadea003613b723e0aa17a7cee21e55e27f06e094ce6222862b2af625d",
+    "diorthosis-correction-v3-delivered-predictions.jsonl": "87c2ab1351bda5fd6734f0ab07a62f393fe0f7fa184a023456dbc8efd1f65071",
+    "phase4-LiteralJson-Original-1.0.0-raw-predictions.jsonl": "2eb815af3b45ab30d1ea0bb513fa0c964e6f7d5ba9a00f919961fde44dc06d64",
+    "phase4-LiteralJson-Original-1.0.0-extracted-reference.json": "fe89a12ce94d19b3ae8a0da2ba1848db28750df4bf7d129a7288e2df19a30a58",
+    "diorthosis-correction-v3-extracted-predictions.jsonl": "5fa5d4f8e1578b0e96176a8893eaa888d15addd7a1f6800cfc0bea509fac3c8a",
+    "diorthosis-correction-v3-raw-predictions.jsonl": "329a2820b8bfdf53359b16a44c961c1c2ae57aa7fd9a8ccd5192162b39dbc4ba",
+    "phase4-LiteralJson-Original-1.0.0-raw-reference.json": "71e5d0b197107d8bd733dcb113db57221a14090cf75088ee1079dbbbbbbb4f43",
+    "phase4-LiteralJson-Original-1.0.0-extracted-predictions.jsonl": "fc4bc32a7607227289b1e28c70e9ef304f859e970a761fdd68036d7157f92e55",
+    "phase4-LiteralJson-Original-1.0.0-delivered-predictions.jsonl": "1e140d563ba74bc25aeb68f265a7cca0769b1ed9a6624f4eff073e60a3a512d9",
+    "diorthosis-correction-v3-extracted-reference.json": "349d445f74e59acb5ae824454b66de01f1bb39666d36dcf25f7139c455c2bf2b",
+    "phase4-LiteralJson-Original-1.0.0-delivered-reference.json": "4814b860edb7eaac060cf456100dbe7bacb50d0037c5f4a94860e006abc50a0c",
+    "phase4-PlainText-Original-1.0.0-raw-predictions.jsonl": "0056fc58407637cf05c6ddf2c17869e08f823526a2aec3fa3f36fae93c9cbd78",
+    "phase4-PlainText-Original-1.0.0-extracted-predictions.jsonl": "e22ef7f598f6442aeb876ab8a3fe457331e24402a43f041b5071dc907aae88a0",
+    "phase4-PlainText-Original-1.0.0-delivered-predictions.jsonl": "95fe8f7e0bb5d8ae46c495dc6943fd637ac126ac73e4443859f7abe4a481d234",
+    "diorthosis-correction-v3-raw-reference.json": "2630652a2e09574e466c31720fbab0f1bd2a326c70034a24363a9d53b22b856c",
+    "phase4-PlainText-Original-1.0.0-delivered-reference.json": "50d8b6221416922ffce330aa321344dda1b174b1f15c9ac95d752ea9fd17c14f",
+    "phase4-PlainText-Original-1.0.0-extracted-reference.json": "d23610eb4cbb83de011ec4eb2ca8d2b00586f9289dace812b0bbfbd0e4a7547a"
+  }
+}

@@ -1,0 +1,1323 @@
+{
+  "evaluatorVersion": "reference-groups-3.1.0",
+  "precisionPolicy": "Reference-group precision is a proxy. Linguistic precision is available only for explicitly adjudicated proposals; review coverage is reported. Residual groups require review.",
+  "intervalPolicy": "Wilson 95% intervals are descriptive only; dependence/template repetition and unreviewed labels prevent population inference. No hunk-based independence or model-superiority test is assumed.",
+  "metrics": [
+    {
+      "language": "Dutch",
+      "category": "all",
+      "repairRecall": {
+        "numerator": 7,
+        "denominator": 12,
+        "estimate": 0.5833333333333334,
+        "wilsonLower": 0.31951131254954973,
+        "wilsonUpper": 0.8067396863412435
+      },
+      "referenceGroupPrecision": {
+        "numerator": 7,
+        "denominator": 9,
+        "estimate": 0.7777777777777778,
+        "wilsonLower": 0.45258896910698887,
+        "wilsonUpper": 0.9367748928821533
+      },
+      "adjudicatedProposalPrecision": null,
+      "cleanLiteralPreservation": {
+        "numerator": 6,
+        "denominator": 8,
+        "estimate": 0.75,
+        "wilsonLower": 0.40927543031016883,
+        "wilsonUpper": 0.9285207872478909
+      },
+      "completeReferencePassages": {
+        "numerator": 13,
+        "denominator": 20,
+        "estimate": 0.65,
+        "wilsonLower": 0.4328542766852363,
+        "wilsonUpper": 0.8188081758989179
+      },
+      "predictionCoverage": {
+        "numerator": 20,
+        "denominator": 20,
+        "estimate": 1,
+        "wilsonLower": 0.8388748419471806,
+        "wilsonUpper": 1
+      },
+      "referenceUnresolvedGroups": 2,
+      "proposedGroups": 9,
+      "reviewedGroups": 0,
+      "dispositions": {
+        "Unknown": 20
+      },
+      "completePassageJudgmentCoverage": {
+        "numerator": 20,
+        "denominator": 20,
+        "estimate": 1,
+        "wilsonLower": 0.8388748419471806,
+        "wilsonUpper": 1
+      },
+      "unknownCompletePassages": 0
+    },
+    {
+      "language": "Dutch",
+      "category": "Spelling",
+      "repairRecall": {
+        "numerator": 2,
+        "denominator": 5,
+        "estimate": 0.4,
+        "wilsonLower": 0.11762077423264783,
+        "wilsonUpper": 0.769275718723987
+      },
+      "referenceGroupPrecision": {
+        "numerator": 2,
+        "denominator": 2,
+        "estimate": 1,
+        "wilsonLower": 0.34238022750665303,
+        "wilsonUpper": 1
+      },
+      "adjudicatedProposalPrecision": null,
+      "cleanLiteralPreservation": {
+        "numerator": 6,
+        "denominator": 8,
+        "estimate": 0.75,
+        "wilsonLower": 0.40927543031016883,
+        "wilsonUpper": 0.9285207872478909
+      },
+      "completeReferencePassages": {
+        "numerator": 13,
+        "denominator": 20,
+        "estimate": 0.65,
+        "wilsonLower": 0.4328542766852363,
+        "wilsonUpper": 0.8188081758989179
+      },
+      "predictionCoverage": {
+        "numerator": 20,
+        "denominator": 20,
+        "estimate": 1,
+        "wilsonLower": 0.8388748419471806,
+        "wilsonUpper": 1
+      },
+      "referenceUnresolvedGroups": 0,
+      "proposedGroups": 2,
+      "reviewedGroups": 0,
+      "dispositions": {
+        "Unknown": 20
+      },
+      "completePassageJudgmentCoverage": {
+        "numerator": 20,
+        "denominator": 20,
+        "estimate": 1,
+        "wilsonLower": 0.8388748419471806,
+        "wilsonUpper": 1
+      },
+      "unknownCompletePassages": 0
+    },
+    {
+      "language": "Dutch",
+      "category": "Grammar",
+      "repairRecall": {
+        "numerator": 5,
+        "denominator": 6,
+        "estimate": 0.8333333333333334,
+        "wilsonLower": 0.43649717781352987,
+        "wilsonUpper": 0.9699466302516935
+      },
+      "referenceGroupPrecision": {
+        "numerator": 5,
+        "denominator": 5,
+        "estimate": 1,
+        "wilsonLower": 0.5655175352168251,
+        "wilsonUpper": 1
+      },
+      "adjudicatedProposalPrecision": null,
+      "cleanLiteralPreservation": {
+        "numerator": 6,
+        "denominator": 8,
+        "estimate": 0.75,
+        "wilsonLower": 0.40927543031016883,
+        "wilsonUpper": 0.9285207872478909
+      },
+      "completeReferencePassages": {
+        "numerator": 13,
+        "denominator": 20,
+        "estimate": 0.65,
+        "wilsonLower": 0.4328542766852363,
+        "wilsonUpper": 0.8188081758989179
+      },
+      "predictionCoverage": {
+        "numerator": 20,
+        "denominator": 20,
+        "estimate": 1,
+        "wilsonLower": 0.8388748419471806,
+        "wilsonUpper": 1
+      },
+      "referenceUnresolvedGroups": 0,
+      "proposedGroups": 5,
+      "reviewedGroups": 0,
+      "dispositions": {
+        "Unknown": 20
+      },
+      "completePassageJudgmentCoverage": {
+        "numerator": 20,
+        "denominator": 20,
+        "estimate": 1,
+        "wilsonLower": 0.8388748419471806,
+        "wilsonUpper": 1
+      },
+      "unknownCompletePassages": 0
+    },
+    {
+      "language": "Dutch",
+      "category": "SentenceStructure",
+      "repairRecall": {
+        "numerator": 0,
+        "denominator": 1,
+        "estimate": 0,
+        "wilsonLower": 0,
+        "wilsonUpper": 0.7934506856227626
+      },
+      "referenceGroupPrecision": {
+        "numerator": 0,
+        "denominator": 0,
+        "estimate": null,
+        "wilsonLower": null,
+        "wilsonUpper": null
+      },
+      "adjudicatedProposalPrecision": null,
+      "cleanLiteralPreservation": {
+        "numerator": 6,
+        "denominator": 8,
+        "estimate": 0.75,
+        "wilsonLower": 0.40927543031016883,
+        "wilsonUpper": 0.9285207872478909
+      },
+      "completeReferencePassages": {
+        "numerator": 13,
+        "denominator": 20,
+        "estimate": 0.65,
+        "wilsonLower": 0.4328542766852363,
+        "wilsonUpper": 0.8188081758989179
+      },
+      "predictionCoverage": {
+        "numerator": 20,
+        "denominator": 20,
+        "estimate": 1,
+        "wilsonLower": 0.8388748419471806,
+        "wilsonUpper": 1
+      },
+      "referenceUnresolvedGroups": 0,
+      "proposedGroups": 0,
+      "reviewedGroups": 0,
+      "dispositions": {
+        "Unknown": 20
+      },
+      "completePassageJudgmentCoverage": {
+        "numerator": 20,
+        "denominator": 20,
+        "estimate": 1,
+        "wilsonLower": 0.8388748419471806,
+        "wilsonUpper": 1
+      },
+      "unknownCompletePassages": 0
+    },
+    {
+      "language": "Dutch",
+      "category": "Punctuation",
+      "repairRecall": {
+        "numerator": 0,
+        "denominator": 0,
+        "estimate": null,
+        "wilsonLower": null,
+        "wilsonUpper": null
+      },
+      "referenceGroupPrecision": {
+        "numerator": 0,
+        "denominator": 0,
+        "estimate": null,
+        "wilsonLower": null,
+        "wilsonUpper": null
+      },
+      "adjudicatedProposalPrecision": null,
+      "cleanLiteralPreservation": {
+        "numerator": 6,
+        "denominator": 8,
+        "estimate": 0.75,
+        "wilsonLower": 0.40927543031016883,
+        "wilsonUpper": 0.9285207872478909
+      },
+      "completeReferencePassages": {
+        "numerator": 13,
+        "denominator": 20,
+        "estimate": 0.65,
+        "wilsonLower": 0.4328542766852363,
+        "wilsonUpper": 0.8188081758989179
+      },
+      "predictionCoverage": {
+        "numerator": 20,
+        "denominator": 20,
+        "estimate": 1,
+        "wilsonLower": 0.8388748419471806,
+        "wilsonUpper": 1
+      },
+      "referenceUnresolvedGroups": 0,
+      "proposedGroups": 0,
+      "reviewedGroups": 0,
+      "dispositions": {
+        "Unknown": 20
+      },
+      "completePassageJudgmentCoverage": {
+        "numerator": 20,
+        "denominator": 20,
+        "estimate": 1,
+        "wilsonLower": 0.8388748419471806,
+        "wilsonUpper": 1
+      },
+      "unknownCompletePassages": 0
+    },
+    {
+      "language": "English",
+      "category": "all",
+      "repairRecall": {
+        "numerator": 8,
+        "denominator": 12,
+        "estimate": 0.6666666666666666,
+        "wilsonLower": 0.39062208887279953,
+        "wilsonUpper": 0.8618799089087867
+      },
+      "referenceGroupPrecision": {
+        "numerator": 8,
+        "denominator": 10,
+        "estimate": 0.8,
+        "wilsonLower": 0.49016247153664183,
+        "wilsonUpper": 0.9433178485456247
+      },
+      "adjudicatedProposalPrecision": null,
+      "cleanLiteralPreservation": {
+        "numerator": 7,
+        "denominator": 8,
+        "estimate": 0.875,
+        "wilsonLower": 0.5291118177871464,
+        "wilsonUpper": 0.9775825085499433
+      },
+      "completeReferencePassages": {
+        "numerator": 15,
+        "denominator": 20,
+        "estimate": 0.75,
+        "wilsonLower": 0.531299122381256,
+        "wilsonUpper": 0.8881382985923343
+      },
+      "predictionCoverage": {
+        "numerator": 20,
+        "denominator": 20,
+        "estimate": 1,
+        "wilsonLower": 0.8388748419471806,
+        "wilsonUpper": 1
+      },
+      "referenceUnresolvedGroups": 2,
+      "proposedGroups": 10,
+      "reviewedGroups": 0,
+      "dispositions": {
+        "Unknown": 20
+      },
+      "completePassageJudgmentCoverage": {
+        "numerator": 20,
+        "denominator": 20,
+        "estimate": 1,
+        "wilsonLower": 0.8388748419471806,
+        "wilsonUpper": 1
+      },
+      "unknownCompletePassages": 0
+    },
+    {
+      "language": "English",
+      "category": "Spelling",
+      "repairRecall": {
+        "numerator": 1,
+        "denominator": 3,
+        "estimate": 0.3333333333333333,
+        "wilsonLower": 0.06149194472039621,
+        "wilsonUpper": 0.7923403991979522
+      },
+      "referenceGroupPrecision": {
+        "numerator": 1,
+        "denominator": 1,
+        "estimate": 1,
+        "wilsonLower": 0.20654931437723745,
+        "wilsonUpper": 1
+      },
+      "adjudicatedProposalPrecision": null,
+      "cleanLiteralPreservation": {
+        "numerator": 7,
+        "denominator": 8,
+        "estimate": 0.875,
+        "wilsonLower": 0.5291118177871464,
+        "wilsonUpper": 0.9775825085499433
+      },
+      "completeReferencePassages": {
+        "numerator": 15,
+        "denominator": 20,
+        "estimate": 0.75,
+        "wilsonLower": 0.531299122381256,
+        "wilsonUpper": 0.8881382985923343
+      },
+      "predictionCoverage": {
+        "numerator": 20,
+        "denominator": 20,
+        "estimate": 1,
+        "wilsonLower": 0.8388748419471806,
+        "wilsonUpper": 1
+      },
+      "referenceUnresolvedGroups": 0,
+      "proposedGroups": 1,
+      "reviewedGroups": 0,
+      "dispositions": {
+        "Unknown": 20
+      },
+      "completePassageJudgmentCoverage": {
+        "numerator": 20,
+        "denominator": 20,
+        "estimate": 1,
+        "wilsonLower": 0.8388748419471806,
+        "wilsonUpper": 1
+      },
+      "unknownCompletePassages": 0
+    },
+    {
+      "language": "English",
+      "category": "Grammar",
+      "repairRecall": {
+        "numerator": 7,
+        "denominator": 9,
+        "estimate": 0.7777777777777778,
+        "wilsonLower": 0.45258896910698887,
+        "wilsonUpper": 0.9367748928821533
+      },
+      "referenceGroupPrecision": {
+        "numerator": 7,
+        "denominator": 8,
+        "estimate": 0.875,
+        "wilsonLower": 0.5291118177871464,
+        "wilsonUpper": 0.9775825085499433
+      },
+      "adjudicatedProposalPrecision": null,
+      "cleanLiteralPreservation": {
+        "numerator": 7,
+        "denominator": 8,
+        "estimate": 0.875,
+        "wilsonLower": 0.5291118177871464,
+        "wilsonUpper": 0.9775825085499433
+      },
+      "completeReferencePassages": {
+        "numerator": 15,
+        "denominator": 20,
+        "estimate": 0.75,
+        "wilsonLower": 0.531299122381256,
+        "wilsonUpper": 0.8881382985923343
+      },
+      "predictionCoverage": {
+        "numerator": 20,
+        "denominator": 20,
+        "estimate": 1,
+        "wilsonLower": 0.8388748419471806,
+        "wilsonUpper": 1
+      },
+      "referenceUnresolvedGroups": 1,
+      "proposedGroups": 8,
+      "reviewedGroups": 0,
+      "dispositions": {
+        "Unknown": 20
+      },
+      "completePassageJudgmentCoverage": {
+        "numerator": 20,
+        "denominator": 20,
+        "estimate": 1,
+        "wilsonLower": 0.8388748419471806,
+        "wilsonUpper": 1
+      },
+      "unknownCompletePassages": 0
+    },
+    {
+      "language": "English",
+      "category": "SentenceStructure",
+      "repairRecall": {
+        "numerator": 0,
+        "denominator": 0,
+        "estimate": null,
+        "wilsonLower": null,
+        "wilsonUpper": null
+      },
+      "referenceGroupPrecision": {
+        "numerator": 0,
+        "denominator": 0,
+        "estimate": null,
+        "wilsonLower": null,
+        "wilsonUpper": null
+      },
+      "adjudicatedProposalPrecision": null,
+      "cleanLiteralPreservation": {
+        "numerator": 7,
+        "denominator": 8,
+        "estimate": 0.875,
+        "wilsonLower": 0.5291118177871464,
+        "wilsonUpper": 0.9775825085499433
+      },
+      "completeReferencePassages": {
+        "numerator": 15,
+        "denominator": 20,
+        "estimate": 0.75,
+        "wilsonLower": 0.531299122381256,
+        "wilsonUpper": 0.8881382985923343
+      },
+      "predictionCoverage": {
+        "numerator": 20,
+        "denominator": 20,
+        "estimate": 1,
+        "wilsonLower": 0.8388748419471806,
+        "wilsonUpper": 1
+      },
+      "referenceUnresolvedGroups": 0,
+      "proposedGroups": 0,
+      "reviewedGroups": 0,
+      "dispositions": {
+        "Unknown": 20
+      },
+      "completePassageJudgmentCoverage": {
+        "numerator": 20,
+        "denominator": 20,
+        "estimate": 1,
+        "wilsonLower": 0.8388748419471806,
+        "wilsonUpper": 1
+      },
+      "unknownCompletePassages": 0
+    },
+    {
+      "language": "English",
+      "category": "Punctuation",
+      "repairRecall": {
+        "numerator": 0,
+        "denominator": 0,
+        "estimate": null,
+        "wilsonLower": null,
+        "wilsonUpper": null
+      },
+      "referenceGroupPrecision": {
+        "numerator": 0,
+        "denominator": 0,
+        "estimate": null,
+        "wilsonLower": null,
+        "wilsonUpper": null
+      },
+      "adjudicatedProposalPrecision": null,
+      "cleanLiteralPreservation": {
+        "numerator": 7,
+        "denominator": 8,
+        "estimate": 0.875,
+        "wilsonLower": 0.5291118177871464,
+        "wilsonUpper": 0.9775825085499433
+      },
+      "completeReferencePassages": {
+        "numerator": 15,
+        "denominator": 20,
+        "estimate": 0.75,
+        "wilsonLower": 0.531299122381256,
+        "wilsonUpper": 0.8881382985923343
+      },
+      "predictionCoverage": {
+        "numerator": 20,
+        "denominator": 20,
+        "estimate": 1,
+        "wilsonLower": 0.8388748419471806,
+        "wilsonUpper": 1
+      },
+      "referenceUnresolvedGroups": 0,
+      "proposedGroups": 0,
+      "reviewedGroups": 0,
+      "dispositions": {
+        "Unknown": 20
+      },
+      "completePassageJudgmentCoverage": {
+        "numerator": 20,
+        "denominator": 20,
+        "estimate": 1,
+        "wilsonLower": 0.8388748419471806,
+        "wilsonUpper": 1
+      },
+      "unknownCompletePassages": 0
+    }
+  ],
+  "cases": [
+    {
+      "caseId": "p4-nl-confirmation-001",
+      "candidateSha256": "a471b04742d224f12f51aaa6cc784d488b7fca8aa9ca67a8a7befbdacc5f70bb",
+      "predictionAvailable": true,
+      "referenceCompletePassage": true,
+      "repairedAnnotations": [
+        0
+      ],
+      "proposals": [
+        {
+          "id": "proposal:981a487419130cbd5f493ad08f724d300e74442d0cf067b4abec98c438830a22",
+          "annotationIndexes": [
+            0
+          ],
+          "referenceMatched": true,
+          "edits": [
+            {
+              "start": 19,
+              "length": 0,
+              "originalText": "",
+              "replacementText": "t"
+            }
+          ]
+        }
+      ],
+      "referenceUnresolvedGroups": 0,
+      "disposition": null,
+      "semanticAssessment": "unassessed; deterministic reference matching is not semantic validation"
+    },
+    {
+      "caseId": "p4-nl-confirmation-002",
+      "candidateSha256": "e7238118f3e6ae07e19b320aaa3e040a9faca3c8f81ba8b8fb7fbdf3de1bf53a",
+      "predictionAvailable": true,
+      "referenceCompletePassage": true,
+      "repairedAnnotations": [
+        0
+      ],
+      "proposals": [
+        {
+          "id": "proposal:b5ab1cb086237d0b60b35a5c4453f6c32508e574a91ab0999ab878ccf3fcab15",
+          "annotationIndexes": [
+            0
+          ],
+          "referenceMatched": true,
+          "edits": [
+            {
+              "start": 43,
+              "length": 3,
+              "originalText": "den",
+              "replacementText": ""
+            }
+          ]
+        }
+      ],
+      "referenceUnresolvedGroups": 0,
+      "disposition": null,
+      "semanticAssessment": "unassessed; deterministic reference matching is not semantic validation"
+    },
+    {
+      "caseId": "p4-nl-confirmation-003",
+      "candidateSha256": "f826c58b843edbc3124999b3d8fc8260f8a5055715fd4a52f77d0c9c633459a2",
+      "predictionAvailable": true,
+      "referenceCompletePassage": false,
+      "repairedAnnotations": [],
+      "proposals": [],
+      "referenceUnresolvedGroups": 0,
+      "disposition": null,
+      "semanticAssessment": "unassessed; deterministic reference matching is not semantic validation"
+    },
+    {
+      "caseId": "p4-nl-confirmation-004",
+      "candidateSha256": "6854982e31f9cd0871dee8d3c031f18874847f8fa3bac4c0e039ad28b9fdbb27",
+      "predictionAvailable": true,
+      "referenceCompletePassage": true,
+      "repairedAnnotations": [
+        0
+      ],
+      "proposals": [
+        {
+          "id": "proposal:428b35b9621e4faa3e08b3addd83e8cba6283c2508db0350be705da4be03e4b9",
+          "annotationIndexes": [
+            0
+          ],
+          "referenceMatched": true,
+          "edits": [
+            {
+              "start": 39,
+              "length": 1,
+              "originalText": "t",
+              "replacementText": "d"
+            }
+          ]
+        }
+      ],
+      "referenceUnresolvedGroups": 0,
+      "disposition": null,
+      "semanticAssessment": "unassessed; deterministic reference matching is not semantic validation"
+    },
+    {
+      "caseId": "p4-nl-confirmation-005",
+      "candidateSha256": "a98802bd94039afed7b80eff4bf51e5a3e49d5e7e9aa42b50ff65fe0e423c99e",
+      "predictionAvailable": true,
+      "referenceCompletePassage": true,
+      "repairedAnnotations": [
+        0
+      ],
+      "proposals": [
+        {
+          "id": "proposal:6c535774481a4c648e9b17cefaecff2f78a666f52b54217ebf57606f79753fd6",
+          "annotationIndexes": [
+            0
+          ],
+          "referenceMatched": true,
+          "edits": [
+            {
+              "start": 14,
+              "length": 1,
+              "originalText": " ",
+              "replacementText": ""
+            }
+          ]
+        }
+      ],
+      "referenceUnresolvedGroups": 0,
+      "disposition": null,
+      "semanticAssessment": "unassessed; deterministic reference matching is not semantic validation"
+    },
+    {
+      "caseId": "p4-nl-confirmation-006",
+      "candidateSha256": "e667cb368f90aced982c7394b0bda03d842fc36c6a073618002bc6bca16a6be2",
+      "predictionAvailable": true,
+      "referenceCompletePassage": true,
+      "repairedAnnotations": [
+        0
+      ],
+      "proposals": [
+        {
+          "id": "proposal:ff256ea3231b83999ad1243e3dab657e2a495c546e5d78c39698082a908115e8",
+          "annotationIndexes": [
+            0
+          ],
+          "referenceMatched": true,
+          "edits": [
+            {
+              "start": 16,
+              "length": 2,
+              "originalText": "ci",
+              "replacementText": "ic"
+            }
+          ]
+        }
+      ],
+      "referenceUnresolvedGroups": 0,
+      "disposition": null,
+      "semanticAssessment": "unassessed; deterministic reference matching is not semantic validation"
+    },
+    {
+      "caseId": "p4-nl-confirmation-007",
+      "candidateSha256": "da470ce9e144aed742981628f0104b849724e408b05af9da06e1b6cbc9d392f6",
+      "predictionAvailable": true,
+      "referenceCompletePassage": false,
+      "repairedAnnotations": [],
+      "proposals": [],
+      "referenceUnresolvedGroups": 0,
+      "disposition": null,
+      "semanticAssessment": "unassessed; deterministic reference matching is not semantic validation"
+    },
+    {
+      "caseId": "p4-nl-confirmation-008",
+      "candidateSha256": "d6a8a82b9cb00dbe31e3783aca84b8228ebf268612f93c8538b71d28520f3e7d",
+      "predictionAvailable": true,
+      "referenceCompletePassage": false,
+      "repairedAnnotations": [],
+      "proposals": [],
+      "referenceUnresolvedGroups": 0,
+      "disposition": null,
+      "semanticAssessment": "unassessed; deterministic reference matching is not semantic validation"
+    },
+    {
+      "caseId": "p4-nl-confirmation-009",
+      "candidateSha256": "c09f11d791deb8fac502f8f278bcfd16b3fc24ad7136f05eea9cd571a3da3470",
+      "predictionAvailable": true,
+      "referenceCompletePassage": true,
+      "repairedAnnotations": [
+        0
+      ],
+      "proposals": [
+        {
+          "id": "proposal:be7e68e5148e0fe26ab2c20919600d155cb44b31fdd5ee3cb6f5be86a54a0d95",
+          "annotationIndexes": [
+            0
+          ],
+          "referenceMatched": true,
+          "edits": [
+            {
+              "start": 31,
+              "length": 0,
+              "originalText": "",
+              "replacementText": "en"
+            }
+          ]
+        }
+      ],
+      "referenceUnresolvedGroups": 0,
+      "disposition": null,
+      "semanticAssessment": "unassessed; deterministic reference matching is not semantic validation"
+    },
+    {
+      "caseId": "p4-nl-confirmation-010",
+      "candidateSha256": "a1c6d3cba4fb2d72ab2c8f19af93c63f01ce2c3cb73d8ea4db5077bc2574ab06",
+      "predictionAvailable": true,
+      "referenceCompletePassage": false,
+      "repairedAnnotations": [],
+      "proposals": [],
+      "referenceUnresolvedGroups": 0,
+      "disposition": null,
+      "semanticAssessment": "unassessed; deterministic reference matching is not semantic validation"
+    },
+    {
+      "caseId": "p4-nl-confirmation-011",
+      "candidateSha256": "426d51552de588adf48b147588f564ddcc5bacd5ef20b1e2d2268a0470d24106",
+      "predictionAvailable": true,
+      "referenceCompletePassage": true,
+      "repairedAnnotations": [
+        0
+      ],
+      "proposals": [
+        {
+          "id": "proposal:98006d138709b895b5495b5cfb85612ade2989cf9fae07bed47a9e9b8d9a6308",
+          "annotationIndexes": [
+            0
+          ],
+          "referenceMatched": true,
+          "edits": [
+            {
+              "start": 25,
+              "length": 1,
+              "originalText": "t",
+              "replacementText": "d"
+            }
+          ]
+        }
+      ],
+      "referenceUnresolvedGroups": 0,
+      "disposition": null,
+      "semanticAssessment": "unassessed; deterministic reference matching is not semantic validation"
+    },
+    {
+      "caseId": "p4-nl-confirmation-012",
+      "candidateSha256": "00682c304d9dbd4c592da427c350d18f3e9ee57069453c51fe98654761775250",
+      "predictionAvailable": true,
+      "referenceCompletePassage": false,
+      "repairedAnnotations": [],
+      "proposals": [],
+      "referenceUnresolvedGroups": 0,
+      "disposition": null,
+      "semanticAssessment": "unassessed; deterministic reference matching is not semantic validation"
+    },
+    {
+      "caseId": "p4-nl-confirmation-013",
+      "candidateSha256": "1cbac2d51ae233676c586ec4977234c622463e9e644b0c814254607c48d86632",
+      "predictionAvailable": true,
+      "referenceCompletePassage": false,
+      "repairedAnnotations": [],
+      "proposals": [
+        {
+          "id": "proposal:d8814c1dab86da378126d872d334567ac2ba70f6ac97f82108e3e23c41f017f0",
+          "annotationIndexes": [],
+          "referenceMatched": false,
+          "edits": [
+            {
+              "start": 32,
+              "length": 7,
+              "originalText": "üttenkä",
+              "replacementText": "uitka"
+            }
+          ]
+        }
+      ],
+      "referenceUnresolvedGroups": 1,
+      "disposition": null,
+      "semanticAssessment": "unassessed; deterministic reference matching is not semantic validation"
+    },
+    {
+      "caseId": "p4-nl-confirmation-014",
+      "candidateSha256": "88053daefb127644b69ccf5d0c696ddc220ad4201d34cff0f6f89861f3ca2a14",
+      "predictionAvailable": true,
+      "referenceCompletePassage": true,
+      "repairedAnnotations": [],
+      "proposals": [],
+      "referenceUnresolvedGroups": 0,
+      "disposition": null,
+      "semanticAssessment": "unassessed; deterministic reference matching is not semantic validation"
+    },
+    {
+      "caseId": "p4-nl-confirmation-015",
+      "candidateSha256": "38910d0f5f37b9c4dcc2533891f8a90f1c9952306bd5338834f06d23a7a132a2",
+      "predictionAvailable": true,
+      "referenceCompletePassage": true,
+      "repairedAnnotations": [],
+      "proposals": [],
+      "referenceUnresolvedGroups": 0,
+      "disposition": null,
+      "semanticAssessment": "unassessed; deterministic reference matching is not semantic validation"
+    },
+    {
+      "caseId": "p4-nl-confirmation-016",
+      "candidateSha256": "f835a6fe0a1cb98cc3e5444c092f26798c17ad3c5bfab306cc601b7e5ac7f02b",
+      "predictionAvailable": true,
+      "referenceCompletePassage": true,
+      "repairedAnnotations": [],
+      "proposals": [],
+      "referenceUnresolvedGroups": 0,
+      "disposition": null,
+      "semanticAssessment": "unassessed; deterministic reference matching is not semantic validation"
+    },
+    {
+      "caseId": "p4-nl-confirmation-017",
+      "candidateSha256": "9b3fdbe5ccdf02dce2c04691bc15ba8e7920bdfafa49593eef51b3abd8bd9e77",
+      "predictionAvailable": true,
+      "referenceCompletePassage": true,
+      "repairedAnnotations": [],
+      "proposals": [],
+      "referenceUnresolvedGroups": 0,
+      "disposition": null,
+      "semanticAssessment": "unassessed; deterministic reference matching is not semantic validation"
+    },
+    {
+      "caseId": "p4-nl-confirmation-018",
+      "candidateSha256": "ffc288fe1b1577e9c44a4471a94c6d397ac8a2d3245ddd8d67e3f31e6f1a242c",
+      "predictionAvailable": true,
+      "referenceCompletePassage": false,
+      "repairedAnnotations": [],
+      "proposals": [
+        {
+          "id": "proposal:c38ecbde7e23ed36318ec62616a299c5b0fa86f848b1f97fadaebc98a1c4d67d",
+          "annotationIndexes": [],
+          "referenceMatched": false,
+          "edits": [
+            {
+              "start": 40,
+              "length": 1,
+              "originalText": "α",
+              "replacementText": "ά"
+            }
+          ]
+        }
+      ],
+      "referenceUnresolvedGroups": 1,
+      "disposition": null,
+      "semanticAssessment": "unassessed; deterministic reference matching is not semantic validation"
+    },
+    {
+      "caseId": "p4-nl-confirmation-019",
+      "candidateSha256": "36aabed0978179202f41bfaaf009b848cd0f5c09a9414b269f55c21b4878b549",
+      "predictionAvailable": true,
+      "referenceCompletePassage": true,
+      "repairedAnnotations": [],
+      "proposals": [],
+      "referenceUnresolvedGroups": 0,
+      "disposition": null,
+      "semanticAssessment": "unassessed; deterministic reference matching is not semantic validation"
+    },
+    {
+      "caseId": "p4-nl-confirmation-020",
+      "candidateSha256": "bae0350bf6dd44ad93e38758f95fe454b206d36ea38beac5ee497807bd0a7123",
+      "predictionAvailable": true,
+      "referenceCompletePassage": true,
+      "repairedAnnotations": [],
+      "proposals": [],
+      "referenceUnresolvedGroups": 0,
+      "disposition": null,
+      "semanticAssessment": "unassessed; deterministic reference matching is not semantic validation"
+    },
+    {
+      "caseId": "p4-en-confirmation-001",
+      "candidateSha256": "eccf647a4e1faed8570080d52cbd001eaaa2df7fd6ab61a8c08031e4b83cbdeb",
+      "predictionAvailable": true,
+      "referenceCompletePassage": true,
+      "repairedAnnotations": [
+        0
+      ],
+      "proposals": [
+        {
+          "id": "proposal:e64f73f25b4535e847e287e29378ac44448c8436b5d9b3aad3c76a1d4bfc0e58",
+          "annotationIndexes": [
+            0
+          ],
+          "referenceMatched": true,
+          "edits": [
+            {
+              "start": 36,
+              "length": 0,
+              "originalText": "",
+              "replacementText": "s"
+            }
+          ]
+        }
+      ],
+      "referenceUnresolvedGroups": 0,
+      "disposition": null,
+      "semanticAssessment": "unassessed; deterministic reference matching is not semantic validation"
+    },
+    {
+      "caseId": "p4-en-confirmation-002",
+      "candidateSha256": "5f8014b88cdf06e9096dbe483882000ac3f256c6b2ac57b97234e0c7967b294f",
+      "predictionAvailable": true,
+      "referenceCompletePassage": true,
+      "repairedAnnotations": [
+        0
+      ],
+      "proposals": [
+        {
+          "id": "proposal:e024931a19bd7dd24c5f9f2de296d42a02921f1032fbea254965de9dd16024e9",
+          "annotationIndexes": [
+            0
+          ],
+          "referenceMatched": true,
+          "edits": [
+            {
+              "start": 11,
+              "length": 0,
+              "originalText": "",
+              "replacementText": "n"
+            }
+          ]
+        }
+      ],
+      "referenceUnresolvedGroups": 0,
+      "disposition": null,
+      "semanticAssessment": "unassessed; deterministic reference matching is not semantic validation"
+    },
+    {
+      "caseId": "p4-en-confirmation-003",
+      "candidateSha256": "8b39a963afb6285600f5545907be86a0b6ec66dd52f62c9e3f72531f726000c0",
+      "predictionAvailable": true,
+      "referenceCompletePassage": true,
+      "repairedAnnotations": [
+        0
+      ],
+      "proposals": [
+        {
+          "id": "proposal:e02c872d22398c16afacb5d32f20dffc29d3575652fcb1a2ba1db8e6387f4728",
+          "annotationIndexes": [
+            0
+          ],
+          "referenceMatched": true,
+          "edits": [
+            {
+              "start": 28,
+              "length": 0,
+              "originalText": "",
+              "replacementText": "es"
+            }
+          ]
+        }
+      ],
+      "referenceUnresolvedGroups": 0,
+      "disposition": null,
+      "semanticAssessment": "unassessed; deterministic reference matching is not semantic validation"
+    },
+    {
+      "caseId": "p4-en-confirmation-004",
+      "candidateSha256": "bfd720b05fc8e552d342f590e0abb82a49a679a3f87a21e6a75c4598edba062d",
+      "predictionAvailable": true,
+      "referenceCompletePassage": true,
+      "repairedAnnotations": [
+        0
+      ],
+      "proposals": [
+        {
+          "id": "proposal:bde592df46bbe3962851564d85490de5c98836cbf7a5f502326c7cdfe773208e",
+          "annotationIndexes": [
+            0
+          ],
+          "referenceMatched": true,
+          "edits": [
+            {
+              "start": 13,
+              "length": 0,
+              "originalText": "",
+              "replacementText": "ten"
+            }
+          ]
+        }
+      ],
+      "referenceUnresolvedGroups": 0,
+      "disposition": null,
+      "semanticAssessment": "unassessed; deterministic reference matching is not semantic validation"
+    },
+    {
+      "caseId": "p4-en-confirmation-005",
+      "candidateSha256": "1d406710cf6a1e1258f353d1e00914b38a9570f4fe706c6cb7c708fa31b43b42",
+      "predictionAvailable": true,
+      "referenceCompletePassage": true,
+      "repairedAnnotations": [
+        0
+      ],
+      "proposals": [
+        {
+          "id": "proposal:5e4acb115fd3431b92705212687d5b86ea0ba9fd1fe1547b7de04a966f6e4316",
+          "annotationIndexes": [
+            0
+          ],
+          "referenceMatched": true,
+          "edits": [
+            {
+              "start": 13,
+              "length": 2,
+              "originalText": "to",
+              "replacementText": "on"
+            }
+          ]
+        }
+      ],
+      "referenceUnresolvedGroups": 0,
+      "disposition": null,
+      "semanticAssessment": "unassessed; deterministic reference matching is not semantic validation"
+    },
+    {
+      "caseId": "p4-en-confirmation-006",
+      "candidateSha256": "29e01cbc7d67031d4d37eb3bce3d0da52c85720f553204a8d936ba8e9d9fa852",
+      "predictionAvailable": true,
+      "referenceCompletePassage": true,
+      "repairedAnnotations": [
+        0
+      ],
+      "proposals": [
+        {
+          "id": "proposal:078b2c0a238610e9e90ccbdb75f137ab560bae83ea90e8b46be0106b55c3056e",
+          "annotationIndexes": [
+            0
+          ],
+          "referenceMatched": true,
+          "edits": [
+            {
+              "start": 48,
+              "length": 2,
+              "originalText": "ne",
+              "replacementText": "en"
+            }
+          ]
+        }
+      ],
+      "referenceUnresolvedGroups": 0,
+      "disposition": null,
+      "semanticAssessment": "unassessed; deterministic reference matching is not semantic validation"
+    },
+    {
+      "caseId": "p4-en-confirmation-007",
+      "candidateSha256": "b37713c339f10696428ef908dc45dbf812a59dbd6ff15ddb0283c1e5a7d55f4f",
+      "predictionAvailable": true,
+      "referenceCompletePassage": false,
+      "repairedAnnotations": [],
+      "proposals": [
+        {
+          "id": "proposal:b01e3ad3ec0cb905f885e81a4c6895e154675aea12a737687084c363b7e1e866",
+          "annotationIndexes": [
+            0
+          ],
+          "referenceMatched": false,
+          "edits": [
+            {
+              "start": 8,
+              "length": 1,
+              "originalText": "'",
+              "replacementText": "’"
+            },
+            {
+              "start": 12,
+              "length": 2,
+              "originalText": "aw",
+              "replacementText": "een"
+            }
+          ]
+        }
+      ],
+      "referenceUnresolvedGroups": 1,
+      "disposition": null,
+      "semanticAssessment": "unassessed; deterministic reference matching is not semantic validation"
+    },
+    {
+      "caseId": "p4-en-confirmation-008",
+      "candidateSha256": "b9972f0efc08f507adecb96fc147116c51937fa735d8675cd150b5cc3eda5f31",
+      "predictionAvailable": true,
+      "referenceCompletePassage": false,
+      "repairedAnnotations": [],
+      "proposals": [],
+      "referenceUnresolvedGroups": 0,
+      "disposition": null,
+      "semanticAssessment": "unassessed; deterministic reference matching is not semantic validation"
+    },
+    {
+      "caseId": "p4-en-confirmation-009",
+      "candidateSha256": "2209f6ebf5ff2c8a3b78d9730c5c8c6996e7ea0fb77b725c8f6c0ac6c75b1d16",
+      "predictionAvailable": true,
+      "referenceCompletePassage": false,
+      "repairedAnnotations": [],
+      "proposals": [],
+      "referenceUnresolvedGroups": 0,
+      "disposition": null,
+      "semanticAssessment": "unassessed; deterministic reference matching is not semantic validation"
+    },
+    {
+      "caseId": "p4-en-confirmation-010",
+      "candidateSha256": "2ad9f2c8a75986a2f1483f672c8cc35de81bfa2f56cb943304d176b1cfa9f033",
+      "predictionAvailable": true,
+      "referenceCompletePassage": true,
+      "repairedAnnotations": [
+        0
+      ],
+      "proposals": [
+        {
+          "id": "proposal:4aa642686d05849a76bf8824628ff98c1ca9de1294c52eadd070b9a3104702d4",
+          "annotationIndexes": [
+            0
+          ],
+          "referenceMatched": true,
+          "edits": [
+            {
+              "start": 26,
+              "length": 1,
+              "originalText": "s",
+              "replacementText": ""
+            }
+          ]
+        }
+      ],
+      "referenceUnresolvedGroups": 0,
+      "disposition": null,
+      "semanticAssessment": "unassessed; deterministic reference matching is not semantic validation"
+    },
+    {
+      "caseId": "p4-en-confirmation-011",
+      "candidateSha256": "c9b5bca84db7d14e02ce48f8155bda56e0a3bf8fdb626a38f6806433d3d81332",
+      "predictionAvailable": true,
+      "referenceCompletePassage": false,
+      "repairedAnnotations": [],
+      "proposals": [],
+      "referenceUnresolvedGroups": 0,
+      "disposition": null,
+      "semanticAssessment": "unassessed; deterministic reference matching is not semantic validation"
+    },
+    {
+      "caseId": "p4-en-confirmation-012",
+      "candidateSha256": "cb59309354431de49729b76e232cad2e440ebb16ee18be246133794be3a02a38",
+      "predictionAvailable": true,
+      "referenceCompletePassage": true,
+      "repairedAnnotations": [
+        0
+      ],
+      "proposals": [
+        {
+          "id": "proposal:8344b8b8a97f53d86a6e44da234f73292d5732c0c64378a7533c53fe4d12333e",
+          "annotationIndexes": [
+            0
+          ],
+          "referenceMatched": true,
+          "edits": [
+            {
+              "start": 15,
+              "length": 0,
+              "originalText": "",
+              "replacementText": "es"
+            }
+          ]
+        }
+      ],
+      "referenceUnresolvedGroups": 0,
+      "disposition": null,
+      "semanticAssessment": "unassessed; deterministic reference matching is not semantic validation"
+    },
+    {
+      "caseId": "p4-en-confirmation-013",
+      "candidateSha256": "17588e42f2a1b0f8db3f7e0b8f159e32cd8878dfcc34ea055b62452b4479f37d",
+      "predictionAvailable": true,
+      "referenceCompletePassage": false,
+      "repairedAnnotations": [],
+      "proposals": [
+        {
+          "id": "proposal:ca2191c745ace286ab0494137c23df2ae605c23758dc383e7ec7bb4d00a036b9",
+          "annotationIndexes": [],
+          "referenceMatched": false,
+          "edits": [
+            {
+              "start": 29,
+              "length": 1,
+              "originalText": "'",
+              "replacementText": "’"
+            }
+          ]
+        }
+      ],
+      "referenceUnresolvedGroups": 1,
+      "disposition": null,
+      "semanticAssessment": "unassessed; deterministic reference matching is not semantic validation"
+    },
+    {
+      "caseId": "p4-en-confirmation-014",
+      "candidateSha256": "2bedd33820547631f440a1f4de882a4eb24522fca2dd1bf5331f74d9f4438bcc",
+      "predictionAvailable": true,
+      "referenceCompletePassage": true,
+      "repairedAnnotations": [],
+      "proposals": [],
+      "referenceUnresolvedGroups": 0,
+      "disposition": null,
+      "semanticAssessment": "unassessed; deterministic reference matching is not semantic validation"
+    },
+    {
+      "caseId": "p4-en-confirmation-015",
+      "candidateSha256": "8d3191999957f36644721d70005d96f52618587d7e7c30b22e7475c57a934699",
+      "predictionAvailable": true,
+      "referenceCompletePassage": true,
+      "repairedAnnotations": [],
+      "proposals": [],
+      "referenceUnresolvedGroups": 0,
+      "disposition": null,
+      "semanticAssessment": "unassessed; deterministic reference matching is not semantic validation"
+    },
+    {
+      "caseId": "p4-en-confirmation-016",
+      "candidateSha256": "8662eaad3b0283f077e357e68406c435d785805c88fd604feb02036c80354254",
+      "predictionAvailable": true,
+      "referenceCompletePassage": true,
+      "repairedAnnotations": [],
+      "proposals": [],
+      "referenceUnresolvedGroups": 0,
+      "disposition": null,
+      "semanticAssessment": "unassessed; deterministic reference matching is not semantic validation"
+    },
+    {
+      "caseId": "p4-en-confirmation-017",
+      "candidateSha256": "579e0c8356fa9f37aa946dfee006a94f9ece1b8b1c30df2552c879d9304ae933",
+      "predictionAvailable": true,
+      "referenceCompletePassage": true,
+      "repairedAnnotations": [],
+      "proposals": [],
+      "referenceUnresolvedGroups": 0,
+      "disposition": null,
+      "semanticAssessment": "unassessed; deterministic reference matching is not semantic validation"
+    },
+    {
+      "caseId": "p4-en-confirmation-018",
+      "candidateSha256": "29acc4f9a6711f62bd590245fe4dd0f43b58ae3f1e7ad3c7b26834a3ecbe4531",
+      "predictionAvailable": true,
+      "referenceCompletePassage": true,
+      "repairedAnnotations": [],
+      "proposals": [],
+      "referenceUnresolvedGroups": 0,
+      "disposition": null,
+      "semanticAssessment": "unassessed; deterministic reference matching is not semantic validation"
+    },
+    {
+      "caseId": "p4-en-confirmation-019",
+      "candidateSha256": "bc03fff7196e6cf6bb07d5cc1dc432cf009134a20af8882f2c608c001de99a48",
+      "predictionAvailable": true,
+      "referenceCompletePassage": true,
+      "repairedAnnotations": [],
+      "proposals": [],
+      "referenceUnresolvedGroups": 0,
+      "disposition": null,
+      "semanticAssessment": "unassessed; deterministic reference matching is not semantic validation"
+    },
+    {
+      "caseId": "p4-en-confirmation-020",
+      "candidateSha256": "61330b0b8ee6f42d0a046421e598cb535b9cd5111aebc9e357fd9c93c0bce1a1",
+      "predictionAvailable": true,
+      "referenceCompletePassage": true,
+      "repairedAnnotations": [],
+      "proposals": [],
+      "referenceUnresolvedGroups": 0,
+      "disposition": null,
+      "semanticAssessment": "unassessed; deterministic reference matching is not semantic validation"
+    }
+  ]
+}

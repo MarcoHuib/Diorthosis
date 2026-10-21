@@ -1,0 +1,10 @@
+{
+  "version": "phase4-preparer-inspection-1.0.0",
+  "observations": 33,
+  "sourceCases": 22,
+  "unboundNoteIndexes": [],
+  "sourceSpecSha256": "5fc73bd2a8ba9bcf9ca844ae259798488461c2c074a1902c0358210e135b3391",
+  "scriptSha256": "8f0ad124f21444dde23922175e0a0e35c50c1ec3e745f6aa1c51a7eab9f09158",
+  "outputSha256": "7eada08bc57c89c6a74c4d50e593b680702c91cab4a60fcaebfbd66380f45412",
+  "policy": "Partial, exposed AI qualitative evidence only. Exact source/candidate contextual reuse is not fresh independent assessment. No extrapolated linguistic rates or human approvals. Unknown/uninspected outputs remain unassessed."
+}

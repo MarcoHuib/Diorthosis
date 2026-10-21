@@ -1,0 +1,13 @@
+{
+  "version": "phase4-blind-review-1.0.0",
+  "sourceCases": 180,
+  "subjects": 1075,
+  "generationOccurrences": 920,
+  "humanApprovals": 0,
+  "files": {
+    "subjects.jsonl": "6b30532d9a5c540c22884330ace9395404a631c9af9d0b38d0a0cb6d0e15c54c",
+    "review.html": "90c8c42b904b1805e7fc94f9ce3f06de673362f94c7f78975882d74942819c71",
+    "CHATGPT-REVIEW.md": "1e5ca655fbeab9e01a13eb6322d4bd28de46183564881db3c4d02b33fdd6b152"
+  },
+  "policy": "No condition/model lineage or preparer judgments. Exact text retained; absolute blinding and independence not guaranteed."
+}
