@@ -1,0 +1,26 @@
+{
+  "version": "phase4-preparer-observations-1.0.0",
+  "authority": "Same-session OpenAI Codex AI inspection; model build unavailable; not independent, not human validation",
+  "scope": "Early selection representation run only; concrete observations, not complete metric coverage",
+  "observations": [
+    {"caseId":"p4-nl-selection-007","issue":"Escaped/literal JSON delete wil and substitute doe; plain text adds moet. Both alter volition/modality. A/B accepted, C rejected. A grammatical-looking output is not necessarily meaning-preserving."},
+    {"caseId":"p4-nl-selection-014","issue":"All arms generate koffie-apparaat and are rejected as protected-content changes. A facultative hyphen in Dutch compounds can be valid; this is a plausible valid-alternative/false-rejection case for qualified review, not permission to weaken the validator.","source":"https://www.vlaanderen.be/team-taaladvies/taaladviezen/scriptiebegeleiding-scriptie-begeleiding"},
+    {"caseId":"p4-nl-selection-019","issue":"All three arms leave coordinator without trema and replace hesje with hemdje. Accepted new lexical/meaning error, missed original error."},
+    {"caseId":"p4-nl-selection-022","issue":"B/C preserve backticked retry_count and fix wachtworod; A replaces backticks with emphasis and is rejected. Real delivered repair gain for B/C."},
+    {"caseId":"p4-nl-selection-023","issue":"B/C repair plural bestanden ... bestaan; A leaves bestaat unchanged. Real agreement repair gain."},
+    {"caseId":"p4-nl-selection-033","issue":"All translate French bienvenue to welkom; A/B also miss uitnoding, C fixes it but still damages multilingual content. Local repair and whole-passage quality must remain separate."},
+    {"caseId":"p4-nl-selection-036","issue":"All change present verleend to perfect heeft verleend instead of present verleent. Grammatically possible alternative, but unnecessary aspect change needs semantic review; reference mismatch alone cannot decide correctness."},
+    {"caseId":"p4-nl-selection-043","issue":"B preserves correct conciërge, A/C remove its trema. Concrete Unicode preservation gain, not evidence of a general corruption rate."},
+    {"caseId":"p4-nl-selection-045","issue":"All normalize cafe+combining acute to precomposed café. Canonically equivalent, unnecessary literal change; distinguish from malformed spelling or changed meaning."},
+    {"caseId":"p4-nl-selection-046","issue":"C keeps emoji but adds phrase-level emphasis which is accepted; A/B change the emoji and are rejected. Preserving symbols is not sufficient for clean-text preservation."},
+    {"caseId":"p4-nl-selection-050","issue":"A/B rewrite informal Belgian goesting to geest; C writes honger op. Neither preserves the regional passage. Goesting's formal standard status is disputed, but it is established in informal Belgian use and this task preserves that register.","source":"https://taaladvies.net/goesting-of-zin-of-trek/"},
+    {"caseId":"p4-nl-selection-051","issue":"C inserts behoort before behoorlijk, introducing a malformed phrase in clean Netherlands usage; A/B preserve it."},
+    {"caseId":"p4-nl-selection-052","issue":"All change valid betaald heeft to heeft betaald. Valid grammatical variant, unnecessary edit to correct source, not a repair."},
+    {"caseId":"p4-nl-selection-059","issue":"B preserves French/German/Greek; A generates altered multilingual words and is rejected; C corrupts Greek to kaalméra and is accepted."},
+    {"caseId":"p4-nl-selection-068","issue":"B preserves naïve_mode and coëfficiënten; A/C alter identifier formatting and are rejected."},
+    {"caseId":"p4-en-selection-001","issue":"All generate valid subject agreement needs, but the unchanged validator rejects the output. Lost valid repair, abstention in delivered counts."},
+    {"caseId":"p4-en-selection-011","issue":"All deliver We didn’t know the gate would be locked. Valid repair with curly apostrophe; the frozen ASCII-contraction reference may undercredit it. Keep an explicit alternative judgment rather than rewriting references."},
+    {"caseId":"p4-en-selection-013","issue":"A repairs the preposition but converts I'm to I’m and is rejected; B/C repair it with the original contraction and are accepted. Raw linguistic correctness and delivered repair differ."}
+  ],
+  "externalReview": "Not available in this execution; do not represent this file as a blind ChatGPT assessment or final quality evaluation. Final lineage-bound inspection is separate."
+}
