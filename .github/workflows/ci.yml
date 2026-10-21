@@ -19,7 +19,12 @@ jobs:
       - run: dotnet run --project src/Diorthosis.Benchmarks --configuration Release --no-build -- evaluate benchmarks/smoke/cases.jsonl benchmarks/smoke/predictions.jsonl
       - run: python3 scripts/verify-historical-artifacts.py
       - run: python3 scripts/verify-phase2-artifacts.py
+      - run: python3 scripts/verify-phase3-artifacts.py
+      - run: python3 scripts/verify-external-linguistic-review.py
       - run: python3 -m unittest discover -s tests/tooling -p 'test_*.py'
+      - run: dotnet run --project src/Diorthosis.Benchmarks --configuration Release --no-build -- linguistic-impact benchmarks/phase3/v1/panel.jsonl benchmarks/phase3/v1/run artifacts/external-impact-replay
+      - run: python3 scripts/verify-external-linguistic-review.py --replay-directory artifacts/external-impact-replay
+      - run: dotnet run --project src/Diorthosis.Benchmarks --configuration Release --no-build -- adjudicate benchmarks/phase3/v1/review-all-candidates/subjects.jsonl benchmarks/phase3/external-gpt6/v1/original/diorthosis-ai-review.jsonl benchmarks/phase3/external-gpt6/v1/original/empty-adjudications.jsonl artifacts/external-review-import.json --lineage benchmarks/phase3/v1/review-all-candidates/lineage-DO-NOT-SEND-TO-REVIEWERS.json
       - run: dotnet run --project src/Diorthosis.Benchmarks --configuration Release --no-build -- audit-dataset benchmarks/model-validation/provisional-600.jsonl artifacts/dataset-audit
       - run: diff -r benchmarks/rehabilitation/v1/dataset artifacts/dataset-audit
       - run: dotnet run --project src/Diorthosis.Benchmarks --configuration Release --no-build -- adjudicate benchmarks/phase2/v1/review-analysis/subjects.jsonl benchmarks/phase2/v1/review-analysis/decisions.jsonl benchmarks/phase2/v1/review-analysis/adjudications.jsonl artifacts/review-import-check.json --lineage benchmarks/phase2/v1/review-analysis/lineage-DO-NOT-SEND-TO-REVIEWERS.json
@@ -54,6 +59,17 @@ jobs:
         with:
           dotnet-version: 10.0.x
       - run: dotnet publish src/Diorthosis.Cli/Diorthosis.Cli.csproj -c Release -r ${{ matrix.rid }} -o artifacts/${{ matrix.rid }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      # Explicit development-only acquisition of the reviewed hash-pinned assets; never an app download.
+      - run: python scripts/acquire-linguistic-assets.py artifacts/linguistic-assets
+      - run: dotnet publish tests/NativeLinguisticProbe/NativeLinguisticProbe.csproj -c Release -r ${{ matrix.rid }} -o artifacts/linguistic-probe/${{ matrix.rid }}
+      - run: artifacts/linguistic-probe/${{ matrix.rid }}/${{ runner.os == 'Windows' && 'NativeLinguisticProbe.exe' || 'NativeLinguisticProbe' }} artifacts/linguistic-assets
+        shell: bash
+        env:
+          DOTNET_ROOT: ${{ runner.temp }}/no-dotnet-runtime
+          DOTNET_MULTILEVEL_LOOKUP: 0
       - if: matrix.rid == 'osx-arm64'
         run: scripts/build-osx-arm64-cpu-backend.sh artifacts/osx-arm64
       - if: runner.os != 'Windows'

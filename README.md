@@ -18,6 +18,8 @@ Diorthosis aims to help people confidently review spelling, grammar, and sentenc
 
 The [quality engineering report](docs/quality-engineering-report.md) records the dataset audit (263 exact unique inputs among 600 records), versioned evaluator, safety/result contracts and controlled prompt/edit experiments. None establishes independent held-out quality or release readiness.
 
+The [Phase 3 linguistic report](docs/phase3-report.md) records 100 new local generations comparing dictionary hints and guarded edit voting. AI-assisted linguistic assessment guides development; AI judgments remain explicitly separate from human validation. The [blinded fictional before/after review packet](benchmarks/phase3/v1/chatgpt-review.zip) is ready for an independent ChatGPT assessment. Original texts, literal model responses, prompts, seeds, judgments and evidence hashes are preserved. Mixed and negative results keep production defaults unchanged.
+
 ## Project goals
 
 - Run entirely on the user's own computer, with no network access or telemetry.

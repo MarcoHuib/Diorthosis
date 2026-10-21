@@ -80,10 +80,13 @@ public sealed class LlamaSharpInferenceAdapter : IModelInferenceAdapter, IDispos
             ObjectDisposedException.ThrowIf(_disposed, this);
             LastTermination = GenerationTermination.Unknown;
             LastSampledTokenCount = 0;
-            using var samplingPipeline = new TerminationTrackingGreedySamplingPipeline(_weights)
-            {
-                Grammar = request.GbnfGrammar is null ? null : new Grammar(request.GbnfGrammar, "root")
-            };
+            using var greedy = request.Sampling is null ? new TerminationTrackingGreedySamplingPipeline(_weights)
+                { Grammar = request.GbnfGrammar is null ? null : new Grammar(request.GbnfGrammar, "root") } : null;
+            using var stochastic = request.Sampling is { } sample ? new TerminationTrackingSamplingPipeline(_weights, sample)
+                { Grammar = request.GbnfGrammar is null ? null : new Grammar(request.GbnfGrammar, "root") } : null;
+            ISamplingPipeline samplingPipeline = (ISamplingPipeline?)greedy ?? stochastic!;
+            int Sampled() => greedy?.SampledTokenCount ?? stochastic!.SampledTokenCount;
+            bool Ended() => greedy?.EndOfGenerationSampled ?? stochastic!.EndOfGenerationSampled;
             var settings = new InferenceParams
             {
                 MaxTokens = request.MaximumOutputTokens,
@@ -97,17 +100,17 @@ public sealed class LlamaSharpInferenceAdapter : IModelInferenceAdapter, IDispos
             }
             catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
             {
-                LastSampledTokenCount = samplingPipeline.SampledTokenCount;
+                LastSampledTokenCount = Sampled();
                 LastTermination = GenerationTermination.Cancelled;
                 throw;
             }
-            LastSampledTokenCount = samplingPipeline.SampledTokenCount;
+            LastSampledTokenCount = Sampled();
             if (cancellationToken.IsCancellationRequested)
             {
                 LastTermination = GenerationTermination.Cancelled;
                 cancellationToken.ThrowIfCancellationRequested();
             }
-            var termination = samplingPipeline.EndOfGenerationSampled
+            var termination = Ended()
                 ? Diorthosis.Core.Inference.GenerationTermination.EndOfGeneration
                 : Diorthosis.Core.Inference.GenerationTermination.MaximumTokens;
             LastTermination = termination switch
@@ -116,7 +119,7 @@ public sealed class LlamaSharpInferenceAdapter : IModelInferenceAdapter, IDispos
                 Diorthosis.Core.Inference.GenerationTermination.MaximumTokens => GenerationTermination.MaximumTokens,
                 _ => GenerationTermination.Unknown
             };
-            return new InferenceResult(output.ToString(), termination, samplingPipeline.SampledTokenCount);
+            return new InferenceResult(output.ToString(), termination, Sampled());
         }
         finally
         {
@@ -144,6 +147,33 @@ public sealed class LlamaSharpInferenceAdapter : IModelInferenceAdapter, IDispos
         public int SampledTokenCount { get; private set; }
         public bool EndOfGenerationSampled { get; private set; }
 
+        public override LLamaToken Sample(LLama.Native.SafeLLamaContextHandle context, int index)
+        {
+            var token = base.Sample(context, index);
+            SampledTokenCount++;
+            EndOfGenerationSampled = token.IsEndOfGeneration(weights.Vocab);
+            return token;
+        }
+    }
+
+    private sealed class TerminationTrackingSamplingPipeline(LLamaWeights weights, Corrections.ExperimentalSampling settings) : BaseSamplingPipeline
+    {
+        public Grammar? Grammar { get; init; }
+        public int SampledTokenCount { get; private set; }
+        public bool EndOfGenerationSampled { get; private set; }
+        protected override SafeLLamaSamplerChainHandle CreateChain(SafeLLamaContextHandle context)
+        {
+            var chain = SafeLLamaSamplerChainHandle.Create(LLamaSamplerChainParams.Default());
+            try
+            {
+                if (Grammar is not null) chain.AddGrammar(context.ModelHandle, Grammar.Gbnf, Grammar.Root);
+                chain.AddTopP(settings.TopP, 1);
+                chain.AddTemperature(settings.Temperature);
+                chain.AddDistributionSampler(settings.Seed);
+                return chain;
+            }
+            catch { chain.Dispose(); throw; }
+        }
         public override LLamaToken Sample(LLama.Native.SafeLLamaContextHandle context, int index)
         {
             var token = base.Sample(context, index);

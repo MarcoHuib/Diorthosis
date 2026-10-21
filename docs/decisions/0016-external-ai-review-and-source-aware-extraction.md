@@ -1,0 +1,11 @@
+# 0016: External AI review and source-aware emphasis extraction
+
+2026-10-21. Accepted for development feedback and the narrowly tested extraction fix. No model, dictionary or voting promotion.
+
+The external ChatGPT GPT-6 assessment of 119 frozen Phase 3 subjects declares prior project context, unavailable build and no independence. Preserve its ZIP/member bytes, strict schema/binding/provenance validation, full comparison with the preparer AI, separate raw/delivered/rejected lineage and zero human approvals. Repeated representations of a passage are not independent failures. Frozen annotations and predictions remain unchanged.
+
+One accepted model response repaired the English article but inserted single-word `*experienced*` emphasis. Existing extraction removed double emphasis but missed this form. Extend extraction only for isolated letter/combining-mark words surrounded by single asterisks when the source contains no asterisk, underscore or backtick. Retain raw output; run existing validation afterwards; literal candidate analysis and source-owned formatting are unchanged. A failing-before/passing-after regression reproduces the real output. Updated deterministic replay changes one of 120 arm/case results, with zero disposition changes, lost valid repairs or observed false rejections; 176 historical outputs remain unchanged.
+
+Rejected alternatives: removing all Markdown/asterisks would damage source formatting; rejecting every unknown dictionary word would damage names and valid inflections; accepting recognized words as semantic proof misses `uitgezonden`; promoting the experimental Latin script allowlist would reject legitimate Greek accent repairs. Lexical blacklists and reference matching cannot safely distinguish semantic alternatives. Do not invent a generalized semantic fix from this panel. The remaining accepted diacritic and meaning failures are diagnostics requiring new model/prompt evidence.
+
+The updated article text already has a separate existing source/candidate/layer assessment in the blinded packet. Exact contextual reuse retains the original subject binding and is explicitly a projection, never a new GPT-6 decision. Original local-error labels remain preparer-AI diagnostics. See [the report](../external-gpt6-review-report.md) for denominators, uncertainties and the next experiment.

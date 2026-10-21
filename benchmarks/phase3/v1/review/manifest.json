@@ -1,0 +1,17 @@
+{
+  "version": "phase3-blind-review-1.0.0",
+  "datasetSha256": "9005e2baebe5c6ee48d4037749c2ca2ea560f33c5c17029ba7226f268dbd14f2",
+  "traceSha256": "c5a4336b3ba76cb1d6462d1447e68688dea501743c90bf69d947e5daed8f192d",
+  "subjectCount": 48,
+  "sourceCases": 20,
+  "humanApprovals": 0,
+  "privateDataPolicy": "Only explicitly rights-cleared fictional inputs. No text redaction or PII guarantee for arbitrary data.",
+  "files": {
+    "review.html": "55fc9ef5ba13ad76f628591bda8e1099f79a0a19853a0c3de9992c96b4f0090a",
+    "decisions.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "subjects.jsonl": "08cc7a43d82e7a699804bc90e8045f056a840a9c6f1ad4f0ff83a95ec95c1de4",
+    "CHATGPT-REVIEW.md": "d42a51583b9799fd718b849172328fc9fc5aeedcdfc61a92dcbe715d502d5e04",
+    "adjudications.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "lineage-DO-NOT-SEND-TO-REVIEWERS.json": "e777f132d2af191c69037982094953fb43bddb6d3d7eebe870bd716f8e3fe600"
+  }
+}

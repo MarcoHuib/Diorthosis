@@ -1,0 +1,106 @@
+# External GPT-6 review: evidence and correction impact
+
+2026-10-21. The imported review confirms accepted Dutch corruption and semantic drift in stochastic samples, plus an accepted English formatting artifact. One narrow extraction fix removes that artifact. It does not solve semantic preservation or Dutch Unicode corruption. Production prompt v3, greedy generation, model choice, dictionary use and voting defaults are unchanged. **All judgments remain AI diagnostic evidence; human approvals remain zero.**
+
+## Import and reproducibility
+
+[Evidence directory](../benchmarks/phase3/external-gpt6/v1/) contains the original ZIP and three unmodified members, strict validation, the existing adjudicator's report, full reconciliation, paired replay and native checks. Frozen `benchmarks/phase3/v1` and benchmark annotations were not modified.
+
+The ZIP has exactly the three expected regular root files. Extraction rejects traversal, links, encryption, unexpected/duplicate entries and excessive sizes. JSON preflight rejects duplicate properties, missing/extra schema fields, invalid boolean/null/string/array types, invalid Unicode, wrong reviewer/language/version, duplicate/unbound/missing decisions and mismatched provenance hashes. All 119 unique subjects bind correctly; all decisions are version 1 from `OpenAI ChatGPT GPT-6`, kind `ai`. Specific build is unavailable, prior project context was declared and `independenceDeclared` is false. This is external feedback, not demonstrated independent evaluation. Attachment prose is retained as data, not adopted as development instructions.
+
+Verified SHA-256: imported ZIP `ba70e2fbe31bd1ed813896e52f2362c72e6c35308d6f709e93079414158865f5`; decisions `fcd427d7747448bd06bce979e1fd9d46dd2f45c66778749c707ae7ddd6b41e10`. [validation.json](../benchmarks/phase3/external-gpt6/v1/validation.json) records every member and provenance hash. `adjudicate` ran with the intentionally empty human file and full lineage: no missing, duplicate or unbound decisions, no human adjudications, no finalized human metrics. Identity declarations are not authenticated identity or qualifications.
+
+## Count the assessment layers separately
+
+119 subjects comprise 68 Dutch and 51 English: 20 source-annotation subjects, 49 distinct raw-response subjects, 32 distinct delivered-passage subjects and 18 rejection subjects. Four rejection subjects have no extracted candidate. There are 51 distinct `(source case, literal candidate)` pairs across layers, 20 original fictional passages, 100 raw model generation occurrences and 20 derived voting outcomes. The 100 include the single stochastic control reused in the three-sample pool. No additional generation is implied by that comparison. All material is development-exposed.
+
+The 120 trace occurrences contain 116 non-null extracted candidates representing 46 distinct case-bound texts, versus 51 distinct literal texts across all reviewed layers. All 100 raw generations have an extracted candidate; 16/20 voting outcomes do. At the occurrence layer there are 59 Accepted repairs, 35 Unchanged outcomes and 26 Rejected outcomes. Of the generations alone, 51 are Accepted, 27 Unchanged and 22 Rejected; voting contributes 8 Accepted, 8 Unchanged and 4 Rejected. Thus 94 eligible deliveries are represented by 32 deduplicated delivered subjects. Rejection count 26 at the occurrence layer is represented by 18 rejection subjects. Returning the original text after rejection is safe abstention, not an accepted candidate or successful repair.
+
+| External judgment | Subjects / known | Distinct candidate texts within case | Source cases | Raw / delivered / rejected subjects | Represented generation occurrences |
+|---|---:|---:|---:|---:|---:|
+| Meaning not preserved | 26 / 95 | 14 | 10 | 13 / 6 / 7 | 16 |
+| New errors introduced | 48 / 95 | 27 | 15 | 26 / 11 / 11 | 29 |
+| Critical semantic failure | 18 / 95 | 10 | 6 | 9 / 3 / 6 | 9 |
+
+The 24 unknown judgments in each row are 20 annotations and four candidate-less rejections. Meaning-failure subjects split NL 18 / EN 8; new-error subjects NL 32 / EN 16; critical subjects NL 14 / EN 4. These overlapping subject totals are **not production failure rates or independent error counts**. The three delivered critical candidates all come from the same clean Dutch diacritics passage, one per stochastic seed. No critical candidate is delivered by greedy baseline, hints or voting on this panel. The other two failure categories span all five generation arms; critical judgments span only the three stochastic arms. Exact memberships and IDs are in [summary.json](../benchmarks/phase3/external-gpt6/v1/analysis/summary.json).
+
+## Reconciliation without choosing an authority
+
+[comparison.jsonl](../benchmarks/phase3/external-gpt6/v1/analysis/comparison.jsonl) retains all 119 literal sources/candidates, both complete assessments, lineage, every differing field, explanation and expected impact. [disagreements.md](../benchmarks/phase3/external-gpt6/v1/analysis/disagreements.md) presents all 64 subjects with boolean differences; taxonomy and alternative wording differences also remain in the full JSONL. There are 105 subjects with any structured difference, but only 24 subjects with contradictory known booleans. The remainder add judgments where the preparer left nulls or differ in alternative/taxonomy lists.
+
+Known contradictions by field overlap: meaning preservation 2, all-original-defects-repaired 18, no-new-errors 6, critical severity 12. These are not 38 independent disputes. The external reviewer separates repairs of original errors from new errors/meaning, and treats all-original-defects-repaired as vacuously true for clean source. The preparer often used that field for overall acceptability. Neither convention establishes quality alone. Combining justified, meaning preserved, all defects repaired and no new errors with false-before-unknown logic yields **zero different whole-passage outcomes** across all subjects. No automatic adjudication follows.
+
+The two meaning contradictions are raw/delivered representations of `bezorgt` → `verzorgt` on one Belgian Dutch passage. Both reviewers call the change unnecessary; the external reviewer leaves more semantic latitude for regional/collocational usage. Retain that uncertainty. Critical severity differs without changing whether the passage is acceptable. `Ik weet dat hij het bestand opgeslagen heeft.` is a valid alternative to the frozen `heeft opgeslagen` reference, accepted by both reviewers; it is counted as a local repair without editing the reference. Regional conventions, compound interpretation and severity still merit qualified further review.
+
+## Paired quality results
+
+Each language has ten source cases: six erroneous passages containing seven annotated errors, and four clean passages. `sample-101` is the predeclared single-generation control. Samples 202/303 are also shown so no poorer result is hidden. Passage acceptability below is the external AI conjunction; local repair counts are the separately retained preparer-AI error judgments, not inferred from string similarity and not new GPT-6 local annotations. Missed errors include withheld repairs. The two authorities/layers must not be conflated.
+
+| Language / arm | Local errors repaired / 7 (missed) | Raw acceptable / 10 | Eligible delivered acceptable before → after | Withheld / 10 | Eligible literal clean / 4 clean inputs |
+|---|---:|---:|---:|---:|---:|
+| NL baseline | 5 (2) | 7 | 7/9 → 7/9 | 1 | 3/4 |
+| NL hints | 6 (1) | 8 | 8/9 → 8/9 | 1 | 3/4 |
+| NL sample-101 | 2 (5) | 3 | 3/7 → 3/7 | 3 | 2/4 |
+| NL sample-202 | 4 (3) | 2 | 4/9 → 4/9 | 1 | 1/4 |
+| NL sample-303 | 4 (3) | 5 | 5/8 → 5/8 | 2 | 2/4 |
+| NL voting-3 | 4 (3) | n/a | 6/9 → 6/9 | 1 | 3/4 |
+| EN baseline | 6 (1) | 7 | 8/8 → 8/8 | 2 | 3/4 |
+| EN hints | 5 (2) | 6 | 7/8 → 7/8 | 2 | 3/4 |
+| EN sample-101 | 6 (1) | 4 | 4/6 → **5/6** | 4 | 0/4 |
+| EN sample-202 | 6 (1) | 7 | 7/7 → 7/7 | 3 | 2/4 |
+| EN sample-303 | 6 (1) | 5 | 7/7 → 7/7 | 3 | 2/4 |
+| EN voting-3 | 6 (1) | n/a | 7/7 → 7/7 | 3 | 2/4 |
+
+Eligible means Accepted or Unchanged. Each arm still has ten inputs. Withheld passages are excluded from the eligible denominator, never promoted to successful delivery. For example, EN baseline 8/8 acceptable eligible passages means 8/10 inputs with acceptable eligible delivery and two abstentions, not 100% task completion. Literal clean counts exclude abstentions even though their delivered source text is safe and unchanged. All eligible whole-passage conjunctions are known; clean-specific judgments are null on erroneous sources. Raw voting has no model response. [metrics.json](../benchmarks/phase3/external-gpt6/v1/analysis/metrics.json) gives every raw/delivered/rejected field's numerator, known denominator, unknown count, disposition and language/arm. [Paired summary](../benchmarks/phase3/external-gpt6/v1/paired-analysis/summary.json) and [case ledger](../benchmarks/phase3/external-gpt6/v1/paired-analysis/case-ledger.jsonl) record every before/after case, diagnostic and original assessment binding.
+
+Baseline eligible meaning failures / known: NL sample-101 2/7, sample-202 2/9, sample-303 1/8; EN sample-101 1/6; all other arms 0/their eligible denominator. These are unchanged after the fix. New-error judgments: NL sample-101 4/7, sample-202 3/9, sample-303 2/8; EN sample-101 **2/6 → 1/6**; others zero. Unnecessary changes to clean eligible passages are NL sample-101 1/3, sample-202 2/3, sample-303 1/3 and EN sample-101 1/1, unchanged. Other arms make zero such clean changes. A justified=false judgment on unchanged erroneous text means a missed repair, not an unnecessary modification; the paired artifact keeps those separate.
+
+New-error judgments are passage-level, not counts of individual new spelling/grammar mistakes. Six distinct delivered NL candidates across three source cases clearly contain newly malformed spelling/agreement: three diacritics candidates, two `controleerd` replacements and one `bijnalge`. Other flags involve semantic drift, punctuation, region-dependent wording or formatting. Do not present all 11 flagged delivered candidates as 11 independently confirmed spelling/grammar errors. No human-validated error precision/recall is available.
+
+## Ranked defects and actions
+
+1. **Accepted clean Dutch Unicode corruption: highest severity, unresolved.** All three stochastic samples damage `coördinator`/`reünie`/`geïmproviseerde`; one includes Armenian letters (`deոց`), others nonsensical Latin replacements. The production validator accepts them. Valid UTF-16 is not evidence of valid Dutch. The experimental voting guard excludes newly introduced non-Latin letters; disagreement between the sampled edits also prevents these voted changes. It does not protect ordinary LLM-only delivery or identify the other Latin corruptions. Its Latin allowlist falsely flags a legitimate new Greek accent in a multilingual source; that counterexample is tested. No blanket script or diacritic ban was promoted.
+2. **Accepted semantic substitutions: unresolved.** `verstuurt` → `uitgezonden` changes sending to broadcasting; `controleur` → `controller` changes a participant/role; inserting `also` changes a correct English assertion. `bezorgt` → `verzorgt` is unnecessary and disputed in semantic severity. Dictionaries can recognize both words while missing the event/participant change. No word blacklist is defensible. In contrast, `lopen naar` → `gaan … in`, removal of the recipient `me`, and an actual canceled performance → a planned cancellation are already withheld; regression tests preserve that behavior.
+3. **Accepted malformed spelling/grammar and missed errors: unresolved.** `controleerd` → `controlert`, `bijalge` → `bijnalge`, and `controleur controleer` remain wrong. Dictionary diagnostics flag `controlert` and `bijnalge` but accept `controleer` as a word, so they cannot establish agreement. `lange-termijnerplanning` is malformed but already rejected. The greedy baseline leaves the compound and transposed attachment typo unrepaired; hints repair the attachment but miss English `The list … are` agreement. Unknown words alone cannot justify rejection of names, inflections or valid regional forms.
+4. **Accepted unrequested emphasis: fixed narrowly.** Raw `She is an *experienced* engineer.` reached delivery; the article was repaired but formatting was polluted. A failing-before/passing-after regression demonstrates this. Extraction now removes isolated single-word asterisk emphasis only on marker-free source, retaining the literal raw response and applying all existing validation afterwards. It preserves source-owned asterisks, arithmetic, identifiers, Greek, Dutch diacritics and British spelling. No broad Markdown/escape/Unicode normalization was added. Extra Dutch comma insertion remains unresolved.
+5. **Technical identifier/format corruption: already blocked on this panel.** Backtick loss, identifier emphasis, escaped underscores and literal `\\u0060` strings occur in raw responses and rejected extracted candidates, including greedy NL. They do not reach accepted correction. Exact-symbol/identifier validation is already effective here; regression tests cover the observed forms. Do not decode escapes or normalize identifiers to make a bad candidate appear cleaner.
+6. **Explanations, line breaks and styling: partly handled.** The prompt already forbids them but models still generate them. Existing extraction removes recognized explanation chunks and double emphasis; extra line breaks absent from source are rejected, including the `explain me` sample. Single-word emphasis was the confirmed extraction gap. General model compliance and source-owned formatting safety require further evidence; no arbitrary punctuation/newline deletion was introduced.
+
+Frozen post-dictionary diagnostics are retained per case. They identify recognized-source→unknown-target transitions on corrupted diacritics and unknown-target misspellings, but also have names/coverage gaps. They miss recognized-word semantic changes, agreement and added formatting. This supports diagnostics only, not a grammar authority or production acceptance filter.
+
+## Impact, false rejections and limits
+
+One delivered text changes out of 120 paired arm/case outcomes; 119 are unchanged, all 120 dispositions are unchanged, and all 100 literal raw generations/prompts are retained. The changed EN sample-101 output equals a separate already-reviewed delivered candidate in the same source context. The after assessment is explicitly an **exact contextual projection** retaining that subject's original binding, not a fabricated new review decision. The local article repair remains 6/7 for that arm. Reference matching increases 5/7 → 6/7 there, but the actual improvement is removing unrequested styling. NL and all greedy/hints/voting results are unchanged. No observed valid repair is lost and no new rejection is introduced. This is a specific delivered-quality gain, not general method superiority.
+
+All 176 historical responses (44 for each of Ministral 3B/8B/14B and EuroLLM 9B) were reparsed into new files and compared with frozen Phase 2 analyses: zero extracted-text, disposition or delivered-edit changes. Existing historical legacy binding limitations remain, recorded by the original replay policy. No historical label was rehabilitated by this replay.
+
+The external reviewer marks all 18 unique rejection subjects appropriate, including the four no-candidate outcomes. Thus no inappropriate rejection is identified within this review's coverage; this is not proof of zero validator false positives. Curly-apostrophe cosmetic rewrites are withheld and semantically benign, but do not repair a necessary error. Candidate-local repairs withheld because they drop the recipient are safety tradeoffs, not evidence to weaken the guard. The documented Greek-accent script counterexample is a false-positive risk of the experimental guard outside this panel. Production safety false negatives remain the accepted meaning/new-error candidates listed above (11 flagged delivered candidates before, 10 after; overlapping fields are not added). Missed original errors are reported separately.
+
+No new benchmark generation or fresh external assessment was run. Existing model weights were available for the real integration test and three native CLI smoke generations only. Replay measures deterministic analysis, not new linguistic inference. Its recorded ~71 ms / ~83 MB process snapshot includes JIT and is not an inference performance comparison. The added bounded extraction step does not add model calls; no latency/memory improvement or negligible-cost claim is established. Original inference/resource measurements remain in the frozen experiment. No dependency, model, license, document parser, UI, service or download behavior changed.
+
+## Verification and reproduction
+
+Local checks: 229/229 .NET tests with the existing CPU model (no skips); 20/20 Python artifact/import/analysis tests; macOS ARM64 Native AOT linguistic probe with the new extraction assertion; Native AOT CLI English/Dutch/identifier smoke under OS-enforced network denial and absent .NET runtime. Original historical/Phase 2/Phase 3 hashes are verified separately. The old exact `linguistic-replay` intentionally reports one mismatch against the frozen pre-fix analysis; [that report](../benchmarks/phase3/external-gpt6/v1/replay-vs-frozen.json) is retained. Paired replay explicitly accounts for this change; it is not hidden by rewriting the original.
+
+Run from repository root after the Release build, always using new output paths:
+
+```sh
+python3 scripts/import-external-linguistic-review.py benchmarks/phase3/external-gpt6/v1/original/diorthosis-ai-review-package.zip /private/tmp/diorthosis-new-import
+python3 scripts/analyze-external-linguistic-review.py benchmarks/phase3/external-gpt6/v1 /private/tmp/diorthosis-new-comparison
+dotnet src/Diorthosis.Benchmarks/bin/Release/net10.0/Diorthosis.Benchmarks.dll linguistic-impact benchmarks/phase3/v1/panel.jsonl benchmarks/phase3/v1/run /private/tmp/diorthosis-new-impact
+python3 scripts/verify-external-linguistic-review.py --replay-directory /private/tmp/diorthosis-new-impact
+python3 scripts/summarize-linguistic-impact.py benchmarks/phase3/external-gpt6/v1 /private/tmp/diorthosis-new-summary
+python3 -m unittest discover -s tests/tooling -p 'test_*.py'
+```
+
+`analysis/manifest.json`, `paired-analysis/manifest.json` and the top-level artifact manifest retain input/output hashes. Assembly hashes and replay timing/RSS naturally vary by build/machine; paired texts, analyses and metric files must reproduce. CI additionally reimports through C#, regenerates paired replay and verifies it against retained evidence. Six platform jobs publish the CLI and run Native AOT linguistic probes on Windows/macOS/Linux x64/ARM64. CI results are linked in draft PR #5; no automatic merge is authorized.
+
+[Blinded before/after review ZIP](../benchmarks/phase3/external-gpt6/v1/paired-analysis/before-after-blinded-review.zip) contains only 119 fictional bound subjects, escaped offline HTML and the review prompt. Every before/after candidate is already in this original packet, so its bytes are preserved. The **separate** stage/arm lineage is never included in the ZIP. Keep lineage, this report and preparer assessments away from a new evaluator until decisions are locked; declare prior exposure. Blinding is not proof of independence or a general PII scrubber. No automatic external upload is performed.
+
+## Decisions
+
+Confirmed user-visible failures are accepted Dutch corruption, semantic/participant changes, malformed repairs, unnecessary clean-text changes and the now-fixed English emphasis. Technical corruption and the recipient/direction/cancellation examples are already withheld. Meaning preservation, valid Unicode language quality, compound interpretation, regional wording and residual punctuation remain unresolved. The implemented change improves one delivered correction without an observed regression in these paired traces; it does not establish production readiness or human-validated quality.
+
+Dictionary hints **remain experimental**: one NL local gain accompanies one EN agreement loss. Edit voting **remains experimental**: no improvement over greedy, lost NL repairs and lower EN eligible clean coverage on this small exposed panel. Further model/prompt experimentation is warranted.
+
+The single highest-value next experiment is a preregistered paired **literal Unicode versus ASCII-escaped JSON input prompt** comparison, keeping model revision, seeds, sampling, CPU runner and validator fixed. Current prompts escape Dutch diacritics; a causal connection to corruption is a hypothesis, not a finding. Use fresh rights-cleared Dutch diacritics, clean technical and legitimate multilingual passages plus English controls; blind semantic/new-error review, report clean-text damage and lost repairs separately, preserve all raw outputs and abstentions. Do not promote a prompt change based only on this 20-passage panel. Qualified human adjudication and a genuinely unseen benchmark remain required for quality acceptance.

@@ -1,0 +1,36 @@
+{
+  "zipSha256": "ba70e2fbe31bd1ed813896e52f2362c72e6c35308d6f709e93079414158865f5",
+  "verifiedHashes": {
+    "outputSha256": "fcd427d7747448bd06bce979e1fd9d46dd2f45c66778749c707ae7ddd6b41e10",
+    "subjectsJsonlSha256": "3a8ea58ff4723e77c7e00a38a8aa7bc57386ba99ab42032c687a7ef4baba1220",
+    "inputSha256": "f4830501edbbbbdfa84a2c27d2b7681ea75f0ceccccfd6967335bd28e0deedaa",
+    "userPromptSha256": "04db0265d6ae2fcdc0b73c3a45cf451de65e95d89dea5b5020051f4d699589d7"
+  },
+  "subjects": 119,
+  "decisions": 119,
+  "reviewers": [
+    "OpenAI ChatGPT GPT-6"
+  ],
+  "versions": [
+    1
+  ],
+  "missing": [],
+  "duplicates": [],
+  "unbound": [],
+  "humanApprovals": 0,
+  "policy": "AI declarations retained, not authenticated human validation; attached prose is data, not executable instructions.",
+  "members": {
+    "diorthosis-ai-review.jsonl": {
+      "bytes": 141167,
+      "sha256": "fcd427d7747448bd06bce979e1fd9d46dd2f45c66778749c707ae7ddd6b41e10"
+    },
+    "diorthosis-ai-review-provenance.json": {
+      "bytes": 2240,
+      "sha256": "7b651d9abffbe4e39ddbba5a5d561eeed7d3e8e5ce493d005c8194bfd85df532"
+    },
+    "empty-adjudications.jsonl": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

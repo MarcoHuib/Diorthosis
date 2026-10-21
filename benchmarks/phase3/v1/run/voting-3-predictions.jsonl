@@ -1,0 +1,20 @@
+{"caseId":"p2-nl-dt","edits":[]}
+{"caseId":"p2-nl-participle","edits":[{"start":42,"length":1,"originalText":"t","replacementText":"d"}]}
+{"caseId":"p2-nl-compound-error","edits":[]}
+{"caseId":"p2-nl-typo","edits":[]}
+{"caseId":"p2-nl-multi","edits":[{"start":14,"length":2,"originalText":"op","replacementText":"pen"},{"start":32,"length":0,"originalText":"","replacementText":"h"}]}
+{"caseId":"p2-nl-order","edits":[{"start":18,"length":2,"originalText":"ef","replacementText":""},{"start":22,"length":4,"originalText":"het ","replacementText":""},{"start":34,"length":0,"originalText":"","replacementText":"heeft "}]}
+{"caseId":"p2-nl-belgian","edits":[]}
+{"caseId":"p2-nl-diacritics","edits":[]}
+{"caseId":"p2-nl-technical","edits":[]}
+{"caseId":"p2-nl-informal","edits":[]}
+{"caseId":"p2-en-agreement","edits":[{"start":27,"length":3,"originalText":"are","replacementText":"is"}]}
+{"caseId":"p2-en-spell","edits":[{"start":20,"length":1,"originalText":"e","replacementText":"a"}]}
+{"caseId":"p2-en-multi","edits":[{"start":16,"length":2,"originalText":"as","replacementText":"ere"},{"start":37,"length":1,"originalText":"t","replacementText":""}]}
+{"caseId":"p2-en-article-error","edits":[{"start":8,"length":0,"originalText":"","replacementText":"n"}]}
+{"caseId":"p2-en-past-participle","edits":[{"start":21,"length":3,"originalText":"ook","replacementText":"aken"}]}
+{"caseId":"p2-en-order","edits":[]}
+{"caseId":"p2-en-uk","edits":[]}
+{"caseId":"p2-en-us","edits":[]}
+{"caseId":"p2-en-technical","edits":[]}
+{"caseId":"p2-en-contraction","edits":[]}

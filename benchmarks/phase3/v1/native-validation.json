@@ -1,0 +1,22 @@
+{
+  "platform": "macOS ARM64",
+  "networkPolicy": "sandbox-exec deny network*; same policy independently preflighted by panel driver",
+  "dotnetRoot": "/private/tmp/diorthosis-no-runtime",
+  "exitCode": 0,
+  "stdoutSha256": "5a5c5613e69f565fa55900df9d38b00ad9129cd5d799358d2f53b2892ac12c7a",
+  "binarySha256": "55966f3483dfc6c82b088a896a821ada18026542399a5c49ab7ff2a1e2d21d40",
+  "aot": "published with warnings as errors; no new warning suppression",
+  "initialFailure": "LLamaSharp TensorSplitsCollectionConverter serializer trim/AOT warnings were rooted by hint JsonSerializerContext; direct Utf8JsonWriter avoids that graph",
+  "coverage": [
+    "real dictionary behavior",
+    "AOT hint JSON",
+    "seeded output and token reproducibility",
+    "natural EOG",
+    "stochastic cancellation and recovery"
+  ],
+  "limitations": [
+    "one local runtime/hardware/model",
+    "foreign-platform real inference unrun",
+    "not a release package"
+  ]
+}

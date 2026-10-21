@@ -1,0 +1,23 @@
+{
+  "assessmentType": "AI linguistic diagnostic assessment; not a qualified human",
+  "assessmentDate": "2026-10-21",
+  "reviewerId": "OpenAI ChatGPT GPT-6",
+  "reviewerKind": "ai",
+  "reviewerModel": "GPT-6",
+  "specificModelBuild": "unavailable",
+  "independenceDeclared": false,
+  "priorExposure": "The reviewer had previous high-level Diorthosis project context. Candidate model/arm identities were hidden; preparer judgments, lineage and experiment traces were not consulted when making assessments.",
+  "userRequest": "Beoordeel alle oorspronkelijke Nederlandse en Engelse teksten en de bijbehorende correctievoorstellen in deze ZIP. Volg de meegeleverde reviewinstructies. Beoordeel elke wijziging op spelling, grammatica, betekenisbehoud, onnodige aanpassingen en gemiste fouten. Geef niet automatisch de voorkeur aan formuleringen die overeenkomen met de referentietekst. Lever een volledig JSONL-beoordelingsbestand op dat door Diorthosis kan worden geïmporteerd. Dit is een AI-beoordeling, geen menselijke validatie.",
+  "userPromptSha256": "04db0265d6ae2fcdc0b73c3a45cf451de65e95d89dea5b5020051f4d699589d7",
+  "inputFile": "chatgpt-review(1).zip",
+  "inputSha256": "f4830501edbbbbdfa84a2c27d2b7681ea75f0ceccccfd6967335bd28e0deedaa",
+  "subjectCount": 119,
+  "decisionCount": 119,
+  "cases": 20,
+  "subjectsJsonlSha256": "3a8ea58ff4723e77c7e00a38a8aa7bc57386ba99ab42032c687a7ef4baba1220",
+  "outputFile": "diorthosis-ai-review.jsonl",
+  "outputSha256": "fcd427d7747448bd06bce979e1fd9d46dd2f45c66778749c707ae7ddd6b41e10",
+  "schemaSource": "Diorthosis/src/Diorthosis.Benchmarks/LinguisticReview.cs, repository commit 2e5c2937dd8e4d78db5dd762566e8a87abf72034",
+  "validation": "Locally checked 119 unique decisions; exact ReviewDecision and LinguisticJudgment property sets; UTF-8 framed binding SHA-256 for every subject; type/invariant checks; language and null-rejection handling. .NET adjudicate not executed because dotnet is not installed in this environment.",
+  "cautions": "Development-exposed/pseudonymized source material only. No human approvals or final language quality/release metrics. Distinct model outputs can share source cases; duplicate raw/delivered judgments are not independent linguistic observations."
+}

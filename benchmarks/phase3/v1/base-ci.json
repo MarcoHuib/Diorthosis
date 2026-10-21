@@ -1,0 +1,57 @@
+{
+  "commit": "09e89d164b2a6a3711044fc007ad4749ddec36e4",
+  "url": "https://github.com/MarcoHuib/Diorthosis/actions/runs/39464262623",
+  "initial": {
+    "cancelledJob": 118771405601,
+    "steps": [],
+    "logs": "404 BlobNotFound",
+    "cause": "unknown; no reason inferred"
+  },
+  "rerun": {
+    "requestedWith": "GitHub rerun_workflow_job",
+    "jobs": [
+      {
+        "id": 118906800548,
+        "name": "publish-and-smoke (osx-arm64, macos-15, Diorthosis.Cli)",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 118906800721,
+        "name": "publish-and-smoke (win-x64, windows-2022, Diorthosis.Cli.exe)",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 118906801374,
+        "name": "tests",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 118906801557,
+        "name": "publish-and-smoke (osx-x64, macos-15-intel, Diorthosis.Cli)",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 118906801996,
+        "name": "publish-and-smoke (linux-arm64, ubuntu-24.04-arm, Diorthosis.Cli)",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 118906838838,
+        "name": "publish-and-smoke (linux-x64, ubuntu-24.04, Diorthosis.Cli)",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 118906843824,
+        "name": "publish-and-smoke (win-arm64, windows-11-arm, Diorthosis.Cli.exe)",
+        "status": "completed",
+        "conclusion": "success"
+      }
+    ]
+  }
+}

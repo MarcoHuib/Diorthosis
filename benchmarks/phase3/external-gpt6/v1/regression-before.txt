@@ -1,0 +1,20 @@
+  Diorthosis.Core -> /Users/marco/Projects/Diorthosis/src/Diorthosis.Core/bin/Release/net10.0/Diorthosis.Core.dll
+  Diorthosis.Experiments -> /Users/marco/Projects/Diorthosis/src/Diorthosis.Experiments/bin/Release/net10.0/Diorthosis.Experiments.dll
+  Diorthosis.Benchmarks -> /Users/marco/Projects/Diorthosis/src/Diorthosis.Benchmarks/bin/Release/net10.0/Diorthosis.Benchmarks.dll
+  Diorthosis.Tests -> /Users/marco/Projects/Diorthosis/tests/Diorthosis.Tests/bin/Release/net10.0/Diorthosis.Tests.dll
+Test run for /Users/marco/Projects/Diorthosis/tests/Diorthosis.Tests/bin/Release/net10.0/Diorthosis.Tests.dll (.NETCoreApp,Version=v10.0)
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:00.13]     Diorthosis.Tests.ExternalReviewRegressionTests.SingleWordModelEmphasisDoesNotReachDeliveredPassage [FAIL]
+  Failed Diorthosis.Tests.ExternalReviewRegressionTests.SingleWordModelEmphasisDoesNotReachDeliveredPassage [2 ms]
+  Error Message:
+   Assert.Equal() Failure: Strings differ
+                     ↓ (pos 10)
+Expected: "She is an experienced engineer."
+Actual:   "She is an *experienced* engineer."
+                     ↑ (pos 10)
+  Stack Trace:
+     at Diorthosis.Tests.ExternalReviewRegressionTests.SingleWordModelEmphasisDoesNotReachDeliveredPassage() in /Users/marco/Projects/Diorthosis/tests/Diorthosis.Tests/ExternalReviewRegressionTests.cs:line 15
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+
+Failed!  - Failed:     1, Passed:    15, Skipped:     0, Total:    16, Duration: 39 ms - Diorthosis.Tests.dll (net10.0)

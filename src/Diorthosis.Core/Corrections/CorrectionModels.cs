@@ -84,16 +84,32 @@ public sealed record CorrectionResult(IReadOnlyList<TextEdit> Edits)
 
 public sealed record InferenceRequest
 {
-    public InferenceRequest(string prompt, int maximumOutputTokens = 512, string? gbnfGrammar = null)
+    public InferenceRequest(string prompt, int maximumOutputTokens = 512, string? gbnfGrammar = null, ExperimentalSampling? sampling = null)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(prompt);
         if (maximumOutputTokens <= 0) throw new ArgumentOutOfRangeException(nameof(maximumOutputTokens));
         Prompt = prompt;
         MaximumOutputTokens = maximumOutputTokens;
         GbnfGrammar = gbnfGrammar;
+        Sampling = sampling;
     }
 
     public string Prompt { get; }
     public int MaximumOutputTokens { get; }
     public string? GbnfGrammar { get; }
+    public ExperimentalSampling? Sampling { get; }
+}
+
+/// <summary>Explicit opt-in research sampling. Null retains the original greedy sampler.</summary>
+public sealed record ExperimentalSampling
+{
+    public ExperimentalSampling(uint seed, float temperature = 1, float topP = 1)
+    {
+        if (seed == uint.MaxValue || !float.IsFinite(temperature) || temperature <= 0 || temperature > 2
+            || !float.IsFinite(topP) || topP <= 0 || topP > 1) throw new ArgumentOutOfRangeException(nameof(seed));
+        Seed = seed; Temperature = temperature; TopP = topP;
+    }
+    public uint Seed { get; }
+    public float Temperature { get; }
+    public float TopP { get; }
 }

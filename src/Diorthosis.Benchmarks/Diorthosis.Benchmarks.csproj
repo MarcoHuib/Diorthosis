@@ -5,5 +5,6 @@
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="../Diorthosis.Core/Diorthosis.Core.csproj" />
+    <ProjectReference Include="../Diorthosis.Experiments/Diorthosis.Experiments.csproj" />
   </ItemGroup>
 </Project>

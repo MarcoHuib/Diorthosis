@@ -1,0 +1,1589 @@
+{
+  "policy": "Paired deterministic replay. AI diagnostic judgments and exact-context projections only; zero new GPT-6 assessments, zero human approvals. Local-error repair labels are preparer AI; whole-passage judgments are external AI. No field is human ground truth.",
+  "metrics": [
+    {
+      "language": "dutch",
+      "arm": "baseline",
+      "cases": 10,
+      "changedDelivered": 0,
+      "changedDispositions": 0,
+      "before": {
+        "dispositions": {
+          "accepted": 4,
+          "unchanged": 5,
+          "rejected": 1
+        },
+        "acceptedPassage": {
+          "numerator": 7,
+          "denominator": 9,
+          "unknown": 0,
+          "total": 9,
+          "estimate": 0.7777777777777778
+        },
+        "meaningFailures": {
+          "numerator": 0,
+          "denominator": 9,
+          "unknown": 0,
+          "total": 9,
+          "estimate": 0.0
+        },
+        "newErrorPassages": {
+          "numerator": 0,
+          "denominator": 9,
+          "unknown": 0,
+          "total": 9,
+          "estimate": 0.0
+        },
+        "unjustifiedModifiedPassages": {
+          "numerator": 0,
+          "denominator": 4,
+          "unknown": 0,
+          "total": 4,
+          "estimate": 0.0
+        },
+        "unnecessaryCleanModifications": {
+          "numerator": 0,
+          "denominator": 3
+        },
+        "criticalFailures": {
+          "numerator": 0,
+          "denominator": 9,
+          "unknown": 0,
+          "total": 9,
+          "estimate": 0.0
+        },
+        "repairedLocalErrors": {
+          "numerator": 5,
+          "denominator": 7,
+          "unknown": 0
+        },
+        "missedLocalErrors": 2,
+        "assessableLiteralClean": {
+          "numerator": 3,
+          "denominator": 4
+        },
+        "withheld": 1,
+        "withheldJudgmentCoverage": 1,
+        "reviewerInappropriateRejections": 0,
+        "unresolvedLocalRepairCases": 0,
+        "humanValidated": null
+      },
+      "after": {
+        "dispositions": {
+          "accepted": 4,
+          "unchanged": 5,
+          "rejected": 1
+        },
+        "acceptedPassage": {
+          "numerator": 7,
+          "denominator": 9,
+          "unknown": 0,
+          "total": 9,
+          "estimate": 0.7777777777777778
+        },
+        "meaningFailures": {
+          "numerator": 0,
+          "denominator": 9,
+          "unknown": 0,
+          "total": 9,
+          "estimate": 0.0
+        },
+        "newErrorPassages": {
+          "numerator": 0,
+          "denominator": 9,
+          "unknown": 0,
+          "total": 9,
+          "estimate": 0.0
+        },
+        "unjustifiedModifiedPassages": {
+          "numerator": 0,
+          "denominator": 4,
+          "unknown": 0,
+          "total": 4,
+          "estimate": 0.0
+        },
+        "unnecessaryCleanModifications": {
+          "numerator": 0,
+          "denominator": 3
+        },
+        "criticalFailures": {
+          "numerator": 0,
+          "denominator": 9,
+          "unknown": 0,
+          "total": 9,
+          "estimate": 0.0
+        },
+        "repairedLocalErrors": {
+          "numerator": 5,
+          "denominator": 7,
+          "unknown": 0
+        },
+        "missedLocalErrors": 2,
+        "assessableLiteralClean": {
+          "numerator": 3,
+          "denominator": 4
+        },
+        "withheld": 1,
+        "withheldJudgmentCoverage": 1,
+        "reviewerInappropriateRejections": 0,
+        "unresolvedLocalRepairCases": 0,
+        "humanValidated": null
+      }
+    },
+    {
+      "language": "dutch",
+      "arm": "hints",
+      "cases": 10,
+      "changedDelivered": 0,
+      "changedDispositions": 0,
+      "before": {
+        "dispositions": {
+          "accepted": 5,
+          "unchanged": 4,
+          "rejected": 1
+        },
+        "acceptedPassage": {
+          "numerator": 8,
+          "denominator": 9,
+          "unknown": 0,
+          "total": 9,
+          "estimate": 0.8888888888888888
+        },
+        "meaningFailures": {
+          "numerator": 0,
+          "denominator": 9,
+          "unknown": 0,
+          "total": 9,
+          "estimate": 0.0
+        },
+        "newErrorPassages": {
+          "numerator": 0,
+          "denominator": 9,
+          "unknown": 0,
+          "total": 9,
+          "estimate": 0.0
+        },
+        "unjustifiedModifiedPassages": {
+          "numerator": 0,
+          "denominator": 5,
+          "unknown": 0,
+          "total": 5,
+          "estimate": 0.0
+        },
+        "unnecessaryCleanModifications": {
+          "numerator": 0,
+          "denominator": 3
+        },
+        "criticalFailures": {
+          "numerator": 0,
+          "denominator": 9,
+          "unknown": 0,
+          "total": 9,
+          "estimate": 0.0
+        },
+        "repairedLocalErrors": {
+          "numerator": 6,
+          "denominator": 7,
+          "unknown": 0
+        },
+        "missedLocalErrors": 1,
+        "assessableLiteralClean": {
+          "numerator": 3,
+          "denominator": 4
+        },
+        "withheld": 1,
+        "withheldJudgmentCoverage": 1,
+        "reviewerInappropriateRejections": 0,
+        "unresolvedLocalRepairCases": 0,
+        "humanValidated": null
+      },
+      "after": {
+        "dispositions": {
+          "accepted": 5,
+          "unchanged": 4,
+          "rejected": 1
+        },
+        "acceptedPassage": {
+          "numerator": 8,
+          "denominator": 9,
+          "unknown": 0,
+          "total": 9,
+          "estimate": 0.8888888888888888
+        },
+        "meaningFailures": {
+          "numerator": 0,
+          "denominator": 9,
+          "unknown": 0,
+          "total": 9,
+          "estimate": 0.0
+        },
+        "newErrorPassages": {
+          "numerator": 0,
+          "denominator": 9,
+          "unknown": 0,
+          "total": 9,
+          "estimate": 0.0
+        },
+        "unjustifiedModifiedPassages": {
+          "numerator": 0,
+          "denominator": 5,
+          "unknown": 0,
+          "total": 5,
+          "estimate": 0.0
+        },
+        "unnecessaryCleanModifications": {
+          "numerator": 0,
+          "denominator": 3
+        },
+        "criticalFailures": {
+          "numerator": 0,
+          "denominator": 9,
+          "unknown": 0,
+          "total": 9,
+          "estimate": 0.0
+        },
+        "repairedLocalErrors": {
+          "numerator": 6,
+          "denominator": 7,
+          "unknown": 0
+        },
+        "missedLocalErrors": 1,
+        "assessableLiteralClean": {
+          "numerator": 3,
+          "denominator": 4
+        },
+        "withheld": 1,
+        "withheldJudgmentCoverage": 1,
+        "reviewerInappropriateRejections": 0,
+        "unresolvedLocalRepairCases": 0,
+        "humanValidated": null
+      }
+    },
+    {
+      "language": "dutch",
+      "arm": "sample-101",
+      "cases": 10,
+      "changedDelivered": 0,
+      "changedDispositions": 0,
+      "before": {
+        "dispositions": {
+          "accepted": 5,
+          "rejected": 3,
+          "unchanged": 2
+        },
+        "acceptedPassage": {
+          "numerator": 3,
+          "denominator": 7,
+          "unknown": 0,
+          "total": 7,
+          "estimate": 0.42857142857142855
+        },
+        "meaningFailures": {
+          "numerator": 2,
+          "denominator": 7,
+          "unknown": 0,
+          "total": 7,
+          "estimate": 0.2857142857142857
+        },
+        "newErrorPassages": {
+          "numerator": 4,
+          "denominator": 7,
+          "unknown": 0,
+          "total": 7,
+          "estimate": 0.5714285714285714
+        },
+        "unjustifiedModifiedPassages": {
+          "numerator": 4,
+          "denominator": 5,
+          "unknown": 0,
+          "total": 5,
+          "estimate": 0.8
+        },
+        "unnecessaryCleanModifications": {
+          "numerator": 1,
+          "denominator": 3
+        },
+        "criticalFailures": {
+          "numerator": 1,
+          "denominator": 7,
+          "unknown": 0,
+          "total": 7,
+          "estimate": 0.14285714285714285
+        },
+        "repairedLocalErrors": {
+          "numerator": 2,
+          "denominator": 7,
+          "unknown": 0
+        },
+        "missedLocalErrors": 5,
+        "assessableLiteralClean": {
+          "numerator": 2,
+          "denominator": 4
+        },
+        "withheld": 3,
+        "withheldJudgmentCoverage": 3,
+        "reviewerInappropriateRejections": 0,
+        "unresolvedLocalRepairCases": 0,
+        "humanValidated": null
+      },
+      "after": {
+        "dispositions": {
+          "accepted": 5,
+          "rejected": 3,
+          "unchanged": 2
+        },
+        "acceptedPassage": {
+          "numerator": 3,
+          "denominator": 7,
+          "unknown": 0,
+          "total": 7,
+          "estimate": 0.42857142857142855
+        },
+        "meaningFailures": {
+          "numerator": 2,
+          "denominator": 7,
+          "unknown": 0,
+          "total": 7,
+          "estimate": 0.2857142857142857
+        },
+        "newErrorPassages": {
+          "numerator": 4,
+          "denominator": 7,
+          "unknown": 0,
+          "total": 7,
+          "estimate": 0.5714285714285714
+        },
+        "unjustifiedModifiedPassages": {
+          "numerator": 4,
+          "denominator": 5,
+          "unknown": 0,
+          "total": 5,
+          "estimate": 0.8
+        },
+        "unnecessaryCleanModifications": {
+          "numerator": 1,
+          "denominator": 3
+        },
+        "criticalFailures": {
+          "numerator": 1,
+          "denominator": 7,
+          "unknown": 0,
+          "total": 7,
+          "estimate": 0.14285714285714285
+        },
+        "repairedLocalErrors": {
+          "numerator": 2,
+          "denominator": 7,
+          "unknown": 0
+        },
+        "missedLocalErrors": 5,
+        "assessableLiteralClean": {
+          "numerator": 2,
+          "denominator": 4
+        },
+        "withheld": 3,
+        "withheldJudgmentCoverage": 3,
+        "reviewerInappropriateRejections": 0,
+        "unresolvedLocalRepairCases": 0,
+        "humanValidated": null
+      }
+    },
+    {
+      "language": "dutch",
+      "arm": "sample-202",
+      "cases": 10,
+      "changedDelivered": 0,
+      "changedDispositions": 0,
+      "before": {
+        "dispositions": {
+          "accepted": 6,
+          "unchanged": 3,
+          "rejected": 1
+        },
+        "acceptedPassage": {
+          "numerator": 4,
+          "denominator": 9,
+          "unknown": 0,
+          "total": 9,
+          "estimate": 0.4444444444444444
+        },
+        "meaningFailures": {
+          "numerator": 2,
+          "denominator": 9,
+          "unknown": 0,
+          "total": 9,
+          "estimate": 0.2222222222222222
+        },
+        "newErrorPassages": {
+          "numerator": 3,
+          "denominator": 9,
+          "unknown": 0,
+          "total": 9,
+          "estimate": 0.3333333333333333
+        },
+        "unjustifiedModifiedPassages": {
+          "numerator": 3,
+          "denominator": 6,
+          "unknown": 0,
+          "total": 6,
+          "estimate": 0.5
+        },
+        "unnecessaryCleanModifications": {
+          "numerator": 2,
+          "denominator": 3
+        },
+        "criticalFailures": {
+          "numerator": 1,
+          "denominator": 9,
+          "unknown": 0,
+          "total": 9,
+          "estimate": 0.1111111111111111
+        },
+        "repairedLocalErrors": {
+          "numerator": 4,
+          "denominator": 7,
+          "unknown": 0
+        },
+        "missedLocalErrors": 3,
+        "assessableLiteralClean": {
+          "numerator": 1,
+          "denominator": 4
+        },
+        "withheld": 1,
+        "withheldJudgmentCoverage": 1,
+        "reviewerInappropriateRejections": 0,
+        "unresolvedLocalRepairCases": 0,
+        "humanValidated": null
+      },
+      "after": {
+        "dispositions": {
+          "accepted": 6,
+          "unchanged": 3,
+          "rejected": 1
+        },
+        "acceptedPassage": {
+          "numerator": 4,
+          "denominator": 9,
+          "unknown": 0,
+          "total": 9,
+          "estimate": 0.4444444444444444
+        },
+        "meaningFailures": {
+          "numerator": 2,
+          "denominator": 9,
+          "unknown": 0,
+          "total": 9,
+          "estimate": 0.2222222222222222
+        },
+        "newErrorPassages": {
+          "numerator": 3,
+          "denominator": 9,
+          "unknown": 0,
+          "total": 9,
+          "estimate": 0.3333333333333333
+        },
+        "unjustifiedModifiedPassages": {
+          "numerator": 3,
+          "denominator": 6,
+          "unknown": 0,
+          "total": 6,
+          "estimate": 0.5
+        },
+        "unnecessaryCleanModifications": {
+          "numerator": 2,
+          "denominator": 3
+        },
+        "criticalFailures": {
+          "numerator": 1,
+          "denominator": 9,
+          "unknown": 0,
+          "total": 9,
+          "estimate": 0.1111111111111111
+        },
+        "repairedLocalErrors": {
+          "numerator": 4,
+          "denominator": 7,
+          "unknown": 0
+        },
+        "missedLocalErrors": 3,
+        "assessableLiteralClean": {
+          "numerator": 1,
+          "denominator": 4
+        },
+        "withheld": 1,
+        "withheldJudgmentCoverage": 1,
+        "reviewerInappropriateRejections": 0,
+        "unresolvedLocalRepairCases": 0,
+        "humanValidated": null
+      }
+    },
+    {
+      "language": "dutch",
+      "arm": "sample-303",
+      "cases": 10,
+      "changedDelivered": 0,
+      "changedDispositions": 0,
+      "before": {
+        "dispositions": {
+          "accepted": 5,
+          "unchanged": 3,
+          "rejected": 2
+        },
+        "acceptedPassage": {
+          "numerator": 5,
+          "denominator": 8,
+          "unknown": 0,
+          "total": 8,
+          "estimate": 0.625
+        },
+        "meaningFailures": {
+          "numerator": 1,
+          "denominator": 8,
+          "unknown": 0,
+          "total": 8,
+          "estimate": 0.125
+        },
+        "newErrorPassages": {
+          "numerator": 2,
+          "denominator": 8,
+          "unknown": 0,
+          "total": 8,
+          "estimate": 0.25
+        },
+        "unjustifiedModifiedPassages": {
+          "numerator": 2,
+          "denominator": 5,
+          "unknown": 0,
+          "total": 5,
+          "estimate": 0.4
+        },
+        "unnecessaryCleanModifications": {
+          "numerator": 1,
+          "denominator": 3
+        },
+        "criticalFailures": {
+          "numerator": 1,
+          "denominator": 8,
+          "unknown": 0,
+          "total": 8,
+          "estimate": 0.125
+        },
+        "repairedLocalErrors": {
+          "numerator": 4,
+          "denominator": 7,
+          "unknown": 0
+        },
+        "missedLocalErrors": 3,
+        "assessableLiteralClean": {
+          "numerator": 2,
+          "denominator": 4
+        },
+        "withheld": 2,
+        "withheldJudgmentCoverage": 2,
+        "reviewerInappropriateRejections": 0,
+        "unresolvedLocalRepairCases": 0,
+        "humanValidated": null
+      },
+      "after": {
+        "dispositions": {
+          "accepted": 5,
+          "unchanged": 3,
+          "rejected": 2
+        },
+        "acceptedPassage": {
+          "numerator": 5,
+          "denominator": 8,
+          "unknown": 0,
+          "total": 8,
+          "estimate": 0.625
+        },
+        "meaningFailures": {
+          "numerator": 1,
+          "denominator": 8,
+          "unknown": 0,
+          "total": 8,
+          "estimate": 0.125
+        },
+        "newErrorPassages": {
+          "numerator": 2,
+          "denominator": 8,
+          "unknown": 0,
+          "total": 8,
+          "estimate": 0.25
+        },
+        "unjustifiedModifiedPassages": {
+          "numerator": 2,
+          "denominator": 5,
+          "unknown": 0,
+          "total": 5,
+          "estimate": 0.4
+        },
+        "unnecessaryCleanModifications": {
+          "numerator": 1,
+          "denominator": 3
+        },
+        "criticalFailures": {
+          "numerator": 1,
+          "denominator": 8,
+          "unknown": 0,
+          "total": 8,
+          "estimate": 0.125
+        },
+        "repairedLocalErrors": {
+          "numerator": 4,
+          "denominator": 7,
+          "unknown": 0
+        },
+        "missedLocalErrors": 3,
+        "assessableLiteralClean": {
+          "numerator": 2,
+          "denominator": 4
+        },
+        "withheld": 2,
+        "withheldJudgmentCoverage": 2,
+        "reviewerInappropriateRejections": 0,
+        "unresolvedLocalRepairCases": 0,
+        "humanValidated": null
+      }
+    },
+    {
+      "language": "dutch",
+      "arm": "voting-3",
+      "cases": 10,
+      "changedDelivered": 0,
+      "changedDispositions": 0,
+      "before": {
+        "dispositions": {
+          "unchanged": 6,
+          "accepted": 3,
+          "rejected": 1
+        },
+        "acceptedPassage": {
+          "numerator": 6,
+          "denominator": 9,
+          "unknown": 0,
+          "total": 9,
+          "estimate": 0.6666666666666666
+        },
+        "meaningFailures": {
+          "numerator": 0,
+          "denominator": 9,
+          "unknown": 0,
+          "total": 9,
+          "estimate": 0.0
+        },
+        "newErrorPassages": {
+          "numerator": 0,
+          "denominator": 9,
+          "unknown": 0,
+          "total": 9,
+          "estimate": 0.0
+        },
+        "unjustifiedModifiedPassages": {
+          "numerator": 0,
+          "denominator": 3,
+          "unknown": 0,
+          "total": 3,
+          "estimate": 0.0
+        },
+        "unnecessaryCleanModifications": {
+          "numerator": 0,
+          "denominator": 3
+        },
+        "criticalFailures": {
+          "numerator": 0,
+          "denominator": 9,
+          "unknown": 0,
+          "total": 9,
+          "estimate": 0.0
+        },
+        "repairedLocalErrors": {
+          "numerator": 4,
+          "denominator": 7,
+          "unknown": 0
+        },
+        "missedLocalErrors": 3,
+        "assessableLiteralClean": {
+          "numerator": 3,
+          "denominator": 4
+        },
+        "withheld": 1,
+        "withheldJudgmentCoverage": 1,
+        "reviewerInappropriateRejections": 0,
+        "unresolvedLocalRepairCases": 0,
+        "humanValidated": null
+      },
+      "after": {
+        "dispositions": {
+          "unchanged": 6,
+          "accepted": 3,
+          "rejected": 1
+        },
+        "acceptedPassage": {
+          "numerator": 6,
+          "denominator": 9,
+          "unknown": 0,
+          "total": 9,
+          "estimate": 0.6666666666666666
+        },
+        "meaningFailures": {
+          "numerator": 0,
+          "denominator": 9,
+          "unknown": 0,
+          "total": 9,
+          "estimate": 0.0
+        },
+        "newErrorPassages": {
+          "numerator": 0,
+          "denominator": 9,
+          "unknown": 0,
+          "total": 9,
+          "estimate": 0.0
+        },
+        "unjustifiedModifiedPassages": {
+          "numerator": 0,
+          "denominator": 3,
+          "unknown": 0,
+          "total": 3,
+          "estimate": 0.0
+        },
+        "unnecessaryCleanModifications": {
+          "numerator": 0,
+          "denominator": 3
+        },
+        "criticalFailures": {
+          "numerator": 0,
+          "denominator": 9,
+          "unknown": 0,
+          "total": 9,
+          "estimate": 0.0
+        },
+        "repairedLocalErrors": {
+          "numerator": 4,
+          "denominator": 7,
+          "unknown": 0
+        },
+        "missedLocalErrors": 3,
+        "assessableLiteralClean": {
+          "numerator": 3,
+          "denominator": 4
+        },
+        "withheld": 1,
+        "withheldJudgmentCoverage": 1,
+        "reviewerInappropriateRejections": 0,
+        "unresolvedLocalRepairCases": 0,
+        "humanValidated": null
+      }
+    },
+    {
+      "language": "english",
+      "arm": "baseline",
+      "cases": 10,
+      "changedDelivered": 0,
+      "changedDispositions": 0,
+      "before": {
+        "dispositions": {
+          "accepted": 5,
+          "rejected": 2,
+          "unchanged": 3
+        },
+        "acceptedPassage": {
+          "numerator": 8,
+          "denominator": 8,
+          "unknown": 0,
+          "total": 8,
+          "estimate": 1.0
+        },
+        "meaningFailures": {
+          "numerator": 0,
+          "denominator": 8,
+          "unknown": 0,
+          "total": 8,
+          "estimate": 0.0
+        },
+        "newErrorPassages": {
+          "numerator": 0,
+          "denominator": 8,
+          "unknown": 0,
+          "total": 8,
+          "estimate": 0.0
+        },
+        "unjustifiedModifiedPassages": {
+          "numerator": 0,
+          "denominator": 5,
+          "unknown": 0,
+          "total": 5,
+          "estimate": 0.0
+        },
+        "unnecessaryCleanModifications": {
+          "numerator": 0,
+          "denominator": 3
+        },
+        "criticalFailures": {
+          "numerator": 0,
+          "denominator": 8,
+          "unknown": 0,
+          "total": 8,
+          "estimate": 0.0
+        },
+        "repairedLocalErrors": {
+          "numerator": 6,
+          "denominator": 7,
+          "unknown": 0
+        },
+        "missedLocalErrors": 1,
+        "assessableLiteralClean": {
+          "numerator": 3,
+          "denominator": 4
+        },
+        "withheld": 2,
+        "withheldJudgmentCoverage": 2,
+        "reviewerInappropriateRejections": 0,
+        "unresolvedLocalRepairCases": 0,
+        "humanValidated": null
+      },
+      "after": {
+        "dispositions": {
+          "accepted": 5,
+          "rejected": 2,
+          "unchanged": 3
+        },
+        "acceptedPassage": {
+          "numerator": 8,
+          "denominator": 8,
+          "unknown": 0,
+          "total": 8,
+          "estimate": 1.0
+        },
+        "meaningFailures": {
+          "numerator": 0,
+          "denominator": 8,
+          "unknown": 0,
+          "total": 8,
+          "estimate": 0.0
+        },
+        "newErrorPassages": {
+          "numerator": 0,
+          "denominator": 8,
+          "unknown": 0,
+          "total": 8,
+          "estimate": 0.0
+        },
+        "unjustifiedModifiedPassages": {
+          "numerator": 0,
+          "denominator": 5,
+          "unknown": 0,
+          "total": 5,
+          "estimate": 0.0
+        },
+        "unnecessaryCleanModifications": {
+          "numerator": 0,
+          "denominator": 3
+        },
+        "criticalFailures": {
+          "numerator": 0,
+          "denominator": 8,
+          "unknown": 0,
+          "total": 8,
+          "estimate": 0.0
+        },
+        "repairedLocalErrors": {
+          "numerator": 6,
+          "denominator": 7,
+          "unknown": 0
+        },
+        "missedLocalErrors": 1,
+        "assessableLiteralClean": {
+          "numerator": 3,
+          "denominator": 4
+        },
+        "withheld": 2,
+        "withheldJudgmentCoverage": 2,
+        "reviewerInappropriateRejections": 0,
+        "unresolvedLocalRepairCases": 0,
+        "humanValidated": null
+      }
+    },
+    {
+      "language": "english",
+      "arm": "hints",
+      "cases": 10,
+      "changedDelivered": 0,
+      "changedDispositions": 0,
+      "before": {
+        "dispositions": {
+          "accepted": 5,
+          "rejected": 2,
+          "unchanged": 3
+        },
+        "acceptedPassage": {
+          "numerator": 7,
+          "denominator": 8,
+          "unknown": 0,
+          "total": 8,
+          "estimate": 0.875
+        },
+        "meaningFailures": {
+          "numerator": 0,
+          "denominator": 8,
+          "unknown": 0,
+          "total": 8,
+          "estimate": 0.0
+        },
+        "newErrorPassages": {
+          "numerator": 0,
+          "denominator": 8,
+          "unknown": 0,
+          "total": 8,
+          "estimate": 0.0
+        },
+        "unjustifiedModifiedPassages": {
+          "numerator": 0,
+          "denominator": 5,
+          "unknown": 0,
+          "total": 5,
+          "estimate": 0.0
+        },
+        "unnecessaryCleanModifications": {
+          "numerator": 0,
+          "denominator": 3
+        },
+        "criticalFailures": {
+          "numerator": 0,
+          "denominator": 8,
+          "unknown": 0,
+          "total": 8,
+          "estimate": 0.0
+        },
+        "repairedLocalErrors": {
+          "numerator": 5,
+          "denominator": 7,
+          "unknown": 0
+        },
+        "missedLocalErrors": 2,
+        "assessableLiteralClean": {
+          "numerator": 3,
+          "denominator": 4
+        },
+        "withheld": 2,
+        "withheldJudgmentCoverage": 2,
+        "reviewerInappropriateRejections": 0,
+        "unresolvedLocalRepairCases": 0,
+        "humanValidated": null
+      },
+      "after": {
+        "dispositions": {
+          "accepted": 5,
+          "rejected": 2,
+          "unchanged": 3
+        },
+        "acceptedPassage": {
+          "numerator": 7,
+          "denominator": 8,
+          "unknown": 0,
+          "total": 8,
+          "estimate": 0.875
+        },
+        "meaningFailures": {
+          "numerator": 0,
+          "denominator": 8,
+          "unknown": 0,
+          "total": 8,
+          "estimate": 0.0
+        },
+        "newErrorPassages": {
+          "numerator": 0,
+          "denominator": 8,
+          "unknown": 0,
+          "total": 8,
+          "estimate": 0.0
+        },
+        "unjustifiedModifiedPassages": {
+          "numerator": 0,
+          "denominator": 5,
+          "unknown": 0,
+          "total": 5,
+          "estimate": 0.0
+        },
+        "unnecessaryCleanModifications": {
+          "numerator": 0,
+          "denominator": 3
+        },
+        "criticalFailures": {
+          "numerator": 0,
+          "denominator": 8,
+          "unknown": 0,
+          "total": 8,
+          "estimate": 0.0
+        },
+        "repairedLocalErrors": {
+          "numerator": 5,
+          "denominator": 7,
+          "unknown": 0
+        },
+        "missedLocalErrors": 2,
+        "assessableLiteralClean": {
+          "numerator": 3,
+          "denominator": 4
+        },
+        "withheld": 2,
+        "withheldJudgmentCoverage": 2,
+        "reviewerInappropriateRejections": 0,
+        "unresolvedLocalRepairCases": 0,
+        "humanValidated": null
+      }
+    },
+    {
+      "language": "english",
+      "arm": "sample-101",
+      "cases": 10,
+      "changedDelivered": 1,
+      "changedDispositions": 0,
+      "before": {
+        "dispositions": {
+          "accepted": 6,
+          "rejected": 4
+        },
+        "acceptedPassage": {
+          "numerator": 4,
+          "denominator": 6,
+          "unknown": 0,
+          "total": 6,
+          "estimate": 0.6666666666666666
+        },
+        "meaningFailures": {
+          "numerator": 1,
+          "denominator": 6,
+          "unknown": 0,
+          "total": 6,
+          "estimate": 0.16666666666666666
+        },
+        "newErrorPassages": {
+          "numerator": 2,
+          "denominator": 6,
+          "unknown": 0,
+          "total": 6,
+          "estimate": 0.3333333333333333
+        },
+        "unjustifiedModifiedPassages": {
+          "numerator": 2,
+          "denominator": 6,
+          "unknown": 0,
+          "total": 6,
+          "estimate": 0.3333333333333333
+        },
+        "unnecessaryCleanModifications": {
+          "numerator": 1,
+          "denominator": 1
+        },
+        "criticalFailures": {
+          "numerator": 0,
+          "denominator": 6,
+          "unknown": 0,
+          "total": 6,
+          "estimate": 0.0
+        },
+        "repairedLocalErrors": {
+          "numerator": 6,
+          "denominator": 7,
+          "unknown": 0
+        },
+        "missedLocalErrors": 1,
+        "assessableLiteralClean": {
+          "numerator": 0,
+          "denominator": 4
+        },
+        "withheld": 4,
+        "withheldJudgmentCoverage": 4,
+        "reviewerInappropriateRejections": 0,
+        "unresolvedLocalRepairCases": 0,
+        "humanValidated": null
+      },
+      "after": {
+        "dispositions": {
+          "accepted": 6,
+          "rejected": 4
+        },
+        "acceptedPassage": {
+          "numerator": 5,
+          "denominator": 6,
+          "unknown": 0,
+          "total": 6,
+          "estimate": 0.8333333333333334
+        },
+        "meaningFailures": {
+          "numerator": 1,
+          "denominator": 6,
+          "unknown": 0,
+          "total": 6,
+          "estimate": 0.16666666666666666
+        },
+        "newErrorPassages": {
+          "numerator": 1,
+          "denominator": 6,
+          "unknown": 0,
+          "total": 6,
+          "estimate": 0.16666666666666666
+        },
+        "unjustifiedModifiedPassages": {
+          "numerator": 1,
+          "denominator": 6,
+          "unknown": 0,
+          "total": 6,
+          "estimate": 0.16666666666666666
+        },
+        "unnecessaryCleanModifications": {
+          "numerator": 1,
+          "denominator": 1
+        },
+        "criticalFailures": {
+          "numerator": 0,
+          "denominator": 6,
+          "unknown": 0,
+          "total": 6,
+          "estimate": 0.0
+        },
+        "repairedLocalErrors": {
+          "numerator": 6,
+          "denominator": 7,
+          "unknown": 0
+        },
+        "missedLocalErrors": 1,
+        "assessableLiteralClean": {
+          "numerator": 0,
+          "denominator": 4
+        },
+        "withheld": 4,
+        "withheldJudgmentCoverage": 4,
+        "reviewerInappropriateRejections": 0,
+        "unresolvedLocalRepairCases": 0,
+        "humanValidated": null
+      }
+    },
+    {
+      "language": "english",
+      "arm": "sample-202",
+      "cases": 10,
+      "changedDelivered": 0,
+      "changedDispositions": 0,
+      "before": {
+        "dispositions": {
+          "accepted": 5,
+          "rejected": 3,
+          "unchanged": 2
+        },
+        "acceptedPassage": {
+          "numerator": 7,
+          "denominator": 7,
+          "unknown": 0,
+          "total": 7,
+          "estimate": 1.0
+        },
+        "meaningFailures": {
+          "numerator": 0,
+          "denominator": 7,
+          "unknown": 0,
+          "total": 7,
+          "estimate": 0.0
+        },
+        "newErrorPassages": {
+          "numerator": 0,
+          "denominator": 7,
+          "unknown": 0,
+          "total": 7,
+          "estimate": 0.0
+        },
+        "unjustifiedModifiedPassages": {
+          "numerator": 0,
+          "denominator": 5,
+          "unknown": 0,
+          "total": 5,
+          "estimate": 0.0
+        },
+        "unnecessaryCleanModifications": {
+          "numerator": 0,
+          "denominator": 2
+        },
+        "criticalFailures": {
+          "numerator": 0,
+          "denominator": 7,
+          "unknown": 0,
+          "total": 7,
+          "estimate": 0.0
+        },
+        "repairedLocalErrors": {
+          "numerator": 6,
+          "denominator": 7,
+          "unknown": 0
+        },
+        "missedLocalErrors": 1,
+        "assessableLiteralClean": {
+          "numerator": 2,
+          "denominator": 4
+        },
+        "withheld": 3,
+        "withheldJudgmentCoverage": 3,
+        "reviewerInappropriateRejections": 0,
+        "unresolvedLocalRepairCases": 0,
+        "humanValidated": null
+      },
+      "after": {
+        "dispositions": {
+          "accepted": 5,
+          "rejected": 3,
+          "unchanged": 2
+        },
+        "acceptedPassage": {
+          "numerator": 7,
+          "denominator": 7,
+          "unknown": 0,
+          "total": 7,
+          "estimate": 1.0
+        },
+        "meaningFailures": {
+          "numerator": 0,
+          "denominator": 7,
+          "unknown": 0,
+          "total": 7,
+          "estimate": 0.0
+        },
+        "newErrorPassages": {
+          "numerator": 0,
+          "denominator": 7,
+          "unknown": 0,
+          "total": 7,
+          "estimate": 0.0
+        },
+        "unjustifiedModifiedPassages": {
+          "numerator": 0,
+          "denominator": 5,
+          "unknown": 0,
+          "total": 5,
+          "estimate": 0.0
+        },
+        "unnecessaryCleanModifications": {
+          "numerator": 0,
+          "denominator": 2
+        },
+        "criticalFailures": {
+          "numerator": 0,
+          "denominator": 7,
+          "unknown": 0,
+          "total": 7,
+          "estimate": 0.0
+        },
+        "repairedLocalErrors": {
+          "numerator": 6,
+          "denominator": 7,
+          "unknown": 0
+        },
+        "missedLocalErrors": 1,
+        "assessableLiteralClean": {
+          "numerator": 2,
+          "denominator": 4
+        },
+        "withheld": 3,
+        "withheldJudgmentCoverage": 3,
+        "reviewerInappropriateRejections": 0,
+        "unresolvedLocalRepairCases": 0,
+        "humanValidated": null
+      }
+    },
+    {
+      "language": "english",
+      "arm": "sample-303",
+      "cases": 10,
+      "changedDelivered": 0,
+      "changedDispositions": 0,
+      "before": {
+        "dispositions": {
+          "accepted": 5,
+          "rejected": 3,
+          "unchanged": 2
+        },
+        "acceptedPassage": {
+          "numerator": 7,
+          "denominator": 7,
+          "unknown": 0,
+          "total": 7,
+          "estimate": 1.0
+        },
+        "meaningFailures": {
+          "numerator": 0,
+          "denominator": 7,
+          "unknown": 0,
+          "total": 7,
+          "estimate": 0.0
+        },
+        "newErrorPassages": {
+          "numerator": 0,
+          "denominator": 7,
+          "unknown": 0,
+          "total": 7,
+          "estimate": 0.0
+        },
+        "unjustifiedModifiedPassages": {
+          "numerator": 0,
+          "denominator": 5,
+          "unknown": 0,
+          "total": 5,
+          "estimate": 0.0
+        },
+        "unnecessaryCleanModifications": {
+          "numerator": 0,
+          "denominator": 2
+        },
+        "criticalFailures": {
+          "numerator": 0,
+          "denominator": 7,
+          "unknown": 0,
+          "total": 7,
+          "estimate": 0.0
+        },
+        "repairedLocalErrors": {
+          "numerator": 6,
+          "denominator": 7,
+          "unknown": 0
+        },
+        "missedLocalErrors": 1,
+        "assessableLiteralClean": {
+          "numerator": 2,
+          "denominator": 4
+        },
+        "withheld": 3,
+        "withheldJudgmentCoverage": 3,
+        "reviewerInappropriateRejections": 0,
+        "unresolvedLocalRepairCases": 0,
+        "humanValidated": null
+      },
+      "after": {
+        "dispositions": {
+          "accepted": 5,
+          "rejected": 3,
+          "unchanged": 2
+        },
+        "acceptedPassage": {
+          "numerator": 7,
+          "denominator": 7,
+          "unknown": 0,
+          "total": 7,
+          "estimate": 1.0
+        },
+        "meaningFailures": {
+          "numerator": 0,
+          "denominator": 7,
+          "unknown": 0,
+          "total": 7,
+          "estimate": 0.0
+        },
+        "newErrorPassages": {
+          "numerator": 0,
+          "denominator": 7,
+          "unknown": 0,
+          "total": 7,
+          "estimate": 0.0
+        },
+        "unjustifiedModifiedPassages": {
+          "numerator": 0,
+          "denominator": 5,
+          "unknown": 0,
+          "total": 5,
+          "estimate": 0.0
+        },
+        "unnecessaryCleanModifications": {
+          "numerator": 0,
+          "denominator": 2
+        },
+        "criticalFailures": {
+          "numerator": 0,
+          "denominator": 7,
+          "unknown": 0,
+          "total": 7,
+          "estimate": 0.0
+        },
+        "repairedLocalErrors": {
+          "numerator": 6,
+          "denominator": 7,
+          "unknown": 0
+        },
+        "missedLocalErrors": 1,
+        "assessableLiteralClean": {
+          "numerator": 2,
+          "denominator": 4
+        },
+        "withheld": 3,
+        "withheldJudgmentCoverage": 3,
+        "reviewerInappropriateRejections": 0,
+        "unresolvedLocalRepairCases": 0,
+        "humanValidated": null
+      }
+    },
+    {
+      "language": "english",
+      "arm": "voting-3",
+      "cases": 10,
+      "changedDelivered": 0,
+      "changedDispositions": 0,
+      "before": {
+        "dispositions": {
+          "accepted": 5,
+          "rejected": 3,
+          "unchanged": 2
+        },
+        "acceptedPassage": {
+          "numerator": 7,
+          "denominator": 7,
+          "unknown": 0,
+          "total": 7,
+          "estimate": 1.0
+        },
+        "meaningFailures": {
+          "numerator": 0,
+          "denominator": 7,
+          "unknown": 0,
+          "total": 7,
+          "estimate": 0.0
+        },
+        "newErrorPassages": {
+          "numerator": 0,
+          "denominator": 7,
+          "unknown": 0,
+          "total": 7,
+          "estimate": 0.0
+        },
+        "unjustifiedModifiedPassages": {
+          "numerator": 0,
+          "denominator": 5,
+          "unknown": 0,
+          "total": 5,
+          "estimate": 0.0
+        },
+        "unnecessaryCleanModifications": {
+          "numerator": 0,
+          "denominator": 2
+        },
+        "criticalFailures": {
+          "numerator": 0,
+          "denominator": 7,
+          "unknown": 0,
+          "total": 7,
+          "estimate": 0.0
+        },
+        "repairedLocalErrors": {
+          "numerator": 6,
+          "denominator": 7,
+          "unknown": 0
+        },
+        "missedLocalErrors": 1,
+        "assessableLiteralClean": {
+          "numerator": 2,
+          "denominator": 4
+        },
+        "withheld": 3,
+        "withheldJudgmentCoverage": 3,
+        "reviewerInappropriateRejections": 0,
+        "unresolvedLocalRepairCases": 0,
+        "humanValidated": null
+      },
+      "after": {
+        "dispositions": {
+          "accepted": 5,
+          "rejected": 3,
+          "unchanged": 2
+        },
+        "acceptedPassage": {
+          "numerator": 7,
+          "denominator": 7,
+          "unknown": 0,
+          "total": 7,
+          "estimate": 1.0
+        },
+        "meaningFailures": {
+          "numerator": 0,
+          "denominator": 7,
+          "unknown": 0,
+          "total": 7,
+          "estimate": 0.0
+        },
+        "newErrorPassages": {
+          "numerator": 0,
+          "denominator": 7,
+          "unknown": 0,
+          "total": 7,
+          "estimate": 0.0
+        },
+        "unjustifiedModifiedPassages": {
+          "numerator": 0,
+          "denominator": 5,
+          "unknown": 0,
+          "total": 5,
+          "estimate": 0.0
+        },
+        "unnecessaryCleanModifications": {
+          "numerator": 0,
+          "denominator": 2
+        },
+        "criticalFailures": {
+          "numerator": 0,
+          "denominator": 7,
+          "unknown": 0,
+          "total": 7,
+          "estimate": 0.0
+        },
+        "repairedLocalErrors": {
+          "numerator": 6,
+          "denominator": 7,
+          "unknown": 0
+        },
+        "missedLocalErrors": 1,
+        "assessableLiteralClean": {
+          "numerator": 2,
+          "denominator": 4
+        },
+        "withheld": 3,
+        "withheldJudgmentCoverage": 3,
+        "reviewerInappropriateRejections": 0,
+        "unresolvedLocalRepairCases": 0,
+        "humanValidated": null
+      }
+    }
+  ],
+  "historical": [
+    {
+      "model": "eurollm-9b",
+      "cases": 44,
+      "changedCases": []
+    },
+    {
+      "model": "ministral-3-14b",
+      "cases": 44,
+      "changedCases": []
+    },
+    {
+      "model": "ministral-3-8b",
+      "cases": 44,
+      "changedCases": []
+    },
+    {
+      "model": "ministral-3b",
+      "cases": 44,
+      "changedCases": []
+    }
+  ],
+  "deliveredChanges": [
+    {
+      "caseId": "p2-en-article-error",
+      "arm": "sample-101",
+      "before": "She is an *experienced* engineer.",
+      "after": "She is an experienced engineer.",
+      "beforeSubject": "review-c5a8d69d15953f812cf0b26fe247faf280c451faf5d2c0b70f88b8f62f6f7b82",
+      "afterSubject": "review-231be2769d800e6b1e389bb4950016416265adb55138336b948f9a8e85aa2cd1"
+    }
+  ],
+  "limitations": [
+    "New-error counts are passages, not independently enumerated new errors.",
+    "No new inference, paired inference latency or memory benchmark.",
+    "No false-rejection or lost repair observed under this change; unresolved semantic validity is retained.",
+    "Clean withheld text is a safe abstention, excluded from assessable literal preservation; it is not silently a success."
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "inputs": {
+    "benchmarks/phase3/external-gpt6/v1/original/diorthosis-ai-review.jsonl": "fcd427d7747448bd06bce979e1fd9d46dd2f45c66778749c707ae7ddd6b41e10",
+    "benchmarks/phase3/v1/preparer-ai-decisions.jsonl": "9b8a146857ad1e4ee99f30d0a5fc612d8bfb850c87510296f3b86c438f5f5de8",
+    "benchmarks/phase3/v1/review-all-candidates/subjects.jsonl": "3a8ea58ff4723e77c7e00a38a8aa7bc57386ba99ab42032c687a7ef4baba1220",
+    "benchmarks/phase3/v1/review-all-candidates/lineage-DO-NOT-SEND-TO-REVIEWERS.json": "2ac4a626efb38ba4d81bbde3bd2218e5972c90d815f28121686de7690948a519",
+    "benchmarks/phase3/v1/run/trace.jsonl": "c5a4336b3ba76cb1d6462d1447e68688dea501743c90bf69d947e5daed8f192d"
+  },
+  "outputs": {
+    "metrics.json": "4cb0c744b4cff4a37b971fd88c113e29c2951ab8bacef38a821d0aaf0032d1b3",
+    "summary.json": "e10129e6655c276dfe867ecf2130c0e44f92ade70cb54f480ffa5317f9e11eb9",
+    "disagreements.md": "418344417d82982488bed5aabe5e95ae1603cbb84282f717a35899584a5b7f0a",
+    "comparison.jsonl": "c8d0bc684d64ba4506efe4834758e766fec17916ff4dead55545eaacab615d55"
+  }
+}

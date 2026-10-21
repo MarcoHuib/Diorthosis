@@ -1,0 +1,22 @@
+{
+  "kind": "same-session preparer AI linguistic feedback; not independent review",
+  "reviewerKind": "ai",
+  "humanValidation": false,
+  "identity": "Codex development assistant, GPT-6 family per session; exact model revision unavailable",
+  "date": "2026-10-21",
+  "method": "The assistant read all 100 literal outputs, extracted candidates, delivered results and 20 sources. Explicit case/output judgments were serialized into the existing ReviewDecision schema. These are manual AI assessments of the retained outputs, not outputs of another automated reference evaluator.",
+  "evaluationPrompt": "review-all-candidates/CHATGPT-REVIEW.md, with prior exposure declared and preparer identity above",
+  "evaluationPromptSha256": "d42a51583b9799fd718b849172328fc9fc5aeedcdfc61a92dcbe715d502d5e04",
+  "subjectsSha256": "3a8ea58ff4723e77c7e00a38a8aa7bc57386ba99ab42032c687a7ef4baba1220",
+  "decisionsSha256": "9b8a146857ad1e4ee99f30d0a5fc612d8bfb850c87510296f3b86c438f5f5de8",
+  "subjectsAssessed": 119,
+  "externalChatGPTAssessment": "pending; no external request or text upload performed",
+  "freshAIRerun": "Exact AI regeneration is not guaranteed; model revision/sampling internals are unavailable. Literal decisions, input bindings, prompt and uncertainty are retained for audit.",
+  "limitations": [
+    "preparer knows model and conditions",
+    "not blind or independent",
+    "no qualified human review",
+    "proposal-level precision not assessed",
+    "uncertain interpretation retained"
+  ]
+}
