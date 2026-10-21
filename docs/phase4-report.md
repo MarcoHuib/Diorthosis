@@ -165,3 +165,10 @@ python3 scripts/import-prompt-quality-review.py benchmarks/phase4/v1/review /pat
 ```
 
 The optional per-error file requires exact bound indices and does not turn a local repair inside a rejected candidate into a delivered repair. Retain original external bytes, context and disagreements. Complete the blinded assessment before deciding any next prompt or constructing a genuinely new independent confirmation panel.
+
+
+## External GPT-6 reviews: 2026-10-21 preflight supplement
+
+[External review preflight, linguistic-quality findings and limitations](phase4-external-gpt6-review-preflight.md) now records the eighteen ChatGPT ZIP assessments. **1,075 of 1,075 submitted AI decisions match the frozen batch bindings at preflight**, but this does **not** mean they have been officially imported: **zero of eighteen strict .NET imports were executed** in the available environment. Six of 484 supplementary error decisions in batch 07 improperly reference source-only `kind=case` subjects; a derivative excludes them for future strict import, retaining all original submitted bytes. 478 supplementary records bind to actual candidate annotations.
+
+On the AI-reviewed selection panel, literal JSON B shows NL/EN 30/33 delivered annotated repairs versus production v3 A 28/30, with 45/50 versus 40/43 fully acceptable eligible delivered passages. On the separate confirmation panel B shows NL/EN 9/11 delivered repairs versus A 7/9, with 14/15 versus 11/12 acceptable delivered passages. These are descriptive external-AI development evidence, not independently human-adjudicated accuracy or gross paired gains/losses. Critical meaning corruptions persist in accepted outputs, including `hüttenkäse` damage under both A and B, `hesje` substitutions, volition deletion and technical/foreign-language changes. **Production v3 stays unchanged; no experimental arm is production-ready.** Prompt L increases Dutch local repairs but has unacceptable safety regressions. Follow-up official import, condition-paired diagnostics, full disagreement sensitivity and affected current-head .NET/CI tests remain outstanding. Do not merge PR #7 automatically.
