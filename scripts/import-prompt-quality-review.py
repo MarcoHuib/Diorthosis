@@ -50,16 +50,40 @@ def validate(review,decisions_path,provenance_path):
     return dict(version='phase4-ai-import-1.0.0',subjects=len(subjects),decisions=len(decisions),missingSubjects=sorted(set(subject_map)-seen),
         complete=p['completeCoverage'],humanApprovals=0,subjectsSha256=c.sha(review/'subjects.jsonl'),decisionsSha256=c.sha(decisions_path),
         provenanceSha256=c.sha(provenance_path),reviewer=p['reviewerId'])
-def run(review,decisions,provenance,out):
+def validate_errors(review,path,assessed_subjects):
+    subjects={s['subjectId']:s for s in c.lines(review/'subjects.jsonl')}
+    seen=set();rows=[]
+    for line in path.read_text().splitlines():
+        r=existing.strict(line)
+        if not isinstance(r,dict) or set(r)!={'subjectId','bindingSha256','annotationIndex','repaired','rationale'}:raise ValueError('Invalid per-error schema')
+        s=subjects.get(r['subjectId'])
+        if s is None or r['subjectId'] not in assessed_subjects or s['bindingSha256']!=r['bindingSha256'] or s['kind'] not in ('passage','rejection'):raise ValueError('Unbound per-error judgment')
+        annotations=existing.strict(s['annotationsJson'])
+        if type(r['annotationIndex']) is not int or r['annotationIndex']<0 or r['annotationIndex']>=len(annotations):raise ValueError('Invalid annotation index')
+        if r['repaired'] is not None and type(r['repaired']) is not bool or not isinstance(r['rationale'],str) or not r['rationale'].strip():raise ValueError('Invalid per-error judgment')
+        key=(r['subjectId'],r['annotationIndex'])
+        if key in seen:raise ValueError('Duplicate per-error judgment')
+        seen.add(key);json.dumps(r,ensure_ascii=False).encode('utf-8');rows.append(r)
+    return rows
+
+def run(review,decisions,provenance,out,error_path=None):
     result=validate(review,decisions,provenance)
+    errors=validate_errors(review,error_path,{r['subjectId'] for r in c.lines(decisions)}) if error_path else None
+    if error_path:
+        declared=existing.strict(provenance.read_text()).get('errorDecisionsSha256')
+        if declared is not None and declared!=c.sha(error_path):raise ValueError('Supplementary error provenance hash mismatch')
     out.mkdir(parents=True,exist_ok=False)
     shutil.copyfile(decisions,out/'original-decisions.jsonl');shutil.copyfile(provenance,out/'original-provenance.json')
     (out/'empty-adjudications.jsonl').write_bytes(b'');c.write(out/'validation.json',result)
+    if errors is not None:
+        shutil.copyfile(error_path,out/'original-error-decisions.jsonl')
+        c.write(out/'error-validation.json',dict(decisions=len(errors),sha256=c.sha(error_path),humanApprovals=0,
+            policy='Bound supplementary AI error judgments; partial coverage explicit. Repaired local errors in withheld candidates are not delivered repairs. Do not infer full-passage meaning or acceptability from local repairs.'))
     subprocess.run(['dotnet',str(c.CLI),'adjudicate',str(review/'subjects.jsonl'),str(out/'original-decisions.jsonl'),str(out/'empty-adjudications.jsonl'),str(out/'import-report.json'),
         '--lineage',str(review/'lineage-DO-NOT-SEND-TO-REVIEWERS.json')],cwd=ROOT,check=True)
     report=json.loads((out/'import-report.json').read_text())
     if any(m['finalized'] for m in report['aggregateUniqueSubjects']['metrics']):raise ValueError('AI finalized human metrics')
-    print(json.dumps(result,indent=2))
+    print(json.dumps({**{k:v for k,v in result.items() if k!='missingSubjects'},'missingSubjectCount':len(result['missingSubjects'])},indent=2))
 if __name__=='__main__':
-    if len(sys.argv)!=5:raise SystemExit('import-prompt-quality-review.py <review-directory> <decisions.jsonl> <provenance.json> <NEW-evidence-directory>')
-    run(*[Path(p).resolve() for p in sys.argv[1:]])
+    if len(sys.argv) not in (5,7) or len(sys.argv)==7 and sys.argv[5]!='--error-decisions':raise SystemExit('import-prompt-quality-review.py <review-directory> <decisions.jsonl> <provenance.json> <NEW-evidence-directory> [--error-decisions <error-decisions.jsonl>]')
+    run(*[Path(p).resolve() for p in sys.argv[1:5]],error_path=Path(sys.argv[6]).resolve() if len(sys.argv)==7 else None)

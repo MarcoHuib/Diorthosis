@@ -29,7 +29,6 @@ class PanelTests(unittest.TestCase):
         examples=[r['inputText'] for r in development if r['id'].endswith(('-001','-002','-007','-008'))]
         self.assertEqual(8,len(examples))
         for example in examples:self.assertIn(example,source)
-if __name__=='__main__':unittest.main()
 
 class ReviewImportTests(unittest.TestCase):
     def setUp(self):
@@ -73,6 +72,18 @@ class ReviewImportTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,'Identity'):self.validate()
         self.row['reviewerKind']='ai';self.row['independenceDeclared']=True;self.rewrite([self.row])
         with self.assertRaisesRegex(ValueError,'Identity'):self.validate()
+    def test_per_error_binding_and_index(self):
+        self.subject['annotationsJson']=self.common.jsontext([dict(originalText='fixture')])
+        # Generate a newly bound subject rather than reusing an old judgment after annotation changes.
+        case=dict(id='case-001',language='dutch',inputText='Dit is correct.',errors=[{}],sourceFamily='fictional-1',documentId=None)
+        subject=self.common.subject(case,'delivered','passage',case['inputText'],[dict(originalText='fixture')],dict(deliveryEligible=True))
+        self.common.write_lines(self.root/'subjects.jsonl',[subject])
+        row=dict(subjectId=subject['subjectId'],bindingSha256=subject['bindingSha256'],annotationIndex=0,repaired=True,rationale='Synthetic tooling test only.')
+        self.common.write_lines(self.root/'errors.jsonl',[row])
+        result=self.importer.validate_errors(self.root,self.root/'errors.jsonl',{subject['subjectId']})
+        self.assertEqual(1,len(result))
+        row['annotationIndex']=1;self.common.write_lines(self.root/'errors.jsonl',[row])
+        with self.assertRaisesRegex(ValueError,'index'):self.importer.validate_errors(self.root,self.root/'errors.jsonl',{subject['subjectId']})
     def test_subject_tamper_rejected(self):
         self.subject['candidateText']='Andere tekst.';self.common.write_lines(self.root/'subjects.jsonl',[self.subject])
         self.provenance['subjectsSha256']=self.common.sha(self.root/'subjects.jsonl');self.common.write(self.root/'provenance.json',self.provenance)
@@ -111,3 +122,5 @@ class PairingAndBlindingTests(unittest.TestCase):
             content=b''.join(z.read(n) for n in z.namelist())
             self.assertNotIn(b'condition-secret',content);self.assertNotIn(b'Never exported secret prompt',content);self.assertNotIn(b'p4-test-only',content)
         self.assertIn('condition-secret',(out/'lineage-DO-NOT-SEND-TO-REVIEWERS.json').read_text())
+
+if __name__=='__main__':unittest.main()

@@ -90,20 +90,21 @@ def analyze(panel,runs,out):
                 latencyMilliseconds=dict(mean=statistics.mean(r['latencyMilliseconds'] for r in selected),median=statistics.median(r['latencyMilliseconds'] for r in selected),maximum=max(r['latencyMilliseconds'] for r in selected)),
                 sampledPeakProcessWorkingSetBytes=max(r['sampledPeakProcessWorkingSetBytes'] for r in selected)))
     lookup={(r['id'],r['promptVersion']):r for r in rows};comparisons=[]
-    if BASELINE in versions:
+    for control in (BASELINE, 'phase4-LiteralJson-Original-1.0.0'):
+        if control not in versions:continue
         for version in versions:
-            if version==BASELINE:continue
+            if version==control:continue
             for language in ('dutch','english'):
                 differences=[];gain=loss=ties=0;gained_errors=lost_errors=0;changed=[]
                 for c in cases:
                     if c['language']!=language:continue
-                    a,b=lookup[c['id'],BASELINE],lookup[c['id'],version]
-                    sa,sb=scores[BASELINE,'delivered'][c['id']],scores[version,'delivered'][c['id']]
+                    a,b=lookup[c['id'],control],lookup[c['id'],version]
+                    sa,sb=scores[control,'delivered'][c['id']],scores[version,'delivered'][c['id']]
                     ra=set(sa['repairedAnnotations']) if eligible(a) else set();rb=set(sb['repairedAnnotations']) if eligible(b) else set()
                     gooda=eligible(a) and sa['referenceCompletePassage'] is True;goodb=eligible(b) and sb['referenceCompletePassage'] is True
                     delta=int(goodb)-int(gooda);differences.append(delta);gain+=delta>0;loss+=delta<0;ties+=delta==0
                     gained_errors+=len(rb-ra);lost_errors+=len(ra-rb)
-                    row=dict(caseId=c['id'],language=language,otherPrompt=version,input=c['inputText'],baselineDelivered=a['delivered'],otherDelivered=b['delivered'],
+                    row=dict(caseId=c['id'],language=language,baselinePrompt=control,otherPrompt=version,input=c['inputText'],baselineDelivered=a['delivered'],otherDelivered=b['delivered'],
                         baselineDisposition=a['analysis']['disposition'],otherDisposition=b['analysis']['disposition'],
                         baselineReferenceRepaired=sorted(ra),otherReferenceRepaired=sorted(rb),gainedAnnotationIndexes=sorted(rb-ra),lostAnnotationIndexes=sorted(ra-rb),
                         referenceCompleteDifference=delta,literalChanged=a['delivered']!=b['delivered'],judgment='unassessed; reference difference is not a linguistic conclusion')
@@ -111,11 +112,11 @@ def analyze(panel,runs,out):
                     if row['literalChanged']:changed.append(c['id'])
                 discord=gain+loss
                 p=min(1,2*sum(__import__('math').comb(discord,k) for k in range(min(gain,loss)+1))/2**discord) if discord else 1
-                comparisons.append(dict(language=language,baseline=BASELINE,other=version,attempted=len(differences),referencePassageGains=gain,referencePassageLosses=loss,ties=ties,
+                comparisons.append(dict(language=language,baseline=control,other=version,attempted=len(differences),referencePassageGains=gain,referencePassageLosses=loss,ties=ties,
                     gainedReferenceErrors=gained_errors,lostReferenceErrors=lost_errors,changedDeliveries=changed,
                     descriptivePairedInterval=paired_interval(differences),exactDiscordanceP=p,
                     caution='Reference labels unvalidated; post-selection/multiple comparisons and narrow synthetic distribution prevent population superiority claim.'))
-    common.write(out/'summary.json',dict(version='phase4-comparison-1.0.0',datasetSha256=common.sha(panel),sourceCases=len(cases),generationOccurrences=len(rows),
+    common.write(out/'summary.json',dict(version='phase4-comparison-1.1.0',datasetSha256=common.sha(panel),sourceCases=len(cases),generationOccurrences=len(rows),
         policy='Provisional reference diagnostics only; denominator all attempted sources. Abstention never earns a repair. Clean source fallback reported separately. No independently assessed meaning/precision/new-error metrics yet.',
         metrics=summary,paired=comparisons))
     common.write_lines(out/'paired-ledger.jsonl',ledger)

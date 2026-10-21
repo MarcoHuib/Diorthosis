@@ -21,16 +21,46 @@ Return decisions.jsonl with one ReviewDecision per subject actually assessed, pr
 
 For each annotated source error, also return error-decisions.jsonl: {"subjectId":"...","bindingSha256":"...","annotationIndex":0,"repaired":true,"rationale":"..."}. Bind to a raw/parsed/delivered/rejected subject; repaired is true/false/null, and may be true even when a candidate was appropriately withheld. Repair in a rejected candidate is never delivered repair. Declare any missed source error absent from annotations in the passage rationale, rather than rewriting the frozen source file. The error-decision file is separate supplementary AI evidence and requires case-bound reconciliation before counting.
 
-Return provenance.json with actual model/build/date, exact evaluation request, prior exposure, review limitations and SHA-256 of supplied subjects.jsonl and returned decision bytes. Preserve literal response. Do not return human adjudications. Partial coverage is allowed only when explicitly declared; never manufacture completion. Import the main decisions through the project's existing `adjudicate` command after strict preflight. Per-error judgments require separate validation. AI judgments cannot establish human-finalized quality or release readiness.
+Return provenance.json with actual model/build/date, exact evaluation request, prior exposure, review limitations and SHA-256 of supplied subjects.jsonl and returned decision bytes. Preserve literal response. Do not return human adjudications. Partial coverage is allowed only when explicitly declared; never manufacture completion. Import the main decisions through the project's existing `adjudicate` command after strict preflight. Supply `--error-decisions <error-decisions.jsonl>` to validate supplementary per-error bindings and retain their exact bytes; coverage remains explicit and no local repair authorizes delivery. AI judgments cannot establish human-finalized quality or release readiness.
 
 Example main decision (replace every placeholder):
 {"subjectId":"review-HASH","bindingSha256":"HASH","reviewerId":"ACTUAL MODEL; build unavailable","reviewerKind":"ai","language":"dutch","qualifications":"AI linguistic diagnostic assessment; not a qualified human","independenceDeclared":false,"version":1,"judgment":{"justified":null,"meaningPreserved":null,"allDefectsRepaired":null,"noNewErrors":null,"cleanPreserved":null,"criticalSemanticFailure":null,"rejectionAppropriate":null,"acceptedAlternatives":[],"errorCategories":[],"ambiguity":"state uncertainty","rationale":"literal evidence and linguistic rule"}}
 
 The preparer retains a separate exact lineage and may compare judgments after locking. Main import, from repository root, writing to a NEW directory:
-`python3 scripts/import-prompt-quality-review.py <review-directory> <decisions.jsonl> <provenance.json> <NEW-evidence-directory>`
+`python3 scripts/import-prompt-quality-review.py <review-directory> <decisions.jsonl> <provenance.json> <NEW-evidence-directory> [--error-decisions <error-decisions.jsonl>]`
 
 The supplied packet's manifest records exact member hashes. There are no remote resources, automatic uploads or executable review scripts in this package. All current material is original fictional project text; this is not a general PII scrubber. Evaluate in manageable case batches if necessary and retain coverage. Never share condition lineage alongside a blind assessment request.
 '''
+
+def instructions_for(path,count):
+    template=dict(reviewerId='<actual model identity>',reviewerKind='ai',independenceDeclared=False,modelBuild='unavailable',
+        evaluationDate='<actual evaluation date>',priorExposure='<actual prior exposure>',reviewLimitations='<actual limitations>',
+        reviewRequest='<verbatim request actually supplied to the evaluator>',reviewRequestSha256='<SHA-256 of UTF-8 reviewRequest>',
+        subjectsSha256=common.sha(path),decisionsSha256='<SHA-256 of exact returned decisions.jsonl bytes>',
+        subjectCount=count,decisionCount=0,completeCoverage=False)
+    return INSTRUCTIONS+'\nProvenance schema (replace placeholders and actual decisionCount/completeCoverage; preserve AI labels):\n```json\n'+json.dumps(template,indent=2)+'\n```\nCryptographic fields may be filled by the preparer from retained literal request/response bytes; do not invent an evaluator declaration. Coverage means this supplied packet only. For a batch, completeCoverage=true does not imply the full experiment was assessed. Preserve the parent binding and reconcile all batches before claiming overall coverage.\n'
+
+def write_batches(out,subjects,lineage,parent):
+    cases=sorted({s['caseId'] for s in subjects})
+    for offset in range(0,len(cases),10):
+        directory=out/'batches'/f'batch-{offset//10+1:02}'
+        directory.mkdir(parents=True,exist_ok=False);ids=set(cases[offset:offset+10])
+        selected=[s for s in subjects if s['caseId'] in ids]
+        common.write_lines(directory/'subjects.jsonl',selected)
+        common.write(directory/'lineage-DO-NOT-SEND-TO-REVIEWERS.json',{s['subjectId']:lineage[s['subjectId']] for s in selected})
+        (directory/'empty-adjudications.jsonl').write_bytes(b'')
+        (directory/'CHATGPT-REVIEW.md').write_text(instructions_for(directory/'subjects.jsonl',len(selected)))
+        body=''.join('<article><h2>'+html.escape(s['caseId']+' · '+s['language']+' · '+s['layer'])+'</h2><h3>Source</h3><pre>'+html.escape(s['sourceText'])+'</pre><h3>Candidate</h3><pre>'+html.escape(s['candidateText'] if s['candidateText'] is not None else '[No candidate]')+'</pre><p><code>'+s['subjectId']+'</code></p><details><summary>Provisional annotations</summary><pre>'+html.escape(s['annotationsJson'])+'</pre></details></article>' for s in selected)
+        (directory/'review.html').write_text('<!doctype html><html lang="en"><meta charset="utf-8"><title>Blinded linguistic batch</title><style>body{max-width:960px;margin:2em auto;font:16px system-ui}pre{white-space:pre-wrap;overflow-wrap:anywhere}code{overflow-wrap:anywhere}article{border-top:1px solid #888}</style>'+body+'</html>')
+        public=('subjects.jsonl','review.html','CHATGPT-REVIEW.md')
+        manifest=dict(version='phase4-blind-batch-1.0.0',batch=offset//10+1,sourceCases=len(ids),subjects=len(selected),
+            parentSubjectsSha256=parent['files']['subjects.jsonl'],humanApprovals=0,files={name:common.sha(directory/name) for name in public})
+        common.write(directory/'packet-manifest.json',manifest)
+        with zipfile.ZipFile(directory/'chatgpt-review.zip','x',zipfile.ZIP_DEFLATED) as z:
+            for name in (*public,'packet-manifest.json'):
+                info=zipfile.ZipInfo(name,date_time=(2026,10,21,0,0,0));info.compress_type=zipfile.ZIP_DEFLATED;z.writestr(info,(directory/name).read_bytes())
+    (out/'BATCHES.md').write_text('Optional manageable review packets are in batches/batch-NN/chatgpt-review.zip (at most ten source cases per packet). Each retains the exact parent subject bindings. Send only ZIPs, never lineage or preparer judgments. Import each response against its corresponding batches/batch-NN directory. Coverage is per supplied batch; reconcile all batches before claiming full-experiment coverage. Different batches are distinct case subsets, not independent reviewer identities.\n')
+
 def build(panels,runs_by_panel,out):
     allcases=[];allrows=[]
     for panel,runs in zip(panels,runs_by_panel):
@@ -68,7 +98,7 @@ def build(panels,runs_by_panel,out):
     common.write_lines(out/'subjects.jsonl',subjects)
     common.write(out/'lineage-DO-NOT-SEND-TO-REVIEWERS.json',lineage)
     common.write_lines(out/'empty-decisions.jsonl',[]);common.write_lines(out/'empty-adjudications.jsonl',[])
-    (out/'CHATGPT-REVIEW.md').write_text(INSTRUCTIONS)
+    (out/'CHATGPT-REVIEW.md').write_text(instructions_for(out/'subjects.jsonl',len(subjects)))
     (out/'review.html').write_text('<!doctype html><html lang="en"><meta charset="utf-8"><title>Blinded linguistic assessment</title><style>body{max-width:960px;margin:2em auto;font:16px system-ui}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f4f4f4;padding:1em}code{overflow-wrap:anywhere}article{border-top:2px solid #888;padding:1em}</style><h1>Blinded linguistic assessment</h1><p>All judgments are AI evidence. Exact fictional text; source, raw, extracted, delivered and abstention layers are separate. No condition identities supplied.</p>'+''.join(cards)+'</html>')
     public=('subjects.jsonl','review.html','CHATGPT-REVIEW.md')
     manifest=dict(version='phase4-blind-review-1.0.0',sourceCases=len(allcases),subjects=len(subjects),generationOccurrences=len(allrows),humanApprovals=0,
@@ -78,6 +108,7 @@ def build(panels,runs_by_panel,out):
         for name in (*public,'packet-manifest.json'):
             info=zipfile.ZipInfo(name,date_time=(2026,10,21,0,0,0));info.compress_type=zipfile.ZIP_DEFLATED;z.writestr(info,(out/name).read_bytes())
     common.write(out/'manifest.json',dict(**manifest,zipSha256=common.sha(out/'chatgpt-review.zip'),lineageSha256=common.sha(out/'lineage-DO-NOT-SEND-TO-REVIEWERS.json')))
+    write_batches(out,subjects,lineage,manifest)
     print(f'{len(allcases)} sources, {len(subjects)} bound subjects, {len(allrows)} generations; zero independent review decisions.')
 if __name__=='__main__':
     if len(sys.argv)!=3:raise SystemExit('build-prompt-quality-review.py <spec.json> <NEW-review-directory>')
