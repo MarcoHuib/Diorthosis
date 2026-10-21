@@ -14,6 +14,8 @@ Verified SHA-256: imported ZIP `ba70e2fbe31bd1ed813896e52f2362c72e6c35308d6f709e
 
 119 subjects comprise 68 Dutch and 51 English: 20 source-annotation subjects, 49 distinct raw-response subjects, 32 distinct delivered-passage subjects and 18 rejection subjects. Four rejection subjects have no extracted candidate. There are 51 distinct `(source case, literal candidate)` pairs across layers, 20 original fictional passages, 100 raw model generation occurrences and 20 derived voting outcomes. The 100 include the single stochastic control reused in the three-sample pool. No additional generation is implied by that comparison. All material is development-exposed.
 
+The 120 trace occurrences contain 116 non-null extracted candidates representing 46 distinct case-bound texts, versus 51 distinct literal texts across all reviewed layers. All 100 raw generations have an extracted candidate; 16/20 voting outcomes do. At the occurrence layer there are 59 Accepted repairs, 35 Unchanged outcomes and 26 Rejected outcomes. Of the generations alone, 51 are Accepted, 27 Unchanged and 22 Rejected; voting contributes 8 Accepted, 8 Unchanged and 4 Rejected. Thus 94 eligible deliveries are represented by 32 deduplicated delivered subjects. Rejection count 26 at the occurrence layer is represented by 18 rejection subjects. Returning the original text after rejection is safe abstention, not an accepted candidate or successful repair.
+
 | External judgment | Subjects / known | Distinct candidate texts within case | Source cases | Raw / delivered / rejected subjects | Represented generation occurrences |
 |---|---:|---:|---:|---:|---:|
 | Meaning not preserved | 26 / 95 | 14 | 10 | 13 / 6 / 7 | 16 |
