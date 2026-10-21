@@ -1,0 +1,14 @@
+{
+  "inputs": {
+    "benchmarks/phase3/external-gpt6/v1/analysis/comparison.jsonl": "c8d0bc684d64ba4506efe4834758e766fec17916ff4dead55545eaacab615d55",
+    "benchmarks/phase3/external-gpt6/v1/impact/paired.jsonl": "6441dc7696dbd2cffed1da532b3f38c4c14ab8c79149ff3b80208e892639ce0b",
+    "benchmarks/phase3/v1/ai-error-decisions.jsonl": "08ef0f8d6c231d63e751539f0d7c38aa5b314411ba7f0b31259482a07b33a499",
+    "benchmarks/phase3/v1/panel.jsonl": "9005e2baebe5c6ee48d4037749c2ca2ea560f33c5c17029ba7226f268dbd14f2"
+  },
+  "outputs": {
+    "summary.json": "67112d0a278b43b8fcd957ea91e3759ebf44e95bb0a4099fae80a46d569ca880",
+    "review-lineage-DO-NOT-SEND-TO-REVIEWERS.json": "5ea1c9e90cd24e70b33278c80c716eb0e8034a63010549efae75a679ef28e331",
+    "case-ledger.jsonl": "71042f570dc4258928d52181e882c57f265c8c0f7b6fb3200fde1d1c4cf6e028",
+    "before-after-blinded-review.zip": "f4830501edbbbbdfa84a2c27d2b7681ea75f0ceccccfd6967335bd28e0deedaa"
+  }
+}

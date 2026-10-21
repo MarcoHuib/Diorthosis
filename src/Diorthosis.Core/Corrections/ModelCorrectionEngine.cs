@@ -175,6 +175,12 @@ public sealed class ModelCorrectionEngine(IModelInferenceAdapter adapter, int ma
             text = Regex.Replace(text, @"\*\*(.+?)\*\*|__(.+?)__|`([^`]+)`", match =>
                 match.Groups[1].Success ? match.Groups[1].Value : match.Groups[2].Success ? match.Groups[2].Value : match.Groups[3].Value,
                 RegexOptions.CultureInvariant);
+        // A single-word emphasis wrapper is model presentation only when the source has no
+        // formatting markers. Never strip source-owned stars/underscores/code, numeric operators,
+        // embedded wildcard syntax or arbitrary Markdown. The resulting passage still passes all guards.
+        if (!source.Contains('*') && !source.Contains('_') && !source.Contains('`'))
+            text = Regex.Replace(text, @"(?<![\p{L}\p{M}\p{N}_*])\*([\p{L}\p{M}]+)\*(?![\p{L}\p{M}\p{N}_*])",
+                "$1", RegexOptions.CultureInvariant);
         text = Regex.Replace(text, @"^(?:Corrected (?:text|passage)(?:\s*\([^)]*\))?|Output(?: text(?:\s*\([^)]*\))?)?|Correction)\s*:\s*", "", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant);
         text = text.Trim();
         if (sourceLeadingWhitespace.Length > 0) text = sourceLeadingWhitespace + text;

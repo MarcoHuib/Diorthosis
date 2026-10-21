@@ -1,0 +1,941 @@
+{
+  "command": "DIORTHOSIS_TEST_MODEL=<existing reviewed local GGUF> dotnet test Diorthosis.sln -c Release --no-build --no-restore",
+  "counters": {
+    "total": "229",
+    "executed": "229",
+    "passed": "229",
+    "failed": "0",
+    "error": "0",
+    "timeout": "0",
+    "aborted": "0",
+    "inconclusive": "0",
+    "passedButRunAborted": "0",
+    "notRunnable": "0",
+    "notExecuted": "0",
+    "disconnected": "0",
+    "warning": "0",
+    "completed": "0",
+    "inProgress": "0",
+    "pending": "0"
+  },
+  "results": [
+    {
+      "testName": "Diorthosis.Tests.BenchmarkEvaluatorTests.CategoryRecallSurvivesAnIncorrectRepairInAnotherCategory",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.BenchmarkEvaluatorTests.CategoryRowsAttributeOnlyEditsForThatCategory",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.BenchmarkEvaluatorTests.EvaluatorAcceptsDifferentEditBoundariesOnlyWhenWholeAnnotatedRepairMatches",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.BenchmarkEvaluatorTests.EvaluatorAcceptsMultipleFragmentsOnlyWhenTogetherTheyMakeExactRepair",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.BenchmarkEvaluatorTests.EvaluatorCountsAcceptedAlternativesPrecisionAndCleanInputChanges",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.BenchmarkEvaluatorTests.EvaluatorCreditsOneCompleteEditAcrossMultipleAnnotations",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.BenchmarkEvaluatorTests.EvaluatorDoesNotCreditLocalRepairInsideUnannotatedLexicalRewrite",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.BenchmarkEvaluatorTests.EvaluatorIsStableAcrossRepeatedRuns",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.BenchmarkEvaluatorTests.EvaluatorRejectsEditWhoseOriginalSpanDoesNotMatchInput",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.BenchmarkEvaluatorTests.LegacyEvaluatorRemainsAvailableForHistoricalRows",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.BenchmarkEvaluatorTests.QualityMetricsDoNotTurnUnavailableDispositionsIntoZero",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.ContextCorrectionTests.DuplicateStaleOverlappingAndGraphemeSplitSegmentsFail",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.ContextCorrectionTests.OnlyTargetMapsWithUtf16AndOpaqueMetadata(language: Dutch, target: \"Dit is onmiddelijk nodig.\", candidate: \"Dit is onmiddellijk nodig.\")",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.ContextCorrectionTests.OnlyTargetMapsWithUtf16AndOpaqueMetadata(language: English, target: \"Please recieve it.\", candidate: \"Please receive it.\")",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.ContextCorrectionTests.ProtectedTargetAndCancelledGenerationProduceNoOutsideEdits",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.ContextCorrectionTests.ResultsCannotReplayAcrossProtectionLanguageOrMetadataPolicies",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.ContextCorrectionTests.WholeTargetTranslationIsNotDelivered(language: Dutch, source: \"Dit verslag bevat een duidelijke uitleg.\", translated: \"This report contains a clear explanation.\")",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.ContextCorrectionTests.WholeTargetTranslationIsNotDelivered(language: English, source: \"Please send the complete report today.\", translated: \"Stuur vandaag het volledige verslag.\")",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CoreValidationTests.CorrectionRequestRequiresTextAndSupportedLanguage",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CoreValidationTests.InferenceRequestRequiresPositiveOutputLimit",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CoreValidationTests.TextEditRequiresOriginalTextLengthToMatchSpan",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionPipelineTests.AcceptsDutchCompoundCorrectionThatOnlyRemovesWhitespace",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionPipelineTests.AllowsSentenceInitialFunctionWordCaseCorrectionButProtectsNames",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionPipelineTests.AnalysisSeparatesRawCandidateFromSafetyRejectedEdits",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionPipelineTests.CompleteIndependentStatementRemovalIsRejectedButClauseJoiningIsAllowed",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionPipelineTests.ContractedAndDutchNegationChangesAreNotAccepted(source: \"Er is geen risico.\", candidate: \"Er is risico.\")",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionPipelineTests.ContractedAndDutchNegationChangesAreNotAccepted(source: \"I can't send it.\", candidate: \"I can send it.\")",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionPipelineTests.ContractedAndDutchNegationChangesAreNotAccepted(source: \"She doesn't agree.\", candidate: \"She does agree.\")",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionPipelineTests.ContractedAndDutchNegationChangesAreNotAccepted(source: \"The service isn't ready.\", candidate: \"The service is ready.\")",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionPipelineTests.ContractedAndDutchNegationChangesAreNotAccepted(source: \"We won't deploy it.\", candidate: \"We will deploy it.\")",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionPipelineTests.CorrectTextCanBePreservedAndCancellationFlowsToAdapter",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionPipelineTests.CorrectedPassagePreservesMeaningfulOuterWhitespace",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionPipelineTests.CosmeticWhitespaceSuppressionIsExplicitAndDoesNotEraseSourceFormatting",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionPipelineTests.DerivesUtf16ProposalFromCorrectedPassageAndRemovesModelNote",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionPipelineTests.DoesNotTreatUnrequestedMultilineModelExplanationAsCandidateCorrections",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionPipelineTests.ExtractsCompleteQuotedCorrectionBeforeModelAnalysis",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionPipelineTests.ExtractsNamedQuotedOutputAndRejectsIncompleteTailWithoutScoringItAsRawCorrection",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionPipelineTests.ExtractsRepeatedCompleteFirstAnswerBeforeModelLoop",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionPipelineTests.KeepsExactOrWhitespaceOnlyCorrectTextUnchanged",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionPipelineTests.LegitimateWhitespaceCorrectionsRemainOperational(source: \"Ik heb teveel betaald.\", candidate: \"Ik heb te veel betaald.\")",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionPipelineTests.LegitimateWhitespaceCorrectionsRemainOperational(source: \"alot\", candidate: \"a lot\")",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionPipelineTests.LegitimateWhitespaceCorrectionsRemainOperational(source: \"vergader ruimte\", candidate: \"vergaderruimte\")",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionPipelineTests.MaximumTokenInferenceCannotBecomeAcceptedCorrection",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionPipelineTests.NegationAndModalityChangesAreNotAccepted(source: \"De server is niet bereikbaar.\", candidate: \"De server is bereikbaar.\")",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionPipelineTests.NegationAndModalityChangesAreNotAccepted(source: \"She must not send it.\", candidate: \"She must send it.\")",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionPipelineTests.NegationAndModalityChangesAreNotAccepted(source: \"The server is not available.\", candidate: \"The server is available.\")",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionPipelineTests.NegationAndModalityChangesAreNotAccepted(source: \"You must submit the form.\", candidate: \"You may submit the form.\")",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionPipelineTests.ParsesUtf16PositionsAndChecksExactUnicodeSource",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionPipelineTests.ProducesMultipleUnicodeSafeEditsForIndependentCorrections",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionPipelineTests.PromptPinsVersionLanguageAndEscapedInput",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionPipelineTests.ProtectedSourceTokensAreNeverAccepted(sourceFragment: \"/etc/diorthosis/config.yaml\", candidateFragment: \"/etc/diorthosis/other.yaml\")",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionPipelineTests.ProtectedSourceTokensAreNeverAccepted(sourceFragment: \"10.0.0.1\", candidateFragment: \"10.0.0.2\")",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionPipelineTests.ProtectedSourceTokensAreNeverAccepted(sourceFragment: \"2001:db8::1\", candidateFragment: \"2001:db8::2\")",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionPipelineTests.ProtectedSourceTokensAreNeverAccepted(sourceFragment: \"ApiGateway-v2\", candidateFragment: \"ApiGateway v2\")",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionPipelineTests.ProtectedSourceTokensAreNeverAccepted(sourceFragment: \"C:\\\\Program Files\\\\Diorthosis\\\\settings\", candidateFragment: \"C:\\\\Program Files\\\\Diorthosis\\\\options\")",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionPipelineTests.ProtectedSourceTokensAreNeverAccepted(sourceFragment: \"C:\\\\\\\\Program Files\\\\\\\\Diorthosis\\\\\\\\config.yaml\", candidateFragment: \"C:\\\\\\\\Program Files\\\\\\\\Diorthosis\\\\\\\\other.yaml\")",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionPipelineTests.ProtectedSourceTokensAreNeverAccepted(sourceFragment: \"NL-2026-041\", candidateFragment: \"NL 2026 041\")",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionPipelineTests.ProtectedSourceTokensAreNeverAccepted(sourceFragment: \"OAuth2\", candidateFragment: \"OAuth 2\")",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionPipelineTests.ProtectedSourceTokensAreNeverAccepted(sourceFragment: \"example.test\", candidateFragment: \"example.invalid\")",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionPipelineTests.ProtectedSourceTokensAreNeverAccepted(sourceFragment: \"help@company.test\", candidateFragment: \"help@other.test\")",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionPipelineTests.ProtectedSourceTokensAreNeverAccepted(sourceFragment: \"node-04\", candidateFragment: \"node 04\")",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionPipelineTests.ProtectedSourceTokensAreNeverAccepted(sourceFragment: \"server_name\", candidateFragment: \"server-name\")",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionPipelineTests.ProtectedSourceTokensAreNeverAccepted(sourceFragment: \"v2.1.0\", candidateFragment: \"v2.2.0\")",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionPipelineTests.RejectsMalformedOrUnverifiableModelPassages(output: \"\")",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionPipelineTests.RejectsMalformedOrUnverifiableModelPassages(output: \"Ik heb het document gisteren verstuurd\")",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionPipelineTests.RejectsMalformedOrUnverifiableModelPassages(output: \"She sent all the data to a different server.\")",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionPipelineTests.RejectsMalformedOrUnverifiableModelPassages(output: \"This is a completely unrelated explanation.\")",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionPipelineTests.RejectsMalformedOrUnverifiableModelPassages(output: \"[]\")",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionPipelineTests.RejectsMissingModelFileWithoutLeakingContent",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionPipelineTests.RejectsModelOutputThatDropsEmojiOrSymbol",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionPipelineTests.RejectsUnsafeEdits(json: \"[{\\\"start\\\":0,\\\"length\\\":0,\\\"originalText\\\":\\\"\\\",\\\"\u00b7\u00b7\u00b7)",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionPipelineTests.RejectsUnsafeEdits(json: \"[{\\\"start\\\":0,\\\"length\\\":1,\\\"originalText\\\":\\\"1\\\",\"\u00b7\u00b7\u00b7)",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionPipelineTests.RejectsUnsafeEdits(json: \"[{\\\"start\\\":0,\\\"length\\\":1,\\\"originalText\\\":\\\"a\\\",\"\u00b7\u00b7\u00b7)",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionPipelineTests.RejectsUnsafeEdits(json: \"[{\\\"start\\\":0,\\\"length\\\":14,\\\"originalText\\\":\\\"htt\"\u00b7\u00b7\u00b7)",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionPipelineTests.RejectsUnsafeEdits(json: \"[{\\\"start\\\":0,\\\"length\\\":2,\\\"originalText\\\":\\\"zz\\\"\"\u00b7\u00b7\u00b7)",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionPipelineTests.RejectsUnsafeEdits(json: \"[{\\\"start\\\":0,\\\"length\\\":4,\\\"originalText\\\":\\\"2024\"\u00b7\u00b7\u00b7)",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionPipelineTests.RejectsUnsafeEdits(json: \"[{\\\"start\\\":0,\\\"length\\\":6,\\\"originalText\\\":\\\"Acme\"\u00b7\u00b7\u00b7)",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionPipelineTests.RejectsUnsafeEdits(json: \"[{\\\"start\\\":99,\\\"length\\\":1,\\\"originalText\\\":\\\"x\\\"\"\u00b7\u00b7\u00b7)",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionPipelineTests.RemovesRepeatedOutputBlocksFromChattyModel",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionPipelineTests.StatementToQuestionIsNotCosmetic",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionPipelineTests.StructuredJsonUsesTheSamePassageSafetyPolicy",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionPipelineTests.StructuredJsonUsesTheSamePlausibilityPolicyAsPassageResponses",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionPipelineTests.TranslationIsRejectedForChangedWordingRatherThanMistakenAsChangedName",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionPipelineTests.UnverifiableInferenceOutputLeavesSourceUnchanged",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionPipelineTests.UsesCompletePassageBeforeCorrectedTextAndExplanationMarkers",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionPipelineTests.ValidatesModelConfigurationBeforeNativeInitialization",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionPipelineTests.WrittenDatesRemainSourceDerived(source: \"Het start op 3 mei 2025.\", candidate: \"Het start op 3 juni 2025.\")",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionPipelineTests.WrittenDatesRemainSourceDerived(source: \"It starts on May 3, 2025.\", candidate: \"It starts on June 3, 2025.\")",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionPipelineTests.WrittenDatesRemainSourceDerived(source: \"The meeting is on 3 May 2025.\", candidate: \"The meeting is on 3 June 2025.\")",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionSafetyContractTests.ExplicitProtectedSpanBlocksLegalWordingButAllowsOutsideTypoRepair",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionSafetyContractTests.InteriorQuestionCannotBeChangedWhileKeepingFinalStatement",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionSafetyContractTests.InvalidStructuredShapesAreDataErrors(json: \"[1]\")",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionSafetyContractTests.InvalidStructuredShapesAreDataErrors(json: \"[null]\")",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionSafetyContractTests.InvalidStructuredShapesAreDataErrors(json: \"[{\\\"start\\\":0,\\\"length\\\":1,\\\"originalText\\\":\\\"a\\\",\"\u00b7\u00b7\u00b7)",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionSafetyContractTests.InvalidStructuredShapesAreDataErrors(json: \"[{\\\"start\\\":0,\\\"start\\\":0,\\\"length\\\":1,\\\"originalT\"\u00b7\u00b7\u00b7)",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionSafetyContractTests.InvalidStructuredShapesAreDataErrors(json: \"[{\\\"start\\\":\\\"0\\\",\\\"length\\\":1,\\\"originalText\\\":\\\"\"\u00b7\u00b7\u00b7)",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionSafetyContractTests.ParagraphLossIsNeverSilentlyAccepted",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionSafetyContractTests.ParseableIncompleteGenerationIsStillRejected(termination: Cancelled)",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionSafetyContractTests.ParseableIncompleteGenerationIsStillRejected(termination: MaximumTokens)",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionSafetyContractTests.ParseableIncompleteGenerationIsStillRejected(termination: Unknown)",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionSafetyContractTests.PromptInjectionLikeSourceIsOnlyPassedAsEncodedDataAndCannotBypassValidation",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionSafetyContractTests.RejectsGraphemeSplitsUnpairedSurrogatesAndOversizeInputs",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionSafetyContractTests.ResultExposesOutcomeAndUntrustedCandidateWithoutDeliveringBlockedEdits(source: \"Keep \\\"recieve\\\" as quoted.\", output: \"Keep \\\"receive\\\" as quoted.\", expected: NeedsReview)",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionSafetyContractTests.ResultExposesOutcomeAndUntrustedCandidateWithoutDeliveringBlockedEdits(source: \"Please recieve it.\", output: \"Please receive it.\", expected: Accepted)",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionSafetyContractTests.ResultExposesOutcomeAndUntrustedCandidateWithoutDeliveringBlockedEdits(source: \"She may not send it but archive it.\", output: \"She may send it but not archive it.\", expected: NeedsReview)",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionSafetyContractTests.ResultExposesOutcomeAndUntrustedCandidateWithoutDeliveringBlockedEdits(source: \"The service works.\", output: \"The   service works.\", expected: Suppressed)",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionSafetyContractTests.ResultExposesOutcomeAndUntrustedCandidateWithoutDeliveringBlockedEdits(source: \"The service works.\", output: \"The service works.\", expected: Unchanged)",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionSafetyContractTests.ResultExposesOutcomeAndUntrustedCandidateWithoutDeliveringBlockedEdits(source: \"Use node-04.\", output: \"Use node 04.\", expected: Rejected)",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.CorrectionSafetyContractTests.ResultExposesOutcomeAndUntrustedCandidateWithoutDeliveringBlockedEdits(source: \"You may read but must not write.\", output: \"You must read but may not write.\", expected: NeedsReview)",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.DatasetAuditTests.AlternativeOrderDoesNotCreateAConflictButLiteralApostrophesDo",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.DatasetAuditTests.AnnotationAuditReportsMisalignmentOverlapAndGraphemeSplitting",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.DatasetAuditTests.DependencyDisagreementsAreNotSilentlyMerged",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.DatasetAuditTests.ExactAuditPreservesConflictingAnnotationsAndEveryIdDeterministically",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.DatasetAuditTests.InsertionsAndEmptyDatasetAreSupportedButDuplicateIdsAreRejected",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.DatasetAuditTests.NormalizedMatchesRemainDiagnostics(a: \"De ge\u00efnstalleerde server.\", b: \"De gei\u0308nstalleerde server.\", method: \"NFC-whitespace\")",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.DatasetAuditTests.NormalizedMatchesRemainDiagnostics(a: \"Some text.\", b: \"Some   text.\", method: \"NFC-whitespace\")",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.DatasetAuditTests.NormalizedMatchesRemainDiagnostics(a: \"Some text.\", b: \"some text.\", method: \"case-folded-diagnostic\")",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.DatasetAuditTests.SplitCheckerDetectsCrossLanguageTextNearMatchesAndDeclaredFamilies",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.DatasetAuditTests.ThresholdIsConfigurableAndMeaningChangesAreNotCollapsed",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.ExperimentalCorrectionTests.BaselineRemainsByteIdenticalAndVariantsAreExplicit",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.ExperimentalCorrectionTests.FragmentAlignmentUsesContextAndRefusesAmbiguity",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.ExperimentalCorrectionTests.FragmentInsertionRequiresUniqueContext",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.ExperimentalCorrectionTests.GrammarIsAnOptInInferenceParameterWithTheSameTerminationPolicy",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.ExperimentalCorrectionTests.MalformedOrUnalignedOutputNeverProducesDeliverableEdits(json: \"[null]\")",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.ExperimentalCorrectionTests.MalformedOrUnalignedOutputNeverProducesDeliverableEdits(json: \"[{\\\"originalText\\\":\\\"missing\\\",\\\"replacementText\\\"\"\u00b7\u00b7\u00b7)",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.ExperimentalCorrectionTests.MalformedOrUnalignedOutputNeverProducesDeliverableEdits(json: \"[{\\\"originalText\\\":\\\"teh\\\",\\\"replacementText\\\":\\\"t\"\u00b7\u00b7\u00b7)",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.ExperimentalCorrectionTests.MalformedOrUnalignedOutputNeverProducesDeliverableEdits(json: \"[{\\\"start\\\":1,\\\"length\\\":1,\\\"originalText\\\":\\\"x\\\",\"\u00b7\u00b7\u00b7)",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.ExperimentalCorrectionTests.MalformedOrUnalignedOutputNeverProducesDeliverableEdits(json: \"[{}]\")",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.ExperimentalCorrectionTests.MultipleIndependentEditsAndInsertionsAreSourceAligned",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.ExperimentalCorrectionTests.OffsetContractCanRepresentRequiredEditsWithoutChangingSource(source: \"De vergader ruimte is klaar.\", original: \"vergader ruimte\", replacement: \"vergaderruimte\")",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.ExperimentalCorrectionTests.OffsetContractCanRepresentRequiredEditsWithoutChangingSource(source: \"De vergaderruimte is klaar.\", original: \"vergaderruimte\", replacement: \"vergader ruimte\")",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.ExperimentalCorrectionTests.OffsetContractCanRepresentRequiredEditsWithoutChangingSource(source: \"Please recieve it.\", original: \"recieve\", replacement: \"receive\")",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.ExperimentalCorrectionTests.OffsetContractCanRepresentRequiredEditsWithoutChangingSource(source: \"The file is is ready.\", original: \"is is\", replacement: \"is\")",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.ExperimentalCorrectionTests.OffsetContractCanRepresentRequiredEditsWithoutChangingSource(source: \"The file is ready.\\n\\nPlease recieve it.\", original: \"recieve\", replacement: \"receive\")",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.ExperimentalCorrectionTests.OffsetContractCanRepresentRequiredEditsWithoutChangingSource(source: \"Tomorrow I will the package send.\", original: \"the package send\", replacement: \"send the package\")",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.ExperimentalCorrectionTests.OffsetContractCanRepresentRequiredEditsWithoutChangingSource(source: \"\\ud83c\\udf37 It is naive.\", original: \"naive\", replacement: \"nai\u0308ve\")",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.ExperimentalCorrectionTests.RevisedGrammarEndsAtClosingBracketAndRetainsFrozenV1",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.ExperimentalCorrectionTests.StructuredCandidateCannotBypassProtectedContentOrScopeReview",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.ExternalReviewRegressionTests.AlreadyBlockedSemanticFailuresStayBlocked(source: \"De kinderen loop naar de biblioteek.\", candidate: \"De kinderen gaan de bibliotheek in.\")",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.ExternalReviewRegressionTests.AlreadyBlockedSemanticFailuresStayBlocked(source: \"Please explain me the procedure.\", candidate: \"Please explain the procedure.\")",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.ExternalReviewRegressionTests.AlreadyBlockedSemanticFailuresStayBlocked(source: \"The neighborhood theater canceled the evening perf\"\u00b7\u00b7\u00b7, candidate: \"The neighborhood theater had plans to cancel the e\"\u00b7\u00b7\u00b7)",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.ExternalReviewRegressionTests.CorrectSourceFormattingUnicodeAndRegionalTextRemainLiteral(source: \"De co\u00f6rdinator bespreekt de re\u00fcnie.\")",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.ExternalReviewRegressionTests.CorrectSourceFormattingUnicodeAndRegionalTextRemainLiteral(source: \"Het Griekse woord \u03ba\u03cc\u03c3\u03bc\u03bf\u03c2 blijft staan.\")",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.ExternalReviewRegressionTests.CorrectSourceFormattingUnicodeAndRegionalTextRemainLiteral(source: \"Keep `retry_count` and `OAuth2` unchanged.\")",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.ExternalReviewRegressionTests.CorrectSourceFormattingUnicodeAndRegionalTextRemainLiteral(source: \"The answer is 2 * 3 * 4.\")",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.ExternalReviewRegressionTests.CorrectSourceFormattingUnicodeAndRegionalTextRemainLiteral(source: \"The organisation will analyse the colour samples.\")",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.ExternalReviewRegressionTests.CorrectSourceFormattingUnicodeAndRegionalTextRemainLiteral(source: \"Use *wildcard* exactly.\")",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.ExternalReviewRegressionTests.ExistingMixedScriptCorruptionGuardCannotOverrideSafeUnicodeContent",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.ExternalReviewRegressionTests.RealRepairPreservesExistingLiteralAsterisks",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.ExternalReviewRegressionTests.SingleWordModelEmphasisDoesNotReachDeliveredPassage",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.ExternalReviewRegressionTests.TechnicalCorruptionIsAlreadyWithheld(candidate: \"Set **\\\\u0060retry_count\\\\u0060** to 3. If **\\\\u00\"\u00b7\u00b7\u00b7)",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.ExternalReviewRegressionTests.TechnicalCorruptionIsAlreadyWithheld(candidate: \"Set *retry_count* to 3. If *OAuth2* returns an err\"\u00b7\u00b7\u00b7)",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.ExternalReviewRegressionTests.TechnicalCorruptionIsAlreadyWithheld(candidate: \"Set `__retry_count__` to 3. If `__OAuth2__` return\"\u00b7\u00b7\u00b7)",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.ExternalReviewRegressionTests.TechnicalCorruptionIsAlreadyWithheld(candidate: \"Set retry\\\\_count to 3. If OAuth2 returns an error\"\u00b7\u00b7\u00b7)",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.InferenceTerminationIntegrationTests.StatelessExecutorStopsOnEogAndKeepsRequestsIsolated",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.LinguisticExperimentTests.DifferentReplacementsAbstain",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.LinguisticExperimentTests.DuplicateGenerationIdsRejected",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.LinguisticExperimentTests.EquivalentSegmentationsCanonicalizeAndKeepDependencies",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.LinguisticExperimentTests.ExistingInternationalLettersAndLatinDiacriticsArePreserved",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.LinguisticExperimentTests.ExplicitProtectedSpansRemainAuthoritative",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.LinguisticExperimentTests.FiveRequiresThreeAndDoesNotCountTwo",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.LinguisticExperimentTests.GreedyRemainsDefaultAndSeedExplicit",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.LinguisticExperimentTests.IntroducedForeignScriptCannotGainConsensusSafety",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.LinguisticExperimentTests.InvalidSamplingRejected(temperature: -1)",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.LinguisticExperimentTests.InvalidSamplingRejected(temperature: 0)",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.LinguisticExperimentTests.InvalidSamplingRejected(temperature: NaN)",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.LinguisticExperimentTests.LocalOperationsReconstructLiteralUnicodeAndRepeatedWords(source: \"De lange termijnplanning.\", target: \"De langetermijnplanning.\")",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.LinguisticExperimentTests.LocalOperationsReconstructLiteralUnicodeAndRepeatedWords(source: \"First paragraph.\\nSecond sentnce.\", target: \"First paragraph.\\nSecond sentence.\")",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.LinguisticExperimentTests.LocalOperationsReconstructLiteralUnicodeAndRepeatedWords(source: \"Ik bel bel morgen.\", target: \"Ik bel morgen.\")",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.LinguisticExperimentTests.LocalOperationsReconstructLiteralUnicodeAndRepeatedWords(source: \"Ik weet dat hij heeft het bestand opgeslagen.\", target: \"Ik weet dat hij het bestand heeft opgeslagen.\")",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.LinguisticExperimentTests.LocalOperationsReconstructLiteralUnicodeAndRepeatedWords(source: \"\\ud83d\\ude00 cafe\u0301 recieve.\", target: \"\\ud83d\\ude00 caf\u00e9 receive.\")",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.LinguisticExperimentTests.MajorityCanRepeatWrongSpelling",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.LinguisticExperimentTests.MajorityCannotOverrideSemanticAndIdentifierGuards(source: \"Do not remove it.\", candidate: \"Do remove it.\")",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.LinguisticExperimentTests.MajorityCannotOverrideSemanticAndIdentifierGuards(source: \"Keep `node-04` unchanged.\", candidate: \"Keep `node-40` unchanged.\")",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.LinguisticExperimentTests.MajorityCannotOverrideSemanticAndIdentifierGuards(source: \"Keep the amount at 42.\", candidate: \"Keep the amount at 43.\")",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.LinguisticExperimentTests.ManagedDictionaryAffixesDialectsDiagnosticsAndLifetime",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.LinguisticExperimentTests.MinorityNegationNeverEntersResult",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.LinguisticExperimentTests.MinorityValidRepairIsLost",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.LinguisticExperimentTests.RepeatedWordAmbiguityIsNotConfidence",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.LinguisticExperimentTests.StrictMajorityAndUnchangedMinority",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.LinguisticExperimentTests.TruncationAndRejectedCandidatesDoNotLowerThreshold",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.LinguisticExperimentTests.UnsafeOverlapsAndGraphemeSplitsRemainBlocked",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.LinguisticExperimentTests.UnseenCombinationRequiresDependencyReview",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.LinguisticReviewTests.DefiniteFailuresRemainInDenominatorWithOtherUnknownJudgments",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.LinguisticReviewTests.FreshAdjudicationPreservesPriorVersionsAndDisagreement",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.LinguisticReviewTests.NoReviewsOrAiReviewsCannotProduceLinguisticPrecision",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.LinguisticReviewTests.StaleSourceCandidateAnnotationAndDecisionVersionFail",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.LinguisticReviewTests.TwoHumanDeclarationsAndSeparateAdjudicatorRequiredAndDisagreementRetained",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.LinguisticReviewTests.UnknownPassageJudgmentsStayOutOfSuccessDenominator",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.PeerReviewRegressionTests.AdjudicationCommandProjectsSharedJudgmentsWithoutPoolingModels",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.PeerReviewRegressionTests.CanonicalPrefixLengthDoesNotCorruptCorrectionAlignment(input: \"The cafe\u0301 recieved it.\", candidate: \"The caf\u00e9 received it.\", start: 10)",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.PeerReviewRegressionTests.CanonicalPrefixLengthDoesNotCorruptCorrectionAlignment(input: \"The caf\u00e9 recieved it.\", candidate: \"The cafe\u0301 received it.\", start: 9)",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.PeerReviewRegressionTests.CompareCommandRefusesItsInputAsDestination",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.PeerReviewRegressionTests.CompoundCanonicalEditRepairsTwoAnnotationsDespiteUnrelatedPunctuation",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.PeerReviewRegressionTests.ExistingArtifactsAreNeverOverwrittenEvenWithoutPreflight",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.PeerReviewRegressionTests.ExplicitProtectedSpanIncludesBoundaryInsertions(replacement: \"eligibleish\", protectedText: \"eligible\", start: 17)",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.PeerReviewRegressionTests.ExplicitProtectedSpanIncludesBoundaryInsertions(replacement: \"ineligible\", protectedText: \"eligible\", start: 17)",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.PeerReviewRegressionTests.LoneEscapedSurrogatesArePublicDataErrors(property: \"originalText\")",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.PeerReviewRegressionTests.LoneEscapedSurrogatesArePublicDataErrors(property: \"replacementText\")",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.PeerReviewRegressionTests.OrdinaryFinalFullStopAndSafeWordOrderAreAllowed",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.PeerReviewRegressionTests.ReplayCommandRejectsWrongMetadataAndSeparatesUnboundLegacyClaims",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.PeerReviewRegressionTests.ReplayRejectsMismatchedSourceAndLabelsLegacyIdentityUnverified",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.PeerReviewRegressionTests.ReviewIdentityTracksProposalContentAcrossAnnotationReorderingAndRevision",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.PeerReviewRegressionTests.StructuredCandidateIsNeverReinterpretedAsChatMarkup",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.PeerReviewRegressionTests.UnknownCompletePassageIsNotScoredAsFailure",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.PeerReviewRegressionTests.VerifiedUnsafeCandidatesHaveNoDeliverableEdits(source: \"Het start op 3 mei.\", candidate: \"Het start op 3 juni.\")",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.PeerReviewRegressionTests.VerifiedUnsafeCandidatesHaveNoDeliverableEdits(source: \"Is the file ready? The task is done. Wait.\", candidate: \"Is the file ready. The task is done? Wait.\")",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.PeerReviewRegressionTests.VerifiedUnsafeCandidatesHaveNoDeliverableEdits(source: \"It starts on May 3rd.\", candidate: \"It starts on June 3rd.\")",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.PeerReviewRegressionTests.VerifiedUnsafeCandidatesHaveNoDeliverableEdits(source: \"Jose\u0301 approved the file.\", candidate: \"Jose\u0300 approved the file.\")",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.PeerReviewRegressionTests.VerifiedUnsafeCandidatesHaveNoDeliverableEdits(source: \"Keep 'recieve' as quoted.\", candidate: \"Keep 'receive' as quoted.\")",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.PeerReviewRegressionTests.VerifiedUnsafeCandidatesHaveNoDeliverableEdits(source: \"Keep \u2018recieve\u2019 as quoted.\", candidate: \"Keep \u2018receive\u2019 as quoted.\")",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.PeerReviewRegressionTests.VerifiedUnsafeCandidatesHaveNoDeliverableEdits(source: \"Run foo() after bar().\", candidate: \"Run foo() before bar().\")",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.PeerReviewRegressionTests.VerifiedUnsafeCandidatesHaveNoDeliverableEdits(source: \"She gave him the book.\", candidate: \"He gave her the book.\")",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.PeerReviewRegressionTests.VerifiedUnsafeCandidatesHaveNoDeliverableEdits(source: \"The server is ready. The server is running.\", candidate: \"The server is ready.\")",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.PeerReviewRegressionTests.VerifiedUnsafeCandidatesHaveNoDeliverableEdits(source: \"There is no risk.\", candidate: \"There is risk.\")",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.PeerReviewRegressionTests.VerifiedUnsafeCandidatesHaveNoDeliverableEdits(source: \"We sent it yesterday.\", candidate: \"We sent it tomorrow.\")",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.PeerReviewRegressionTests.VerifiedUnsafeCandidatesHaveNoDeliverableEdits(source: \"You must read but we can write.\", candidate: \"We must read but you can write.\")",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.ProtectedSpanImmutabilityTests.CallerCannotMutateValidatedProtectionPolicy",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.ReferenceEvaluatorTests.CanonicalEquivalenceIsForScoringAndDoesNotRewriteSource",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.ReferenceEvaluatorTests.CleanLiteralChangeIsCountedEvenIfCanonicallyEquivalent",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.ReferenceEvaluatorTests.LocalRecallSurvivesUnrelatedLexicalEditAndSpeechActChange",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.ReferenceEvaluatorTests.MissingPredictionsAreMissingCoverageAndCannotInflateCleanPreservation",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.ReferenceEvaluatorTests.PartialDependencyRepairReceivesNoCredit",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.ReferenceEvaluatorTests.PreservesHistoricalScoresAndRecognizesProposedRestructuringAndApostrophes",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.ReferenceEvaluatorTests.RejectedNoEditPredictionIsVisibleAndNotAnAcceptedRepair",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.ReferenceEvaluatorTests.ReviewsMustBindToExactCandidateAndProposal",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.ReferenceEvaluatorTests.ScoresOutputIdenticallyAcrossLocalCompoundAndFullPassageHunks",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.SegmentMappingTests.StaleTargetsCrossBoundaryEditsAndGraphemeSplitsAreRejected",
+      "outcome": "Passed"
+    },
+    {
+      "testName": "Diorthosis.Tests.SegmentMappingTests.TargetMappingPreservesNeighboringContextAndOriginalSource",
+      "outcome": "Passed"
+    }
+  ],
+  "model": "Ministral-3-3B-Instruct-2512-Q4_K_M; existing CPU-only reviewed weights",
+  "note": "Actual local test results; machine paths/identities omitted. Not new benchmark inference or human evaluation."
+}

@@ -1,0 +1,2738 @@
+{
+  "policy": "AI diagnostic proportions, with known/unknown denominators. Each arm/layer uses one case-bound output; shared candidate judgments are reused, never independent observations. Rejected/null outputs are not delivered successes.",
+  "metrics": [
+    {
+      "language": "dutch",
+      "arm": "baseline",
+      "layer": "raw",
+      "sourceCases": 10,
+      "subjectCount": 10,
+      "candidateTexts": 10,
+      "nullCandidates": 0,
+      "completePassage": {
+        "numerator": 7,
+        "denominator": 10,
+        "unknown": 0,
+        "total": 10,
+        "estimate": 0.7
+      },
+      "judgments": {
+        "allDefectsRepaired": {
+          "numerator": 8,
+          "denominator": 10,
+          "unknown": 0,
+          "total": 10,
+          "estimate": 0.8
+        },
+        "cleanPreserved": {
+          "numerator": 3,
+          "denominator": 4,
+          "unknown": 6,
+          "total": 10,
+          "estimate": 0.75
+        },
+        "criticalSemanticFailure": {
+          "numerator": 0,
+          "denominator": 10,
+          "unknown": 0,
+          "total": 10,
+          "estimate": 0.0
+        },
+        "justified": {
+          "numerator": 7,
+          "denominator": 10,
+          "unknown": 0,
+          "total": 10,
+          "estimate": 0.7
+        },
+        "meaningPreserved": {
+          "numerator": 0,
+          "denominator": 10,
+          "unknown": 0,
+          "total": 10,
+          "estimate": 0.0
+        },
+        "noNewErrors": {
+          "numerator": 1,
+          "denominator": 10,
+          "unknown": 0,
+          "total": 10,
+          "estimate": 0.1
+        },
+        "rejectionAppropriate": {
+          "numerator": 0,
+          "denominator": 0,
+          "unknown": 10,
+          "total": 10,
+          "estimate": null
+        }
+      },
+      "conditionSourceCases": 10,
+      "originalDispositions": {
+        "accepted": 4,
+        "unchanged": 5,
+        "rejected": 1
+      },
+      "assessableLiteralClean": {
+        "numerator": 3,
+        "denominator": 4
+      },
+      "humanValidated": null
+    },
+    {
+      "language": "dutch",
+      "arm": "baseline",
+      "layer": "delivered",
+      "sourceCases": 9,
+      "subjectCount": 9,
+      "candidateTexts": 9,
+      "nullCandidates": 0,
+      "completePassage": {
+        "numerator": 7,
+        "denominator": 9,
+        "unknown": 0,
+        "total": 9,
+        "estimate": 0.7777777777777778
+      },
+      "judgments": {
+        "allDefectsRepaired": {
+          "numerator": 7,
+          "denominator": 9,
+          "unknown": 0,
+          "total": 9,
+          "estimate": 0.7777777777777778
+        },
+        "cleanPreserved": {
+          "numerator": 3,
+          "denominator": 3,
+          "unknown": 6,
+          "total": 9,
+          "estimate": 1.0
+        },
+        "criticalSemanticFailure": {
+          "numerator": 0,
+          "denominator": 9,
+          "unknown": 0,
+          "total": 9,
+          "estimate": 0.0
+        },
+        "justified": {
+          "numerator": 7,
+          "denominator": 9,
+          "unknown": 0,
+          "total": 9,
+          "estimate": 0.7777777777777778
+        },
+        "meaningPreserved": {
+          "numerator": 0,
+          "denominator": 9,
+          "unknown": 0,
+          "total": 9,
+          "estimate": 0.0
+        },
+        "noNewErrors": {
+          "numerator": 0,
+          "denominator": 9,
+          "unknown": 0,
+          "total": 9,
+          "estimate": 0.0
+        },
+        "rejectionAppropriate": {
+          "numerator": 0,
+          "denominator": 0,
+          "unknown": 9,
+          "total": 9,
+          "estimate": null
+        }
+      },
+      "conditionSourceCases": 10,
+      "originalDispositions": {
+        "accepted": 4,
+        "unchanged": 5,
+        "rejected": 1
+      },
+      "assessableLiteralClean": {
+        "numerator": 3,
+        "denominator": 4
+      },
+      "humanValidated": null
+    },
+    {
+      "language": "dutch",
+      "arm": "baseline",
+      "layer": "rejected",
+      "sourceCases": 1,
+      "subjectCount": 1,
+      "candidateTexts": 1,
+      "nullCandidates": 0,
+      "completePassage": null,
+      "judgments": {
+        "allDefectsRepaired": {
+          "numerator": 1,
+          "denominator": 1,
+          "unknown": 0,
+          "total": 1,
+          "estimate": 1.0
+        },
+        "cleanPreserved": {
+          "numerator": 0,
+          "denominator": 1,
+          "unknown": 0,
+          "total": 1,
+          "estimate": 0.0
+        },
+        "criticalSemanticFailure": {
+          "numerator": 0,
+          "denominator": 1,
+          "unknown": 0,
+          "total": 1,
+          "estimate": 0.0
+        },
+        "justified": {
+          "numerator": 0,
+          "denominator": 1,
+          "unknown": 0,
+          "total": 1,
+          "estimate": 0.0
+        },
+        "meaningPreserved": {
+          "numerator": 0,
+          "denominator": 1,
+          "unknown": 0,
+          "total": 1,
+          "estimate": 0.0
+        },
+        "noNewErrors": {
+          "numerator": 1,
+          "denominator": 1,
+          "unknown": 0,
+          "total": 1,
+          "estimate": 1.0
+        },
+        "rejectionAppropriate": {
+          "numerator": 1,
+          "denominator": 1,
+          "unknown": 0,
+          "total": 1,
+          "estimate": 1.0
+        }
+      },
+      "conditionSourceCases": 10,
+      "originalDispositions": {
+        "accepted": 4,
+        "unchanged": 5,
+        "rejected": 1
+      },
+      "assessableLiteralClean": {
+        "numerator": 3,
+        "denominator": 4
+      },
+      "humanValidated": null
+    },
+    {
+      "language": "dutch",
+      "arm": "hints",
+      "layer": "raw",
+      "sourceCases": 10,
+      "subjectCount": 10,
+      "candidateTexts": 10,
+      "nullCandidates": 0,
+      "completePassage": {
+        "numerator": 8,
+        "denominator": 10,
+        "unknown": 0,
+        "total": 10,
+        "estimate": 0.8
+      },
+      "judgments": {
+        "allDefectsRepaired": {
+          "numerator": 9,
+          "denominator": 10,
+          "unknown": 0,
+          "total": 10,
+          "estimate": 0.9
+        },
+        "cleanPreserved": {
+          "numerator": 3,
+          "denominator": 4,
+          "unknown": 6,
+          "total": 10,
+          "estimate": 0.75
+        },
+        "criticalSemanticFailure": {
+          "numerator": 0,
+          "denominator": 10,
+          "unknown": 0,
+          "total": 10,
+          "estimate": 0.0
+        },
+        "justified": {
+          "numerator": 8,
+          "denominator": 10,
+          "unknown": 0,
+          "total": 10,
+          "estimate": 0.8
+        },
+        "meaningPreserved": {
+          "numerator": 0,
+          "denominator": 10,
+          "unknown": 0,
+          "total": 10,
+          "estimate": 0.0
+        },
+        "noNewErrors": {
+          "numerator": 1,
+          "denominator": 10,
+          "unknown": 0,
+          "total": 10,
+          "estimate": 0.1
+        },
+        "rejectionAppropriate": {
+          "numerator": 0,
+          "denominator": 0,
+          "unknown": 10,
+          "total": 10,
+          "estimate": null
+        }
+      },
+      "conditionSourceCases": 10,
+      "originalDispositions": {
+        "accepted": 5,
+        "unchanged": 4,
+        "rejected": 1
+      },
+      "assessableLiteralClean": {
+        "numerator": 3,
+        "denominator": 4
+      },
+      "humanValidated": null
+    },
+    {
+      "language": "dutch",
+      "arm": "hints",
+      "layer": "delivered",
+      "sourceCases": 9,
+      "subjectCount": 9,
+      "candidateTexts": 9,
+      "nullCandidates": 0,
+      "completePassage": {
+        "numerator": 8,
+        "denominator": 9,
+        "unknown": 0,
+        "total": 9,
+        "estimate": 0.8888888888888888
+      },
+      "judgments": {
+        "allDefectsRepaired": {
+          "numerator": 8,
+          "denominator": 9,
+          "unknown": 0,
+          "total": 9,
+          "estimate": 0.8888888888888888
+        },
+        "cleanPreserved": {
+          "numerator": 3,
+          "denominator": 3,
+          "unknown": 6,
+          "total": 9,
+          "estimate": 1.0
+        },
+        "criticalSemanticFailure": {
+          "numerator": 0,
+          "denominator": 9,
+          "unknown": 0,
+          "total": 9,
+          "estimate": 0.0
+        },
+        "justified": {
+          "numerator": 8,
+          "denominator": 9,
+          "unknown": 0,
+          "total": 9,
+          "estimate": 0.8888888888888888
+        },
+        "meaningPreserved": {
+          "numerator": 0,
+          "denominator": 9,
+          "unknown": 0,
+          "total": 9,
+          "estimate": 0.0
+        },
+        "noNewErrors": {
+          "numerator": 0,
+          "denominator": 9,
+          "unknown": 0,
+          "total": 9,
+          "estimate": 0.0
+        },
+        "rejectionAppropriate": {
+          "numerator": 0,
+          "denominator": 0,
+          "unknown": 9,
+          "total": 9,
+          "estimate": null
+        }
+      },
+      "conditionSourceCases": 10,
+      "originalDispositions": {
+        "accepted": 5,
+        "unchanged": 4,
+        "rejected": 1
+      },
+      "assessableLiteralClean": {
+        "numerator": 3,
+        "denominator": 4
+      },
+      "humanValidated": null
+    },
+    {
+      "language": "dutch",
+      "arm": "hints",
+      "layer": "rejected",
+      "sourceCases": 1,
+      "subjectCount": 1,
+      "candidateTexts": 1,
+      "nullCandidates": 0,
+      "completePassage": null,
+      "judgments": {
+        "allDefectsRepaired": {
+          "numerator": 1,
+          "denominator": 1,
+          "unknown": 0,
+          "total": 1,
+          "estimate": 1.0
+        },
+        "cleanPreserved": {
+          "numerator": 0,
+          "denominator": 1,
+          "unknown": 0,
+          "total": 1,
+          "estimate": 0.0
+        },
+        "criticalSemanticFailure": {
+          "numerator": 0,
+          "denominator": 1,
+          "unknown": 0,
+          "total": 1,
+          "estimate": 0.0
+        },
+        "justified": {
+          "numerator": 0,
+          "denominator": 1,
+          "unknown": 0,
+          "total": 1,
+          "estimate": 0.0
+        },
+        "meaningPreserved": {
+          "numerator": 0,
+          "denominator": 1,
+          "unknown": 0,
+          "total": 1,
+          "estimate": 0.0
+        },
+        "noNewErrors": {
+          "numerator": 1,
+          "denominator": 1,
+          "unknown": 0,
+          "total": 1,
+          "estimate": 1.0
+        },
+        "rejectionAppropriate": {
+          "numerator": 1,
+          "denominator": 1,
+          "unknown": 0,
+          "total": 1,
+          "estimate": 1.0
+        }
+      },
+      "conditionSourceCases": 10,
+      "originalDispositions": {
+        "accepted": 5,
+        "unchanged": 4,
+        "rejected": 1
+      },
+      "assessableLiteralClean": {
+        "numerator": 3,
+        "denominator": 4
+      },
+      "humanValidated": null
+    },
+    {
+      "language": "dutch",
+      "arm": "sample-101",
+      "layer": "raw",
+      "sourceCases": 10,
+      "subjectCount": 10,
+      "candidateTexts": 10,
+      "nullCandidates": 0,
+      "completePassage": {
+        "numerator": 3,
+        "denominator": 10,
+        "unknown": 0,
+        "total": 10,
+        "estimate": 0.3
+      },
+      "judgments": {
+        "allDefectsRepaired": {
+          "numerator": 7,
+          "denominator": 10,
+          "unknown": 0,
+          "total": 10,
+          "estimate": 0.7
+        },
+        "cleanPreserved": {
+          "numerator": 2,
+          "denominator": 4,
+          "unknown": 6,
+          "total": 10,
+          "estimate": 0.5
+        },
+        "criticalSemanticFailure": {
+          "numerator": 3,
+          "denominator": 10,
+          "unknown": 0,
+          "total": 10,
+          "estimate": 0.3
+        },
+        "justified": {
+          "numerator": 3,
+          "denominator": 10,
+          "unknown": 0,
+          "total": 10,
+          "estimate": 0.3
+        },
+        "meaningPreserved": {
+          "numerator": 4,
+          "denominator": 10,
+          "unknown": 0,
+          "total": 10,
+          "estimate": 0.4
+        },
+        "noNewErrors": {
+          "numerator": 6,
+          "denominator": 10,
+          "unknown": 0,
+          "total": 10,
+          "estimate": 0.6
+        },
+        "rejectionAppropriate": {
+          "numerator": 0,
+          "denominator": 0,
+          "unknown": 10,
+          "total": 10,
+          "estimate": null
+        }
+      },
+      "conditionSourceCases": 10,
+      "originalDispositions": {
+        "accepted": 5,
+        "rejected": 3,
+        "unchanged": 2
+      },
+      "assessableLiteralClean": {
+        "numerator": 2,
+        "denominator": 4
+      },
+      "humanValidated": null
+    },
+    {
+      "language": "dutch",
+      "arm": "sample-101",
+      "layer": "delivered",
+      "sourceCases": 7,
+      "subjectCount": 7,
+      "candidateTexts": 7,
+      "nullCandidates": 0,
+      "completePassage": {
+        "numerator": 3,
+        "denominator": 7,
+        "unknown": 0,
+        "total": 7,
+        "estimate": 0.42857142857142855
+      },
+      "judgments": {
+        "allDefectsRepaired": {
+          "numerator": 5,
+          "denominator": 7,
+          "unknown": 0,
+          "total": 7,
+          "estimate": 0.7142857142857143
+        },
+        "cleanPreserved": {
+          "numerator": 2,
+          "denominator": 3,
+          "unknown": 4,
+          "total": 7,
+          "estimate": 0.6666666666666666
+        },
+        "criticalSemanticFailure": {
+          "numerator": 1,
+          "denominator": 7,
+          "unknown": 0,
+          "total": 7,
+          "estimate": 0.14285714285714285
+        },
+        "justified": {
+          "numerator": 3,
+          "denominator": 7,
+          "unknown": 0,
+          "total": 7,
+          "estimate": 0.42857142857142855
+        },
+        "meaningPreserved": {
+          "numerator": 2,
+          "denominator": 7,
+          "unknown": 0,
+          "total": 7,
+          "estimate": 0.2857142857142857
+        },
+        "noNewErrors": {
+          "numerator": 4,
+          "denominator": 7,
+          "unknown": 0,
+          "total": 7,
+          "estimate": 0.5714285714285714
+        },
+        "rejectionAppropriate": {
+          "numerator": 0,
+          "denominator": 0,
+          "unknown": 7,
+          "total": 7,
+          "estimate": null
+        }
+      },
+      "conditionSourceCases": 10,
+      "originalDispositions": {
+        "accepted": 5,
+        "rejected": 3,
+        "unchanged": 2
+      },
+      "assessableLiteralClean": {
+        "numerator": 2,
+        "denominator": 4
+      },
+      "humanValidated": null
+    },
+    {
+      "language": "dutch",
+      "arm": "sample-101",
+      "layer": "rejected",
+      "sourceCases": 3,
+      "subjectCount": 3,
+      "candidateTexts": 3,
+      "nullCandidates": 0,
+      "completePassage": null,
+      "judgments": {
+        "allDefectsRepaired": {
+          "numerator": 2,
+          "denominator": 3,
+          "unknown": 0,
+          "total": 3,
+          "estimate": 0.6666666666666666
+        },
+        "cleanPreserved": {
+          "numerator": 0,
+          "denominator": 1,
+          "unknown": 2,
+          "total": 3,
+          "estimate": 0.0
+        },
+        "criticalSemanticFailure": {
+          "numerator": 2,
+          "denominator": 3,
+          "unknown": 0,
+          "total": 3,
+          "estimate": 0.6666666666666666
+        },
+        "justified": {
+          "numerator": 0,
+          "denominator": 3,
+          "unknown": 0,
+          "total": 3,
+          "estimate": 0.0
+        },
+        "meaningPreserved": {
+          "numerator": 2,
+          "denominator": 3,
+          "unknown": 0,
+          "total": 3,
+          "estimate": 0.6666666666666666
+        },
+        "noNewErrors": {
+          "numerator": 2,
+          "denominator": 3,
+          "unknown": 0,
+          "total": 3,
+          "estimate": 0.6666666666666666
+        },
+        "rejectionAppropriate": {
+          "numerator": 3,
+          "denominator": 3,
+          "unknown": 0,
+          "total": 3,
+          "estimate": 1.0
+        }
+      },
+      "conditionSourceCases": 10,
+      "originalDispositions": {
+        "accepted": 5,
+        "rejected": 3,
+        "unchanged": 2
+      },
+      "assessableLiteralClean": {
+        "numerator": 2,
+        "denominator": 4
+      },
+      "humanValidated": null
+    },
+    {
+      "language": "dutch",
+      "arm": "sample-202",
+      "layer": "raw",
+      "sourceCases": 10,
+      "subjectCount": 10,
+      "candidateTexts": 10,
+      "nullCandidates": 0,
+      "completePassage": {
+        "numerator": 2,
+        "denominator": 10,
+        "unknown": 0,
+        "total": 10,
+        "estimate": 0.2
+      },
+      "judgments": {
+        "allDefectsRepaired": {
+          "numerator": 8,
+          "denominator": 10,
+          "unknown": 0,
+          "total": 10,
+          "estimate": 0.8
+        },
+        "cleanPreserved": {
+          "numerator": 0,
+          "denominator": 4,
+          "unknown": 6,
+          "total": 10,
+          "estimate": 0.0
+        },
+        "criticalSemanticFailure": {
+          "numerator": 1,
+          "denominator": 10,
+          "unknown": 0,
+          "total": 10,
+          "estimate": 0.1
+        },
+        "justified": {
+          "numerator": 2,
+          "denominator": 10,
+          "unknown": 0,
+          "total": 10,
+          "estimate": 0.2
+        },
+        "meaningPreserved": {
+          "numerator": 2,
+          "denominator": 10,
+          "unknown": 0,
+          "total": 10,
+          "estimate": 0.2
+        },
+        "noNewErrors": {
+          "numerator": 6,
+          "denominator": 10,
+          "unknown": 0,
+          "total": 10,
+          "estimate": 0.6
+        },
+        "rejectionAppropriate": {
+          "numerator": 0,
+          "denominator": 0,
+          "unknown": 10,
+          "total": 10,
+          "estimate": null
+        }
+      },
+      "conditionSourceCases": 10,
+      "originalDispositions": {
+        "accepted": 6,
+        "unchanged": 3,
+        "rejected": 1
+      },
+      "assessableLiteralClean": {
+        "numerator": 1,
+        "denominator": 4
+      },
+      "humanValidated": null
+    },
+    {
+      "language": "dutch",
+      "arm": "sample-202",
+      "layer": "delivered",
+      "sourceCases": 9,
+      "subjectCount": 9,
+      "candidateTexts": 9,
+      "nullCandidates": 0,
+      "completePassage": {
+        "numerator": 4,
+        "denominator": 9,
+        "unknown": 0,
+        "total": 9,
+        "estimate": 0.4444444444444444
+      },
+      "judgments": {
+        "allDefectsRepaired": {
+          "numerator": 7,
+          "denominator": 9,
+          "unknown": 0,
+          "total": 9,
+          "estimate": 0.7777777777777778
+        },
+        "cleanPreserved": {
+          "numerator": 1,
+          "denominator": 3,
+          "unknown": 6,
+          "total": 9,
+          "estimate": 0.3333333333333333
+        },
+        "criticalSemanticFailure": {
+          "numerator": 1,
+          "denominator": 9,
+          "unknown": 0,
+          "total": 9,
+          "estimate": 0.1111111111111111
+        },
+        "justified": {
+          "numerator": 4,
+          "denominator": 9,
+          "unknown": 0,
+          "total": 9,
+          "estimate": 0.4444444444444444
+        },
+        "meaningPreserved": {
+          "numerator": 2,
+          "denominator": 9,
+          "unknown": 0,
+          "total": 9,
+          "estimate": 0.2222222222222222
+        },
+        "noNewErrors": {
+          "numerator": 3,
+          "denominator": 9,
+          "unknown": 0,
+          "total": 9,
+          "estimate": 0.3333333333333333
+        },
+        "rejectionAppropriate": {
+          "numerator": 0,
+          "denominator": 0,
+          "unknown": 9,
+          "total": 9,
+          "estimate": null
+        }
+      },
+      "conditionSourceCases": 10,
+      "originalDispositions": {
+        "accepted": 6,
+        "unchanged": 3,
+        "rejected": 1
+      },
+      "assessableLiteralClean": {
+        "numerator": 1,
+        "denominator": 4
+      },
+      "humanValidated": null
+    },
+    {
+      "language": "dutch",
+      "arm": "sample-202",
+      "layer": "rejected",
+      "sourceCases": 1,
+      "subjectCount": 1,
+      "candidateTexts": 1,
+      "nullCandidates": 0,
+      "completePassage": null,
+      "judgments": {
+        "allDefectsRepaired": {
+          "numerator": 1,
+          "denominator": 1,
+          "unknown": 0,
+          "total": 1,
+          "estimate": 1.0
+        },
+        "cleanPreserved": {
+          "numerator": 0,
+          "denominator": 1,
+          "unknown": 0,
+          "total": 1,
+          "estimate": 0.0
+        },
+        "criticalSemanticFailure": {
+          "numerator": 0,
+          "denominator": 1,
+          "unknown": 0,
+          "total": 1,
+          "estimate": 0.0
+        },
+        "justified": {
+          "numerator": 0,
+          "denominator": 1,
+          "unknown": 0,
+          "total": 1,
+          "estimate": 0.0
+        },
+        "meaningPreserved": {
+          "numerator": 0,
+          "denominator": 1,
+          "unknown": 0,
+          "total": 1,
+          "estimate": 0.0
+        },
+        "noNewErrors": {
+          "numerator": 1,
+          "denominator": 1,
+          "unknown": 0,
+          "total": 1,
+          "estimate": 1.0
+        },
+        "rejectionAppropriate": {
+          "numerator": 1,
+          "denominator": 1,
+          "unknown": 0,
+          "total": 1,
+          "estimate": 1.0
+        }
+      },
+      "conditionSourceCases": 10,
+      "originalDispositions": {
+        "accepted": 6,
+        "unchanged": 3,
+        "rejected": 1
+      },
+      "assessableLiteralClean": {
+        "numerator": 1,
+        "denominator": 4
+      },
+      "humanValidated": null
+    },
+    {
+      "language": "dutch",
+      "arm": "sample-303",
+      "layer": "raw",
+      "sourceCases": 10,
+      "subjectCount": 10,
+      "candidateTexts": 10,
+      "nullCandidates": 0,
+      "completePassage": {
+        "numerator": 5,
+        "denominator": 10,
+        "unknown": 0,
+        "total": 10,
+        "estimate": 0.5
+      },
+      "judgments": {
+        "allDefectsRepaired": {
+          "numerator": 7,
+          "denominator": 10,
+          "unknown": 0,
+          "total": 10,
+          "estimate": 0.7
+        },
+        "cleanPreserved": {
+          "numerator": 2,
+          "denominator": 4,
+          "unknown": 6,
+          "total": 10,
+          "estimate": 0.5
+        },
+        "criticalSemanticFailure": {
+          "numerator": 3,
+          "denominator": 10,
+          "unknown": 0,
+          "total": 10,
+          "estimate": 0.3
+        },
+        "justified": {
+          "numerator": 5,
+          "denominator": 10,
+          "unknown": 0,
+          "total": 10,
+          "estimate": 0.5
+        },
+        "meaningPreserved": {
+          "numerator": 3,
+          "denominator": 10,
+          "unknown": 0,
+          "total": 10,
+          "estimate": 0.3
+        },
+        "noNewErrors": {
+          "numerator": 4,
+          "denominator": 10,
+          "unknown": 0,
+          "total": 10,
+          "estimate": 0.4
+        },
+        "rejectionAppropriate": {
+          "numerator": 0,
+          "denominator": 0,
+          "unknown": 10,
+          "total": 10,
+          "estimate": null
+        }
+      },
+      "conditionSourceCases": 10,
+      "originalDispositions": {
+        "accepted": 5,
+        "unchanged": 3,
+        "rejected": 2
+      },
+      "assessableLiteralClean": {
+        "numerator": 2,
+        "denominator": 4
+      },
+      "humanValidated": null
+    },
+    {
+      "language": "dutch",
+      "arm": "sample-303",
+      "layer": "delivered",
+      "sourceCases": 8,
+      "subjectCount": 8,
+      "candidateTexts": 8,
+      "nullCandidates": 0,
+      "completePassage": {
+        "numerator": 5,
+        "denominator": 8,
+        "unknown": 0,
+        "total": 8,
+        "estimate": 0.625
+      },
+      "judgments": {
+        "allDefectsRepaired": {
+          "numerator": 6,
+          "denominator": 8,
+          "unknown": 0,
+          "total": 8,
+          "estimate": 0.75
+        },
+        "cleanPreserved": {
+          "numerator": 2,
+          "denominator": 3,
+          "unknown": 5,
+          "total": 8,
+          "estimate": 0.6666666666666666
+        },
+        "criticalSemanticFailure": {
+          "numerator": 1,
+          "denominator": 8,
+          "unknown": 0,
+          "total": 8,
+          "estimate": 0.125
+        },
+        "justified": {
+          "numerator": 5,
+          "denominator": 8,
+          "unknown": 0,
+          "total": 8,
+          "estimate": 0.625
+        },
+        "meaningPreserved": {
+          "numerator": 1,
+          "denominator": 8,
+          "unknown": 0,
+          "total": 8,
+          "estimate": 0.125
+        },
+        "noNewErrors": {
+          "numerator": 2,
+          "denominator": 8,
+          "unknown": 0,
+          "total": 8,
+          "estimate": 0.25
+        },
+        "rejectionAppropriate": {
+          "numerator": 0,
+          "denominator": 0,
+          "unknown": 8,
+          "total": 8,
+          "estimate": null
+        }
+      },
+      "conditionSourceCases": 10,
+      "originalDispositions": {
+        "accepted": 5,
+        "unchanged": 3,
+        "rejected": 2
+      },
+      "assessableLiteralClean": {
+        "numerator": 2,
+        "denominator": 4
+      },
+      "humanValidated": null
+    },
+    {
+      "language": "dutch",
+      "arm": "sample-303",
+      "layer": "rejected",
+      "sourceCases": 2,
+      "subjectCount": 2,
+      "candidateTexts": 2,
+      "nullCandidates": 0,
+      "completePassage": null,
+      "judgments": {
+        "allDefectsRepaired": {
+          "numerator": 1,
+          "denominator": 2,
+          "unknown": 0,
+          "total": 2,
+          "estimate": 0.5
+        },
+        "cleanPreserved": {
+          "numerator": 0,
+          "denominator": 1,
+          "unknown": 1,
+          "total": 2,
+          "estimate": 0.0
+        },
+        "criticalSemanticFailure": {
+          "numerator": 2,
+          "denominator": 2,
+          "unknown": 0,
+          "total": 2,
+          "estimate": 1.0
+        },
+        "justified": {
+          "numerator": 0,
+          "denominator": 2,
+          "unknown": 0,
+          "total": 2,
+          "estimate": 0.0
+        },
+        "meaningPreserved": {
+          "numerator": 2,
+          "denominator": 2,
+          "unknown": 0,
+          "total": 2,
+          "estimate": 1.0
+        },
+        "noNewErrors": {
+          "numerator": 2,
+          "denominator": 2,
+          "unknown": 0,
+          "total": 2,
+          "estimate": 1.0
+        },
+        "rejectionAppropriate": {
+          "numerator": 2,
+          "denominator": 2,
+          "unknown": 0,
+          "total": 2,
+          "estimate": 1.0
+        }
+      },
+      "conditionSourceCases": 10,
+      "originalDispositions": {
+        "accepted": 5,
+        "unchanged": 3,
+        "rejected": 2
+      },
+      "assessableLiteralClean": {
+        "numerator": 2,
+        "denominator": 4
+      },
+      "humanValidated": null
+    },
+    {
+      "language": "dutch",
+      "arm": "voting-3",
+      "layer": "raw",
+      "sourceCases": 0,
+      "subjectCount": 0,
+      "candidateTexts": 0,
+      "nullCandidates": 0,
+      "completePassage": {
+        "numerator": 0,
+        "denominator": 0,
+        "unknown": 0,
+        "total": 0,
+        "estimate": null
+      },
+      "judgments": {
+        "allDefectsRepaired": {
+          "numerator": 0,
+          "denominator": 0,
+          "unknown": 0,
+          "total": 0,
+          "estimate": null
+        },
+        "cleanPreserved": {
+          "numerator": 0,
+          "denominator": 0,
+          "unknown": 0,
+          "total": 0,
+          "estimate": null
+        },
+        "criticalSemanticFailure": {
+          "numerator": 0,
+          "denominator": 0,
+          "unknown": 0,
+          "total": 0,
+          "estimate": null
+        },
+        "justified": {
+          "numerator": 0,
+          "denominator": 0,
+          "unknown": 0,
+          "total": 0,
+          "estimate": null
+        },
+        "meaningPreserved": {
+          "numerator": 0,
+          "denominator": 0,
+          "unknown": 0,
+          "total": 0,
+          "estimate": null
+        },
+        "noNewErrors": {
+          "numerator": 0,
+          "denominator": 0,
+          "unknown": 0,
+          "total": 0,
+          "estimate": null
+        },
+        "rejectionAppropriate": {
+          "numerator": 0,
+          "denominator": 0,
+          "unknown": 0,
+          "total": 0,
+          "estimate": null
+        }
+      },
+      "conditionSourceCases": 10,
+      "originalDispositions": {
+        "unchanged": 6,
+        "accepted": 3,
+        "rejected": 1
+      },
+      "assessableLiteralClean": {
+        "numerator": 3,
+        "denominator": 4
+      },
+      "humanValidated": null
+    },
+    {
+      "language": "dutch",
+      "arm": "voting-3",
+      "layer": "delivered",
+      "sourceCases": 9,
+      "subjectCount": 9,
+      "candidateTexts": 9,
+      "nullCandidates": 0,
+      "completePassage": {
+        "numerator": 6,
+        "denominator": 9,
+        "unknown": 0,
+        "total": 9,
+        "estimate": 0.6666666666666666
+      },
+      "judgments": {
+        "allDefectsRepaired": {
+          "numerator": 6,
+          "denominator": 9,
+          "unknown": 0,
+          "total": 9,
+          "estimate": 0.6666666666666666
+        },
+        "cleanPreserved": {
+          "numerator": 3,
+          "denominator": 3,
+          "unknown": 6,
+          "total": 9,
+          "estimate": 1.0
+        },
+        "criticalSemanticFailure": {
+          "numerator": 0,
+          "denominator": 9,
+          "unknown": 0,
+          "total": 9,
+          "estimate": 0.0
+        },
+        "justified": {
+          "numerator": 6,
+          "denominator": 9,
+          "unknown": 0,
+          "total": 9,
+          "estimate": 0.6666666666666666
+        },
+        "meaningPreserved": {
+          "numerator": 0,
+          "denominator": 9,
+          "unknown": 0,
+          "total": 9,
+          "estimate": 0.0
+        },
+        "noNewErrors": {
+          "numerator": 0,
+          "denominator": 9,
+          "unknown": 0,
+          "total": 9,
+          "estimate": 0.0
+        },
+        "rejectionAppropriate": {
+          "numerator": 0,
+          "denominator": 0,
+          "unknown": 9,
+          "total": 9,
+          "estimate": null
+        }
+      },
+      "conditionSourceCases": 10,
+      "originalDispositions": {
+        "unchanged": 6,
+        "accepted": 3,
+        "rejected": 1
+      },
+      "assessableLiteralClean": {
+        "numerator": 3,
+        "denominator": 4
+      },
+      "humanValidated": null
+    },
+    {
+      "language": "dutch",
+      "arm": "voting-3",
+      "layer": "rejected",
+      "sourceCases": 1,
+      "subjectCount": 1,
+      "candidateTexts": 0,
+      "nullCandidates": 1,
+      "completePassage": null,
+      "judgments": {
+        "allDefectsRepaired": {
+          "numerator": 0,
+          "denominator": 0,
+          "unknown": 1,
+          "total": 1,
+          "estimate": null
+        },
+        "cleanPreserved": {
+          "numerator": 0,
+          "denominator": 0,
+          "unknown": 1,
+          "total": 1,
+          "estimate": null
+        },
+        "criticalSemanticFailure": {
+          "numerator": 0,
+          "denominator": 0,
+          "unknown": 1,
+          "total": 1,
+          "estimate": null
+        },
+        "justified": {
+          "numerator": 0,
+          "denominator": 0,
+          "unknown": 1,
+          "total": 1,
+          "estimate": null
+        },
+        "meaningPreserved": {
+          "numerator": 0,
+          "denominator": 0,
+          "unknown": 1,
+          "total": 1,
+          "estimate": null
+        },
+        "noNewErrors": {
+          "numerator": 0,
+          "denominator": 0,
+          "unknown": 1,
+          "total": 1,
+          "estimate": null
+        },
+        "rejectionAppropriate": {
+          "numerator": 1,
+          "denominator": 1,
+          "unknown": 0,
+          "total": 1,
+          "estimate": 1.0
+        }
+      },
+      "conditionSourceCases": 10,
+      "originalDispositions": {
+        "unchanged": 6,
+        "accepted": 3,
+        "rejected": 1
+      },
+      "assessableLiteralClean": {
+        "numerator": 3,
+        "denominator": 4
+      },
+      "humanValidated": null
+    },
+    {
+      "language": "english",
+      "arm": "baseline",
+      "layer": "raw",
+      "sourceCases": 10,
+      "subjectCount": 10,
+      "candidateTexts": 10,
+      "nullCandidates": 0,
+      "completePassage": {
+        "numerator": 7,
+        "denominator": 10,
+        "unknown": 0,
+        "total": 10,
+        "estimate": 0.7
+      },
+      "judgments": {
+        "allDefectsRepaired": {
+          "numerator": 10,
+          "denominator": 10,
+          "unknown": 0,
+          "total": 10,
+          "estimate": 1.0
+        },
+        "cleanPreserved": {
+          "numerator": 3,
+          "denominator": 4,
+          "unknown": 6,
+          "total": 10,
+          "estimate": 0.75
+        },
+        "criticalSemanticFailure": {
+          "numerator": 0,
+          "denominator": 10,
+          "unknown": 0,
+          "total": 10,
+          "estimate": 0.0
+        },
+        "justified": {
+          "numerator": 7,
+          "denominator": 10,
+          "unknown": 0,
+          "total": 10,
+          "estimate": 0.7
+        },
+        "meaningPreserved": {
+          "numerator": 1,
+          "denominator": 10,
+          "unknown": 0,
+          "total": 10,
+          "estimate": 0.1
+        },
+        "noNewErrors": {
+          "numerator": 1,
+          "denominator": 10,
+          "unknown": 0,
+          "total": 10,
+          "estimate": 0.1
+        },
+        "rejectionAppropriate": {
+          "numerator": 0,
+          "denominator": 0,
+          "unknown": 10,
+          "total": 10,
+          "estimate": null
+        }
+      },
+      "conditionSourceCases": 10,
+      "originalDispositions": {
+        "accepted": 5,
+        "rejected": 2,
+        "unchanged": 3
+      },
+      "assessableLiteralClean": {
+        "numerator": 3,
+        "denominator": 4
+      },
+      "humanValidated": null
+    },
+    {
+      "language": "english",
+      "arm": "baseline",
+      "layer": "delivered",
+      "sourceCases": 8,
+      "subjectCount": 8,
+      "candidateTexts": 8,
+      "nullCandidates": 0,
+      "completePassage": {
+        "numerator": 8,
+        "denominator": 8,
+        "unknown": 0,
+        "total": 8,
+        "estimate": 1.0
+      },
+      "judgments": {
+        "allDefectsRepaired": {
+          "numerator": 8,
+          "denominator": 8,
+          "unknown": 0,
+          "total": 8,
+          "estimate": 1.0
+        },
+        "cleanPreserved": {
+          "numerator": 3,
+          "denominator": 3,
+          "unknown": 5,
+          "total": 8,
+          "estimate": 1.0
+        },
+        "criticalSemanticFailure": {
+          "numerator": 0,
+          "denominator": 8,
+          "unknown": 0,
+          "total": 8,
+          "estimate": 0.0
+        },
+        "justified": {
+          "numerator": 8,
+          "denominator": 8,
+          "unknown": 0,
+          "total": 8,
+          "estimate": 1.0
+        },
+        "meaningPreserved": {
+          "numerator": 0,
+          "denominator": 8,
+          "unknown": 0,
+          "total": 8,
+          "estimate": 0.0
+        },
+        "noNewErrors": {
+          "numerator": 0,
+          "denominator": 8,
+          "unknown": 0,
+          "total": 8,
+          "estimate": 0.0
+        },
+        "rejectionAppropriate": {
+          "numerator": 0,
+          "denominator": 0,
+          "unknown": 8,
+          "total": 8,
+          "estimate": null
+        }
+      },
+      "conditionSourceCases": 10,
+      "originalDispositions": {
+        "accepted": 5,
+        "rejected": 2,
+        "unchanged": 3
+      },
+      "assessableLiteralClean": {
+        "numerator": 3,
+        "denominator": 4
+      },
+      "humanValidated": null
+    },
+    {
+      "language": "english",
+      "arm": "baseline",
+      "layer": "rejected",
+      "sourceCases": 2,
+      "subjectCount": 2,
+      "candidateTexts": 2,
+      "nullCandidates": 0,
+      "completePassage": null,
+      "judgments": {
+        "allDefectsRepaired": {
+          "numerator": 2,
+          "denominator": 2,
+          "unknown": 0,
+          "total": 2,
+          "estimate": 1.0
+        },
+        "cleanPreserved": {
+          "numerator": 0,
+          "denominator": 1,
+          "unknown": 1,
+          "total": 2,
+          "estimate": 0.0
+        },
+        "criticalSemanticFailure": {
+          "numerator": 0,
+          "denominator": 2,
+          "unknown": 0,
+          "total": 2,
+          "estimate": 0.0
+        },
+        "justified": {
+          "numerator": 0,
+          "denominator": 2,
+          "unknown": 0,
+          "total": 2,
+          "estimate": 0.0
+        },
+        "meaningPreserved": {
+          "numerator": 1,
+          "denominator": 2,
+          "unknown": 0,
+          "total": 2,
+          "estimate": 0.5
+        },
+        "noNewErrors": {
+          "numerator": 0,
+          "denominator": 2,
+          "unknown": 0,
+          "total": 2,
+          "estimate": 0.0
+        },
+        "rejectionAppropriate": {
+          "numerator": 2,
+          "denominator": 2,
+          "unknown": 0,
+          "total": 2,
+          "estimate": 1.0
+        }
+      },
+      "conditionSourceCases": 10,
+      "originalDispositions": {
+        "accepted": 5,
+        "rejected": 2,
+        "unchanged": 3
+      },
+      "assessableLiteralClean": {
+        "numerator": 3,
+        "denominator": 4
+      },
+      "humanValidated": null
+    },
+    {
+      "language": "english",
+      "arm": "hints",
+      "layer": "raw",
+      "sourceCases": 10,
+      "subjectCount": 10,
+      "candidateTexts": 10,
+      "nullCandidates": 0,
+      "completePassage": {
+        "numerator": 6,
+        "denominator": 10,
+        "unknown": 0,
+        "total": 10,
+        "estimate": 0.6
+      },
+      "judgments": {
+        "allDefectsRepaired": {
+          "numerator": 9,
+          "denominator": 10,
+          "unknown": 0,
+          "total": 10,
+          "estimate": 0.9
+        },
+        "cleanPreserved": {
+          "numerator": 3,
+          "denominator": 4,
+          "unknown": 6,
+          "total": 10,
+          "estimate": 0.75
+        },
+        "criticalSemanticFailure": {
+          "numerator": 0,
+          "denominator": 10,
+          "unknown": 0,
+          "total": 10,
+          "estimate": 0.0
+        },
+        "justified": {
+          "numerator": 7,
+          "denominator": 10,
+          "unknown": 0,
+          "total": 10,
+          "estimate": 0.7
+        },
+        "meaningPreserved": {
+          "numerator": 1,
+          "denominator": 10,
+          "unknown": 0,
+          "total": 10,
+          "estimate": 0.1
+        },
+        "noNewErrors": {
+          "numerator": 1,
+          "denominator": 10,
+          "unknown": 0,
+          "total": 10,
+          "estimate": 0.1
+        },
+        "rejectionAppropriate": {
+          "numerator": 0,
+          "denominator": 0,
+          "unknown": 10,
+          "total": 10,
+          "estimate": null
+        }
+      },
+      "conditionSourceCases": 10,
+      "originalDispositions": {
+        "accepted": 5,
+        "rejected": 2,
+        "unchanged": 3
+      },
+      "assessableLiteralClean": {
+        "numerator": 3,
+        "denominator": 4
+      },
+      "humanValidated": null
+    },
+    {
+      "language": "english",
+      "arm": "hints",
+      "layer": "delivered",
+      "sourceCases": 8,
+      "subjectCount": 8,
+      "candidateTexts": 8,
+      "nullCandidates": 0,
+      "completePassage": {
+        "numerator": 7,
+        "denominator": 8,
+        "unknown": 0,
+        "total": 8,
+        "estimate": 0.875
+      },
+      "judgments": {
+        "allDefectsRepaired": {
+          "numerator": 7,
+          "denominator": 8,
+          "unknown": 0,
+          "total": 8,
+          "estimate": 0.875
+        },
+        "cleanPreserved": {
+          "numerator": 3,
+          "denominator": 3,
+          "unknown": 5,
+          "total": 8,
+          "estimate": 1.0
+        },
+        "criticalSemanticFailure": {
+          "numerator": 0,
+          "denominator": 8,
+          "unknown": 0,
+          "total": 8,
+          "estimate": 0.0
+        },
+        "justified": {
+          "numerator": 8,
+          "denominator": 8,
+          "unknown": 0,
+          "total": 8,
+          "estimate": 1.0
+        },
+        "meaningPreserved": {
+          "numerator": 0,
+          "denominator": 8,
+          "unknown": 0,
+          "total": 8,
+          "estimate": 0.0
+        },
+        "noNewErrors": {
+          "numerator": 0,
+          "denominator": 8,
+          "unknown": 0,
+          "total": 8,
+          "estimate": 0.0
+        },
+        "rejectionAppropriate": {
+          "numerator": 0,
+          "denominator": 0,
+          "unknown": 8,
+          "total": 8,
+          "estimate": null
+        }
+      },
+      "conditionSourceCases": 10,
+      "originalDispositions": {
+        "accepted": 5,
+        "rejected": 2,
+        "unchanged": 3
+      },
+      "assessableLiteralClean": {
+        "numerator": 3,
+        "denominator": 4
+      },
+      "humanValidated": null
+    },
+    {
+      "language": "english",
+      "arm": "hints",
+      "layer": "rejected",
+      "sourceCases": 2,
+      "subjectCount": 2,
+      "candidateTexts": 2,
+      "nullCandidates": 0,
+      "completePassage": null,
+      "judgments": {
+        "allDefectsRepaired": {
+          "numerator": 2,
+          "denominator": 2,
+          "unknown": 0,
+          "total": 2,
+          "estimate": 1.0
+        },
+        "cleanPreserved": {
+          "numerator": 0,
+          "denominator": 1,
+          "unknown": 1,
+          "total": 2,
+          "estimate": 0.0
+        },
+        "criticalSemanticFailure": {
+          "numerator": 0,
+          "denominator": 2,
+          "unknown": 0,
+          "total": 2,
+          "estimate": 0.0
+        },
+        "justified": {
+          "numerator": 0,
+          "denominator": 2,
+          "unknown": 0,
+          "total": 2,
+          "estimate": 0.0
+        },
+        "meaningPreserved": {
+          "numerator": 1,
+          "denominator": 2,
+          "unknown": 0,
+          "total": 2,
+          "estimate": 0.5
+        },
+        "noNewErrors": {
+          "numerator": 0,
+          "denominator": 2,
+          "unknown": 0,
+          "total": 2,
+          "estimate": 0.0
+        },
+        "rejectionAppropriate": {
+          "numerator": 2,
+          "denominator": 2,
+          "unknown": 0,
+          "total": 2,
+          "estimate": 1.0
+        }
+      },
+      "conditionSourceCases": 10,
+      "originalDispositions": {
+        "accepted": 5,
+        "rejected": 2,
+        "unchanged": 3
+      },
+      "assessableLiteralClean": {
+        "numerator": 3,
+        "denominator": 4
+      },
+      "humanValidated": null
+    },
+    {
+      "language": "english",
+      "arm": "sample-101",
+      "layer": "raw",
+      "sourceCases": 10,
+      "subjectCount": 10,
+      "candidateTexts": 10,
+      "nullCandidates": 0,
+      "completePassage": {
+        "numerator": 4,
+        "denominator": 10,
+        "unknown": 0,
+        "total": 10,
+        "estimate": 0.4
+      },
+      "judgments": {
+        "allDefectsRepaired": {
+          "numerator": 9,
+          "denominator": 10,
+          "unknown": 0,
+          "total": 10,
+          "estimate": 0.9
+        },
+        "cleanPreserved": {
+          "numerator": 0,
+          "denominator": 4,
+          "unknown": 6,
+          "total": 10,
+          "estimate": 0.0
+        },
+        "criticalSemanticFailure": {
+          "numerator": 2,
+          "denominator": 10,
+          "unknown": 0,
+          "total": 10,
+          "estimate": 0.2
+        },
+        "justified": {
+          "numerator": 4,
+          "denominator": 10,
+          "unknown": 0,
+          "total": 10,
+          "estimate": 0.4
+        },
+        "meaningPreserved": {
+          "numerator": 3,
+          "denominator": 10,
+          "unknown": 0,
+          "total": 10,
+          "estimate": 0.3
+        },
+        "noNewErrors": {
+          "numerator": 5,
+          "denominator": 10,
+          "unknown": 0,
+          "total": 10,
+          "estimate": 0.5
+        },
+        "rejectionAppropriate": {
+          "numerator": 0,
+          "denominator": 0,
+          "unknown": 10,
+          "total": 10,
+          "estimate": null
+        }
+      },
+      "conditionSourceCases": 10,
+      "originalDispositions": {
+        "accepted": 6,
+        "rejected": 4
+      },
+      "assessableLiteralClean": {
+        "numerator": 0,
+        "denominator": 4
+      },
+      "humanValidated": null
+    },
+    {
+      "language": "english",
+      "arm": "sample-101",
+      "layer": "delivered",
+      "sourceCases": 6,
+      "subjectCount": 6,
+      "candidateTexts": 6,
+      "nullCandidates": 0,
+      "completePassage": {
+        "numerator": 4,
+        "denominator": 6,
+        "unknown": 0,
+        "total": 6,
+        "estimate": 0.6666666666666666
+      },
+      "judgments": {
+        "allDefectsRepaired": {
+          "numerator": 6,
+          "denominator": 6,
+          "unknown": 0,
+          "total": 6,
+          "estimate": 1.0
+        },
+        "cleanPreserved": {
+          "numerator": 0,
+          "denominator": 1,
+          "unknown": 5,
+          "total": 6,
+          "estimate": 0.0
+        },
+        "criticalSemanticFailure": {
+          "numerator": 0,
+          "denominator": 6,
+          "unknown": 0,
+          "total": 6,
+          "estimate": 0.0
+        },
+        "justified": {
+          "numerator": 4,
+          "denominator": 6,
+          "unknown": 0,
+          "total": 6,
+          "estimate": 0.6666666666666666
+        },
+        "meaningPreserved": {
+          "numerator": 1,
+          "denominator": 6,
+          "unknown": 0,
+          "total": 6,
+          "estimate": 0.16666666666666666
+        },
+        "noNewErrors": {
+          "numerator": 2,
+          "denominator": 6,
+          "unknown": 0,
+          "total": 6,
+          "estimate": 0.3333333333333333
+        },
+        "rejectionAppropriate": {
+          "numerator": 0,
+          "denominator": 0,
+          "unknown": 6,
+          "total": 6,
+          "estimate": null
+        }
+      },
+      "conditionSourceCases": 10,
+      "originalDispositions": {
+        "accepted": 6,
+        "rejected": 4
+      },
+      "assessableLiteralClean": {
+        "numerator": 0,
+        "denominator": 4
+      },
+      "humanValidated": null
+    },
+    {
+      "language": "english",
+      "arm": "sample-101",
+      "layer": "rejected",
+      "sourceCases": 4,
+      "subjectCount": 4,
+      "candidateTexts": 4,
+      "nullCandidates": 0,
+      "completePassage": null,
+      "judgments": {
+        "allDefectsRepaired": {
+          "numerator": 3,
+          "denominator": 4,
+          "unknown": 0,
+          "total": 4,
+          "estimate": 0.75
+        },
+        "cleanPreserved": {
+          "numerator": 0,
+          "denominator": 3,
+          "unknown": 1,
+          "total": 4,
+          "estimate": 0.0
+        },
+        "criticalSemanticFailure": {
+          "numerator": 2,
+          "denominator": 4,
+          "unknown": 0,
+          "total": 4,
+          "estimate": 0.5
+        },
+        "justified": {
+          "numerator": 0,
+          "denominator": 4,
+          "unknown": 0,
+          "total": 4,
+          "estimate": 0.0
+        },
+        "meaningPreserved": {
+          "numerator": 2,
+          "denominator": 4,
+          "unknown": 0,
+          "total": 4,
+          "estimate": 0.5
+        },
+        "noNewErrors": {
+          "numerator": 3,
+          "denominator": 4,
+          "unknown": 0,
+          "total": 4,
+          "estimate": 0.75
+        },
+        "rejectionAppropriate": {
+          "numerator": 4,
+          "denominator": 4,
+          "unknown": 0,
+          "total": 4,
+          "estimate": 1.0
+        }
+      },
+      "conditionSourceCases": 10,
+      "originalDispositions": {
+        "accepted": 6,
+        "rejected": 4
+      },
+      "assessableLiteralClean": {
+        "numerator": 0,
+        "denominator": 4
+      },
+      "humanValidated": null
+    },
+    {
+      "language": "english",
+      "arm": "sample-202",
+      "layer": "raw",
+      "sourceCases": 10,
+      "subjectCount": 10,
+      "candidateTexts": 10,
+      "nullCandidates": 0,
+      "completePassage": {
+        "numerator": 7,
+        "denominator": 10,
+        "unknown": 0,
+        "total": 10,
+        "estimate": 0.7
+      },
+      "judgments": {
+        "allDefectsRepaired": {
+          "numerator": 10,
+          "denominator": 10,
+          "unknown": 0,
+          "total": 10,
+          "estimate": 1.0
+        },
+        "cleanPreserved": {
+          "numerator": 2,
+          "denominator": 4,
+          "unknown": 6,
+          "total": 10,
+          "estimate": 0.5
+        },
+        "criticalSemanticFailure": {
+          "numerator": 0,
+          "denominator": 10,
+          "unknown": 0,
+          "total": 10,
+          "estimate": 0.0
+        },
+        "justified": {
+          "numerator": 7,
+          "denominator": 10,
+          "unknown": 0,
+          "total": 10,
+          "estimate": 0.7
+        },
+        "meaningPreserved": {
+          "numerator": 1,
+          "denominator": 10,
+          "unknown": 0,
+          "total": 10,
+          "estimate": 0.1
+        },
+        "noNewErrors": {
+          "numerator": 1,
+          "denominator": 10,
+          "unknown": 0,
+          "total": 10,
+          "estimate": 0.1
+        },
+        "rejectionAppropriate": {
+          "numerator": 0,
+          "denominator": 0,
+          "unknown": 10,
+          "total": 10,
+          "estimate": null
+        }
+      },
+      "conditionSourceCases": 10,
+      "originalDispositions": {
+        "accepted": 5,
+        "rejected": 3,
+        "unchanged": 2
+      },
+      "assessableLiteralClean": {
+        "numerator": 2,
+        "denominator": 4
+      },
+      "humanValidated": null
+    },
+    {
+      "language": "english",
+      "arm": "sample-202",
+      "layer": "delivered",
+      "sourceCases": 7,
+      "subjectCount": 7,
+      "candidateTexts": 7,
+      "nullCandidates": 0,
+      "completePassage": {
+        "numerator": 7,
+        "denominator": 7,
+        "unknown": 0,
+        "total": 7,
+        "estimate": 1.0
+      },
+      "judgments": {
+        "allDefectsRepaired": {
+          "numerator": 7,
+          "denominator": 7,
+          "unknown": 0,
+          "total": 7,
+          "estimate": 1.0
+        },
+        "cleanPreserved": {
+          "numerator": 2,
+          "denominator": 2,
+          "unknown": 5,
+          "total": 7,
+          "estimate": 1.0
+        },
+        "criticalSemanticFailure": {
+          "numerator": 0,
+          "denominator": 7,
+          "unknown": 0,
+          "total": 7,
+          "estimate": 0.0
+        },
+        "justified": {
+          "numerator": 7,
+          "denominator": 7,
+          "unknown": 0,
+          "total": 7,
+          "estimate": 1.0
+        },
+        "meaningPreserved": {
+          "numerator": 0,
+          "denominator": 7,
+          "unknown": 0,
+          "total": 7,
+          "estimate": 0.0
+        },
+        "noNewErrors": {
+          "numerator": 0,
+          "denominator": 7,
+          "unknown": 0,
+          "total": 7,
+          "estimate": 0.0
+        },
+        "rejectionAppropriate": {
+          "numerator": 0,
+          "denominator": 0,
+          "unknown": 7,
+          "total": 7,
+          "estimate": null
+        }
+      },
+      "conditionSourceCases": 10,
+      "originalDispositions": {
+        "accepted": 5,
+        "rejected": 3,
+        "unchanged": 2
+      },
+      "assessableLiteralClean": {
+        "numerator": 2,
+        "denominator": 4
+      },
+      "humanValidated": null
+    },
+    {
+      "language": "english",
+      "arm": "sample-202",
+      "layer": "rejected",
+      "sourceCases": 3,
+      "subjectCount": 3,
+      "candidateTexts": 3,
+      "nullCandidates": 0,
+      "completePassage": null,
+      "judgments": {
+        "allDefectsRepaired": {
+          "numerator": 3,
+          "denominator": 3,
+          "unknown": 0,
+          "total": 3,
+          "estimate": 1.0
+        },
+        "cleanPreserved": {
+          "numerator": 0,
+          "denominator": 2,
+          "unknown": 1,
+          "total": 3,
+          "estimate": 0.0
+        },
+        "criticalSemanticFailure": {
+          "numerator": 0,
+          "denominator": 3,
+          "unknown": 0,
+          "total": 3,
+          "estimate": 0.0
+        },
+        "justified": {
+          "numerator": 0,
+          "denominator": 3,
+          "unknown": 0,
+          "total": 3,
+          "estimate": 0.0
+        },
+        "meaningPreserved": {
+          "numerator": 1,
+          "denominator": 3,
+          "unknown": 0,
+          "total": 3,
+          "estimate": 0.3333333333333333
+        },
+        "noNewErrors": {
+          "numerator": 1,
+          "denominator": 3,
+          "unknown": 0,
+          "total": 3,
+          "estimate": 0.3333333333333333
+        },
+        "rejectionAppropriate": {
+          "numerator": 3,
+          "denominator": 3,
+          "unknown": 0,
+          "total": 3,
+          "estimate": 1.0
+        }
+      },
+      "conditionSourceCases": 10,
+      "originalDispositions": {
+        "accepted": 5,
+        "rejected": 3,
+        "unchanged": 2
+      },
+      "assessableLiteralClean": {
+        "numerator": 2,
+        "denominator": 4
+      },
+      "humanValidated": null
+    },
+    {
+      "language": "english",
+      "arm": "sample-303",
+      "layer": "raw",
+      "sourceCases": 10,
+      "subjectCount": 10,
+      "candidateTexts": 10,
+      "nullCandidates": 0,
+      "completePassage": {
+        "numerator": 5,
+        "denominator": 10,
+        "unknown": 0,
+        "total": 10,
+        "estimate": 0.5
+      },
+      "judgments": {
+        "allDefectsRepaired": {
+          "numerator": 10,
+          "denominator": 10,
+          "unknown": 0,
+          "total": 10,
+          "estimate": 1.0
+        },
+        "cleanPreserved": {
+          "numerator": 2,
+          "denominator": 4,
+          "unknown": 6,
+          "total": 10,
+          "estimate": 0.5
+        },
+        "criticalSemanticFailure": {
+          "numerator": 0,
+          "denominator": 10,
+          "unknown": 0,
+          "total": 10,
+          "estimate": 0.0
+        },
+        "justified": {
+          "numerator": 5,
+          "denominator": 10,
+          "unknown": 0,
+          "total": 10,
+          "estimate": 0.5
+        },
+        "meaningPreserved": {
+          "numerator": 1,
+          "denominator": 10,
+          "unknown": 0,
+          "total": 10,
+          "estimate": 0.1
+        },
+        "noNewErrors": {
+          "numerator": 3,
+          "denominator": 10,
+          "unknown": 0,
+          "total": 10,
+          "estimate": 0.3
+        },
+        "rejectionAppropriate": {
+          "numerator": 0,
+          "denominator": 0,
+          "unknown": 10,
+          "total": 10,
+          "estimate": null
+        }
+      },
+      "conditionSourceCases": 10,
+      "originalDispositions": {
+        "accepted": 5,
+        "rejected": 3,
+        "unchanged": 2
+      },
+      "assessableLiteralClean": {
+        "numerator": 2,
+        "denominator": 4
+      },
+      "humanValidated": null
+    },
+    {
+      "language": "english",
+      "arm": "sample-303",
+      "layer": "delivered",
+      "sourceCases": 7,
+      "subjectCount": 7,
+      "candidateTexts": 7,
+      "nullCandidates": 0,
+      "completePassage": {
+        "numerator": 7,
+        "denominator": 7,
+        "unknown": 0,
+        "total": 7,
+        "estimate": 1.0
+      },
+      "judgments": {
+        "allDefectsRepaired": {
+          "numerator": 7,
+          "denominator": 7,
+          "unknown": 0,
+          "total": 7,
+          "estimate": 1.0
+        },
+        "cleanPreserved": {
+          "numerator": 2,
+          "denominator": 2,
+          "unknown": 5,
+          "total": 7,
+          "estimate": 1.0
+        },
+        "criticalSemanticFailure": {
+          "numerator": 0,
+          "denominator": 7,
+          "unknown": 0,
+          "total": 7,
+          "estimate": 0.0
+        },
+        "justified": {
+          "numerator": 7,
+          "denominator": 7,
+          "unknown": 0,
+          "total": 7,
+          "estimate": 1.0
+        },
+        "meaningPreserved": {
+          "numerator": 0,
+          "denominator": 7,
+          "unknown": 0,
+          "total": 7,
+          "estimate": 0.0
+        },
+        "noNewErrors": {
+          "numerator": 0,
+          "denominator": 7,
+          "unknown": 0,
+          "total": 7,
+          "estimate": 0.0
+        },
+        "rejectionAppropriate": {
+          "numerator": 0,
+          "denominator": 0,
+          "unknown": 7,
+          "total": 7,
+          "estimate": null
+        }
+      },
+      "conditionSourceCases": 10,
+      "originalDispositions": {
+        "accepted": 5,
+        "rejected": 3,
+        "unchanged": 2
+      },
+      "assessableLiteralClean": {
+        "numerator": 2,
+        "denominator": 4
+      },
+      "humanValidated": null
+    },
+    {
+      "language": "english",
+      "arm": "sample-303",
+      "layer": "rejected",
+      "sourceCases": 3,
+      "subjectCount": 3,
+      "candidateTexts": 3,
+      "nullCandidates": 0,
+      "completePassage": null,
+      "judgments": {
+        "allDefectsRepaired": {
+          "numerator": 3,
+          "denominator": 3,
+          "unknown": 0,
+          "total": 3,
+          "estimate": 1.0
+        },
+        "cleanPreserved": {
+          "numerator": 0,
+          "denominator": 2,
+          "unknown": 1,
+          "total": 3,
+          "estimate": 0.0
+        },
+        "criticalSemanticFailure": {
+          "numerator": 0,
+          "denominator": 3,
+          "unknown": 0,
+          "total": 3,
+          "estimate": 0.0
+        },
+        "justified": {
+          "numerator": 0,
+          "denominator": 3,
+          "unknown": 0,
+          "total": 3,
+          "estimate": 0.0
+        },
+        "meaningPreserved": {
+          "numerator": 1,
+          "denominator": 3,
+          "unknown": 0,
+          "total": 3,
+          "estimate": 0.3333333333333333
+        },
+        "noNewErrors": {
+          "numerator": 1,
+          "denominator": 3,
+          "unknown": 0,
+          "total": 3,
+          "estimate": 0.3333333333333333
+        },
+        "rejectionAppropriate": {
+          "numerator": 3,
+          "denominator": 3,
+          "unknown": 0,
+          "total": 3,
+          "estimate": 1.0
+        }
+      },
+      "conditionSourceCases": 10,
+      "originalDispositions": {
+        "accepted": 5,
+        "rejected": 3,
+        "unchanged": 2
+      },
+      "assessableLiteralClean": {
+        "numerator": 2,
+        "denominator": 4
+      },
+      "humanValidated": null
+    },
+    {
+      "language": "english",
+      "arm": "voting-3",
+      "layer": "raw",
+      "sourceCases": 0,
+      "subjectCount": 0,
+      "candidateTexts": 0,
+      "nullCandidates": 0,
+      "completePassage": {
+        "numerator": 0,
+        "denominator": 0,
+        "unknown": 0,
+        "total": 0,
+        "estimate": null
+      },
+      "judgments": {
+        "allDefectsRepaired": {
+          "numerator": 0,
+          "denominator": 0,
+          "unknown": 0,
+          "total": 0,
+          "estimate": null
+        },
+        "cleanPreserved": {
+          "numerator": 0,
+          "denominator": 0,
+          "unknown": 0,
+          "total": 0,
+          "estimate": null
+        },
+        "criticalSemanticFailure": {
+          "numerator": 0,
+          "denominator": 0,
+          "unknown": 0,
+          "total": 0,
+          "estimate": null
+        },
+        "justified": {
+          "numerator": 0,
+          "denominator": 0,
+          "unknown": 0,
+          "total": 0,
+          "estimate": null
+        },
+        "meaningPreserved": {
+          "numerator": 0,
+          "denominator": 0,
+          "unknown": 0,
+          "total": 0,
+          "estimate": null
+        },
+        "noNewErrors": {
+          "numerator": 0,
+          "denominator": 0,
+          "unknown": 0,
+          "total": 0,
+          "estimate": null
+        },
+        "rejectionAppropriate": {
+          "numerator": 0,
+          "denominator": 0,
+          "unknown": 0,
+          "total": 0,
+          "estimate": null
+        }
+      },
+      "conditionSourceCases": 10,
+      "originalDispositions": {
+        "accepted": 5,
+        "rejected": 3,
+        "unchanged": 2
+      },
+      "assessableLiteralClean": {
+        "numerator": 2,
+        "denominator": 4
+      },
+      "humanValidated": null
+    },
+    {
+      "language": "english",
+      "arm": "voting-3",
+      "layer": "delivered",
+      "sourceCases": 7,
+      "subjectCount": 7,
+      "candidateTexts": 7,
+      "nullCandidates": 0,
+      "completePassage": {
+        "numerator": 7,
+        "denominator": 7,
+        "unknown": 0,
+        "total": 7,
+        "estimate": 1.0
+      },
+      "judgments": {
+        "allDefectsRepaired": {
+          "numerator": 7,
+          "denominator": 7,
+          "unknown": 0,
+          "total": 7,
+          "estimate": 1.0
+        },
+        "cleanPreserved": {
+          "numerator": 2,
+          "denominator": 2,
+          "unknown": 5,
+          "total": 7,
+          "estimate": 1.0
+        },
+        "criticalSemanticFailure": {
+          "numerator": 0,
+          "denominator": 7,
+          "unknown": 0,
+          "total": 7,
+          "estimate": 0.0
+        },
+        "justified": {
+          "numerator": 7,
+          "denominator": 7,
+          "unknown": 0,
+          "total": 7,
+          "estimate": 1.0
+        },
+        "meaningPreserved": {
+          "numerator": 0,
+          "denominator": 7,
+          "unknown": 0,
+          "total": 7,
+          "estimate": 0.0
+        },
+        "noNewErrors": {
+          "numerator": 0,
+          "denominator": 7,
+          "unknown": 0,
+          "total": 7,
+          "estimate": 0.0
+        },
+        "rejectionAppropriate": {
+          "numerator": 0,
+          "denominator": 0,
+          "unknown": 7,
+          "total": 7,
+          "estimate": null
+        }
+      },
+      "conditionSourceCases": 10,
+      "originalDispositions": {
+        "accepted": 5,
+        "rejected": 3,
+        "unchanged": 2
+      },
+      "assessableLiteralClean": {
+        "numerator": 2,
+        "denominator": 4
+      },
+      "humanValidated": null
+    },
+    {
+      "language": "english",
+      "arm": "voting-3",
+      "layer": "rejected",
+      "sourceCases": 3,
+      "subjectCount": 3,
+      "candidateTexts": 0,
+      "nullCandidates": 3,
+      "completePassage": null,
+      "judgments": {
+        "allDefectsRepaired": {
+          "numerator": 0,
+          "denominator": 0,
+          "unknown": 3,
+          "total": 3,
+          "estimate": null
+        },
+        "cleanPreserved": {
+          "numerator": 0,
+          "denominator": 0,
+          "unknown": 3,
+          "total": 3,
+          "estimate": null
+        },
+        "criticalSemanticFailure": {
+          "numerator": 0,
+          "denominator": 0,
+          "unknown": 3,
+          "total": 3,
+          "estimate": null
+        },
+        "justified": {
+          "numerator": 0,
+          "denominator": 0,
+          "unknown": 3,
+          "total": 3,
+          "estimate": null
+        },
+        "meaningPreserved": {
+          "numerator": 0,
+          "denominator": 0,
+          "unknown": 3,
+          "total": 3,
+          "estimate": null
+        },
+        "noNewErrors": {
+          "numerator": 0,
+          "denominator": 0,
+          "unknown": 3,
+          "total": 3,
+          "estimate": null
+        },
+        "rejectionAppropriate": {
+          "numerator": 3,
+          "denominator": 3,
+          "unknown": 0,
+          "total": 3,
+          "estimate": 1.0
+        }
+      },
+      "conditionSourceCases": 10,
+      "originalDispositions": {
+        "accepted": 5,
+        "rejected": 3,
+        "unchanged": 2
+      },
+      "assessableLiteralClean": {
+        "numerator": 2,
+        "denominator": 4
+      },
+      "humanValidated": null
+    }
+  ]
+}

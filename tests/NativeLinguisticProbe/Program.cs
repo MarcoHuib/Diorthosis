@@ -18,6 +18,7 @@ var candidates=Enumerable.Range(0,3).Select(i=>new VotingCandidate(i.ToString(),
 Require(EditVoting.Aggregate(votingRequest,candidates).Analysis.Disposition==CorrectionDisposition.Accepted,"AOT strict-majority source alignment");
 Require(LocalEdits.Derive("We can can go.","We can go.").AlignmentAmbiguous,"AOT repeated-word ambiguity");
 Require(LocalEdits.Derive("De reünie.","De reոցnie.").IntroducesNonLatinLetters,"AOT introduced foreign-script flag");
+Require(ModelCorrectionEngine.AnalyzeModelResponse("She is an *experienced* engineer.","She is a experienced engineer.").ExtractedCorrection=="She is an experienced engineer.","AOT source-aware single-word emphasis extraction");
 if (args.Length==2)
 {
     using var adapter=new LlamaSharpInferenceAdapter(args[1],threads:9);

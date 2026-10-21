@@ -1,5 +1,7 @@
 # Phase 3: linguistic quality experiments and AI feedback
 
+Follow-up: the external GPT-6 review has now been imported and reconciled in [the external review report](external-gpt6-review-report.md). That report records a narrow extraction improvement and paired replay. The experiment and preparer-only findings below remain historical; their statement that external review was pending describes the original freeze.
+
 2026-10-21. **Keep production prompt v3 and greedy LLM-only defaults.** On this development panel, dictionary hints gain a Dutch repair but lose an English grammar repair. Three-sample voting loses a Dutch repair versus greedy and reduces assessable English clean-text coverage. These are provisional AI findings, not independent human validation or model-selection evidence.
 
 The [blinded ChatGPT review ZIP](../benchmarks/phase3/v1/chatgpt-review.zip) contains only the review instructions, literal before/after subjects and offline HTML cards. It includes **119 bound work items** covering source annotations, raw responses, delivered passages and rejected candidates. Source IDs and model/arm identities are withheld; fictional text stays literal. This is not a general personal-data anonymizer. No text was uploaded to ChatGPT or another external evaluator. Independent ChatGPT assessment is pending; keep the separate preparer decisions and model lineage withheld until an external reviewer locks their decisions.
