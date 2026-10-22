@@ -17,6 +17,13 @@ public sealed class LlamaSharpInferenceAdapter : IModelInferenceAdapter, IDispos
     /// <summary>Number of tokens sampled, including a sampled end-of-generation token.</summary>
     public int LastSampledTokenCount { get; private set; }
 
+    /// <summary>Literal prompt tokens, excluding the embedded chat template and BOS; research only.</summary>
+    public int CountPromptContentTokens(string prompt)
+    {
+        ObjectDisposedException.ThrowIf(_disposed, this);
+        return _weights.Tokenize(prompt, false, true, System.Text.Encoding.UTF8).Length;
+    }
+
     public enum GenerationTermination { Unknown, EndOfGeneration, MaximumTokens, Cancelled }
 
     // Kept as a compatibility diagnostic for existing callers; completion decisions use InferenceResult.

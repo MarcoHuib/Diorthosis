@@ -1,0 +1,23 @@
+{
+  "datasetSha256": "47936154eb369bc4d5e2f60b428853e9420f95d840c8be1b9d2f267e32cfd8f5",
+  "runs": {
+    "/Users/marco/Projects/Diorthosis/benchmarks/phase4/v1/confirmation-run": "cd4c7b55882739c23b79c140b868d9f691274af7af36b8a97e330de079843fe8"
+  },
+  "scriptSha256": "7c869c15f14dd5d704ae77801eff49da505de4f61d960ef61c0a8b75476ca09d",
+  "files": {
+    "diorthosis-correction-v3-delivered-reference.json": "dbe36321ea8cff16207ecdcdff4cc80ccbe35fd6fed76de486ee910c75d89d20",
+    "paired-ledger.jsonl": "95f67ccba33070432e36fe1dbd782fff4300dde1f778221a86f224a1b109edf3",
+    "summary.json": "a2eb5986f1cd19c81ebf824edc204d3e8578353ad8fc19152a290b48da1c4889",
+    "diorthosis-correction-v3-delivered-predictions.jsonl": "66814fef8ac3a3adfa1527bf9116f80a7fe9c0d5634b0832cc7bb1c76d7fd460",
+    "phase4-LiteralJson-Original-1.0.0-raw-predictions.jsonl": "efcd3237c88e5db02a90212ed8332a459a9846c0543f98b0901c17b6e378c660",
+    "phase4-LiteralJson-Original-1.0.0-extracted-reference.json": "31e06a1b5f71a1a12069e33838065170d877e52148c9e71a0f92a2934e683cc5",
+    "diorthosis-correction-v3-extracted-predictions.jsonl": "1eae60b8cf4ba01b5fc763b6a678ef2ad6bd1b36886199b30952cb65a8caa8f8",
+    "diorthosis-correction-v3-raw-predictions.jsonl": "1eae60b8cf4ba01b5fc763b6a678ef2ad6bd1b36886199b30952cb65a8caa8f8",
+    "phase4-LiteralJson-Original-1.0.0-raw-reference.json": "d63bef812747d77ace315c2cc2db29d69540e88bf290a2bba8569ec17cfd4029",
+    "phase4-LiteralJson-Original-1.0.0-extracted-predictions.jsonl": "758c747b47632e21639b0561aabcf7b217c5f1436ed5795560bd2835fe15a077",
+    "phase4-LiteralJson-Original-1.0.0-delivered-predictions.jsonl": "2ae1d18a0e670917e1dc4182c56f244f44d26d667598440a30a3016b05302e0b",
+    "diorthosis-correction-v3-extracted-reference.json": "99a5ea825c5fc2e5ba3cd7be1fa658c0fa7d82a9de40c638db4912ec326939c1",
+    "phase4-LiteralJson-Original-1.0.0-delivered-reference.json": "02a7ab7aaa0aabf7b814ea190f475bc97751bb6de6410b964167a41cbbc67bbd",
+    "diorthosis-correction-v3-raw-reference.json": "99a5ea825c5fc2e5ba3cd7be1fa658c0fa7d82a9de40c638db4912ec326939c1"
+  }
+}

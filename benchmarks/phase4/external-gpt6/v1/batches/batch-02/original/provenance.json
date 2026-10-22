@@ -1,0 +1,19 @@
+{
+  "reviewerId": "GPT-6; build unavailable",
+  "reviewerKind": "ai",
+  "independenceDeclared": false,
+  "modelBuild": "unavailable",
+  "evaluationDate": "2026-10-21",
+  "priorExposure": "Prior ChatGPT conversation context contains the Diorthosis project background, benchmark methodology and an earlier Batch 01 review request. Therefore independence/blinding against general project knowledge cannot be claimed. For this Batch 02 assessment, source passages and candidates were assessed from subjects.jsonl and review.html; the condition lineage, preparer assessments and research report were not examined.",
+  "reviewLimitations": "AI-only linguistic diagnostic assessment; no qualified human validation. The original source was evaluated before provisional annotations, then distinct raw, parsed, delivered and rejected rows were evaluated individually. Multiple layer occurrences of identical candidate text are deduplicated conceptually and NOT independent model observations. Interpretation of escaped literal backslashes assumes source/candidate strings are literal text rather than an explicitly authorised re-escaping transform; without a full runtime contract the technical impact could warrant manual confirmation, although the character mismatch is certain. For case-014, inserting or rejecting an optional blank line after an email greeting depends on an unspecified formatting policy; for case-015 changing straight to typographic apostrophe depends on unspecified typography/normalization policy. Such judgments are marked null with explicit ambiguity. No source defects beyond the provided annotations were identified. Case/annotations-only subjects have null candidate-specific fields. Complete coverage refers exclusively to all 52 subjects in this supplied Batch 02 and does not certify the complete experiment or product readiness.",
+  "reviewRequest": "Beoordeel diorthosis Batch 02. alle oorspronkelijke Nederlandse en Engelse teksten en de bijbehorende modeluitvoer in deze Diorthosis ZIP.\n\nVolg de meegeleverde reviewinstructies strikt. Beoordeel iedere wijziging op grammatica, spelling, betekenisbehoud, onnodige aanpassingen, nieuw geïntroduceerde fouten, gemiste fouten en acceptabele alternatieven.\n\nBeoordeel eerst de oorspronkelijke tekst, daarna pas de correctie. Geef niet automatisch de voorkeur aan de meegeleverde referentietekst.\n\nBeoordeel ook afgewezen correcties afzonderlijk. Een afgewezen kandidaat is geen succesvolle verbetering.\n\nLever de volledige resultaten op als:\n- decisions.jsonl\n- error-decisions.jsonl\n- provenance.json\n\nBehoud alle oorspronkelijke subjectId- en bindingSha256-waarden exact. Gebruik reviewerKind \"ai\". Dit is een AI-beoordeling en geen menselijke validatie.\n\nVerwerk alle items in de aangeleverde batch en rapporteer expliciet als een beoordeling onzeker of onvolledig is.\n\nPlaats de drie resultaatbestanden in één ZIP met de naam diorthosis-review-batch-02.zip, waarbij 02 overeenkomt met het batchnummer van de aangeleverde ZIP. Geef mij een downloadlink naar deze ZIP.",
+  "reviewRequestSha256": "87d9611088252d7d85d759768f727335646db677742fb1f586dc30c0e8775e89",
+  "subjectsSha256": "0c7af6997907beece0319024e29673e25d091337f524e80ab912a9abc051411f",
+  "decisionsSha256": "93984773f001422a1c71d9a3e17afd786ddc46af44a7dc8aae5f0be0e036121c",
+  "subjectCount": 52,
+  "decisionCount": 52,
+  "completeCoverage": true,
+  "errorDecisionCount": 22,
+  "errorDecisionsSha256": "c12eb2492802cc69e17a8bfa0a02c231c354a903406d167f50e8e733569e878d",
+  "parentSubjectsSha256": "6b30532d9a5c540c22884330ace9395404a631c9af9d0b38d0a0cb6d0e15c54c"
+}

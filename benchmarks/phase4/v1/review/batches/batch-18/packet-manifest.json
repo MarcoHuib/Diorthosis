@@ -1,0 +1,13 @@
+{
+  "version": "phase4-blind-batch-1.0.0",
+  "batch": 18,
+  "sourceCases": 10,
+  "subjects": 58,
+  "parentSubjectsSha256": "6b30532d9a5c540c22884330ace9395404a631c9af9d0b38d0a0cb6d0e15c54c",
+  "humanApprovals": 0,
+  "files": {
+    "subjects.jsonl": "2743927e4bda680b7e4349f9e59086c60b57cf6fb9b63627ae006b04459e8109",
+    "review.html": "d9aa1c9cd1e623a99a4c18b974c4afce615e5247bde460840fce3ba3deb1f74e",
+    "CHATGPT-REVIEW.md": "d7b9bc5f0a942ffd05d748c5056b82772398bb907ffce875edd8331bc141c9bd"
+  }
+}

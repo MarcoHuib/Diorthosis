@@ -1,0 +1,21 @@
+{
+  "kind": "model-free Native AOT prompt/dictionary/CPU-backend checks, not linguistic quality inference",
+  "promptProbeSha256": "81336c1fcffab6ddb3dc46964d5997422c56e12b4c7fa2ec8ba8f4373c3e0543",
+  "cliSha256": "fba965b2b18b3e0b98c92f1c3eadde9523311679d92bfba018ac481301e36b7f",
+  "networkPolicy": "(version 1) (allow default) (deny network*)",
+  "dotnetRoot": "/private/tmp/no-diorthosis-dotnet-runtime",
+  "checks": [
+    {
+      "label": "prompt-probe",
+      "exitCode": 0
+    },
+    {
+      "label": "cli-version",
+      "exitCode": 0
+    },
+    {
+      "label": "cli-native",
+      "exitCode": 0
+    }
+  ]
+}

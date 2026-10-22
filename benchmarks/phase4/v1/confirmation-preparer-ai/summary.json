@@ -1,0 +1,63 @@
+{
+  "version": "phase4-exposed-confirmation-ai-1.0.0",
+  "authority": "Complete same-session preparer reading of extracted/delivered confirmation pairs only; not blind, independent or human validation",
+  "policy": "Every attempted case included. Abstention never credited as delivered repair or eligible clean preservation. Frozen references unchanged; valid curly-apostrophe alternative credited separately.",
+  "metrics": [
+    {
+      "language": "dutch",
+      "promptVersion": "diorthosis-correction-v3",
+      "attempted": 20,
+      "annotatedErrors": 12,
+      "preparerAIRepairedErrors": 7,
+      "preparerAIMissedErrors": 5,
+      "eligibleCompletePassages": 11,
+      "eligibleCleanPreserved": 4,
+      "cleanInputs": 8,
+      "acceptedCriticalSemanticFailures": 1,
+      "withheldOtherwiseValidNecessaryCandidates": 0,
+      "abstentions": 4
+    },
+    {
+      "language": "dutch",
+      "promptVersion": "phase4-LiteralJson-Original-1.0.0",
+      "attempted": 20,
+      "annotatedErrors": 12,
+      "preparerAIRepairedErrors": 9,
+      "preparerAIMissedErrors": 3,
+      "eligibleCompletePassages": 14,
+      "eligibleCleanPreserved": 5,
+      "cleanInputs": 8,
+      "acceptedCriticalSemanticFailures": 1,
+      "withheldOtherwiseValidNecessaryCandidates": 0,
+      "abstentions": 2
+    },
+    {
+      "language": "english",
+      "promptVersion": "diorthosis-correction-v3",
+      "attempted": 20,
+      "annotatedErrors": 12,
+      "preparerAIRepairedErrors": 9,
+      "preparerAIMissedErrors": 3,
+      "eligibleCompletePassages": 12,
+      "eligibleCleanPreserved": 3,
+      "cleanInputs": 8,
+      "acceptedCriticalSemanticFailures": 0,
+      "withheldOtherwiseValidNecessaryCandidates": 1,
+      "abstentions": 7
+    },
+    {
+      "language": "english",
+      "promptVersion": "phase4-LiteralJson-Original-1.0.0",
+      "attempted": 20,
+      "annotatedErrors": 12,
+      "preparerAIRepairedErrors": 11,
+      "preparerAIMissedErrors": 1,
+      "eligibleCompletePassages": 15,
+      "eligibleCleanPreserved": 4,
+      "cleanInputs": 8,
+      "acceptedCriticalSemanticFailures": 0,
+      "withheldOtherwiseValidNecessaryCandidates": 1,
+      "abstentions": 4
+    }
+  ]
+}

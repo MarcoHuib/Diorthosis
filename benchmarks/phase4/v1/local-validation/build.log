@@ -1,0 +1,11 @@
+  Diorthosis.Core -> [workspace]/src/Diorthosis.Core/bin/Release/net10.0/Diorthosis.Core.dll
+  Diorthosis.Cli -> [workspace]/src/Diorthosis.Cli/bin/Release/net10.0/Diorthosis.Cli.dll
+  Diorthosis.Experiments -> [workspace]/src/Diorthosis.Experiments/bin/Release/net10.0/Diorthosis.Experiments.dll
+  Diorthosis.Benchmarks -> [workspace]/src/Diorthosis.Benchmarks/bin/Release/net10.0/Diorthosis.Benchmarks.dll
+  Diorthosis.Tests -> [workspace]/tests/Diorthosis.Tests/bin/Release/net10.0/Diorthosis.Tests.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:08.11

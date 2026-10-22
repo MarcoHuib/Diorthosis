@@ -1,0 +1,4 @@
+  Diorthosis.Core -> [workspace]/src/Diorthosis.Core/bin/Release/net10.0/Diorthosis.Core.dll
+  Diorthosis.Cli -> [workspace]/src/Diorthosis.Cli/bin/Release/net10.0/osx-arm64/Diorthosis.Cli.dll
+  Generating native code
+  Diorthosis.Cli -> [temporary]/diorthosis-phase4-aot-cli-verified/

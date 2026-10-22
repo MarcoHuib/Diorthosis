@@ -1,0 +1,5 @@
+  Diorthosis.Core -> [workspace]/src/Diorthosis.Core/bin/Release/net10.0/Diorthosis.Core.dll
+  Diorthosis.Experiments -> [workspace]/src/Diorthosis.Experiments/bin/Release/net10.0/Diorthosis.Experiments.dll
+  NativeLinguisticProbe -> [workspace]/tests/NativeLinguisticProbe/bin/Release/net10.0/osx-arm64/NativeLinguisticProbe.dll
+  Generating native code
+  NativeLinguisticProbe -> [temporary]/diorthosis-phase4-aot-probe-verified/

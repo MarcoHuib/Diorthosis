@@ -1,0 +1,3259 @@
+{
+  "policy": "Descriptive external AI evidence, frozen-label denominators. Errors are source annotations, not an exhaustive human inventory. Ineligible deliveries are abstentions, never successes. Unknown judgments remain unknown. Clean allDefectsRepaired is inapplicable: strict full success uses justified, meaningPreserved, noNewErrors and cleanPreserved; erroneous sources use allDefectsRepaired. Sound passage omits justified, keeping edit necessity separate. No critical=true passage can succeed. New-error booleans include formatting/meaning; the explicit spelling/grammar tag count is only a heterogeneous-taxonomy lower bound. Alternative lists are not independently valid-candidate counts.",
+  "metrics": [
+    {
+      "panel": "confirmation",
+      "language": "dutch",
+      "promptVersion": "diorthosis-correction-v3",
+      "attempted": 20,
+      "originallyErroneous": 12,
+      "originallyCorrect": 8,
+      "annotatedErrors": 12,
+      "deliveredErrorRepairs": {
+        "target": true,
+        "count": 7,
+        "contrary": 5,
+        "unknown": 0,
+        "attempted": 12
+      },
+      "safeDeliveredErrorRepairs": {
+        "target": true,
+        "count": 7,
+        "contrary": 5,
+        "unknown": 0,
+        "attempted": 12
+      },
+      "parsedErrorRepairs": {
+        "target": true,
+        "count": 9,
+        "contrary": 3,
+        "unknown": 0,
+        "attempted": 12
+      },
+      "missedOriginalErrors": 5,
+      "unknownOriginalErrorRepairs": 0,
+      "abstainedAnnotatedErrors": 2,
+      "validNecessaryCandidatesLost": {
+        "target": true,
+        "count": 0,
+        "contrary": 20,
+        "unknown": 0,
+        "attempted": 20
+      },
+      "soundNecessaryCandidatesLost": {
+        "target": true,
+        "count": 0,
+        "contrary": 20,
+        "unknown": 0,
+        "attempted": 20
+      },
+      "validRawNecessaryCandidatesLost": {
+        "target": true,
+        "count": 0,
+        "contrary": 20,
+        "unknown": 0,
+        "attempted": 20
+      },
+      "extractionLostValidRawCandidates": 0,
+      "localRepairedErrorsWithheld": 2,
+      "rejectedRepairAppropriateness": {
+        "target": true,
+        "count": 4,
+        "contrary": 0,
+        "unknown": 0,
+        "attempted": 4
+      },
+      "cleanPreservation": {
+        "target": true,
+        "count": 4,
+        "contrary": 4,
+        "unknown": 0,
+        "attempted": 8
+      },
+      "literalCleanPreservation": {
+        "target": true,
+        "count": 4,
+        "contrary": 4,
+        "unknown": 0,
+        "attempted": 8
+      },
+      "cleanTextDamage": {
+        "target": true,
+        "count": 2,
+        "contrary": 6,
+        "unknown": 0,
+        "attempted": 8
+      },
+      "cleanAbstentions": 2,
+      "judgments": {
+        "fullyAcceptableDelivered": {
+          "target": true,
+          "count": 9,
+          "contrary": 9,
+          "unknown": 2,
+          "attempted": 20
+        },
+        "linguisticallySoundDelivered": {
+          "target": true,
+          "count": 11,
+          "contrary": 9,
+          "unknown": 0,
+          "attempted": 20
+        },
+        "unnecessaryModification": {
+          "target": true,
+          "count": 2,
+          "contrary": 18,
+          "unknown": 0,
+          "attempted": 20
+        },
+        "meaningFailure": {
+          "target": true,
+          "count": 2,
+          "contrary": 18,
+          "unknown": 0,
+          "attempted": 20
+        },
+        "newErrors": {
+          "target": true,
+          "count": 2,
+          "contrary": 18,
+          "unknown": 0,
+          "attempted": 20
+        },
+        "criticalFailure": {
+          "target": true,
+          "count": 1,
+          "contrary": 18,
+          "unknown": 1,
+          "attempted": 20
+        }
+      },
+      "introducedSpellingGrammarExplicitlyTaggedLowerBound": 0,
+      "newErrorTypeNotStandardized": true,
+      "externalAlternativeListsOnDelivered": 6,
+      "dispositions": {
+        "accepted": 9,
+        "unchanged": 7,
+        "rejected": 3,
+        "suppressed": 1
+      },
+      "eligibleJudgmentCoverage": {
+        "allDefectsRepaired": {
+          "target": true,
+          "count": 8,
+          "contrary": 3,
+          "unknown": 5,
+          "attempted": 16
+        },
+        "cleanPreserved": {
+          "target": true,
+          "count": 4,
+          "contrary": 3,
+          "unknown": 9,
+          "attempted": 16
+        },
+        "criticalSemanticFailure": {
+          "target": true,
+          "count": 1,
+          "contrary": 14,
+          "unknown": 1,
+          "attempted": 16
+        },
+        "justified": {
+          "target": true,
+          "count": 9,
+          "contrary": 5,
+          "unknown": 2,
+          "attempted": 16
+        },
+        "meaningPreserved": {
+          "target": true,
+          "count": 14,
+          "contrary": 2,
+          "unknown": 0,
+          "attempted": 16
+        },
+        "noNewErrors": {
+          "target": true,
+          "count": 14,
+          "contrary": 2,
+          "unknown": 0,
+          "attempted": 16
+        },
+        "rejectionAppropriate": {
+          "target": true,
+          "count": 0,
+          "contrary": 0,
+          "unknown": 16,
+          "attempted": 16
+        }
+      },
+      "promptContentTokens": {
+        "mean": 123.1,
+        "total": 2462
+      },
+      "sampledOutputTokens": 344,
+      "latencyMilliseconds": {
+        "mean": 1464.011705,
+        "median": 1406.0354499999999
+      },
+      "sampledPeakProcessWorkingSetBytes": 2954444800,
+      "humanApprovals": 0,
+      "recognizedSoundAlternativeErrorOccurrencesAbsentReference": 0,
+      "localRepairCreditsAbsentReference": 0,
+      "localRepairCreditsWithUnknownWholePassage": 0
+    },
+    {
+      "panel": "confirmation",
+      "language": "dutch",
+      "promptVersion": "phase4-LiteralJson-Original-1.0.0",
+      "attempted": 20,
+      "originallyErroneous": 12,
+      "originallyCorrect": 8,
+      "annotatedErrors": 12,
+      "deliveredErrorRepairs": {
+        "target": true,
+        "count": 9,
+        "contrary": 3,
+        "unknown": 0,
+        "attempted": 12
+      },
+      "safeDeliveredErrorRepairs": {
+        "target": true,
+        "count": 9,
+        "contrary": 3,
+        "unknown": 0,
+        "attempted": 12
+      },
+      "parsedErrorRepairs": {
+        "target": true,
+        "count": 9,
+        "contrary": 3,
+        "unknown": 0,
+        "attempted": 12
+      },
+      "missedOriginalErrors": 3,
+      "unknownOriginalErrorRepairs": 0,
+      "abstainedAnnotatedErrors": 0,
+      "validNecessaryCandidatesLost": {
+        "target": true,
+        "count": 0,
+        "contrary": 20,
+        "unknown": 0,
+        "attempted": 20
+      },
+      "soundNecessaryCandidatesLost": {
+        "target": true,
+        "count": 0,
+        "contrary": 20,
+        "unknown": 0,
+        "attempted": 20
+      },
+      "validRawNecessaryCandidatesLost": {
+        "target": true,
+        "count": 0,
+        "contrary": 20,
+        "unknown": 0,
+        "attempted": 20
+      },
+      "extractionLostValidRawCandidates": 0,
+      "localRepairedErrorsWithheld": 0,
+      "rejectedRepairAppropriateness": {
+        "target": true,
+        "count": 2,
+        "contrary": 0,
+        "unknown": 0,
+        "attempted": 2
+      },
+      "cleanPreservation": {
+        "target": true,
+        "count": 5,
+        "contrary": 3,
+        "unknown": 0,
+        "attempted": 8
+      },
+      "literalCleanPreservation": {
+        "target": true,
+        "count": 5,
+        "contrary": 3,
+        "unknown": 0,
+        "attempted": 8
+      },
+      "cleanTextDamage": {
+        "target": true,
+        "count": 1,
+        "contrary": 7,
+        "unknown": 0,
+        "attempted": 8
+      },
+      "cleanAbstentions": 2,
+      "judgments": {
+        "fullyAcceptableDelivered": {
+          "target": true,
+          "count": 11,
+          "contrary": 6,
+          "unknown": 3,
+          "attempted": 20
+        },
+        "linguisticallySoundDelivered": {
+          "target": true,
+          "count": 14,
+          "contrary": 6,
+          "unknown": 0,
+          "attempted": 20
+        },
+        "unnecessaryModification": {
+          "target": true,
+          "count": 1,
+          "contrary": 19,
+          "unknown": 0,
+          "attempted": 20
+        },
+        "meaningFailure": {
+          "target": true,
+          "count": 1,
+          "contrary": 19,
+          "unknown": 0,
+          "attempted": 20
+        },
+        "newErrors": {
+          "target": true,
+          "count": 1,
+          "contrary": 19,
+          "unknown": 0,
+          "attempted": 20
+        },
+        "criticalFailure": {
+          "target": true,
+          "count": 1,
+          "contrary": 19,
+          "unknown": 0,
+          "attempted": 20
+        }
+      },
+      "introducedSpellingGrammarExplicitlyTaggedLowerBound": 0,
+      "newErrorTypeNotStandardized": true,
+      "externalAlternativeListsOnDelivered": 8,
+      "dispositions": {
+        "accepted": 10,
+        "unchanged": 8,
+        "suppressed": 2
+      },
+      "eligibleJudgmentCoverage": {
+        "allDefectsRepaired": {
+          "target": true,
+          "count": 9,
+          "contrary": 3,
+          "unknown": 6,
+          "attempted": 18
+        },
+        "cleanPreserved": {
+          "target": true,
+          "count": 5,
+          "contrary": 2,
+          "unknown": 11,
+          "attempted": 18
+        },
+        "criticalSemanticFailure": {
+          "target": true,
+          "count": 1,
+          "contrary": 17,
+          "unknown": 0,
+          "attempted": 18
+        },
+        "justified": {
+          "target": true,
+          "count": 11,
+          "contrary": 4,
+          "unknown": 3,
+          "attempted": 18
+        },
+        "meaningPreserved": {
+          "target": true,
+          "count": 17,
+          "contrary": 1,
+          "unknown": 0,
+          "attempted": 18
+        },
+        "noNewErrors": {
+          "target": true,
+          "count": 17,
+          "contrary": 1,
+          "unknown": 0,
+          "attempted": 18
+        },
+        "rejectionAppropriate": {
+          "target": true,
+          "count": 0,
+          "contrary": 0,
+          "unknown": 18,
+          "attempted": 18
+        }
+      },
+      "promptContentTokens": {
+        "mean": 118.65,
+        "total": 2373
+      },
+      "sampledOutputTokens": 348,
+      "latencyMilliseconds": {
+        "mean": 1440.78403,
+        "median": 1400.1266
+      },
+      "sampledPeakProcessWorkingSetBytes": 2948120576,
+      "humanApprovals": 0,
+      "recognizedSoundAlternativeErrorOccurrencesAbsentReference": 0,
+      "localRepairCreditsAbsentReference": 0,
+      "localRepairCreditsWithUnknownWholePassage": 0
+    },
+    {
+      "panel": "confirmation",
+      "language": "english",
+      "promptVersion": "diorthosis-correction-v3",
+      "attempted": 20,
+      "originallyErroneous": 12,
+      "originallyCorrect": 8,
+      "annotatedErrors": 12,
+      "deliveredErrorRepairs": {
+        "target": true,
+        "count": 9,
+        "contrary": 3,
+        "unknown": 0,
+        "attempted": 12
+      },
+      "safeDeliveredErrorRepairs": {
+        "target": true,
+        "count": 9,
+        "contrary": 3,
+        "unknown": 0,
+        "attempted": 12
+      },
+      "parsedErrorRepairs": {
+        "target": true,
+        "count": 12,
+        "contrary": 0,
+        "unknown": 0,
+        "attempted": 12
+      },
+      "missedOriginalErrors": 3,
+      "unknownOriginalErrorRepairs": 0,
+      "abstainedAnnotatedErrors": 3,
+      "validNecessaryCandidatesLost": {
+        "target": true,
+        "count": 1,
+        "contrary": 19,
+        "unknown": 0,
+        "attempted": 20
+      },
+      "soundNecessaryCandidatesLost": {
+        "target": true,
+        "count": 1,
+        "contrary": 19,
+        "unknown": 0,
+        "attempted": 20
+      },
+      "validRawNecessaryCandidatesLost": {
+        "target": true,
+        "count": 1,
+        "contrary": 19,
+        "unknown": 0,
+        "attempted": 20
+      },
+      "extractionLostValidRawCandidates": 0,
+      "localRepairedErrorsWithheld": 3,
+      "rejectedRepairAppropriateness": {
+        "target": true,
+        "count": 6,
+        "contrary": 1,
+        "unknown": 0,
+        "attempted": 7
+      },
+      "cleanPreservation": {
+        "target": true,
+        "count": 3,
+        "contrary": 4,
+        "unknown": 1,
+        "attempted": 8
+      },
+      "literalCleanPreservation": {
+        "target": true,
+        "count": 3,
+        "contrary": 5,
+        "unknown": 0,
+        "attempted": 8
+      },
+      "cleanTextDamage": {
+        "target": true,
+        "count": 0,
+        "contrary": 7,
+        "unknown": 1,
+        "attempted": 8
+      },
+      "cleanAbstentions": 4,
+      "judgments": {
+        "fullyAcceptableDelivered": {
+          "target": true,
+          "count": 9,
+          "contrary": 7,
+          "unknown": 4,
+          "attempted": 20
+        },
+        "linguisticallySoundDelivered": {
+          "target": true,
+          "count": 12,
+          "contrary": 7,
+          "unknown": 1,
+          "attempted": 20
+        },
+        "unnecessaryModification": {
+          "target": true,
+          "count": 0,
+          "contrary": 19,
+          "unknown": 1,
+          "attempted": 20
+        },
+        "meaningFailure": {
+          "target": true,
+          "count": 0,
+          "contrary": 20,
+          "unknown": 0,
+          "attempted": 20
+        },
+        "newErrors": {
+          "target": true,
+          "count": 0,
+          "contrary": 20,
+          "unknown": 0,
+          "attempted": 20
+        },
+        "criticalFailure": {
+          "target": true,
+          "count": 0,
+          "contrary": 20,
+          "unknown": 0,
+          "attempted": 20
+        }
+      },
+      "introducedSpellingGrammarExplicitlyTaggedLowerBound": 0,
+      "newErrorTypeNotStandardized": true,
+      "externalAlternativeListsOnDelivered": 6,
+      "dispositions": {
+        "accepted": 10,
+        "rejected": 7,
+        "unchanged": 3
+      },
+      "eligibleJudgmentCoverage": {
+        "allDefectsRepaired": {
+          "target": true,
+          "count": 11,
+          "contrary": 0,
+          "unknown": 2,
+          "attempted": 13
+        },
+        "cleanPreserved": {
+          "target": true,
+          "count": 3,
+          "contrary": 3,
+          "unknown": 7,
+          "attempted": 13
+        },
+        "criticalSemanticFailure": {
+          "target": true,
+          "count": 0,
+          "contrary": 13,
+          "unknown": 0,
+          "attempted": 13
+        },
+        "justified": {
+          "target": true,
+          "count": 9,
+          "contrary": 0,
+          "unknown": 4,
+          "attempted": 13
+        },
+        "meaningPreserved": {
+          "target": true,
+          "count": 13,
+          "contrary": 0,
+          "unknown": 0,
+          "attempted": 13
+        },
+        "noNewErrors": {
+          "target": true,
+          "count": 13,
+          "contrary": 0,
+          "unknown": 0,
+          "attempted": 13
+        },
+        "rejectionAppropriate": {
+          "target": true,
+          "count": 0,
+          "contrary": 0,
+          "unknown": 13,
+          "attempted": 13
+        }
+      },
+      "promptContentTokens": {
+        "mean": 118.55,
+        "total": 2371
+      },
+      "sampledOutputTokens": 252,
+      "latencyMilliseconds": {
+        "mean": 1324.668325,
+        "median": 1318.5384
+      },
+      "sampledPeakProcessWorkingSetBytes": 2950856704,
+      "humanApprovals": 0,
+      "recognizedSoundAlternativeErrorOccurrencesAbsentReference": 1,
+      "localRepairCreditsAbsentReference": 1,
+      "localRepairCreditsWithUnknownWholePassage": 0
+    },
+    {
+      "panel": "confirmation",
+      "language": "english",
+      "promptVersion": "phase4-LiteralJson-Original-1.0.0",
+      "attempted": 20,
+      "originallyErroneous": 12,
+      "originallyCorrect": 8,
+      "annotatedErrors": 12,
+      "deliveredErrorRepairs": {
+        "target": true,
+        "count": 11,
+        "contrary": 1,
+        "unknown": 0,
+        "attempted": 12
+      },
+      "safeDeliveredErrorRepairs": {
+        "target": true,
+        "count": 11,
+        "contrary": 1,
+        "unknown": 0,
+        "attempted": 12
+      },
+      "parsedErrorRepairs": {
+        "target": true,
+        "count": 12,
+        "contrary": 0,
+        "unknown": 0,
+        "attempted": 12
+      },
+      "missedOriginalErrors": 1,
+      "unknownOriginalErrorRepairs": 0,
+      "abstainedAnnotatedErrors": 1,
+      "validNecessaryCandidatesLost": {
+        "target": true,
+        "count": 1,
+        "contrary": 19,
+        "unknown": 0,
+        "attempted": 20
+      },
+      "soundNecessaryCandidatesLost": {
+        "target": true,
+        "count": 1,
+        "contrary": 19,
+        "unknown": 0,
+        "attempted": 20
+      },
+      "validRawNecessaryCandidatesLost": {
+        "target": true,
+        "count": 1,
+        "contrary": 19,
+        "unknown": 0,
+        "attempted": 20
+      },
+      "extractionLostValidRawCandidates": 0,
+      "localRepairedErrorsWithheld": 1,
+      "rejectedRepairAppropriateness": {
+        "target": true,
+        "count": 3,
+        "contrary": 1,
+        "unknown": 0,
+        "attempted": 4
+      },
+      "cleanPreservation": {
+        "target": true,
+        "count": 4,
+        "contrary": 3,
+        "unknown": 1,
+        "attempted": 8
+      },
+      "literalCleanPreservation": {
+        "target": true,
+        "count": 4,
+        "contrary": 4,
+        "unknown": 0,
+        "attempted": 8
+      },
+      "cleanTextDamage": {
+        "target": true,
+        "count": 0,
+        "contrary": 7,
+        "unknown": 1,
+        "attempted": 8
+      },
+      "cleanAbstentions": 3,
+      "judgments": {
+        "fullyAcceptableDelivered": {
+          "target": true,
+          "count": 12,
+          "contrary": 4,
+          "unknown": 4,
+          "attempted": 20
+        },
+        "linguisticallySoundDelivered": {
+          "target": true,
+          "count": 15,
+          "contrary": 4,
+          "unknown": 1,
+          "attempted": 20
+        },
+        "unnecessaryModification": {
+          "target": true,
+          "count": 0,
+          "contrary": 19,
+          "unknown": 1,
+          "attempted": 20
+        },
+        "meaningFailure": {
+          "target": true,
+          "count": 0,
+          "contrary": 20,
+          "unknown": 0,
+          "attempted": 20
+        },
+        "newErrors": {
+          "target": true,
+          "count": 0,
+          "contrary": 20,
+          "unknown": 0,
+          "attempted": 20
+        },
+        "criticalFailure": {
+          "target": true,
+          "count": 0,
+          "contrary": 20,
+          "unknown": 0,
+          "attempted": 20
+        }
+      },
+      "introducedSpellingGrammarExplicitlyTaggedLowerBound": 0,
+      "newErrorTypeNotStandardized": true,
+      "externalAlternativeListsOnDelivered": 9,
+      "dispositions": {
+        "accepted": 12,
+        "rejected": 4,
+        "unchanged": 4
+      },
+      "eligibleJudgmentCoverage": {
+        "allDefectsRepaired": {
+          "target": true,
+          "count": 13,
+          "contrary": 0,
+          "unknown": 3,
+          "attempted": 16
+        },
+        "cleanPreserved": {
+          "target": true,
+          "count": 4,
+          "contrary": 4,
+          "unknown": 8,
+          "attempted": 16
+        },
+        "criticalSemanticFailure": {
+          "target": true,
+          "count": 0,
+          "contrary": 16,
+          "unknown": 0,
+          "attempted": 16
+        },
+        "justified": {
+          "target": true,
+          "count": 12,
+          "contrary": 0,
+          "unknown": 4,
+          "attempted": 16
+        },
+        "meaningPreserved": {
+          "target": true,
+          "count": 16,
+          "contrary": 0,
+          "unknown": 0,
+          "attempted": 16
+        },
+        "noNewErrors": {
+          "target": true,
+          "count": 16,
+          "contrary": 0,
+          "unknown": 0,
+          "attempted": 16
+        },
+        "rejectionAppropriate": {
+          "target": true,
+          "count": 0,
+          "contrary": 0,
+          "unknown": 16,
+          "attempted": 16
+        }
+      },
+      "promptContentTokens": {
+        "mean": 114.35,
+        "total": 2287
+      },
+      "sampledOutputTokens": 255,
+      "latencyMilliseconds": {
+        "mean": 1321.546785,
+        "median": 1301.88995
+      },
+      "sampledPeakProcessWorkingSetBytes": 2948300800,
+      "humanApprovals": 0,
+      "recognizedSoundAlternativeErrorOccurrencesAbsentReference": 0,
+      "localRepairCreditsAbsentReference": 0,
+      "localRepairCreditsWithUnknownWholePassage": 0
+    },
+    {
+      "panel": "selection",
+      "language": "dutch",
+      "promptVersion": "diorthosis-correction-v3",
+      "attempted": 70,
+      "originallyErroneous": 42,
+      "originallyCorrect": 28,
+      "annotatedErrors": 43,
+      "deliveredErrorRepairs": {
+        "target": true,
+        "count": 28,
+        "contrary": 15,
+        "unknown": 0,
+        "attempted": 43
+      },
+      "safeDeliveredErrorRepairs": {
+        "target": true,
+        "count": 26,
+        "contrary": 16,
+        "unknown": 1,
+        "attempted": 43
+      },
+      "parsedErrorRepairs": {
+        "target": true,
+        "count": 31,
+        "contrary": 11,
+        "unknown": 1,
+        "attempted": 43
+      },
+      "missedOriginalErrors": 15,
+      "unknownOriginalErrorRepairs": 0,
+      "abstainedAnnotatedErrors": 4,
+      "validNecessaryCandidatesLost": {
+        "target": true,
+        "count": 0,
+        "contrary": 70,
+        "unknown": 0,
+        "attempted": 70
+      },
+      "soundNecessaryCandidatesLost": {
+        "target": true,
+        "count": 0,
+        "contrary": 69,
+        "unknown": 1,
+        "attempted": 70
+      },
+      "validRawNecessaryCandidatesLost": {
+        "target": true,
+        "count": 0,
+        "contrary": 70,
+        "unknown": 0,
+        "attempted": 70
+      },
+      "extractionLostValidRawCandidates": 0,
+      "localRepairedErrorsWithheld": 3,
+      "rejectedRepairAppropriateness": {
+        "target": true,
+        "count": 11,
+        "contrary": 1,
+        "unknown": 3,
+        "attempted": 15
+      },
+      "cleanPreservation": {
+        "target": true,
+        "count": 15,
+        "contrary": 13,
+        "unknown": 0,
+        "attempted": 28
+      },
+      "literalCleanPreservation": {
+        "target": true,
+        "count": 13,
+        "contrary": 15,
+        "unknown": 0,
+        "attempted": 28
+      },
+      "cleanTextDamage": {
+        "target": true,
+        "count": 2,
+        "contrary": 26,
+        "unknown": 0,
+        "attempted": 28
+      },
+      "cleanAbstentions": 11,
+      "judgments": {
+        "fullyAcceptableDelivered": {
+          "target": true,
+          "count": 35,
+          "contrary": 31,
+          "unknown": 4,
+          "attempted": 70
+        },
+        "linguisticallySoundDelivered": {
+          "target": true,
+          "count": 40,
+          "contrary": 29,
+          "unknown": 1,
+          "attempted": 70
+        },
+        "unnecessaryModification": {
+          "target": true,
+          "count": 7,
+          "contrary": 63,
+          "unknown": 0,
+          "attempted": 70
+        },
+        "meaningFailure": {
+          "target": true,
+          "count": 4,
+          "contrary": 65,
+          "unknown": 1,
+          "attempted": 70
+        },
+        "newErrors": {
+          "target": true,
+          "count": 5,
+          "contrary": 65,
+          "unknown": 0,
+          "attempted": 70
+        },
+        "criticalFailure": {
+          "target": true,
+          "count": 4,
+          "contrary": 65,
+          "unknown": 1,
+          "attempted": 70
+        }
+      },
+      "introducedSpellingGrammarExplicitlyTaggedLowerBound": 2,
+      "newErrorTypeNotStandardized": true,
+      "externalAlternativeListsOnDelivered": 29,
+      "dispositions": {
+        "unchanged": 22,
+        "accepted": 33,
+        "rejected": 13,
+        "needsReview": 1,
+        "suppressed": 1
+      },
+      "eligibleJudgmentCoverage": {
+        "allDefectsRepaired": {
+          "target": true,
+          "count": 30,
+          "contrary": 11,
+          "unknown": 14,
+          "attempted": 55
+        },
+        "cleanPreserved": {
+          "target": true,
+          "count": 15,
+          "contrary": 11,
+          "unknown": 29,
+          "attempted": 55
+        },
+        "criticalSemanticFailure": {
+          "target": true,
+          "count": 4,
+          "contrary": 50,
+          "unknown": 1,
+          "attempted": 55
+        },
+        "justified": {
+          "target": true,
+          "count": 36,
+          "contrary": 14,
+          "unknown": 5,
+          "attempted": 55
+        },
+        "meaningPreserved": {
+          "target": true,
+          "count": 50,
+          "contrary": 4,
+          "unknown": 1,
+          "attempted": 55
+        },
+        "noNewErrors": {
+          "target": true,
+          "count": 50,
+          "contrary": 5,
+          "unknown": 0,
+          "attempted": 55
+        },
+        "rejectionAppropriate": {
+          "target": true,
+          "count": 0,
+          "contrary": 0,
+          "unknown": 55,
+          "attempted": 55
+        }
+      },
+      "promptContentTokens": {
+        "mean": 122.07142857142857,
+        "total": 8545
+      },
+      "sampledOutputTokens": 1248,
+      "latencyMilliseconds": {
+        "mean": 1565.1944957142857,
+        "median": 1529.8656999999998
+      },
+      "sampledPeakProcessWorkingSetBytes": 2964930560,
+      "humanApprovals": 0,
+      "recognizedSoundAlternativeErrorOccurrencesAbsentReference": 0,
+      "localRepairCreditsAbsentReference": 2,
+      "localRepairCreditsWithUnknownWholePassage": 1
+    },
+    {
+      "panel": "selection",
+      "language": "dutch",
+      "promptVersion": "phase4-LiteralJson-FewShot-1.0.0",
+      "attempted": 70,
+      "originallyErroneous": 42,
+      "originallyCorrect": 28,
+      "annotatedErrors": 43,
+      "deliveredErrorRepairs": {
+        "target": true,
+        "count": 31,
+        "contrary": 12,
+        "unknown": 0,
+        "attempted": 43
+      },
+      "safeDeliveredErrorRepairs": {
+        "target": true,
+        "count": 29,
+        "contrary": 13,
+        "unknown": 1,
+        "attempted": 43
+      },
+      "parsedErrorRepairs": {
+        "target": true,
+        "count": 34,
+        "contrary": 8,
+        "unknown": 1,
+        "attempted": 43
+      },
+      "missedOriginalErrors": 12,
+      "unknownOriginalErrorRepairs": 0,
+      "abstainedAnnotatedErrors": 4,
+      "validNecessaryCandidatesLost": {
+        "target": true,
+        "count": 0,
+        "contrary": 70,
+        "unknown": 0,
+        "attempted": 70
+      },
+      "soundNecessaryCandidatesLost": {
+        "target": true,
+        "count": 0,
+        "contrary": 69,
+        "unknown": 1,
+        "attempted": 70
+      },
+      "validRawNecessaryCandidatesLost": {
+        "target": true,
+        "count": 0,
+        "contrary": 70,
+        "unknown": 0,
+        "attempted": 70
+      },
+      "extractionLostValidRawCandidates": 0,
+      "localRepairedErrorsWithheld": 3,
+      "rejectedRepairAppropriateness": {
+        "target": true,
+        "count": 8,
+        "contrary": 1,
+        "unknown": 3,
+        "attempted": 12
+      },
+      "cleanPreservation": {
+        "target": true,
+        "count": 19,
+        "contrary": 9,
+        "unknown": 0,
+        "attempted": 28
+      },
+      "literalCleanPreservation": {
+        "target": true,
+        "count": 18,
+        "contrary": 10,
+        "unknown": 0,
+        "attempted": 28
+      },
+      "cleanTextDamage": {
+        "target": true,
+        "count": 1,
+        "contrary": 27,
+        "unknown": 0,
+        "attempted": 28
+      },
+      "cleanAbstentions": 8,
+      "judgments": {
+        "fullyAcceptableDelivered": {
+          "target": true,
+          "count": 42,
+          "contrary": 23,
+          "unknown": 5,
+          "attempted": 70
+        },
+        "linguisticallySoundDelivered": {
+          "target": true,
+          "count": 47,
+          "contrary": 22,
+          "unknown": 1,
+          "attempted": 70
+        },
+        "unnecessaryModification": {
+          "target": true,
+          "count": 5,
+          "contrary": 65,
+          "unknown": 0,
+          "attempted": 70
+        },
+        "meaningFailure": {
+          "target": true,
+          "count": 3,
+          "contrary": 66,
+          "unknown": 1,
+          "attempted": 70
+        },
+        "newErrors": {
+          "target": true,
+          "count": 3,
+          "contrary": 66,
+          "unknown": 1,
+          "attempted": 70
+        },
+        "criticalFailure": {
+          "target": true,
+          "count": 2,
+          "contrary": 66,
+          "unknown": 2,
+          "attempted": 70
+        }
+      },
+      "introducedSpellingGrammarExplicitlyTaggedLowerBound": 1,
+      "newErrorTypeNotStandardized": true,
+      "externalAlternativeListsOnDelivered": 30,
+      "dispositions": {
+        "unchanged": 24,
+        "accepted": 34,
+        "rejected": 10,
+        "needsReview": 1,
+        "suppressed": 1
+      },
+      "eligibleJudgmentCoverage": {
+        "allDefectsRepaired": {
+          "target": true,
+          "count": 33,
+          "contrary": 8,
+          "unknown": 17,
+          "attempted": 58
+        },
+        "cleanPreserved": {
+          "target": true,
+          "count": 19,
+          "contrary": 11,
+          "unknown": 28,
+          "attempted": 58
+        },
+        "criticalSemanticFailure": {
+          "target": true,
+          "count": 2,
+          "contrary": 54,
+          "unknown": 2,
+          "attempted": 58
+        },
+        "justified": {
+          "target": true,
+          "count": 43,
+          "contrary": 10,
+          "unknown": 5,
+          "attempted": 58
+        },
+        "meaningPreserved": {
+          "target": true,
+          "count": 54,
+          "contrary": 3,
+          "unknown": 1,
+          "attempted": 58
+        },
+        "noNewErrors": {
+          "target": true,
+          "count": 54,
+          "contrary": 3,
+          "unknown": 1,
+          "attempted": 58
+        },
+        "rejectionAppropriate": {
+          "target": true,
+          "count": 0,
+          "contrary": 0,
+          "unknown": 58,
+          "attempted": 58
+        }
+      },
+      "promptContentTokens": {
+        "mean": 217.04285714285714,
+        "total": 15193
+      },
+      "sampledOutputTokens": 1249,
+      "latencyMilliseconds": {
+        "mean": 1887.247247142857,
+        "median": 1837.7512000000002
+      },
+      "sampledPeakProcessWorkingSetBytes": 2983297024,
+      "humanApprovals": 0,
+      "recognizedSoundAlternativeErrorOccurrencesAbsentReference": 0,
+      "localRepairCreditsAbsentReference": 2,
+      "localRepairCreditsWithUnknownWholePassage": 1
+    },
+    {
+      "panel": "selection",
+      "language": "dutch",
+      "promptVersion": "phase4-LiteralJson-LanguageSpecific-1.0.0",
+      "attempted": 70,
+      "originallyErroneous": 42,
+      "originallyCorrect": 28,
+      "annotatedErrors": 43,
+      "deliveredErrorRepairs": {
+        "target": true,
+        "count": 36,
+        "contrary": 7,
+        "unknown": 0,
+        "attempted": 43
+      },
+      "safeDeliveredErrorRepairs": {
+        "target": true,
+        "count": 33,
+        "contrary": 9,
+        "unknown": 1,
+        "attempted": 43
+      },
+      "parsedErrorRepairs": {
+        "target": true,
+        "count": 38,
+        "contrary": 5,
+        "unknown": 0,
+        "attempted": 43
+      },
+      "missedOriginalErrors": 7,
+      "unknownOriginalErrorRepairs": 0,
+      "abstainedAnnotatedErrors": 2,
+      "validNecessaryCandidatesLost": {
+        "target": true,
+        "count": 0,
+        "contrary": 70,
+        "unknown": 0,
+        "attempted": 70
+      },
+      "soundNecessaryCandidatesLost": {
+        "target": true,
+        "count": 0,
+        "contrary": 69,
+        "unknown": 1,
+        "attempted": 70
+      },
+      "validRawNecessaryCandidatesLost": {
+        "target": true,
+        "count": 0,
+        "contrary": 70,
+        "unknown": 0,
+        "attempted": 70
+      },
+      "extractionLostValidRawCandidates": 0,
+      "localRepairedErrorsWithheld": 2,
+      "rejectedRepairAppropriateness": {
+        "target": true,
+        "count": 9,
+        "contrary": 1,
+        "unknown": 1,
+        "attempted": 11
+      },
+      "cleanPreservation": {
+        "target": true,
+        "count": 16,
+        "contrary": 12,
+        "unknown": 0,
+        "attempted": 28
+      },
+      "literalCleanPreservation": {
+        "target": true,
+        "count": 15,
+        "contrary": 13,
+        "unknown": 0,
+        "attempted": 28
+      },
+      "cleanTextDamage": {
+        "target": true,
+        "count": 3,
+        "contrary": 25,
+        "unknown": 0,
+        "attempted": 28
+      },
+      "cleanAbstentions": 9,
+      "judgments": {
+        "fullyAcceptableDelivered": {
+          "target": true,
+          "count": 44,
+          "contrary": 22,
+          "unknown": 4,
+          "attempted": 70
+        },
+        "linguisticallySoundDelivered": {
+          "target": true,
+          "count": 48,
+          "contrary": 21,
+          "unknown": 1,
+          "attempted": 70
+        },
+        "unnecessaryModification": {
+          "target": true,
+          "count": 8,
+          "contrary": 62,
+          "unknown": 0,
+          "attempted": 70
+        },
+        "meaningFailure": {
+          "target": true,
+          "count": 6,
+          "contrary": 63,
+          "unknown": 1,
+          "attempted": 70
+        },
+        "newErrors": {
+          "target": true,
+          "count": 6,
+          "contrary": 63,
+          "unknown": 1,
+          "attempted": 70
+        },
+        "criticalFailure": {
+          "target": true,
+          "count": 3,
+          "contrary": 65,
+          "unknown": 2,
+          "attempted": 70
+        }
+      },
+      "introducedSpellingGrammarExplicitlyTaggedLowerBound": 1,
+      "newErrorTypeNotStandardized": true,
+      "externalAlternativeListsOnDelivered": 31,
+      "dispositions": {
+        "accepted": 41,
+        "unchanged": 18,
+        "rejected": 9,
+        "needsReview": 2
+      },
+      "eligibleJudgmentCoverage": {
+        "allDefectsRepaired": {
+          "target": true,
+          "count": 38,
+          "contrary": 5,
+          "unknown": 16,
+          "attempted": 59
+        },
+        "cleanPreserved": {
+          "target": true,
+          "count": 16,
+          "contrary": 13,
+          "unknown": 30,
+          "attempted": 59
+        },
+        "criticalSemanticFailure": {
+          "target": true,
+          "count": 3,
+          "contrary": 54,
+          "unknown": 2,
+          "attempted": 59
+        },
+        "justified": {
+          "target": true,
+          "count": 45,
+          "contrary": 11,
+          "unknown": 3,
+          "attempted": 59
+        },
+        "meaningPreserved": {
+          "target": true,
+          "count": 52,
+          "contrary": 6,
+          "unknown": 1,
+          "attempted": 59
+        },
+        "noNewErrors": {
+          "target": true,
+          "count": 52,
+          "contrary": 6,
+          "unknown": 1,
+          "attempted": 59
+        },
+        "rejectionAppropriate": {
+          "target": true,
+          "count": 0,
+          "contrary": 0,
+          "unknown": 59,
+          "attempted": 59
+        }
+      },
+      "promptContentTokens": {
+        "mean": 176.04285714285714,
+        "total": 12323
+      },
+      "sampledOutputTokens": 1265,
+      "latencyMilliseconds": {
+        "mean": 1766.6372542857143,
+        "median": 1698.1257
+      },
+      "sampledPeakProcessWorkingSetBytes": 2976989184,
+      "humanApprovals": 0,
+      "recognizedSoundAlternativeErrorOccurrencesAbsentReference": 0,
+      "localRepairCreditsAbsentReference": 2,
+      "localRepairCreditsWithUnknownWholePassage": 1
+    },
+    {
+      "panel": "selection",
+      "language": "dutch",
+      "promptVersion": "phase4-LiteralJson-Minimal-1.0.0",
+      "attempted": 70,
+      "originallyErroneous": 42,
+      "originallyCorrect": 28,
+      "annotatedErrors": 43,
+      "deliveredErrorRepairs": {
+        "target": true,
+        "count": 32,
+        "contrary": 11,
+        "unknown": 0,
+        "attempted": 43
+      },
+      "safeDeliveredErrorRepairs": {
+        "target": true,
+        "count": 29,
+        "contrary": 13,
+        "unknown": 1,
+        "attempted": 43
+      },
+      "parsedErrorRepairs": {
+        "target": true,
+        "count": 34,
+        "contrary": 8,
+        "unknown": 1,
+        "attempted": 43
+      },
+      "missedOriginalErrors": 11,
+      "unknownOriginalErrorRepairs": 0,
+      "abstainedAnnotatedErrors": 3,
+      "validNecessaryCandidatesLost": {
+        "target": true,
+        "count": 0,
+        "contrary": 70,
+        "unknown": 0,
+        "attempted": 70
+      },
+      "soundNecessaryCandidatesLost": {
+        "target": true,
+        "count": 0,
+        "contrary": 69,
+        "unknown": 1,
+        "attempted": 70
+      },
+      "validRawNecessaryCandidatesLost": {
+        "target": true,
+        "count": 0,
+        "contrary": 70,
+        "unknown": 0,
+        "attempted": 70
+      },
+      "extractionLostValidRawCandidates": 0,
+      "localRepairedErrorsWithheld": 2,
+      "rejectedRepairAppropriateness": {
+        "target": true,
+        "count": 8,
+        "contrary": 1,
+        "unknown": 1,
+        "attempted": 10
+      },
+      "cleanPreservation": {
+        "target": true,
+        "count": 18,
+        "contrary": 10,
+        "unknown": 0,
+        "attempted": 28
+      },
+      "literalCleanPreservation": {
+        "target": true,
+        "count": 16,
+        "contrary": 12,
+        "unknown": 0,
+        "attempted": 28
+      },
+      "cleanTextDamage": {
+        "target": true,
+        "count": 3,
+        "contrary": 25,
+        "unknown": 0,
+        "attempted": 28
+      },
+      "cleanAbstentions": 7,
+      "judgments": {
+        "fullyAcceptableDelivered": {
+          "target": true,
+          "count": 41,
+          "contrary": 25,
+          "unknown": 4,
+          "attempted": 70
+        },
+        "linguisticallySoundDelivered": {
+          "target": true,
+          "count": 46,
+          "contrary": 23,
+          "unknown": 1,
+          "attempted": 70
+        },
+        "unnecessaryModification": {
+          "target": true,
+          "count": 9,
+          "contrary": 61,
+          "unknown": 0,
+          "attempted": 70
+        },
+        "meaningFailure": {
+          "target": true,
+          "count": 7,
+          "contrary": 62,
+          "unknown": 1,
+          "attempted": 70
+        },
+        "newErrors": {
+          "target": true,
+          "count": 7,
+          "contrary": 63,
+          "unknown": 0,
+          "attempted": 70
+        },
+        "criticalFailure": {
+          "target": true,
+          "count": 5,
+          "contrary": 63,
+          "unknown": 2,
+          "attempted": 70
+        }
+      },
+      "introducedSpellingGrammarExplicitlyTaggedLowerBound": 1,
+      "newErrorTypeNotStandardized": true,
+      "externalAlternativeListsOnDelivered": 32,
+      "dispositions": {
+        "unchanged": 22,
+        "accepted": 38,
+        "rejected": 8,
+        "needsReview": 2
+      },
+      "eligibleJudgmentCoverage": {
+        "allDefectsRepaired": {
+          "target": true,
+          "count": 34,
+          "contrary": 8,
+          "unknown": 18,
+          "attempted": 60
+        },
+        "cleanPreserved": {
+          "target": true,
+          "count": 18,
+          "contrary": 13,
+          "unknown": 29,
+          "attempted": 60
+        },
+        "criticalSemanticFailure": {
+          "target": true,
+          "count": 5,
+          "contrary": 53,
+          "unknown": 2,
+          "attempted": 60
+        },
+        "justified": {
+          "target": true,
+          "count": 42,
+          "contrary": 15,
+          "unknown": 3,
+          "attempted": 60
+        },
+        "meaningPreserved": {
+          "target": true,
+          "count": 52,
+          "contrary": 7,
+          "unknown": 1,
+          "attempted": 60
+        },
+        "noNewErrors": {
+          "target": true,
+          "count": 53,
+          "contrary": 7,
+          "unknown": 0,
+          "attempted": 60
+        },
+        "rejectionAppropriate": {
+          "target": true,
+          "count": 0,
+          "contrary": 0,
+          "unknown": 60,
+          "attempted": 60
+        }
+      },
+      "promptContentTokens": {
+        "mean": 188.04285714285714,
+        "total": 13163
+      },
+      "sampledOutputTokens": 1242,
+      "latencyMilliseconds": {
+        "mean": 1770.2410357142858,
+        "median": 1689.2130499999998
+      },
+      "sampledPeakProcessWorkingSetBytes": 2978856960,
+      "humanApprovals": 0,
+      "recognizedSoundAlternativeErrorOccurrencesAbsentReference": 0,
+      "localRepairCreditsAbsentReference": 2,
+      "localRepairCreditsWithUnknownWholePassage": 1
+    },
+    {
+      "panel": "selection",
+      "language": "dutch",
+      "promptVersion": "phase4-LiteralJson-Original-1.0.0",
+      "attempted": 70,
+      "originallyErroneous": 42,
+      "originallyCorrect": 28,
+      "annotatedErrors": 43,
+      "deliveredErrorRepairs": {
+        "target": true,
+        "count": 30,
+        "contrary": 13,
+        "unknown": 0,
+        "attempted": 43
+      },
+      "safeDeliveredErrorRepairs": {
+        "target": true,
+        "count": 28,
+        "contrary": 14,
+        "unknown": 1,
+        "attempted": 43
+      },
+      "parsedErrorRepairs": {
+        "target": true,
+        "count": 32,
+        "contrary": 10,
+        "unknown": 1,
+        "attempted": 43
+      },
+      "missedOriginalErrors": 13,
+      "unknownOriginalErrorRepairs": 0,
+      "abstainedAnnotatedErrors": 3,
+      "validNecessaryCandidatesLost": {
+        "target": true,
+        "count": 0,
+        "contrary": 70,
+        "unknown": 0,
+        "attempted": 70
+      },
+      "soundNecessaryCandidatesLost": {
+        "target": true,
+        "count": 0,
+        "contrary": 69,
+        "unknown": 1,
+        "attempted": 70
+      },
+      "validRawNecessaryCandidatesLost": {
+        "target": true,
+        "count": 0,
+        "contrary": 70,
+        "unknown": 0,
+        "attempted": 70
+      },
+      "extractionLostValidRawCandidates": 0,
+      "localRepairedErrorsWithheld": 2,
+      "rejectedRepairAppropriateness": {
+        "target": true,
+        "count": 8,
+        "contrary": 1,
+        "unknown": 3,
+        "attempted": 12
+      },
+      "cleanPreservation": {
+        "target": true,
+        "count": 18,
+        "contrary": 10,
+        "unknown": 0,
+        "attempted": 28
+      },
+      "literalCleanPreservation": {
+        "target": true,
+        "count": 16,
+        "contrary": 12,
+        "unknown": 0,
+        "attempted": 28
+      },
+      "cleanTextDamage": {
+        "target": true,
+        "count": 1,
+        "contrary": 27,
+        "unknown": 0,
+        "attempted": 28
+      },
+      "cleanAbstentions": 9,
+      "judgments": {
+        "fullyAcceptableDelivered": {
+          "target": true,
+          "count": 40,
+          "contrary": 26,
+          "unknown": 4,
+          "attempted": 70
+        },
+        "linguisticallySoundDelivered": {
+          "target": true,
+          "count": 45,
+          "contrary": 24,
+          "unknown": 1,
+          "attempted": 70
+        },
+        "unnecessaryModification": {
+          "target": true,
+          "count": 6,
+          "contrary": 64,
+          "unknown": 0,
+          "attempted": 70
+        },
+        "meaningFailure": {
+          "target": true,
+          "count": 4,
+          "contrary": 65,
+          "unknown": 1,
+          "attempted": 70
+        },
+        "newErrors": {
+          "target": true,
+          "count": 4,
+          "contrary": 66,
+          "unknown": 0,
+          "attempted": 70
+        },
+        "criticalFailure": {
+          "target": true,
+          "count": 4,
+          "contrary": 65,
+          "unknown": 1,
+          "attempted": 70
+        }
+      },
+      "introducedSpellingGrammarExplicitlyTaggedLowerBound": 1,
+      "newErrorTypeNotStandardized": true,
+      "externalAlternativeListsOnDelivered": 31,
+      "dispositions": {
+        "unchanged": 24,
+        "accepted": 34,
+        "rejected": 10,
+        "needsReview": 1,
+        "suppressed": 1
+      },
+      "eligibleJudgmentCoverage": {
+        "allDefectsRepaired": {
+          "target": true,
+          "count": 32,
+          "contrary": 10,
+          "unknown": 16,
+          "attempted": 58
+        },
+        "cleanPreserved": {
+          "target": true,
+          "count": 18,
+          "contrary": 11,
+          "unknown": 29,
+          "attempted": 58
+        },
+        "criticalSemanticFailure": {
+          "target": true,
+          "count": 4,
+          "contrary": 53,
+          "unknown": 1,
+          "attempted": 58
+        },
+        "justified": {
+          "target": true,
+          "count": 41,
+          "contrary": 12,
+          "unknown": 5,
+          "attempted": 58
+        },
+        "meaningPreserved": {
+          "target": true,
+          "count": 53,
+          "contrary": 4,
+          "unknown": 1,
+          "attempted": 58
+        },
+        "noNewErrors": {
+          "target": true,
+          "count": 54,
+          "contrary": 4,
+          "unknown": 0,
+          "attempted": 58
+        },
+        "rejectionAppropriate": {
+          "target": true,
+          "count": 0,
+          "contrary": 0,
+          "unknown": 58,
+          "attempted": 58
+        }
+      },
+      "promptContentTokens": {
+        "mean": 119.04285714285714,
+        "total": 8333
+      },
+      "sampledOutputTokens": 1243,
+      "latencyMilliseconds": {
+        "mean": 1527.18667,
+        "median": 1483.4053
+      },
+      "sampledPeakProcessWorkingSetBytes": 2958868480,
+      "humanApprovals": 0,
+      "recognizedSoundAlternativeErrorOccurrencesAbsentReference": 0,
+      "localRepairCreditsAbsentReference": 2,
+      "localRepairCreditsWithUnknownWholePassage": 1
+    },
+    {
+      "panel": "selection",
+      "language": "dutch",
+      "promptVersion": "phase4-PlainText-Original-1.0.0",
+      "attempted": 70,
+      "originallyErroneous": 42,
+      "originallyCorrect": 28,
+      "annotatedErrors": 43,
+      "deliveredErrorRepairs": {
+        "target": true,
+        "count": 29,
+        "contrary": 14,
+        "unknown": 0,
+        "attempted": 43
+      },
+      "safeDeliveredErrorRepairs": {
+        "target": true,
+        "count": 27,
+        "contrary": 15,
+        "unknown": 1,
+        "attempted": 43
+      },
+      "parsedErrorRepairs": {
+        "target": true,
+        "count": 33,
+        "contrary": 9,
+        "unknown": 1,
+        "attempted": 43
+      },
+      "missedOriginalErrors": 14,
+      "unknownOriginalErrorRepairs": 0,
+      "abstainedAnnotatedErrors": 6,
+      "validNecessaryCandidatesLost": {
+        "target": true,
+        "count": 0,
+        "contrary": 70,
+        "unknown": 0,
+        "attempted": 70
+      },
+      "soundNecessaryCandidatesLost": {
+        "target": true,
+        "count": 0,
+        "contrary": 69,
+        "unknown": 1,
+        "attempted": 70
+      },
+      "validRawNecessaryCandidatesLost": {
+        "target": true,
+        "count": 0,
+        "contrary": 70,
+        "unknown": 0,
+        "attempted": 70
+      },
+      "extractionLostValidRawCandidates": 0,
+      "localRepairedErrorsWithheld": 4,
+      "rejectedRepairAppropriateness": {
+        "target": true,
+        "count": 13,
+        "contrary": 0,
+        "unknown": 2,
+        "attempted": 15
+      },
+      "cleanPreservation": {
+        "target": true,
+        "count": 14,
+        "contrary": 14,
+        "unknown": 0,
+        "attempted": 28
+      },
+      "literalCleanPreservation": {
+        "target": true,
+        "count": 12,
+        "contrary": 16,
+        "unknown": 0,
+        "attempted": 28
+      },
+      "cleanTextDamage": {
+        "target": true,
+        "count": 5,
+        "contrary": 23,
+        "unknown": 0,
+        "attempted": 28
+      },
+      "cleanAbstentions": 9,
+      "judgments": {
+        "fullyAcceptableDelivered": {
+          "target": true,
+          "count": 36,
+          "contrary": 31,
+          "unknown": 3,
+          "attempted": 70
+        },
+        "linguisticallySoundDelivered": {
+          "target": true,
+          "count": 40,
+          "contrary": 29,
+          "unknown": 1,
+          "attempted": 70
+        },
+        "unnecessaryModification": {
+          "target": true,
+          "count": 9,
+          "contrary": 61,
+          "unknown": 0,
+          "attempted": 70
+        },
+        "meaningFailure": {
+          "target": true,
+          "count": 4,
+          "contrary": 65,
+          "unknown": 1,
+          "attempted": 70
+        },
+        "newErrors": {
+          "target": true,
+          "count": 6,
+          "contrary": 63,
+          "unknown": 1,
+          "attempted": 70
+        },
+        "criticalFailure": {
+          "target": true,
+          "count": 3,
+          "contrary": 66,
+          "unknown": 1,
+          "attempted": 70
+        }
+      },
+      "introducedSpellingGrammarExplicitlyTaggedLowerBound": 3,
+      "newErrorTypeNotStandardized": true,
+      "externalAlternativeListsOnDelivered": 29,
+      "dispositions": {
+        "unchanged": 19,
+        "accepted": 36,
+        "rejected": 14,
+        "needsReview": 1
+      },
+      "eligibleJudgmentCoverage": {
+        "allDefectsRepaired": {
+          "target": true,
+          "count": 30,
+          "contrary": 8,
+          "unknown": 17,
+          "attempted": 55
+        },
+        "cleanPreserved": {
+          "target": true,
+          "count": 14,
+          "contrary": 12,
+          "unknown": 29,
+          "attempted": 55
+        },
+        "criticalSemanticFailure": {
+          "target": true,
+          "count": 3,
+          "contrary": 51,
+          "unknown": 1,
+          "attempted": 55
+        },
+        "justified": {
+          "target": true,
+          "count": 37,
+          "contrary": 15,
+          "unknown": 3,
+          "attempted": 55
+        },
+        "meaningPreserved": {
+          "target": true,
+          "count": 50,
+          "contrary": 4,
+          "unknown": 1,
+          "attempted": 55
+        },
+        "noNewErrors": {
+          "target": true,
+          "count": 48,
+          "contrary": 6,
+          "unknown": 1,
+          "attempted": 55
+        },
+        "rejectionAppropriate": {
+          "target": true,
+          "count": 0,
+          "contrary": 0,
+          "unknown": 55,
+          "attempted": 55
+        }
+      },
+      "promptContentTokens": {
+        "mean": 188.31428571428572,
+        "total": 13182
+      },
+      "sampledOutputTokens": 1268,
+      "latencyMilliseconds": {
+        "mean": 1809.5166242857142,
+        "median": 1780.5434
+      },
+      "sampledPeakProcessWorkingSetBytes": 2970779648,
+      "humanApprovals": 0,
+      "recognizedSoundAlternativeErrorOccurrencesAbsentReference": 0,
+      "localRepairCreditsAbsentReference": 1,
+      "localRepairCreditsWithUnknownWholePassage": 1
+    },
+    {
+      "panel": "selection",
+      "language": "english",
+      "promptVersion": "diorthosis-correction-v3",
+      "attempted": 70,
+      "originallyErroneous": 42,
+      "originallyCorrect": 28,
+      "annotatedErrors": 43,
+      "deliveredErrorRepairs": {
+        "target": true,
+        "count": 30,
+        "contrary": 13,
+        "unknown": 0,
+        "attempted": 43
+      },
+      "safeDeliveredErrorRepairs": {
+        "target": true,
+        "count": 30,
+        "contrary": 13,
+        "unknown": 0,
+        "attempted": 43
+      },
+      "parsedErrorRepairs": {
+        "target": true,
+        "count": 39,
+        "contrary": 4,
+        "unknown": 0,
+        "attempted": 43
+      },
+      "missedOriginalErrors": 13,
+      "unknownOriginalErrorRepairs": 0,
+      "abstainedAnnotatedErrors": 9,
+      "validNecessaryCandidatesLost": {
+        "target": true,
+        "count": 6,
+        "contrary": 63,
+        "unknown": 1,
+        "attempted": 70
+      },
+      "soundNecessaryCandidatesLost": {
+        "target": true,
+        "count": 6,
+        "contrary": 63,
+        "unknown": 1,
+        "attempted": 70
+      },
+      "validRawNecessaryCandidatesLost": {
+        "target": true,
+        "count": 5,
+        "contrary": 64,
+        "unknown": 1,
+        "attempted": 70
+      },
+      "extractionLostValidRawCandidates": 0,
+      "localRepairedErrorsWithheld": 9,
+      "rejectedRepairAppropriateness": {
+        "target": true,
+        "count": 12,
+        "contrary": 6,
+        "unknown": 2,
+        "attempted": 20
+      },
+      "cleanPreservation": {
+        "target": true,
+        "count": 14,
+        "contrary": 14,
+        "unknown": 0,
+        "attempted": 28
+      },
+      "literalCleanPreservation": {
+        "target": true,
+        "count": 13,
+        "contrary": 15,
+        "unknown": 0,
+        "attempted": 28
+      },
+      "cleanTextDamage": {
+        "target": true,
+        "count": 3,
+        "contrary": 25,
+        "unknown": 0,
+        "attempted": 28
+      },
+      "cleanAbstentions": 11,
+      "judgments": {
+        "fullyAcceptableDelivered": {
+          "target": true,
+          "count": 37,
+          "contrary": 27,
+          "unknown": 6,
+          "attempted": 70
+        },
+        "linguisticallySoundDelivered": {
+          "target": true,
+          "count": 43,
+          "contrary": 27,
+          "unknown": 0,
+          "attempted": 70
+        },
+        "unnecessaryModification": {
+          "target": true,
+          "count": 3,
+          "contrary": 66,
+          "unknown": 1,
+          "attempted": 70
+        },
+        "meaningFailure": {
+          "target": true,
+          "count": 1,
+          "contrary": 69,
+          "unknown": 0,
+          "attempted": 70
+        },
+        "newErrors": {
+          "target": true,
+          "count": 1,
+          "contrary": 69,
+          "unknown": 0,
+          "attempted": 70
+        },
+        "criticalFailure": {
+          "target": true,
+          "count": 1,
+          "contrary": 69,
+          "unknown": 0,
+          "attempted": 70
+        }
+      },
+      "introducedSpellingGrammarExplicitlyTaggedLowerBound": 0,
+      "newErrorTypeNotStandardized": true,
+      "externalAlternativeListsOnDelivered": 25,
+      "dispositions": {
+        "rejected": 16,
+        "accepted": 33,
+        "unchanged": 17,
+        "needsReview": 2,
+        "suppressed": 2
+      },
+      "eligibleJudgmentCoverage": {
+        "allDefectsRepaired": {
+          "target": true,
+          "count": 32,
+          "contrary": 4,
+          "unknown": 14,
+          "attempted": 50
+        },
+        "cleanPreserved": {
+          "target": true,
+          "count": 14,
+          "contrary": 19,
+          "unknown": 17,
+          "attempted": 50
+        },
+        "criticalSemanticFailure": {
+          "target": true,
+          "count": 1,
+          "contrary": 49,
+          "unknown": 0,
+          "attempted": 50
+        },
+        "justified": {
+          "target": true,
+          "count": 37,
+          "contrary": 7,
+          "unknown": 6,
+          "attempted": 50
+        },
+        "meaningPreserved": {
+          "target": true,
+          "count": 49,
+          "contrary": 1,
+          "unknown": 0,
+          "attempted": 50
+        },
+        "noNewErrors": {
+          "target": true,
+          "count": 49,
+          "contrary": 1,
+          "unknown": 0,
+          "attempted": 50
+        },
+        "rejectionAppropriate": {
+          "target": true,
+          "count": 0,
+          "contrary": 0,
+          "unknown": 50,
+          "attempted": 50
+        }
+      },
+      "promptContentTokens": {
+        "mean": 118.64285714285714,
+        "total": 8305
+      },
+      "sampledOutputTokens": 956,
+      "latencyMilliseconds": {
+        "mean": 1440.1682614285714,
+        "median": 1342.4666499999998
+      },
+      "sampledPeakProcessWorkingSetBytes": 2963668992,
+      "humanApprovals": 0,
+      "recognizedSoundAlternativeErrorOccurrencesAbsentReference": 1,
+      "localRepairCreditsAbsentReference": 1,
+      "localRepairCreditsWithUnknownWholePassage": 0
+    },
+    {
+      "panel": "selection",
+      "language": "english",
+      "promptVersion": "phase4-LiteralJson-FewShot-1.0.0",
+      "attempted": 70,
+      "originallyErroneous": 42,
+      "originallyCorrect": 28,
+      "annotatedErrors": 43,
+      "deliveredErrorRepairs": {
+        "target": true,
+        "count": 32,
+        "contrary": 11,
+        "unknown": 0,
+        "attempted": 43
+      },
+      "safeDeliveredErrorRepairs": {
+        "target": true,
+        "count": 31,
+        "contrary": 11,
+        "unknown": 1,
+        "attempted": 43
+      },
+      "parsedErrorRepairs": {
+        "target": true,
+        "count": 38,
+        "contrary": 5,
+        "unknown": 0,
+        "attempted": 43
+      },
+      "missedOriginalErrors": 11,
+      "unknownOriginalErrorRepairs": 0,
+      "abstainedAnnotatedErrors": 6,
+      "validNecessaryCandidatesLost": {
+        "target": true,
+        "count": 4,
+        "contrary": 65,
+        "unknown": 1,
+        "attempted": 70
+      },
+      "soundNecessaryCandidatesLost": {
+        "target": true,
+        "count": 4,
+        "contrary": 65,
+        "unknown": 1,
+        "attempted": 70
+      },
+      "validRawNecessaryCandidatesLost": {
+        "target": true,
+        "count": 3,
+        "contrary": 66,
+        "unknown": 1,
+        "attempted": 70
+      },
+      "extractionLostValidRawCandidates": 0,
+      "localRepairedErrorsWithheld": 6,
+      "rejectedRepairAppropriateness": {
+        "target": true,
+        "count": 9,
+        "contrary": 4,
+        "unknown": 2,
+        "attempted": 15
+      },
+      "cleanPreservation": {
+        "target": true,
+        "count": 18,
+        "contrary": 10,
+        "unknown": 0,
+        "attempted": 28
+      },
+      "literalCleanPreservation": {
+        "target": true,
+        "count": 17,
+        "contrary": 11,
+        "unknown": 0,
+        "attempted": 28
+      },
+      "cleanTextDamage": {
+        "target": true,
+        "count": 1,
+        "contrary": 27,
+        "unknown": 0,
+        "attempted": 28
+      },
+      "cleanAbstentions": 9,
+      "judgments": {
+        "fullyAcceptableDelivered": {
+          "target": true,
+          "count": 39,
+          "contrary": 21,
+          "unknown": 10,
+          "attempted": 70
+        },
+        "linguisticallySoundDelivered": {
+          "target": true,
+          "count": 48,
+          "contrary": 21,
+          "unknown": 1,
+          "attempted": 70
+        },
+        "unnecessaryModification": {
+          "target": true,
+          "count": 1,
+          "contrary": 68,
+          "unknown": 1,
+          "attempted": 70
+        },
+        "meaningFailure": {
+          "target": true,
+          "count": 0,
+          "contrary": 70,
+          "unknown": 0,
+          "attempted": 70
+        },
+        "newErrors": {
+          "target": true,
+          "count": 0,
+          "contrary": 69,
+          "unknown": 1,
+          "attempted": 70
+        },
+        "criticalFailure": {
+          "target": true,
+          "count": 0,
+          "contrary": 70,
+          "unknown": 0,
+          "attempted": 70
+        }
+      },
+      "introducedSpellingGrammarExplicitlyTaggedLowerBound": 0,
+      "newErrorTypeNotStandardized": true,
+      "externalAlternativeListsOnDelivered": 28,
+      "dispositions": {
+        "rejected": 11,
+        "accepted": 34,
+        "unchanged": 21,
+        "needsReview": 2,
+        "suppressed": 2
+      },
+      "eligibleJudgmentCoverage": {
+        "allDefectsRepaired": {
+          "target": true,
+          "count": 34,
+          "contrary": 5,
+          "unknown": 16,
+          "attempted": 55
+        },
+        "cleanPreserved": {
+          "target": true,
+          "count": 18,
+          "contrary": 18,
+          "unknown": 19,
+          "attempted": 55
+        },
+        "criticalSemanticFailure": {
+          "target": true,
+          "count": 0,
+          "contrary": 55,
+          "unknown": 0,
+          "attempted": 55
+        },
+        "justified": {
+          "target": true,
+          "count": 41,
+          "contrary": 5,
+          "unknown": 9,
+          "attempted": 55
+        },
+        "meaningPreserved": {
+          "target": true,
+          "count": 55,
+          "contrary": 0,
+          "unknown": 0,
+          "attempted": 55
+        },
+        "noNewErrors": {
+          "target": true,
+          "count": 54,
+          "contrary": 0,
+          "unknown": 1,
+          "attempted": 55
+        },
+        "rejectionAppropriate": {
+          "target": true,
+          "count": 0,
+          "contrary": 0,
+          "unknown": 55,
+          "attempted": 55
+        }
+      },
+      "promptContentTokens": {
+        "mean": 190.05714285714285,
+        "total": 13304
+      },
+      "sampledOutputTokens": 956,
+      "latencyMilliseconds": {
+        "mean": 1638.36402,
+        "median": 1585.1471000000001
+      },
+      "sampledPeakProcessWorkingSetBytes": 2975531008,
+      "humanApprovals": 0,
+      "recognizedSoundAlternativeErrorOccurrencesAbsentReference": 0,
+      "localRepairCreditsAbsentReference": 0,
+      "localRepairCreditsWithUnknownWholePassage": 0
+    },
+    {
+      "panel": "selection",
+      "language": "english",
+      "promptVersion": "phase4-LiteralJson-LanguageSpecific-1.0.0",
+      "attempted": 70,
+      "originallyErroneous": 42,
+      "originallyCorrect": 28,
+      "annotatedErrors": 43,
+      "deliveredErrorRepairs": {
+        "target": true,
+        "count": 33,
+        "contrary": 10,
+        "unknown": 0,
+        "attempted": 43
+      },
+      "safeDeliveredErrorRepairs": {
+        "target": true,
+        "count": 31,
+        "contrary": 10,
+        "unknown": 2,
+        "attempted": 43
+      },
+      "parsedErrorRepairs": {
+        "target": true,
+        "count": 40,
+        "contrary": 3,
+        "unknown": 0,
+        "attempted": 43
+      },
+      "missedOriginalErrors": 10,
+      "unknownOriginalErrorRepairs": 0,
+      "abstainedAnnotatedErrors": 7,
+      "validNecessaryCandidatesLost": {
+        "target": true,
+        "count": 4,
+        "contrary": 66,
+        "unknown": 0,
+        "attempted": 70
+      },
+      "soundNecessaryCandidatesLost": {
+        "target": true,
+        "count": 4,
+        "contrary": 66,
+        "unknown": 0,
+        "attempted": 70
+      },
+      "validRawNecessaryCandidatesLost": {
+        "target": true,
+        "count": 3,
+        "contrary": 67,
+        "unknown": 0,
+        "attempted": 70
+      },
+      "extractionLostValidRawCandidates": 0,
+      "localRepairedErrorsWithheld": 7,
+      "rejectedRepairAppropriateness": {
+        "target": true,
+        "count": 11,
+        "contrary": 4,
+        "unknown": 1,
+        "attempted": 16
+      },
+      "cleanPreservation": {
+        "target": true,
+        "count": 16,
+        "contrary": 12,
+        "unknown": 0,
+        "attempted": 28
+      },
+      "literalCleanPreservation": {
+        "target": true,
+        "count": 15,
+        "contrary": 13,
+        "unknown": 0,
+        "attempted": 28
+      },
+      "cleanTextDamage": {
+        "target": true,
+        "count": 3,
+        "contrary": 25,
+        "unknown": 0,
+        "attempted": 28
+      },
+      "cleanAbstentions": 9,
+      "judgments": {
+        "fullyAcceptableDelivered": {
+          "target": true,
+          "count": 39,
+          "contrary": 22,
+          "unknown": 9,
+          "attempted": 70
+        },
+        "linguisticallySoundDelivered": {
+          "target": true,
+          "count": 46,
+          "contrary": 22,
+          "unknown": 2,
+          "attempted": 70
+        },
+        "unnecessaryModification": {
+          "target": true,
+          "count": 3,
+          "contrary": 65,
+          "unknown": 2,
+          "attempted": 70
+        },
+        "meaningFailure": {
+          "target": true,
+          "count": 1,
+          "contrary": 68,
+          "unknown": 1,
+          "attempted": 70
+        },
+        "newErrors": {
+          "target": true,
+          "count": 1,
+          "contrary": 67,
+          "unknown": 2,
+          "attempted": 70
+        },
+        "criticalFailure": {
+          "target": true,
+          "count": 1,
+          "contrary": 68,
+          "unknown": 1,
+          "attempted": 70
+        }
+      },
+      "introducedSpellingGrammarExplicitlyTaggedLowerBound": 0,
+      "newErrorTypeNotStandardized": true,
+      "externalAlternativeListsOnDelivered": 28,
+      "dispositions": {
+        "rejected": 14,
+        "accepted": 36,
+        "unchanged": 18,
+        "suppressed": 1,
+        "needsReview": 1
+      },
+      "eligibleJudgmentCoverage": {
+        "allDefectsRepaired": {
+          "target": true,
+          "count": 35,
+          "contrary": 3,
+          "unknown": 16,
+          "attempted": 54
+        },
+        "cleanPreserved": {
+          "target": true,
+          "count": 16,
+          "contrary": 19,
+          "unknown": 19,
+          "attempted": 54
+        },
+        "criticalSemanticFailure": {
+          "target": true,
+          "count": 1,
+          "contrary": 52,
+          "unknown": 1,
+          "attempted": 54
+        },
+        "justified": {
+          "target": true,
+          "count": 40,
+          "contrary": 6,
+          "unknown": 8,
+          "attempted": 54
+        },
+        "meaningPreserved": {
+          "target": true,
+          "count": 52,
+          "contrary": 1,
+          "unknown": 1,
+          "attempted": 54
+        },
+        "noNewErrors": {
+          "target": true,
+          "count": 51,
+          "contrary": 1,
+          "unknown": 2,
+          "attempted": 54
+        },
+        "rejectionAppropriate": {
+          "target": true,
+          "count": 0,
+          "contrary": 0,
+          "unknown": 54,
+          "attempted": 54
+        }
+      },
+      "promptContentTokens": {
+        "mean": 158.05714285714285,
+        "total": 11064
+      },
+      "sampledOutputTokens": 976,
+      "latencyMilliseconds": {
+        "mean": 1540.1441742857144,
+        "median": 1496.5217499999999
+      },
+      "sampledPeakProcessWorkingSetBytes": 2969894912,
+      "humanApprovals": 0,
+      "recognizedSoundAlternativeErrorOccurrencesAbsentReference": 1,
+      "localRepairCreditsAbsentReference": 2,
+      "localRepairCreditsWithUnknownWholePassage": 1
+    },
+    {
+      "panel": "selection",
+      "language": "english",
+      "promptVersion": "phase4-LiteralJson-Minimal-1.0.0",
+      "attempted": 70,
+      "originallyErroneous": 42,
+      "originallyCorrect": 28,
+      "annotatedErrors": 43,
+      "deliveredErrorRepairs": {
+        "target": true,
+        "count": 33,
+        "contrary": 10,
+        "unknown": 0,
+        "attempted": 43
+      },
+      "safeDeliveredErrorRepairs": {
+        "target": true,
+        "count": 32,
+        "contrary": 10,
+        "unknown": 1,
+        "attempted": 43
+      },
+      "parsedErrorRepairs": {
+        "target": true,
+        "count": 39,
+        "contrary": 4,
+        "unknown": 0,
+        "attempted": 43
+      },
+      "missedOriginalErrors": 10,
+      "unknownOriginalErrorRepairs": 0,
+      "abstainedAnnotatedErrors": 6,
+      "validNecessaryCandidatesLost": {
+        "target": true,
+        "count": 4,
+        "contrary": 66,
+        "unknown": 0,
+        "attempted": 70
+      },
+      "soundNecessaryCandidatesLost": {
+        "target": true,
+        "count": 4,
+        "contrary": 65,
+        "unknown": 1,
+        "attempted": 70
+      },
+      "validRawNecessaryCandidatesLost": {
+        "target": true,
+        "count": 3,
+        "contrary": 67,
+        "unknown": 0,
+        "attempted": 70
+      },
+      "extractionLostValidRawCandidates": 0,
+      "localRepairedErrorsWithheld": 6,
+      "rejectedRepairAppropriateness": {
+        "target": true,
+        "count": 10,
+        "contrary": 4,
+        "unknown": 1,
+        "attempted": 15
+      },
+      "cleanPreservation": {
+        "target": true,
+        "count": 16,
+        "contrary": 12,
+        "unknown": 0,
+        "attempted": 28
+      },
+      "literalCleanPreservation": {
+        "target": true,
+        "count": 14,
+        "contrary": 14,
+        "unknown": 0,
+        "attempted": 28
+      },
+      "cleanTextDamage": {
+        "target": true,
+        "count": 3,
+        "contrary": 25,
+        "unknown": 0,
+        "attempted": 28
+      },
+      "cleanAbstentions": 9,
+      "judgments": {
+        "fullyAcceptableDelivered": {
+          "target": true,
+          "count": 40,
+          "contrary": 22,
+          "unknown": 8,
+          "attempted": 70
+        },
+        "linguisticallySoundDelivered": {
+          "target": true,
+          "count": 47,
+          "contrary": 22,
+          "unknown": 1,
+          "attempted": 70
+        },
+        "unnecessaryModification": {
+          "target": true,
+          "count": 3,
+          "contrary": 66,
+          "unknown": 1,
+          "attempted": 70
+        },
+        "meaningFailure": {
+          "target": true,
+          "count": 1,
+          "contrary": 69,
+          "unknown": 0,
+          "attempted": 70
+        },
+        "newErrors": {
+          "target": true,
+          "count": 1,
+          "contrary": 68,
+          "unknown": 1,
+          "attempted": 70
+        },
+        "criticalFailure": {
+          "target": true,
+          "count": 1,
+          "contrary": 69,
+          "unknown": 0,
+          "attempted": 70
+        }
+      },
+      "introducedSpellingGrammarExplicitlyTaggedLowerBound": 0,
+      "newErrorTypeNotStandardized": true,
+      "externalAlternativeListsOnDelivered": 30,
+      "dispositions": {
+        "rejected": 12,
+        "accepted": 37,
+        "unchanged": 18,
+        "suppressed": 2,
+        "needsReview": 1
+      },
+      "eligibleJudgmentCoverage": {
+        "allDefectsRepaired": {
+          "target": true,
+          "count": 35,
+          "contrary": 4,
+          "unknown": 16,
+          "attempted": 55
+        },
+        "cleanPreserved": {
+          "target": true,
+          "count": 16,
+          "contrary": 20,
+          "unknown": 19,
+          "attempted": 55
+        },
+        "criticalSemanticFailure": {
+          "target": true,
+          "count": 1,
+          "contrary": 54,
+          "unknown": 0,
+          "attempted": 55
+        },
+        "justified": {
+          "target": true,
+          "count": 41,
+          "contrary": 7,
+          "unknown": 7,
+          "attempted": 55
+        },
+        "meaningPreserved": {
+          "target": true,
+          "count": 54,
+          "contrary": 1,
+          "unknown": 0,
+          "attempted": 55
+        },
+        "noNewErrors": {
+          "target": true,
+          "count": 53,
+          "contrary": 1,
+          "unknown": 1,
+          "attempted": 55
+        },
+        "rejectionAppropriate": {
+          "target": true,
+          "count": 0,
+          "contrary": 0,
+          "unknown": 55,
+          "attempted": 55
+        }
+      },
+      "promptContentTokens": {
+        "mean": 184.05714285714285,
+        "total": 12884
+      },
+      "sampledOutputTokens": 965,
+      "latencyMilliseconds": {
+        "mean": 1661.8214957142857,
+        "median": 1579.5131999999999
+      },
+      "sampledPeakProcessWorkingSetBytes": 2974728192,
+      "humanApprovals": 0,
+      "recognizedSoundAlternativeErrorOccurrencesAbsentReference": 1,
+      "localRepairCreditsAbsentReference": 1,
+      "localRepairCreditsWithUnknownWholePassage": 0
+    },
+    {
+      "panel": "selection",
+      "language": "english",
+      "promptVersion": "phase4-LiteralJson-Original-1.0.0",
+      "attempted": 70,
+      "originallyErroneous": 42,
+      "originallyCorrect": 28,
+      "annotatedErrors": 43,
+      "deliveredErrorRepairs": {
+        "target": true,
+        "count": 33,
+        "contrary": 10,
+        "unknown": 0,
+        "attempted": 43
+      },
+      "safeDeliveredErrorRepairs": {
+        "target": true,
+        "count": 32,
+        "contrary": 10,
+        "unknown": 1,
+        "attempted": 43
+      },
+      "parsedErrorRepairs": {
+        "target": true,
+        "count": 39,
+        "contrary": 4,
+        "unknown": 0,
+        "attempted": 43
+      },
+      "missedOriginalErrors": 10,
+      "unknownOriginalErrorRepairs": 0,
+      "abstainedAnnotatedErrors": 6,
+      "validNecessaryCandidatesLost": {
+        "target": true,
+        "count": 4,
+        "contrary": 66,
+        "unknown": 0,
+        "attempted": 70
+      },
+      "soundNecessaryCandidatesLost": {
+        "target": true,
+        "count": 4,
+        "contrary": 66,
+        "unknown": 0,
+        "attempted": 70
+      },
+      "validRawNecessaryCandidatesLost": {
+        "target": true,
+        "count": 3,
+        "contrary": 67,
+        "unknown": 0,
+        "attempted": 70
+      },
+      "extractionLostValidRawCandidates": 0,
+      "localRepairedErrorsWithheld": 6,
+      "rejectedRepairAppropriateness": {
+        "target": true,
+        "count": 8,
+        "contrary": 4,
+        "unknown": 1,
+        "attempted": 13
+      },
+      "cleanPreservation": {
+        "target": true,
+        "count": 19,
+        "contrary": 9,
+        "unknown": 0,
+        "attempted": 28
+      },
+      "literalCleanPreservation": {
+        "target": true,
+        "count": 18,
+        "contrary": 10,
+        "unknown": 0,
+        "attempted": 28
+      },
+      "cleanTextDamage": {
+        "target": true,
+        "count": 2,
+        "contrary": 26,
+        "unknown": 0,
+        "attempted": 28
+      },
+      "cleanAbstentions": 7,
+      "judgments": {
+        "fullyAcceptableDelivered": {
+          "target": true,
+          "count": 42,
+          "contrary": 19,
+          "unknown": 9,
+          "attempted": 70
+        },
+        "linguisticallySoundDelivered": {
+          "target": true,
+          "count": 50,
+          "contrary": 19,
+          "unknown": 1,
+          "attempted": 70
+        },
+        "unnecessaryModification": {
+          "target": true,
+          "count": 2,
+          "contrary": 67,
+          "unknown": 1,
+          "attempted": 70
+        },
+        "meaningFailure": {
+          "target": true,
+          "count": 0,
+          "contrary": 70,
+          "unknown": 0,
+          "attempted": 70
+        },
+        "newErrors": {
+          "target": true,
+          "count": 0,
+          "contrary": 69,
+          "unknown": 1,
+          "attempted": 70
+        },
+        "criticalFailure": {
+          "target": true,
+          "count": 0,
+          "contrary": 70,
+          "unknown": 0,
+          "attempted": 70
+        }
+      },
+      "introducedSpellingGrammarExplicitlyTaggedLowerBound": 0,
+      "newErrorTypeNotStandardized": true,
+      "externalAlternativeListsOnDelivered": 29,
+      "dispositions": {
+        "rejected": 10,
+        "accepted": 35,
+        "unchanged": 22,
+        "suppressed": 2,
+        "needsReview": 1
+      },
+      "eligibleJudgmentCoverage": {
+        "allDefectsRepaired": {
+          "target": true,
+          "count": 35,
+          "contrary": 4,
+          "unknown": 18,
+          "attempted": 57
+        },
+        "cleanPreserved": {
+          "target": true,
+          "count": 19,
+          "contrary": 19,
+          "unknown": 19,
+          "attempted": 57
+        },
+        "criticalSemanticFailure": {
+          "target": true,
+          "count": 0,
+          "contrary": 57,
+          "unknown": 0,
+          "attempted": 57
+        },
+        "justified": {
+          "target": true,
+          "count": 43,
+          "contrary": 6,
+          "unknown": 8,
+          "attempted": 57
+        },
+        "meaningPreserved": {
+          "target": true,
+          "count": 57,
+          "contrary": 0,
+          "unknown": 0,
+          "attempted": 57
+        },
+        "noNewErrors": {
+          "target": true,
+          "count": 56,
+          "contrary": 0,
+          "unknown": 1,
+          "attempted": 57
+        },
+        "rejectionAppropriate": {
+          "target": true,
+          "count": 0,
+          "contrary": 0,
+          "unknown": 57,
+          "attempted": 57
+        }
+      },
+      "promptContentTokens": {
+        "mean": 115.05714285714286,
+        "total": 8054
+      },
+      "sampledOutputTokens": 948,
+      "latencyMilliseconds": {
+        "mean": 1449.8001,
+        "median": 1339.86805
+      },
+      "sampledPeakProcessWorkingSetBytes": 2958737408,
+      "humanApprovals": 0,
+      "recognizedSoundAlternativeErrorOccurrencesAbsentReference": 1,
+      "localRepairCreditsAbsentReference": 1,
+      "localRepairCreditsWithUnknownWholePassage": 0
+    },
+    {
+      "panel": "selection",
+      "language": "english",
+      "promptVersion": "phase4-PlainText-Original-1.0.0",
+      "attempted": 70,
+      "originallyErroneous": 42,
+      "originallyCorrect": 28,
+      "annotatedErrors": 43,
+      "deliveredErrorRepairs": {
+        "target": true,
+        "count": 31,
+        "contrary": 12,
+        "unknown": 0,
+        "attempted": 43
+      },
+      "safeDeliveredErrorRepairs": {
+        "target": true,
+        "count": 29,
+        "contrary": 12,
+        "unknown": 2,
+        "attempted": 43
+      },
+      "parsedErrorRepairs": {
+        "target": true,
+        "count": 40,
+        "contrary": 3,
+        "unknown": 0,
+        "attempted": 43
+      },
+      "missedOriginalErrors": 12,
+      "unknownOriginalErrorRepairs": 0,
+      "abstainedAnnotatedErrors": 9,
+      "validNecessaryCandidatesLost": {
+        "target": true,
+        "count": 6,
+        "contrary": 63,
+        "unknown": 1,
+        "attempted": 70
+      },
+      "soundNecessaryCandidatesLost": {
+        "target": true,
+        "count": 6,
+        "contrary": 63,
+        "unknown": 1,
+        "attempted": 70
+      },
+      "validRawNecessaryCandidatesLost": {
+        "target": true,
+        "count": 6,
+        "contrary": 63,
+        "unknown": 1,
+        "attempted": 70
+      },
+      "extractionLostValidRawCandidates": 0,
+      "localRepairedErrorsWithheld": 9,
+      "rejectedRepairAppropriateness": {
+        "target": true,
+        "count": 13,
+        "contrary": 6,
+        "unknown": 2,
+        "attempted": 21
+      },
+      "cleanPreservation": {
+        "target": true,
+        "count": 16,
+        "contrary": 12,
+        "unknown": 0,
+        "attempted": 28
+      },
+      "literalCleanPreservation": {
+        "target": true,
+        "count": 14,
+        "contrary": 14,
+        "unknown": 0,
+        "attempted": 28
+      },
+      "cleanTextDamage": {
+        "target": true,
+        "count": 0,
+        "contrary": 28,
+        "unknown": 0,
+        "attempted": 28
+      },
+      "cleanAbstentions": 12,
+      "judgments": {
+        "fullyAcceptableDelivered": {
+          "target": true,
+          "count": 36,
+          "contrary": 24,
+          "unknown": 10,
+          "attempted": 70
+        },
+        "linguisticallySoundDelivered": {
+          "target": true,
+          "count": 44,
+          "contrary": 24,
+          "unknown": 2,
+          "attempted": 70
+        },
+        "unnecessaryModification": {
+          "target": true,
+          "count": 0,
+          "contrary": 68,
+          "unknown": 2,
+          "attempted": 70
+        },
+        "meaningFailure": {
+          "target": true,
+          "count": 0,
+          "contrary": 69,
+          "unknown": 1,
+          "attempted": 70
+        },
+        "newErrors": {
+          "target": true,
+          "count": 0,
+          "contrary": 68,
+          "unknown": 2,
+          "attempted": 70
+        },
+        "criticalFailure": {
+          "target": true,
+          "count": 0,
+          "contrary": 69,
+          "unknown": 1,
+          "attempted": 70
+        }
+      },
+      "introducedSpellingGrammarExplicitlyTaggedLowerBound": 0,
+      "newErrorTypeNotStandardized": true,
+      "externalAlternativeListsOnDelivered": 27,
+      "dispositions": {
+        "rejected": 17,
+        "accepted": 32,
+        "unchanged": 17,
+        "needsReview": 3,
+        "suppressed": 1
+      },
+      "eligibleJudgmentCoverage": {
+        "allDefectsRepaired": {
+          "target": true,
+          "count": 32,
+          "contrary": 3,
+          "unknown": 14,
+          "attempted": 49
+        },
+        "cleanPreserved": {
+          "target": true,
+          "count": 16,
+          "contrary": 15,
+          "unknown": 18,
+          "attempted": 49
+        },
+        "criticalSemanticFailure": {
+          "target": true,
+          "count": 0,
+          "contrary": 48,
+          "unknown": 1,
+          "attempted": 49
+        },
+        "justified": {
+          "target": true,
+          "count": 37,
+          "contrary": 3,
+          "unknown": 9,
+          "attempted": 49
+        },
+        "meaningPreserved": {
+          "target": true,
+          "count": 48,
+          "contrary": 0,
+          "unknown": 1,
+          "attempted": 49
+        },
+        "noNewErrors": {
+          "target": true,
+          "count": 47,
+          "contrary": 0,
+          "unknown": 2,
+          "attempted": 49
+        },
+        "rejectionAppropriate": {
+          "target": true,
+          "count": 0,
+          "contrary": 0,
+          "unknown": 49,
+          "attempted": 49
+        }
+      },
+      "promptContentTokens": {
+        "mean": 184.0142857142857,
+        "total": 12881
+      },
+      "sampledOutputTokens": 1054,
+      "latencyMilliseconds": {
+        "mean": 1732.05203,
+        "median": 1587.29605
+      },
+      "sampledPeakProcessWorkingSetBytes": 2972254208,
+      "humanApprovals": 0,
+      "recognizedSoundAlternativeErrorOccurrencesAbsentReference": 1,
+      "localRepairCreditsAbsentReference": 2,
+      "localRepairCreditsWithUnknownWholePassage": 1
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+PASS Dutch start
+PASS Dutch startt
+PASS Dutch onmiddelijk
+PASS Dutch onmiddellijk
+PASS Dutch rapport
+PASS Dutch raport
+PASS Dutch langetermijnplanning
+PASS Dutch opgebeld
+PASS Dutch coördinator
+PASS Dutch reünie
+PASS Dutch goesting
+PASS English colour
+PASS English color
+PASS English can't
+PASS English can’t
+PASS English organize
+PASS English organise
+PASS English reports
+PASS English misspelling
+PASS full-word start -> startt diagnostic
+PASS AOT hint JSON
+PASS AOT strict-majority source alignment
+PASS AOT repeated-word ambiguity
+PASS AOT introduced foreign-script flag
+PASS AOT source-aware single-word emphasis extraction
+PASS AOT Phase 4 exact v3 baseline
+PASS AOT literal Unicode JSON prompt
+PASS AOT untrusted plain text prompt
+PASS AOT development-only few-shot prompt
+PASS native linguistic probe

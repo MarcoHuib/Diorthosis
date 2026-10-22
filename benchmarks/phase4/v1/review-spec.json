@@ -1,0 +1,15 @@
+[
+  {
+    "panel": "benchmarks/phase4/v1/selection.jsonl",
+    "runs": [
+      "benchmarks/phase4/v1/representation",
+      "benchmarks/phase4/v1/isolated"
+    ]
+  },
+  {
+    "panel": "benchmarks/phase4/v1/confirmation.jsonl",
+    "runs": [
+      "benchmarks/phase4/v1/confirmation-run"
+    ]
+  }
+]

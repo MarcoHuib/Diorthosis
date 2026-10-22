@@ -1,0 +1,12 @@
+{
+  "version": "phase4-ai-import-1.0.0",
+  "subjects": 70,
+  "decisions": 70,
+  "missingSubjects": [],
+  "complete": true,
+  "humanApprovals": 0,
+  "subjectsSha256": "0670e5ac8ed2d7ab939764bf43899126924742b4283fa053e66c052253d54aea",
+  "decisionsSha256": "e69290b2479eee89b569b92999e982b6e5fd3f7ed329036e54d06354e6fac816",
+  "provenanceSha256": "431b1390816c7a872d3d40947b2d6ff2aae087fbe97bda0d3d28c8d1937f4bc1",
+  "reviewer": "OpenAI GPT-6; build unavailable"
+}

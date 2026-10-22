@@ -1,0 +1,17 @@
+{
+  "reviewerId": "OpenAI Codex preparer (GPT-6 family; exact build unavailable)",
+  "reviewerKind": "ai",
+  "independenceDeclared": false,
+  "modelBuild": "unavailable",
+  "evaluationDate": "2026-10-21",
+  "priorExposure": "Full project/conditions, selection results and once-opened locked confirmation outputs in the same development session.",
+  "reviewLimitations": "This request is the latest visible user instruction, not the entire hidden/context prompt. Manual judgments were written after reading all extracted confirmation pairs. No raw-response assessment or human validation is claimed. Helper verifies literal bindings and projects exact contextual reuse; AI judgments are not guaranteed repeatable.",
+  "reviewRequest": "Continue Phase 4 on PR #7 from the current checkpoint.\nThe representation results make literal-Unicode JSON a promising experimental substrate, but not an independently validated winner. Keep production v3 unchanged.\nComplete the isolated minimal-edit, language-specific and few-shot comparisons using the frozen protocol. Pay particular attention to accepted semantic drift (`hesje` → `hemdje`, `goesting` → `geest`), Unicode corruption, valid repairs withheld by the validator, and clean-text damage.\nPreserve the frozen fixture errata and all unsuccessful cases. Choose and lock one candidate before the confirmation panel. Complete the paired confirmation run only if justified, create the blinded ChatGPT review ZIP, publish the full report and verify CI.\nDo not promote any prompt or merge the PR. Stop at the external-review checkpoint.",
+  "reviewRequestSha256": "f17c86f03bc162d411d1b66c015da264a90b8cfb99d2ab47e7898a01dac6119a",
+  "subjectsSha256": "6b30532d9a5c540c22884330ace9395404a631c9af9d0b38d0a0cb6d0e15c54c",
+  "decisionsSha256": "259122bce73e543c763e2fcb9f0497ede1b32c29fae931d7d6adb58ea4fa03d1",
+  "errorDecisionsSha256": "0131a25caf23d6030179e3b557fcf57d091dfc1ed89ee4df4e83b3cad74df449",
+  "subjectCount": 1075,
+  "decisionCount": 154,
+  "completeCoverage": false
+}

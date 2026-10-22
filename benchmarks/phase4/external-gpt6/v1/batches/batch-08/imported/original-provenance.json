@@ -1,0 +1,16 @@
+{
+  "reviewerId": "GPT-6; build unavailable",
+  "reviewerKind": "ai",
+  "independenceDeclared": false,
+  "modelBuild": "unavailable",
+  "evaluationDate": "2026-10-21",
+  "priorExposure": "Prior conversation context includes the Diorthosis project, benchmark discussions and peer-review methodology. No condition labels or hidden lineage of this Batch 08 were inspected. Source text was inspected and assessed before reading provisional annotations and candidate text. This review is AI work, not independent human validation.",
+  "reviewLimitations": "Full coverage of 55 subjects in this packet only; 10 fictional source cases. Duplicate raw/parsed/delivered texts are not independent observations. Annotation-case entries concern originals, not corrections. Source fallback after abstention and rejected typography-only outputs are not credited with successful correction or eligible clean preservation. Regional acceptability of \"zin op frieten\" (case-075) is uncertain; noNewErrors=null for those individual subjects. Strict preservation of hunger/craving nuance is interpretive. No repository, hidden lineage, preparer assessments, web search or external validation were examined; judgments are AI linguistic evidence only, not qualified human approval or overall model release readiness.",
+  "reviewRequest": "Beoordeel diorthosis Batch 08. alle oorspronkelijke Nederlandse en Engelse teksten en de bijbehorende modeluitvoer in deze Diorthosis ZIP.\n\nVolg de meegeleverde reviewinstructies strikt. Beoordeel iedere wijziging op grammatica, spelling, betekenisbehoud, onnodige aanpassingen, nieuw geïntroduceerde fouten, gemiste fouten en acceptabele alternatieven.\n\nBeoordeel eerst de oorspronkelijke tekst, daarna pas de correctie. Geef niet automatisch de voorkeur aan de meegeleverde referentietekst.\n\nBeoordeel ook afgewezen correcties afzonderlijk. Een afgewezen kandidaat is geen succesvolle verbetering.\n\nLever de volledige resultaten op als:\n- decisions.jsonl\n- error-decisions.jsonl\n- provenance.json\n\nBehoud alle oorspronkelijke subjectId- en bindingSha256-waarden exact. Gebruik reviewerKind \"ai\". Dit is een AI-beoordeling en geen menselijke validatie.\n\nVerwerk alle items in de aangeleverde batch en rapporteer expliciet als een beoordeling onzeker of onvolledig is.\n\nPlaats de drie resultaatbestanden in één ZIP met de naam diorthosis-review-batch-08.zip, waarbij 08 overeenkomt met het batchnummer van de aangeleverde ZIP. Geef mij een downloadlink naar deze ZIP.",
+  "reviewRequestSha256": "0d4c18a3f97f101794ee5b67e03cc1c685871b43dcacf775bdf76e9c61f8afd2",
+  "subjectsSha256": "57918a967a40d985a835962af95b5ada17f9869afdfc7505ed58ff7294101d43",
+  "decisionsSha256": "88187097ab728167ea80dfa4ca2ccb4cd8c1337f6942a38996d379381ac52efc",
+  "subjectCount": 55,
+  "decisionCount": 55,
+  "completeCoverage": true
+}

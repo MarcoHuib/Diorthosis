@@ -1,0 +1,25 @@
+{
+  "version": "phase4-panel-1.0.0",
+  "createdDate": "2026-10-21",
+  "passages": 200,
+  "languages": [
+    "dutch",
+    "english"
+  ],
+  "splits": {
+    "development": 20,
+    "selection": 140,
+    "confirmation": 40
+  },
+  "cleanPerLanguage": 40,
+  "humanValidatedLabels": 0,
+  "independentAIReviewedLabels": 0,
+  "files": {
+    "authoring.tsv": "48ad369468b4c76c311ab3683cb72db070f2883cf1b5c3ec27fdeecd127a6636",
+    "development.jsonl": "fde60104b3b81600c24fe43f04d8dbc4d2ef171672758fd36f6d96688296c309",
+    "selection.jsonl": "5e922d776806de0c8e78a818ad4ee144c821a0f6a2570fea9a7b8aeb635a8eb1",
+    "confirmation.jsonl": "47936154eb369bc4d5e2f60b428853e9420f95d840c8be1b9d2f267e32cfd8f5",
+    "overlap-audit.json": "bf75ea00278edb56893da3581661cbc73e50e007f7a3fef277adcf7b69d2517a"
+  },
+  "policy": "Freeze texts and acceptable alternatives before inference. Valid unlisted alternatives require separate review, never retroactive reference edits. No population quality claims."
+}

@@ -1,0 +1,98 @@
+{
+  "version": "phase4-validation-1.0.0",
+  "recordedUtc": "2026-10-21T12:09:23.240111+00:00",
+  "repositoryCommitAtValidation": "de0742dfb81e9a514fae8f4a36731ae2d4cc0a8c",
+  "uncommittedCheckpointSources": true,
+  "sourceSha256": {
+    "src/Diorthosis.Benchmarks/PromptQualityReplay.cs": "30f8ad1c98ddd07a4bb797acc0aa912e51e98ca7652b9d5261a1f4212979ce56",
+    "src/Diorthosis.Benchmarks/Program.cs": "e4a3c93068ad5a06f88e63d9777c70e51c4d9da3f755c194494f7fd892671cb2",
+    "src/Diorthosis.Experiments/PromptQuality.cs": "c9583e0d698c38deb546dcb27b901314ff7385873368ace73aec14ab324cfe0c",
+    "src/Diorthosis.Core/Corrections/CorrectionPrompt.cs": "bf55c756e66681e699d67b24cfae0062a67943a8d258b2d8fccf6f19d7279fbe",
+    ".github/workflows/ci.yml": "ec5ed63845427100dff14561a20a04d63ebfb04b6fdcf6d5850c1b4661a8e71e"
+  },
+  "dotnet": {
+    "total": 233,
+    "passed": 233,
+    "failed": 0,
+    "skipped": 0,
+    "realLocalModelIntegration": true,
+    "trxRetainedLocally": true,
+    "trxSha256": "5595860eea6cae7c22567115610fa176602e3f5b63e0b28f99a37a8ed50d08e9"
+  },
+  "python": {
+    "total": 32,
+    "passed": 32,
+    "failed": 0
+  },
+  "deterministicReplay": {
+    "generations": 920,
+    "mismatches": 0
+  },
+  "qualityInference": {
+    "generations": 920,
+    "failures": 0,
+    "allNaturalEog": true,
+    "modelSha256": "9ed150d4367e68df0ac8e1540f6ddc65b42d0ee26378329d1ecbca60f93fc5f8",
+    "network": "Entire inference process OS-denied with EPERM preflight"
+  },
+  "nativeAot": {
+    "platform": "macOS ARM64",
+    "cliPublish": "passed",
+    "promptProbePublish": "passed",
+    "networkDenied": true,
+    "nonexistentDotnetRoot": true,
+    "modelFreeContracts": "passed",
+    "separateBaselineSmokeGenerations": 3
+  },
+  "inheritedArtifactsUnchanged": {
+    "historical": 84,
+    "phase2": 165,
+    "phase3": 68,
+    "externalGpt6": 47
+  },
+  "recoveredDeveloperEnvironmentIssues": [
+    "Restricted MSBuild/VSTest IPC permission failures; single-node build and approved test runner passed.",
+    "Hardware sysctl denied before initial inference launch; approved driver retry kept enforced network denial.",
+    "Restricted Native AOT publish stalled before native-code generation and was cancelled; build-permission retry passed. Underlying cause not independently diagnosed."
+  ],
+  "logs": {
+    "build": {
+      "originalLocalSha256": "2537d844fc806f3cad61f2acf940043987633b66d48f15797e7623864fedf37c",
+      "publicSha256": "1b42c2c7c8be067bf948bbc5ac477cdd52832b601af90247e5a084589b7e13cb",
+      "redaction": "Workspace and temporary directory prefixes replaced; original developer logs retained locally, not public benchmark text."
+    },
+    "dotnet-tests": {
+      "originalLocalSha256": "b1475e9fc4122c34d3a5cf75f60f199b99c0bfa365f0170839a5356352248ee5",
+      "publicSha256": "44d8531a5631b46e697a015a73b22504ed70b27cf9d7164014217f2c607fbcb7",
+      "redaction": "Workspace and temporary directory prefixes replaced; original developer logs retained locally, not public benchmark text."
+    },
+    "python-tests": {
+      "originalLocalSha256": "132afb1092ccaa022ce28f6117015b6befd712c6d63725c24c28768c4c426721",
+      "publicSha256": "132afb1092ccaa022ce28f6117015b6befd712c6d63725c24c28768c4c426721",
+      "redaction": "Workspace and temporary directory prefixes replaced; original developer logs retained locally, not public benchmark text."
+    },
+    "aot-cli": {
+      "originalLocalSha256": "291c0550131a8ffd5be52edb4ae861c63446bff03852af01e34fb2d008e250cc",
+      "publicSha256": "0310aa8339c615c17a7b7e0a1dbbb5ab2469c876bdbf4ffbcc4ed08504dcf619",
+      "redaction": "Workspace and temporary directory prefixes replaced; original developer logs retained locally, not public benchmark text."
+    },
+    "aot-probe": {
+      "originalLocalSha256": "3cef38d66dd112b186a5e71f9cffd8200eabfead6beb2a51495fe96b1e639122",
+      "publicSha256": "042a8ca4611f0f6eedab6c3d56219bd3c60019cf9e58a4b196edf43d10786198",
+      "redaction": "Workspace and temporary directory prefixes replaced; original developer logs retained locally, not public benchmark text."
+    },
+    "restricted-aot-cancelled": {
+      "originalLocalSha256": "089e0e088bebc843b46d2abd6a74df10997265231bce767a9f961e679519ab4c",
+      "publicSha256": "0c1174f018a176d7c2e4f210f21c1d362de91f4407face16f1d0f9dac48379d3",
+      "redaction": "Workspace and temporary directory prefixes replaced; original developer logs retained locally, not public benchmark text."
+    },
+    "inherited": {
+      "originalLocalSha256": "b6f9e813d91ee9120b1be5f92957ca758d0a8d86ad4a95e27b1671f1e0adfd4d",
+      "publicSha256": "b6f9e813d91ee9120b1be5f92957ca758d0a8d86ad4a95e27b1671f1e0adfd4d",
+      "redaction": "Workspace and temporary directory prefixes replaced; original developer logs retained locally, not public benchmark text."
+    }
+  },
+  "independentAiAssessments": 0,
+  "humanApprovals": 0,
+  "ci": "Current-head CI commit/run/status is pinned in draft PR #7; local checks are not foreign-platform real-weight validation."
+}

@@ -1,0 +1,16 @@
+{
+  "reviewerId": "GPT-6; build unavailable",
+  "reviewerKind": "ai",
+  "independenceDeclared": false,
+  "modelBuild": "unavailable",
+  "evaluationDate": "2026-10-21",
+  "priorExposure": "Evaluator had prior Diorthosis project context and prior batch-review conversation summaries (including batch IDs 09-16 and earlier plans), so blind material has not been shown to a reviewer free of prior exposure. For this evaluation only supplied subjects.jsonl, review.html, manifest and CHATGPT-REVIEW.md were inspected. Supplied condition lineage and preparer assessments were not opened. All source texts were read and evaluated independently before comparing candidate texts and provisional annotations.",
+  "reviewLimitations": "Single AI evaluator, not a qualified human review; no independent validation or claim of release readiness. Ten fictional cases, 62 subjects within supplied Batch 17 only; duplicated candidate strings across raw/parsed/delivered layers are not independent observations. Candidate-level judgments are not equivalent to delivered repair; rejected candidates are explicitly distinguished. Markdown-marked raw/parsed output can be ambiguous between literal plain text and rendered formatting: the corresponding assessment fields are null where undecidable without a format contract. Meaning of nonword “onontvangen” cannot be determined reliably; critical-semantic-failure status is null for that variant. Source annotation for the emoji-leading Dutch passage appears to employ UTF-16 indices rather than Python Unicode code-point indices; its literal originalText and annotationIndex were retained, not normalized or rewritten. Evaluation did not inspect independent target software or execute an importer, and cannot establish production quality.",
+  "reviewRequest": "Beoordeel diorthosis Batch 17. alle oorspronkelijke Nederlandse en Engelse teksten en de bijbehorende modeluitvoer in deze Diorthosis ZIP.\n\nVolg de meegeleverde reviewinstructies strikt. Beoordeel iedere wijziging op grammatica, spelling, betekenisbehoud, onnodige aanpassingen, nieuw geïntroduceerde fouten, gemiste fouten en acceptabele alternatieven.\n\nBeoordeel eerst de oorspronkelijke tekst, daarna pas de correctie. Geef niet automatisch de voorkeur aan de meegeleverde referentietekst.\n\nBeoordeel ook afgewezen correcties afzonderlijk. Een afgewezen kandidaat is geen succesvolle verbetering.\n\nLever de volledige resultaten op als:\n- decisions.jsonl\n- error-decisions.jsonl\n- provenance.json\n\nBehoud alle oorspronkelijke subjectId- en bindingSha256-waarden exact. Gebruik reviewerKind \"ai\". Dit is een AI-beoordeling en geen menselijke validatie.\n\nVerwerk alle items in de aangeleverde batch en rapporteer expliciet als een beoordeling onzeker of onvolledig is.\n\nPlaats de drie resultaatbestanden in één ZIP met de naam diorthosis-review-batch-17.zip, waarbij 17 overeenkomt met het batchnummer van de aangeleverde ZIP. Geef mij een downloadlink naar deze ZIP.",
+  "reviewRequestSha256": "481860e40ed76f10642d6692f900ec1920745b5ea8fc3574432a4d8e859e3ba6",
+  "subjectsSha256": "6a00eaa5d2013ed403455278a8783f6a1a74401c25df04cfb0af7e43d311151e",
+  "decisionsSha256": "8efe5be67de0ad17376e3997aa5f43cba9e5ab87b10d97c4ce88801bd46c6495",
+  "subjectCount": 62,
+  "decisionCount": 62,
+  "completeCoverage": true
+}

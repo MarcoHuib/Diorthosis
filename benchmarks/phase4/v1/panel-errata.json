@@ -1,0 +1,20 @@
+{
+  "version": "phase4-panel-errata-1.0.0",
+  "discoveredDuring": "selection representation run, before confirmation inference",
+  "flags": [
+    {
+      "caseId": "p4-nl-selection-066",
+      "frozenInputSha256": "431811bb2fd21411374656048f2340019aedb2c9742c0c578738dcc94f1b3893",
+      "issue": "Fixture assembly interpreted backslash-t/backslash-n inside the intended Windows path as tab/newline. The frozen literal is a control-character diagnostic, not a valid Windows-path preservation example.",
+      "annotationAuthority": "AI-proposed clean label disputed for realistic path use; grammar/meaning judgments require review",
+      "policy": "Retain every attempt and frozen label. Original-label mechanical diagnostics remain, with caveat. Do not claim validated clean Windows-path evidence. No text/reference rewrite or silent case exclusion."
+    },
+    {
+      "caseId": "p4-en-selection-065",
+      "frozenInputSha256": "3773cd2086bd3beda7b1792bac3b319fbace6408fd7c5eeb1bd8df9ddd56a876",
+      "issue": "Fixture assembly interpreted backslash-t/backslash-n inside the intended Windows path as tab/newline. The frozen literal is a control-character diagnostic, not a valid Windows-path preservation example.",
+      "annotationAuthority": "AI-proposed clean label disputed for realistic path use; grammar/meaning judgments require review",
+      "policy": "Retain every attempt and frozen label. Original-label mechanical diagnostics remain, with caveat. Do not claim validated clean Windows-path evidence. No text/reference rewrite or silent case exclusion."
+    }
+  ]
+}

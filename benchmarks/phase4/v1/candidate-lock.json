@@ -1,0 +1,29 @@
+{
+  "version": "phase4-candidate-lock-1.0.0",
+  "lockedUtc": "2026-10-21T11:53:38.249931+00:00",
+  "candidate": "phase4-LiteralJson-Original-1.0.0",
+  "representation": "LiteralJson",
+  "instruction": "Original",
+  "productionControl": "diorthosis-correction-v3",
+  "confirmationSources": 40,
+  "confirmationPanelSha256": "47936154eb369bc4d5e2f60b428853e9420f95d840c8be1b9d2f267e32cfd8f5",
+  "confirmationInferredBeforeLock": false,
+  "promptImplementationSha256": "c9583e0d698c38deb546dcb27b901314ff7385873368ace73aec14ab324cfe0c",
+  "evidenceSha256": {
+    "representation/trace.jsonl": "13e085717d94d3df72b5e42ea9989680f001bb9b84238ecad0374a0676821c50",
+    "isolated/trace.jsonl": "0668e5ddc3952b2610bb6615eee047652b2d5811aab140ca2d34c2fc576d2c3b",
+    "selection-analysis/summary.json": "0c5f6290de0d123920e6246f7f3d098824f3ab87068f257868f9f4508284b039",
+    "panel-errata.json": "b4869e18fa073fd24b6907f9de5f103034d1b68f0ba3c971dc45e933b50e61c1",
+    "freeze.json": "e374f554c6ed94635c40a2ae44845139e740563938a71230f765714da4771787"
+  },
+  "rationale": [
+    "Original literal JSON has measured selection gains versus exact production v3 in both languages, with concrete Unicode/identifier and delivered-repair gains; no independent superiority claim follows.",
+    "Language-specific instructions gain Dutch repairs but lose an English repair, damage clean text and change hesje to heksje and plural pumps to singular pump.",
+    "Few-shot has mixed paired error gains/losses, an English agreement loss, lower English eligible clean preservation than literal original, new onontvangen damage and extra token/latency cost.",
+    "Minimal instructions add an accepted appetite-to-nausea change, unnecessary clean changes and new onontvangen damage. They do not justify a minimal+few-shot combination.",
+    "The original literal-JSON candidate still has accepted semantic failures. Confirmation is a bounded exploratory check of the serialization treatment, not promotion or proof of safety."
+  ],
+  "combinedArm": "not run: preregistered isolated safety/clean-preservation trigger failed",
+  "confirmationPolicy": "One paired run of exact v3 and locked literal JSON on all 40 reserved sources; no prompt/annotation edits or second confirmation pass after seeing outputs.",
+  "productionDecision": "retain v3; no promotion or merge; stop for external linguistic review"
+}

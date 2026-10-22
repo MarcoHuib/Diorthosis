@@ -1,0 +1,1528 @@
+{
+  "review-edaff753383de453d46667c6b90d64dc8838ea532a6b9537ca22ec540047851e": [
+    {
+      "model": "source-annotations",
+      "originalCaseId": "p4-en-selection-009"
+    }
+  ],
+  "review-11a244736a7edd89633cd700a6abba1b133abf245c8978002ee0ca884cbd4a54": [
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "diorthosis-correction-v3",
+      "originalCaseId": "p4-en-selection-009",
+      "traceSha256": "13e085717d94d3df72b5e42ea9989680f001bb9b84238ecad0374a0676821c50",
+      "run": "benchmarks/phase4/v1/representation",
+      "disposition": "accepted",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-Original-1.0.0",
+      "originalCaseId": "p4-en-selection-009",
+      "traceSha256": "13e085717d94d3df72b5e42ea9989680f001bb9b84238ecad0374a0676821c50",
+      "run": "benchmarks/phase4/v1/representation",
+      "disposition": "accepted",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-Minimal-1.0.0",
+      "originalCaseId": "p4-en-selection-009",
+      "traceSha256": "0668e5ddc3952b2610bb6615eee047652b2d5811aab140ca2d34c2fc576d2c3b",
+      "run": "benchmarks/phase4/v1/isolated",
+      "disposition": "accepted",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-LanguageSpecific-1.0.0",
+      "originalCaseId": "p4-en-selection-009",
+      "traceSha256": "0668e5ddc3952b2610bb6615eee047652b2d5811aab140ca2d34c2fc576d2c3b",
+      "run": "benchmarks/phase4/v1/isolated",
+      "disposition": "accepted",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-FewShot-1.0.0",
+      "originalCaseId": "p4-en-selection-009",
+      "traceSha256": "0668e5ddc3952b2610bb6615eee047652b2d5811aab140ca2d34c2fc576d2c3b",
+      "run": "benchmarks/phase4/v1/isolated",
+      "disposition": "accepted",
+      "generationTermination": "EndOfGeneration"
+    }
+  ],
+  "review-419285328cb2cf2c86efdad78ed099a0f82af4642d644fd01754d6f43dacc617": [
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-PlainText-Original-1.0.0",
+      "originalCaseId": "p4-en-selection-009",
+      "traceSha256": "13e085717d94d3df72b5e42ea9989680f001bb9b84238ecad0374a0676821c50",
+      "run": "benchmarks/phase4/v1/representation",
+      "disposition": "rejected",
+      "generationTermination": "EndOfGeneration"
+    }
+  ],
+  "review-e8392481eb2865015a25b6c4f3014245f2c11568435dab2ce3db73283382c415": [
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "diorthosis-correction-v3",
+      "originalCaseId": "p4-en-selection-009",
+      "traceSha256": "13e085717d94d3df72b5e42ea9989680f001bb9b84238ecad0374a0676821c50",
+      "run": "benchmarks/phase4/v1/representation",
+      "disposition": "accepted",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-Original-1.0.0",
+      "originalCaseId": "p4-en-selection-009",
+      "traceSha256": "13e085717d94d3df72b5e42ea9989680f001bb9b84238ecad0374a0676821c50",
+      "run": "benchmarks/phase4/v1/representation",
+      "disposition": "accepted",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-Minimal-1.0.0",
+      "originalCaseId": "p4-en-selection-009",
+      "traceSha256": "0668e5ddc3952b2610bb6615eee047652b2d5811aab140ca2d34c2fc576d2c3b",
+      "run": "benchmarks/phase4/v1/isolated",
+      "disposition": "accepted",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-LanguageSpecific-1.0.0",
+      "originalCaseId": "p4-en-selection-009",
+      "traceSha256": "0668e5ddc3952b2610bb6615eee047652b2d5811aab140ca2d34c2fc576d2c3b",
+      "run": "benchmarks/phase4/v1/isolated",
+      "disposition": "accepted",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-FewShot-1.0.0",
+      "originalCaseId": "p4-en-selection-009",
+      "traceSha256": "0668e5ddc3952b2610bb6615eee047652b2d5811aab140ca2d34c2fc576d2c3b",
+      "run": "benchmarks/phase4/v1/isolated",
+      "disposition": "accepted",
+      "generationTermination": "EndOfGeneration"
+    }
+  ],
+  "review-0bc0fc5bbea9b6cd5f6ed59b332fe7359b80d10e720b34350484b8a15c16f099": [
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-PlainText-Original-1.0.0",
+      "originalCaseId": "p4-en-selection-009",
+      "traceSha256": "13e085717d94d3df72b5e42ea9989680f001bb9b84238ecad0374a0676821c50",
+      "run": "benchmarks/phase4/v1/representation",
+      "disposition": "rejected",
+      "generationTermination": "EndOfGeneration"
+    }
+  ],
+  "review-75097a1ac98f00c4553fdbc0517d43d61f2aca2c0c38b489ce967a3852dc1205": [
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-PlainText-Original-1.0.0",
+      "originalCaseId": "p4-en-selection-009",
+      "traceSha256": "13e085717d94d3df72b5e42ea9989680f001bb9b84238ecad0374a0676821c50",
+      "run": "benchmarks/phase4/v1/representation",
+      "disposition": "rejected",
+      "generationTermination": "EndOfGeneration"
+    }
+  ],
+  "review-8bf695e82d938da776a573b4c0acc75c314dbc5a7f9ed0ab596651e1be192399": [
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "diorthosis-correction-v3",
+      "originalCaseId": "p4-en-selection-009",
+      "traceSha256": "13e085717d94d3df72b5e42ea9989680f001bb9b84238ecad0374a0676821c50",
+      "run": "benchmarks/phase4/v1/representation",
+      "disposition": "accepted",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-Original-1.0.0",
+      "originalCaseId": "p4-en-selection-009",
+      "traceSha256": "13e085717d94d3df72b5e42ea9989680f001bb9b84238ecad0374a0676821c50",
+      "run": "benchmarks/phase4/v1/representation",
+      "disposition": "accepted",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-Minimal-1.0.0",
+      "originalCaseId": "p4-en-selection-009",
+      "traceSha256": "0668e5ddc3952b2610bb6615eee047652b2d5811aab140ca2d34c2fc576d2c3b",
+      "run": "benchmarks/phase4/v1/isolated",
+      "disposition": "accepted",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-LanguageSpecific-1.0.0",
+      "originalCaseId": "p4-en-selection-009",
+      "traceSha256": "0668e5ddc3952b2610bb6615eee047652b2d5811aab140ca2d34c2fc576d2c3b",
+      "run": "benchmarks/phase4/v1/isolated",
+      "disposition": "accepted",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-FewShot-1.0.0",
+      "originalCaseId": "p4-en-selection-009",
+      "traceSha256": "0668e5ddc3952b2610bb6615eee047652b2d5811aab140ca2d34c2fc576d2c3b",
+      "run": "benchmarks/phase4/v1/isolated",
+      "disposition": "accepted",
+      "generationTermination": "EndOfGeneration"
+    }
+  ],
+  "review-3f8c29136cd5ca33fd7c60ba77818813742f36e86f14c7d8b8ac9e4ef7212357": [
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-PlainText-Original-1.0.0",
+      "originalCaseId": "p4-en-selection-009",
+      "traceSha256": "13e085717d94d3df72b5e42ea9989680f001bb9b84238ecad0374a0676821c50",
+      "run": "benchmarks/phase4/v1/representation",
+      "disposition": "rejected",
+      "generationTermination": "EndOfGeneration"
+    }
+  ],
+  "review-6c98232f2b195f6daca5e5db03137590afd00a6b6d23b3097ea537ca58365b55": [
+    {
+      "model": "source-annotations",
+      "originalCaseId": "p4-en-selection-046"
+    }
+  ],
+  "review-f304976ece093cdcfe627bbdabc7911f1c4b097be4f1dcc3162db7d345fac32f": [
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-PlainText-Original-1.0.0",
+      "originalCaseId": "p4-en-selection-046",
+      "traceSha256": "13e085717d94d3df72b5e42ea9989680f001bb9b84238ecad0374a0676821c50",
+      "run": "benchmarks/phase4/v1/representation",
+      "disposition": "rejected",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "diorthosis-correction-v3",
+      "originalCaseId": "p4-en-selection-046",
+      "traceSha256": "13e085717d94d3df72b5e42ea9989680f001bb9b84238ecad0374a0676821c50",
+      "run": "benchmarks/phase4/v1/representation",
+      "disposition": "rejected",
+      "generationTermination": "EndOfGeneration"
+    }
+  ],
+  "review-eff23a7c7db938da1c7d4e3b9b59218d950a56dc96b81f4399c679ed9683135c": [
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-PlainText-Original-1.0.0",
+      "originalCaseId": "p4-en-selection-046",
+      "traceSha256": "13e085717d94d3df72b5e42ea9989680f001bb9b84238ecad0374a0676821c50",
+      "run": "benchmarks/phase4/v1/representation",
+      "disposition": "rejected",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "diorthosis-correction-v3",
+      "originalCaseId": "p4-en-selection-046",
+      "traceSha256": "13e085717d94d3df72b5e42ea9989680f001bb9b84238ecad0374a0676821c50",
+      "run": "benchmarks/phase4/v1/representation",
+      "disposition": "rejected",
+      "generationTermination": "EndOfGeneration"
+    }
+  ],
+  "review-2790487dd22a45211fa678912d334c41b5c6d335f91479eb6ba1a45716a2ec6c": [
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-Original-1.0.0",
+      "originalCaseId": "p4-en-selection-046",
+      "traceSha256": "13e085717d94d3df72b5e42ea9989680f001bb9b84238ecad0374a0676821c50",
+      "run": "benchmarks/phase4/v1/representation",
+      "disposition": "unchanged",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-LanguageSpecific-1.0.0",
+      "originalCaseId": "p4-en-selection-046",
+      "traceSha256": "0668e5ddc3952b2610bb6615eee047652b2d5811aab140ca2d34c2fc576d2c3b",
+      "run": "benchmarks/phase4/v1/isolated",
+      "disposition": "unchanged",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-FewShot-1.0.0",
+      "originalCaseId": "p4-en-selection-046",
+      "traceSha256": "0668e5ddc3952b2610bb6615eee047652b2d5811aab140ca2d34c2fc576d2c3b",
+      "run": "benchmarks/phase4/v1/isolated",
+      "disposition": "unchanged",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-Minimal-1.0.0",
+      "originalCaseId": "p4-en-selection-046",
+      "traceSha256": "0668e5ddc3952b2610bb6615eee047652b2d5811aab140ca2d34c2fc576d2c3b",
+      "run": "benchmarks/phase4/v1/isolated",
+      "disposition": "unchanged",
+      "generationTermination": "EndOfGeneration"
+    }
+  ],
+  "review-65647a78c22bc9b9207cf1e0800f5fd2f2dd7b8ff4cbb2eea437511503591c3f": [
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-PlainText-Original-1.0.0",
+      "originalCaseId": "p4-en-selection-046",
+      "traceSha256": "13e085717d94d3df72b5e42ea9989680f001bb9b84238ecad0374a0676821c50",
+      "run": "benchmarks/phase4/v1/representation",
+      "disposition": "rejected",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "diorthosis-correction-v3",
+      "originalCaseId": "p4-en-selection-046",
+      "traceSha256": "13e085717d94d3df72b5e42ea9989680f001bb9b84238ecad0374a0676821c50",
+      "run": "benchmarks/phase4/v1/representation",
+      "disposition": "rejected",
+      "generationTermination": "EndOfGeneration"
+    }
+  ],
+  "review-f1e3f4d8279d33b0ad2d6147878f061d12e991d1c6b7a36df9bab1be4d223672": [
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-Original-1.0.0",
+      "originalCaseId": "p4-en-selection-046",
+      "traceSha256": "13e085717d94d3df72b5e42ea9989680f001bb9b84238ecad0374a0676821c50",
+      "run": "benchmarks/phase4/v1/representation",
+      "disposition": "unchanged",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-LanguageSpecific-1.0.0",
+      "originalCaseId": "p4-en-selection-046",
+      "traceSha256": "0668e5ddc3952b2610bb6615eee047652b2d5811aab140ca2d34c2fc576d2c3b",
+      "run": "benchmarks/phase4/v1/isolated",
+      "disposition": "unchanged",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-FewShot-1.0.0",
+      "originalCaseId": "p4-en-selection-046",
+      "traceSha256": "0668e5ddc3952b2610bb6615eee047652b2d5811aab140ca2d34c2fc576d2c3b",
+      "run": "benchmarks/phase4/v1/isolated",
+      "disposition": "unchanged",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-Minimal-1.0.0",
+      "originalCaseId": "p4-en-selection-046",
+      "traceSha256": "0668e5ddc3952b2610bb6615eee047652b2d5811aab140ca2d34c2fc576d2c3b",
+      "run": "benchmarks/phase4/v1/isolated",
+      "disposition": "unchanged",
+      "generationTermination": "EndOfGeneration"
+    }
+  ],
+  "review-b509737aeb5a36f9fff927c92275a91a7b8e7e6d48bc6fdeca89b98caf147c8c": [
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-Original-1.0.0",
+      "originalCaseId": "p4-en-selection-046",
+      "traceSha256": "13e085717d94d3df72b5e42ea9989680f001bb9b84238ecad0374a0676821c50",
+      "run": "benchmarks/phase4/v1/representation",
+      "disposition": "unchanged",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-LanguageSpecific-1.0.0",
+      "originalCaseId": "p4-en-selection-046",
+      "traceSha256": "0668e5ddc3952b2610bb6615eee047652b2d5811aab140ca2d34c2fc576d2c3b",
+      "run": "benchmarks/phase4/v1/isolated",
+      "disposition": "unchanged",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-FewShot-1.0.0",
+      "originalCaseId": "p4-en-selection-046",
+      "traceSha256": "0668e5ddc3952b2610bb6615eee047652b2d5811aab140ca2d34c2fc576d2c3b",
+      "run": "benchmarks/phase4/v1/isolated",
+      "disposition": "unchanged",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-Minimal-1.0.0",
+      "originalCaseId": "p4-en-selection-046",
+      "traceSha256": "0668e5ddc3952b2610bb6615eee047652b2d5811aab140ca2d34c2fc576d2c3b",
+      "run": "benchmarks/phase4/v1/isolated",
+      "disposition": "unchanged",
+      "generationTermination": "EndOfGeneration"
+    }
+  ],
+  "review-da7c4a23d7d0866e86695c493d51d69c48e24dbdf900bf72302e88af30ae6579": [
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-PlainText-Original-1.0.0",
+      "originalCaseId": "p4-en-selection-046",
+      "traceSha256": "13e085717d94d3df72b5e42ea9989680f001bb9b84238ecad0374a0676821c50",
+      "run": "benchmarks/phase4/v1/representation",
+      "disposition": "rejected",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "diorthosis-correction-v3",
+      "originalCaseId": "p4-en-selection-046",
+      "traceSha256": "13e085717d94d3df72b5e42ea9989680f001bb9b84238ecad0374a0676821c50",
+      "run": "benchmarks/phase4/v1/representation",
+      "disposition": "rejected",
+      "generationTermination": "EndOfGeneration"
+    }
+  ],
+  "review-607d9fa072c768c7e0a8b393c44ece1f8984c06d17330f7158810350e6968b0b": [
+    {
+      "model": "source-annotations",
+      "originalCaseId": "p4-en-selection-040"
+    }
+  ],
+  "review-801771833963ce4236fdd055a6416972c88048e0863e28827be0e7295e3af801": [
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-Original-1.0.0",
+      "originalCaseId": "p4-en-selection-040",
+      "traceSha256": "13e085717d94d3df72b5e42ea9989680f001bb9b84238ecad0374a0676821c50",
+      "run": "benchmarks/phase4/v1/representation",
+      "disposition": "accepted",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-PlainText-Original-1.0.0",
+      "originalCaseId": "p4-en-selection-040",
+      "traceSha256": "13e085717d94d3df72b5e42ea9989680f001bb9b84238ecad0374a0676821c50",
+      "run": "benchmarks/phase4/v1/representation",
+      "disposition": "accepted",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "diorthosis-correction-v3",
+      "originalCaseId": "p4-en-selection-040",
+      "traceSha256": "13e085717d94d3df72b5e42ea9989680f001bb9b84238ecad0374a0676821c50",
+      "run": "benchmarks/phase4/v1/representation",
+      "disposition": "accepted",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-LanguageSpecific-1.0.0",
+      "originalCaseId": "p4-en-selection-040",
+      "traceSha256": "0668e5ddc3952b2610bb6615eee047652b2d5811aab140ca2d34c2fc576d2c3b",
+      "run": "benchmarks/phase4/v1/isolated",
+      "disposition": "accepted",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-FewShot-1.0.0",
+      "originalCaseId": "p4-en-selection-040",
+      "traceSha256": "0668e5ddc3952b2610bb6615eee047652b2d5811aab140ca2d34c2fc576d2c3b",
+      "run": "benchmarks/phase4/v1/isolated",
+      "disposition": "accepted",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-Minimal-1.0.0",
+      "originalCaseId": "p4-en-selection-040",
+      "traceSha256": "0668e5ddc3952b2610bb6615eee047652b2d5811aab140ca2d34c2fc576d2c3b",
+      "run": "benchmarks/phase4/v1/isolated",
+      "disposition": "accepted",
+      "generationTermination": "EndOfGeneration"
+    }
+  ],
+  "review-d644dcda420cbcd32bfa3521b0dc1b82e25ee201476c4a271023e38aaebd9f2f": [
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-Original-1.0.0",
+      "originalCaseId": "p4-en-selection-040",
+      "traceSha256": "13e085717d94d3df72b5e42ea9989680f001bb9b84238ecad0374a0676821c50",
+      "run": "benchmarks/phase4/v1/representation",
+      "disposition": "accepted",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-PlainText-Original-1.0.0",
+      "originalCaseId": "p4-en-selection-040",
+      "traceSha256": "13e085717d94d3df72b5e42ea9989680f001bb9b84238ecad0374a0676821c50",
+      "run": "benchmarks/phase4/v1/representation",
+      "disposition": "accepted",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "diorthosis-correction-v3",
+      "originalCaseId": "p4-en-selection-040",
+      "traceSha256": "13e085717d94d3df72b5e42ea9989680f001bb9b84238ecad0374a0676821c50",
+      "run": "benchmarks/phase4/v1/representation",
+      "disposition": "accepted",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-LanguageSpecific-1.0.0",
+      "originalCaseId": "p4-en-selection-040",
+      "traceSha256": "0668e5ddc3952b2610bb6615eee047652b2d5811aab140ca2d34c2fc576d2c3b",
+      "run": "benchmarks/phase4/v1/isolated",
+      "disposition": "accepted",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-FewShot-1.0.0",
+      "originalCaseId": "p4-en-selection-040",
+      "traceSha256": "0668e5ddc3952b2610bb6615eee047652b2d5811aab140ca2d34c2fc576d2c3b",
+      "run": "benchmarks/phase4/v1/isolated",
+      "disposition": "accepted",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-Minimal-1.0.0",
+      "originalCaseId": "p4-en-selection-040",
+      "traceSha256": "0668e5ddc3952b2610bb6615eee047652b2d5811aab140ca2d34c2fc576d2c3b",
+      "run": "benchmarks/phase4/v1/isolated",
+      "disposition": "accepted",
+      "generationTermination": "EndOfGeneration"
+    }
+  ],
+  "review-96dd83437f837be0fed9e0fc417b5154bfb75991097f5ea7545d1ad066859021": [
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-Original-1.0.0",
+      "originalCaseId": "p4-en-selection-040",
+      "traceSha256": "13e085717d94d3df72b5e42ea9989680f001bb9b84238ecad0374a0676821c50",
+      "run": "benchmarks/phase4/v1/representation",
+      "disposition": "accepted",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-PlainText-Original-1.0.0",
+      "originalCaseId": "p4-en-selection-040",
+      "traceSha256": "13e085717d94d3df72b5e42ea9989680f001bb9b84238ecad0374a0676821c50",
+      "run": "benchmarks/phase4/v1/representation",
+      "disposition": "accepted",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "diorthosis-correction-v3",
+      "originalCaseId": "p4-en-selection-040",
+      "traceSha256": "13e085717d94d3df72b5e42ea9989680f001bb9b84238ecad0374a0676821c50",
+      "run": "benchmarks/phase4/v1/representation",
+      "disposition": "accepted",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-LanguageSpecific-1.0.0",
+      "originalCaseId": "p4-en-selection-040",
+      "traceSha256": "0668e5ddc3952b2610bb6615eee047652b2d5811aab140ca2d34c2fc576d2c3b",
+      "run": "benchmarks/phase4/v1/isolated",
+      "disposition": "accepted",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-FewShot-1.0.0",
+      "originalCaseId": "p4-en-selection-040",
+      "traceSha256": "0668e5ddc3952b2610bb6615eee047652b2d5811aab140ca2d34c2fc576d2c3b",
+      "run": "benchmarks/phase4/v1/isolated",
+      "disposition": "accepted",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-Minimal-1.0.0",
+      "originalCaseId": "p4-en-selection-040",
+      "traceSha256": "0668e5ddc3952b2610bb6615eee047652b2d5811aab140ca2d34c2fc576d2c3b",
+      "run": "benchmarks/phase4/v1/isolated",
+      "disposition": "accepted",
+      "generationTermination": "EndOfGeneration"
+    }
+  ],
+  "review-f420ae02845712de7771af2944016ec1071c032716f6a9ca2cdba4faee3a42c5": [
+    {
+      "model": "source-annotations",
+      "originalCaseId": "p4-nl-confirmation-020"
+    }
+  ],
+  "review-6901a8f75a59f56869541ca8b0b1740e73cb8969d000e53755f8c050e628cc48": [
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-Original-1.0.0",
+      "originalCaseId": "p4-nl-confirmation-020",
+      "traceSha256": "cd4c7b55882739c23b79c140b868d9f691274af7af36b8a97e330de079843fe8",
+      "run": "benchmarks/phase4/v1/confirmation-run",
+      "disposition": "suppressed",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "diorthosis-correction-v3",
+      "originalCaseId": "p4-nl-confirmation-020",
+      "traceSha256": "cd4c7b55882739c23b79c140b868d9f691274af7af36b8a97e330de079843fe8",
+      "run": "benchmarks/phase4/v1/confirmation-run",
+      "disposition": "suppressed",
+      "generationTermination": "EndOfGeneration"
+    }
+  ],
+  "review-6cd389c2e37f5725899141ae73c1a84ff78b7677782993817d3f7ea85d1142a1": [
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-Original-1.0.0",
+      "originalCaseId": "p4-nl-confirmation-020",
+      "traceSha256": "cd4c7b55882739c23b79c140b868d9f691274af7af36b8a97e330de079843fe8",
+      "run": "benchmarks/phase4/v1/confirmation-run",
+      "disposition": "suppressed",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "diorthosis-correction-v3",
+      "originalCaseId": "p4-nl-confirmation-020",
+      "traceSha256": "cd4c7b55882739c23b79c140b868d9f691274af7af36b8a97e330de079843fe8",
+      "run": "benchmarks/phase4/v1/confirmation-run",
+      "disposition": "suppressed",
+      "generationTermination": "EndOfGeneration"
+    }
+  ],
+  "review-e839f445eb5ed6b4c6ac3ff263702514262035324af673742bde66c5a0b941bc": [
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-Original-1.0.0",
+      "originalCaseId": "p4-nl-confirmation-020",
+      "traceSha256": "cd4c7b55882739c23b79c140b868d9f691274af7af36b8a97e330de079843fe8",
+      "run": "benchmarks/phase4/v1/confirmation-run",
+      "disposition": "suppressed",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "diorthosis-correction-v3",
+      "originalCaseId": "p4-nl-confirmation-020",
+      "traceSha256": "cd4c7b55882739c23b79c140b868d9f691274af7af36b8a97e330de079843fe8",
+      "run": "benchmarks/phase4/v1/confirmation-run",
+      "disposition": "suppressed",
+      "generationTermination": "EndOfGeneration"
+    }
+  ],
+  "review-18c2db998440e3e16447b2ac08664437f2ee7b7477c8234c1b5fc6b61dd5dc9e": [
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-Original-1.0.0",
+      "originalCaseId": "p4-nl-confirmation-020",
+      "traceSha256": "cd4c7b55882739c23b79c140b868d9f691274af7af36b8a97e330de079843fe8",
+      "run": "benchmarks/phase4/v1/confirmation-run",
+      "disposition": "suppressed",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "diorthosis-correction-v3",
+      "originalCaseId": "p4-nl-confirmation-020",
+      "traceSha256": "cd4c7b55882739c23b79c140b868d9f691274af7af36b8a97e330de079843fe8",
+      "run": "benchmarks/phase4/v1/confirmation-run",
+      "disposition": "suppressed",
+      "generationTermination": "EndOfGeneration"
+    }
+  ],
+  "review-e2026c3bb8d9f09b23a345a720120bc3d5ce5937e366529e47d120dcfef95a70": [
+    {
+      "model": "source-annotations",
+      "originalCaseId": "p4-en-selection-014"
+    }
+  ],
+  "review-21cbe2f9cdeb17cddceb96d89a97c0d670687b30034f0a03b096f949c9951770": [
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-PlainText-Original-1.0.0",
+      "originalCaseId": "p4-en-selection-014",
+      "traceSha256": "13e085717d94d3df72b5e42ea9989680f001bb9b84238ecad0374a0676821c50",
+      "run": "benchmarks/phase4/v1/representation",
+      "disposition": "accepted",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "diorthosis-correction-v3",
+      "originalCaseId": "p4-en-selection-014",
+      "traceSha256": "13e085717d94d3df72b5e42ea9989680f001bb9b84238ecad0374a0676821c50",
+      "run": "benchmarks/phase4/v1/representation",
+      "disposition": "accepted",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-Original-1.0.0",
+      "originalCaseId": "p4-en-selection-014",
+      "traceSha256": "13e085717d94d3df72b5e42ea9989680f001bb9b84238ecad0374a0676821c50",
+      "run": "benchmarks/phase4/v1/representation",
+      "disposition": "accepted",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-FewShot-1.0.0",
+      "originalCaseId": "p4-en-selection-014",
+      "traceSha256": "0668e5ddc3952b2610bb6615eee047652b2d5811aab140ca2d34c2fc576d2c3b",
+      "run": "benchmarks/phase4/v1/isolated",
+      "disposition": "accepted",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-Minimal-1.0.0",
+      "originalCaseId": "p4-en-selection-014",
+      "traceSha256": "0668e5ddc3952b2610bb6615eee047652b2d5811aab140ca2d34c2fc576d2c3b",
+      "run": "benchmarks/phase4/v1/isolated",
+      "disposition": "accepted",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-LanguageSpecific-1.0.0",
+      "originalCaseId": "p4-en-selection-014",
+      "traceSha256": "0668e5ddc3952b2610bb6615eee047652b2d5811aab140ca2d34c2fc576d2c3b",
+      "run": "benchmarks/phase4/v1/isolated",
+      "disposition": "accepted",
+      "generationTermination": "EndOfGeneration"
+    }
+  ],
+  "review-9f8dab739bc5ccfbe081d1af391fbf0e4c9a9f59b2701b3085c6f3edf5d1bccb": [
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-PlainText-Original-1.0.0",
+      "originalCaseId": "p4-en-selection-014",
+      "traceSha256": "13e085717d94d3df72b5e42ea9989680f001bb9b84238ecad0374a0676821c50",
+      "run": "benchmarks/phase4/v1/representation",
+      "disposition": "accepted",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "diorthosis-correction-v3",
+      "originalCaseId": "p4-en-selection-014",
+      "traceSha256": "13e085717d94d3df72b5e42ea9989680f001bb9b84238ecad0374a0676821c50",
+      "run": "benchmarks/phase4/v1/representation",
+      "disposition": "accepted",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-Original-1.0.0",
+      "originalCaseId": "p4-en-selection-014",
+      "traceSha256": "13e085717d94d3df72b5e42ea9989680f001bb9b84238ecad0374a0676821c50",
+      "run": "benchmarks/phase4/v1/representation",
+      "disposition": "accepted",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-FewShot-1.0.0",
+      "originalCaseId": "p4-en-selection-014",
+      "traceSha256": "0668e5ddc3952b2610bb6615eee047652b2d5811aab140ca2d34c2fc576d2c3b",
+      "run": "benchmarks/phase4/v1/isolated",
+      "disposition": "accepted",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-Minimal-1.0.0",
+      "originalCaseId": "p4-en-selection-014",
+      "traceSha256": "0668e5ddc3952b2610bb6615eee047652b2d5811aab140ca2d34c2fc576d2c3b",
+      "run": "benchmarks/phase4/v1/isolated",
+      "disposition": "accepted",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-LanguageSpecific-1.0.0",
+      "originalCaseId": "p4-en-selection-014",
+      "traceSha256": "0668e5ddc3952b2610bb6615eee047652b2d5811aab140ca2d34c2fc576d2c3b",
+      "run": "benchmarks/phase4/v1/isolated",
+      "disposition": "accepted",
+      "generationTermination": "EndOfGeneration"
+    }
+  ],
+  "review-1f678cfab50e6beb3ed3b5d8b44dec778221eb0eb610a70177286c3e5092683b": [
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-PlainText-Original-1.0.0",
+      "originalCaseId": "p4-en-selection-014",
+      "traceSha256": "13e085717d94d3df72b5e42ea9989680f001bb9b84238ecad0374a0676821c50",
+      "run": "benchmarks/phase4/v1/representation",
+      "disposition": "accepted",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "diorthosis-correction-v3",
+      "originalCaseId": "p4-en-selection-014",
+      "traceSha256": "13e085717d94d3df72b5e42ea9989680f001bb9b84238ecad0374a0676821c50",
+      "run": "benchmarks/phase4/v1/representation",
+      "disposition": "accepted",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-Original-1.0.0",
+      "originalCaseId": "p4-en-selection-014",
+      "traceSha256": "13e085717d94d3df72b5e42ea9989680f001bb9b84238ecad0374a0676821c50",
+      "run": "benchmarks/phase4/v1/representation",
+      "disposition": "accepted",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-FewShot-1.0.0",
+      "originalCaseId": "p4-en-selection-014",
+      "traceSha256": "0668e5ddc3952b2610bb6615eee047652b2d5811aab140ca2d34c2fc576d2c3b",
+      "run": "benchmarks/phase4/v1/isolated",
+      "disposition": "accepted",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-Minimal-1.0.0",
+      "originalCaseId": "p4-en-selection-014",
+      "traceSha256": "0668e5ddc3952b2610bb6615eee047652b2d5811aab140ca2d34c2fc576d2c3b",
+      "run": "benchmarks/phase4/v1/isolated",
+      "disposition": "accepted",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-LanguageSpecific-1.0.0",
+      "originalCaseId": "p4-en-selection-014",
+      "traceSha256": "0668e5ddc3952b2610bb6615eee047652b2d5811aab140ca2d34c2fc576d2c3b",
+      "run": "benchmarks/phase4/v1/isolated",
+      "disposition": "accepted",
+      "generationTermination": "EndOfGeneration"
+    }
+  ],
+  "review-35906ff7a630834071830305763149fe01c0f5ce0d7af591552d4284fbf18b17": [
+    {
+      "model": "source-annotations",
+      "originalCaseId": "p4-en-confirmation-004"
+    }
+  ],
+  "review-c7806430d0e96f47693707e9b3ea70b40fb44ddc84ea9a71f8cea1daab4755ad": [
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-Original-1.0.0",
+      "originalCaseId": "p4-en-confirmation-004",
+      "traceSha256": "cd4c7b55882739c23b79c140b868d9f691274af7af36b8a97e330de079843fe8",
+      "run": "benchmarks/phase4/v1/confirmation-run",
+      "disposition": "accepted",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "diorthosis-correction-v3",
+      "originalCaseId": "p4-en-confirmation-004",
+      "traceSha256": "cd4c7b55882739c23b79c140b868d9f691274af7af36b8a97e330de079843fe8",
+      "run": "benchmarks/phase4/v1/confirmation-run",
+      "disposition": "accepted",
+      "generationTermination": "EndOfGeneration"
+    }
+  ],
+  "review-432cf42ff7716b6dd0a238c08a0f9affcb9534bd4c0a6b5742a990397ca602fe": [
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-Original-1.0.0",
+      "originalCaseId": "p4-en-confirmation-004",
+      "traceSha256": "cd4c7b55882739c23b79c140b868d9f691274af7af36b8a97e330de079843fe8",
+      "run": "benchmarks/phase4/v1/confirmation-run",
+      "disposition": "accepted",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "diorthosis-correction-v3",
+      "originalCaseId": "p4-en-confirmation-004",
+      "traceSha256": "cd4c7b55882739c23b79c140b868d9f691274af7af36b8a97e330de079843fe8",
+      "run": "benchmarks/phase4/v1/confirmation-run",
+      "disposition": "accepted",
+      "generationTermination": "EndOfGeneration"
+    }
+  ],
+  "review-e386e80b17e58f5516ce07933039c89c4d04ce90fa39403ae132f21b5ead0540": [
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-Original-1.0.0",
+      "originalCaseId": "p4-en-confirmation-004",
+      "traceSha256": "cd4c7b55882739c23b79c140b868d9f691274af7af36b8a97e330de079843fe8",
+      "run": "benchmarks/phase4/v1/confirmation-run",
+      "disposition": "accepted",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "diorthosis-correction-v3",
+      "originalCaseId": "p4-en-confirmation-004",
+      "traceSha256": "cd4c7b55882739c23b79c140b868d9f691274af7af36b8a97e330de079843fe8",
+      "run": "benchmarks/phase4/v1/confirmation-run",
+      "disposition": "accepted",
+      "generationTermination": "EndOfGeneration"
+    }
+  ],
+  "review-e6ba897d57876155e016b4e6cef24d7a415645d3766ec20c183cac4f225555ea": [
+    {
+      "model": "source-annotations",
+      "originalCaseId": "p4-en-selection-060"
+    }
+  ],
+  "review-03938e640add588e7e38bc42dba549da9de31abbf4dc6157e4eebd64e951ce2c": [
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "diorthosis-correction-v3",
+      "originalCaseId": "p4-en-selection-060",
+      "traceSha256": "13e085717d94d3df72b5e42ea9989680f001bb9b84238ecad0374a0676821c50",
+      "run": "benchmarks/phase4/v1/representation",
+      "disposition": "unchanged",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-Original-1.0.0",
+      "originalCaseId": "p4-en-selection-060",
+      "traceSha256": "13e085717d94d3df72b5e42ea9989680f001bb9b84238ecad0374a0676821c50",
+      "run": "benchmarks/phase4/v1/representation",
+      "disposition": "unchanged",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-PlainText-Original-1.0.0",
+      "originalCaseId": "p4-en-selection-060",
+      "traceSha256": "13e085717d94d3df72b5e42ea9989680f001bb9b84238ecad0374a0676821c50",
+      "run": "benchmarks/phase4/v1/representation",
+      "disposition": "unchanged",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-Minimal-1.0.0",
+      "originalCaseId": "p4-en-selection-060",
+      "traceSha256": "0668e5ddc3952b2610bb6615eee047652b2d5811aab140ca2d34c2fc576d2c3b",
+      "run": "benchmarks/phase4/v1/isolated",
+      "disposition": "unchanged",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-LanguageSpecific-1.0.0",
+      "originalCaseId": "p4-en-selection-060",
+      "traceSha256": "0668e5ddc3952b2610bb6615eee047652b2d5811aab140ca2d34c2fc576d2c3b",
+      "run": "benchmarks/phase4/v1/isolated",
+      "disposition": "unchanged",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-FewShot-1.0.0",
+      "originalCaseId": "p4-en-selection-060",
+      "traceSha256": "0668e5ddc3952b2610bb6615eee047652b2d5811aab140ca2d34c2fc576d2c3b",
+      "run": "benchmarks/phase4/v1/isolated",
+      "disposition": "unchanged",
+      "generationTermination": "EndOfGeneration"
+    }
+  ],
+  "review-697eceaf8523e1e98c9d2c410f41bd0c6cdb8bfe014283652d57f965d0f93025": [
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "diorthosis-correction-v3",
+      "originalCaseId": "p4-en-selection-060",
+      "traceSha256": "13e085717d94d3df72b5e42ea9989680f001bb9b84238ecad0374a0676821c50",
+      "run": "benchmarks/phase4/v1/representation",
+      "disposition": "unchanged",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-Original-1.0.0",
+      "originalCaseId": "p4-en-selection-060",
+      "traceSha256": "13e085717d94d3df72b5e42ea9989680f001bb9b84238ecad0374a0676821c50",
+      "run": "benchmarks/phase4/v1/representation",
+      "disposition": "unchanged",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-PlainText-Original-1.0.0",
+      "originalCaseId": "p4-en-selection-060",
+      "traceSha256": "13e085717d94d3df72b5e42ea9989680f001bb9b84238ecad0374a0676821c50",
+      "run": "benchmarks/phase4/v1/representation",
+      "disposition": "unchanged",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-Minimal-1.0.0",
+      "originalCaseId": "p4-en-selection-060",
+      "traceSha256": "0668e5ddc3952b2610bb6615eee047652b2d5811aab140ca2d34c2fc576d2c3b",
+      "run": "benchmarks/phase4/v1/isolated",
+      "disposition": "unchanged",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-LanguageSpecific-1.0.0",
+      "originalCaseId": "p4-en-selection-060",
+      "traceSha256": "0668e5ddc3952b2610bb6615eee047652b2d5811aab140ca2d34c2fc576d2c3b",
+      "run": "benchmarks/phase4/v1/isolated",
+      "disposition": "unchanged",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-FewShot-1.0.0",
+      "originalCaseId": "p4-en-selection-060",
+      "traceSha256": "0668e5ddc3952b2610bb6615eee047652b2d5811aab140ca2d34c2fc576d2c3b",
+      "run": "benchmarks/phase4/v1/isolated",
+      "disposition": "unchanged",
+      "generationTermination": "EndOfGeneration"
+    }
+  ],
+  "review-2d66ff9295d08e0a0188665ee15c0ad6c0b1043e7b8605912edea577aed919c3": [
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "diorthosis-correction-v3",
+      "originalCaseId": "p4-en-selection-060",
+      "traceSha256": "13e085717d94d3df72b5e42ea9989680f001bb9b84238ecad0374a0676821c50",
+      "run": "benchmarks/phase4/v1/representation",
+      "disposition": "unchanged",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-Original-1.0.0",
+      "originalCaseId": "p4-en-selection-060",
+      "traceSha256": "13e085717d94d3df72b5e42ea9989680f001bb9b84238ecad0374a0676821c50",
+      "run": "benchmarks/phase4/v1/representation",
+      "disposition": "unchanged",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-PlainText-Original-1.0.0",
+      "originalCaseId": "p4-en-selection-060",
+      "traceSha256": "13e085717d94d3df72b5e42ea9989680f001bb9b84238ecad0374a0676821c50",
+      "run": "benchmarks/phase4/v1/representation",
+      "disposition": "unchanged",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-Minimal-1.0.0",
+      "originalCaseId": "p4-en-selection-060",
+      "traceSha256": "0668e5ddc3952b2610bb6615eee047652b2d5811aab140ca2d34c2fc576d2c3b",
+      "run": "benchmarks/phase4/v1/isolated",
+      "disposition": "unchanged",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-LanguageSpecific-1.0.0",
+      "originalCaseId": "p4-en-selection-060",
+      "traceSha256": "0668e5ddc3952b2610bb6615eee047652b2d5811aab140ca2d34c2fc576d2c3b",
+      "run": "benchmarks/phase4/v1/isolated",
+      "disposition": "unchanged",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-FewShot-1.0.0",
+      "originalCaseId": "p4-en-selection-060",
+      "traceSha256": "0668e5ddc3952b2610bb6615eee047652b2d5811aab140ca2d34c2fc576d2c3b",
+      "run": "benchmarks/phase4/v1/isolated",
+      "disposition": "unchanged",
+      "generationTermination": "EndOfGeneration"
+    }
+  ],
+  "review-bd290fb26de3ac5a3cf10959e357a3232c2bdc73de43903b5d8acf10a7394f06": [
+    {
+      "model": "source-annotations",
+      "originalCaseId": "p4-en-selection-059"
+    }
+  ],
+  "review-e32b27fc05c0e8f50aa860e8a4cf8b41090246b86f504f315ef426cac268fc0e": [
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-PlainText-Original-1.0.0",
+      "originalCaseId": "p4-en-selection-059",
+      "traceSha256": "13e085717d94d3df72b5e42ea9989680f001bb9b84238ecad0374a0676821c50",
+      "run": "benchmarks/phase4/v1/representation",
+      "disposition": "unchanged",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "diorthosis-correction-v3",
+      "originalCaseId": "p4-en-selection-059",
+      "traceSha256": "13e085717d94d3df72b5e42ea9989680f001bb9b84238ecad0374a0676821c50",
+      "run": "benchmarks/phase4/v1/representation",
+      "disposition": "unchanged",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-Original-1.0.0",
+      "originalCaseId": "p4-en-selection-059",
+      "traceSha256": "13e085717d94d3df72b5e42ea9989680f001bb9b84238ecad0374a0676821c50",
+      "run": "benchmarks/phase4/v1/representation",
+      "disposition": "unchanged",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-FewShot-1.0.0",
+      "originalCaseId": "p4-en-selection-059",
+      "traceSha256": "0668e5ddc3952b2610bb6615eee047652b2d5811aab140ca2d34c2fc576d2c3b",
+      "run": "benchmarks/phase4/v1/isolated",
+      "disposition": "unchanged",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-Minimal-1.0.0",
+      "originalCaseId": "p4-en-selection-059",
+      "traceSha256": "0668e5ddc3952b2610bb6615eee047652b2d5811aab140ca2d34c2fc576d2c3b",
+      "run": "benchmarks/phase4/v1/isolated",
+      "disposition": "unchanged",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-LanguageSpecific-1.0.0",
+      "originalCaseId": "p4-en-selection-059",
+      "traceSha256": "0668e5ddc3952b2610bb6615eee047652b2d5811aab140ca2d34c2fc576d2c3b",
+      "run": "benchmarks/phase4/v1/isolated",
+      "disposition": "unchanged",
+      "generationTermination": "EndOfGeneration"
+    }
+  ],
+  "review-b573cfaa2533a02b4a329d1d765bb49f0d7eae07f70f8aaeb08affe45d6133f7": [
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-PlainText-Original-1.0.0",
+      "originalCaseId": "p4-en-selection-059",
+      "traceSha256": "13e085717d94d3df72b5e42ea9989680f001bb9b84238ecad0374a0676821c50",
+      "run": "benchmarks/phase4/v1/representation",
+      "disposition": "unchanged",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "diorthosis-correction-v3",
+      "originalCaseId": "p4-en-selection-059",
+      "traceSha256": "13e085717d94d3df72b5e42ea9989680f001bb9b84238ecad0374a0676821c50",
+      "run": "benchmarks/phase4/v1/representation",
+      "disposition": "unchanged",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-Original-1.0.0",
+      "originalCaseId": "p4-en-selection-059",
+      "traceSha256": "13e085717d94d3df72b5e42ea9989680f001bb9b84238ecad0374a0676821c50",
+      "run": "benchmarks/phase4/v1/representation",
+      "disposition": "unchanged",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-FewShot-1.0.0",
+      "originalCaseId": "p4-en-selection-059",
+      "traceSha256": "0668e5ddc3952b2610bb6615eee047652b2d5811aab140ca2d34c2fc576d2c3b",
+      "run": "benchmarks/phase4/v1/isolated",
+      "disposition": "unchanged",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-Minimal-1.0.0",
+      "originalCaseId": "p4-en-selection-059",
+      "traceSha256": "0668e5ddc3952b2610bb6615eee047652b2d5811aab140ca2d34c2fc576d2c3b",
+      "run": "benchmarks/phase4/v1/isolated",
+      "disposition": "unchanged",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-LanguageSpecific-1.0.0",
+      "originalCaseId": "p4-en-selection-059",
+      "traceSha256": "0668e5ddc3952b2610bb6615eee047652b2d5811aab140ca2d34c2fc576d2c3b",
+      "run": "benchmarks/phase4/v1/isolated",
+      "disposition": "unchanged",
+      "generationTermination": "EndOfGeneration"
+    }
+  ],
+  "review-03ab292a710fae38009b81549b4c6a29ceb375b6c04dd59ffab73c5eb181bf9b": [
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-PlainText-Original-1.0.0",
+      "originalCaseId": "p4-en-selection-059",
+      "traceSha256": "13e085717d94d3df72b5e42ea9989680f001bb9b84238ecad0374a0676821c50",
+      "run": "benchmarks/phase4/v1/representation",
+      "disposition": "unchanged",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "diorthosis-correction-v3",
+      "originalCaseId": "p4-en-selection-059",
+      "traceSha256": "13e085717d94d3df72b5e42ea9989680f001bb9b84238ecad0374a0676821c50",
+      "run": "benchmarks/phase4/v1/representation",
+      "disposition": "unchanged",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-Original-1.0.0",
+      "originalCaseId": "p4-en-selection-059",
+      "traceSha256": "13e085717d94d3df72b5e42ea9989680f001bb9b84238ecad0374a0676821c50",
+      "run": "benchmarks/phase4/v1/representation",
+      "disposition": "unchanged",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-FewShot-1.0.0",
+      "originalCaseId": "p4-en-selection-059",
+      "traceSha256": "0668e5ddc3952b2610bb6615eee047652b2d5811aab140ca2d34c2fc576d2c3b",
+      "run": "benchmarks/phase4/v1/isolated",
+      "disposition": "unchanged",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-Minimal-1.0.0",
+      "originalCaseId": "p4-en-selection-059",
+      "traceSha256": "0668e5ddc3952b2610bb6615eee047652b2d5811aab140ca2d34c2fc576d2c3b",
+      "run": "benchmarks/phase4/v1/isolated",
+      "disposition": "unchanged",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-LanguageSpecific-1.0.0",
+      "originalCaseId": "p4-en-selection-059",
+      "traceSha256": "0668e5ddc3952b2610bb6615eee047652b2d5811aab140ca2d34c2fc576d2c3b",
+      "run": "benchmarks/phase4/v1/isolated",
+      "disposition": "unchanged",
+      "generationTermination": "EndOfGeneration"
+    }
+  ],
+  "review-1290552c9f3185966308805d621eb156ad02df05b22ea0214cc4defec57db1b4": [
+    {
+      "model": "source-annotations",
+      "originalCaseId": "p4-nl-selection-047"
+    }
+  ],
+  "review-85c5ab5d9095d38a330265f7c2780766864da2a96090a3629543c15b6a9cbe53": [
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-Original-1.0.0",
+      "originalCaseId": "p4-nl-selection-047",
+      "traceSha256": "13e085717d94d3df72b5e42ea9989680f001bb9b84238ecad0374a0676821c50",
+      "run": "benchmarks/phase4/v1/representation",
+      "disposition": "rejected",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-PlainText-Original-1.0.0",
+      "originalCaseId": "p4-nl-selection-047",
+      "traceSha256": "13e085717d94d3df72b5e42ea9989680f001bb9b84238ecad0374a0676821c50",
+      "run": "benchmarks/phase4/v1/representation",
+      "disposition": "rejected",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "diorthosis-correction-v3",
+      "originalCaseId": "p4-nl-selection-047",
+      "traceSha256": "13e085717d94d3df72b5e42ea9989680f001bb9b84238ecad0374a0676821c50",
+      "run": "benchmarks/phase4/v1/representation",
+      "disposition": "rejected",
+      "generationTermination": "EndOfGeneration"
+    }
+  ],
+  "review-bcd5d0d6934129093051d0aa65db7cfc27023930c6c615ba5f09156b28db591f": [
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-FewShot-1.0.0",
+      "originalCaseId": "p4-nl-selection-047",
+      "traceSha256": "0668e5ddc3952b2610bb6615eee047652b2d5811aab140ca2d34c2fc576d2c3b",
+      "run": "benchmarks/phase4/v1/isolated",
+      "disposition": "unchanged",
+      "generationTermination": "EndOfGeneration"
+    }
+  ],
+  "review-4abbae94227dc88fb7f2376b221340cf073982c7666785cb1696839e42ed8e9d": [
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-Original-1.0.0",
+      "originalCaseId": "p4-nl-selection-047",
+      "traceSha256": "13e085717d94d3df72b5e42ea9989680f001bb9b84238ecad0374a0676821c50",
+      "run": "benchmarks/phase4/v1/representation",
+      "disposition": "rejected",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-PlainText-Original-1.0.0",
+      "originalCaseId": "p4-nl-selection-047",
+      "traceSha256": "13e085717d94d3df72b5e42ea9989680f001bb9b84238ecad0374a0676821c50",
+      "run": "benchmarks/phase4/v1/representation",
+      "disposition": "rejected",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "diorthosis-correction-v3",
+      "originalCaseId": "p4-nl-selection-047",
+      "traceSha256": "13e085717d94d3df72b5e42ea9989680f001bb9b84238ecad0374a0676821c50",
+      "run": "benchmarks/phase4/v1/representation",
+      "disposition": "rejected",
+      "generationTermination": "EndOfGeneration"
+    }
+  ],
+  "review-eec4eee28d2a61e07edc08e6ea35a5ac80630b2ecb5819cfb3312c6b8fae0c64": [
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-FewShot-1.0.0",
+      "originalCaseId": "p4-nl-selection-047",
+      "traceSha256": "0668e5ddc3952b2610bb6615eee047652b2d5811aab140ca2d34c2fc576d2c3b",
+      "run": "benchmarks/phase4/v1/isolated",
+      "disposition": "unchanged",
+      "generationTermination": "EndOfGeneration"
+    }
+  ],
+  "review-10a105be00618b7892bd78e338be00fa8b05036bef5b74f1a01916de06073341": [
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-Original-1.0.0",
+      "originalCaseId": "p4-nl-selection-047",
+      "traceSha256": "13e085717d94d3df72b5e42ea9989680f001bb9b84238ecad0374a0676821c50",
+      "run": "benchmarks/phase4/v1/representation",
+      "disposition": "rejected",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-PlainText-Original-1.0.0",
+      "originalCaseId": "p4-nl-selection-047",
+      "traceSha256": "13e085717d94d3df72b5e42ea9989680f001bb9b84238ecad0374a0676821c50",
+      "run": "benchmarks/phase4/v1/representation",
+      "disposition": "rejected",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "diorthosis-correction-v3",
+      "originalCaseId": "p4-nl-selection-047",
+      "traceSha256": "13e085717d94d3df72b5e42ea9989680f001bb9b84238ecad0374a0676821c50",
+      "run": "benchmarks/phase4/v1/representation",
+      "disposition": "rejected",
+      "generationTermination": "EndOfGeneration"
+    }
+  ],
+  "review-a29227062986f85651e5167d808a4f9eba4491b0b8d5e8a97e25369c6130a31e": [
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-Original-1.0.0",
+      "originalCaseId": "p4-nl-selection-047",
+      "traceSha256": "13e085717d94d3df72b5e42ea9989680f001bb9b84238ecad0374a0676821c50",
+      "run": "benchmarks/phase4/v1/representation",
+      "disposition": "rejected",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-PlainText-Original-1.0.0",
+      "originalCaseId": "p4-nl-selection-047",
+      "traceSha256": "13e085717d94d3df72b5e42ea9989680f001bb9b84238ecad0374a0676821c50",
+      "run": "benchmarks/phase4/v1/representation",
+      "disposition": "rejected",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "diorthosis-correction-v3",
+      "originalCaseId": "p4-nl-selection-047",
+      "traceSha256": "13e085717d94d3df72b5e42ea9989680f001bb9b84238ecad0374a0676821c50",
+      "run": "benchmarks/phase4/v1/representation",
+      "disposition": "rejected",
+      "generationTermination": "EndOfGeneration"
+    }
+  ],
+  "review-a8245b79f9bb3169905cb630a934de0115208dcfc139abee66218c2d35c3f91c": [
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-LanguageSpecific-1.0.0",
+      "originalCaseId": "p4-nl-selection-047",
+      "traceSha256": "0668e5ddc3952b2610bb6615eee047652b2d5811aab140ca2d34c2fc576d2c3b",
+      "run": "benchmarks/phase4/v1/isolated",
+      "disposition": "accepted",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-Minimal-1.0.0",
+      "originalCaseId": "p4-nl-selection-047",
+      "traceSha256": "0668e5ddc3952b2610bb6615eee047652b2d5811aab140ca2d34c2fc576d2c3b",
+      "run": "benchmarks/phase4/v1/isolated",
+      "disposition": "accepted",
+      "generationTermination": "EndOfGeneration"
+    }
+  ],
+  "review-ebf29578adc4bc274119cf8ef4d36d4cda9de04418118b24d2942b1206090218": [
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-LanguageSpecific-1.0.0",
+      "originalCaseId": "p4-nl-selection-047",
+      "traceSha256": "0668e5ddc3952b2610bb6615eee047652b2d5811aab140ca2d34c2fc576d2c3b",
+      "run": "benchmarks/phase4/v1/isolated",
+      "disposition": "accepted",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-Minimal-1.0.0",
+      "originalCaseId": "p4-nl-selection-047",
+      "traceSha256": "0668e5ddc3952b2610bb6615eee047652b2d5811aab140ca2d34c2fc576d2c3b",
+      "run": "benchmarks/phase4/v1/isolated",
+      "disposition": "accepted",
+      "generationTermination": "EndOfGeneration"
+    }
+  ],
+  "review-b8bcb4bb986442def4fbf5c844d0bc25ac82f4f1d39e7cb3feb6cf2d31c07a1e": [
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-LanguageSpecific-1.0.0",
+      "originalCaseId": "p4-nl-selection-047",
+      "traceSha256": "0668e5ddc3952b2610bb6615eee047652b2d5811aab140ca2d34c2fc576d2c3b",
+      "run": "benchmarks/phase4/v1/isolated",
+      "disposition": "accepted",
+      "generationTermination": "EndOfGeneration"
+    },
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-Minimal-1.0.0",
+      "originalCaseId": "p4-nl-selection-047",
+      "traceSha256": "0668e5ddc3952b2610bb6615eee047652b2d5811aab140ca2d34c2fc576d2c3b",
+      "run": "benchmarks/phase4/v1/isolated",
+      "disposition": "accepted",
+      "generationTermination": "EndOfGeneration"
+    }
+  ],
+  "review-4ccf586da43fa3c278e7a84f2bbb95cbd45aee1a10e70c16520bfb42a7dc4715": [
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-FewShot-1.0.0",
+      "originalCaseId": "p4-nl-selection-047",
+      "traceSha256": "0668e5ddc3952b2610bb6615eee047652b2d5811aab140ca2d34c2fc576d2c3b",
+      "run": "benchmarks/phase4/v1/isolated",
+      "disposition": "unchanged",
+      "generationTermination": "EndOfGeneration"
+    }
+  ],
+  "review-c461db01f0918ae1944714798c173a66de98bf61d5e4cf19b833dd6470243d4b": [
+    {
+      "model": "source-annotations",
+      "originalCaseId": "p4-nl-confirmation-018"
+    }
+  ],
+  "review-fb6ce6d413e151ab1c1239f64ff2d764f7494bda7476746eb57a9c5667eeeb68": [
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-Original-1.0.0",
+      "originalCaseId": "p4-nl-confirmation-018",
+      "traceSha256": "cd4c7b55882739c23b79c140b868d9f691274af7af36b8a97e330de079843fe8",
+      "run": "benchmarks/phase4/v1/confirmation-run",
+      "disposition": "unchanged",
+      "generationTermination": "EndOfGeneration"
+    }
+  ],
+  "review-3b5f56e69841831b827ec650637ca87b7039ada663506a243e3637759c887cc5": [
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "diorthosis-correction-v3",
+      "originalCaseId": "p4-nl-confirmation-018",
+      "traceSha256": "cd4c7b55882739c23b79c140b868d9f691274af7af36b8a97e330de079843fe8",
+      "run": "benchmarks/phase4/v1/confirmation-run",
+      "disposition": "accepted",
+      "generationTermination": "EndOfGeneration"
+    }
+  ],
+  "review-1ffc0fdccc655b6308e0303f7968ce6a74318b572b9bb07a576782443b576714": [
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "diorthosis-correction-v3",
+      "originalCaseId": "p4-nl-confirmation-018",
+      "traceSha256": "cd4c7b55882739c23b79c140b868d9f691274af7af36b8a97e330de079843fe8",
+      "run": "benchmarks/phase4/v1/confirmation-run",
+      "disposition": "accepted",
+      "generationTermination": "EndOfGeneration"
+    }
+  ],
+  "review-b4ab6ade576f7587f6e4b9a6442665c8f9ae5b7d8848f0c0f8f2a7564f59face": [
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "diorthosis-correction-v3",
+      "originalCaseId": "p4-nl-confirmation-018",
+      "traceSha256": "cd4c7b55882739c23b79c140b868d9f691274af7af36b8a97e330de079843fe8",
+      "run": "benchmarks/phase4/v1/confirmation-run",
+      "disposition": "accepted",
+      "generationTermination": "EndOfGeneration"
+    }
+  ],
+  "review-55c549dad90544051a4873e7aa1d42058aa83d31442f968ddb8fc7fd6768ea6d": [
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-Original-1.0.0",
+      "originalCaseId": "p4-nl-confirmation-018",
+      "traceSha256": "cd4c7b55882739c23b79c140b868d9f691274af7af36b8a97e330de079843fe8",
+      "run": "benchmarks/phase4/v1/confirmation-run",
+      "disposition": "unchanged",
+      "generationTermination": "EndOfGeneration"
+    }
+  ],
+  "review-efd675cf51a559a4ea0ecc29eb612d529f8edf0f3afc6d054761693c3171e804": [
+    {
+      "model": "Ministral-3B-Q4_K_M",
+      "arm": "phase4-LiteralJson-Original-1.0.0",
+      "originalCaseId": "p4-nl-confirmation-018",
+      "traceSha256": "cd4c7b55882739c23b79c140b868d9f691274af7af36b8a97e330de079843fe8",
+      "run": "benchmarks/phase4/v1/confirmation-run",
+      "disposition": "unchanged",
+      "generationTermination": "EndOfGeneration"
+    }
+  ]
+}

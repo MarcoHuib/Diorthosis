@@ -21,6 +21,13 @@ jobs:
       - run: python3 scripts/verify-phase2-artifacts.py
       - run: python3 scripts/verify-phase3-artifacts.py
       - run: python3 scripts/verify-external-linguistic-review.py
+      - run: python3 scripts/verify-prompt-quality-artifacts.py
+      - run: python3 scripts/verify-phase4-external-reviews.py --reproduce artifacts/phase4-external-reproduction
+      - run: mkdir -p artifacts
+      - run: dotnet run --project src/Diorthosis.Benchmarks --configuration Release --no-build -- prompt-quality-replay benchmarks/phase4/v1/selection.jsonl benchmarks/phase4/v1/representation artifacts/phase4-representation-replay.json
+      - run: dotnet run --project src/Diorthosis.Benchmarks --configuration Release --no-build -- prompt-quality-replay benchmarks/phase4/v1/selection.jsonl benchmarks/phase4/v1/isolated artifacts/phase4-isolated-replay.json
+      - run: dotnet run --project src/Diorthosis.Benchmarks --configuration Release --no-build -- prompt-quality-replay benchmarks/phase4/v1/confirmation.jsonl benchmarks/phase4/v1/confirmation-run artifacts/phase4-confirmation-replay.json
+      - run: python3 scripts/import-prompt-quality-review.py benchmarks/phase4/v1/review benchmarks/phase4/v1/confirmation-preparer-ai/decisions.jsonl benchmarks/phase4/v1/confirmation-preparer-ai/provenance.json artifacts/phase4-preparer-import --error-decisions benchmarks/phase4/v1/confirmation-preparer-ai/error-decisions.jsonl
       - run: python3 -m unittest discover -s tests/tooling -p 'test_*.py'
       - run: dotnet run --project src/Diorthosis.Benchmarks --configuration Release --no-build -- linguistic-impact benchmarks/phase3/v1/panel.jsonl benchmarks/phase3/v1/run artifacts/external-impact-replay
       - run: python3 scripts/verify-external-linguistic-review.py --replay-directory artifacts/external-impact-replay

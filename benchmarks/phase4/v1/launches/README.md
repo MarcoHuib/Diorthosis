@@ -1,0 +1,1 @@
+The first driver launch stopped at `sysctl -n machdep.cpu.brand_string` with EPERM in the workspace sandbox, before starting the C# process or loading weights. This retained software snapshot records the attempted launch; it is not inference evidence. The retry uses an approved outer driver with an independently network-denied inference subprocess.
