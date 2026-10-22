@@ -1,0 +1,29 @@
+{
+  "inputs": {
+    "benchmarks/phase4/external-gpt6/v1/combined/analysis-dataset.jsonl": "66854ea829fec9f4388ec88b7fa15f033eb3bb2dfd7d43aa75a27fd60b57c7b6",
+    "benchmarks/phase4/external-gpt6/v1/combined/error-decisions.jsonl": "a367883ffaafc48e3a102f5bc2c5591ab92ef5cf71ad93807e16b32171d99d19",
+    "benchmarks/phase4/v1/review/subjects.jsonl": "6b30532d9a5c540c22884330ace9395404a631c9af9d0b38d0a0cb6d0e15c54c",
+    "benchmarks/phase4/v1/review/lineage-DO-NOT-SEND-TO-REVIEWERS.json": "cb34cda561d6aee9b1084ccb386a4ebf26504110bcfb033e37b077c2074545aa",
+    "benchmarks/phase4/v1/confirmation-preparer-ai/decisions.jsonl": "259122bce73e543c763e2fcb9f0497ede1b32c29fae931d7d6adb58ea4fa03d1",
+    "benchmarks/phase4/v1/confirmation-preparer-ai/error-decisions.jsonl": "0131a25caf23d6030179e3b557fcf57d091dfc1ed89ee4df4e83b3cad74df449",
+    "benchmarks/phase4/v1/preparer-inspection/preparer-observations.jsonl": "7eada08bc57c89c6a74c4d50e593b680702c91cab4a60fcaebfbd66380f45412"
+  },
+  "outputs": {
+    "metrics.json": "c9b4d08bb4bf42b9b418daeba0ab40a77c96d3c3fdef9fc69a3cbb43cce57e3e",
+    "occurrences.jsonl": "956d60ab87fa36867c311edfa166d6eabf99ad47d75decd815a406b7121559ff",
+    "summary.json": "521091c4bef8aa119c0c8d3b1129cdec09fd5c33579fa639b738ace2098ce960",
+    "COMPARISON.md": "f654ed499d8a12585e85f18652c1aeb444f8ada8a2510412ed6083582f852264",
+    "paired.json": "370bb360cdcd1f2f6cdae296e7de5e7f6fdb305acae982deecb34d5148ff4ffb",
+    "cross-layer-conflicts.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "unicode-diagnostics.jsonl": "274cae03aad496b3747b544cf5627fd762b151011c881ca48163697b1d56da1e",
+    "disagreements.md": "863dd6f8950cd955dd649e4f8ff2edc3d9e10f9976089be4f82d43ec346e0fa8",
+    "disagreement-sensitivity.json": "1a51d91c98724c93cac47244cd362cd8609ade45068760c42f7c0e75df049249",
+    "error-occurrences.jsonl": "80ea2f0b35436cb0304a861f84d292ba38085d9ad055e0f0f4eaf54af3ebd3c0",
+    "local-repairs-vs-reference.jsonl": "4cf0bd042c5e245e4dd20a67c5d1308992146c022cd502de67977d881548410f",
+    "overall-descriptive.json": "4101d86f41d7169e141bb028f80d009d843cff63de25643d0ae61bca9cca0ec7",
+    "defects.jsonl": "463eb13d3d370ff7898d63c01b541234275014b8b27ac942c4a4a3570d8c3514",
+    "preparer-comparison.jsonl": "0e81bb05a3e878219068a53f4775d54687be7be8655a1c163d65114478d82ff7",
+    "defects.md": "b9007027a945231fea903bc8f71b92e5c45e72bff93a13e1582bc931ad414b43"
+  },
+  "scriptSha256": "8ff99db65d3afdc5e0175c99d5dae609f601b1d78547c7f636188c026763a562"
+}

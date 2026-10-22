@@ -1,0 +1,18 @@
+{
+  "reviewerId": "GPT-6 (exact build unavailable)",
+  "reviewerKind": "ai",
+  "independenceDeclared": false,
+  "modelBuild": "unavailable",
+  "evaluationDate": "2026-10-21",
+  "priorExposure": "Eerdere bekendheid met het Diorthosis-project via bestaande gesprekscontext over een offline Nederlandse/Engelse taalassistent en benchmarkbenadering. Geen eerdere blootstelling aan de specifieke Batch 18-bronfragmenten, modelkandidaten of model-/promptcondities voor deze beoordeling. De blinde condities en het afgeschermde lineage-bestand zijn niet ingezien. Projectkennis betekent dat strikte externe onafhankelijkheid niet geclaimd wordt.",
+  "reviewLimitations": "Volledige AI-beoordeling van alle 58 onderwerpen in deze batch; niet door een bevoegde menselijke taalexpert gevalideerd. De tien brongevallen zijn vóór hun kandidaten afzonderlijk beoordeeld. Bronannotaties zijn niet klakkeloos als waarheid aangenomen. Er is bewust geen repository, lineage, conditiebestand of externe website geraadpleegd. Case 172: aanhalingstekenverwijdering kan in sommige literaire stijlen aanvaardbaar zijn; noNewErrors is daarom null bij de verwijderde-quotesvariant, maar de onnodige ingreep rechtvaardigt afwijzing. Case 175: ‘ons zetten’ is een regionaal geldige Vlaamse formulering. Case 177, 179 en 180: de kritieke-semantiekclassificatie volgt een conservatieve beoordeling van een functionele instructie, exact technisch token en modaliteitsverschil. Geen ontbrekende beoordelingen; volledigheid geldt alleen voor de 58 onderwerpen in Batch 18, niet voor het totale experiment. Status bronfallback na afwijzing levert uitdrukkelijk geen correctiesucces op. Supplementaire per-fout beoordelingen zijn AI-evidence en moeten voor telling gevalgebonden worden gereconcilieerd. Geen menselijke goedkeuring of release readiness geclaimd.",
+  "reviewRequest": "Beoordeel diorthosis Batch 18. alle oorspronkelijke Nederlandse en Engelse teksten en de bijbehorende modeluitvoer in deze Diorthosis ZIP.\n\nVolg de meegeleverde reviewinstructies strikt. Beoordeel iedere wijziging op grammatica, spelling, betekenisbehoud, onnodige aanpassingen, nieuw geïntroduceerde fouten, gemiste fouten en acceptabele alternatieven.\n\nBeoordeel eerst de oorspronkelijke tekst, daarna pas de correctie. Geef niet automatisch de voorkeur aan de meegeleverde referentietekst.\n\nBeoordeel ook afgewezen correcties afzonderlijk. Een afgewezen kandidaat is geen succesvolle verbetering.\n\nLever de volledige resultaten op als:\n- decisions.jsonl\n- error-decisions.jsonl\n- provenance.json\n\nBehoud alle oorspronkelijke subjectId- en bindingSha256-waarden exact. Gebruik reviewerKind \"ai\". Dit is een AI-beoordeling en geen menselijke validatie.\n\nVerwerk alle items in de aangeleverde batch en rapporteer expliciet als een beoordeling onzeker of onvolledig is.\n\nPlaats de drie resultaatbestanden in één ZIP met de naam diorthosis-review-batch-18.zip, waarbij 18 overeenkomt met het batchnummer van de aangeleverde ZIP. Geef mij een downloadlink naar deze ZIP.",
+  "reviewRequestSha256": "e10ae71a44fb1af3a2c8b1f54fa82167975b2ea4f482330dd26ce65c06fff4eb",
+  "subjectsSha256": "2743927e4bda680b7e4349f9e59086c60b57cf6fb9b63627ae006b04459e8109",
+  "decisionsSha256": "600355482dd0a26c21e50ac1b217d2e7e64f690c5551592b0d7fce4971efc4f9",
+  "errorDecisionsSha256": "e9692326a5d8a5ba2ead628a3e2ea666b1d85fc76c673b1d766dc966f8348825",
+  "subjectCount": 58,
+  "decisionCount": 58,
+  "errorDecisionCount": 25,
+  "completeCoverage": true
+}

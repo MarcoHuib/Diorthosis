@@ -1,0 +1,16 @@
+{
+  "reviewerId": "GPT-6; exact build unavailable",
+  "reviewerKind": "ai",
+  "independenceDeclared": false,
+  "modelBuild": "unavailable",
+  "evaluationDate": "2026-10-21",
+  "priorExposure": "This GPT-6 conversation has context from earlier discussions of the Diorthosis project, benchmark audits, data integrity and correction-evaluation practices. This is not an independent or human-blind reviewer. No knowledge of Batch 09 cases before reading this supplied review packet is claimed; no condition mapping, preparer assessments, lineage or repository content was inspected for this batch.",
+  "reviewLimitations": "AI diagnostic, not qualified human linguistic adjudication or release approval. Blinded review of only the provided subjects.jsonl and CHATGPT-REVIEW.md, with neither condition mapping nor external verification; no web search, reference preference or preparer lineage consultation. Ten fictional source passages, 52 subjects including 10 source-only annotation subjects and 42 candidate-stage subjects (raw/parsed/delivered/rejected), evaluated separately. 46 candidate-bound annotated-error judgments. Main coverage is complete for this batch, not for the full experiment. Raw Markdown emphasis in case-084 has an output-target-dependent formatting interpretation; case-085 technical identifier modification has an unknown downstream effect; case-087 has legitimate apostrophe and Unicode-normalization alternatives. These uncertainties are explicitly described in affected judgments. No individual subject was omitted; no manual/human validation was performed.",
+  "reviewRequest": "Beoordeel diorthosis Batch 09. alle oorspronkelijke Nederlandse en Engelse teksten en de bijbehorende modeluitvoer in deze Diorthosis ZIP.\n\nVolg de meegeleverde reviewinstructies strikt. Beoordeel iedere wijziging op grammatica, spelling, betekenisbehoud, onnodige aanpassingen, nieuw geïntroduceerde fouten, gemiste fouten en acceptabele alternatieven.\n\nBeoordeel eerst de oorspronkelijke tekst, daarna pas de correctie. Geef niet automatisch de voorkeur aan de meegeleverde referentietekst.\n\nBeoordeel ook afgewezen correcties afzonderlijk. Een afgewezen kandidaat is geen succesvolle verbetering.\n\nLever de volledige resultaten op als:\n- decisions.jsonl\n- error-decisions.jsonl\n- provenance.json\n\nBehoud alle oorspronkelijke subjectId- en bindingSha256-waarden exact. Gebruik reviewerKind \"ai\". Dit is een AI-beoordeling en geen menselijke validatie.\n\nVerwerk alle items in de aangeleverde batch en rapporteer expliciet als een beoordeling onzeker of onvolledig is.\n\nPlaats de drie resultaatbestanden in één ZIP met de naam diorthosis-review-batch-09.zip, waarbij 09 overeenkomt met het batchnummer van de aangeleverde ZIP. Geef mij een downloadlink naar deze ZIP.",
+  "reviewRequestSha256": "8bbab434c4b2e843dde54510a17171518e2ddcbaca117767c6714704543da9b3",
+  "subjectsSha256": "1a040ba88ccf2cbfe4cb1a08a90301540751836c5d0dc62428497ac23766878d",
+  "decisionsSha256": "1ee888cb1a77af1d5067b3aeed932b3ed7fe8ed178933fc1ae10e059bf501ef7",
+  "subjectCount": 52,
+  "decisionCount": 52,
+  "completeCoverage": true
+}

@@ -1,0 +1,525 @@
+{
+  "policy": "A/B pool 70 selection + 20 confirmation cases per language; other arms have selection only. Each original case repeats across arms. These are exposed synthetic descriptive totals, not comparable independent sample estimates or a new confirmation.",
+  "metrics": [
+    {
+      "promptVersion": "diorthosis-correction-v3",
+      "language": "dutch",
+      "panels": [
+        "confirmation",
+        "selection"
+      ],
+      "attempted": 90,
+      "localRepairs": {
+        "target": true,
+        "count": 35,
+        "contrary": 20,
+        "unknown": 0,
+        "attempted": 55
+      },
+      "safeRepairs": {
+        "target": true,
+        "count": 33,
+        "contrary": 21,
+        "unknown": 1,
+        "attempted": 55
+      },
+      "soundPassages": {
+        "target": true,
+        "count": 51,
+        "contrary": 38,
+        "unknown": 1,
+        "attempted": 90
+      },
+      "fullPassages": {
+        "target": true,
+        "count": 44,
+        "contrary": 40,
+        "unknown": 6,
+        "attempted": 90
+      },
+      "criticalFailures": {
+        "target": true,
+        "count": 5,
+        "contrary": 83,
+        "unknown": 2,
+        "attempted": 90
+      }
+    },
+    {
+      "promptVersion": "diorthosis-correction-v3",
+      "language": "english",
+      "panels": [
+        "confirmation",
+        "selection"
+      ],
+      "attempted": 90,
+      "localRepairs": {
+        "target": true,
+        "count": 39,
+        "contrary": 16,
+        "unknown": 0,
+        "attempted": 55
+      },
+      "safeRepairs": {
+        "target": true,
+        "count": 39,
+        "contrary": 16,
+        "unknown": 0,
+        "attempted": 55
+      },
+      "soundPassages": {
+        "target": true,
+        "count": 55,
+        "contrary": 34,
+        "unknown": 1,
+        "attempted": 90
+      },
+      "fullPassages": {
+        "target": true,
+        "count": 46,
+        "contrary": 34,
+        "unknown": 10,
+        "attempted": 90
+      },
+      "criticalFailures": {
+        "target": true,
+        "count": 1,
+        "contrary": 89,
+        "unknown": 0,
+        "attempted": 90
+      }
+    },
+    {
+      "promptVersion": "phase4-LiteralJson-FewShot-1.0.0",
+      "language": "dutch",
+      "panels": [
+        "selection"
+      ],
+      "attempted": 70,
+      "localRepairs": {
+        "target": true,
+        "count": 31,
+        "contrary": 12,
+        "unknown": 0,
+        "attempted": 43
+      },
+      "safeRepairs": {
+        "target": true,
+        "count": 29,
+        "contrary": 13,
+        "unknown": 1,
+        "attempted": 43
+      },
+      "soundPassages": {
+        "target": true,
+        "count": 47,
+        "contrary": 22,
+        "unknown": 1,
+        "attempted": 70
+      },
+      "fullPassages": {
+        "target": true,
+        "count": 42,
+        "contrary": 23,
+        "unknown": 5,
+        "attempted": 70
+      },
+      "criticalFailures": {
+        "target": true,
+        "count": 2,
+        "contrary": 66,
+        "unknown": 2,
+        "attempted": 70
+      }
+    },
+    {
+      "promptVersion": "phase4-LiteralJson-FewShot-1.0.0",
+      "language": "english",
+      "panels": [
+        "selection"
+      ],
+      "attempted": 70,
+      "localRepairs": {
+        "target": true,
+        "count": 32,
+        "contrary": 11,
+        "unknown": 0,
+        "attempted": 43
+      },
+      "safeRepairs": {
+        "target": true,
+        "count": 31,
+        "contrary": 11,
+        "unknown": 1,
+        "attempted": 43
+      },
+      "soundPassages": {
+        "target": true,
+        "count": 48,
+        "contrary": 21,
+        "unknown": 1,
+        "attempted": 70
+      },
+      "fullPassages": {
+        "target": true,
+        "count": 39,
+        "contrary": 21,
+        "unknown": 10,
+        "attempted": 70
+      },
+      "criticalFailures": {
+        "target": true,
+        "count": 0,
+        "contrary": 70,
+        "unknown": 0,
+        "attempted": 70
+      }
+    },
+    {
+      "promptVersion": "phase4-LiteralJson-LanguageSpecific-1.0.0",
+      "language": "dutch",
+      "panels": [
+        "selection"
+      ],
+      "attempted": 70,
+      "localRepairs": {
+        "target": true,
+        "count": 36,
+        "contrary": 7,
+        "unknown": 0,
+        "attempted": 43
+      },
+      "safeRepairs": {
+        "target": true,
+        "count": 33,
+        "contrary": 9,
+        "unknown": 1,
+        "attempted": 43
+      },
+      "soundPassages": {
+        "target": true,
+        "count": 48,
+        "contrary": 21,
+        "unknown": 1,
+        "attempted": 70
+      },
+      "fullPassages": {
+        "target": true,
+        "count": 44,
+        "contrary": 22,
+        "unknown": 4,
+        "attempted": 70
+      },
+      "criticalFailures": {
+        "target": true,
+        "count": 3,
+        "contrary": 65,
+        "unknown": 2,
+        "attempted": 70
+      }
+    },
+    {
+      "promptVersion": "phase4-LiteralJson-LanguageSpecific-1.0.0",
+      "language": "english",
+      "panels": [
+        "selection"
+      ],
+      "attempted": 70,
+      "localRepairs": {
+        "target": true,
+        "count": 33,
+        "contrary": 10,
+        "unknown": 0,
+        "attempted": 43
+      },
+      "safeRepairs": {
+        "target": true,
+        "count": 31,
+        "contrary": 10,
+        "unknown": 2,
+        "attempted": 43
+      },
+      "soundPassages": {
+        "target": true,
+        "count": 46,
+        "contrary": 22,
+        "unknown": 2,
+        "attempted": 70
+      },
+      "fullPassages": {
+        "target": true,
+        "count": 39,
+        "contrary": 22,
+        "unknown": 9,
+        "attempted": 70
+      },
+      "criticalFailures": {
+        "target": true,
+        "count": 1,
+        "contrary": 68,
+        "unknown": 1,
+        "attempted": 70
+      }
+    },
+    {
+      "promptVersion": "phase4-LiteralJson-Minimal-1.0.0",
+      "language": "dutch",
+      "panels": [
+        "selection"
+      ],
+      "attempted": 70,
+      "localRepairs": {
+        "target": true,
+        "count": 32,
+        "contrary": 11,
+        "unknown": 0,
+        "attempted": 43
+      },
+      "safeRepairs": {
+        "target": true,
+        "count": 29,
+        "contrary": 13,
+        "unknown": 1,
+        "attempted": 43
+      },
+      "soundPassages": {
+        "target": true,
+        "count": 46,
+        "contrary": 23,
+        "unknown": 1,
+        "attempted": 70
+      },
+      "fullPassages": {
+        "target": true,
+        "count": 41,
+        "contrary": 25,
+        "unknown": 4,
+        "attempted": 70
+      },
+      "criticalFailures": {
+        "target": true,
+        "count": 5,
+        "contrary": 63,
+        "unknown": 2,
+        "attempted": 70
+      }
+    },
+    {
+      "promptVersion": "phase4-LiteralJson-Minimal-1.0.0",
+      "language": "english",
+      "panels": [
+        "selection"
+      ],
+      "attempted": 70,
+      "localRepairs": {
+        "target": true,
+        "count": 33,
+        "contrary": 10,
+        "unknown": 0,
+        "attempted": 43
+      },
+      "safeRepairs": {
+        "target": true,
+        "count": 32,
+        "contrary": 10,
+        "unknown": 1,
+        "attempted": 43
+      },
+      "soundPassages": {
+        "target": true,
+        "count": 47,
+        "contrary": 22,
+        "unknown": 1,
+        "attempted": 70
+      },
+      "fullPassages": {
+        "target": true,
+        "count": 40,
+        "contrary": 22,
+        "unknown": 8,
+        "attempted": 70
+      },
+      "criticalFailures": {
+        "target": true,
+        "count": 1,
+        "contrary": 69,
+        "unknown": 0,
+        "attempted": 70
+      }
+    },
+    {
+      "promptVersion": "phase4-LiteralJson-Original-1.0.0",
+      "language": "dutch",
+      "panels": [
+        "confirmation",
+        "selection"
+      ],
+      "attempted": 90,
+      "localRepairs": {
+        "target": true,
+        "count": 39,
+        "contrary": 16,
+        "unknown": 0,
+        "attempted": 55
+      },
+      "safeRepairs": {
+        "target": true,
+        "count": 37,
+        "contrary": 17,
+        "unknown": 1,
+        "attempted": 55
+      },
+      "soundPassages": {
+        "target": true,
+        "count": 59,
+        "contrary": 30,
+        "unknown": 1,
+        "attempted": 90
+      },
+      "fullPassages": {
+        "target": true,
+        "count": 51,
+        "contrary": 32,
+        "unknown": 7,
+        "attempted": 90
+      },
+      "criticalFailures": {
+        "target": true,
+        "count": 5,
+        "contrary": 84,
+        "unknown": 1,
+        "attempted": 90
+      }
+    },
+    {
+      "promptVersion": "phase4-LiteralJson-Original-1.0.0",
+      "language": "english",
+      "panels": [
+        "confirmation",
+        "selection"
+      ],
+      "attempted": 90,
+      "localRepairs": {
+        "target": true,
+        "count": 44,
+        "contrary": 11,
+        "unknown": 0,
+        "attempted": 55
+      },
+      "safeRepairs": {
+        "target": true,
+        "count": 43,
+        "contrary": 11,
+        "unknown": 1,
+        "attempted": 55
+      },
+      "soundPassages": {
+        "target": true,
+        "count": 65,
+        "contrary": 23,
+        "unknown": 2,
+        "attempted": 90
+      },
+      "fullPassages": {
+        "target": true,
+        "count": 54,
+        "contrary": 23,
+        "unknown": 13,
+        "attempted": 90
+      },
+      "criticalFailures": {
+        "target": true,
+        "count": 0,
+        "contrary": 90,
+        "unknown": 0,
+        "attempted": 90
+      }
+    },
+    {
+      "promptVersion": "phase4-PlainText-Original-1.0.0",
+      "language": "dutch",
+      "panels": [
+        "selection"
+      ],
+      "attempted": 70,
+      "localRepairs": {
+        "target": true,
+        "count": 29,
+        "contrary": 14,
+        "unknown": 0,
+        "attempted": 43
+      },
+      "safeRepairs": {
+        "target": true,
+        "count": 27,
+        "contrary": 15,
+        "unknown": 1,
+        "attempted": 43
+      },
+      "soundPassages": {
+        "target": true,
+        "count": 40,
+        "contrary": 29,
+        "unknown": 1,
+        "attempted": 70
+      },
+      "fullPassages": {
+        "target": true,
+        "count": 36,
+        "contrary": 31,
+        "unknown": 3,
+        "attempted": 70
+      },
+      "criticalFailures": {
+        "target": true,
+        "count": 3,
+        "contrary": 66,
+        "unknown": 1,
+        "attempted": 70
+      }
+    },
+    {
+      "promptVersion": "phase4-PlainText-Original-1.0.0",
+      "language": "english",
+      "panels": [
+        "selection"
+      ],
+      "attempted": 70,
+      "localRepairs": {
+        "target": true,
+        "count": 31,
+        "contrary": 12,
+        "unknown": 0,
+        "attempted": 43
+      },
+      "safeRepairs": {
+        "target": true,
+        "count": 29,
+        "contrary": 12,
+        "unknown": 2,
+        "attempted": 43
+      },
+      "soundPassages": {
+        "target": true,
+        "count": 44,
+        "contrary": 24,
+        "unknown": 2,
+        "attempted": 70
+      },
+      "fullPassages": {
+        "target": true,
+        "count": 36,
+        "contrary": 24,
+        "unknown": 10,
+        "attempted": 70
+      },
+      "criticalFailures": {
+        "target": true,
+        "count": 0,
+        "contrary": 69,
+        "unknown": 1,
+        "attempted": 70
+      }
+    }
+  ]
+}

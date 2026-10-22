@@ -1,0 +1,132 @@
+{
+  "batch": "batch-07",
+  "expectedSubjects": 51,
+  "receivedDecisions": 51,
+  "validDecisions": 51,
+  "missingDecisions": 0,
+  "missingSubjectIds": [],
+  "errors": [
+    {
+      "file": "error-decisions.jsonl",
+      "line": 1,
+      "subjectId": "review-cc250528c2a9f47180c7b7f0974cfc1b0faa05e4c3abdf263234846bec840365",
+      "bindingSha256": "cc250528c2a9f47180c7b7f0974cfc1b0faa05e4c3abdf263234846bec840365",
+      "violatedContract": "Supplementary repair judgments require kind passage or rejection; source-only kind case has no candidate.",
+      "explanation": "Reviewer explicitly describes an unrepaired original annotation. Retain as source diagnostic; exclude from candidate repair import.",
+      "originalLineSha256": "847c6a1d08bc4bbf8120ca683f7019c0d44ae75f02b8e1df05b5e6e08f5d548e",
+      "decision": {
+        "subjectId": "review-cc250528c2a9f47180c7b7f0974cfc1b0faa05e4c3abdf263234846bec840365",
+        "bindingSha256": "cc250528c2a9f47180c7b7f0974cfc1b0faa05e4c3abdf263234846bec840365",
+        "annotationIndex": 0,
+        "repaired": false,
+        "rationale": "„childs” heeft als correct onregelmatig meervoud „children”. Bronannotatie zonder kandidaat: fout in het origineel bevestigd, niet gerepareerd in dit subject."
+      }
+    },
+    {
+      "file": "error-decisions.jsonl",
+      "line": 5,
+      "subjectId": "review-c6293011eb0366f91536e8ec39f55e936893baf8bdbd6b0889f8c0eee9a75a75",
+      "bindingSha256": "c6293011eb0366f91536e8ec39f55e936893baf8bdbd6b0889f8c0eee9a75a75",
+      "violatedContract": "Supplementary repair judgments require kind passage or rejection; source-only kind case has no candidate.",
+      "explanation": "Reviewer explicitly describes an unrepaired original annotation. Retain as source diagnostic; exclude from candidate repair import.",
+      "originalLineSha256": "36164a1d0f21a8616ca50a9830f9da6dffd0c49af1d41c71a24c9b65cb4083b1",
+      "decision": {
+        "subjectId": "review-c6293011eb0366f91536e8ec39f55e936893baf8bdbd6b0889f8c0eee9a75a75",
+        "bindingSha256": "c6293011eb0366f91536e8ec39f55e936893baf8bdbd6b0889f8c0eee9a75a75",
+        "annotationIndex": 0,
+        "repaired": false,
+        "rationale": "Het verkeerd gespelde „berciht” moet „bericht” worden. Bronannotatie zonder kandidaat: fout in het origineel bevestigd, niet gerepareerd in dit subject."
+      }
+    },
+    {
+      "file": "error-decisions.jsonl",
+      "line": 9,
+      "subjectId": "review-16fefda641fc197788043433aa926605d8ceb62ff1821cf4e8aa8a8b36944e3f",
+      "bindingSha256": "16fefda641fc197788043433aa926605d8ceb62ff1821cf4e8aa8a8b36944e3f",
+      "violatedContract": "Supplementary repair judgments require kind passage or rejection; source-only kind case has no candidate.",
+      "explanation": "Reviewer explicitly describes an unrepaired original annotation. Retain as source diagnostic; exclude from candidate repair import.",
+      "originalLineSha256": "e6968ed927ccc8f62d1f7156796e929c0f1f5df5624cac5b3adb7c3c058c3acb",
+      "decision": {
+        "subjectId": "review-16fefda641fc197788043433aa926605d8ceb62ff1821cf4e8aa8a8b36944e3f",
+        "bindingSha256": "16fefda641fc197788043433aa926605d8ceb62ff1821cf4e8aa8a8b36944e3f",
+        "annotationIndex": 0,
+        "repaired": false,
+        "rationale": "Het Nederlandse meervoud is „pakketten” met dubbele k. Bronannotatie zonder kandidaat: fout in het origineel bevestigd, niet gerepareerd in dit subject."
+      }
+    },
+    {
+      "file": "error-decisions.jsonl",
+      "line": 13,
+      "subjectId": "review-a13e86c104deb86094c629aad51e2ebef740609209519c61a3c7b90e18966a47",
+      "bindingSha256": "a13e86c104deb86094c629aad51e2ebef740609209519c61a3c7b90e18966a47",
+      "violatedContract": "Supplementary repair judgments require kind passage or rejection; source-only kind case has no candidate.",
+      "explanation": "Reviewer explicitly describes an unrepaired original annotation. Retain as source diagnostic; exclude from candidate repair import.",
+      "originalLineSha256": "fb1aeeee757f49cd857ea144e814ac6fc435c45453ac076ff0d9041de9ff276e",
+      "decision": {
+        "subjectId": "review-a13e86c104deb86094c629aad51e2ebef740609209519c61a3c7b90e18966a47",
+        "bindingSha256": "a13e86c104deb86094c629aad51e2ebef740609209519c61a3c7b90e18966a47",
+        "annotationIndex": 0,
+        "repaired": false,
+        "rationale": "Door de niet-uitgesproken h in „honest” hoort het lidwoord „an”. Bronannotatie zonder kandidaat: fout in het origineel bevestigd, niet gerepareerd in dit subject."
+      }
+    },
+    {
+      "file": "error-decisions.jsonl",
+      "line": 17,
+      "subjectId": "review-9c99dcb2662c58f863cda46a88fe54a4600a97fffb68df9b56ca742dd0a5a07c",
+      "bindingSha256": "9c99dcb2662c58f863cda46a88fe54a4600a97fffb68df9b56ca742dd0a5a07c",
+      "violatedContract": "Supplementary repair judgments require kind passage or rejection; source-only kind case has no candidate.",
+      "explanation": "Reviewer explicitly describes an unrepaired original annotation. Retain as source diagnostic; exclude from candidate repair import.",
+      "originalLineSha256": "e0e691177857943c9b936f75b1bb5bc16ea2d089f54e03d1fd689b34585de6b1",
+      "decision": {
+        "subjectId": "review-9c99dcb2662c58f863cda46a88fe54a4600a97fffb68df9b56ca742dd0a5a07c",
+        "bindingSha256": "9c99dcb2662c58f863cda46a88fe54a4600a97fffb68df9b56ca742dd0a5a07c",
+        "annotationIndex": 0,
+        "repaired": false,
+        "rationale": "Meervoudig onderwerp „De bestanden” vereist „bestaan”, niet „bestaat”. Bronannotatie zonder kandidaat: fout in het origineel bevestigd, niet gerepareerd in dit subject."
+      }
+    },
+    {
+      "file": "error-decisions.jsonl",
+      "line": 24,
+      "subjectId": "review-4badae90aae93dbe8a8aea000d78dd427ce8bdd9511389587d26ccb5d8d3bc0a",
+      "bindingSha256": "4badae90aae93dbe8a8aea000d78dd427ce8bdd9511389587d26ccb5d8d3bc0a",
+      "violatedContract": "Supplementary repair judgments require kind passage or rejection; source-only kind case has no candidate.",
+      "explanation": "Reviewer explicitly describes an unrepaired original annotation. Retain as source diagnostic; exclude from candidate repair import.",
+      "originalLineSha256": "e40fccc886ecaeb0bc2e9e8298c3b3901211e50e6830adc0362b3142a53616cf",
+      "decision": {
+        "subjectId": "review-4badae90aae93dbe8a8aea000d78dd427ce8bdd9511389587d26ccb5d8d3bc0a",
+        "bindingSha256": "4badae90aae93dbe8a8aea000d78dd427ce8bdd9511389587d26ccb5d8d3bc0a",
+        "annotationIndex": 0,
+        "repaired": false,
+        "rationale": "„vegradering” bevat letterverwisseling; correct is „vergadering”. Bronannotatie zonder kandidaat: fout in het origineel bevestigd, niet gerepareerd in dit subject."
+      }
+    }
+  ],
+  "coverageComplete": true,
+  "importStatus": "imported; source-only supplementary records quarantined",
+  "receivedErrorDecisions": 27,
+  "validCandidateErrorDecisions": 21,
+  "missingCandidateErrorKeys": [],
+  "errorHashDeclaration": "not declared; importer-computed SHA-256 only",
+  "originalPacketSha256": "552a0b738c99de5435af07aa98f17017ad13b024e48846d46cc301e910062a5a",
+  "originalSubjectsSha256": "ace245b5d49a05def8f2529c4263d094d3a1e587fe24ab8cc06926f194f982e8",
+  "archiveSha256": "b2f72e2cb72c4d3a3fe1b1d341055361643b63beb9170a1196d71ce216a8a264",
+  "members": {
+    "decisions.jsonl": {
+      "bytes": 57017,
+      "sha256": "02a02b0922817a4a1078e0094c0192285523d826f58fc8a8e0cc43413807093e"
+    },
+    "error-decisions.jsonl": {
+      "bytes": 11389,
+      "sha256": "a3d10f72341313ecc0cb19bb8d13a0171853b74b0cc54f6138e5242532db1817"
+    },
+    "provenance.json": {
+      "bytes": 2940,
+      "sha256": "02ed56b0d5877a15531e9b7d51b1e1dbdc002fcc794ec6342710e854bfbea8e1"
+    }
+  },
+  "importedErrorFile": "batches/batch-07/mechanical-subset/candidate-error-decisions.jsonl",
+  "importedErrorSha256": "ac8e4ed8ca33b49095ba9f640cfd66eb7959443ea8a38237628d36833c6982d0",
+  "humanApprovals": 0
+}

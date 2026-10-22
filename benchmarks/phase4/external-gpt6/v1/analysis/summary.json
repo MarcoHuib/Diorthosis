@@ -1,0 +1,30 @@
+{
+  "version": "phase4-external-analysis-1.0.0",
+  "sources": 180,
+  "subjects": 1075,
+  "generationOccurrences": 920,
+  "candidateErrorDecisions": 478,
+  "humanApprovals": 0,
+  "crossLayerContradictions": 0,
+  "crossLayerContradictionSourceCases": 0,
+  "comparison": {
+    "matchedRecords": 187,
+    "structuredBooleanDifferences": 113,
+    "knownContradictions": 22,
+    "perErrorDifferences": 1
+  },
+  "localDeliveredErrorRepairsAbsentReference": 19,
+  "soundDeliveredAlternativesAbsentReference": 6,
+  "deliveredCriticalOccurrences": 26,
+  "deliveredCriticalSourceCases": 9,
+  "deliveredMeaningFailureOccurrences": 34,
+  "withheldValidNecessaryOccurrences": 30,
+  "dispositionTotals": {
+    "unchanged": 264,
+    "accepted": 464,
+    "rejected": 158,
+    "needsReview": 18,
+    "suppressed": 16
+  },
+  "policy": "All aggregate occurrences overlap across conditions and layers, and include selection exposure. No population superiority, independent reviewers, exhaustive grammar-type counts, or human validation inferred."
+}

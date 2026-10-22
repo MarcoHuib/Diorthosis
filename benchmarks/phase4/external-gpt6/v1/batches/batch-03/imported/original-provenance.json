@@ -1,0 +1,16 @@
+{
+  "reviewerId": "GPT-6; build unavailable",
+  "reviewerKind": "ai",
+  "independenceDeclared": false,
+  "modelBuild": "unavailable",
+  "evaluationDate": "2026-10-21",
+  "priorExposure": "Eerdere gesprekscontext en projectkennis over Diorthosis, inclusief eerdere batch-01/-02-reviewverzoeken en algemene benchmarkproblemen; daarom geen onafhankelijke reviewer. Deze batch is beoordeeld uitsluitend aan de hand van subjects.jsonl en de meegeleverde reviewinstructies; geen inzage in lineage-, conditie- of preparerbeoordelingsgegevens vóór het vastleggen van beslissingen.",
+  "reviewLimitations": "AI-taalkundige diagnostiek, geen gekwalificeerde menselijke beoordeling of onafhankelijke validatie. Alleen de 10 fictieve broncasussen in deze batch; 67/67 subjects beoordeeld en 21/21 geannoteerde fout/subject-bindingen beoordeeld. Case-021 bevat contextafhankelijke interpretatie van ‘tab’, tabulator, dubbelepunt en hoofdletter; mogelijke niet-geannoteerde interpunctieonzekerheid is expliciet null beoordeeld, niet als zeker schoon of zeker gerepareerd. Lokale correctheid van verworpen kandidaten is niet gelijk aan geleverde reparatie. Geen externe bronnen of conditionele lineage gebruikt. Coverage betekent niet dat het hele experiment voltooid of geschikt voor release is.",
+  "reviewRequest": "Beoordeel diorthosis Batch 03. alle oorspronkelijke Nederlandse en Engelse teksten en de bijbehorende modeluitvoer in deze Diorthosis ZIP.\n\nVolg de meegeleverde reviewinstructies strikt. Beoordeel iedere wijziging op grammatica, spelling, betekenisbehoud, onnodige aanpassingen, nieuw geïntroduceerde fouten, gemiste fouten en acceptabele alternatieven.\n\nBeoordeel eerst de oorspronkelijke tekst, daarna pas de correctie. Geef niet automatisch de voorkeur aan de meegeleverde referentietekst.\n\nBeoordeel ook afgewezen correcties afzonderlijk. Een afgewezen kandidaat is geen succesvolle verbetering.\n\nLever de volledige resultaten op als:\n- decisions.jsonl\n- error-decisions.jsonl\n- provenance.json\n\nBehoud alle oorspronkelijke subjectId- en bindingSha256-waarden exact. Gebruik reviewerKind \"ai\". Dit is een AI-beoordeling en geen menselijke validatie.\n\nVerwerk alle items in de aangeleverde batch en rapporteer expliciet als een beoordeling onzeker of onvolledig is.\n\nPlaats de drie resultaatbestanden in één ZIP met de naam diorthosis-review-batch-03.zip, waarbij 03 overeenkomt met het batchnummer van de aangeleverde ZIP. Geef mij een downloadlink naar deze ZIP.",
+  "reviewRequestSha256": "55e8ab27800c4e0c451954bf7371af18198957cdfa012c48039b926b7338dc59",
+  "subjectsSha256": "15b380bf5e68db75ad447d8ddeb2e3f4c07439f276ff7dcff9a7ad23f1020429",
+  "decisionsSha256": "670f2f4ed11bc9ded74ca9cce3f75eabf70475fcb44c354f5d5a0df27faebb7d",
+  "subjectCount": 67,
+  "decisionCount": 67,
+  "completeCoverage": true
+}

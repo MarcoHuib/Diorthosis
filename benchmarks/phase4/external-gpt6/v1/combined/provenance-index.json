@@ -1,0 +1,164 @@
+[
+  {
+    "batch": "batch-01",
+    "originalProvenance": "batches/batch-01/original/provenance.json",
+    "provenanceSha256": "73530939ba8550c57e0a8b9661ef3b6f39e1902c16ca0cb9773d072329621edf",
+    "archiveSha256": "4ac99ab686108d7457aa4d58f79795b2bd890fd346ea105d0a6a765d4a520dc4",
+    "reviewerId": "GPT-6; build unavailable",
+    "independenceDeclared": false,
+    "reviewerKind": "ai"
+  },
+  {
+    "batch": "batch-02",
+    "originalProvenance": "batches/batch-02/original/provenance.json",
+    "provenanceSha256": "6c02edd40aa42974d176d77db22d2363e9b341c053041358435880beaba4f868",
+    "archiveSha256": "5b6b1e32ba36df16f61e60649712700ecf48c4a2b3a58f4ef3ae94ad4bb30e0f",
+    "reviewerId": "GPT-6; build unavailable",
+    "independenceDeclared": false,
+    "reviewerKind": "ai"
+  },
+  {
+    "batch": "batch-03",
+    "originalProvenance": "batches/batch-03/original/provenance.json",
+    "provenanceSha256": "b09bc5470b7f4cd8ad2ddddd72d77c6b64bcd269ffdf59a06a72dcb60ba46663",
+    "archiveSha256": "a109544d1268bcfb87350ae1e9cd417214e6a8982a17060f9f74e5d9a4b6669c",
+    "reviewerId": "GPT-6; build unavailable",
+    "independenceDeclared": false,
+    "reviewerKind": "ai"
+  },
+  {
+    "batch": "batch-04",
+    "originalProvenance": "batches/batch-04/original/provenance.json",
+    "provenanceSha256": "aa13057210f54b32433fd302117662faa8dbdc9c238b0562976d83293d4f9a53",
+    "archiveSha256": "d23b4a1c6ead88ba6e8954f2f5635cc69ddbc5bc41155b79ba7ce26533e1acfb",
+    "reviewerId": "GPT-6 (ChatGPT; exact build unavailable)",
+    "independenceDeclared": false,
+    "reviewerKind": "ai"
+  },
+  {
+    "batch": "batch-05",
+    "originalProvenance": "batches/batch-05/original/provenance.json",
+    "provenanceSha256": "5539a6fc1fffedc130272f7a949d37810aa0337438e63e41511c038b89e534bb",
+    "archiveSha256": "6a7f627d0348e95f3456a241733b2706997042aba29b7f3ded4ed437eefabecf",
+    "reviewerId": "GPT-6; exact build unavailable",
+    "independenceDeclared": false,
+    "reviewerKind": "ai"
+  },
+  {
+    "batch": "batch-06",
+    "originalProvenance": "batches/batch-06/original/provenance.json",
+    "provenanceSha256": "49871fc36e5e786cec69cdbf1dbc112687c0ee917f4acbe031b0dfd49eb862a0",
+    "archiveSha256": "cadc941ea4a1cf14a92d7cea79100c2774e8fb31a2cf2b071a46135819d8e77d",
+    "reviewerId": "GPT-6; exact build unavailable",
+    "independenceDeclared": false,
+    "reviewerKind": "ai"
+  },
+  {
+    "batch": "batch-07",
+    "originalProvenance": "batches/batch-07/original/provenance.json",
+    "provenanceSha256": "02ed56b0d5877a15531e9b7d51b1e1dbdc002fcc794ec6342710e854bfbea8e1",
+    "archiveSha256": "b2f72e2cb72c4d3a3fe1b1d341055361643b63beb9170a1196d71ce216a8a264",
+    "reviewerId": "GPT-6; build unavailable",
+    "independenceDeclared": false,
+    "reviewerKind": "ai"
+  },
+  {
+    "batch": "batch-08",
+    "originalProvenance": "batches/batch-08/original/provenance.json",
+    "provenanceSha256": "2ca999afd1fc57578a7951ea683d3b02f937572689fcdb36a67b921894aa1bde",
+    "archiveSha256": "010d7206ce5223c302e533a294b21dcdd82d5c217a1ca98fb7d53f4f65cd5f73",
+    "reviewerId": "GPT-6; build unavailable",
+    "independenceDeclared": false,
+    "reviewerKind": "ai"
+  },
+  {
+    "batch": "batch-09",
+    "originalProvenance": "batches/batch-09/original/provenance.json",
+    "provenanceSha256": "1a480ea8df0f73982e0525d2650df70aad1674d1183d5f5ef438792e17bae84f",
+    "archiveSha256": "9d1254be6afde9a4af3507b71218c76b8956953385976f3355e0c714fc22b1e2",
+    "reviewerId": "GPT-6; exact build unavailable",
+    "independenceDeclared": false,
+    "reviewerKind": "ai"
+  },
+  {
+    "batch": "batch-10",
+    "originalProvenance": "batches/batch-10/original/provenance.json",
+    "provenanceSha256": "99aa5c12ac4fc318f9e90eeac6aa11b421057e1c61b16aad1d568032c2aa9f2d",
+    "archiveSha256": "8e564925fefa89772eb93b839b9823e8f572950c289dffa84d24e2cf2fdc6a5e",
+    "reviewerId": "GPT-6; build unavailable",
+    "independenceDeclared": false,
+    "reviewerKind": "ai"
+  },
+  {
+    "batch": "batch-11",
+    "originalProvenance": "batches/batch-11/original/provenance.json",
+    "provenanceSha256": "431b1390816c7a872d3d40947b2d6ff2aae087fbe97bda0d3d28c8d1937f4bc1",
+    "archiveSha256": "1056967a5ae34b074d6c261f2814ec7eb50d181c334f778e66081fd2d7089950",
+    "reviewerId": "OpenAI GPT-6; build unavailable",
+    "independenceDeclared": false,
+    "reviewerKind": "ai"
+  },
+  {
+    "batch": "batch-12",
+    "originalProvenance": "batches/batch-12/original/provenance.json",
+    "provenanceSha256": "7bcbd0633587063386957e8a54d0a8cf3ec4bc7d6072c459cca32ea52f3d4e3d",
+    "archiveSha256": "18eb25a6cc2527fd7ac681bc08230a37bf85f2d7b3413876b8955b9b0fa95bf9",
+    "reviewerId": "GPT-6; build unavailable",
+    "independenceDeclared": false,
+    "reviewerKind": "ai"
+  },
+  {
+    "batch": "batch-13",
+    "originalProvenance": "batches/batch-13/original/provenance.json",
+    "provenanceSha256": "44b95bc3844c12eadae5894e0915fa089145100261c8348880d12deb847cce5c",
+    "archiveSha256": "d0af4a8d2ad57fa773566120c8e36f91d70fcd9e27bf08caf7dc6b17547b6521",
+    "reviewerId": "GPT-6; build unavailable",
+    "independenceDeclared": false,
+    "reviewerKind": "ai"
+  },
+  {
+    "batch": "batch-14",
+    "originalProvenance": "batches/batch-14/original/provenance.json",
+    "provenanceSha256": "0c1102b723ce3268c93ef2e75c7c89dc06a10bd43cbaa9f822938d1efae6b84d",
+    "archiveSha256": "2b85312ebd242967b3ca428e7e51d079681e58fb6bdc2751eb1ec023123d051d",
+    "reviewerId": "GPT-6; build unavailable",
+    "independenceDeclared": false,
+    "reviewerKind": "ai"
+  },
+  {
+    "batch": "batch-15",
+    "originalProvenance": "batches/batch-15/original/provenance.json",
+    "provenanceSha256": "3d7a7bbed105bc48d6131ca82872a294289750d003da4d19a34719185d9d808f",
+    "archiveSha256": "6d0a246b0c6434d1e37404d8fb55b2142cb8a998ac52c5ba5f543dbee3c5253b",
+    "reviewerId": "OpenAI GPT-6; build unavailable",
+    "independenceDeclared": false,
+    "reviewerKind": "ai"
+  },
+  {
+    "batch": "batch-16",
+    "originalProvenance": "batches/batch-16/original/provenance.json",
+    "provenanceSha256": "9345fea102ccc90e6523d0e1089b00e6a84ec8af161cae9847581cb54f16cc8e",
+    "archiveSha256": "1a1fbb869a08bb4f2a4df04fd716e037619b0775289eba4b37cb8a72d761f48c",
+    "reviewerId": "GPT-6; build unavailable",
+    "independenceDeclared": false,
+    "reviewerKind": "ai"
+  },
+  {
+    "batch": "batch-17",
+    "originalProvenance": "batches/batch-17/original/provenance.json",
+    "provenanceSha256": "d61c22daf9f5d37d0337320829da134d7dfc74def2bc42ad8f556bc97667b264",
+    "archiveSha256": "092954e522b351f03f7c1eb8e2a37e27f89e9e1e3c78729106fb6da54e968604",
+    "reviewerId": "GPT-6; build unavailable",
+    "independenceDeclared": false,
+    "reviewerKind": "ai"
+  },
+  {
+    "batch": "batch-18",
+    "originalProvenance": "batches/batch-18/original/provenance.json",
+    "provenanceSha256": "ffa8ad7f81bb4bcba6f65715a45207d12e61ba3e7abeb7ed3aadcea8f1183adb",
+    "archiveSha256": "1942b7cfbfec252b9858db671b6d96e3567fee96fece6e935374bef5b56b3d0e",
+    "reviewerId": "GPT-6 (exact build unavailable)",
+    "independenceDeclared": false,
+    "reviewerKind": "ai"
+  }
+]

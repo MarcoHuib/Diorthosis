@@ -1,5 +1,7 @@
 # Phase 4: external GPT-6 review preflight and quality checkpoint
 
+Historical preflight: its import/test blockers are resolved by the [complete reconciliation report](phase4-external-review-report.md). Original findings below describe the earlier environment; “acceptable” counts use the sound-passage criterion, without requiring explicit edit-necessity approval.
+
 2026-10-21. **Do not promote a prompt, change production v3, or merge PR #7.** This note records external AI preflight findings and the currently blocked official import. It is **not** a claim that the existing C# `adjudicate` or all 18 strict batch imports ran.
 
 ## Source, identity, coverage

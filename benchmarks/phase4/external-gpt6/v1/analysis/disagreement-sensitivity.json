@@ -1,0 +1,533 @@
+{
+  "policy": "Diagnostic counterfactual only, not adjudication: substitute known contradictory preparer booleans on exact bound confirmation subjects and exact contextual selection pairs. Preserve null uncertainty. No new judgment, reference change or extra reviewer inferred.",
+  "metrics": [
+    {
+      "panel": "confirmation",
+      "language": "dutch",
+      "promptVersion": "diorthosis-correction-v3",
+      "externalSound": {
+        "target": true,
+        "count": 11,
+        "contrary": 9,
+        "unknown": 0,
+        "attempted": 20
+      },
+      "preparerContradictionSensitivitySound": {
+        "target": true,
+        "count": 11,
+        "contrary": 9,
+        "unknown": 0,
+        "attempted": 20
+      },
+      "externalFull": {
+        "target": true,
+        "count": 9,
+        "contrary": 9,
+        "unknown": 2,
+        "attempted": 20
+      },
+      "preparerContradictionSensitivityFull": {
+        "target": true,
+        "count": 9,
+        "contrary": 9,
+        "unknown": 2,
+        "attempted": 20
+      }
+    },
+    {
+      "panel": "confirmation",
+      "language": "dutch",
+      "promptVersion": "phase4-LiteralJson-Original-1.0.0",
+      "externalSound": {
+        "target": true,
+        "count": 14,
+        "contrary": 6,
+        "unknown": 0,
+        "attempted": 20
+      },
+      "preparerContradictionSensitivitySound": {
+        "target": true,
+        "count": 14,
+        "contrary": 6,
+        "unknown": 0,
+        "attempted": 20
+      },
+      "externalFull": {
+        "target": true,
+        "count": 11,
+        "contrary": 6,
+        "unknown": 3,
+        "attempted": 20
+      },
+      "preparerContradictionSensitivityFull": {
+        "target": true,
+        "count": 11,
+        "contrary": 6,
+        "unknown": 3,
+        "attempted": 20
+      }
+    },
+    {
+      "panel": "confirmation",
+      "language": "english",
+      "promptVersion": "diorthosis-correction-v3",
+      "externalSound": {
+        "target": true,
+        "count": 12,
+        "contrary": 7,
+        "unknown": 1,
+        "attempted": 20
+      },
+      "preparerContradictionSensitivitySound": {
+        "target": true,
+        "count": 12,
+        "contrary": 7,
+        "unknown": 1,
+        "attempted": 20
+      },
+      "externalFull": {
+        "target": true,
+        "count": 9,
+        "contrary": 7,
+        "unknown": 4,
+        "attempted": 20
+      },
+      "preparerContradictionSensitivityFull": {
+        "target": true,
+        "count": 9,
+        "contrary": 7,
+        "unknown": 4,
+        "attempted": 20
+      }
+    },
+    {
+      "panel": "confirmation",
+      "language": "english",
+      "promptVersion": "phase4-LiteralJson-Original-1.0.0",
+      "externalSound": {
+        "target": true,
+        "count": 15,
+        "contrary": 4,
+        "unknown": 1,
+        "attempted": 20
+      },
+      "preparerContradictionSensitivitySound": {
+        "target": true,
+        "count": 15,
+        "contrary": 4,
+        "unknown": 1,
+        "attempted": 20
+      },
+      "externalFull": {
+        "target": true,
+        "count": 12,
+        "contrary": 4,
+        "unknown": 4,
+        "attempted": 20
+      },
+      "preparerContradictionSensitivityFull": {
+        "target": true,
+        "count": 12,
+        "contrary": 4,
+        "unknown": 4,
+        "attempted": 20
+      }
+    },
+    {
+      "panel": "selection",
+      "language": "dutch",
+      "promptVersion": "diorthosis-correction-v3",
+      "externalSound": {
+        "target": true,
+        "count": 40,
+        "contrary": 29,
+        "unknown": 1,
+        "attempted": 70
+      },
+      "preparerContradictionSensitivitySound": {
+        "target": true,
+        "count": 40,
+        "contrary": 29,
+        "unknown": 1,
+        "attempted": 70
+      },
+      "externalFull": {
+        "target": true,
+        "count": 35,
+        "contrary": 31,
+        "unknown": 4,
+        "attempted": 70
+      },
+      "preparerContradictionSensitivityFull": {
+        "target": true,
+        "count": 35,
+        "contrary": 31,
+        "unknown": 4,
+        "attempted": 70
+      }
+    },
+    {
+      "panel": "selection",
+      "language": "dutch",
+      "promptVersion": "phase4-LiteralJson-FewShot-1.0.0",
+      "externalSound": {
+        "target": true,
+        "count": 47,
+        "contrary": 22,
+        "unknown": 1,
+        "attempted": 70
+      },
+      "preparerContradictionSensitivitySound": {
+        "target": true,
+        "count": 47,
+        "contrary": 22,
+        "unknown": 1,
+        "attempted": 70
+      },
+      "externalFull": {
+        "target": true,
+        "count": 42,
+        "contrary": 23,
+        "unknown": 5,
+        "attempted": 70
+      },
+      "preparerContradictionSensitivityFull": {
+        "target": true,
+        "count": 42,
+        "contrary": 23,
+        "unknown": 5,
+        "attempted": 70
+      }
+    },
+    {
+      "panel": "selection",
+      "language": "dutch",
+      "promptVersion": "phase4-LiteralJson-LanguageSpecific-1.0.0",
+      "externalSound": {
+        "target": true,
+        "count": 48,
+        "contrary": 21,
+        "unknown": 1,
+        "attempted": 70
+      },
+      "preparerContradictionSensitivitySound": {
+        "target": true,
+        "count": 48,
+        "contrary": 21,
+        "unknown": 1,
+        "attempted": 70
+      },
+      "externalFull": {
+        "target": true,
+        "count": 44,
+        "contrary": 22,
+        "unknown": 4,
+        "attempted": 70
+      },
+      "preparerContradictionSensitivityFull": {
+        "target": true,
+        "count": 44,
+        "contrary": 22,
+        "unknown": 4,
+        "attempted": 70
+      }
+    },
+    {
+      "panel": "selection",
+      "language": "dutch",
+      "promptVersion": "phase4-LiteralJson-Minimal-1.0.0",
+      "externalSound": {
+        "target": true,
+        "count": 46,
+        "contrary": 23,
+        "unknown": 1,
+        "attempted": 70
+      },
+      "preparerContradictionSensitivitySound": {
+        "target": true,
+        "count": 46,
+        "contrary": 23,
+        "unknown": 1,
+        "attempted": 70
+      },
+      "externalFull": {
+        "target": true,
+        "count": 41,
+        "contrary": 25,
+        "unknown": 4,
+        "attempted": 70
+      },
+      "preparerContradictionSensitivityFull": {
+        "target": true,
+        "count": 41,
+        "contrary": 25,
+        "unknown": 4,
+        "attempted": 70
+      }
+    },
+    {
+      "panel": "selection",
+      "language": "dutch",
+      "promptVersion": "phase4-LiteralJson-Original-1.0.0",
+      "externalSound": {
+        "target": true,
+        "count": 45,
+        "contrary": 24,
+        "unknown": 1,
+        "attempted": 70
+      },
+      "preparerContradictionSensitivitySound": {
+        "target": true,
+        "count": 45,
+        "contrary": 24,
+        "unknown": 1,
+        "attempted": 70
+      },
+      "externalFull": {
+        "target": true,
+        "count": 40,
+        "contrary": 26,
+        "unknown": 4,
+        "attempted": 70
+      },
+      "preparerContradictionSensitivityFull": {
+        "target": true,
+        "count": 40,
+        "contrary": 26,
+        "unknown": 4,
+        "attempted": 70
+      }
+    },
+    {
+      "panel": "selection",
+      "language": "dutch",
+      "promptVersion": "phase4-PlainText-Original-1.0.0",
+      "externalSound": {
+        "target": true,
+        "count": 40,
+        "contrary": 29,
+        "unknown": 1,
+        "attempted": 70
+      },
+      "preparerContradictionSensitivitySound": {
+        "target": true,
+        "count": 40,
+        "contrary": 29,
+        "unknown": 1,
+        "attempted": 70
+      },
+      "externalFull": {
+        "target": true,
+        "count": 36,
+        "contrary": 31,
+        "unknown": 3,
+        "attempted": 70
+      },
+      "preparerContradictionSensitivityFull": {
+        "target": true,
+        "count": 36,
+        "contrary": 31,
+        "unknown": 3,
+        "attempted": 70
+      }
+    },
+    {
+      "panel": "selection",
+      "language": "english",
+      "promptVersion": "diorthosis-correction-v3",
+      "externalSound": {
+        "target": true,
+        "count": 43,
+        "contrary": 27,
+        "unknown": 0,
+        "attempted": 70
+      },
+      "preparerContradictionSensitivitySound": {
+        "target": true,
+        "count": 43,
+        "contrary": 27,
+        "unknown": 0,
+        "attempted": 70
+      },
+      "externalFull": {
+        "target": true,
+        "count": 37,
+        "contrary": 27,
+        "unknown": 6,
+        "attempted": 70
+      },
+      "preparerContradictionSensitivityFull": {
+        "target": true,
+        "count": 37,
+        "contrary": 27,
+        "unknown": 6,
+        "attempted": 70
+      }
+    },
+    {
+      "panel": "selection",
+      "language": "english",
+      "promptVersion": "phase4-LiteralJson-FewShot-1.0.0",
+      "externalSound": {
+        "target": true,
+        "count": 48,
+        "contrary": 21,
+        "unknown": 1,
+        "attempted": 70
+      },
+      "preparerContradictionSensitivitySound": {
+        "target": true,
+        "count": 48,
+        "contrary": 21,
+        "unknown": 1,
+        "attempted": 70
+      },
+      "externalFull": {
+        "target": true,
+        "count": 39,
+        "contrary": 21,
+        "unknown": 10,
+        "attempted": 70
+      },
+      "preparerContradictionSensitivityFull": {
+        "target": true,
+        "count": 39,
+        "contrary": 21,
+        "unknown": 10,
+        "attempted": 70
+      }
+    },
+    {
+      "panel": "selection",
+      "language": "english",
+      "promptVersion": "phase4-LiteralJson-LanguageSpecific-1.0.0",
+      "externalSound": {
+        "target": true,
+        "count": 46,
+        "contrary": 22,
+        "unknown": 2,
+        "attempted": 70
+      },
+      "preparerContradictionSensitivitySound": {
+        "target": true,
+        "count": 46,
+        "contrary": 22,
+        "unknown": 2,
+        "attempted": 70
+      },
+      "externalFull": {
+        "target": true,
+        "count": 39,
+        "contrary": 22,
+        "unknown": 9,
+        "attempted": 70
+      },
+      "preparerContradictionSensitivityFull": {
+        "target": true,
+        "count": 39,
+        "contrary": 22,
+        "unknown": 9,
+        "attempted": 70
+      }
+    },
+    {
+      "panel": "selection",
+      "language": "english",
+      "promptVersion": "phase4-LiteralJson-Minimal-1.0.0",
+      "externalSound": {
+        "target": true,
+        "count": 47,
+        "contrary": 22,
+        "unknown": 1,
+        "attempted": 70
+      },
+      "preparerContradictionSensitivitySound": {
+        "target": true,
+        "count": 47,
+        "contrary": 22,
+        "unknown": 1,
+        "attempted": 70
+      },
+      "externalFull": {
+        "target": true,
+        "count": 40,
+        "contrary": 22,
+        "unknown": 8,
+        "attempted": 70
+      },
+      "preparerContradictionSensitivityFull": {
+        "target": true,
+        "count": 40,
+        "contrary": 22,
+        "unknown": 8,
+        "attempted": 70
+      }
+    },
+    {
+      "panel": "selection",
+      "language": "english",
+      "promptVersion": "phase4-LiteralJson-Original-1.0.0",
+      "externalSound": {
+        "target": true,
+        "count": 50,
+        "contrary": 19,
+        "unknown": 1,
+        "attempted": 70
+      },
+      "preparerContradictionSensitivitySound": {
+        "target": true,
+        "count": 50,
+        "contrary": 19,
+        "unknown": 1,
+        "attempted": 70
+      },
+      "externalFull": {
+        "target": true,
+        "count": 42,
+        "contrary": 19,
+        "unknown": 9,
+        "attempted": 70
+      },
+      "preparerContradictionSensitivityFull": {
+        "target": true,
+        "count": 42,
+        "contrary": 19,
+        "unknown": 9,
+        "attempted": 70
+      }
+    },
+    {
+      "panel": "selection",
+      "language": "english",
+      "promptVersion": "phase4-PlainText-Original-1.0.0",
+      "externalSound": {
+        "target": true,
+        "count": 44,
+        "contrary": 24,
+        "unknown": 2,
+        "attempted": 70
+      },
+      "preparerContradictionSensitivitySound": {
+        "target": true,
+        "count": 44,
+        "contrary": 24,
+        "unknown": 2,
+        "attempted": 70
+      },
+      "externalFull": {
+        "target": true,
+        "count": 36,
+        "contrary": 24,
+        "unknown": 10,
+        "attempted": 70
+      },
+      "preparerContradictionSensitivityFull": {
+        "target": true,
+        "count": 36,
+        "contrary": 24,
+        "unknown": 10,
+        "attempted": 70
+      }
+    }
+  ]
+}

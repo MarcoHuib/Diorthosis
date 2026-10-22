@@ -1,0 +1,63 @@
+{
+  "version": "phase4-external-validation-1.0.0",
+  "date": "2026-10-21",
+  "checkpointParent": "4b631ef80bd5de6ceb8fe1df4383a763e9922f94",
+  "dotnet": {
+    "command": "env -u DIORTHOSIS_TEST_MODEL DOTNET_CLI_TELEMETRY_OPTOUT=1 dotnet test Diorthosis.sln -c Release --no-restore -m:1 -p:UseSharedCompilation=false -nodeReuse:false",
+    "passed": 232,
+    "skipped": 1,
+    "failed": 0,
+    "skipReason": "Real-model integration disabled explicitly: no new generations authorized. VSTest IPC required build-tool permissions."
+  },
+  "python": {
+    "command": "python3 -m unittest discover -s tests/tooling -p 'test_*.py'",
+    "passed": 43,
+    "failed": 0
+  },
+  "strictImports": {
+    "childBatches": 18,
+    "parentReports": 1,
+    "subjects": 1075,
+    "candidateErrorPairs": 478,
+    "sourceOnlyExtrasQuarantined": 6,
+    "humanAdjudications": 0
+  },
+  "savedResponseReplay": {
+    "representation": {
+      "attempts": 420,
+      "mismatches": 0
+    },
+    "isolated": {
+      "attempts": 420,
+      "mismatches": 0
+    },
+    "confirmation": {
+      "attempts": 80,
+      "mismatches": 0
+    }
+  },
+  "historicalFilesUnchanged": {
+    "historical": 84,
+    "phase2": 165,
+    "phase3": 68,
+    "externalPhase3": 47
+  },
+  "frozenPhase4": {
+    "allDeclaredFilesUnchanged": true,
+    "inventorySnapshotVerified": true,
+    "note": "The 18 pre-existing untracked original-packet ZIP copies in the local frozen directory were left untouched and excluded only from a clean inventory snapshot. All actual declared file paths were hashed first. Clean CI verifies the original exact inventory directly."
+  },
+  "passagePerErrorKnownContradictions": 0,
+  "externalCrossLayerKnownContradictions": 0,
+  "reproduction": {
+    "command": "python3 scripts/verify-phase4-external-reviews.py --reproduce /private/tmp/phase4-external-final-reproduction",
+    "status": "passed",
+    "comparison": "All analysis outputs except location-dependent manifest bytes, and combined C# report, reproduced exactly; all 18 strict imports rerun."
+  },
+  "ci": "Current-head tests and six platform/AOT jobs are verified separately and pinned by exact commit/run in draft PR #7. No old-head pass is claimed as current-head evidence.",
+  "newModelGenerations": 0,
+  "newLinguisticJudgments": 0,
+  "productionPromptChanged": false,
+  "validatorChanged": false,
+  "humanApprovals": 0
+}

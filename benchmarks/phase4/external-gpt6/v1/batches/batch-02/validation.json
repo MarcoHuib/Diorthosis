@@ -1,0 +1,35 @@
+{
+  "batch": "batch-02",
+  "expectedSubjects": 52,
+  "receivedDecisions": 52,
+  "validDecisions": 52,
+  "missingDecisions": 0,
+  "missingSubjectIds": [],
+  "errors": [],
+  "coverageComplete": true,
+  "importStatus": "imported",
+  "receivedErrorDecisions": 22,
+  "validCandidateErrorDecisions": 22,
+  "missingCandidateErrorKeys": [],
+  "errorHashDeclaration": "verified",
+  "originalPacketSha256": "9976563d0582baaacf5f2d57f99055f23103235075757a8780ab7fcd32b09a01",
+  "originalSubjectsSha256": "0c7af6997907beece0319024e29673e25d091337f524e80ab912a9abc051411f",
+  "archiveSha256": "5b6b1e32ba36df16f61e60649712700ecf48c4a2b3a58f4ef3ae94ad4bb30e0f",
+  "members": {
+    "decisions.jsonl": {
+      "bytes": 67567,
+      "sha256": "93984773f001422a1c71d9a3e17afd786ddc46af44a7dc8aae5f0be0e036121c"
+    },
+    "error-decisions.jsonl": {
+      "bytes": 7376,
+      "sha256": "c12eb2492802cc69e17a8bfa0a02c231c354a903406d167f50e8e733569e878d"
+    },
+    "provenance.json": {
+      "bytes": 3627,
+      "sha256": "6c02edd40aa42974d176d77db22d2363e9b341c053041358435880beaba4f868"
+    }
+  },
+  "importedErrorFile": "batches/batch-02/original/error-decisions.jsonl",
+  "importedErrorSha256": "c12eb2492802cc69e17a8bfa0a02c231c354a903406d167f50e8e733569e878d",
+  "humanApprovals": 0
+}

@@ -1,0 +1,6 @@
+{
+  "decisions": 46,
+  "sha256": "1a8a451110f71acf588d14f79275e25e900a5c3607e160800ed7a899e59ebc88",
+  "humanApprovals": 0,
+  "policy": "Bound supplementary AI error judgments; partial coverage explicit. Repaired local errors in withheld candidates are not delivered repairs. Do not infer full-passage meaning or acceptability from local repairs."
+}
